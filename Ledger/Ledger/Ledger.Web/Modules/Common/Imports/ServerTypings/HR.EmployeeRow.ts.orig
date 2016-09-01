@@ -1,0 +1,123 @@
+﻿
+namespace Ledger.HR {
+    export interface EmployeeRow {
+        EmployeeId?: number;
+        FirstName?: string;
+        MiddleName?: string;
+        SurName?: string;
+        Gender?: number;
+        Egn?: string;
+        HireDate?: string;
+        LengthOfService?: string;
+        Photo?: string;
+        Notes?: string;
+        Salary?: number;
+        AddressId?: number;
+        EmailId?: number;
+        PhoneId?: number;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+        IsActive?: number;
+        TenantId?: number;
+        AddressFirstName?: string;
+        AddressMiddleName?: string;
+        AddressSurName?: string;
+        AddressGender?: number;
+        AddressEgn?: string;
+        AddressHireDate?: string;
+        AddressLengthOfService?: string;
+        AddressPhoto?: string;
+        AddressNotes?: string;
+        AddressSalary?: number;
+        AddressAddressId?: number;
+        AddressEmailId?: number;
+        AddressPhoneId?: number;
+        AddressInsertUserId?: number;
+        AddressInsertDate?: string;
+        AddressUpdateUserId?: number;
+        AddressUpdateDate?: string;
+        AddressIsActive?: number;
+        AddressTenantId?: number;
+        EmailEmailAddress?: string;
+        EmailInsertUserId?: number;
+        EmailInsertDate?: string;
+        EmailUpdateUserId?: number;
+        EmailUpdateDate?: string;
+        EmailIsActive?: number;
+        EmailTenantId?: number;
+        PhonePhoneNumber?: string;
+        PhoneInsertUserId?: number;
+        PhoneInsertDate?: string;
+        PhoneUpdateUserId?: number;
+        PhoneUpdateDate?: string;
+        PhoneIsActive?: number;
+        PhoneTenantId?: number;
+    }
+
+    export namespace EmployeeRow {
+        export const idProperty = 'EmployeeId';
+        export const nameProperty = 'FirstName';
+        export const localTextPrefix = 'HR.Employee';
+
+        export namespace Fields {
+            export declare const EmployeeId;
+            export declare const FirstName;
+            export declare const MiddleName;
+            export declare const SurName;
+            export declare const Gender;
+            export declare const Egn;
+            export declare const HireDate;
+            export declare const LengthOfService;
+            export declare const Photo;
+            export declare const Notes;
+            export declare const Salary;
+            export declare const AddressId;
+            export declare const EmailId;
+            export declare const PhoneId;
+            export declare const InsertUserId;
+            export declare const InsertDate;
+            export declare const UpdateUserId;
+            export declare const UpdateDate;
+            export declare const IsActive;
+            export declare const TenantId;
+            export declare const AddressFirstName: string;
+            export declare const AddressMiddleName: string;
+            export declare const AddressSurName: string;
+            export declare const AddressGender: string;
+            export declare const AddressEgn: string;
+            export declare const AddressHireDate: string;
+            export declare const AddressLengthOfService: string;
+            export declare const AddressPhoto: string;
+            export declare const AddressNotes: string;
+            export declare const AddressSalary: string;
+            export declare const AddressAddressId: string;
+            export declare const AddressEmailId: string;
+            export declare const AddressPhoneId: string;
+            export declare const AddressInsertUserId: string;
+            export declare const AddressInsertDate: string;
+            export declare const AddressUpdateUserId: string;
+            export declare const AddressUpdateDate: string;
+            export declare const AddressIsActive: string;
+            export declare const AddressTenantId: string;
+            export declare const EmailEmailAddress: string;
+            export declare const EmailInsertUserId: string;
+            export declare const EmailInsertDate: string;
+            export declare const EmailUpdateUserId: string;
+            export declare const EmailUpdateDate: string;
+            export declare const EmailIsActive: string;
+            export declare const EmailTenantId: string;
+            export declare const PhonePhoneNumber: string;
+            export declare const PhoneInsertUserId: string;
+            export declare const PhoneInsertDate: string;
+            export declare const PhoneUpdateUserId: string;
+            export declare const PhoneUpdateDate: string;
+            export declare const PhoneIsActive: string;
+            export declare const PhoneTenantId: string;
+        }
+
+        ['EmployeeId', 'FirstName', 'MiddleName', 'SurName', 'Gender', 'Egn', 'HireDate', 'LengthOfService', 'Photo', 'Notes', 'Salary', 'AddressId', 'EmailId', 'PhoneId', 'InsertUserId', 'InsertDate', 'UpdateUserId', 'UpdateDate', 'IsActive', 'TenantId', 'AddressFirstName', 'AddressMiddleName', 'AddressSurName', 'AddressGender', 'AddressEgn', 'AddressHireDate', 'AddressLengthOfService', 'AddressPhoto', 'AddressNotes', 'AddressSalary', 'AddressAddressId', 'AddressEmailId', 'AddressPhoneId', 'AddressInsertUserId', 'AddressInsertDate', 'AddressUpdateUserId', 'AddressUpdateDate', 'AddressIsActive', 'AddressTenantId', 'EmailEmailAddress', 'EmailInsertUserId', 'EmailInsertDate', 'EmailUpdateUserId', 'EmailUpdateDate', 'EmailIsActive', 'EmailTenantId', 'PhonePhoneNumber', 'PhoneInsertUserId', 'PhoneInsertDate', 'PhoneUpdateUserId', 'PhoneUpdateDate', 'PhoneIsActive', 'PhoneTenantId'].forEach(x => (<any>Fields)[x] = x);
+    }
+}
+

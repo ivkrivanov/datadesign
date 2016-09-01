@@ -1,0 +1,15 @@
+﻿namespace Ledger.HR {
+    export class EmployeesPhonesForm extends Serenity.PrefixedContext {
+        static formKey = 'HR.EmployeesPhones';
+
+    }
+
+    export interface EmployeesPhonesForm {
+        EmployeeId: Serenity.IntegerEditor;
+        PhoneId: Serenity.IntegerEditor;
+        PhoneType: Serenity.StringEditor;
+    }
+
+    [['EmployeeId', () => Serenity.IntegerEditor], ['PhoneId', () => Serenity.IntegerEditor], ['PhoneType', () => Serenity.StringEditor]].forEach(x => Object.defineProperty(EmployeesPhonesForm.prototype, <string>x[0], { get: function () { return this.w(x[0], (x[1] as any)()); }, enumerable: true, configurable: true }));
+}
+

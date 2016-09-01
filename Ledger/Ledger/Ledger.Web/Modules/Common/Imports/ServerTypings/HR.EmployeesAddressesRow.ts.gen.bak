@@ -1,0 +1,91 @@
+﻿
+namespace Ledger.HR {
+    export interface EmployeesAddressesRow {
+        EmployeeAddressId?: number;
+        EmployeeId?: number;
+        AddressId?: number;
+        AddressType?: string;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+        TenantId?: number;
+        IsActive?: number;
+        EmployeeFirstName?: string;
+        EmployeeMiddleName?: string;
+        EmployeeSurName?: string;
+        EmployeeGender?: number;
+        EmployeeEgn?: string;
+        EmployeeHireDate?: string;
+        EmployeeLengthOfService?: string;
+        EmployeePhoto?: string;
+        EmployeeNotes?: string;
+        EmployeeSalary?: number;
+        EmployeeInsertUserId?: number;
+        EmployeeInsertDate?: string;
+        EmployeeUpdateUserId?: number;
+        EmployeeUpdateDate?: string;
+        EmployeeIsActive?: number;
+        EmployeeTenantId?: number;
+        Address?: string;
+        AddressZipCode?: string;
+        AddressCity?: string;
+        AddressState?: string;
+        AddressCountry?: string;
+        AddressInsertUserId?: number;
+        AddressInsertDate?: string;
+        AddressUpdateUserId?: number;
+        AddressUpdateDate?: string;
+        AddressIsActive?: number;
+        AddressTenantId?: number;
+    }
+
+    export namespace EmployeesAddressesRow {
+        export const idProperty = 'EmployeeAddressId';
+        export const nameProperty = 'AddressType';
+        export const localTextPrefix = 'HR.EmployeesAddresses';
+
+        export namespace Fields {
+            export declare const EmployeeAddressId;
+            export declare const EmployeeId;
+            export declare const AddressId;
+            export declare const AddressType;
+            export declare const InsertUserId;
+            export declare const InsertDate;
+            export declare const UpdateUserId;
+            export declare const UpdateDate;
+            export declare const TenantId;
+            export declare const IsActive;
+            export declare const EmployeeFirstName: string;
+            export declare const EmployeeMiddleName: string;
+            export declare const EmployeeSurName: string;
+            export declare const EmployeeGender: string;
+            export declare const EmployeeEgn: string;
+            export declare const EmployeeHireDate: string;
+            export declare const EmployeeLengthOfService: string;
+            export declare const EmployeePhoto: string;
+            export declare const EmployeeNotes: string;
+            export declare const EmployeeSalary: string;
+            export declare const EmployeeInsertUserId: string;
+            export declare const EmployeeInsertDate: string;
+            export declare const EmployeeUpdateUserId: string;
+            export declare const EmployeeUpdateDate: string;
+            export declare const EmployeeIsActive: string;
+            export declare const EmployeeTenantId: string;
+            export declare const Address: string;
+            export declare const AddressZipCode: string;
+            export declare const AddressCity: string;
+            export declare const AddressState: string;
+            export declare const AddressCountry: string;
+            export declare const AddressInsertUserId: string;
+            export declare const AddressInsertDate: string;
+            export declare const AddressUpdateUserId: string;
+            export declare const AddressUpdateDate: string;
+            export declare const AddressIsActive: string;
+            export declare const AddressTenantId: string;
+        }
+
+        ['EmployeeAddressId', 'EmployeeId', 'AddressId', 'AddressType', 'InsertUserId', 'InsertDate', 'UpdateUserId', 'UpdateDate', 'TenantId', 'IsActive', 'EmployeeFirstName', 'EmployeeMiddleName', 'EmployeeSurName', 'EmployeeGender', 'EmployeeEgn', 'EmployeeHireDate', 'EmployeeLengthOfService', 'EmployeePhoto', 'EmployeeNotes', 'EmployeeSalary', 'EmployeeInsertUserId', 'EmployeeInsertDate', 'EmployeeUpdateUserId', 'EmployeeUpdateDate', 'EmployeeIsActive', 'EmployeeTenantId', 'Address', 'AddressZipCode', 'AddressCity', 'AddressState', 'AddressCountry', 'AddressInsertUserId', 'AddressInsertDate', 'AddressUpdateUserId', 'AddressUpdateDate', 'AddressIsActive', 'AddressTenantId'].forEach(x => (<any>Fields)[x] = x);
+    }
+}
+

@@ -1,0 +1,21 @@
+﻿
+
+namespace Ledger.HR {
+    export class EmployeesEmailsForm extends Serenity.PrefixedContext {
+        static formKey = 'HR.EmployeesEmails';
+    }
+
+    export interface EmployeesEmailsForm {
+        EmployeeId: Serenity.IntegerEditor;
+        EmailId: Serenity.IntegerEditor;
+        EmailType: Serenity.StringEditor;
+        InsertUserId: Serenity.IntegerEditor;
+        InsertDate: Serenity.DateEditor;
+        UpdateUserId: Serenity.IntegerEditor;
+        UpdateDate: Serenity.DateEditor;
+        TenantId: Serenity.IntegerEditor;
+        IsActive: Serenity.IntegerEditor;
+    }
+
+    [['EmployeeId', () => Serenity.IntegerEditor], ['EmailId', () => Serenity.IntegerEditor], ['EmailType', () => Serenity.StringEditor], ['InsertUserId', () => Serenity.IntegerEditor], ['InsertDate', () => Serenity.DateEditor], ['UpdateUserId', () => Serenity.IntegerEditor], ['UpdateDate', () => Serenity.DateEditor], ['TenantId', () => Serenity.IntegerEditor], ['IsActive', () => Serenity.IntegerEditor]].forEach(x => Object.defineProperty(EmployeesEmailsForm.prototype, <string>x[0], { get: function () { return this.w(x[0], (x[1] as any)()); }, enumerable: true, configurable: true }));
+}

@@ -1,0 +1,83 @@
+﻿
+namespace Ledger.HR {
+    export interface EmployeesPhonesRow {
+        EmployeePhoneId?: number;
+        EmployeeId?: number;
+        PhoneId?: number;
+        PhoneType?: string;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+        TenantId?: number;
+        IsActive?: number;
+        EmployeeFirstName?: string;
+        EmployeeMiddleName?: string;
+        EmployeeSurName?: string;
+        EmployeeGender?: number;
+        EmployeeEgn?: string;
+        EmployeeHireDate?: string;
+        EmployeeLengthOfService?: string;
+        EmployeePhoto?: string;
+        EmployeeNotes?: string;
+        EmployeeSalary?: number;
+        EmployeeInsertUserId?: number;
+        EmployeeInsertDate?: string;
+        EmployeeUpdateUserId?: number;
+        EmployeeUpdateDate?: string;
+        EmployeeIsActive?: number;
+        EmployeeTenantId?: number;
+        PhonePhoneNumber?: string;
+        PhoneInsertUserId?: number;
+        PhoneInsertDate?: string;
+        PhoneUpdateUserId?: number;
+        PhoneUpdateDate?: string;
+        PhoneIsActive?: number;
+        PhoneTenantId?: number;
+    }
+
+    export namespace EmployeesPhonesRow {
+        export const idProperty = 'EmployeePhoneId';
+        export const nameProperty = 'PhoneType';
+        export const localTextPrefix = 'HR.EmployeesPhones';
+
+        export namespace Fields {
+            export declare const EmployeePhoneId;
+            export declare const EmployeeId;
+            export declare const PhoneId;
+            export declare const PhoneType;
+            export declare const InsertUserId;
+            export declare const InsertDate;
+            export declare const UpdateUserId;
+            export declare const UpdateDate;
+            export declare const TenantId;
+            export declare const IsActive;
+            export declare const EmployeeFirstName: string;
+            export declare const EmployeeMiddleName: string;
+            export declare const EmployeeSurName: string;
+            export declare const EmployeeGender: string;
+            export declare const EmployeeEgn: string;
+            export declare const EmployeeHireDate: string;
+            export declare const EmployeeLengthOfService: string;
+            export declare const EmployeePhoto: string;
+            export declare const EmployeeNotes: string;
+            export declare const EmployeeSalary: string;
+            export declare const EmployeeInsertUserId: string;
+            export declare const EmployeeInsertDate: string;
+            export declare const EmployeeUpdateUserId: string;
+            export declare const EmployeeUpdateDate: string;
+            export declare const EmployeeIsActive: string;
+            export declare const EmployeeTenantId: string;
+            export declare const PhonePhoneNumber: string;
+            export declare const PhoneInsertUserId: string;
+            export declare const PhoneInsertDate: string;
+            export declare const PhoneUpdateUserId: string;
+            export declare const PhoneUpdateDate: string;
+            export declare const PhoneIsActive: string;
+            export declare const PhoneTenantId: string;
+        }
+
+        ['EmployeePhoneId', 'EmployeeId', 'PhoneId', 'PhoneType', 'InsertUserId', 'InsertDate', 'UpdateUserId', 'UpdateDate', 'TenantId', 'IsActive', 'EmployeeFirstName', 'EmployeeMiddleName', 'EmployeeSurName', 'EmployeeGender', 'EmployeeEgn', 'EmployeeHireDate', 'EmployeeLengthOfService', 'EmployeePhoto', 'EmployeeNotes', 'EmployeeSalary', 'EmployeeInsertUserId', 'EmployeeInsertDate', 'EmployeeUpdateUserId', 'EmployeeUpdateDate', 'EmployeeIsActive', 'EmployeeTenantId', 'PhonePhoneNumber', 'PhoneInsertUserId', 'PhoneInsertDate', 'PhoneUpdateUserId', 'PhoneUpdateDate', 'PhoneIsActive', 'PhoneTenantId'].forEach(x => (<any>Fields)[x] = x);
+    }
+}
+
