@@ -1,0 +1,19 @@
+{
+    "Controls.ColumnPickerDialog.HiddenColumns": "Скрити колони",
+    "Controls.ColumnPickerDialog.HideHint": "скрий",
+    "Controls.ColumnPickerDialog.ShowHint": "виж",
+    "Controls.ColumnPickerDialog.VisibleColumns": "Покажи колони",
+    "Controls.EntityDialog.ApplyChangesButton": "Приеми промените",
+    "Controls.EntityDialog.CloneButton": "Клонирай",
+    "Controls.EntityDialog.DeleteButton": "Изтрий",
+    "Controls.EntityDialog.DeleteConfirmation": "Изтрий запис?",
+    "Controls.EntityDialog.EditRecordTitle": "Редактирай {0}{1}",
+    "Controls.EntityDialog.NewRecordTitle": "Нов {0}",
+    "Controls.EntityDialog.SaveButton": "Запиши",
+    "Controls.EntityDialog.SaveSuccessMessage": "Успешен запис",
+    "Controls.EntityGrid.NewButton": "Нов {0}",
+    "Controls.FilterPanel.AddFilter": "добави критерий",
+    "Controls.FilterPanel.All": "<и>",
+    "Controls.FilterPanel.And": "и",
+    "Controls.FilterPanel.AndInParens": "(и)"
+}
