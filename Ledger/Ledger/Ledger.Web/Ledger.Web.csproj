@@ -1231,6 +1231,21 @@
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Infra.PhoneColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Infra.SupportTypeColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Infra.SupportTypeForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Infra.SupportTypeRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Infra.SupportTypeService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Infra.SupportTypeStringColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Common\Navigation\ThemeSelection.ts" />
     <TypeScriptCompile Include="Modules\Common\Navigation\SidebarSearch.ts" />
     <TypeScriptCompile Include="Modules\Common\Navigation\LanguageSelection.ts" />
@@ -1784,6 +1799,25 @@
     <TypeScriptCompile Include="Modules\HR\EmployeePhone\EmployeePhoneDialog.ts" />
     <TypeScriptCompile Include="Modules\HR\EmployeePhone\EmployeePhoneEditor.ts" />
     <TypeScriptCompile Include="Modules\HR\EmployeePhone\EmployeePhoneEditorDialog.ts" />
+    <Content Include="Modules\Infra\SupportType\SupportTypeIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Infra\SupportType\SupportTypeGrid.ts" />
+    <TypeScriptCompile Include="Modules\Infra\SupportType\SupportTypeDialog.ts" />
+    <TypeScriptCompile Include="Modules\Infra\SupportType\SupportTypeEditor.ts" />
+    <TypeScriptCompile Include="Modules\Infra\SupportType\SupportTypeEditorDialog.ts" />
+    <Content Include="Modules\Infra\SupportTypeString\SupportTypeStringIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Infra.SupportTypeStringRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Infra.SupportTypeStringService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Infra.SupportTypeStringForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Infra\SupportTypeString\SupportTypeStringGrid.ts" />
+    <TypeScriptCompile Include="Modules\Infra\SupportTypeString\SupportTypeStringDialog.ts" />
+    <TypeScriptCompile Include="Modules\Infra\SupportTypeString\SupportTypeStringEditor.ts" />
+    <TypeScriptCompile Include="Modules\Infra\SupportTypeString\SupportTypeStringEditorDialog.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -1885,6 +1919,12 @@
     <Compile Include="Modules\Common\Imports\ClientTypes\Infra.PhoneEditorAttribute.cs">
       <DependentUpon>ClientTypes.tt</DependentUpon>
     </Compile>
+    <Compile Include="Modules\Common\Imports\ClientTypes\Infra.SupportTypeEditorAttribute.cs">
+      <DependentUpon>ClientTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Common\Imports\ClientTypes\Infra.SupportTypeStringEditorAttribute.cs">
+      <DependentUpon>ClientTypes.tt</DependentUpon>
+    </Compile>
     <Compile Include="Modules\Common\Imports\ClientTypes\Northwind.CustomerEditorAttribute.cs">
       <DependentUpon>ClientTypes.tt</DependentUpon>
     </Compile>
@@ -1918,6 +1958,7 @@
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20160801_120000_HR.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20160808_120000_HR_Adds.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20160804_120000_HR_Pach.cs" />
+    <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20160907_120000_Infra_Support.cs" />
     <Compile Include="Modules\Common\Migrations\MigrationUtils.cs" />
     <Compile Include="Modules\Common\Migrations\NorthwindDB\NorthwindDB_20160216_154900_DataLocalization.cs" />
     <Compile Include="Modules\Common\Migrations\NorthwindDB\NorthwindDB_20160121_141200_CustomerRepresentatives.cs" />
@@ -2164,6 +2205,18 @@
     <Compile Include="Modules\HR\EmployeePhone\EmployeePhoneRepository.cs" />
     <Compile Include="Modules\HR\EmployeePhone\EmployeePhoneEndpoint.cs" />
     <Compile Include="Modules\HR\EmployeePhone\EmployeePhonePage.cs" />
+    <Compile Include="Modules\Infra\SupportType\SupportTypeRow.cs" />
+    <Compile Include="Modules\Infra\SupportType\SupportTypeColumns.cs" />
+    <Compile Include="Modules\Infra\SupportType\SupportTypeForm.cs" />
+    <Compile Include="Modules\Infra\SupportType\SupportTypeRepository.cs" />
+    <Compile Include="Modules\Infra\SupportType\SupportTypeEndpoint.cs" />
+    <Compile Include="Modules\Infra\SupportType\SupportTypePage.cs" />
+    <Compile Include="Modules\Infra\SupportTypeString\SupportTypeStringRow.cs" />
+    <Compile Include="Modules\Infra\SupportTypeString\SupportTypeStringColumns.cs" />
+    <Compile Include="Modules\Infra\SupportTypeString\SupportTypeStringForm.cs" />
+    <Compile Include="Modules\Infra\SupportTypeString\SupportTypeStringRepository.cs" />
+    <Compile Include="Modules\Infra\SupportTypeString\SupportTypeStringEndpoint.cs" />
+    <Compile Include="Modules\Infra\SupportTypeString\SupportTypeStringPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1856,6 +1856,186 @@ var Ledger;
 (function (Ledger) {
     var Infra;
     (function (Infra) {
+        var SupportTypeStringDialog = (function (_super) {
+            __extends(SupportTypeStringDialog, _super);
+            function SupportTypeStringDialog() {
+                _super.apply(this, arguments);
+                this.form = new Infra.SupportTypeStringForm(this.idPrefix);
+            }
+            SupportTypeStringDialog.prototype.getFormKey = function () { return Infra.SupportTypeStringForm.formKey; };
+            SupportTypeStringDialog.prototype.getIdProperty = function () { return Infra.SupportTypeStringRow.idProperty; };
+            SupportTypeStringDialog.prototype.getLocalTextPrefix = function () { return Infra.SupportTypeStringRow.localTextPrefix; };
+            SupportTypeStringDialog.prototype.getNameProperty = function () { return Infra.SupportTypeStringRow.nameProperty; };
+            SupportTypeStringDialog.prototype.getService = function () { return Infra.SupportTypeStringService.baseUrl; };
+            SupportTypeStringDialog = __decorate([
+                Serenity.Decorators.registerClass(),
+                Serenity.Decorators.responsive()
+            ], SupportTypeStringDialog);
+            return SupportTypeStringDialog;
+        }(Serenity.EntityDialog));
+        Infra.SupportTypeStringDialog = SupportTypeStringDialog;
+    })(Infra = Ledger.Infra || (Ledger.Infra = {}));
+})(Ledger || (Ledger = {}));
+/// <reference path="../../Common/Helpers/GridEditorBase.ts" />
+var Ledger;
+(function (Ledger) {
+    var Infra;
+    (function (Infra) {
+        var SupportTypeStringEditor = (function (_super) {
+            __extends(SupportTypeStringEditor, _super);
+            function SupportTypeStringEditor(container) {
+                _super.call(this, container);
+            }
+            SupportTypeStringEditor.prototype.getColumnsKey = function () { return 'Infra.SupportTypeString'; };
+            SupportTypeStringEditor.prototype.getDialogType = function () { return Infra.SupportTypeStringEditorDialog; };
+            SupportTypeStringEditor.prototype.getLocalTextPrefix = function () { return Infra.SupportTypeStringRow.localTextPrefix; };
+            SupportTypeStringEditor = __decorate([
+                Serenity.Decorators.registerClass()
+            ], SupportTypeStringEditor);
+            return SupportTypeStringEditor;
+        }(Ledger.Common.GridEditorBase));
+        Infra.SupportTypeStringEditor = SupportTypeStringEditor;
+    })(Infra = Ledger.Infra || (Ledger.Infra = {}));
+})(Ledger || (Ledger = {}));
+/// <reference path="../../Common/Helpers/GridEditorDialog.ts" />
+var Ledger;
+(function (Ledger) {
+    var Infra;
+    (function (Infra) {
+        var SupportTypeStringEditorDialog = (function (_super) {
+            __extends(SupportTypeStringEditorDialog, _super);
+            function SupportTypeStringEditorDialog() {
+                _super.apply(this, arguments);
+                this.form = new Infra.SupportTypeStringForm(this.idPrefix);
+            }
+            SupportTypeStringEditorDialog.prototype.getFormKey = function () { return Infra.SupportTypeStringForm.formKey; };
+            SupportTypeStringEditorDialog.prototype.getLocalTextPrefix = function () { return Infra.SupportTypeStringRow.localTextPrefix; };
+            SupportTypeStringEditorDialog.prototype.getNameProperty = function () { return Infra.SupportTypeStringRow.nameProperty; };
+            SupportTypeStringEditorDialog = __decorate([
+                Serenity.Decorators.registerClass(),
+                Serenity.Decorators.responsive()
+            ], SupportTypeStringEditorDialog);
+            return SupportTypeStringEditorDialog;
+        }(Ledger.Common.GridEditorDialog));
+        Infra.SupportTypeStringEditorDialog = SupportTypeStringEditorDialog;
+    })(Infra = Ledger.Infra || (Ledger.Infra = {}));
+})(Ledger || (Ledger = {}));
+var Ledger;
+(function (Ledger) {
+    var Infra;
+    (function (Infra) {
+        var SupportTypeStringGrid = (function (_super) {
+            __extends(SupportTypeStringGrid, _super);
+            function SupportTypeStringGrid(container) {
+                _super.call(this, container);
+            }
+            SupportTypeStringGrid.prototype.getColumnsKey = function () { return 'Infra.SupportTypeString'; };
+            SupportTypeStringGrid.prototype.getDialogType = function () { return Infra.SupportTypeStringDialog; };
+            SupportTypeStringGrid.prototype.getIdProperty = function () { return Infra.SupportTypeStringRow.idProperty; };
+            SupportTypeStringGrid.prototype.getLocalTextPrefix = function () { return Infra.SupportTypeStringRow.localTextPrefix; };
+            SupportTypeStringGrid.prototype.getService = function () { return Infra.SupportTypeStringService.baseUrl; };
+            SupportTypeStringGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], SupportTypeStringGrid);
+            return SupportTypeStringGrid;
+        }(Serenity.EntityGrid));
+        Infra.SupportTypeStringGrid = SupportTypeStringGrid;
+    })(Infra = Ledger.Infra || (Ledger.Infra = {}));
+})(Ledger || (Ledger = {}));
+var Ledger;
+(function (Ledger) {
+    var Infra;
+    (function (Infra) {
+        var SupportTypeDialog = (function (_super) {
+            __extends(SupportTypeDialog, _super);
+            function SupportTypeDialog() {
+                _super.apply(this, arguments);
+                this.form = new Infra.SupportTypeForm(this.idPrefix);
+            }
+            SupportTypeDialog.prototype.getFormKey = function () { return Infra.SupportTypeForm.formKey; };
+            SupportTypeDialog.prototype.getIdProperty = function () { return Infra.SupportTypeRow.idProperty; };
+            SupportTypeDialog.prototype.getLocalTextPrefix = function () { return Infra.SupportTypeRow.localTextPrefix; };
+            SupportTypeDialog.prototype.getNameProperty = function () { return Infra.SupportTypeRow.nameProperty; };
+            SupportTypeDialog.prototype.getService = function () { return Infra.SupportTypeService.baseUrl; };
+            SupportTypeDialog = __decorate([
+                Serenity.Decorators.registerClass(),
+                Serenity.Decorators.responsive()
+            ], SupportTypeDialog);
+            return SupportTypeDialog;
+        }(Serenity.EntityDialog));
+        Infra.SupportTypeDialog = SupportTypeDialog;
+    })(Infra = Ledger.Infra || (Ledger.Infra = {}));
+})(Ledger || (Ledger = {}));
+/// <reference path="../../Common/Helpers/GridEditorBase.ts" />
+var Ledger;
+(function (Ledger) {
+    var Infra;
+    (function (Infra) {
+        var SupportTypeEditor = (function (_super) {
+            __extends(SupportTypeEditor, _super);
+            function SupportTypeEditor(container) {
+                _super.call(this, container);
+            }
+            SupportTypeEditor.prototype.getColumnsKey = function () { return 'Infra.SupportType'; };
+            SupportTypeEditor.prototype.getDialogType = function () { return Infra.SupportTypeEditorDialog; };
+            SupportTypeEditor.prototype.getLocalTextPrefix = function () { return Infra.SupportTypeRow.localTextPrefix; };
+            SupportTypeEditor = __decorate([
+                Serenity.Decorators.registerClass()
+            ], SupportTypeEditor);
+            return SupportTypeEditor;
+        }(Ledger.Common.GridEditorBase));
+        Infra.SupportTypeEditor = SupportTypeEditor;
+    })(Infra = Ledger.Infra || (Ledger.Infra = {}));
+})(Ledger || (Ledger = {}));
+/// <reference path="../../Common/Helpers/GridEditorDialog.ts" />
+var Ledger;
+(function (Ledger) {
+    var Infra;
+    (function (Infra) {
+        var SupportTypeEditorDialog = (function (_super) {
+            __extends(SupportTypeEditorDialog, _super);
+            function SupportTypeEditorDialog() {
+                _super.apply(this, arguments);
+                this.form = new Infra.SupportTypeForm(this.idPrefix);
+            }
+            SupportTypeEditorDialog.prototype.getFormKey = function () { return Infra.SupportTypeForm.formKey; };
+            SupportTypeEditorDialog.prototype.getLocalTextPrefix = function () { return Infra.SupportTypeRow.localTextPrefix; };
+            SupportTypeEditorDialog.prototype.getNameProperty = function () { return Infra.SupportTypeRow.nameProperty; };
+            SupportTypeEditorDialog = __decorate([
+                Serenity.Decorators.registerClass(),
+                Serenity.Decorators.responsive()
+            ], SupportTypeEditorDialog);
+            return SupportTypeEditorDialog;
+        }(Ledger.Common.GridEditorDialog));
+        Infra.SupportTypeEditorDialog = SupportTypeEditorDialog;
+    })(Infra = Ledger.Infra || (Ledger.Infra = {}));
+})(Ledger || (Ledger = {}));
+var Ledger;
+(function (Ledger) {
+    var Infra;
+    (function (Infra) {
+        var SupportTypeGrid = (function (_super) {
+            __extends(SupportTypeGrid, _super);
+            function SupportTypeGrid(container) {
+                _super.call(this, container);
+            }
+            SupportTypeGrid.prototype.getColumnsKey = function () { return 'Infra.SupportType'; };
+            SupportTypeGrid.prototype.getDialogType = function () { return Infra.SupportTypeDialog; };
+            SupportTypeGrid.prototype.getIdProperty = function () { return Infra.SupportTypeRow.idProperty; };
+            SupportTypeGrid.prototype.getLocalTextPrefix = function () { return Infra.SupportTypeRow.localTextPrefix; };
+            SupportTypeGrid.prototype.getService = function () { return Infra.SupportTypeService.baseUrl; };
+            SupportTypeGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], SupportTypeGrid);
+            return SupportTypeGrid;
+        }(Serenity.EntityGrid));
+        Infra.SupportTypeGrid = SupportTypeGrid;
+    })(Infra = Ledger.Infra || (Ledger.Infra = {}));
+})(Ledger || (Ledger = {}));
+var Ledger;
+(function (Ledger) {
+    var Infra;
+    (function (Infra) {
         var PhoneDialog = (function (_super) {
             __extends(PhoneDialog, _super);
             function PhoneDialog() {
@@ -4245,6 +4425,106 @@ var Ledger;
                 Methods[x] = PhoneService.baseUrl + '/' + x;
             });
         })(PhoneService = Infra.PhoneService || (Infra.PhoneService = {}));
+    })(Infra = Ledger.Infra || (Ledger.Infra = {}));
+})(Ledger || (Ledger = {}));
+var Ledger;
+(function (Ledger) {
+    var Infra;
+    (function (Infra) {
+        var SupportTypeForm = (function (_super) {
+            __extends(SupportTypeForm, _super);
+            function SupportTypeForm() {
+                _super.apply(this, arguments);
+            }
+            SupportTypeForm.formKey = 'Infra.SupportType';
+            return SupportTypeForm;
+        }(Serenity.PrefixedContext));
+        Infra.SupportTypeForm = SupportTypeForm;
+        [['EnumValue', function () { return Serenity.StringEditor; }], ['DisplayName', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(SupportTypeForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
+    })(Infra = Ledger.Infra || (Ledger.Infra = {}));
+})(Ledger || (Ledger = {}));
+var Ledger;
+(function (Ledger) {
+    var Infra;
+    (function (Infra) {
+        var SupportTypeRow;
+        (function (SupportTypeRow) {
+            SupportTypeRow.idProperty = 'EnumValue';
+            SupportTypeRow.isActiveProperty = 'IsActive';
+            SupportTypeRow.nameProperty = 'DisplayName';
+            SupportTypeRow.localTextPrefix = 'Infra.SupportType';
+            var Fields;
+            (function (Fields) {
+            })(Fields = SupportTypeRow.Fields || (SupportTypeRow.Fields = {}));
+            ['EnumValue', 'DisplayName', 'TenantId', 'IsActive', 'InsertUserId', 'InsertDate', 'UpdateUserId', 'UpdateDate'].forEach(function (x) { return Fields[x] = x; });
+        })(SupportTypeRow = Infra.SupportTypeRow || (Infra.SupportTypeRow = {}));
+    })(Infra = Ledger.Infra || (Ledger.Infra = {}));
+})(Ledger || (Ledger = {}));
+var Ledger;
+(function (Ledger) {
+    var Infra;
+    (function (Infra) {
+        var SupportTypeService;
+        (function (SupportTypeService) {
+            SupportTypeService.baseUrl = 'Infra/SupportType';
+            var Methods;
+            (function (Methods) {
+            })(Methods = SupportTypeService.Methods || (SupportTypeService.Methods = {}));
+            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
+                SupportTypeService[x] = function (r, s, o) { return Q.serviceRequest(SupportTypeService.baseUrl + '/' + x, r, s, o); };
+                Methods[x] = SupportTypeService.baseUrl + '/' + x;
+            });
+        })(SupportTypeService = Infra.SupportTypeService || (Infra.SupportTypeService = {}));
+    })(Infra = Ledger.Infra || (Ledger.Infra = {}));
+})(Ledger || (Ledger = {}));
+var Ledger;
+(function (Ledger) {
+    var Infra;
+    (function (Infra) {
+        var SupportTypeStringForm = (function (_super) {
+            __extends(SupportTypeStringForm, _super);
+            function SupportTypeStringForm() {
+                _super.apply(this, arguments);
+            }
+            SupportTypeStringForm.formKey = 'Infra.SupportTypeString';
+            return SupportTypeStringForm;
+        }(Serenity.PrefixedContext));
+        Infra.SupportTypeStringForm = SupportTypeStringForm;
+        [['EnumValue', function () { return Serenity.IntegerEditor; }], ['DisplayName', function () { return Serenity.StringEditor; }], ['Locale', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(SupportTypeStringForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
+    })(Infra = Ledger.Infra || (Ledger.Infra = {}));
+})(Ledger || (Ledger = {}));
+var Ledger;
+(function (Ledger) {
+    var Infra;
+    (function (Infra) {
+        var SupportTypeStringRow;
+        (function (SupportTypeStringRow) {
+            SupportTypeStringRow.idProperty = 'EnumLocaleId';
+            SupportTypeStringRow.isActiveProperty = 'IsActive';
+            SupportTypeStringRow.nameProperty = 'DisplayName';
+            SupportTypeStringRow.localTextPrefix = 'Infra.SupportTypeString';
+            var Fields;
+            (function (Fields) {
+            })(Fields = SupportTypeStringRow.Fields || (SupportTypeStringRow.Fields = {}));
+            ['EnumLocaleId', 'EnumValue', 'DisplayName', 'Locale', 'TenantId', 'IsActive', 'InsertUserId', 'InsertDate', 'UpdateUserId', 'UpdateDate'].forEach(function (x) { return Fields[x] = x; });
+        })(SupportTypeStringRow = Infra.SupportTypeStringRow || (Infra.SupportTypeStringRow = {}));
+    })(Infra = Ledger.Infra || (Ledger.Infra = {}));
+})(Ledger || (Ledger = {}));
+var Ledger;
+(function (Ledger) {
+    var Infra;
+    (function (Infra) {
+        var SupportTypeStringService;
+        (function (SupportTypeStringService) {
+            SupportTypeStringService.baseUrl = 'Infra/SupportTypeString';
+            var Methods;
+            (function (Methods) {
+            })(Methods = SupportTypeStringService.Methods || (SupportTypeStringService.Methods = {}));
+            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
+                SupportTypeStringService[x] = function (r, s, o) { return Q.serviceRequest(SupportTypeStringService.baseUrl + '/' + x, r, s, o); };
+                Methods[x] = SupportTypeStringService.baseUrl + '/' + x;
+            });
+        })(SupportTypeStringService = Infra.SupportTypeStringService || (Infra.SupportTypeStringService = {}));
     })(Infra = Ledger.Infra || (Ledger.Infra = {}));
 })(Ledger || (Ledger = {}));
 var Ledger;

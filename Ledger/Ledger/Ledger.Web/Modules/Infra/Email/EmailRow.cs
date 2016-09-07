@@ -72,12 +72,13 @@
             public StringField EmailAddress;
 
             public Int16Field IsActive;
-            public Int32Field TenantId;
+            public readonly Int32Field TenantId;
 
             public RowFields()
                 : base("[ldg].[Emails]")
             {
                 LocalTextPrefix = "Infra.Email";
+
             }
         }
     }

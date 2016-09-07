@@ -129,7 +129,7 @@
             public StringField InsertUserDisplayName;
             
             //public Int16Field IsActive;
-            public Int32Field TenantId;
+            public readonly Int32Field TenantId;
 
             public RowFields()
                 : base("[ldg].[Notes]")

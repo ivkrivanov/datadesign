@@ -7993,3 +7993,21 @@ section.content > .s-DataGrid {
 .s-HR-EmployeePhoneDialog .caption {
   width: 150px;
 }
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+.s-Infra-SupportTypeDialog > .size {
+  width: 650px;
+}
+.s-Infra-SupportTypeDialog .caption {
+  width: 150px;
+}
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+.s-Infra-SupportTypeStringDialog > .size {
+  width: 650px;
+}
+.s-Infra-SupportTypeStringDialog .caption {
+  width: 150px;
+}
