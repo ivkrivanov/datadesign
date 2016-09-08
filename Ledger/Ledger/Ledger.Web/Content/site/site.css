@@ -8020,3 +8020,12 @@ section.content > .s-DataGrid {
 .s-Infra-SupportDialog .caption {
   width: 150px;
 }
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+.s-Infra-SupportDialog > .size {
+  width: 650px;
+}
+.s-Infra-SupportDialog .caption {
+  width: 150px;
+}

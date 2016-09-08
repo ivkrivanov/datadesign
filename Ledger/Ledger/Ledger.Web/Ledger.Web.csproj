@@ -1818,6 +1818,20 @@
     <TypeScriptCompile Include="Modules\Infra\SupportTypeString\SupportTypeStringDialog.ts" />
     <TypeScriptCompile Include="Modules\Infra\SupportTypeString\SupportTypeStringEditor.ts" />
     <TypeScriptCompile Include="Modules\Infra\SupportTypeString\SupportTypeStringEditorDialog.ts" />
+    <Content Include="Modules\Infra\Support\SupportIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Infra.SupportRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Infra.SupportService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Infra.SupportForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Infra\Support\SupportGrid.ts" />
+    <TypeScriptCompile Include="Modules\Infra\Support\SupportDialog.ts" />
+    <TypeScriptCompile Include="Modules\Infra\Support\SupportEditor.ts" />
+    <TypeScriptCompile Include="Modules\Infra\Support\SupportEditorDialog.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -1954,13 +1968,8 @@
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20151217_000600_LastDirectoryUpdate.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20151111_133500_UserPermissionGrant.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20160724_101700_MultiTenant.cs" />
-    <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20160725_210000_Categories.cs" />
+    <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20160725_210000_Infra.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20160801_120000_HR.cs" />
-    <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20160808_120000_HR_Adds.cs" />
-    <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20160804_120000_HR_Pach.cs" />
-    <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20160907_120000_Infra_Support.cs" />
-    <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20160908_120000_Infra_Support.cs" />
-    <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20160908_160000_Infra_Support.cs" />
     <Compile Include="Modules\Common\Migrations\MigrationUtils.cs" />
     <Compile Include="Modules\Common\Migrations\NorthwindDB\NorthwindDB_20160216_154900_DataLocalization.cs" />
     <Compile Include="Modules\Common\Migrations\NorthwindDB\NorthwindDB_20160121_141200_CustomerRepresentatives.cs" />
@@ -2004,6 +2013,7 @@
     <Compile Include="Modules\Infra\Note\NotesBehavior.cs" />
     <Compile Include="Modules\Infra\PermissionKeys.cs" />
     <Compile Include="Modules\Infra\Phone\PhoneLookup.cs" />
+    <Compile Include="Modules\Infra\SupportTypeString\SupportTypeStringLookup.cs" />
     <Compile Include="Modules\Membership\Account\ChangePassword\AccountPage.ChangePassword.cs" />
     <Compile Include="Modules\Membership\Account\EnvironmentSettings.cs" />
     <Compile Include="Modules\Membership\Account\ForgotPassword\AccountPage.ForgotPassword.cs" />
@@ -2219,6 +2229,12 @@
     <Compile Include="Modules\Infra\SupportTypeString\SupportTypeStringRepository.cs" />
     <Compile Include="Modules\Infra\SupportTypeString\SupportTypeStringEndpoint.cs" />
     <Compile Include="Modules\Infra\SupportTypeString\SupportTypeStringPage.cs" />
+    <Compile Include="Modules\Infra\Support\SupportRow.cs" />
+    <Compile Include="Modules\Infra\Support\SupportColumns.cs" />
+    <Compile Include="Modules\Infra\Support\SupportForm.cs" />
+    <Compile Include="Modules\Infra\Support\SupportRepository.cs" />
+    <Compile Include="Modules\Infra\Support\SupportEndpoint.cs" />
+    <Compile Include="Modules\Infra\Support\SupportPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

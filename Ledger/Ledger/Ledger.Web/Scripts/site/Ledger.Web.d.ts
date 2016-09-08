@@ -507,6 +507,42 @@ declare namespace Ledger.Infra {
     }
 }
 declare namespace Ledger.Infra {
+    class SupportDialog extends Serenity.EntityDialog<SupportRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: SupportForm;
+    }
+}
+declare namespace Ledger.Infra {
+    class SupportEditor extends Common.GridEditorBase<SupportRow> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof SupportEditorDialog;
+        protected getLocalTextPrefix(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Ledger.Infra {
+    class SupportEditorDialog extends Common.GridEditorDialog<SupportRow> {
+        protected getFormKey(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected form: SupportForm;
+    }
+}
+declare namespace Ledger.Infra {
+    class SupportGrid extends Serenity.EntityGrid<SupportRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof SupportDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Ledger.Infra {
     class PhoneDialog extends Serenity.EntityDialog<PhoneRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
@@ -2132,6 +2168,74 @@ declare namespace Ledger.Infra {
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<PhoneRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<PhoneRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        namespace Methods {
+            const Create: string;
+            const Update: string;
+            const Delete: string;
+            const Retrieve: string;
+            const List: string;
+        }
+    }
+}
+declare namespace Ledger.Infra {
+    class SupportForm extends Serenity.PrefixedContext {
+        static formKey: string;
+    }
+    interface SupportForm {
+        Guid: Serenity.StringEditor;
+        SupportTypeId: Serenity.IntegerEditor;
+        SupportCode: Serenity.StringEditor;
+        Name: Serenity.StringEditor;
+        Description: Serenity.StringEditor;
+        TenantId: Serenity.IntegerEditor;
+        IsActive: Serenity.IntegerEditor;
+    }
+}
+declare namespace Ledger.Infra {
+    interface SupportRow {
+        SupportId?: number;
+        Guid?: string;
+        SupportTypeId?: number;
+        SupportCode?: string;
+        Name?: string;
+        Description?: string;
+        TenantId?: number;
+        IsActive?: number;
+        SupportTypeEnumValue?: number;
+        SupportTypeDisplayName?: string;
+        SupportTypeLocale?: number;
+        SupportTypeTenantId?: number;
+        SupportTypeIsActive?: number;
+    }
+    namespace SupportRow {
+        const idProperty: string;
+        const nameProperty: string;
+        const localTextPrefix: string;
+        namespace Fields {
+            const SupportId: any;
+            const Guid: any;
+            const SupportTypeId: any;
+            const SupportCode: any;
+            const Name: any;
+            const Description: any;
+            const TenantId: any;
+            const IsActive: any;
+            const SupportTypeEnumValue: string;
+            const SupportTypeDisplayName: string;
+            const SupportTypeLocale: string;
+            const SupportTypeTenantId: string;
+            const SupportTypeIsActive: string;
+        }
+    }
+}
+declare namespace Ledger.Infra {
+    namespace SupportService {
+        const baseUrl: string;
+        function Create(request: Serenity.SaveRequest<SupportRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<SupportRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<SupportRow>) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<SupportRow>) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
         namespace Methods {
             const Create: string;
             const Update: string;

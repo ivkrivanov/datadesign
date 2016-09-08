@@ -59,6 +59,7 @@
         {
             get { return Fields.IsActive; }
         }
+
         public static readonly RowFields Fields = new RowFields().Init();
 
         public PhoneRow()
