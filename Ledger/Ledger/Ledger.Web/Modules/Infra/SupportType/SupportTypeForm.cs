@@ -14,6 +14,6 @@ namespace Ledger.Infra.Forms
     public class SupportTypeForm
     {
         public string EnumValue { get; set; }
-        public String DisplayName { get; set; }
+        public String EnumName { get; set; }
     }
 }

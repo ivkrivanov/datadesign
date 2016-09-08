@@ -1959,6 +1959,8 @@
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20160808_120000_HR_Adds.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20160804_120000_HR_Pach.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20160907_120000_Infra_Support.cs" />
+    <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20160908_120000_Infra_Support.cs" />
+    <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20160908_160000_Infra_Support.cs" />
     <Compile Include="Modules\Common\Migrations\MigrationUtils.cs" />
     <Compile Include="Modules\Common\Migrations\NorthwindDB\NorthwindDB_20160216_154900_DataLocalization.cs" />
     <Compile Include="Modules\Common\Migrations\NorthwindDB\NorthwindDB_20160121_141200_CustomerRepresentatives.cs" />

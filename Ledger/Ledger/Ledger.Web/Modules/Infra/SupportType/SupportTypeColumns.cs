@@ -12,6 +12,6 @@ namespace Ledger.Infra.Columns
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         public Int32 EnumValue { get; set; }
         [EditLink, Width(250)]
-        public String DisplayName { get; set; }
+        public String EnumName { get; set; }
     }
 }

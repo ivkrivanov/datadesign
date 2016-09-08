@@ -23,10 +23,10 @@
         }
 
         [DisplayName("Display Name"), Size(256), Width(250), QuickSearch]
-        public String DisplayName
+        public String EnumName
         {
-            get { return Fields.DisplayName[this]; }
-            set { Fields.DisplayName[this] = value; }
+            get { return Fields.EnumName[this]; }
+            set { Fields.EnumName[this] = value; }
         }
 
         [NotNull, Insertable(false), Updatable(true)]
@@ -55,7 +55,7 @@
 
         StringField INameRow.NameField
         {
-            get { return Fields.DisplayName; }
+            get { return Fields.EnumName; }
         }
 
         Int16Field IIsActiveRow.IsActiveField
@@ -73,10 +73,10 @@
         public class RowFields : LoggingRowFields
         {
             public Int32Field EnumValue;
-            public StringField DisplayName;
+            public StringField EnumName;
 
-            public Int32Field TenantId;
-            public Int16Field IsActive;
+            public readonly Int32Field TenantId;
+            public readonly Int16Field IsActive;
 
             public RowFields()
                 : base("[ldg].[SupportType]")

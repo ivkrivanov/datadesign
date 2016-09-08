@@ -2,6 +2,7 @@
 namespace Ledger.Migrations.DefaultDB
 {
     using FluentMigrator;
+    using FluentMigrator.Builders.Create.Table;
     using System;
 
     [Migration(20160907120000)]
@@ -9,9 +10,8 @@ namespace Ledger.Migrations.DefaultDB
     {
         public override void Up()
         {
-            Create.Table("SupportType").InSchema("ldg")
-                .WithColumn("EnumValue").AsInt32().PrimaryKey().NotNullable()
-                .WithColumn("DisplayName").AsString(256).Nullable()
+            Action<ICreateTableWithColumnSyntax> addSupportTypeCols = expr => expr
+                .WithColumn("EnumName").AsString(256).Nullable()
                 .WithColumn("InsertUserId").AsInt32().NotNullable().WithDefaultValue(1)
                 .WithColumn("InsertDate").AsDateTime().NotNullable().WithDefaultValue(DateTime.Now)
                 .WithColumn("UpdateUserId").AsInt32().Nullable()
@@ -19,9 +19,18 @@ namespace Ledger.Migrations.DefaultDB
                 .WithColumn("TenantId").AsInt32().NotNullable().WithDefaultValue(1)
                 .WithColumn("IsActive").AsInt16().NotNullable().WithDefaultValue(1);
 
-            Create.Table("SupportTypeString").InSchema("ldg")
-                .WithColumn("EnumLocaleId").AsInt32().Identity().PrimaryKey().NotNullable()
-                .WithColumn("EnumValue").AsInt32().PrimaryKey().Nullable()
+            addSupportTypeCols(IfDatabase(Utils.AllExceptOracle)
+                .Create.Table("SupportType")
+                .WithColumn("EnumValue").AsInt32().PrimaryKey().NotNullable());
+
+            addSupportTypeCols(IfDatabase("oracle")
+                .Create.Table("SupportType")
+                .WithColumn("EnumValue").AsInt32().PrimaryKey().NotNullable());
+
+            //Utils.AddOracleIdentity(this, "SupportType", "EnumValue");
+
+            Action<ICreateTableWithColumnSyntax> addSupportTypeStringCols = expr => expr
+                .WithColumn("EnumValue").AsInt32().Nullable()
                 .WithColumn("DisplayName").AsString(256).Nullable()
                 .WithColumn("Locale").AsInt32().Nullable()
                 .WithColumn("InsertUserId").AsInt32().NotNullable().WithDefaultValue(1)
@@ -31,19 +40,16 @@ namespace Ledger.Migrations.DefaultDB
                 .WithColumn("TenantId").AsInt32().NotNullable().WithDefaultValue(1)
                 .WithColumn("IsActive").AsInt16().NotNullable().WithDefaultValue(1);
 
-            Create.Table("Support").InSchema("ldg")
-                .WithColumn("SupportID").AsInt32().Identity().PrimaryKey().NotNullable()
-                .WithColumn("Guid").AsGuid().WithDefaultValue(Guid.NewGuid()).NotNullable()
-                .WithColumn("SupportType").AsInt32().NotNullable()
-                .WithColumn("SupportCode").AsString(6).Nullable()
-                .WithColumn("Name").AsString(128).NotNullable()
-                .WithColumn("Description").AsString(256).NotNullable()
-                .WithColumn("InsertUserId").AsInt32().NotNullable().WithDefaultValue(1)
-                .WithColumn("InsertDate").AsDateTime().NotNullable().WithDefaultValue(DateTime.Now)
-                .WithColumn("UpdateUserId").AsInt32().Nullable()
-                .WithColumn("UpdateDate").AsDateTime().Nullable()
-                .WithColumn("TenantId").AsInt32().NotNullable().WithDefaultValue(1)
-                .WithColumn("IsActive").AsInt16().NotNullable().WithDefaultValue(1);
+            addSupportTypeStringCols(IfDatabase(Utils.AllExceptOracle)
+                .Create.Table("SupportTypeString").InSchema("ldg")
+                .WithColumn("EnumLocaleID").AsInt32().Identity().PrimaryKey().NotNullable());
+
+            addSupportTypeStringCols(IfDatabase("oracle")
+                .Create.Table("SupportTypeString").InSchema("ldg")
+                .WithColumn("EnumLocaleID").AsInt32().PrimaryKey().NotNullable());
+
+            Utils.AddOracleIdentity(this, "SupportTypeString", "EnumLocaleID");
+
         }
     }
 }
