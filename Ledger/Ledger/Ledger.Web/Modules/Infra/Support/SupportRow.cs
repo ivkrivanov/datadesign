@@ -28,8 +28,8 @@ namespace Ledger.Infra.Entities
         }
 
         [DisplayName("Support Type"), Column("SupportTypeID"), NotNull]
-        //[ForeignKey("[ldg].[SupportTypeString]", "EnumLocaleID"), LeftJoin("jSupportType"), TextualField("SupportTypeDisplayName")]
-        [ForeignKey("[SupportTypeEnumView]", "EnumLocaleID"), LeftJoin("jSupportType"), TextualField("SupportTypeDisplayName")]
+        [ForeignKey("[ldg].[SupportTypeString]", "EnumLocaleID"), LeftJoin("jSupportType"), TextualField("SupportTypeDisplayName")]
+        //[ForeignKey("[SupportTypeEnumView]", "EnumLocaleID"), LeftJoin("jSupportType"), TextualField("SupportTypeDisplayName")]
         [LookupEditor("Infra.SupportTypeString", InplaceAdd = true)]
         public Int32? SupportTypeId
         {
