@@ -10,7 +10,7 @@ namespace Ledger.Infra.Endpoints
     using MyRow = Entities.SupportRow;
 
     [RoutePrefix("Services/Infra/Support"), Route("{action}")]
-    [ConnectionKey("Default"), ServiceAuthorize("Infra.Permission.General")]
+    [ConnectionKey("Default"), ServiceAuthorize(Infra.PermissionKeys.General)]
     public class SupportController : ServiceEndpoint
     {
         [HttpPost]

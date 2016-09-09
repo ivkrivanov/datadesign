@@ -27,29 +27,32 @@ namespace Ledger.Infra.Entities
             set { Fields.Guid[this] = value; }
         }
 
-        [DisplayName("Support Type"), Column("SupportTypeID"), NotNull, ForeignKey("[ldg].[SupportTypeString]", "EnumLocaleID"), LeftJoin("jSupportType"), TextualField("SupportTypeDisplayName")]
-        [LookupEditor("Infra.SupportTypeScript", InplaceAdd = true)]
+        [DisplayName("Support Type"), Column("SupportTypeID"), NotNull]
+        //[ForeignKey("[ldg].[SupportTypeString]", "EnumLocaleID"), LeftJoin("jSupportType"), TextualField("SupportTypeDisplayName")]
+        [ForeignKey("[SupportTypeEnumView]", "EnumLocaleID"), LeftJoin("jSupportType"), TextualField("SupportTypeDisplayName")]
+        [LookupEditor("Infra.SupportTypeString", InplaceAdd = true)]
         public Int32? SupportTypeId
         {
             get { return Fields.SupportTypeId[this]; }
             set { Fields.SupportTypeId[this] = value; }
         }
 
-        [DisplayName("Support Code"), Size(6), QuickSearch]
+        [DisplayName("Code"), Size(6), QuickSearch]
+        [Width(80), AlignCenter]
         public String SupportCode
         {
             get { return Fields.SupportCode[this]; }
             set { Fields.SupportCode[this] = value; }
         }
 
-        [DisplayName("Name"), Size(128), NotNull]
+        [DisplayName("Name"), Size(128), NotNull, Width(200)]
         public String Name
         {
             get { return Fields.Name[this]; }
             set { Fields.Name[this] = value; }
         }
 
-        [DisplayName("Description"), Size(256), NotNull]
+        [DisplayName("Description"), Size(256), NotNull, Width(200)]
         public String Description
         {
             get { return Fields.Description[this]; }
@@ -63,7 +66,7 @@ namespace Ledger.Infra.Entities
             set { Fields.SupportTypeEnumValue[this] = value; }
         }
 
-        [DisplayName("Support Type Display Name"), Expression("jSupportType.[DisplayName]")]
+        [DisplayName("Support Type Name"), Expression("jSupportType.[DisplayName]"), Width(200)]
         public String SupportTypeDisplayName
         {
             get { return Fields.SupportTypeDisplayName[this]; }
@@ -142,14 +145,12 @@ namespace Ledger.Infra.Entities
             public StringField Name;
             public StringField Description;
 
-            public Int32Field TenantId;
-            public Int16Field IsActive;
+            public readonly Int32Field TenantId;
+            public readonly Int16Field IsActive;
 
             public Int32Field SupportTypeEnumValue;
             public StringField SupportTypeDisplayName;
             public Int32Field SupportTypeLocale;
-            //public Int32Field SupportTypeTenantId;
-            //public Int16Field SupportTypeIsActive;
 
             public RowFields()
                 : base("[ldg].[Support]")

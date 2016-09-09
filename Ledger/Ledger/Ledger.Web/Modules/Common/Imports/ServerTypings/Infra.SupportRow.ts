@@ -1,5 +1,4 @@
-﻿
-namespace Ledger.Infra {
+﻿namespace Ledger.Infra {
     export interface SupportRow {
         SupportId?: number;
         Guid?: string;
@@ -12,32 +11,37 @@ namespace Ledger.Infra {
         SupportTypeEnumValue?: number;
         SupportTypeDisplayName?: string;
         SupportTypeLocale?: number;
-        SupportTypeTenantId?: number;
-        SupportTypeIsActive?: number;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
     }
 
     export namespace SupportRow {
         export const idProperty = 'SupportId';
+        export const isActiveProperty = 'IsActive';
         export const nameProperty = 'SupportCode';
         export const localTextPrefix = 'Infra.Support';
 
         export namespace Fields {
-            export declare const SupportId;
-            export declare const Guid;
-            export declare const SupportTypeId;
-            export declare const SupportCode;
-            export declare const Name;
-            export declare const Description;
-            export declare const TenantId;
-            export declare const IsActive;
+            export declare const SupportId: string;
+            export declare const Guid: string;
+            export declare const SupportTypeId: string;
+            export declare const SupportCode: string;
+            export declare const Name: string;
+            export declare const Description: string;
+            export declare const TenantId: string;
+            export declare const IsActive: string;
             export declare const SupportTypeEnumValue: string;
             export declare const SupportTypeDisplayName: string;
             export declare const SupportTypeLocale: string;
-            export declare const SupportTypeTenantId: string;
-            export declare const SupportTypeIsActive: string;
+            export declare const InsertUserId: string;
+            export declare const InsertDate: string;
+            export declare const UpdateUserId: string;
+            export declare const UpdateDate: string;
         }
 
-        ['SupportId', 'Guid', 'SupportTypeId', 'SupportCode', 'Name', 'Description', 'TenantId', 'IsActive', 'SupportTypeEnumValue', 'SupportTypeDisplayName', 'SupportTypeLocale', 'SupportTypeTenantId', 'SupportTypeIsActive'].forEach(x => (<any>Fields)[x] = x);
+        ['SupportId', 'Guid', 'SupportTypeId', 'SupportCode', 'Name', 'Description', 'TenantId', 'IsActive', 'SupportTypeEnumValue', 'SupportTypeDisplayName', 'SupportTypeLocale', 'InsertUserId', 'InsertDate', 'UpdateUserId', 'UpdateDate'].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

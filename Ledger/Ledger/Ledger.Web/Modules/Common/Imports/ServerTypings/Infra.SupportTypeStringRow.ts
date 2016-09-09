@@ -17,6 +17,11 @@
         export const isActiveProperty = 'IsActive';
         export const nameProperty = 'DisplayName';
         export const localTextPrefix = 'Infra.SupportTypeString';
+        export const lookupKey = 'Infra.SupportTypeScript';
+
+        export function getLookup(): Q.Lookup<SupportTypeStringRow> {
+            return Q.getLookup<SupportTypeStringRow>('Infra.SupportTypeScript');
+        }
 
         export namespace Fields {
             export declare const EnumLocaleId: string;

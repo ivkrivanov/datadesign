@@ -11,7 +11,7 @@ namespace Ledger.Infra.Pages
     [RoutePrefix("Infra/Support"), Route("{action=index}")]
     public class SupportController : Controller
     {
-        [PageAuthorize("Infra.Permission.General")]
+        [PageAuthorize(Infra.PermissionKeys.General)]
         public ActionResult Index()
         {
             return View("~/Modules/Infra/Support/SupportIndex.cshtml");

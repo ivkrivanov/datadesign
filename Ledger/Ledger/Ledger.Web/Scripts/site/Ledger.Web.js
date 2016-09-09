@@ -4530,7 +4530,7 @@ var Ledger;
             return SupportForm;
         }(Serenity.PrefixedContext));
         Infra.SupportForm = SupportForm;
-        [['SupportId', function () { return Serenity.IntegerEditor; }], ['Guid', function () { return Serenity.StringEditor; }], ['SupportTypeId', function () { return Serenity.IntegerEditor; }], ['SupportCode', function () { return Serenity.StringEditor; }], ['Name', function () { return Serenity.StringEditor; }], ['Description', function () { return Serenity.StringEditor; }], ['TenantId', function () { return Serenity.IntegerEditor; }], ['IsActive', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(SupportForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
+        [['SupportTypeId', function () { return Serenity.LookupEditor; }], ['SupportCode', function () { return Serenity.StringEditor; }], ['Name', function () { return Serenity.StringEditor; }], ['Description', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(SupportForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Infra = Ledger.Infra || (Ledger.Infra = {}));
 })(Ledger || (Ledger = {}));
 var Ledger;
@@ -4540,12 +4540,13 @@ var Ledger;
         var SupportRow;
         (function (SupportRow) {
             SupportRow.idProperty = 'SupportId';
+            SupportRow.isActiveProperty = 'IsActive';
             SupportRow.nameProperty = 'SupportCode';
             SupportRow.localTextPrefix = 'Infra.Support';
             var Fields;
             (function (Fields) {
             })(Fields = SupportRow.Fields || (SupportRow.Fields = {}));
-            ['SupportId', 'Guid', 'SupportTypeId', 'SupportCode', 'Name', 'Description', 'TenantId', 'IsActive', 'SupportTypeEnumValue', 'SupportTypeDisplayName', 'SupportTypeLocale', 'SupportTypeTenantId', 'SupportTypeIsActive'].forEach(function (x) { return Fields[x] = x; });
+            ['SupportId', 'Guid', 'SupportTypeId', 'SupportCode', 'Name', 'Description', 'TenantId', 'IsActive', 'SupportTypeEnumValue', 'SupportTypeDisplayName', 'SupportTypeLocale', 'InsertUserId', 'InsertDate', 'UpdateUserId', 'UpdateDate'].forEach(function (x) { return Fields[x] = x; });
         })(SupportRow = Infra.SupportRow || (Infra.SupportRow = {}));
     })(Infra = Ledger.Infra || (Ledger.Infra = {}));
 })(Ledger || (Ledger = {}));
@@ -4579,7 +4580,7 @@ var Ledger;
             return SupportTypeForm;
         }(Serenity.PrefixedContext));
         Infra.SupportTypeForm = SupportTypeForm;
-        [['EnumValue', function () { return Serenity.StringEditor; }], ['DisplayName', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(SupportTypeForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
+        [['EnumValue', function () { return Serenity.StringEditor; }], ['EnumName', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(SupportTypeForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Infra = Ledger.Infra || (Ledger.Infra = {}));
 })(Ledger || (Ledger = {}));
 var Ledger;
@@ -4590,12 +4591,12 @@ var Ledger;
         (function (SupportTypeRow) {
             SupportTypeRow.idProperty = 'EnumValue';
             SupportTypeRow.isActiveProperty = 'IsActive';
-            SupportTypeRow.nameProperty = 'DisplayName';
+            SupportTypeRow.nameProperty = 'EnumName';
             SupportTypeRow.localTextPrefix = 'Infra.SupportType';
             var Fields;
             (function (Fields) {
             })(Fields = SupportTypeRow.Fields || (SupportTypeRow.Fields = {}));
-            ['EnumValue', 'DisplayName', 'TenantId', 'IsActive', 'InsertUserId', 'InsertDate', 'UpdateUserId', 'UpdateDate'].forEach(function (x) { return Fields[x] = x; });
+            ['EnumValue', 'EnumName', 'TenantId', 'IsActive', 'InsertUserId', 'InsertDate', 'UpdateUserId', 'UpdateDate'].forEach(function (x) { return Fields[x] = x; });
         })(SupportTypeRow = Infra.SupportTypeRow || (Infra.SupportTypeRow = {}));
     })(Infra = Ledger.Infra || (Ledger.Infra = {}));
 })(Ledger || (Ledger = {}));
@@ -4642,6 +4643,11 @@ var Ledger;
             SupportTypeStringRow.isActiveProperty = 'IsActive';
             SupportTypeStringRow.nameProperty = 'DisplayName';
             SupportTypeStringRow.localTextPrefix = 'Infra.SupportTypeString';
+            SupportTypeStringRow.lookupKey = 'Infra.SupportTypeScript';
+            function getLookup() {
+                return Q.getLookup('Infra.SupportTypeScript');
+            }
+            SupportTypeStringRow.getLookup = getLookup;
             var Fields;
             (function (Fields) {
             })(Fields = SupportTypeStringRow.Fields || (SupportTypeStringRow.Fields = {}));

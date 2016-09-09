@@ -2178,17 +2178,16 @@ declare namespace Ledger.Infra {
     }
 }
 declare namespace Ledger.Infra {
+}
+declare namespace Ledger.Infra {
     class SupportForm extends Serenity.PrefixedContext {
         static formKey: string;
     }
     interface SupportForm {
-        Guid: Serenity.StringEditor;
-        SupportTypeId: Serenity.IntegerEditor;
+        SupportTypeId: Serenity.LookupEditor;
         SupportCode: Serenity.StringEditor;
         Name: Serenity.StringEditor;
         Description: Serenity.StringEditor;
-        TenantId: Serenity.IntegerEditor;
-        IsActive: Serenity.IntegerEditor;
     }
 }
 declare namespace Ledger.Infra {
@@ -2204,38 +2203,43 @@ declare namespace Ledger.Infra {
         SupportTypeEnumValue?: number;
         SupportTypeDisplayName?: string;
         SupportTypeLocale?: number;
-        SupportTypeTenantId?: number;
-        SupportTypeIsActive?: number;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
     }
     namespace SupportRow {
         const idProperty: string;
+        const isActiveProperty: string;
         const nameProperty: string;
         const localTextPrefix: string;
         namespace Fields {
-            const SupportId: any;
-            const Guid: any;
-            const SupportTypeId: any;
-            const SupportCode: any;
-            const Name: any;
-            const Description: any;
-            const TenantId: any;
-            const IsActive: any;
+            const SupportId: string;
+            const Guid: string;
+            const SupportTypeId: string;
+            const SupportCode: string;
+            const Name: string;
+            const Description: string;
+            const TenantId: string;
+            const IsActive: string;
             const SupportTypeEnumValue: string;
             const SupportTypeDisplayName: string;
             const SupportTypeLocale: string;
-            const SupportTypeTenantId: string;
-            const SupportTypeIsActive: string;
+            const InsertUserId: string;
+            const InsertDate: string;
+            const UpdateUserId: string;
+            const UpdateDate: string;
         }
     }
 }
 declare namespace Ledger.Infra {
     namespace SupportService {
         const baseUrl: string;
-        function Create(request: Serenity.SaveRequest<SupportRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
-        function Update(request: Serenity.SaveRequest<SupportRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
-        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
-        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<SupportRow>) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
-        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<SupportRow>) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Create(request: Serenity.SaveRequest<SupportRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<SupportRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<SupportRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<SupportRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         namespace Methods {
             const Create: string;
             const Update: string;
@@ -2253,13 +2257,13 @@ declare namespace Ledger.Infra {
     }
     interface SupportTypeForm {
         EnumValue: Serenity.StringEditor;
-        DisplayName: Serenity.StringEditor;
+        EnumName: Serenity.StringEditor;
     }
 }
 declare namespace Ledger.Infra {
     interface SupportTypeRow {
         EnumValue?: number;
-        DisplayName?: string;
+        EnumName?: string;
         TenantId?: number;
         IsActive?: number;
         InsertUserId?: number;
@@ -2274,7 +2278,7 @@ declare namespace Ledger.Infra {
         const localTextPrefix: string;
         namespace Fields {
             const EnumValue: string;
-            const DisplayName: string;
+            const EnumName: string;
             const TenantId: string;
             const IsActive: string;
             const InsertUserId: string;
@@ -2331,6 +2335,8 @@ declare namespace Ledger.Infra {
         const isActiveProperty: string;
         const nameProperty: string;
         const localTextPrefix: string;
+        const lookupKey: string;
+        function getLookup(): Q.Lookup<SupportTypeStringRow>;
         namespace Fields {
             const EnumLocaleId: string;
             const EnumValue: string;

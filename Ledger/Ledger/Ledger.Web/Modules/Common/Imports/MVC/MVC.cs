@@ -262,6 +262,11 @@ namespace MVC
                 public const string PhoneIndex = "~/Modules/Infra/Phone/PhoneIndex.cshtml";
             }
 
+            public static class Support
+            {
+                public const string SupportIndex = "~/Modules/Infra/Support/SupportIndex.cshtml";
+            }
+
             public static class SupportType
             {
                 public const string SupportTypeIndex = "~/Modules/Infra/SupportType/SupportTypeIndex.cshtml";

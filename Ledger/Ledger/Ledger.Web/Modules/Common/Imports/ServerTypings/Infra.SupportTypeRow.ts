@@ -1,7 +1,7 @@
 ﻿namespace Ledger.Infra {
     export interface SupportTypeRow {
         EnumValue?: number;
-        DisplayName?: string;
+        EnumName?: string;
         TenantId?: number;
         IsActive?: number;
         InsertUserId?: number;
@@ -13,12 +13,12 @@
     export namespace SupportTypeRow {
         export const idProperty = 'EnumValue';
         export const isActiveProperty = 'IsActive';
-        export const nameProperty = 'DisplayName';
+        export const nameProperty = 'EnumName';
         export const localTextPrefix = 'Infra.SupportType';
 
         export namespace Fields {
             export declare const EnumValue: string;
-            export declare const DisplayName: string;
+            export declare const EnumName: string;
             export declare const TenantId: string;
             export declare const IsActive: string;
             export declare const InsertUserId: string;
@@ -27,7 +27,7 @@
             export declare const UpdateDate: string;
         }
 
-        ['EnumValue', 'DisplayName', 'TenantId', 'IsActive', 'InsertUserId', 'InsertDate', 'UpdateUserId', 'UpdateDate'].forEach(x => (<any>Fields)[x] = x);
+        ['EnumValue', 'EnumName', 'TenantId', 'IsActive', 'InsertUserId', 'InsertDate', 'UpdateUserId', 'UpdateDate'].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

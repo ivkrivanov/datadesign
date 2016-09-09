@@ -13,7 +13,7 @@ namespace Ledger.Infra.Forms
     [BasedOnRow(typeof(Entities.SupportRow))]
     public class SupportForm
     {
-        public Guid Guid { get; set; }
+        //public Guid Guid { get; set; }
         public Int32 SupportTypeId { get; set; }
         public String SupportCode { get; set; }
         public String Name { get; set; }

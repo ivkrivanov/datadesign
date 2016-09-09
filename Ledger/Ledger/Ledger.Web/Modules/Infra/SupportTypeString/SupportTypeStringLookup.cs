@@ -4,7 +4,7 @@
     using Serenity.ComponentModel;
     using Serenity.Web;
 
-    [LookupScript("Infra.SupportTypeScript")]
+    [LookupScript("Infra.SupportTypeString")]
     public class SupportTypeStringLookup : MultiTenantRowLookupScript<SupportTypeStringRow>
     {
     }
