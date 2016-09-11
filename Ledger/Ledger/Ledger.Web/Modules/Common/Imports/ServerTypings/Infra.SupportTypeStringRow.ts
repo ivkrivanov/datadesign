@@ -17,10 +17,10 @@
         export const isActiveProperty = 'IsActive';
         export const nameProperty = 'DisplayName';
         export const localTextPrefix = 'Infra.SupportTypeString';
-        export const lookupKey = 'Infra.SupportTypeScript';
+        export const lookupKey = 'Infra.SupportTypeString';
 
         export function getLookup(): Q.Lookup<SupportTypeStringRow> {
-            return Q.getLookup<SupportTypeStringRow>('Infra.SupportTypeScript');
+            return Q.getLookup<SupportTypeStringRow>('Infra.SupportTypeString');
         }
 
         export namespace Fields {

@@ -4643,9 +4643,9 @@ var Ledger;
             SupportTypeStringRow.isActiveProperty = 'IsActive';
             SupportTypeStringRow.nameProperty = 'DisplayName';
             SupportTypeStringRow.localTextPrefix = 'Infra.SupportTypeString';
-            SupportTypeStringRow.lookupKey = 'Infra.SupportTypeScript';
+            SupportTypeStringRow.lookupKey = 'Infra.SupportTypeString';
             function getLookup() {
-                return Q.getLookup('Infra.SupportTypeScript');
+                return Q.getLookup('Infra.SupportTypeString');
             }
             SupportTypeStringRow.getLookup = getLookup;
             var Fields;

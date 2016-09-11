@@ -10,8 +10,8 @@
     {
         public SupportTypeStringLookup()
         {
-            IdField = "EnumLocaleId";
-            TextField = "DisplayName";
+            //IdField = "EnumLocaleId";
+            //TextField = "DisplayName";
         }
 
         protected override void PrepareQuery(SqlQuery query)
@@ -20,13 +20,12 @@
 
             query.Select(fld.Locale)
                 .Where(
-                    new Criteria("fld.Locale = 1033"));
+                    new Criteria("Locale = 1033"));
             AddTenantFilter(query);
+        }
 
-
-
-            //query.Select(Enum)
-            
+        protected override void ApplyOrder(SqlQuery query)
+        {
         }
     }
 }
