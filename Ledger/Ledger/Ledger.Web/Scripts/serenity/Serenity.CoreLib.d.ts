@@ -1424,6 +1424,7 @@ declare namespace Serenity {
         onInitNewEntity: (entity: TItem) => void;
         value: string;
         cascadeField: string;
+        cascadeFrom: string;
         cascadeValue: any;
         filterField: string;
         filterValue: any;
@@ -1915,7 +1916,10 @@ declare namespace Serenity {
         protected quickFiltersDiv: JQuery;
         protected slickContainer: JQuery;
         protected toolbar: Toolbar;
+        protected addBooleanFilter(field: string, title?: string, yes?: string, no?: string): SelectEditor;
+        protected booleanQuickFilter(field: string, title?: string, yes?: string, no?: string): QuickFilter<SelectEditor, SelectEditorOptions>;
         protected addDateRangeFilter(field: string, title?: string): DateEditor;
+        protected dateRangeQuickFilter(field: string, title?: string): QuickFilter<DateEditor, DateTimeEditorOptions>;
         protected addQuickFilter<TWidget extends Widget<any>, TOptions>(filter: QuickFilter<TWidget, TOptions>): TWidget;
         protected addFilterSeperator(): void;
         protected add_submitHandlers(action: () => void): void;
@@ -2227,7 +2231,7 @@ declare namespace Slick {
     class EventData {
         constructor();
     }
-    type AsyncPostRender = (cellNode: any, row: number, item: any, column: Slick.Column) => void;
+    type AsyncPostRender = (cellNode: any, row: number, item: any, column: Slick.Column, clean?: boolean) => void;
     type CancellableViewCallback<TEntity> = (view: Slick.RemoteView<TEntity>) => boolean;
     type ColumnFormatter = (row: number, cell: number, value: any, column: Slick.Column, item: any) => string;
     type RemoteViewAjaxCallback<TEntity> = (view: Slick.RemoteView<TEntity>, options: JQueryAjaxSettings) => boolean;
@@ -2319,6 +2323,7 @@ declare namespace Slick {
         asyncEditorLoading?: boolean;
         asyncEditorLoadDelay?: number;
         asyncPostRenderDelay?: number;
+        asyncPostRenderCleanupDelay?: number;
         autoEdit?: boolean;
         autoHeight?: boolean;
         cellFlashingCssClass?: string;
@@ -2332,6 +2337,7 @@ declare namespace Slick {
         editorLock?: any;
         enableAddRow?: boolean;
         enableAsyncPostRender?: boolean;
+        enableAsyncPostRenderCleanup?: boolean;
         enableCellRangeSelection?: boolean;
         enableCellNavigation?: boolean;
         enableColumnReorder?: boolean;

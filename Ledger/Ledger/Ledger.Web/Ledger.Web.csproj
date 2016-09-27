@@ -79,24 +79,24 @@
       <HintPath>..\..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Serenity.Core, Version=2.4.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Serenity.Core.2.4.4\lib\net45\Serenity.Core.dll</HintPath>
+    <Reference Include="Serenity.Core, Version=2.4.10.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Serenity.Core.2.4.10\lib\net45\Serenity.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Serenity.Data, Version=2.4.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Serenity.Data.2.4.4\lib\net45\Serenity.Data.dll</HintPath>
+    <Reference Include="Serenity.Data, Version=2.4.10.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Serenity.Data.2.4.10\lib\net45\Serenity.Data.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Serenity.Data.Entity, Version=2.4.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Serenity.Data.Entity.2.4.4\lib\net45\Serenity.Data.Entity.dll</HintPath>
+    <Reference Include="Serenity.Data.Entity, Version=2.4.10.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Serenity.Data.Entity.2.4.10\lib\net45\Serenity.Data.Entity.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Serenity.Services, Version=2.4.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Serenity.Services.2.4.4\lib\net45\Serenity.Services.dll</HintPath>
+    <Reference Include="Serenity.Services, Version=2.4.10.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Serenity.Services.2.4.10\lib\net45\Serenity.Services.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Serenity.Web, Version=2.4.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Serenity.Web.2.4.4\lib\net45\Serenity.Web.dll</HintPath>
+    <Reference Include="Serenity.Web, Version=2.4.10.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Serenity.Web.2.4.10\lib\net45\Serenity.Web.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.DirectoryServices" />
@@ -1285,12 +1285,12 @@
     <TypeScriptCompile Include="Modules\Northwind\Territory\TerritoryDialog.ts" />
     <TypeScriptCompile Include="Modules\Northwind\Territory\TerritoryGrid.ts" />
     <Content Include="packages.config" />
+    <Content Include="Modules\HR\EmployeeAddress\EmployeeAddressIndex.cshtml" />
+    <Content Include="Modules\HR\EmployeeEmail\EmployeeEmailIndex.cshtml" />
     <Content Include="Scripts\ckeditor\skins\moono\readme.md" />
     <Content Include="Scripts\ckeditor\README.md" />
     <Content Include="Scripts\ckeditor\LICENSE.md" />
     <Content Include="Scripts\ckeditor\CHANGES.md" />
-    <Content Include="Modules\HR\EmployeeAddress\EmployeeAddressIndex.cshtml" />
-    <Content Include="Modules\HR\EmployeeEmail\EmployeeEmailIndex.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
@@ -1324,6 +1324,8 @@
     <Content Include="Scripts\jquery.iframe-transport.min.js" />
     <Content Include="Scripts\jquery.json.js" />
     <Content Include="Scripts\jquery.json.min.js" />
+    <Content Include="Scripts\jquery.maskedinput.js" />
+    <Content Include="Scripts\jquery.maskedinput.min.js" />
     <Content Include="Scripts\jquery.scrollintoview.js" />
     <Content Include="Scripts\jquery.scrollintoview.min.js" />
     <Content Include="Scripts\jquery.slimscroll.js" />
