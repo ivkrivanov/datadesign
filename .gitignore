@@ -214,3 +214,33 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+/Store/Store/Store.Web/Imports/ServerTypings/Default.TenantsService.ts
+/Store/Store/Store.Web/Imports/ServerTypings/Default.TenantsRow.ts
+/Store/Store/Store.Web/Imports/ServerTypings/Default.TenantsForm.ts
+/Store/Store/Store.Web/Imports/ServerTypings/Default.TenantService.ts
+/Store/Store/Store.Web/Imports/ServerTypings/Default.TenantRow.ts
+/Store/Store/Store.Web/Imports/ServerTypings/Default.TenantForm.ts
+/Store/Store/Store.Web/Imports/ServerTypings/Default.TenantColumns.ts
+/Store/Store/Store.Web/Modules/Default/TenantRow.cs
+/Store/Store/Store.Web/Modules/Default/TenantRepository.cs
+/Store/Store/Store.Web/Modules/Default/TenantPage.cs
+/Store/Store/Store.Web/Modules/Default/TenantIndex.cshtml
+/Store/Store/Store.Web/Modules/Default/TenantGrid.ts
+/Store/Store/Store.Web/Modules/Default/TenantForm.cs
+/Store/Store/Store.Web/Modules/Default/TenantEndpoint.cs
+/Store/Store/Store.Web/Modules/Default/TenantDialog.ts
+/Store/Store/Store.Web/Modules/Default/TenantColumns.cs
+/Store/Store/Store.Web/Modules/Default/Tenant/TenantRow.cs
+/Store/Store/Store.Web/Modules/Default/Tenant/TenantRepository.cs
+/Store/Store/Store.Web/Modules/Default/Tenant/TenantPage.cs
+/Store/Store/Store.Web/Modules/Default/Tenant/TenantIndex.cshtml
+/Store/Store/Store.Web/Modules/Default/Tenant/TenantGrid.ts
+/Store/Store/Store.Web/Modules/Default/Tenant/TenantForm.cs
+/Store/Store/Store.Web/Modules/Default/Tenant/TenantEndpoint.cs
+/Store/Store/Store.Web/Modules/Default/Tenant/TenantDialog.ts
+/Store/Store/Store.Web/Modules/Default/Tenant/TenantColumns.cs
+/Store/Store/Store.Web/Scripts/site/Store.Web.d.ts
+/Store/Store/Store.Web/Scripts/site/Store.Web.js.map
+/Store/Serenity.CodeGenerator.config
+/Store/Store/Store.Web/Migrations/DefaultDB/DefaultDB_20170430_134800_MultiTenant.cs
+/Store/Store/Store.Web/Migrations/NorthwindDB/NorthwindDB_20160110_093500_MultiTenant.cs

@@ -1121,6 +1121,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ClientTypes.tt</DependentUpon>
     </Content>
+    <TypeScriptCompile Include="Imports\ServerTypings\Administration.TenantColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\Northwind.CustomerGrossSalesRow.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
@@ -1922,6 +1925,18 @@
     <TypeScriptCompile Include="Modules\Meeting\MeetingType\MeetingTypeGrid.ts" />
     <TypeScriptCompile Include="Modules\Meeting\MeetingType\MeetingTypeDialog.ts" />
     <TypeScriptCompile Include="Scripts\typings\serenity\Serenity.CoreLib.d.ts" />
+    <Content Include="Modules\Administration\Tenant\TenantIndex.cshtml" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Administration.TenantRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Administration.TenantService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Administration.TenantForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Administration\Tenant\TenantGrid.ts" />
+    <TypeScriptCompile Include="Modules\Administration\Tenant\TenantDialog.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -1939,6 +1954,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\DefaultDB\DefaultDB_20170430_134800_MultiTenant.cs" />
+    <Compile Include="Migrations\NorthwindDB\NorthwindDB_20160110_093500_MultiTenant.cs" />
     <Compile Include="Modules\Administration\AdministrationNavigation.cs" />
     <Compile Include="Modules\Administration\Language\LanguageLookup.cs" />
     <Compile Include="Modules\Administration\RolePermission\RolePermissionUpdateRequest.cs" />
@@ -2315,6 +2332,12 @@
     <Compile Include="Modules\Meeting\MeetingType\MeetingTypeRepository.cs" />
     <Compile Include="Modules\Meeting\MeetingType\MeetingTypeEndpoint.cs" />
     <Compile Include="Modules\Meeting\MeetingType\MeetingTypePage.cs" />
+    <Compile Include="Modules\Administration\Tenant\TenantRow.cs" />
+    <Compile Include="Modules\Administration\Tenant\TenantColumns.cs" />
+    <Compile Include="Modules\Administration\Tenant\TenantForm.cs" />
+    <Compile Include="Modules\Administration\Tenant\TenantRepository.cs" />
+    <Compile Include="Modules\Administration\Tenant\TenantEndpoint.cs" />
+    <Compile Include="Modules\Administration\Tenant\TenantPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -7031,7 +7031,7 @@ section.content > .s-DataGrid {
   width: 150px;
 }
 .s-Administration-UserDialog .s-PropertyGrid .categories {
-  height: 450px;
+  height: 470px;
 }
 .s-TranslationGrid input.custom-text {
   width: 100%;
@@ -7092,6 +7092,12 @@ section.content > .s-DataGrid {
 }
 .s-PermissionCheckEditor .effective-permission.deny {
   background-image: url(../serenity/images/slash.png);
+}
+.s-Administration-TenantDialog > .size {
+  width: 650px;
+}
+.s-Administration-TenantDialog .caption {
+  width: 150px;
 }
 .s-BasicSamples-ChartInDialog svg {
   width: 100%;
