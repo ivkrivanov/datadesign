@@ -2,6 +2,7 @@
 
 namespace Store.Administration.Repositories
 {
+    using Serenity;
     using Serenity.Data;
     using Serenity.Services;
     using System.Data;
@@ -40,5 +41,6 @@ namespace Store.Administration.Repositories
         private class MyDeleteHandler : DeleteRequestHandler<MyRow> { }
         private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> { }
         private class MyListHandler : ListRequestHandler<MyRow> { }
+
     }
 }
