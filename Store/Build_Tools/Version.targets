@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Major>17</Major>
+    <Minor>6</Minor>
+    <Build>0</Build>
+    <Revision>0</Revision>
+    <AssemblyCopyright>Copyright Tradologic © 2017</AssemblyCopyright>
+    <AssemblyCompany>Tradologic</AssemblyCompany>
+  </PropertyGroup>
+</Project>

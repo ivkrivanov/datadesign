@@ -184,6 +184,10 @@ namespace Store.Administration.Repositories
 
                 if (IsUpdate)
                 {
+                    var user = (UserDefinition)Authorization.UserDefinition;
+                    if (Old.TenantId != user.TenantId)
+                        Authorization.ValidatePermission(PermissionKeys.Tenants);
+
                     CheckPublicDemo(Row.UserId);
 
                     if (Row.IsAssigned(fld.Password) && !Row.Password.IsEmptyOrNull())
@@ -212,6 +216,12 @@ namespace Store.Administration.Repositories
                 {
                     Row.Source = "site";
                     Row.IsActive = Row.IsActive ?? 1;
+                    if (!Authorization.HasPermission(Administration.PermissionKeys.Tenants) ||
+                            Row.TenantId == null)
+                    {
+                        Row.TenantId = ((UserDefinition)Authorization.UserDefinition)
+                            .TenantId;
+                    }
                 }
 
                 if (IsCreate || !Row.Password.IsEmptyOrNull())
@@ -247,14 +257,46 @@ namespace Store.Administration.Repositories
             {
                 base.ValidateRequest();
 
+                var user = (UserDefinition)Authorization.UserDefinition;
+                if (Row.TenantId != user.TenantId)
+                    Authorization.ValidatePermission(PermissionKeys.Tenants);
+
                 CheckPublicDemo(Row.UserId);
             }
         }
 
-        private class MyUndeleteHandler : UndeleteRequestHandler<MyRow> { }
-        private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> { }
+        private class MyUndeleteHandler : UndeleteRequestHandler<MyRow>
+        {
+            protected override void ValidateRequest()
+            {
+                base.ValidateRequest();
+
+                var user = (UserDefinition)Authorization.UserDefinition;
+                if (Row.TenantId != user.TenantId)
+                    Authorization.ValidatePermission(PermissionKeys.Tenants);
+            }
+        }
+        private class MyRetrieveHandler : RetrieveRequestHandler<MyRow>
+        {
+            protected override void PrepareQuery(SqlQuery query)
+            {
+                base.PrepareQuery(query);
+
+                var user = (UserDefinition)Authorization.UserDefinition;
+                if (!Authorization.HasPermission(PermissionKeys.Tenants))
+                    query.Where(fld.TenantId == user.TenantId);
+            }
+        }
         private class MyListHandler : ListRequestHandler<MyRow>
         {
+            protected override void PrepareQuery(SqlQuery query)
+            {
+                base.PrepareQuery(query);
+
+                var user = (UserDefinition)Authorization.UserDefinition;
+                if (!Authorization.HasPermission(PermissionKeys.Tenants))
+                    query.Where(fld.TenantId == user.TenantId);
+            }
             protected override void ApplyFilters(SqlQuery query)
             {
                 base.ApplyFilters(query);
