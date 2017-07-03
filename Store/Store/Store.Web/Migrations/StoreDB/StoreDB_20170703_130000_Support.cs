@@ -697,336 +697,336 @@
             {
                 EnumValue = 0,
                 DisplayName = "Невалиден информационен тип",
-                LanguageId = 2
+                LanguageId = 12
             });
 
             Insert.IntoTable("SupportType").Row(new
             {
                 EnumValue = 1,
                 DisplayName = "Група купувачи",
-                LanguageId = 2
+                LanguageId = 12
             });
 
             Insert.IntoTable("SupportType").Row(new
             {
                 EnumValue = 2,
                 DisplayName = "Група доставчици",
-                LanguageId = 2
+                LanguageId = 12
             });
 
             Insert.IntoTable("SupportType").Row(new
             {
                 EnumValue = 3,
                 DisplayName = "Кредитен рейтинг",
-                LanguageId = 2
+                LanguageId = 12
             });
 
             Insert.IntoTable("SupportType").Row(new
             {
                 EnumValue = 4,
                 DisplayName = "Групи стоки",
-                LanguageId = 2
+                LanguageId = 12
             });
 
             Insert.IntoTable("SupportType").Row(new
             {
                 EnumValue = 5,
                 DisplayName = "Мерни единици",
-                LanguageId = 2
+                LanguageId = 12
             });
 
             Insert.IntoTable("SupportType").Row(new
             {
                 EnumValue = 6,
                 DisplayName = "Срокове за доставка",
-                LanguageId = 2
+                LanguageId = 12
             });
 
             Insert.IntoTable("SupportType").Row(new
             {
                 EnumValue = 7,
                 DisplayName = "Метод на доставка",
-                LanguageId = 2
+                LanguageId = 12
             });
 
             Insert.IntoTable("SupportType").Row(new
             {
                 EnumValue = 9,
                 DisplayName = "Срок за плащане",
-                LanguageId = 2
+                LanguageId = 12
             });
 
             Insert.IntoTable("SupportType").Row(new
             {
                 EnumValue = 10,
                 DisplayName = "Ценово ниво",
-                LanguageId = 2
+                LanguageId = 12
             });
 
             Insert.IntoTable("SupportType").Row(new
             {
                 EnumValue = 11,
                 DisplayName = "JobGroup",
-                LanguageId = 2
+                LanguageId = 12
             });
 
             Insert.IntoTable("SupportType").Row(new
             {
                 EnumValue = 12,
                 DisplayName = "Class",
-                LanguageId = 2
+                LanguageId = 12
             });
 
             Insert.IntoTable("SupportType").Row(new
             {
                 EnumValue = 13,
                 DisplayName = "Документи",
-                LanguageId = 2
+                LanguageId = 12
             });
 
             Insert.IntoTable("SupportType").Row(new
             {
                 EnumValue = 15,
                 DisplayName = "Данъчна група продажби",
-                LanguageId = 2
+                LanguageId = 12
             });
 
             Insert.IntoTable("SupportType").Row(new
             {
                 EnumValue = 16,
                 DisplayName = "Данъчна група покупки",
-                LanguageId = 2
+                LanguageId = 12
             });
 
             Insert.IntoTable("SupportType").Row(new
             {
                 EnumValue = 17,
                 DisplayName = "Данъчна група стоки",
-                LanguageId = 2
+                LanguageId = 12
             });
 
             Insert.IntoTable("SupportType").Row(new
             {
                 EnumValue = 18,
                 DisplayName = "Данъчен код",
-                LanguageId = 2
+                LanguageId = 12
             });
 
             Insert.IntoTable("SupportType").Row(new
             {
                 EnumValue = 19,
                 DisplayName = "CreditCardType",
-                LanguageId = 2
+                LanguageId = 12
             });
 
             Insert.IntoTable("SupportType").Row(new
             {
                 EnumValue = 20,
                 DisplayName = "Тип на плащане",
-                LanguageId = 2
+                LanguageId = 12
             });
 
             Insert.IntoTable("SupportType").Row(new
             {
                 EnumValue = 21,
                 DisplayName = "Reminders",
-                LanguageId = 2
+                LanguageId = 12
             });
 
             Insert.IntoTable("SupportType").Row(new
             {
                 EnumValue = 24,
                 DisplayName = "CommonComments",
-                LanguageId = 2
+                LanguageId = 12
             });
 
             Insert.IntoTable("SupportType").Row(new
             {
                 EnumValue = 25,
                 DisplayName = "Валута",
-                LanguageId = 2
+                LanguageId = 12
             });
 
             Insert.IntoTable("SupportType").Row(new
             {
                 EnumValue = 26,
                 DisplayName = "Category1099",
-                LanguageId = 2
+                LanguageId = 12
             });
 
             Insert.IntoTable("SupportType").Row(new
             {
                 EnumValue = 27,
                 DisplayName = "KeyStore",
-                LanguageId = 2
+                LanguageId = 12
             });
 
             Insert.IntoTable("SupportType").Row(new
             {
                 EnumValue = 28,
                 DisplayName = "UserCredentialStore",
-                LanguageId = 2
+                LanguageId = 12
             });
 
             Insert.IntoTable("SupportType").Row(new
             {
                 EnumValue = 29,
                 DisplayName = "Bank",
-                LanguageId = 2
+                LanguageId = 12
             });
 
             Insert.IntoTable("SupportType").Row(new
             {
                 EnumValue = 30,
                 DisplayName = "OfxSession",
-                LanguageId = 2
+                LanguageId = 12
             });
 
             Insert.IntoTable("SupportType").Row(new
             {
                 EnumValue = 31,
                 DisplayName = "OnlineSessionCode",
-                LanguageId = 2
+                LanguageId = 12
             });
 
             Insert.IntoTable("SupportType").Row(new
             {
                 EnumValue = 32,
                 DisplayName = "OnlineAccountServiceStatus",
-                LanguageId = 2
+                LanguageId = 12
             });
 
             Insert.IntoTable("SupportType").Row(new
             {
                 EnumValue = 33,
                 DisplayName = "ResultObject",
-                LanguageId = 2
+                LanguageId = 12
             });
 
             Insert.IntoTable("SupportType").Row(new
             {
                 EnumValue = 35,
                 DisplayName = "DriverRegistration",
-                LanguageId = 2
+                LanguageId = 12
             });
 
             Insert.IntoTable("SupportType").Row(new
             {
                 EnumValue = 36,
                 DisplayName = "Метод на плащане",
-                LanguageId = 2
+                LanguageId = 12
             });
 
             Insert.IntoTable("SupportType").Row(new
             {
                 EnumValue = 37,
                 DisplayName = "FiscalYear",
-                LanguageId = 2
+                LanguageId = 12
             });
 
             Insert.IntoTable("SupportType").Row(new
             {
                 EnumValue = 38,
                 DisplayName = "BankingMethod",
-                LanguageId = 2
+                LanguageId = 12
             });
 
             Insert.IntoTable("SupportType").Row(new
             {
                 EnumValue = 39,
                 DisplayName = "PayrollGenerationNumber",
-                LanguageId = 2
+                LanguageId = 12
             });
 
             Insert.IntoTable("SupportType").Row(new
             {
                 EnumValue = 40,
                 DisplayName = "Държави/Региони",
-                LanguageId = 2
+                LanguageId = 12
             });
 
             Insert.IntoTable("SupportType").Row(new
             {
                 EnumValue = 41,
                 DisplayName = "MemorizedDocument",
-                LanguageId = 2
+                LanguageId = 12
             });
 
             Insert.IntoTable("SupportType").Row(new
             {
                 EnumValue = 42,
                 DisplayName = "MemorizedDocumentReminder",
-                LanguageId = 2
+                LanguageId = 12
             });
 
             Insert.IntoTable("SupportType").Row(new
             {
                 EnumValue = 43,
                 DisplayName = "IntrastatCommodityCode",
-                LanguageId = 2
+                LanguageId = 12
             });
 
             Insert.IntoTable("SupportType").Row(new
             {
                 EnumValue = 44,
                 DisplayName = "IntrastatTransactionCode",
-                LanguageId = 2
+                LanguageId = 12
             });
 
             Insert.IntoTable("SupportType").Row(new
             {
                 EnumValue = 45,
                 DisplayName = "ExtendedReminder",
-                LanguageId = 2
+                LanguageId = 12
             });
 
             Insert.IntoTable("SupportType").Row(new
             {
                 EnumValue = 50,
                 DisplayName = "Наставка на името",
-                LanguageId = 2
+                LanguageId = 12
             });
 
             Insert.IntoTable("SupportType").Row(new
             {
                 EnumValue = 51,
                 DisplayName = "Титла",
-                LanguageId = 2
+                LanguageId = 12
             });
 
             Insert.IntoTable("SupportType").Row(new
             {
                 EnumValue = 52,
                 DisplayName = "Channel",
-                LanguageId = 2
+                LanguageId = 12
             });
 
             Insert.IntoTable("SupportType").Row(new
             {
                 EnumValue = 53,
                 DisplayName = "ECommerceProvider",
-                LanguageId = 2
+                LanguageId = 12
             });
 
             Insert.IntoTable("SupportType").Row(new
             {
                 EnumValue = 62,
                 DisplayName = "Папка",
-                LanguageId = 2
+                LanguageId = 12
             });
 
             Insert.IntoTable("SupportType").Row(new
             {
                 EnumValue = 63,
                 DisplayName = "Сметкоплан",
-                LanguageId = 2
+                LanguageId = 12
             });
 
             Insert.IntoTable("SupportType").Row(new
             {
                 EnumValue = 64,
                 DisplayName = "Бюджет тип",
-                LanguageId = 1
+                LanguageId = 12
             });
 
 
