@@ -16,7 +16,7 @@
                 .WithColumn("City").AsString(256).Nullable()
                 .WithColumn("State").AsString(256).Nullable()
                 .WithColumn("CountryId").AsInt16().Nullable()
-                    .ForeignKey("FK_Address_Country", "Countries", "CountryId")
+                    //.ForeignKey("FK_Address_Country", "Countries", "CountryId")
 
                 .WithColumn("InsertUserId").AsInt32().NotNullable()
                 .WithColumn("InsertDate").AsDateTime().NotNullable()
