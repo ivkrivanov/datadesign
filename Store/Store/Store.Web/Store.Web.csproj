@@ -1956,6 +1956,8 @@
     </Compile>
     <Compile Include="Migrations\DefaultDB\DefaultDB_20170430_134800_MultiTenant.cs" />
     <Compile Include="Migrations\NorthwindDB\NorthwindDB_20160110_093500_MultiTenant.cs" />
+    <Compile Include="Migrations\StoreDB\StoreDB_20170703_120000_Address .cs" />
+    <Compile Include="Migrations\StoreDB\StoreDB_20170703_130000_Support.cs" />
     <Compile Include="Modules\Administration\AdministrationNavigation.cs" />
     <Compile Include="Modules\Administration\Language\LanguageLookup.cs" />
     <Compile Include="Modules\Administration\RolePermission\RolePermissionUpdateRequest.cs" />

@@ -11,7 +11,7 @@ namespace Store.Northwind.Entities
     [ReadPermission(PermissionKeys.General)]
     [ModifyPermission(PermissionKeys.General)]
     [LookupScript("Northwind.Supplier")]
-    public sealed class SupplierRow : Row, IIdRow, INameRow
+    public sealed class SupplierRow : Row, IIdRow, INameRow, IMultiTenantRow
     {
         [DisplayName("Supplier Id"), Identity]
         public Int32? SupplierID
@@ -97,6 +97,18 @@ namespace Store.Northwind.Entities
             set { Fields.HomePage[this] = value; }
         }
 
+        [Insertable(false), Updatable(false)]
+        public Int32? TenantId
+        {
+            get { return Fields.TenantId[this]; }
+            set { Fields.TenantId[this] = value; }
+        }
+
+        public Int32Field TenantIdField
+        {
+            get { return Fields.TenantId; }
+        }
+
         IIdField IIdRow.IdField
         {
             get { return Fields.SupplierID; }
@@ -128,6 +140,7 @@ namespace Store.Northwind.Entities
             public StringField Phone;
             public StringField Fax;
             public StringField HomePage;
+            public readonly Int32Field TenantId;
 
             public RowFields()
             {

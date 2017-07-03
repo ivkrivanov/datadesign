@@ -18,7 +18,7 @@ namespace Store
             if (mt == null)
                 return false;
 
-            fldTenantId = mt.TenantIDField;
+            fldTenantId = mt.TenantIdField;
             return true;
         }
 
