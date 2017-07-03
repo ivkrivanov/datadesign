@@ -244,3 +244,4 @@ pip-log.txt
 /Store/Serenity.CodeGenerator.config
 /Store/Store/Store.Web/Migrations/DefaultDB/DefaultDB_20170430_134800_MultiTenant.cs
 /Store/Store/Store.Web/Migrations/NorthwindDB/NorthwindDB_20160110_093500_MultiTenant.cs
+/Store/Build_Artifacts/Binaries
