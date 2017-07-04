@@ -8214,3 +8214,15 @@ section.content > .s-DataGrid {
 .inline-action.add-child-unit {
   background-image: url(../serenity/images/node-insert-next.png);
 }
+.s-Infra-SupportTypeDialog > .size {
+  width: 650px;
+}
+.s-Infra-SupportTypeDialog .caption {
+  width: 150px;
+}
+.s-Infra-SupportTypeStringDialog > .size {
+  width: 650px;
+}
+.s-Infra-SupportTypeStringDialog .caption {
+  width: 150px;
+}

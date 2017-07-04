@@ -708,6 +708,104 @@ var Store;
 })(Store || (Store = {}));
 var Store;
 (function (Store) {
+    var Infra;
+    (function (Infra) {
+        var SupportTypeForm = (function (_super) {
+            __extends(SupportTypeForm, _super);
+            function SupportTypeForm() {
+                return _super !== null && _super.apply(this, arguments) || this;
+            }
+            return SupportTypeForm;
+        }(Serenity.PrefixedContext));
+        SupportTypeForm.formKey = 'Infra.SupportType';
+        Infra.SupportTypeForm = SupportTypeForm;
+        [['EnumName', function () { return Serenity.StringEditor; }], ['InsertUserId', function () { return Serenity.IntegerEditor; }], ['InsertDate', function () { return Serenity.DateEditor; }], ['UpdateUserId', function () { return Serenity.IntegerEditor; }], ['UpdateDate', function () { return Serenity.DateEditor; }], ['TenantId', function () { return Serenity.IntegerEditor; }], ['IsActive', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(SupportTypeForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
+    })(Infra = Store.Infra || (Store.Infra = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store) {
+    var Infra;
+    (function (Infra) {
+        var SupportTypeRow;
+        (function (SupportTypeRow) {
+            SupportTypeRow.idProperty = 'EnumValue';
+            SupportTypeRow.nameProperty = 'EnumName';
+            SupportTypeRow.localTextPrefix = 'Infra.SupportType';
+            var Fields;
+            (function (Fields) {
+            })(Fields = SupportTypeRow.Fields || (SupportTypeRow.Fields = {}));
+            ['EnumValue', 'EnumName', 'InsertUserId', 'InsertDate', 'UpdateUserId', 'UpdateDate', 'TenantId', 'IsActive'].forEach(function (x) { return Fields[x] = x; });
+        })(SupportTypeRow = Infra.SupportTypeRow || (Infra.SupportTypeRow = {}));
+    })(Infra = Store.Infra || (Store.Infra = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store) {
+    var Infra;
+    (function (Infra) {
+        var SupportTypeService;
+        (function (SupportTypeService) {
+            SupportTypeService.baseUrl = 'Infra/SupportType';
+            var Methods;
+            (function (Methods) {
+            })(Methods = SupportTypeService.Methods || (SupportTypeService.Methods = {}));
+            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
+                SupportTypeService[x] = function (r, s, o) { return Q.serviceRequest(SupportTypeService.baseUrl + '/' + x, r, s, o); };
+                Methods[x] = SupportTypeService.baseUrl + '/' + x;
+            });
+        })(SupportTypeService = Infra.SupportTypeService || (Infra.SupportTypeService = {}));
+    })(Infra = Store.Infra || (Store.Infra = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store) {
+    var Infra;
+    (function (Infra) {
+        var SupportTypeStringForm = (function (_super) {
+            __extends(SupportTypeStringForm, _super);
+            function SupportTypeStringForm() {
+                return _super !== null && _super.apply(this, arguments) || this;
+            }
+            return SupportTypeStringForm;
+        }(Serenity.PrefixedContext));
+        SupportTypeStringForm.formKey = 'Infra.SupportTypeString';
+        Infra.SupportTypeStringForm = SupportTypeStringForm;
+        [['EnumLocaleId', function () { return Serenity.IntegerEditor; }], ['EnumValue', function () { return Serenity.IntegerEditor; }], ['DisplayName', function () { return Serenity.StringEditor; }], ['LanguageId', function () { return Serenity.IntegerEditor; }], ['InsertUserId', function () { return Serenity.IntegerEditor; }], ['InsertDate', function () { return Serenity.DateEditor; }], ['UpdateUserId', function () { return Serenity.IntegerEditor; }], ['UpdateDate', function () { return Serenity.DateEditor; }], ['TenantId', function () { return Serenity.IntegerEditor; }], ['IsActive', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(SupportTypeStringForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
+    })(Infra = Store.Infra || (Store.Infra = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store) {
+    var Infra;
+    (function (Infra) {
+        var SupportTypeStringRow;
+        (function (SupportTypeStringRow) {
+            SupportTypeStringRow.idProperty = 'EnumLocaleId';
+            SupportTypeStringRow.nameProperty = 'DisplayName';
+            SupportTypeStringRow.localTextPrefix = 'Infra.SupportTypeString';
+            var Fields;
+            (function (Fields) {
+            })(Fields = SupportTypeStringRow.Fields || (SupportTypeStringRow.Fields = {}));
+            ['EnumLocaleId', 'EnumValue', 'DisplayName', 'LanguageId', 'InsertUserId', 'InsertDate', 'UpdateUserId', 'UpdateDate', 'TenantId', 'IsActive'].forEach(function (x) { return Fields[x] = x; });
+        })(SupportTypeStringRow = Infra.SupportTypeStringRow || (Infra.SupportTypeStringRow = {}));
+    })(Infra = Store.Infra || (Store.Infra = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store) {
+    var Infra;
+    (function (Infra) {
+        var SupportTypeStringService;
+        (function (SupportTypeStringService) {
+            SupportTypeStringService.baseUrl = 'Infra/SupportTypeString';
+            var Methods;
+            (function (Methods) {
+            })(Methods = SupportTypeStringService.Methods || (SupportTypeStringService.Methods = {}));
+            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
+                SupportTypeStringService[x] = function (r, s, o) { return Q.serviceRequest(SupportTypeStringService.baseUrl + '/' + x, r, s, o); };
+                Methods[x] = SupportTypeStringService.baseUrl + '/' + x;
+            });
+        })(SupportTypeStringService = Infra.SupportTypeStringService || (Infra.SupportTypeStringService = {}));
+    })(Infra = Store.Infra || (Store.Infra = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store) {
     var Meeting;
     (function (Meeting) {
         var MeetingAgendaForm = (function (_super) {
@@ -7615,6 +7713,100 @@ var Store;
         }());
         Common.UserPreferenceStorage = UserPreferenceStorage;
     })(Common = Store.Common || (Store.Common = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store) {
+    var Infra;
+    (function (Infra) {
+        var SupportTypeDialog = (function (_super) {
+            __extends(SupportTypeDialog, _super);
+            function SupportTypeDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Infra.SupportTypeForm(_this.idPrefix);
+                return _this;
+            }
+            SupportTypeDialog.prototype.getFormKey = function () { return Infra.SupportTypeForm.formKey; };
+            SupportTypeDialog.prototype.getIdProperty = function () { return Infra.SupportTypeRow.idProperty; };
+            SupportTypeDialog.prototype.getLocalTextPrefix = function () { return Infra.SupportTypeRow.localTextPrefix; };
+            SupportTypeDialog.prototype.getNameProperty = function () { return Infra.SupportTypeRow.nameProperty; };
+            SupportTypeDialog.prototype.getService = function () { return Infra.SupportTypeService.baseUrl; };
+            return SupportTypeDialog;
+        }(Serenity.EntityDialog));
+        SupportTypeDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], SupportTypeDialog);
+        Infra.SupportTypeDialog = SupportTypeDialog;
+    })(Infra = Store.Infra || (Store.Infra = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store) {
+    var Infra;
+    (function (Infra) {
+        var SupportTypeGrid = (function (_super) {
+            __extends(SupportTypeGrid, _super);
+            function SupportTypeGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            SupportTypeGrid.prototype.getColumnsKey = function () { return 'Infra.SupportType'; };
+            SupportTypeGrid.prototype.getDialogType = function () { return Infra.SupportTypeDialog; };
+            SupportTypeGrid.prototype.getIdProperty = function () { return Infra.SupportTypeRow.idProperty; };
+            SupportTypeGrid.prototype.getLocalTextPrefix = function () { return Infra.SupportTypeRow.localTextPrefix; };
+            SupportTypeGrid.prototype.getService = function () { return Infra.SupportTypeService.baseUrl; };
+            return SupportTypeGrid;
+        }(Serenity.EntityGrid));
+        SupportTypeGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], SupportTypeGrid);
+        Infra.SupportTypeGrid = SupportTypeGrid;
+    })(Infra = Store.Infra || (Store.Infra = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store) {
+    var Infra;
+    (function (Infra) {
+        var SupportTypeStringDialog = (function (_super) {
+            __extends(SupportTypeStringDialog, _super);
+            function SupportTypeStringDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Infra.SupportTypeStringForm(_this.idPrefix);
+                return _this;
+            }
+            SupportTypeStringDialog.prototype.getFormKey = function () { return Infra.SupportTypeStringForm.formKey; };
+            SupportTypeStringDialog.prototype.getIdProperty = function () { return Infra.SupportTypeStringRow.idProperty; };
+            SupportTypeStringDialog.prototype.getLocalTextPrefix = function () { return Infra.SupportTypeStringRow.localTextPrefix; };
+            SupportTypeStringDialog.prototype.getNameProperty = function () { return Infra.SupportTypeStringRow.nameProperty; };
+            SupportTypeStringDialog.prototype.getService = function () { return Infra.SupportTypeStringService.baseUrl; };
+            return SupportTypeStringDialog;
+        }(Serenity.EntityDialog));
+        SupportTypeStringDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], SupportTypeStringDialog);
+        Infra.SupportTypeStringDialog = SupportTypeStringDialog;
+    })(Infra = Store.Infra || (Store.Infra = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store) {
+    var Infra;
+    (function (Infra) {
+        var SupportTypeStringGrid = (function (_super) {
+            __extends(SupportTypeStringGrid, _super);
+            function SupportTypeStringGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            SupportTypeStringGrid.prototype.getColumnsKey = function () { return 'Infra.SupportTypeString'; };
+            SupportTypeStringGrid.prototype.getDialogType = function () { return Infra.SupportTypeStringDialog; };
+            SupportTypeStringGrid.prototype.getIdProperty = function () { return Infra.SupportTypeStringRow.idProperty; };
+            SupportTypeStringGrid.prototype.getLocalTextPrefix = function () { return Infra.SupportTypeStringRow.localTextPrefix; };
+            SupportTypeStringGrid.prototype.getService = function () { return Infra.SupportTypeStringService.baseUrl; };
+            return SupportTypeStringGrid;
+        }(Serenity.EntityGrid));
+        SupportTypeStringGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], SupportTypeStringGrid);
+        Infra.SupportTypeStringGrid = SupportTypeStringGrid;
+    })(Infra = Store.Infra || (Store.Infra = {}));
 })(Store || (Store = {}));
 var Store;
 (function (Store) {
