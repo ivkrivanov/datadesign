@@ -20,6 +20,5 @@ namespace Store.Infra.Columns
         public String DisplayName { get; set; }
         public Int32 LanguageId { get; set; }
         
-
     }
 }

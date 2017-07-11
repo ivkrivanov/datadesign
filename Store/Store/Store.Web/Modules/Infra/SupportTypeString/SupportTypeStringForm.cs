@@ -13,9 +13,9 @@ namespace Store.Infra.Forms
     [BasedOnRow(typeof(Entities.SupportTypeStringRow))]
     public class SupportTypeStringForm
     {
-        [Category("General")]
         public Int32 EnumValue { get; set; }
         public String DisplayName { get; set; }
         public Int32 LanguageId { get; set; }
+        
     }
 }

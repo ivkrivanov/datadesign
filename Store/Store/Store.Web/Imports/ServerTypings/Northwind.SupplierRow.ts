@@ -12,6 +12,7 @@
         Phone?: string;
         Fax?: string;
         HomePage?: string;
+        TenantId?: number;
     }
 
     export namespace SupplierRow {
@@ -37,9 +38,10 @@
             export declare const Phone: string;
             export declare const Fax: string;
             export declare const HomePage: string;
+            export declare const TenantId: string;
         }
 
-        ['SupplierID', 'CompanyName', 'ContactName', 'ContactTitle', 'Address', 'City', 'Region', 'PostalCode', 'Country', 'Phone', 'Fax', 'HomePage'].forEach(x => (<any>Fields)[x] = x);
+        ['SupplierID', 'CompanyName', 'ContactName', 'ContactTitle', 'Address', 'City', 'Region', 'PostalCode', 'Country', 'Phone', 'Fax', 'HomePage', 'TenantId'].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

@@ -3,6 +3,7 @@ namespace Store.Infra.Entities
 {
     using Administration;
     using Administration.Entities;
+    using Serenity;
     using Serenity.ComponentModel;
     using Serenity.Data;
     using Serenity.Data.Mapping;
@@ -10,19 +11,19 @@ namespace Store.Infra.Entities
     using System.ComponentModel;
     using System.IO;
 
-    [ConnectionKey("Store"), TableName("[dbo].[SupportTypeString]"), DisplayName("Support Type String"), InstanceName("Support Type String"), TwoLevelCached]
+    [ConnectionKey("Store"), TableName("[infra].[SupportTypeString]"), DisplayName("Support Type String"), InstanceName("Support Type String"), TwoLevelCached]
     [ReadPermission(PermissionKeys.Tenants)]
     [ModifyPermission(PermissionKeys.Tenants)]
-    public sealed class SupportTypeStringRow : LoggingRow, IIdRow, INameRow, IMultiTenantRow, IIsActiveRow, ILocalizationRow
+    public sealed class SupportTypeStringRow : LoggingRow, IIdRow, INameRow, IMultiTenantRow, IIsActiveRow
     {
-        [DisplayName("Enum Id"), Column("EnumLocaleID"), Identity, LookupInclude]
+        [DisplayName("Enum Locale Id"), Identity]
         public Int32? EnumLocaleId
         {
             get { return Fields.EnumLocaleId[this]; }
             set { Fields.EnumLocaleId[this] = value; }
         }
 
-        [DisplayName("Enum Value"), Size(40), NotNull, QuickSearch, LookupInclude]
+        [DisplayName("Enum Value"), ForeignKey("[infra].[SupportType]", "EnumValue"), LeftJoin("jEnumValue"), TextualField("EnumValueEnumName")]
         public Int32? EnumValue
         {
             get { return Fields.EnumValue[this]; }
@@ -36,25 +37,63 @@ namespace Store.Infra.Entities
             set { Fields.DisplayName[this] = value; }
         }
 
-        [DisplayName("Language Id"), ForeignKey("Language", "LanguageId"), InnerJoin("lng")]
-        //[LookupEditor(typeof(SupportTypeRow), InplaceAdd = true)]
+        [DisplayName("Language Id")]
         public Int32? LanguageId
         {
             get { return Fields.LanguageId[this]; }
             set { Fields.LanguageId[this] = value; }
         }
 
+        [DisplayName("Enum Value Enum Name"), Expression("jEnumValue.[EnumName]")]
+        public String EnumValueEnumName
+        {
+            get { return Fields.EnumValueEnumName[this]; }
+            set { Fields.EnumValueEnumName[this] = value; }
+        }
 
+        [DisplayName("Enum Value Insert User Id"), Expression("jEnumValue.[InsertUserId]")]
+        public Int32? EnumValueInsertUserId
+        {
+            get { return Fields.EnumValueInsertUserId[this]; }
+            set { Fields.EnumValueInsertUserId[this] = value; }
+        }
 
+        [DisplayName("Enum Value Insert Date"), Expression("jEnumValue.[InsertDate]")]
+        public DateTime? EnumValueInsertDate
+        {
+            get { return Fields.EnumValueInsertDate[this]; }
+            set { Fields.EnumValueInsertDate[this] = value; }
+        }
 
+        [DisplayName("Enum Value Update User Id"), Expression("jEnumValue.[UpdateUserId]")]
+        public Int32? EnumValueUpdateUserId
+        {
+            get { return Fields.EnumValueUpdateUserId[this]; }
+            set { Fields.EnumValueUpdateUserId[this] = value; }
+        }
 
+        [DisplayName("Enum Value Update Date"), Expression("jEnumValue.[UpdateDate]")]
+        public DateTime? EnumValueUpdateDate
+        {
+            get { return Fields.EnumValueUpdateDate[this]; }
+            set { Fields.EnumValueUpdateDate[this] = value; }
+        }
 
+        [DisplayName("Enum Value Tenant Id"), Expression("jEnumValue.[TenantId]")]
+        public Int32? EnumValueTenantId
+        {
+            get { return Fields.EnumValueTenantId[this]; }
+            set { Fields.EnumValueTenantId[this] = value; }
+        }
 
+        [DisplayName("Enum Value Is Active"), Expression("jEnumValue.[IsActive]")]
+        public Int16? EnumValueIsActive
+        {
+            get { return Fields.EnumValueIsActive[this]; }
+            set { Fields.EnumValueIsActive[this] = value; }
+        }
 
-
-
-
-#region Special area
+        #region Special fields
         [NotNull, Insertable(false), Updatable(true)]
         public Int16? IsActive
         {
@@ -73,25 +112,22 @@ namespace Store.Infra.Entities
         {
             get { return Fields.TenantId; }
         }
-
         IIdField IIdRow.IdField
         {
-            get { return Fields.EnumValue; }
+            get { return Fields.EnumLocaleId; }
         }
 
         StringField INameRow.NameField
         {
             get { return Fields.DisplayName; }
         }
+
         Int16Field IIsActiveRow.IsActiveField
         {
             get { return Fields.IsActive; }
         }
-#endregion Special area
-        public Field CultureIdField
-        {
-            get { return Fields.LanguageId; }
-        }
+
+        #endregion Special Fields
 
         public static readonly RowFields Fields = new RowFields().Init();
 
@@ -110,8 +146,13 @@ namespace Store.Infra.Entities
             public Int32Field TenantId;
             public Int16Field IsActive;
 
-            //public Int32Field SupportTypeEnumValue;
-            //public StringField SupportTypeEnumName;
+            public StringField EnumValueEnumName;
+            public Int32Field EnumValueInsertUserId;
+            public DateTimeField EnumValueInsertDate;
+            public Int32Field EnumValueUpdateUserId;
+            public DateTimeField EnumValueUpdateDate;
+            public Int32Field EnumValueTenantId;
+            public Int16Field EnumValueIsActive;
 
             public RowFields()
                 : base()

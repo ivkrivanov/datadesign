@@ -1369,6 +1369,12 @@
     <TypeScriptCompile Include="Modules\Common\Reporting\ReportDialog.ts" />
     <TypeScriptCompile Include="Modules\Common\ScriptInitialization.ts" />
     <TypeScriptCompile Include="Modules\Common\UserPreference\UserPreferenceStorage.ts" />
+    <TypeScriptCompile Include="Modules\Infra\SupportTypeString\SupportTypeStringDialog.ts" />
+    <TypeScriptCompile Include="Modules\Infra\SupportTypeString\SupportTypeStringGrid.ts" />
+    <TypeScriptCompile Include="Modules\Infra\SupportType\SupportTypeDialog.ts" />
+    <TypeScriptCompile Include="Modules\Infra\SupportType\SupportTypeGrid.ts" />
+    <TypeScriptCompile Include="Modules\Infra\Support\SupportDialog.ts" />
+    <TypeScriptCompile Include="Modules\Infra\Support\SupportGrid.ts" />
     <TypeScriptCompile Include="Modules\Membership\Account\ChangePassword\ChangePasswordPanel.ts" />
     <TypeScriptCompile Include="Modules\Membership\Account\ForgotPassword\ForgotPasswordPanel.ts" />
     <TypeScriptCompile Include="Modules\Membership\Account\ResetPassword\ResetPasswordPanel.ts" />
@@ -1404,6 +1410,9 @@
     <Content Include="Scripts\ckeditor\README.md" />
     <Content Include="Scripts\ckeditor\LICENSE.md" />
     <Content Include="Scripts\ckeditor\CHANGES.md" />
+    <Content Include="Modules\Infra\SupportTypeString\SupportTypeStringIndex.cshtml" />
+    <Content Include="Modules\Infra\SupportType\SupportTypeIndex.cshtml" />
+    <Content Include="Modules\Infra\Support\SupportIndex.cshtml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
@@ -1937,18 +1946,21 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Administration\Tenant\TenantGrid.ts" />
     <TypeScriptCompile Include="Modules\Administration\Tenant\TenantDialog.ts" />
-    <Content Include="Modules\Infra\SupportType\SupportTypeIndex.cshtml" />
     <TypeScriptCompile Include="Imports\ServerTypings\Infra.SupportTypeRow.ts" />
     <TypeScriptCompile Include="Imports\ServerTypings\Infra.SupportTypeService.ts" />
     <TypeScriptCompile Include="Imports\ServerTypings\Infra.SupportTypeForm.ts" />
-    <TypeScriptCompile Include="Modules\Infra\SupportType\SupportTypeGrid.ts" />
-    <TypeScriptCompile Include="Modules\Infra\SupportType\SupportTypeDialog.ts" />
-    <Content Include="Modules\Infra\SupportTypeString\SupportTypeStringIndex.cshtml" />
     <TypeScriptCompile Include="Imports\ServerTypings\Infra.SupportTypeStringRow.ts" />
     <TypeScriptCompile Include="Imports\ServerTypings\Infra.SupportTypeStringService.ts" />
     <TypeScriptCompile Include="Imports\ServerTypings\Infra.SupportTypeStringForm.ts" />
-    <TypeScriptCompile Include="Modules\Infra\SupportTypeString\SupportTypeStringGrid.ts" />
-    <TypeScriptCompile Include="Modules\Infra\SupportTypeString\SupportTypeStringDialog.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.SupportRow.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.SupportService.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.SupportForm.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.SupportTypeRow.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.SupportTypeService.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.SupportTypeForm.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.SupportTypeStringRow.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.SupportTypeStringService.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.SupportTypeStringForm.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -2025,7 +2037,24 @@
     <Compile Include="Modules\BasicSamples\Grids\StoredProcedureGrid\CustomerGrossSalesRepository.cs" />
     <Compile Include="Modules\Infra\InfraNavigation.cs" />
     <Compile Include="Modules\Infra\InfraPermissionKeys.cs" />
-    <Compile Include="Modules\Infra\SupportTypeString\SupportTypeStringLookup.cs" />
+    <Compile Include="Modules\Infra\SupportTypeString\SupportTypeStringColumns.cs" />
+    <Compile Include="Modules\Infra\SupportTypeString\SupportTypeStringEndpoint.cs" />
+    <Compile Include="Modules\Infra\SupportTypeString\SupportTypeStringForm.cs" />
+    <Compile Include="Modules\Infra\SupportTypeString\SupportTypeStringPage.cs" />
+    <Compile Include="Modules\Infra\SupportTypeString\SupportTypeStringRepository.cs" />
+    <Compile Include="Modules\Infra\SupportTypeString\SupportTypeStringRow.cs" />
+    <Compile Include="Modules\Infra\SupportType\SupportTypeColumns.cs" />
+    <Compile Include="Modules\Infra\SupportType\SupportTypeEndpoint.cs" />
+    <Compile Include="Modules\Infra\SupportType\SupportTypeForm.cs" />
+    <Compile Include="Modules\Infra\SupportType\SupportTypePage.cs" />
+    <Compile Include="Modules\Infra\SupportType\SupportTypeRepository.cs" />
+    <Compile Include="Modules\Infra\SupportType\SupportTypeRow.cs" />
+    <Compile Include="Modules\Infra\Support\SupportColumns.cs" />
+    <Compile Include="Modules\Infra\Support\SupportEndpoint.cs" />
+    <Compile Include="Modules\Infra\Support\SupportForm.cs" />
+    <Compile Include="Modules\Infra\Support\SupportPage.cs" />
+    <Compile Include="Modules\Infra\Support\SupportRepository.cs" />
+    <Compile Include="Modules\Infra\Support\SupportRow.cs" />
     <Compile Include="Modules\Northwind\Customer\CustomerGrossSalesRow.cs" />
     <Compile Include="Modules\BasicSamples\Grids\VSGalleryQA\VSGalleryQAColumns.cs" />
     <Compile Include="Modules\BasicSamples\Grids\VSGalleryQA\VSGalleryQAParser.cs" />
@@ -2357,18 +2386,6 @@
     <Compile Include="Modules\Administration\Tenant\TenantRepository.cs" />
     <Compile Include="Modules\Administration\Tenant\TenantEndpoint.cs" />
     <Compile Include="Modules\Administration\Tenant\TenantPage.cs" />
-    <Compile Include="Modules\Infra\SupportType\SupportTypeRow.cs" />
-    <Compile Include="Modules\Infra\SupportType\SupportTypeColumns.cs" />
-    <Compile Include="Modules\Infra\SupportType\SupportTypeForm.cs" />
-    <Compile Include="Modules\Infra\SupportType\SupportTypeRepository.cs" />
-    <Compile Include="Modules\Infra\SupportType\SupportTypeEndpoint.cs" />
-    <Compile Include="Modules\Infra\SupportType\SupportTypePage.cs" />
-    <Compile Include="Modules\Infra\SupportTypeString\SupportTypeStringRow.cs" />
-    <Compile Include="Modules\Infra\SupportTypeString\SupportTypeStringColumns.cs" />
-    <Compile Include="Modules\Infra\SupportTypeString\SupportTypeStringForm.cs" />
-    <Compile Include="Modules\Infra\SupportTypeString\SupportTypeStringRepository.cs" />
-    <Compile Include="Modules\Infra\SupportTypeString\SupportTypeStringEndpoint.cs" />
-    <Compile Include="Modules\Infra\SupportTypeString\SupportTypeStringPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
