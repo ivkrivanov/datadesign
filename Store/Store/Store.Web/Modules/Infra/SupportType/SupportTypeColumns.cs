@@ -11,7 +11,7 @@ namespace Store.Infra.Columns
     {
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         public Int32 EnumValue { get; set; }
-        [EditLink]
+        [EditLink, Width(200)]
         public String EnumName { get; set; }
     }
 }

@@ -13,14 +13,9 @@ namespace Store.Infra.Forms
     [BasedOnRow(typeof(Entities.SupportTypeStringRow))]
     public class SupportTypeStringForm
     {
+        [Category("General")]
         public Int32 EnumValue { get; set; }
         public String DisplayName { get; set; }
         public Int32 LanguageId { get; set; }
-        public Int32 InsertUserId { get; set; }
-        public DateTime InsertDate { get; set; }
-        public Int32 UpdateUserId { get; set; }
-        public DateTime UpdateDate { get; set; }
-        public Int32 TenantId { get; set; }
-        public Int16 IsActive { get; set; }
     }
 }

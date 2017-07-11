@@ -1968,7 +1968,6 @@
     </Compile>
     <Compile Include="Migrations\DefaultDB\DefaultDB_20170430_134800_MultiTenant.cs" />
     <Compile Include="Migrations\NorthwindDB\NorthwindDB_20160110_093500_MultiTenant.cs" />
-    <Compile Include="Migrations\StoreDB\StoreDB_20170703_120000_Address .cs" />
     <Compile Include="Migrations\StoreDB\StoreDB_20170703_130000_Support.cs" />
     <Compile Include="Modules\Administration\AdministrationNavigation.cs" />
     <Compile Include="Modules\Administration\Language\LanguageLookup.cs" />
@@ -1978,6 +1977,7 @@
     <Compile Include="Modules\Administration\AdministrationPermissionKeys.cs" />
     <Compile Include="Modules\Administration\Tenant\IMultiTenantRow.cs" />
     <Compile Include="Modules\Administration\Tenant\MultiTenantBehavior.cs" />
+    <Compile Include="Modules\Administration\Tenant\MultiTenantRowLookupScript.cs" />
     <Compile Include="Modules\Administration\UserPermission\UserPermissionListRequest.cs" />
     <Compile Include="Modules\Administration\UserPermission\UserPermissionUpdateRequest.cs" />
     <Compile Include="Modules\Administration\UserRole\UserRoleUpdateRequest.cs" />
@@ -2025,6 +2025,7 @@
     <Compile Include="Modules\BasicSamples\Grids\StoredProcedureGrid\CustomerGrossSalesRepository.cs" />
     <Compile Include="Modules\Infra\InfraNavigation.cs" />
     <Compile Include="Modules\Infra\InfraPermissionKeys.cs" />
+    <Compile Include="Modules\Infra\SupportTypeString\SupportTypeStringLookup.cs" />
     <Compile Include="Modules\Northwind\Customer\CustomerGrossSalesRow.cs" />
     <Compile Include="Modules\BasicSamples\Grids\VSGalleryQA\VSGalleryQAColumns.cs" />
     <Compile Include="Modules\BasicSamples\Grids\VSGalleryQA\VSGalleryQAParser.cs" />

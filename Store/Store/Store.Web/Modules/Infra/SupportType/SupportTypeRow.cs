@@ -12,6 +12,7 @@ namespace Store.Infra.Entities
     [ConnectionKey("Store"), TableName("[dbo].[SupportType]"), DisplayName("Support Type"), InstanceName("Support Type"), TwoLevelCached]
     [ReadPermission(PermissionKeys.Tenants)]
     [ModifyPermission(PermissionKeys.Tenants)]
+
     public sealed class SupportTypeRow : LoggingRow, IIdRow, INameRow, IMultiTenantRow, IIsActiveRow
     {
         [DisplayName("Enum Value"), PrimaryKey]
@@ -28,6 +29,7 @@ namespace Store.Infra.Entities
             set { Fields.EnumName[this] = value; }
         }
 
+        #region Special fields
         [NotNull, Insertable(false), Updatable(true)]
         public Int16? IsActive
         {
@@ -61,6 +63,7 @@ namespace Store.Infra.Entities
             get { return Fields.IsActive; }
         }
 
+        #endregion Special Fields
         public static readonly RowFields Fields = new RowFields().Init();
 
         public SupportTypeRow()

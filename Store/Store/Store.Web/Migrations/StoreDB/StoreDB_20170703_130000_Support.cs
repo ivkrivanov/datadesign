@@ -10,20 +10,7 @@
            
         public override void Up()
         {
-            this.CreateTableWithId64("Support", "SupportId", s => s
-                .WithColumn("SupportGuid").AsGuid().WithDefaultValue(Guid.NewGuid()).NotNullable()
-                .WithColumn("SupportTypeID").AsInt32().NotNullable()
-                    //.ForeignKey("FK_Suport_TypeId", "SuportTypes", "SuportTypeId")
-                .WithColumn("SupportCode").AsString(6).Nullable()
-                .WithColumn("SupportName").AsString(128).NotNullable()
-                .WithColumn("SupportDescription").AsString(256).NotNullable()
-
-                .WithColumn("InsertUserId").AsInt32().NotNullable()
-                .WithColumn("InsertDate").AsDateTime().NotNullable()
-                .WithColumn("UpdateUserId").AsInt32().Nullable()
-                .WithColumn("UpdateDate").AsDateTime().Nullable()
-                .WithColumn("TenantId").AsInt32().NotNullable()
-                .WithColumn("IsActive").AsInt16().NotNullable());
+            Create.Schema("infra");
 
             Action<ICreateTableWithColumnSyntax> addSupportTypeCols = expr => expr
                 .WithColumn("EnumName").AsString(256).Nullable()
@@ -36,458 +23,19 @@
                 .WithColumn("IsActive").AsInt16().NotNullable();
 
             addSupportTypeCols(IfDatabase(Utils.AllExceptOracle)
-                .Create.Table("SupportType")
+                .Create.Table("SupportType").InSchema ("infra")
                 .WithColumn("EnumValue").AsInt32().PrimaryKey().NotNullable());
-            //.ForeignKey("FK_SupportType_EnumValue", "Enumeration", "EnumValue"));
 
             addSupportTypeCols(IfDatabase("oracle")
-                .Create.Table("SupportType")
+                .Create.Table("SupportType").InSchema("infra")
                 .WithColumn("EnumValue").AsInt32().PrimaryKey().NotNullable());
-                    //.ForeignKey("FK_SupportType_EnumValue", "Enumeration", "EnumValue"));
 
             Utils.AddOracleIdentity(this, "SupportType", "EnumValue");
 
-            Insert.IntoTable("SupportType").Row(new
-            {
-                EnumValue = 0,
-                EnumName = "InvalidSupportingTableType",
-                InsertUserId = 1,
-                InsertDate = new DateTime(2014, 1, 1),
-                TenantId = 1, IsActive = 1
-            });
-
-            Insert.IntoTable("SupportType").Row(new
-            {
-                EnumValue = 1,
-                EnumName = "CustomerGroup",
-                InsertUserId = 1,
-                InsertDate = new DateTime(2014, 1, 1),
-                TenantId = 1, IsActive = 1
-            });
-
-            Insert.IntoTable("SupportType").Row(new
-            {
-                EnumValue = 2,
-                EnumName = "VendorGroup",
-                InsertUserId = 1,
-                InsertDate = new DateTime(2014, 1, 1),
-                TenantId = 1, IsActive = 1
-            });
-
-            Insert.IntoTable("SupportType").Row(new
-            {
-                EnumValue = 3,
-                EnumName = "CreditRating",
-                InsertUserId = 1,
-                InsertDate = new DateTime(2014, 1, 1),
-                TenantId = 1, IsActive = 1
-            });
-
-            Insert.IntoTable("SupportType").Row(new
-            {
-                EnumValue = 4,
-                EnumName = "ItemGroup",
-                InsertUserId = 1,
-                InsertDate = new DateTime(2014, 1, 1),
-                TenantId = 1, IsActive = 1
-            });
-
-            Insert.IntoTable("SupportType").Row(new
-            {
-                EnumValue = 5,
-                EnumName = "UnitOfMeasure",
-                InsertUserId = 1,
-                InsertDate = new DateTime(2014, 1, 1),
-                TenantId = 1, IsActive = 1
-            });
-
-            Insert.IntoTable("SupportType").Row(new
-            {
-                EnumValue = 6,
-                EnumName = "ShippingTerm",
-                InsertUserId = 1,
-                InsertDate = new DateTime(2014, 1, 1),
-                TenantId = 1, IsActive = 1
-            });
-
-            Insert.IntoTable("SupportType").Row(new
-            {
-                EnumValue = 7,
-                EnumName = "ShippingMethod",
-                InsertUserId = 1,
-                InsertDate = new DateTime(2014, 1, 1),
-                TenantId = 1, IsActive = 1
-            });
-
-            Insert.IntoTable("SupportType").Row(new
-            {
-                EnumValue = 9,
-                EnumName = "PaymentTerm",
-                InsertUserId = 1,
-                InsertDate = new DateTime(2014, 1, 1),
-                TenantId = 1, IsActive = 1
-            });
-
-            Insert.IntoTable("SupportType").Row(new
-            {
-                EnumValue = 10,
-                EnumName = "PriceLevel",
-                InsertUserId = 1,
-                InsertDate = new DateTime(2014, 1, 1),
-                TenantId = 1, IsActive = 1
-            });
-
-            Insert.IntoTable("SupportType").Row(new
-            {
-                EnumValue = 11,
-                EnumName = "JobGroup",
-                InsertUserId = 1,
-                InsertDate = new DateTime(2014, 1, 1),
-                TenantId = 1, IsActive = 1
-            });
-
-            Insert.IntoTable("SupportType").Row(new
-            {
-                EnumValue = 12,
-                EnumName = "Class",
-                InsertUserId = 1,
-                InsertDate = new DateTime(2014, 1, 1),
-                TenantId = 1, IsActive = 1
-            });
-
-            Insert.IntoTable("SupportType").Row(new
-            {
-                EnumValue = 13,
-                EnumName = "Documents",
-                InsertUserId = 1,
-                InsertDate = new DateTime(2014, 1, 1),
-                TenantId = 1, IsActive = 1
-            });
-
-            Insert.IntoTable("SupportType").Row(new
-            {
-                EnumValue = 15,
-                EnumName = "SalesTaxGroup",
-                InsertUserId = 1,
-                InsertDate = new DateTime(2014, 1, 1),
-                TenantId = 1, IsActive = 1
-            });
-
-            Insert.IntoTable("SupportType").Row(new
-            {
-                EnumValue = 16,
-                EnumName = "PurchaseTaxGroup",
-                InsertUserId = 1,
-                InsertDate = new DateTime(2014, 1, 1),
-                TenantId = 1, IsActive = 1
-            });
-
-            Insert.IntoTable("SupportType").Row(new
-            {
-                EnumValue = 17,
-                EnumName = "ItemTaxGroup",
-                InsertUserId = 1,
-                InsertDate = new DateTime(2014, 1, 1),
-                TenantId = 1, IsActive = 1
-            });
-
-            Insert.IntoTable("SupportType").Row(new
-            {
-                EnumValue = 18,
-                EnumName = "TaxCode",
-                InsertUserId = 1,
-                InsertDate = new DateTime(2014, 1, 1),
-                TenantId = 1, IsActive = 1
-            });
-
-            Insert.IntoTable("SupportType").Row(new
-            {
-                EnumValue = 19,
-                EnumName = "CreditCardType",
-                InsertUserId = 1,
-                InsertDate = new DateTime(2014, 1, 1),
-                TenantId = 1, IsActive = 1
-            });
-
-            Insert.IntoTable("SupportType").Row(new
-            {
-                EnumValue = 20,
-                EnumName = "PayType",
-                InsertUserId = 1,
-                InsertDate = new DateTime(2014, 1, 1),
-                TenantId = 1, IsActive = 1
-            });
-
-            Insert.IntoTable("SupportType").Row(new
-            {
-                EnumValue = 21,
-                EnumName = "Reminders",
-                InsertUserId = 1,
-                InsertDate = new DateTime(2014, 1, 1),
-                TenantId = 1, IsActive = 1
-            });
-
-            Insert.IntoTable("SupportType").Row(new
-            {
-                EnumValue = 24,
-                EnumName = "CommonComments",
-                InsertUserId = 1,
-                InsertDate = new DateTime(2014, 1, 1),
-                TenantId = 1, IsActive = 1
-            });
-
-            Insert.IntoTable("SupportType").Row(new
-            {
-                EnumValue = 25,
-                EnumName = "Currency",
-                InsertUserId = 1,
-                InsertDate = new DateTime(2014, 1, 1),
-                TenantId = 1, IsActive = 1
-            });
-
-            Insert.IntoTable("SupportType").Row(new
-            {
-                EnumValue = 26,
-                EnumName = "Category1099",
-                InsertUserId = 1,
-                InsertDate = new DateTime(2014, 1, 1),
-                TenantId = 1, IsActive = 1
-            });
-
-            Insert.IntoTable("SupportType").Row(new
-            {
-                EnumValue = 27,
-                EnumName = "KeyStore",
-                InsertUserId = 1,
-                InsertDate = new DateTime(2014, 1, 1),
-                TenantId = 1, IsActive = 1
-            });
-
-            Insert.IntoTable("SupportType").Row(new
-            {
-                EnumValue = 28,
-                EnumName = "UserCredentialStore",
-                InsertUserId = 1,
-                InsertDate = new DateTime(2014, 1, 1),
-                TenantId = 1, IsActive = 1
-            });
-
-            Insert.IntoTable("SupportType").Row(new
-            {
-                EnumValue = 29,
-                EnumName = "Bank",
-                InsertUserId = 1,
-                InsertDate = new DateTime(2014, 1, 1),
-                TenantId = 1, IsActive = 1
-            });
-
-            Insert.IntoTable("SupportType").Row(new
-            {
-                EnumValue = 30,
-                EnumName = "OfxSession",
-                InsertUserId = 1,
-                InsertDate = new DateTime(2014, 1, 1),
-                TenantId = 1, IsActive = 1
-            });
-
-            Insert.IntoTable("SupportType").Row(new
-            {
-                EnumValue = 31,
-                EnumName = "OnlineSessionCode",
-                InsertUserId = 1,
-                InsertDate = new DateTime(2014, 1, 1),
-                TenantId = 1, IsActive = 1
-            });
-
-            Insert.IntoTable("SupportType").Row(new
-            {
-                EnumValue = 32,
-                EnumName = "OnlineAccountServiceStatus",
-                InsertUserId = 1,
-                InsertDate = new DateTime(2014, 1, 1),
-                TenantId = 1, IsActive = 1
-            });
-
-            Insert.IntoTable("SupportType").Row(new
-            {
-                EnumValue = 33,
-                EnumName = "ResultObject",
-                InsertUserId = 1,
-                InsertDate = new DateTime(2014, 1, 1),
-                TenantId = 1, IsActive = 1
-            });
-
-            Insert.IntoTable("SupportType").Row(new
-            {
-                EnumValue = 35,
-                EnumName = "DriverRegistration",
-                InsertUserId = 1,
-                InsertDate = new DateTime(2014, 1, 1),
-                TenantId = 1, IsActive = 1
-            });
-
-            Insert.IntoTable("SupportType").Row(new
-            {
-                EnumValue = 36,
-                EnumName = "PaymentMethod",
-                InsertUserId = 1,
-                InsertDate = new DateTime(2014, 1, 1),
-                TenantId = 1, IsActive = 1
-            });
-
-            Insert.IntoTable("SupportType").Row(new
-            {
-                EnumValue = 37,
-                EnumName = "FiscalYear",
-                InsertUserId = 1,
-                InsertDate = new DateTime(2014, 1, 1),
-                TenantId = 1, IsActive = 1
-            });
-
-            Insert.IntoTable("SupportType").Row(new
-            {
-                EnumValue = 38,
-                EnumName = "BankingMethod",
-                InsertUserId = 1,
-                InsertDate = new DateTime(2014, 1, 1),
-                TenantId = 1, IsActive = 1
-            });
-
-            Insert.IntoTable("SupportType").Row(new
-            {
-                EnumValue = 39,
-                EnumName = "PayrollGenerationNumber",
-                InsertUserId = 1,
-                InsertDate = new DateTime(2014, 1, 1),
-                TenantId = 1, IsActive = 1
-            });
-
-            Insert.IntoTable("SupportType").Row(new
-            {
-                EnumValue = 40,
-                EnumName = "Country",
-                InsertUserId = 1,
-                InsertDate = new DateTime(2014, 1, 1),
-                TenantId = 1, IsActive = 1
-            });
-
-            Insert.IntoTable("SupportType").Row(new
-            {
-                EnumValue = 41,
-                EnumName = "MemorizedDocument",
-                InsertUserId = 1,
-                InsertDate = new DateTime(2014, 1, 1),
-                TenantId = 1, IsActive = 1
-            });
-
-            Insert.IntoTable("SupportType").Row(new
-            {
-                EnumValue = 42,
-                EnumName = "MemorizedDocumentReminder",
-                InsertUserId = 1,
-                InsertDate = new DateTime(2014, 1, 1),
-                TenantId = 1, IsActive = 1
-            });
-
-            Insert.IntoTable("SupportType").Row(new
-            {
-                EnumValue = 43,
-                EnumName = "IntrastatCommodityCode",
-                InsertUserId = 1,
-                InsertDate = new DateTime(2014, 1, 1),
-                TenantId = 1, IsActive = 1
-            });
-
-            Insert.IntoTable("SupportType").Row(new
-            {
-                EnumValue = 44,
-                EnumName = "IntrastatTransactionCode",
-                InsertUserId = 1,
-                InsertDate = new DateTime(2014, 1, 1),
-                TenantId = 1, IsActive = 1
-            });
-
-            Insert.IntoTable("SupportType").Row(new
-            {
-                EnumValue = 45,
-                EnumName = "ExtendedReminder",
-                InsertUserId = 1,
-                InsertDate = new DateTime(2014, 1, 1),
-                TenantId = 1, IsActive = 1
-            });
-
-            Insert.IntoTable("SupportType").Row(new
-            {
-                EnumValue = 50,
-                EnumName = "NameSuffix",
-                InsertUserId = 1,
-                InsertDate = new DateTime(2014, 1, 1),
-                TenantId = 1,
-                IsActive = 1
-            });
-
-            Insert.IntoTable("SupportType").Row(new
-            {
-                EnumValue = 51,
-                EnumName = "NamePrefix",
-                InsertUserId = 1,
-                InsertDate = new DateTime(2014, 1, 1),
-                TenantId = 1,
-                IsActive = 1
-            });
-
-            Insert.IntoTable("SupportType").Row(new
-            {
-                EnumValue = 52,
-                EnumName = "Channel",
-                InsertUserId = 1,
-                InsertDate = new DateTime(2014, 1, 1),
-                TenantId = 1,
-                IsActive = 1
-            });
-
-            Insert.IntoTable("SupportType").Row(new
-            {
-                EnumValue = 53,
-                EnumName = "ECommerceProvider",
-                InsertUserId = 1,
-                InsertDate = new DateTime(2014, 1, 1),
-                TenantId = 1,
-                IsActive = 1
-            });
-
-            Insert.IntoTable("SupportType").Row(new
-            {
-                EnumValue = 60,
-                EnumName = "Book",
-                InsertUserId = 1,
-                InsertDate = new DateTime(2014, 1, 1),
-                TenantId = 1,
-                IsActive = 1
-            });
-
-            Insert.IntoTable("SupportType").Row(new
-            {
-                EnumValue = 63,
-                EnumName = "ChartOfAccount",
-                InsertUserId = 1,
-                InsertDate = new DateTime(2014, 1, 1),
-                TenantId = 1,
-                IsActive = 1
-            });
-
-            Insert.IntoTable("SupportType").Row(new
-            {
-                EnumValue = 64,
-                EnumName = "BudgetCode",
-                InsertUserId = 1,
-                InsertDate = new DateTime(2014, 1, 1),
-                TenantId = 1,
-                IsActive = 1
-            });
 
             Action<ICreateTableWithColumnSyntax> addSupportTypeStringCols = expr => expr
                 .WithColumn("EnumValue").AsInt32().Nullable()
+                    .ForeignKey("FK_SupportTypeString_SupportType", "infra", "SupportType", "EnumValue")
                 .WithColumn("DisplayName").AsString(256).Nullable()
                 .WithColumn("LanguageId").AsInt32().Nullable()
 
@@ -499,16 +47,480 @@
                 .WithColumn("IsActive").AsInt16().NotNullable().WithDefaultValue(1);
 
             addSupportTypeStringCols(IfDatabase(Utils.AllExceptOracle)
-                .Create.Table("SupportTypeString")
-                .WithColumn("EnumLocaleID").AsInt32().Identity().PrimaryKey().NotNullable());
+                .Create.Table("SupportTypeString").InSchema("infra")
+                .WithColumn("EnumLocaleId").AsInt32().Identity().PrimaryKey().NotNullable());
 
             addSupportTypeStringCols(IfDatabase("oracle")
-                .Create.Table("SupportTypeString")
-                .WithColumn("EnumLocaleID").AsInt32().PrimaryKey().NotNullable());
+                .Create.Table("SupportTypeString").InSchema("infra")
+                .WithColumn("EnumLocaleId").AsInt32().PrimaryKey().NotNullable());
 
             Utils.AddOracleIdentity(this, "SupportTypeString", "EnumLocaleID");
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Action<ICreateTableWithColumnSyntax> addSupportCols = expr => expr
+                .WithColumn("SupportGuid").AsGuid().WithDefaultValue(Guid.NewGuid()).NotNullable()
+                .WithColumn("SupportTypeID").AsInt32().NotNullable()
+                    .ForeignKey("FK_Support_SupportTypeString", "infra", "SupportTypeString", "EnumLocaleId")
+                .WithColumn("SupportCode").AsString(6).Nullable()
+                .WithColumn("SupportName").AsString(128).NotNullable()
+                .WithColumn("SupportDescription").AsString(256).NotNullable()
+
+                .WithColumn("InsertUserId").AsInt32().NotNullable()
+                .WithColumn("InsertDate").AsDateTime().NotNullable()
+                .WithColumn("UpdateUserId").AsInt32().Nullable()
+                .WithColumn("UpdateDate").AsDateTime().Nullable()
+                .WithColumn("TenantId").AsInt32().NotNullable().WithDefaultValue(1)
+                .WithColumn("IsActive").AsInt16().NotNullable().WithDefaultValue(1);
+
+            addSupportCols(IfDatabase(Utils.AllExceptOracle)
+                .Create.Table("Support").InSchema("infra")
+                .WithColumn("SupportId").AsInt32().Identity().PrimaryKey().NotNullable());
+
+            addSupportCols(IfDatabase("oracle")
+                .Create.Table("Support").InSchema("infra")
+                .WithColumn("SupportId").AsInt32().PrimaryKey().NotNullable());
+
+            Insert.IntoTable("SupportType").InSchema("infra").Row(new
+            {
+                EnumValue = 0,
+                EnumName = "InvalidSupportingTableType",
+                InsertUserId = 1,
+                InsertDate = new DateTime(2014, 1, 1),
+                TenantId = 1, IsActive = 1
+            });
+
+            Insert.IntoTable("SupportType").InSchema("infra").Row(new
+            {
+                EnumValue = 1,
+                EnumName = "CustomerGroup",
+                InsertUserId = 1,
+                InsertDate = new DateTime(2014, 1, 1),
+                TenantId = 1, IsActive = 1
+            });
+
+            Insert.IntoTable("SupportType").InSchema("infra").Row(new
+            {
+                EnumValue = 2,
+                EnumName = "VendorGroup",
+                InsertUserId = 1,
+                InsertDate = new DateTime(2014, 1, 1),
+                TenantId = 1, IsActive = 1
+            });
+
+            Insert.IntoTable("SupportType").InSchema("infra").Row(new
+            {
+                EnumValue = 3,
+                EnumName = "CreditRating",
+                InsertUserId = 1,
+                InsertDate = new DateTime(2014, 1, 1),
+                TenantId = 1, IsActive = 1
+            });
+
+            Insert.IntoTable("SupportType").InSchema("infra").Row(new
+            {
+                EnumValue = 4,
+                EnumName = "ItemGroup",
+                InsertUserId = 1,
+                InsertDate = new DateTime(2014, 1, 1),
+                TenantId = 1, IsActive = 1
+            });
+
+            Insert.IntoTable("SupportType").InSchema("infra").Row(new
+            {
+                EnumValue = 5,
+                EnumName = "UnitOfMeasure",
+                InsertUserId = 1,
+                InsertDate = new DateTime(2014, 1, 1),
+                TenantId = 1, IsActive = 1
+            });
+
+            Insert.IntoTable("SupportType").InSchema("infra").Row(new
+            {
+                EnumValue = 6,
+                EnumName = "ShippingTerm",
+                InsertUserId = 1,
+                InsertDate = new DateTime(2014, 1, 1),
+                TenantId = 1, IsActive = 1
+            });
+
+            Insert.IntoTable("SupportType").InSchema("infra").Row(new
+            {
+                EnumValue = 7,
+                EnumName = "ShippingMethod",
+                InsertUserId = 1,
+                InsertDate = new DateTime(2014, 1, 1),
+                TenantId = 1, IsActive = 1
+            });
+
+            Insert.IntoTable("SupportType").InSchema("infra").Row(new
+            {
+                EnumValue = 9,
+                EnumName = "PaymentTerm",
+                InsertUserId = 1,
+                InsertDate = new DateTime(2014, 1, 1),
+                TenantId = 1, IsActive = 1
+            });
+
+            Insert.IntoTable("SupportType").InSchema("infra").Row(new
+            {
+                EnumValue = 10,
+                EnumName = "PriceLevel",
+                InsertUserId = 1,
+                InsertDate = new DateTime(2014, 1, 1),
+                TenantId = 1, IsActive = 1
+            });
+
+            Insert.IntoTable("SupportType").InSchema("infra").Row(new
+            {
+                EnumValue = 11,
+                EnumName = "JobGroup",
+                InsertUserId = 1,
+                InsertDate = new DateTime(2014, 1, 1),
+                TenantId = 1, IsActive = 1
+            });
+
+            Insert.IntoTable("SupportType").InSchema("infra").Row(new
+            {
+                EnumValue = 12,
+                EnumName = "Class",
+                InsertUserId = 1,
+                InsertDate = new DateTime(2014, 1, 1),
+                TenantId = 1, IsActive = 1
+            });
+
+            Insert.IntoTable("SupportType").InSchema("infra").Row(new
+            {
+                EnumValue = 13,
+                EnumName = "Documents",
+                InsertUserId = 1,
+                InsertDate = new DateTime(2014, 1, 1),
+                TenantId = 1, IsActive = 1
+            });
+
+            Insert.IntoTable("SupportType").InSchema("infra").Row(new
+            {
+                EnumValue = 15,
+                EnumName = "SalesTaxGroup",
+                InsertUserId = 1,
+                InsertDate = new DateTime(2014, 1, 1),
+                TenantId = 1, IsActive = 1
+            });
+
+            Insert.IntoTable("SupportType").InSchema("infra").Row(new
+            {
+                EnumValue = 16,
+                EnumName = "PurchaseTaxGroup",
+                InsertUserId = 1,
+                InsertDate = new DateTime(2014, 1, 1),
+                TenantId = 1, IsActive = 1
+            });
+
+            Insert.IntoTable("SupportType").InSchema("infra").Row(new
+            {
+                EnumValue = 17,
+                EnumName = "ItemTaxGroup",
+                InsertUserId = 1,
+                InsertDate = new DateTime(2014, 1, 1),
+                TenantId = 1, IsActive = 1
+            });
+
+            Insert.IntoTable("SupportType").InSchema("infra").Row(new
+            {
+                EnumValue = 18,
+                EnumName = "TaxCode",
+                InsertUserId = 1,
+                InsertDate = new DateTime(2014, 1, 1),
+                TenantId = 1, IsActive = 1
+            });
+
+            Insert.IntoTable("SupportType").InSchema("infra").Row(new
+            {
+                EnumValue = 19,
+                EnumName = "CreditCardType",
+                InsertUserId = 1,
+                InsertDate = new DateTime(2014, 1, 1),
+                TenantId = 1, IsActive = 1
+            });
+
+            Insert.IntoTable("SupportType").InSchema("infra").Row(new
+            {
+                EnumValue = 20,
+                EnumName = "PayType",
+                InsertUserId = 1,
+                InsertDate = new DateTime(2014, 1, 1),
+                TenantId = 1, IsActive = 1
+            });
+
+            Insert.IntoTable("SupportType").InSchema("infra").Row(new
+            {
+                EnumValue = 21,
+                EnumName = "Reminders",
+                InsertUserId = 1,
+                InsertDate = new DateTime(2014, 1, 1),
+                TenantId = 1, IsActive = 1
+            });
+
+            Insert.IntoTable("SupportType").InSchema("infra").Row(new
+            {
+                EnumValue = 24,
+                EnumName = "CommonComments",
+                InsertUserId = 1,
+                InsertDate = new DateTime(2014, 1, 1),
+                TenantId = 1, IsActive = 1
+            });
+
+            Insert.IntoTable("SupportType").InSchema("infra").Row(new
+            {
+                EnumValue = 25,
+                EnumName = "Currency",
+                InsertUserId = 1,
+                InsertDate = new DateTime(2014, 1, 1),
+                TenantId = 1, IsActive = 1
+            });
+
+            Insert.IntoTable("SupportType").InSchema("infra").Row(new
+            {
+                EnumValue = 26,
+                EnumName = "Category1099",
+                InsertUserId = 1,
+                InsertDate = new DateTime(2014, 1, 1),
+                TenantId = 1, IsActive = 1
+            });
+
+            Insert.IntoTable("SupportType").InSchema("infra").Row(new
+            {
+                EnumValue = 27,
+                EnumName = "KeyStore",
+                InsertUserId = 1,
+                InsertDate = new DateTime(2014, 1, 1),
+                TenantId = 1, IsActive = 1
+            });
+
+            Insert.IntoTable("SupportType").InSchema("infra").Row(new
+            {
+                EnumValue = 28,
+                EnumName = "UserCredentialStore",
+                InsertUserId = 1,
+                InsertDate = new DateTime(2014, 1, 1),
+                TenantId = 1, IsActive = 1
+            });
+
+            Insert.IntoTable("SupportType").InSchema("infra").Row(new
+            {
+                EnumValue = 29,
+                EnumName = "Bank",
+                InsertUserId = 1,
+                InsertDate = new DateTime(2014, 1, 1),
+                TenantId = 1, IsActive = 1
+            });
+
+            Insert.IntoTable("SupportType").InSchema("infra").Row(new
+            {
+                EnumValue = 30,
+                EnumName = "OfxSession",
+                InsertUserId = 1,
+                InsertDate = new DateTime(2014, 1, 1),
+                TenantId = 1, IsActive = 1
+            });
+
+            Insert.IntoTable("SupportType").InSchema("infra").Row(new
+            {
+                EnumValue = 31,
+                EnumName = "OnlineSessionCode",
+                InsertUserId = 1,
+                InsertDate = new DateTime(2014, 1, 1),
+                TenantId = 1, IsActive = 1
+            });
+
+            Insert.IntoTable("SupportType").InSchema("infra").Row(new
+            {
+                EnumValue = 32,
+                EnumName = "OnlineAccountServiceStatus",
+                InsertUserId = 1,
+                InsertDate = new DateTime(2014, 1, 1),
+                TenantId = 1, IsActive = 1
+            });
+
+            Insert.IntoTable("SupportType").InSchema("infra").Row(new
+            {
+                EnumValue = 33,
+                EnumName = "ResultObject",
+                InsertUserId = 1,
+                InsertDate = new DateTime(2014, 1, 1),
+                TenantId = 1, IsActive = 1
+            });
+
+            Insert.IntoTable("SupportType").InSchema("infra").Row(new
+            {
+                EnumValue = 35,
+                EnumName = "DriverRegistration",
+                InsertUserId = 1,
+                InsertDate = new DateTime(2014, 1, 1),
+                TenantId = 1, IsActive = 1
+            });
+
+            Insert.IntoTable("SupportType").InSchema("infra").Row(new
+            {
+                EnumValue = 36,
+                EnumName = "PaymentMethod",
+                InsertUserId = 1,
+                InsertDate = new DateTime(2014, 1, 1),
+                TenantId = 1, IsActive = 1
+            });
+
+            Insert.IntoTable("SupportType").InSchema("infra").Row(new
+            {
+                EnumValue = 37,
+                EnumName = "FiscalYear",
+                InsertUserId = 1,
+                InsertDate = new DateTime(2014, 1, 1),
+                TenantId = 1, IsActive = 1
+            });
+
+            Insert.IntoTable("SupportType").InSchema("infra").Row(new
+            {
+                EnumValue = 38,
+                EnumName = "BankingMethod",
+                InsertUserId = 1,
+                InsertDate = new DateTime(2014, 1, 1),
+                TenantId = 1, IsActive = 1
+            });
+
+            Insert.IntoTable("SupportType").InSchema("infra").Row(new
+            {
+                EnumValue = 39,
+                EnumName = "PayrollGenerationNumber",
+                InsertUserId = 1,
+                InsertDate = new DateTime(2014, 1, 1),
+                TenantId = 1, IsActive = 1
+            });
+
+            Insert.IntoTable("SupportType").InSchema("infra").Row(new
+            {
+                EnumValue = 40,
+                EnumName = "Country",
+                InsertUserId = 1,
+                InsertDate = new DateTime(2014, 1, 1),
+                TenantId = 1, IsActive = 1
+            });
+
+            Insert.IntoTable("SupportType").InSchema("infra").Row(new
+            {
+                EnumValue = 41,
+                EnumName = "MemorizedDocument",
+                InsertUserId = 1,
+                InsertDate = new DateTime(2014, 1, 1),
+                TenantId = 1, IsActive = 1
+            });
+
+            Insert.IntoTable("SupportType").InSchema("infra").Row(new
+            {
+                EnumValue = 42,
+                EnumName = "MemorizedDocumentReminder",
+                InsertUserId = 1,
+                InsertDate = new DateTime(2014, 1, 1),
+                TenantId = 1, IsActive = 1
+            });
+
+            Insert.IntoTable("SupportType").InSchema("infra").Row(new
+            {
+                EnumValue = 43,
+                EnumName = "IntrastatCommodityCode",
+                InsertUserId = 1,
+                InsertDate = new DateTime(2014, 1, 1),
+                TenantId = 1, IsActive = 1
+            });
+
+            Insert.IntoTable("SupportType").InSchema("infra").Row(new
+            {
+                EnumValue = 44,
+                EnumName = "IntrastatTransactionCode",
+                InsertUserId = 1,
+                InsertDate = new DateTime(2014, 1, 1),
+                TenantId = 1, IsActive = 1
+            });
+
+            Insert.IntoTable("SupportType").InSchema("infra").Row(new
+            {
+                EnumValue = 45,
+                EnumName = "ExtendedReminder",
+                InsertUserId = 1,
+                InsertDate = new DateTime(2014, 1, 1),
+                TenantId = 1, IsActive = 1
+            });
+
+            Insert.IntoTable("SupportType").InSchema("infra").Row(new
+            {
+                EnumValue = 50,
+                EnumName = "NameSuffix",
+                InsertUserId = 1,
+                InsertDate = new DateTime(2014, 1, 1),
+                TenantId = 1,
+                IsActive = 1
+            });
+
+            Insert.IntoTable("SupportType").InSchema("infra").Row(new
+            {
+                EnumValue = 51,
+                EnumName = "NamePrefix",
+                InsertUserId = 1,
+                InsertDate = new DateTime(2014, 1, 1),
+                TenantId = 1,
+                IsActive = 1
+            });
+
+            Insert.IntoTable("SupportType").InSchema("infra").Row(new
+            {
+                EnumValue = 52,
+                EnumName = "Channel",
+                InsertUserId = 1,
+                InsertDate = new DateTime(2014, 1, 1),
+                TenantId = 1,
+                IsActive = 1
+            });
+
+            Insert.IntoTable("SupportType").InSchema("infra").Row(new
+            {
+                EnumValue = 53,
+                EnumName = "ECommerceProvider",
+                InsertUserId = 1,
+                InsertDate = new DateTime(2014, 1, 1),
+                TenantId = 1,
+                IsActive = 1
+            });
+
+            Insert.IntoTable("SupportType").InSchema("infra").Row(new
+            {
+                EnumValue = 60,
+                EnumName = "Book",
+                InsertUserId = 1,
+                InsertDate = new DateTime(2014, 1, 1),
+                TenantId = 1,
+                IsActive = 1
+            });
+
+            Insert.IntoTable("SupportType").InSchema("infra").Row(new
+            {
+                EnumValue = 63,
+                EnumName = "ChartOfAccount",
+                InsertUserId = 1,
+                InsertDate = new DateTime(2014, 1, 1),
+                TenantId = 1,
+                IsActive = 1
+            });
+
+            Insert.IntoTable("SupportType").InSchema("infra").Row(new
+            {
+                EnumValue = 64,
+                EnumName = "BudgetCode",
+                InsertUserId = 1,
+                InsertDate = new DateTime(2014, 1, 1),
+                TenantId = 1,
+                IsActive = 1
+            });
+
+
+
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 0,
                 DisplayName = "InvalidSupportingTableType",
@@ -519,7 +531,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 1,
                 DisplayName = "CustomerGroup",
@@ -530,7 +542,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 2,
                 DisplayName = "VendorGroup",
@@ -541,7 +553,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 3,
                 DisplayName = "CreditRating",
@@ -552,7 +564,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 4,
                 DisplayName = "ItemGroup",
@@ -563,7 +575,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 5,
                 DisplayName = "UnitOfMeasure",
@@ -574,7 +586,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 6,
                 DisplayName = "ShippingTerm",
@@ -585,7 +597,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 7,
                 DisplayName = "ShippingMethod",
@@ -596,7 +608,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 9,
                 DisplayName = "PaymentTerm",
@@ -607,7 +619,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 10,
                 DisplayName = "PriceLevel",
@@ -618,7 +630,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 11,
                 DisplayName = "JobGroup",
@@ -629,7 +641,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 12,
                 DisplayName = "Class",
@@ -640,7 +652,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 13,
                 DisplayName = "Documents",
@@ -651,7 +663,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 15,
                 DisplayName = "SalesTaxGroup",
@@ -662,7 +674,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 16,
                 DisplayName = "PurchaseTaxGroup",
@@ -673,7 +685,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 17,
                 DisplayName = "ItemTaxGroup",
@@ -684,7 +696,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 18,
                 DisplayName = "TaxCode",
@@ -695,7 +707,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 19,
                 DisplayName = "CreditCardType",
@@ -706,7 +718,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 20,
                 DisplayName = "PayType",
@@ -717,7 +729,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 21,
                 DisplayName = "Reminders",
@@ -728,7 +740,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 24,
                 DisplayName = "CommonComments",
@@ -739,7 +751,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 25,
                 DisplayName = "Currency",
@@ -750,7 +762,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 26,
                 DisplayName = "Category1099",
@@ -761,7 +773,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 27,
                 DisplayName = "KeyStore",
@@ -772,7 +784,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 28,
                 DisplayName = "UserCredentialStore",
@@ -783,7 +795,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 29,
                 DisplayName = "Bank",
@@ -794,7 +806,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 30,
                 DisplayName = "OfxSession",
@@ -805,7 +817,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 31,
                 DisplayName = "OnlineSessionCode",
@@ -816,7 +828,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 32,
                 DisplayName = "OnlineAccountServiceStatus",
@@ -827,7 +839,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 33,
                 DisplayName = "ResultObject",
@@ -838,7 +850,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 35,
                 DisplayName = "DriverRegistration",
@@ -849,7 +861,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 36,
                 DisplayName = "PaymentMethod",
@@ -860,7 +872,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 37,
                 DisplayName = "FiscalYear",
@@ -871,7 +883,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 38,
                 DisplayName = "BankingMethod",
@@ -882,7 +894,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 39,
                 DisplayName = "PayrollGenerationNumber",
@@ -893,7 +905,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 40,
                 DisplayName = "Country",
@@ -904,7 +916,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 41,
                 DisplayName = "MemorizedDocument",
@@ -915,7 +927,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 42,
                 DisplayName = "MemorizedDocumentReminder",
@@ -926,7 +938,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 43,
                 DisplayName = "IntrastatCommodityCode",
@@ -937,7 +949,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 44,
                 DisplayName = "IntrastatTransactionCode",
@@ -948,7 +960,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 45,
                 DisplayName = "ExtendedReminder",
@@ -959,7 +971,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 50,
                 DisplayName = "NameSuffix",
@@ -970,7 +982,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 51,
                 DisplayName = "NamePrefix",
@@ -981,7 +993,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 52,
                 DisplayName = "Channel",
@@ -992,7 +1004,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 53,
                 DisplayName = "ECommerceProvider",
@@ -1003,9 +1015,9 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
-                EnumValue = 62,
+                EnumValue = 60,
                 DisplayName = "Book",
                 LanguageId = 1,
                 InsertUserId = 1,
@@ -1014,7 +1026,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 63,
                 DisplayName = "ChartOfAccount",
@@ -1025,7 +1037,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 64,
                 DisplayName = "BudgetCode",
@@ -1037,7 +1049,7 @@
             });
 
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 0,
                 DisplayName = "Невалиден информационен тип",
@@ -1048,7 +1060,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 1,
                 DisplayName = "Група купувачи",
@@ -1059,7 +1071,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 2,
                 DisplayName = "Група доставчици",
@@ -1070,7 +1082,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 3,
                 DisplayName = "Кредитен рейтинг",
@@ -1081,7 +1093,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 4,
                 DisplayName = "Групи стоки",
@@ -1092,7 +1104,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 5,
                 DisplayName = "Мерни единици",
@@ -1103,7 +1115,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 6,
                 DisplayName = "Срокове за доставка",
@@ -1114,7 +1126,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 7,
                 DisplayName = "Метод на доставка",
@@ -1125,7 +1137,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 9,
                 DisplayName = "Срок за плащане",
@@ -1136,7 +1148,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 10,
                 DisplayName = "Ценово ниво",
@@ -1147,7 +1159,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 11,
                 DisplayName = "JobGroup",
@@ -1158,7 +1170,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 12,
                 DisplayName = "Class",
@@ -1169,7 +1181,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 13,
                 DisplayName = "Документи",
@@ -1180,7 +1192,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 15,
                 DisplayName = "Данъчна група продажби",
@@ -1191,7 +1203,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 16,
                 DisplayName = "Данъчна група покупки",
@@ -1202,7 +1214,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 17,
                 DisplayName = "Данъчна група стоки",
@@ -1213,7 +1225,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 18,
                 DisplayName = "Данъчен код",
@@ -1224,7 +1236,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 19,
                 DisplayName = "CreditCardType",
@@ -1235,7 +1247,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 20,
                 DisplayName = "Тип на плащане",
@@ -1246,7 +1258,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 21,
                 DisplayName = "Reminders",
@@ -1257,7 +1269,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 24,
                 DisplayName = "CommonComments",
@@ -1268,7 +1280,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 25,
                 DisplayName = "Валута",
@@ -1279,7 +1291,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 26,
                 DisplayName = "Category1099",
@@ -1290,7 +1302,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 27,
                 DisplayName = "KeyStore",
@@ -1301,7 +1313,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 28,
                 DisplayName = "UserCredentialStore",
@@ -1312,7 +1324,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 29,
                 DisplayName = "Bank",
@@ -1323,7 +1335,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 30,
                 DisplayName = "OfxSession",
@@ -1334,7 +1346,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 31,
                 DisplayName = "OnlineSessionCode",
@@ -1345,7 +1357,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 32,
                 DisplayName = "OnlineAccountServiceStatus",
@@ -1356,7 +1368,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 33,
                 DisplayName = "ResultObject",
@@ -1367,7 +1379,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 35,
                 DisplayName = "DriverRegistration",
@@ -1378,7 +1390,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 36,
                 DisplayName = "Метод на плащане",
@@ -1389,7 +1401,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 37,
                 DisplayName = "FiscalYear",
@@ -1400,7 +1412,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 38,
                 DisplayName = "BankingMethod",
@@ -1411,7 +1423,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 39,
                 DisplayName = "PayrollGenerationNumber",
@@ -1422,7 +1434,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 40,
                 DisplayName = "Държави/Региони",
@@ -1433,7 +1445,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 41,
                 DisplayName = "MemorizedDocument",
@@ -1444,7 +1456,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 42,
                 DisplayName = "MemorizedDocumentReminder",
@@ -1455,7 +1467,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 43,
                 DisplayName = "IntrastatCommodityCode",
@@ -1466,7 +1478,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 44,
                 DisplayName = "IntrastatTransactionCode",
@@ -1477,7 +1489,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 45,
                 DisplayName = "ExtendedReminder",
@@ -1488,7 +1500,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 50,
                 DisplayName = "Наставка на името",
@@ -1499,7 +1511,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 51,
                 DisplayName = "Титла",
@@ -1510,7 +1522,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 52,
                 DisplayName = "Channel",
@@ -1521,7 +1533,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 53,
                 DisplayName = "ECommerceProvider",
@@ -1532,9 +1544,9 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
-                EnumValue = 62,
+                EnumValue = 60,
                 DisplayName = "Папка",
                 LanguageId = 12,
                 InsertUserId = 1,
@@ -1543,7 +1555,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 63,
                 DisplayName = "Сметкоплан",
@@ -1554,7 +1566,7 @@
                 IsActive = 1
             });
 
-            Insert.IntoTable("SupportTypeString").Row(new
+            Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
                 EnumValue = 64,
                 DisplayName = "Бюджет тип",
@@ -1564,10 +1576,6 @@
                 TenantId = 1,
                 IsActive = 1
             });
-
-
-
-
         }
     }
 }

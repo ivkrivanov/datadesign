@@ -15,14 +15,14 @@ namespace Store.Infra.Entities
     [ModifyPermission(PermissionKeys.Tenants)]
     public sealed class SupportTypeStringRow : LoggingRow, IIdRow, INameRow, IMultiTenantRow, IIsActiveRow, ILocalizationRow
     {
-        [DisplayName("Enum Locale Id"), Column("EnumLocaleID"), Identity]
+        [DisplayName("Enum Id"), Column("EnumLocaleID"), Identity, LookupInclude]
         public Int32? EnumLocaleId
         {
             get { return Fields.EnumLocaleId[this]; }
             set { Fields.EnumLocaleId[this] = value; }
         }
 
-        [DisplayName("Enum Value")]
+        [DisplayName("Enum Value"), Size(40), NotNull, QuickSearch, LookupInclude]
         public Int32? EnumValue
         {
             get { return Fields.EnumValue[this]; }
@@ -36,13 +36,25 @@ namespace Store.Infra.Entities
             set { Fields.DisplayName[this] = value; }
         }
 
-        [DisplayName("Language Id")]
+        [DisplayName("Language Id"), ForeignKey("Language", "LanguageId"), InnerJoin("lng")]
+        //[LookupEditor(typeof(SupportTypeRow), InplaceAdd = true)]
         public Int32? LanguageId
         {
             get { return Fields.LanguageId[this]; }
             set { Fields.LanguageId[this] = value; }
         }
 
+
+
+
+
+
+
+
+
+
+
+#region Special area
         [NotNull, Insertable(false), Updatable(true)]
         public Int16? IsActive
         {
@@ -75,7 +87,7 @@ namespace Store.Infra.Entities
         {
             get { return Fields.IsActive; }
         }
-
+#endregion Special area
         public Field CultureIdField
         {
             get { return Fields.LanguageId; }
@@ -97,6 +109,9 @@ namespace Store.Infra.Entities
 
             public Int32Field TenantId;
             public Int16Field IsActive;
+
+            //public Int32Field SupportTypeEnumValue;
+            //public StringField SupportTypeEnumName;
 
             public RowFields()
                 : base()
