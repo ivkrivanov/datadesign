@@ -12,8 +12,9 @@ namespace Store.Infra.Entities
     using System.IO;
 
     [ConnectionKey("Store"), TableName("[infra].[SupportTypeString]"), DisplayName("Support Type String"), InstanceName("Support Type String"), TwoLevelCached]
-    [ReadPermission(PermissionKeys.Tenants)]
-    [ModifyPermission(PermissionKeys.Tenants)]
+    [ReadPermission((PermissionKeys.Tenants), (InfraPermissionKeys.PermissionKeys.General))]
+    [ModifyPermission(PermissionKeys.Tenants, InfraPermissionKeys.PermissionKeys.General)]
+    [LookupScript("Infra.SupportTypeString")]
     public sealed class SupportTypeStringRow : LoggingRow, IIdRow, INameRow, IMultiTenantRow, IIsActiveRow
     {
         [DisplayName("Enum Locale Id"), Identity]
@@ -23,7 +24,8 @@ namespace Store.Infra.Entities
             set { Fields.EnumLocaleId[this] = value; }
         }
 
-        [DisplayName("Enum Value"), ForeignKey("[infra].[SupportType]", "EnumValue"), LeftJoin("jEnumValue"), TextualField("EnumValueEnumName")]
+        [DisplayName("Enum Value"), ForeignKey("[infra].[SupportType]", "EnumValue"), LeftJoin("jEnumValue"), TextualField("EnumValueEnumName"), LookupInclude]
+        [LookupEditor(typeof(SupportTypeRow), InplaceAdd = true)]
         public Int32? EnumValue
         {
             get { return Fields.EnumValue[this]; }
@@ -51,47 +53,47 @@ namespace Store.Infra.Entities
             set { Fields.EnumValueEnumName[this] = value; }
         }
 
-        [DisplayName("Enum Value Insert User Id"), Expression("jEnumValue.[InsertUserId]")]
-        public Int32? EnumValueInsertUserId
-        {
-            get { return Fields.EnumValueInsertUserId[this]; }
-            set { Fields.EnumValueInsertUserId[this] = value; }
-        }
+        //[DisplayName("Enum Value Insert User Id"), Expression("jEnumValue.[InsertUserId]")]
+        //public Int32? EnumValueInsertUserId
+        //{
+        //    get { return Fields.EnumValueInsertUserId[this]; }
+        //    set { Fields.EnumValueInsertUserId[this] = value; }
+        //}
 
-        [DisplayName("Enum Value Insert Date"), Expression("jEnumValue.[InsertDate]")]
-        public DateTime? EnumValueInsertDate
-        {
-            get { return Fields.EnumValueInsertDate[this]; }
-            set { Fields.EnumValueInsertDate[this] = value; }
-        }
+        //[DisplayName("Enum Value Insert Date"), Expression("jEnumValue.[InsertDate]")]
+        //public DateTime? EnumValueInsertDate
+        //{
+        //    get { return Fields.EnumValueInsertDate[this]; }
+        //    set { Fields.EnumValueInsertDate[this] = value; }
+        //}
 
-        [DisplayName("Enum Value Update User Id"), Expression("jEnumValue.[UpdateUserId]")]
-        public Int32? EnumValueUpdateUserId
-        {
-            get { return Fields.EnumValueUpdateUserId[this]; }
-            set { Fields.EnumValueUpdateUserId[this] = value; }
-        }
+        //[DisplayName("Enum Value Update User Id"), Expression("jEnumValue.[UpdateUserId]")]
+        //public Int32? EnumValueUpdateUserId
+        //{
+        //    get { return Fields.EnumValueUpdateUserId[this]; }
+        //    set { Fields.EnumValueUpdateUserId[this] = value; }
+        //}
 
-        [DisplayName("Enum Value Update Date"), Expression("jEnumValue.[UpdateDate]")]
-        public DateTime? EnumValueUpdateDate
-        {
-            get { return Fields.EnumValueUpdateDate[this]; }
-            set { Fields.EnumValueUpdateDate[this] = value; }
-        }
+        //[DisplayName("Enum Value Update Date"), Expression("jEnumValue.[UpdateDate]")]
+        //public DateTime? EnumValueUpdateDate
+        //{
+        //    get { return Fields.EnumValueUpdateDate[this]; }
+        //    set { Fields.EnumValueUpdateDate[this] = value; }
+        //}
 
-        [DisplayName("Enum Value Tenant Id"), Expression("jEnumValue.[TenantId]")]
-        public Int32? EnumValueTenantId
-        {
-            get { return Fields.EnumValueTenantId[this]; }
-            set { Fields.EnumValueTenantId[this] = value; }
-        }
+        //[DisplayName("Enum Value Tenant Id"), Expression("jEnumValue.[TenantId]")]
+        //public Int32? EnumValueTenantId
+        //{
+        //    get { return Fields.EnumValueTenantId[this]; }
+        //    set { Fields.EnumValueTenantId[this] = value; }
+        //}
 
-        [DisplayName("Enum Value Is Active"), Expression("jEnumValue.[IsActive]")]
-        public Int16? EnumValueIsActive
-        {
-            get { return Fields.EnumValueIsActive[this]; }
-            set { Fields.EnumValueIsActive[this] = value; }
-        }
+        //[DisplayName("Enum Value Is Active"), Expression("jEnumValue.[IsActive]")]
+        //public Int16? EnumValueIsActive
+        //{
+        //    get { return Fields.EnumValueIsActive[this]; }
+        //    set { Fields.EnumValueIsActive[this] = value; }
+        //}
 
         #region Special fields
         [NotNull, Insertable(false), Updatable(true)]
@@ -147,12 +149,12 @@ namespace Store.Infra.Entities
             public Int16Field IsActive;
 
             public StringField EnumValueEnumName;
-            public Int32Field EnumValueInsertUserId;
-            public DateTimeField EnumValueInsertDate;
-            public Int32Field EnumValueUpdateUserId;
-            public DateTimeField EnumValueUpdateDate;
-            public Int32Field EnumValueTenantId;
-            public Int16Field EnumValueIsActive;
+            //public Int32Field EnumValueInsertUserId;
+            //public DateTimeField EnumValueInsertDate;
+            //public Int32Field EnumValueUpdateUserId;
+            //public DateTimeField EnumValueUpdateDate;
+            //public Int32Field EnumValueTenantId;
+            //public Int16Field EnumValueIsActive;
 
             public RowFields()
                 : base()

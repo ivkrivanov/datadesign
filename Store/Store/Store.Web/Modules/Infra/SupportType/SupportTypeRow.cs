@@ -1,6 +1,8 @@
 ﻿
 namespace Store.Infra.Entities
 {
+    using Administration;
+    using Administration.Entities;
     using Serenity;
     using Serenity.ComponentModel;
     using Serenity.Data;
@@ -10,9 +12,10 @@ namespace Store.Infra.Entities
     using System.IO;
 
     [ConnectionKey("Store"), TableName("[infra].[SupportType]"), DisplayName("Support Type"), InstanceName("Support Type"), TwoLevelCached]
-    [ReadPermission("Administration:General")]
-    [ModifyPermission("Administration:General")]
-    public sealed class SupportTypeRow : Row, IIdRow, INameRow
+    [ReadPermission((PermissionKeys.Tenants), (InfraPermissionKeys.PermissionKeys.General))]
+    [ModifyPermission(PermissionKeys.Tenants, InfraPermissionKeys.PermissionKeys.General)]
+    [LookupScript("Infra.SupportType")]
+    public sealed class SupportTypeRow : LoggingRow, IIdRow, INameRow, IMultiTenantRow, IIsActiveRow
     {
         [DisplayName("Enum Value"), PrimaryKey]
         public Int32? EnumValue
@@ -28,48 +31,25 @@ namespace Store.Infra.Entities
             set { Fields.EnumName[this] = value; }
         }
 
-        [DisplayName("Insert User Id"), NotNull]
-        public Int32? InsertUserId
-        {
-            get { return Fields.InsertUserId[this]; }
-            set { Fields.InsertUserId[this] = value; }
-        }
-
-        [DisplayName("Insert Date"), NotNull]
-        public DateTime? InsertDate
-        {
-            get { return Fields.InsertDate[this]; }
-            set { Fields.InsertDate[this] = value; }
-        }
-
-        [DisplayName("Update User Id")]
-        public Int32? UpdateUserId
-        {
-            get { return Fields.UpdateUserId[this]; }
-            set { Fields.UpdateUserId[this] = value; }
-        }
-
-        [DisplayName("Update Date")]
-        public DateTime? UpdateDate
-        {
-            get { return Fields.UpdateDate[this]; }
-            set { Fields.UpdateDate[this] = value; }
-        }
-
-        [DisplayName("Tenant Id"), NotNull]
-        public Int32? TenantId
-        {
-            get { return Fields.TenantId[this]; }
-            set { Fields.TenantId[this] = value; }
-        }
-
-        [DisplayName("Is Active"), NotNull]
+        #region Special fields
+        [NotNull, Insertable(false), Updatable(true)]
         public Int16? IsActive
         {
             get { return Fields.IsActive[this]; }
             set { Fields.IsActive[this] = value; }
         }
 
+        [Insertable(false), Updatable(false)]
+        public Int32? TenantId
+        {
+            get { return Fields.TenantId[this]; }
+            set { Fields.TenantId[this] = value; }
+        }
+
+        public Int32Field TenantIdField
+        {
+            get { return Fields.TenantId; }
+        }
         IIdField IIdRow.IdField
         {
             get { return Fields.EnumValue; }
@@ -80,6 +60,13 @@ namespace Store.Infra.Entities
             get { return Fields.EnumName; }
         }
 
+        Int16Field IIsActiveRow.IsActiveField
+        {
+            get { return Fields.IsActive; }
+        }
+
+        #endregion Special Fields
+
         public static readonly RowFields Fields = new RowFields().Init();
 
         public SupportTypeRow()
@@ -87,14 +74,11 @@ namespace Store.Infra.Entities
         {
         }
 
-        public class RowFields : RowFieldsBase
+        public class RowFields : LoggingRowFields
         {
             public Int32Field EnumValue;
             public StringField EnumName;
-            public Int32Field InsertUserId;
-            public DateTimeField InsertDate;
-            public Int32Field UpdateUserId;
-            public DateTimeField UpdateDate;
+
             public Int32Field TenantId;
             public Int16Field IsActive;
 
