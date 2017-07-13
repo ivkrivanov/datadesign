@@ -1,5 +1,4 @@
-﻿
-namespace Store.Infra {
+﻿namespace Store.Infra {
     export interface SupportRow {
         SupportId?: number;
         SupportGuid?: string;
@@ -30,18 +29,18 @@ namespace Store.Infra {
         export const localTextPrefix = 'Infra.Support';
 
         export namespace Fields {
-            export declare const SupportId;
-            export declare const SupportGuid;
-            export declare const SupportTypeId;
-            export declare const SupportCode;
-            export declare const SupportName;
-            export declare const SupportDescription;
-            export declare const InsertUserId;
-            export declare const InsertDate;
-            export declare const UpdateUserId;
-            export declare const UpdateDate;
-            export declare const TenantId;
-            export declare const IsActive;
+            export declare const SupportId: string;
+            export declare const SupportGuid: string;
+            export declare const SupportTypeId: string;
+            export declare const SupportCode: string;
+            export declare const SupportName: string;
+            export declare const SupportDescription: string;
+            export declare const InsertUserId: string;
+            export declare const InsertDate: string;
+            export declare const UpdateUserId: string;
+            export declare const UpdateDate: string;
+            export declare const TenantId: string;
+            export declare const IsActive: string;
             export declare const SupportTypeEnumValue: string;
             export declare const SupportTypeDisplayName: string;
             export declare const SupportTypeLanguageId: string;

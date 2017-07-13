@@ -9,7 +9,7 @@ namespace Store.Infra.Entities
     using System.ComponentModel;
     using System.IO;
 
-    [ConnectionKey("Store"), TableName("[infra].[Support]"), DisplayName("Support"), InstanceName("Support"), TwoLevelCached]
+    [ConnectionKey("Default"), TableName("[infra].[Support]"), DisplayName("Support"), InstanceName("Support"), TwoLevelCached]
     [ReadPermission("Administration:General")]
     [ModifyPermission("Administration:General")]
     public sealed class SupportRow : Row, IIdRow, INameRow

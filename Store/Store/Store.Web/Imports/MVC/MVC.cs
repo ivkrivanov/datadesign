@@ -296,6 +296,25 @@ namespace MVC
             public const string ValidationError = "~/Views/Errors/ValidationError.cshtml";
         }
 
+        public static class Infra
+        {
+            public static class Support
+            {
+                public const string SupportIndex = "~/Modules/Infra/Support/SupportIndex.cshtml";
+            }
+
+            public static class SupportType
+            {
+                public const string SupportTypeIndex = "~/Modules/Infra/SupportType/SupportTypeIndex.cshtml";
+            }
+
+            public static class SupportTypeString
+            {
+                public const string SupportTypeStringIndex = "~/Modules/Infra/SupportTypeString/SupportTypeStringIndex.cshtml";
+            }
+
+        }
+
         public static class Meeting
         {
             public static class Meeting_

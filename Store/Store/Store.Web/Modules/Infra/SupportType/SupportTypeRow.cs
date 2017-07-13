@@ -11,9 +11,9 @@ namespace Store.Infra.Entities
     using System.ComponentModel;
     using System.IO;
 
-    [ConnectionKey("Store"), TableName("[infra].[SupportType]"), DisplayName("Support Type"), InstanceName("Support Type"), TwoLevelCached]
-    [ReadPermission((PermissionKeys.Tenants), (InfraPermissionKeys.PermissionKeys.General))]
-    [ModifyPermission(PermissionKeys.Tenants, InfraPermissionKeys.PermissionKeys.General)]
+    [ConnectionKey("Default"), TableName("[infra].[SupportType]"), DisplayName("Support Type"), InstanceName("Support Type"), TwoLevelCached]
+    [ReadPermission(PermissionKeys.Tenants, InfraPermissionKeys.General)]
+    [ModifyPermission(PermissionKeys.Tenants, InfraPermissionKeys.General)]
     [LookupScript("Infra.SupportType")]
     public sealed class SupportTypeRow : LoggingRow, IIdRow, INameRow, IMultiTenantRow, IIsActiveRow
     {

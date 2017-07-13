@@ -255,7 +255,7 @@ foreach ($projectFile in $projectFiles) {
 				}
 				else {
 					Write-Host "Building $projectFileAbsPath"
-					$collectionofArgs = @($projectFileAbsPath, "/target:Clean", "/target:Build", "/p:Configuration=Debug", "/property:outdir=$binaryDirectory", "/fl1", "/fl2", "/flp1:Verbosity=normal;LogFile=$logfilepath;Append=true", "/flp2:Verbosity=detailed;LogFile=$errorlogfilepath;Append=true;errorsonly")
+					$collectionofArgs = @($projectFileAbsPath, "/target:Rebuild", "/p:Configuration=Release", "/property:outdir=$binaryDirectory", "/fl1", "/fl2", "/flp1:Verbosity=normal;LogFile=$logfilepath;Append=true", "/flp2:Verbosity=detailed;LogFile=$errorlogfilepath;Append=true;errorsonly")
 					& $msbuild $collectionofArgs
 				}
 

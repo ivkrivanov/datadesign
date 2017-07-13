@@ -11,9 +11,9 @@ namespace Store.Infra.Entities
     using System.ComponentModel;
     using System.IO;
 
-    [ConnectionKey("Store"), TableName("[infra].[SupportTypeString]"), DisplayName("Support Type String"), InstanceName("Support Type String"), TwoLevelCached]
-    [ReadPermission((PermissionKeys.Tenants), (InfraPermissionKeys.PermissionKeys.General))]
-    [ModifyPermission(PermissionKeys.Tenants, InfraPermissionKeys.PermissionKeys.General)]
+    [ConnectionKey("Default"), TableName("[infra].[SupportTypeString]"), DisplayName("Support Type String"), InstanceName("Support Type String"), TwoLevelCached]
+    [ReadPermission(PermissionKeys.Tenants, InfraPermissionKeys.General)]
+    [ModifyPermission(PermissionKeys.Tenants, InfraPermissionKeys.General)]
     [LookupScript("Infra.SupportTypeString")]
     public sealed class SupportTypeStringRow : LoggingRow, IIdRow, INameRow, IMultiTenantRow, IIsActiveRow
     {
@@ -39,11 +39,19 @@ namespace Store.Infra.Entities
             set { Fields.DisplayName[this] = value; }
         }
 
-        [DisplayName("Language Id")]
+        [DisplayName("Language Id"), ForeignKey("Languages", "Id"), LeftJoin("l"), LookupInclude]
+        [LookupEditor(typeof(LanguageRow), InplaceAdd = true)]
         public Int32? LanguageId
         {
             get { return Fields.LanguageId[this]; }
             set { Fields.LanguageId[this] = value; }
+        }
+
+        [Expression("l.[LanguageName]")]
+        public string LanguageName
+        {
+            get { return Fields.LanguageName[this]; }
+            set { Fields.LanguageName[this] = value; }
         }
 
         [DisplayName("Enum Value Enum Name"), Expression("jEnumValue.[EnumName]")]
@@ -144,6 +152,7 @@ namespace Store.Infra.Entities
             public Int32Field EnumValue;
             public StringField DisplayName;
             public Int32Field LanguageId;
+            public StringField LanguageName;
 
             public Int32Field TenantId;
             public Int16Field IsActive;

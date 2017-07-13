@@ -19,6 +19,7 @@ namespace Store.Infra.Columns
         [EditLink]
         public String DisplayName { get; set; }
         public Int32 LanguageId { get; set; }
+        public String LanguageName { get; set; }
         
     }
 }

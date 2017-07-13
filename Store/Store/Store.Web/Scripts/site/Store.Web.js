@@ -768,7 +768,7 @@ var Store;
         }(Serenity.PrefixedContext));
         SupportTypeForm.formKey = 'Infra.SupportType';
         Infra.SupportTypeForm = SupportTypeForm;
-        [['EnumName', function () { return Serenity.StringEditor; }], ['InsertUserId', function () { return Serenity.IntegerEditor; }], ['InsertDate', function () { return Serenity.DateEditor; }], ['UpdateUserId', function () { return Serenity.IntegerEditor; }], ['UpdateDate', function () { return Serenity.DateEditor; }], ['TenantId', function () { return Serenity.IntegerEditor; }], ['IsActive', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(SupportTypeForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
+        [['EnumValue', function () { return Serenity.StringEditor; }], ['EnumName', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(SupportTypeForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Infra = Store.Infra || (Store.Infra = {}));
 })(Store || (Store = {}));
 var Store;
@@ -778,12 +778,18 @@ var Store;
         var SupportTypeRow;
         (function (SupportTypeRow) {
             SupportTypeRow.idProperty = 'EnumValue';
+            SupportTypeRow.isActiveProperty = 'IsActive';
             SupportTypeRow.nameProperty = 'EnumName';
             SupportTypeRow.localTextPrefix = 'Infra.SupportType';
+            SupportTypeRow.lookupKey = 'Infra.SupportType';
+            function getLookup() {
+                return Q.getLookup('Infra.SupportType');
+            }
+            SupportTypeRow.getLookup = getLookup;
             var Fields;
             (function (Fields) {
             })(Fields = SupportTypeRow.Fields || (SupportTypeRow.Fields = {}));
-            ['EnumValue', 'EnumName', 'InsertUserId', 'InsertDate', 'UpdateUserId', 'UpdateDate', 'TenantId', 'IsActive'].forEach(function (x) { return Fields[x] = x; });
+            ['EnumValue', 'EnumName', 'TenantId', 'IsActive', 'InsertUserId', 'InsertDate', 'UpdateUserId', 'UpdateDate'].forEach(function (x) { return Fields[x] = x; });
         })(SupportTypeRow = Infra.SupportTypeRow || (Infra.SupportTypeRow = {}));
     })(Infra = Store.Infra || (Store.Infra = {}));
 })(Store || (Store = {}));
@@ -817,7 +823,7 @@ var Store;
         }(Serenity.PrefixedContext));
         SupportTypeStringForm.formKey = 'Infra.SupportTypeString';
         Infra.SupportTypeStringForm = SupportTypeStringForm;
-        [['EnumLocaleId', function () { return Serenity.IntegerEditor; }], ['EnumValue', function () { return Serenity.IntegerEditor; }], ['DisplayName', function () { return Serenity.StringEditor; }], ['LanguageId', function () { return Serenity.IntegerEditor; }], ['InsertUserId', function () { return Serenity.IntegerEditor; }], ['InsertDate', function () { return Serenity.DateEditor; }], ['UpdateUserId', function () { return Serenity.IntegerEditor; }], ['UpdateDate', function () { return Serenity.DateEditor; }], ['TenantId', function () { return Serenity.IntegerEditor; }], ['IsActive', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(SupportTypeStringForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
+        [['EnumValue', function () { return Serenity.LookupEditor; }], ['DisplayName', function () { return Serenity.StringEditor; }], ['LanguageId', function () { return Serenity.LookupEditor; }]].forEach(function (x) { return Object.defineProperty(SupportTypeStringForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Infra = Store.Infra || (Store.Infra = {}));
 })(Store || (Store = {}));
 var Store;
@@ -827,12 +833,18 @@ var Store;
         var SupportTypeStringRow;
         (function (SupportTypeStringRow) {
             SupportTypeStringRow.idProperty = 'EnumLocaleId';
+            SupportTypeStringRow.isActiveProperty = 'IsActive';
             SupportTypeStringRow.nameProperty = 'DisplayName';
             SupportTypeStringRow.localTextPrefix = 'Infra.SupportTypeString';
+            SupportTypeStringRow.lookupKey = 'Infra.SupportTypeString';
+            function getLookup() {
+                return Q.getLookup('Infra.SupportTypeString');
+            }
+            SupportTypeStringRow.getLookup = getLookup;
             var Fields;
             (function (Fields) {
             })(Fields = SupportTypeStringRow.Fields || (SupportTypeStringRow.Fields = {}));
-            ['EnumLocaleId', 'EnumValue', 'DisplayName', 'LanguageId', 'InsertUserId', 'InsertDate', 'UpdateUserId', 'UpdateDate', 'TenantId', 'IsActive'].forEach(function (x) { return Fields[x] = x; });
+            ['EnumLocaleId', 'EnumValue', 'DisplayName', 'LanguageId', 'LanguageName', 'TenantId', 'IsActive', 'EnumValueEnumName', 'InsertUserId', 'InsertDate', 'UpdateUserId', 'UpdateDate'].forEach(function (x) { return Fields[x] = x; });
         })(SupportTypeStringRow = Infra.SupportTypeStringRow || (Infra.SupportTypeStringRow = {}));
     })(Infra = Store.Infra || (Store.Infra = {}));
 })(Store || (Store = {}));

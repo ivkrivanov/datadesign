@@ -1,14 +1,12 @@
-﻿
-
-namespace Store.Infra {
+﻿namespace Store.Infra {
     export namespace SupportTypeService {
         export const baseUrl = 'Infra/SupportType';
 
-        export declare function Create(request: Serenity.SaveRequest<SupportTypeRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
-        export declare function Update(request: Serenity.SaveRequest<SupportTypeRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
-        export declare function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
-        export declare function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<SupportTypeRow>) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
-        export declare function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<SupportTypeRow>) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        export declare function Create(request: Serenity.SaveRequest<SupportTypeRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        export declare function Update(request: Serenity.SaveRequest<SupportTypeRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        export declare function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        export declare function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<SupportTypeRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        export declare function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<SupportTypeRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
 
         export namespace Methods {
             export declare const Create: string;
@@ -24,3 +22,4 @@ namespace Store.Infra {
         });
     }
 }
+

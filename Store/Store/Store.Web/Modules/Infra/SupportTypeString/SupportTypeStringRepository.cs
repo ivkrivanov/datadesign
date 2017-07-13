@@ -1,6 +1,4 @@
-﻿
-
-namespace Store.Infra.Repositories
+﻿namespace Store.Infra.Repositories
 {
     using Serenity;
     using Serenity.Data;
@@ -41,6 +39,9 @@ namespace Store.Infra.Repositories
         private class MySaveHandler : SaveRequestHandler<MyRow> { }
         private class MyDeleteHandler : DeleteRequestHandler<MyRow> { }
         private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> { }
-        private class MyListHandler : ListRequestHandler<MyRow> { }
+        private class MyListHandler : ListRequestHandler<MyRow>
+        {
+
+        }
     }
 }

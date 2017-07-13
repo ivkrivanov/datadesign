@@ -3,20 +3,15 @@
     using Serenity.Extensibility;
     using System.ComponentModel;
 
+    [NestedPermissionKeys]
+    [DisplayName("Infra")]
     public class InfraPermissionKeys
     {
-        [NestedPermissionKeys]
-        public class PermissionKeys
-        {
-            [Description("[General]")]
-            public const string General = "Infra:General";
+        [Description("[General]")]
+        public const string General = "Infra:General";
 
-            [DisplayName("Infra Support typs")]
-            public class SupportType
-            {
-                public const string Management = "Infra:Support:Management";
-            }
+        [Description("Infra Support typs")]
+        public const string Support = "Infra:Support";
 
-        }
     }
 }
