@@ -10,9 +10,13 @@
            
         public override void Up()
         {
-            Create.Schema("infra");
+            #region Schema
+            //Create.Schema("infra");
+            #endregion
 
+            #region SupportType
             Action<ICreateTableWithColumnSyntax> addSupportTypeCols = expr => expr
+                .WithColumn("EnumValue").AsInt32().PrimaryKey().NotNullable()
                 .WithColumn("EnumName").AsString(256).Nullable()
 
                 .WithColumn("InsertUserId").AsInt32().NotNullable()
@@ -24,21 +28,23 @@
 
             addSupportTypeCols(IfDatabase(Utils.AllExceptOracle)
                 .Create.Table("SupportType").InSchema ("infra")
-                .WithColumn("EnumValue").AsInt32().PrimaryKey().NotNullable());
+                .WithColumn("SupportTypeId").AsInt32().PrimaryKey().Identity().NotNullable());
 
             addSupportTypeCols(IfDatabase("oracle")
                 .Create.Table("SupportType").InSchema("infra")
-                .WithColumn("EnumValue").AsInt32().PrimaryKey().NotNullable());
+                .WithColumn("SupportTypeId").AsInt32().PrimaryKey().Identity().NotNullable());
 
             Utils.AddOracleIdentity(this, "SupportType", "EnumValue");
 
+            #endregion
 
+            #region SupportTypeString
             Action<ICreateTableWithColumnSyntax> addSupportTypeStringCols = expr => expr
                 .WithColumn("EnumValue").AsInt32().Nullable()
-                    .ForeignKey("FK_SupportTypeString_SupportType", "infra", "SupportType", "EnumValue")
+                    //.ForeignKey("FK_SupportTypeString_SupportType", "infra", "SupportType", "SupportTypeId")
                 .WithColumn("DisplayName").AsString(256).Nullable()
                 .WithColumn("LanguageId").AsInt32().Nullable()
-
+                    .ForeignKey("FK_SupportTypeString_Languages", "dbo", "Languages", "Id")
                 .WithColumn("InsertUserId").AsInt32().NotNullable().WithDefaultValue(1)
                 .WithColumn("InsertDate").AsDateTime().NotNullable().WithDefaultValue(DateTime.Now)
                 .WithColumn("UpdateUserId").AsInt32().Nullable()
@@ -52,10 +58,12 @@
 
             addSupportTypeStringCols(IfDatabase("oracle")
                 .Create.Table("SupportTypeString").InSchema("infra")
-                .WithColumn("EnumLocaleId").AsInt32().PrimaryKey().NotNullable());
+                .WithColumn("EnumLocaleId").AsInt32().Identity().PrimaryKey().NotNullable());
 
             Utils.AddOracleIdentity(this, "SupportTypeString", "EnumLocaleID");
+            #endregion
 
+            #region Support
             Action<ICreateTableWithColumnSyntax> addSupportCols = expr => expr
                 .WithColumn("SupportGuid").AsGuid().WithDefaultValue(Guid.NewGuid()).NotNullable()
                 .WithColumn("SupportTypeID").AsInt32().NotNullable()
@@ -77,8 +85,11 @@
 
             addSupportCols(IfDatabase("oracle")
                 .Create.Table("Support").InSchema("infra")
-                .WithColumn("SupportId").AsInt32().PrimaryKey().NotNullable());
+                .WithColumn("SupportId").AsInt32().Identity().PrimaryKey().NotNullable());
+            #endregion
 
+
+            #region Fill SupportType
             Insert.IntoTable("SupportType").InSchema("infra").Row(new
             {
                 EnumValue = 0,
@@ -518,7 +529,9 @@
                 IsActive = 1
             });
 
+            #endregion
 
+            #region Fill SupportTypeString
 
             Insert.IntoTable("SupportTypeString").InSchema("infra").Row(new
             {
@@ -1576,6 +1589,8 @@
                 TenantId = 1,
                 IsActive = 1
             });
+
+            #endregion
         }
     }
 }
