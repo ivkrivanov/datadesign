@@ -17,15 +17,15 @@ namespace Store.Infra.Columns
         public Int32 SupportId { get; set; }
         public Guid SupportGuid { get; set; }
         public Int32 SupportTypeId { get; set; }
+
+        [Width(150)]
+        [LookupEditor(typeof(Scripts.SupportTypeStringLookup)), QuickFilter]
+        public string DisplayName { get; set; }
+
         [EditLink]
         public String SupportCode { get; set; }
         public String SupportName { get; set; }
         public String SupportDescription { get; set; }
-        public Int32 InsertUserId { get; set; }
-        public DateTime InsertDate { get; set; }
-        public Int32 UpdateUserId { get; set; }
-        public DateTime UpdateDate { get; set; }
-        public Int32 TenantId { get; set; }
-        public Int16 IsActive { get; set; }
+
     }
 }

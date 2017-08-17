@@ -2,6 +2,7 @@
 namespace Store.Infra {
     
     @Serenity.Decorators.registerClass()
+    @Serenity.Decorators.filterable()
     export class SupportTypeStringGrid extends Serenity.EntityGrid<SupportTypeStringRow, any> {
         protected getColumnsKey() { return 'Infra.SupportTypeString'; }
         protected getDialogType() { return SupportTypeStringDialog; }

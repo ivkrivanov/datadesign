@@ -8101,7 +8101,8 @@ var Store;
             return SupportTypeStringGrid;
         }(Serenity.EntityGrid));
         SupportTypeStringGrid = __decorate([
-            Serenity.Decorators.registerClass()
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.filterable()
         ], SupportTypeStringGrid);
         Infra.SupportTypeStringGrid = SupportTypeStringGrid;
     })(Infra = Store.Infra || (Store.Infra = {}));

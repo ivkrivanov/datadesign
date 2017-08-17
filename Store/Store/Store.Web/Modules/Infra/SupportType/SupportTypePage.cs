@@ -1,6 +1,6 @@
 ﻿
 
-[assembly:Serenity.Navigation.NavigationLink(int.MaxValue, "Infra/SupportType", typeof(Store.Infra.Pages.SupportTypeController))]
+//[assembly:Serenity.Navigation.NavigationLink(int.MaxValue, "Infra/SupportType", typeof(Store.Infra.Pages.SupportTypeController))]
 
 namespace Store.Infra.Pages
 {

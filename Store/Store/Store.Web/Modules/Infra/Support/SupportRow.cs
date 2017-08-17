@@ -1,6 +1,8 @@
 ﻿
 namespace Store.Infra.Entities
 {
+    using Administration;
+    using Administration.Entities;
     using Serenity;
     using Serenity.ComponentModel;
     using Serenity.Data;
@@ -10,9 +12,9 @@ namespace Store.Infra.Entities
     using System.IO;
 
     [ConnectionKey("Default"), TableName("[infra].[Support]"), DisplayName("Support"), InstanceName("Support"), TwoLevelCached]
-    [ReadPermission("Administration:General")]
-    [ModifyPermission("Administration:General")]
-    public sealed class SupportRow : Row, IIdRow, INameRow
+    [ReadPermission(PermissionKeys.Tenants, InfraPermissionKeys.General)]
+    [ModifyPermission(PermissionKeys.Tenants, InfraPermissionKeys.General)]
+    public sealed class SupportRow : LoggingRow, IIdRow, INameRow, IMultiTenantRow, IIsActiveRow
     {
         [DisplayName("Support Id"), Identity]
         public Int32? SupportId
@@ -56,47 +58,9 @@ namespace Store.Infra.Entities
             set { Fields.SupportDescription[this] = value; }
         }
 
-        [DisplayName("Insert User Id"), NotNull]
-        public Int32? InsertUserId
-        {
-            get { return Fields.InsertUserId[this]; }
-            set { Fields.InsertUserId[this] = value; }
-        }
 
-        [DisplayName("Insert Date"), NotNull]
-        public DateTime? InsertDate
-        {
-            get { return Fields.InsertDate[this]; }
-            set { Fields.InsertDate[this] = value; }
-        }
 
-        [DisplayName("Update User Id")]
-        public Int32? UpdateUserId
-        {
-            get { return Fields.UpdateUserId[this]; }
-            set { Fields.UpdateUserId[this] = value; }
-        }
 
-        [DisplayName("Update Date")]
-        public DateTime? UpdateDate
-        {
-            get { return Fields.UpdateDate[this]; }
-            set { Fields.UpdateDate[this] = value; }
-        }
-
-        [DisplayName("Tenant Id"), NotNull]
-        public Int32? TenantId
-        {
-            get { return Fields.TenantId[this]; }
-            set { Fields.TenantId[this] = value; }
-        }
-
-        [DisplayName("Is Active"), NotNull]
-        public Int16? IsActive
-        {
-            get { return Fields.IsActive[this]; }
-            set { Fields.IsActive[this] = value; }
-        }
 
         [DisplayName("Support Type Enum Value"), Expression("jSupportType.[EnumValue]")]
         public Int32? SupportTypeEnumValue
@@ -119,46 +83,71 @@ namespace Store.Infra.Entities
             set { Fields.SupportTypeLanguageId[this] = value; }
         }
 
-        [DisplayName("Support Type Insert User Id"), Expression("jSupportType.[InsertUserId]")]
-        public Int32? SupportTypeInsertUserId
+        #region unneeded
+
+        //[DisplayName("Support Type Insert User Id"), Expression("jSupportType.[InsertUserId]")]
+        //public Int32? SupportTypeInsertUserId
+        //{
+        //    get { return Fields.SupportTypeInsertUserId[this]; }
+        //    set { Fields.SupportTypeInsertUserId[this] = value; }
+        //}
+
+        //[DisplayName("Support Type Insert Date"), Expression("jSupportType.[InsertDate]")]
+        //public DateTime? SupportTypeInsertDate
+        //{
+        //    get { return Fields.SupportTypeInsertDate[this]; }
+        //    set { Fields.SupportTypeInsertDate[this] = value; }
+        //}
+
+        //[DisplayName("Support Type Update User Id"), Expression("jSupportType.[UpdateUserId]")]
+        //public Int32? SupportTypeUpdateUserId
+        //{
+        //    get { return Fields.SupportTypeUpdateUserId[this]; }
+        //    set { Fields.SupportTypeUpdateUserId[this] = value; }
+        //}
+
+        //[DisplayName("Support Type Update Date"), Expression("jSupportType.[UpdateDate]")]
+        //public DateTime? SupportTypeUpdateDate
+        //{
+        //    get { return Fields.SupportTypeUpdateDate[this]; }
+        //    set { Fields.SupportTypeUpdateDate[this] = value; }
+        //}
+
+        //[DisplayName("Support Type Tenant Id"), Expression("jSupportType.[TenantId]")]
+        //public Int32? SupportTypeTenantId
+        //{
+        //    get { return Fields.SupportTypeTenantId[this]; }
+        //    set { Fields.SupportTypeTenantId[this] = value; }
+        //}
+
+        //[DisplayName("Support Type Is Active"), Expression("jSupportType.[IsActive]")]
+        //public Int16? SupportTypeIsActive
+        //{
+        //    get { return Fields.SupportTypeIsActive[this]; }
+        //    set { Fields.SupportTypeIsActive[this] = value; }
+        //}
+
+        #endregion unneeded
+
+        #region Special fields
+
+        [NotNull, Insertable(false), Updatable(true)]
+        public Int16? IsActive
         {
-            get { return Fields.SupportTypeInsertUserId[this]; }
-            set { Fields.SupportTypeInsertUserId[this] = value; }
+            get { return Fields.IsActive[this]; }
+            set { Fields.IsActive[this] = value; }
         }
 
-        [DisplayName("Support Type Insert Date"), Expression("jSupportType.[InsertDate]")]
-        public DateTime? SupportTypeInsertDate
+        [Insertable(false), Updatable(false)]
+        public Int32? TenantId
         {
-            get { return Fields.SupportTypeInsertDate[this]; }
-            set { Fields.SupportTypeInsertDate[this] = value; }
+            get { return Fields.TenantId[this]; }
+            set { Fields.TenantId[this] = value; }
         }
 
-        [DisplayName("Support Type Update User Id"), Expression("jSupportType.[UpdateUserId]")]
-        public Int32? SupportTypeUpdateUserId
+        public Int32Field TenantIdField
         {
-            get { return Fields.SupportTypeUpdateUserId[this]; }
-            set { Fields.SupportTypeUpdateUserId[this] = value; }
-        }
-
-        [DisplayName("Support Type Update Date"), Expression("jSupportType.[UpdateDate]")]
-        public DateTime? SupportTypeUpdateDate
-        {
-            get { return Fields.SupportTypeUpdateDate[this]; }
-            set { Fields.SupportTypeUpdateDate[this] = value; }
-        }
-
-        [DisplayName("Support Type Tenant Id"), Expression("jSupportType.[TenantId]")]
-        public Int32? SupportTypeTenantId
-        {
-            get { return Fields.SupportTypeTenantId[this]; }
-            set { Fields.SupportTypeTenantId[this] = value; }
-        }
-
-        [DisplayName("Support Type Is Active"), Expression("jSupportType.[IsActive]")]
-        public Int16? SupportTypeIsActive
-        {
-            get { return Fields.SupportTypeIsActive[this]; }
-            set { Fields.SupportTypeIsActive[this] = value; }
+            get { return Fields.TenantId; }
         }
 
         IIdField IIdRow.IdField
@@ -170,6 +159,12 @@ namespace Store.Infra.Entities
         {
             get { return Fields.SupportCode; }
         }
+        Int16Field IIsActiveRow.IsActiveField
+        {
+            get { return Fields.IsActive; }
+        }
+
+        #endregion Special Fields
 
         public static readonly RowFields Fields = new RowFields().Init();
 
@@ -178,7 +173,7 @@ namespace Store.Infra.Entities
         {
         }
 
-        public class RowFields : RowFieldsBase
+        public class RowFields : LoggingRowFields
         {
             public Int32Field SupportId;
             public GuidField SupportGuid;
@@ -186,22 +181,16 @@ namespace Store.Infra.Entities
             public StringField SupportCode;
             public StringField SupportName;
             public StringField SupportDescription;
-            public Int32Field InsertUserId;
-            public DateTimeField InsertDate;
-            public Int32Field UpdateUserId;
-            public DateTimeField UpdateDate;
-            public Int32Field TenantId;
-            public Int16Field IsActive;
+
+            public readonly Int32Field TenantId;
+            public readonly Int16Field IsActive;
 
             public Int32Field SupportTypeEnumValue;
             public StringField SupportTypeDisplayName;
             public Int32Field SupportTypeLanguageId;
-            public Int32Field SupportTypeInsertUserId;
-            public DateTimeField SupportTypeInsertDate;
-            public Int32Field SupportTypeUpdateUserId;
-            public DateTimeField SupportTypeUpdateDate;
-            public Int32Field SupportTypeTenantId;
-            public Int16Field SupportTypeIsActive;
+
+            //public Int32Field SupportTypeTenantId;
+            //public Int16Field SupportTypeIsActive;
 
             public RowFields()
                 : base()

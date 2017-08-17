@@ -15,15 +15,19 @@ namespace Store.Infra.Scripts
             TextField = "DisplayName";
         }
 
-        //protected override void PrepareQuery(SqlQuery query)
-        //{
-        //    var fld = Entities.SupportTypeStringRow.Fields;
+        protected override void PrepareQuery(SqlQuery query)
+        {
+            var fld = Entities.SupportTypeStringRow.Fields;
 
-        //    query.Select(fld.Locale)
-        //        .Where(
-        //            new Criteria("Locale = '1033'"));
-        //    AddTenantFilter(query);
-        //}
+            query.Distinct(true)
+                .Select(fld.DisplayName)
+                .Where(
+                    new Criteria(fld.DisplayName) != "" &
+                    new Criteria(fld.DisplayName).IsNotNull() &
+                    new Criteria(fld.LanguageId) == 12
+                    ); 
+            AddTenantFilter(query);
+        }
 
         protected override void ApplyOrder(SqlQuery query)
         {

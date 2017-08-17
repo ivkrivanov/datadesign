@@ -2083,7 +2083,6 @@
     <Compile Include="Modules\Infra\SupportType\SupportTypeColumns.cs" />
     <Compile Include="Modules\Infra\SupportType\SupportTypeEndpoint.cs" />
     <Compile Include="Modules\Infra\SupportType\SupportTypeForm.cs" />
-    <Compile Include="Modules\Infra\SupportType\SupportTypeLookup.cs" />
     <Compile Include="Modules\Infra\SupportType\SupportTypePage.cs" />
     <Compile Include="Modules\Infra\SupportType\SupportTypeRepository.cs" />
     <Compile Include="Modules\Infra\SupportType\SupportTypeRow.cs" />
@@ -2093,6 +2092,7 @@
     <Compile Include="Modules\Infra\Support\SupportPage.cs" />
     <Compile Include="Modules\Infra\Support\SupportRepository.cs" />
     <Compile Include="Modules\Infra\Support\SupportRow.cs" />
+    <Compile Include="Modules\Infra\Support\SupportTypeLookup.cs" />
     <Compile Include="Modules\Northwind\Customer\CustomerGrossSalesRow.cs" />
     <Compile Include="Modules\BasicSamples\Grids\VSGalleryQA\VSGalleryQAColumns.cs" />
     <Compile Include="Modules\BasicSamples\Grids\VSGalleryQA\VSGalleryQAParser.cs" />
