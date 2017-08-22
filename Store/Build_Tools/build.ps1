@@ -124,6 +124,14 @@ Function jsMinifiyng {
 
     Write-Host -ForegroundColor green "Minifiying completed"
 }
+
+Function DisplayErrors {
+    $data = Get-Content "$baseDirectory\Build_Artifacts\Logs\Errors.log"
+    write-host $data.count total lines read from file
+    foreach ($line in $data) {
+        write-host $line
+    }
+}
 ##########################################
 ############ end functions ###############
 ##########################################
@@ -170,8 +178,6 @@ if(! (Test-Path ".\Build_Artifacts")) {
     new-item .\Build_Artifacts -ItemType directory
     new-item .\Build_Artifacts\Logs -ItemType directory
 }
-
-
 
 #set up the location for the different targets and tools
 #$binaryDirectory = "$baseDirectory\..\Binaries"
@@ -298,3 +304,5 @@ foreach ($projectFile in $projectFiles) {
 		}
 	}
 }
+
+DisplayErrors
