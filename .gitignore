@@ -44,16 +44,49 @@ local.properties
 # Build results
 
 [Dd]ebug/
+[Dd]ebugPublic/
 [Rr]elease/
+[Rr]eleases/
 x64/
-build/
+x86/
+bld/
 [Bb]in/
 [Oo]bj/
+[Bb]inaries
+#[Ll]og/
+
+# Visual Studio 2015/2017 cache/options directory
+.vs/
+# Uncomment if you have tasks that create the project's static files in wwwroot
+#wwwroot/
+
+# Visual Studio 2017 auto generated files
+Generated\ Files/
 
 # MSTest test Results
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*
 
+# NUNIT
+*.VisualState.xml
+TestResult.xml
+
+# Build Results of an ATL Project
+[Dd]ebugPS/
+[Rr]eleasePS/
+dlldata.c
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+**/Properties/launchSettings.json
+
+# MSTest test Results
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+#Files built by Visual Studio
 *_i.c
 *_p.c
 *.ilk
@@ -165,6 +198,9 @@ UpgradeLog*.htm
 # SQL Server files
 App_Data/*.mdf
 App_Data/*.ldf
+*.mdf
+*.ldf
+*.ndf
 
 #############
 ## Windows detritus
@@ -214,35 +250,14 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
-/Store/Store/Store.Web/Imports/ServerTypings/Default.TenantsService.ts
-/Store/Store/Store.Web/Imports/ServerTypings/Default.TenantsRow.ts
-/Store/Store/Store.Web/Imports/ServerTypings/Default.TenantsForm.ts
-/Store/Store/Store.Web/Imports/ServerTypings/Default.TenantService.ts
-/Store/Store/Store.Web/Imports/ServerTypings/Default.TenantRow.ts
-/Store/Store/Store.Web/Imports/ServerTypings/Default.TenantForm.ts
-/Store/Store/Store.Web/Imports/ServerTypings/Default.TenantColumns.ts
-/Store/Store/Store.Web/Modules/Default/TenantRow.cs
-/Store/Store/Store.Web/Modules/Default/TenantRepository.cs
-/Store/Store/Store.Web/Modules/Default/TenantPage.cs
-/Store/Store/Store.Web/Modules/Default/TenantIndex.cshtml
-/Store/Store/Store.Web/Modules/Default/TenantGrid.ts
-/Store/Store/Store.Web/Modules/Default/TenantForm.cs
-/Store/Store/Store.Web/Modules/Default/TenantEndpoint.cs
-/Store/Store/Store.Web/Modules/Default/TenantDialog.ts
-/Store/Store/Store.Web/Modules/Default/TenantColumns.cs
-/Store/Store/Store.Web/Modules/Default/Tenant/TenantRow.cs
-/Store/Store/Store.Web/Modules/Default/Tenant/TenantRepository.cs
-/Store/Store/Store.Web/Modules/Default/Tenant/TenantPage.cs
-/Store/Store/Store.Web/Modules/Default/Tenant/TenantIndex.cshtml
-/Store/Store/Store.Web/Modules/Default/Tenant/TenantGrid.ts
-/Store/Store/Store.Web/Modules/Default/Tenant/TenantForm.cs
-/Store/Store/Store.Web/Modules/Default/Tenant/TenantEndpoint.cs
-/Store/Store/Store.Web/Modules/Default/Tenant/TenantDialog.ts
-/Store/Store/Store.Web/Modules/Default/Tenant/TenantColumns.cs
-/Store/Store/Store.Web/Scripts/site/Store.Web.d.ts
-/Store/Store/Store.Web/Scripts/site/Store.Web.js.map
-/Store/Serenity.CodeGenerator.config
-/Store/Store/Store.Web/Migrations/DefaultDB/DefaultDB_20170430_134800_MultiTenant.cs
-/Store/Store/Store.Web/Migrations/NorthwindDB/NorthwindDB_20160110_093500_MultiTenant.cs
-/Store/Build_Artifacts/Binaries
-/Store/.vs/Store/v15/Server/sqlite3
+
+#temporarily solution to avoid committing configs to git
+lib/
+packages/
+/logs
+
+Build_Artifacts/Binaries/*.*
+Build_Artifacts/Logs/*.*
+/RGBIZOT/Hisar_VMA/DB/Backup (25236) of HISAR_data.mdb
+/Ledger/Ledger/Ledger.Web/web.config
+/Store/Store/Ledger.Web/web.config
