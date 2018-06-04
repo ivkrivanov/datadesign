@@ -47,7 +47,24 @@ namespace Ledger.HR.Entities
             set { Fields.AddressType[this] = value; }
         }
 
+        [DisplayName("Address Type"), Size(50)]
+        public AddressTypeId? AddressTypeId
+        {
+            get { return (AddressTypeId?)Fields.AddressTypeId[this]; }
+            set { Fields.AddressTypeId[this] = (Int16?)value; }
+        }
+
+        //[DisplayName("Address Type"), Size(50)]
+        //public Int16? AddressTypeId
+        //{
+        //    get { return (Int16?)Fields.AddressTypeId[this]; }
+        //    set { Fields.AddressTypeId[this] = (Int16?)value; }
+        //}
+
+        #endregion EmployeeAddress
+
         #region Special Fields
+
         [Insertable(false), Updatable(false)]
         public Int32? TenantId
         {
@@ -81,11 +98,11 @@ namespace Ledger.HR.Entities
         {
             get { return Fields.IsActive; }
         }
+
         #endregion Special Fields
 
-        #endregion EmployeeAddress
-
         #region Employee
+
         [DisplayName("Employee First Name"), Expression("jEmployee.[FirstName]")]
         public String EmployeeFirstName
         {
@@ -156,9 +173,17 @@ namespace Ledger.HR.Entities
             set { Fields.EmployeeSalary[this] = value; }
         }
 
+        //[Insertable(false), Updatable(false)]
+        //public Int32? TenantId
+        //{
+        //    get { return Fields.TenantId[this]; }
+        //    set { Fields.TenantId[this] = value; }
+        //}
+
         #endregion Employee
 
         #region Address
+
         [DisplayName("Address"), Expression("jAddress.[Address]")]
         public String Address
         {
@@ -214,13 +239,16 @@ namespace Ledger.HR.Entities
 
         public class RowFields : LoggingRowFields
         {
+            //EmployeeAddress
             public Int32Field EmployeeAddressId;
             public Int32Field EmployeeId;
             public Int32Field AddressId;
             public StringField AddressType;
+            public Int16Field AddressTypeId;
             public Int32Field TenantId;
             public Int16Field IsActive;
-
+            
+            //Employee
             public StringField EmployeeFirstName;
             public StringField EmployeeMiddleName;
             public StringField EmployeeSurName;
@@ -232,6 +260,7 @@ namespace Ledger.HR.Entities
             public StringField EmployeePhoto;
             public DoubleField EmployeeSalary;
 
+            //Address
             public StringField Address;
             public StringField AddressZipCode;
             public StringField AddressCity;

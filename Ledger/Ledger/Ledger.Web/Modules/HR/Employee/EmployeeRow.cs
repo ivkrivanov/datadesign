@@ -54,8 +54,8 @@ namespace Ledger.HR.Entities
         [DisplayName("Gender"), NotNull]
         public Gender? Gender
         {
-            get { return (Gender)Fields.Gender[this]; }
-            set { Fields.Gender[this] = (Int16)value; }
+            get { return (Gender?)Fields.Gender[this]; }
+            set { Fields.Gender[this] = (Int16?)value; }
         }
 
         [DisplayName("Egn"), Column("EGN"), Size(255), NotNull]
@@ -97,7 +97,7 @@ namespace Ledger.HR.Entities
 
         #region Address
 
-        [DisplayName("Address List"), MasterDetailRelation(foreignKey: "EmployeeId"), ClientSide]
+        [DisplayName("Address List"), MasterDetailRelation(foreignKey: "EmployeeId"), NotMapped] //ClientSide]
         public List<EmployeeAddressRow> AddressList
         {
             get { return Fields.AddressList[this]; }
@@ -108,7 +108,7 @@ namespace Ledger.HR.Entities
 
         #region Email
 
-        [DisplayName("Email List"), MasterDetailRelation(foreignKey: "EmailId"), ClientSide]
+        [DisplayName("Email List"), MasterDetailRelation(foreignKey: "EmailId"), NotMapped] //ClientSide]
         public List<EmployeeEmailRow> EmailList
         {
             get { return Fields.EmailList[this]; }
@@ -119,7 +119,7 @@ namespace Ledger.HR.Entities
 
         #region Phone
 
-        [DisplayName("Phone List"), MasterDetailRelation(foreignKey: "PhoneId"), ClientSide]
+        [DisplayName("Phone List"), MasterDetailRelation(foreignKey: "PhoneId"), NotMapped] //ClientSide]
         public List<EmployeePhoneRow> PhoneList
         {
             get { return Fields.PhoneList[this]; }
@@ -130,7 +130,7 @@ namespace Ledger.HR.Entities
 
         #region Notes
 
-        [Infra.NotesEditor, ClientSide]
+        [Infra.NotesEditor, NotMapped] //ClientSide]
         public List<NoteRow> NotesList
         {
             get { return Fields.NotesList[this]; }
@@ -195,9 +195,9 @@ namespace Ledger.HR.Entities
             public Int16Field IsActive;
             public Int32Field TenantId;
 
-            public readonly RowListField<EmployeeAddressRow> AddressList;
-            public readonly RowListField<EmployeeEmailRow> EmailList;
-            public readonly RowListField<EmployeePhoneRow> PhoneList;
+            public RowListField<EmployeeAddressRow> AddressList;
+            public RowListField<EmployeeEmailRow> EmailList;
+            public RowListField<EmployeePhoneRow> PhoneList;
 
             public RowListField<NoteRow> NotesList;
 

@@ -9,13 +9,13 @@
     [ConnectionKey("Default"), DisplayName("Notes"), InstanceName("Note"), TwoLevelCached]
     [ReadPermission(Infra.PermissionKeys.General)]
     [ModifyPermission(Infra.PermissionKeys.General)]
-    public sealed class NoteRow : Row, IIdRow, INameRow, IMultiTenantRow, IInsertLogRow //, IIsActiveRow
+    public sealed class NoteRow : Row, IIdRow, INameRow, IInsertLogRow // IMultiTenantRow,, IIsActiveRow
     {
         [DisplayName("Note Id"), Identity]
-        public Int64? NoteId
+        public Int64? NoteID
         {
-            get { return Fields.NoteId[this]; }
-            set { Fields.NoteId[this] = value; }
+            get { return Fields.NoteID[this]; }
+            set { Fields.NoteID[this] = value; }
         }
 
         [DisplayName("Entity Type"), Size(100), NotNull, QuickSearch, Updatable(false)]
@@ -67,21 +67,21 @@
         //    set { Fields.IsActive[this] = value; }
         //}
 
-        [Insertable(false), Updatable(false)]
-        public Int32? TenantId
-        {
-            get { return Fields.TenantId[this]; }
-            set { Fields.TenantId[this] = value; }
-        }
+        //[Insertable(false), Updatable(false)]
+        //public Int32? TenantId
+        //{
+        //    get { return Fields.TenantId[this]; }
+        //    set { Fields.TenantId[this] = value; }
+        //}
 
-        public Int32Field TenantIdField
-        {
-            get { return Fields.TenantId; }
-        }
+        //public Int32Field TenantIdField
+        //{
+        //    get { return Fields.TenantId; }
+        //}
 
         IIdField IIdRow.IdField
         {
-            get { return Fields.NoteId; }
+            get { return Fields.NoteID; }
         }
 
         StringField INameRow.NameField
@@ -119,7 +119,7 @@
 
         public class RowFields : RowFieldsBase
         {
-            public Int64Field NoteId;
+            public Int64Field NoteID;
             public StringField EntityType;
             public Int64Field EntityId;
             public StringField Text;
@@ -129,7 +129,7 @@
             public StringField InsertUserDisplayName;
             
             //public Int16Field IsActive;
-            public readonly Int32Field TenantId;
+            //public readonly Int32Field TenantId;
 
             public RowFields()
                 : base("[ldg].[Notes]")

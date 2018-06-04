@@ -28,5 +28,16 @@ namespace Ledger.HR {
         constructor(container: JQuery) {
             super(container);
         }
+
+        getButtons() {
+            var buttons = super.getButtons();
+
+            buttons.push(Ledger.Common.PdfExportHelper.createToolButton({
+                grid: this,
+                onViewSubmit: () => this.onViewSubmit()
+            }));
+
+            return buttons;
+        }
     }
 }

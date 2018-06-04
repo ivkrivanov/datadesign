@@ -4,6 +4,7 @@
         EmployeeId?: number;
         AddressId?: number;
         AddressType?: string;
+        AddressTypeId?: AddressTypeId;
         TenantId?: number;
         IsActive?: number;
         EmployeeFirstName?: string;
@@ -44,6 +45,7 @@
             export declare const EmployeeId: string;
             export declare const AddressId: string;
             export declare const AddressType: string;
+            export declare const AddressTypeId: string;
             export declare const TenantId: string;
             export declare const IsActive: string;
             export declare const EmployeeFirstName: string;
@@ -68,7 +70,7 @@
             export declare const UpdateDate: string;
         }
 
-        ['EmployeeAddressId', 'EmployeeId', 'AddressId', 'AddressType', 'TenantId', 'IsActive', 'EmployeeFirstName', 'EmployeeMiddleName', 'EmployeeSurName', 'FullName', 'EmployeeGender', 'EmployeeEgn', 'EmployeeHireDate', 'EmployeeLengthOfService', 'EmployeePhoto', 'EmployeeSalary', 'Address', 'AddressZipCode', 'AddressCity', 'AddressState', 'AddressCountry', 'StreetAddress', 'InsertUserId', 'InsertDate', 'UpdateUserId', 'UpdateDate'].forEach(x => (<any>Fields)[x] = x);
+        ['EmployeeAddressId', 'EmployeeId', 'AddressId', 'AddressType', 'AddressTypeId', 'TenantId', 'IsActive', 'EmployeeFirstName', 'EmployeeMiddleName', 'EmployeeSurName', 'FullName', 'EmployeeGender', 'EmployeeEgn', 'EmployeeHireDate', 'EmployeeLengthOfService', 'EmployeePhoto', 'EmployeeSalary', 'Address', 'AddressZipCode', 'AddressCity', 'AddressState', 'AddressCountry', 'StreetAddress', 'InsertUserId', 'InsertDate', 'UpdateUserId', 'UpdateDate'].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

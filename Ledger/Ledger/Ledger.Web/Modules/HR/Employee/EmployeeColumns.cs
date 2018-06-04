@@ -11,12 +11,6 @@ namespace Ledger.HR.Columns
     {
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         public Int32 EmployeeId { get; set; }
-        //[EditLink, DisplayName("First Name"), Width(150)]
-        //public String FirstName { get; set; }
-        //[EditLink, DisplayName("Middle Name"), Width(150)]
-        //public String MiddleName { get; set; }
-        //[EditLink, DisplayName("Last Name"), Width(150)]
-        //public String SurName { get; set; }
         [EditLink, DisplayName("Name"), Width(250)]
         public String FullName { get; set; }
         [Width(150)]
@@ -28,5 +22,7 @@ namespace Ledger.HR.Columns
         [Width(150)]
         public DateTime LengthOfService { get; set; }
         public Double Salary { get; set; }
+
+        //public Int32? TenantId { get; set; }
     }
 }
