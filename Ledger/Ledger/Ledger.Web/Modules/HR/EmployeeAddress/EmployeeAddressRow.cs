@@ -8,15 +8,17 @@ namespace Ledger.HR.Entities
     using Serenity.Data;
     using Serenity.Data.Mapping;
     using System.IO;
+    using Ledger.Infra.Entities;
 
     [ConnectionKey("Default"), DisplayName("Employee Addresses"), InstanceName("EmployeesAddresses"), TwoLevelCached]
     [ReadPermission(HR.PermissionKeys.HR.View)]
     [ModifyPermission(HR.PermissionKeys.HR.Modify)]
+    [LookupScript("HR.EmployeeAddress")]
     public sealed class EmployeeAddressRow : LoggingRow, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
     {
         #region EmployeeAddress
 
-        [DisplayName("Employee Address Id"), Identity]
+        [DisplayName("Employee Address Id"), Identity, LookupInclude]
         public Int32? EmployeeAddressId
         {
             get { return Fields.EmployeeAddressId[this]; }
@@ -31,9 +33,9 @@ namespace Ledger.HR.Entities
             set { Fields.EmployeeId[this] = value; }
         }
 
-        [DisplayName("Address"), NotNull, ForeignKey("[ldg].[Addresses]", "AddressId")]
-        [LeftJoin("jAddress"), LookupInclude, TextualField("StreetAddress")]
-        [LookupEditor("Infra.Addresses", InplaceAdd = true, DialogType = "Infra.Addresses")]
+        [DisplayName("Address"), NotNull, ForeignKey("[ldg].[Addresses]", "AddressId"), LeftJoin("jAddress"), LookupInclude]
+        [TextualField("StreetAddress")]
+        [LookupEditor(typeof(AddressesRow), InplaceAdd = true)] //, DialogType = "Infra.Addresses")]
         public Int32? AddressId
         {
             get { return Fields.AddressId[this]; }
@@ -53,13 +55,6 @@ namespace Ledger.HR.Entities
             get { return (AddressTypeId?)Fields.AddressTypeId[this]; }
             set { Fields.AddressTypeId[this] = (Int16?)value; }
         }
-
-        //[DisplayName("Address Type"), Size(50)]
-        //public Int16? AddressTypeId
-        //{
-        //    get { return (Int16?)Fields.AddressTypeId[this]; }
-        //    set { Fields.AddressTypeId[this] = (Int16?)value; }
-        //}
 
         #endregion EmployeeAddress
 
@@ -124,7 +119,7 @@ namespace Ledger.HR.Entities
             set { Fields.EmployeeSurName[this] = value; }
         }
 
-        [DisplayName("Full Name"), Expression("CONCAT(t0.[FirstName], ' ', t0.[MiddleName], ' ', t0.[SurName])"), QuickSearch]
+        [DisplayName("Full Name"), Expression("CONCAT(jEmployee.[FirstName], ' ', jEmployee.[MiddleName], ' ', jEmployee.[SurName])"), QuickSearch]
         public String FullName
         {
             get { return Fields.FullName[this]; }
@@ -172,13 +167,6 @@ namespace Ledger.HR.Entities
             get { return Fields.EmployeeSalary[this]; }
             set { Fields.EmployeeSalary[this] = value; }
         }
-
-        //[Insertable(false), Updatable(false)]
-        //public Int32? TenantId
-        //{
-        //    get { return Fields.TenantId[this]; }
-        //    set { Fields.TenantId[this] = value; }
-        //}
 
         #endregion Employee
 

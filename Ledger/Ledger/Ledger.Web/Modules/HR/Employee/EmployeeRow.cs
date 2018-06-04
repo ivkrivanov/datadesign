@@ -44,7 +44,7 @@ namespace Ledger.HR.Entities
             set { Fields.SurName[this] = value; }
         }
 
-        [DisplayName("Full Name"), Expression("CONCAT(t0.[FirstName], ' ', t0.[MiddleName], ' ', t0.[SurName])"), QuickSearch]
+        [DisplayName("Full Name"), Expression("CONCAT(T0.[FirstName], ' ', T0.[MiddleName], ' ', T0.[SurName])"), QuickSearch]
         public String FullName
         {
             get { return Fields.FullName[this]; }

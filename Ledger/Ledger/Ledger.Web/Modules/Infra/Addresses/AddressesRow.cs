@@ -12,6 +12,7 @@ namespace Ledger.Infra.Entities
     [ConnectionKey("Default"), DisplayName("Addresses"), InstanceName("Addresses"), TwoLevelCached]
     [ReadPermission(Infra.PermissionKeys.General)]
     [ModifyPermission(Infra.PermissionKeys.General)]
+    [LookupScript("Infra.Addresses")]
     public sealed class AddressesRow : LoggingRow, IIdRow, INameRow, IMultiTenantRow, IIsActiveRow
     {
         [DisplayName("Address Id"), Identity]

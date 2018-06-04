@@ -11,14 +11,19 @@ namespace Ledger.HR.Columns
     {
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         public Int32 EmployeeId { get; set; }
+
         [EditLink, DisplayName("Name"), Width(250)]
         public String FullName { get; set; }
+
         [Width(150)]
         public Int16 Gender { get; set; }
+
         [EditLink, DisplayName("EGN"), Width(100)]
         public String Egn { get; set; }
+
         [Width(150)]
         public DateTime HireDate { get; set; }
+
         [Width(150)]
         public DateTime LengthOfService { get; set; }
         public Double Salary { get; set; }
