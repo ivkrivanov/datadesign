@@ -12,7 +12,7 @@
     [ConnectionKey("Default"), DisplayName("Notes"), InstanceName("Note"), TwoLevelCached]
     [ReadPermission(Infra.PermissionKeys.General)]
     [ModifyPermission(Infra.PermissionKeys.General)]
-    public sealed class NoteRow : LoggingRow, IIdRow, INameRow, IMultiTenantRow, IInsertLogRow //, IIsActiveRow
+    public sealed class NoteRow : LoggingRow, IIdRow, INameRow, IMultiTenantRow, IInsertLogRow, IIsActiveRow
     {
         [DisplayName("Note Id"), Identity]
         public Int64? NoteID
@@ -42,13 +42,6 @@
             set { Fields.Text[this] = value; }
         }
 
-        //[DisplayName("Insert User Id"), NotNull, Insertable(false), Updatable(false)]
-        //public Int32? InsertUserId 
-        //{
-        //    get { return Fields.InsertUserId[this]; }
-        //    set { Fields.InsertUserId[this] = value; }
-        //}
-
         [DisplayName("Insert User"), NotMapped]
         public String InsertUserDisplayName
         {
@@ -56,24 +49,17 @@
             set { Fields.InsertUserDisplayName[this] = value; }
         }
 
-        //[DisplayName("Insert Date"), NotNull, Insertable(false), Updatable(false)]
-        //public DateTime? InsertDate
-        //{
-        //    get { return Fields.InsertDate[this]; }
-        //    set { Fields.InsertDate[this] = value; }
-        //}
+        [Insertable(false), Updatable(false)]
+        public Int32? TenantId
+        {
+            get { return Fields.TenantId[this]; }
+            set { Fields.TenantId[this] = value; }
+        }
 
-        //[Insertable(false), Updatable(false)]
-        //public Int32? TenantId
-        //{
-        //    get { return Fields.TenantId[this]; }
-        //    set { Fields.TenantId[this] = value; }
-        //}
-
-        //public Int32Field TenantIdField
-        //{
-        //    get { return Fields.TenantId; }
-        //}
+        public Int32Field TenantIdField
+        {
+            get { return Fields.TenantId; }
+        }
 
         IIdField IIdRow.IdField
         {
@@ -85,20 +71,9 @@
             get { return Fields.EntityType; }
         }
 
-        public IIdField InsertUserIdField
+        Int16Field IIsActiveRow.IsActiveField
         {
-            get
-            {
-                return Fields.InsertUserId;
-            }
-        }
-
-        public DateTimeField InsertDateField
-        {
-            get
-            {
-                return Fields.InsertDate;
-            }
+            get { return Fields.IsActive; }
         }
 
         public static readonly RowFields Fields = new RowFields().Init();
@@ -115,10 +90,9 @@
             public Int64Field EntityId;
             public StringField Text;
 
-            //public Int32Field InsertUserId;
-            //public DateTimeField InsertDate;
             public StringField InsertUserDisplayName;
-            
+
+            public Int16Field IsActive;
             public readonly Int32Field TenantId;
 
             public RowFields()
