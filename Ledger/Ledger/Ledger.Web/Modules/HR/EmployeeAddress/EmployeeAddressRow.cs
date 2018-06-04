@@ -8,15 +8,17 @@ namespace Ledger.HR.Entities
     using Serenity.Data;
     using Serenity.Data.Mapping;
     using System.IO;
+    using Ledger.Infra.Entities;
 
     [ConnectionKey("Default"), DisplayName("Employee Addresses"), InstanceName("EmployeesAddresses"), TwoLevelCached]
     [ReadPermission(HR.PermissionKeys.HR.View)]
     [ModifyPermission(HR.PermissionKeys.HR.Modify)]
+    [LookupScript("HR.EmployeeAddress")]
     public sealed class EmployeeAddressRow : LoggingRow, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
     {
         #region EmployeeAddress
 
-        [DisplayName("Employee Address Id"), Identity]
+        [DisplayName("Employee Address Id"), Identity, LookupInclude]
         public Int32? EmployeeAddressId
         {
             get { return Fields.EmployeeAddressId[this]; }
@@ -31,9 +33,9 @@ namespace Ledger.HR.Entities
             set { Fields.EmployeeId[this] = value; }
         }
 
-        [DisplayName("Address"), NotNull, ForeignKey("[ldg].[Addresses]", "AddressId")]
-        [LeftJoin("jAddress"), LookupInclude, TextualField("StreetAddress")]
-        [LookupEditor("Infra.Addresses", InplaceAdd = true, DialogType = "Infra.Addresses")]
+        [DisplayName("Address"), NotNull, ForeignKey("[ldg].[Addresses]", "AddressId"), LeftJoin("jAddress"), LookupInclude]
+        [TextualField("StreetAddress")]
+        [LookupEditor(typeof(AddressesRow), InplaceAdd = true)] //, DialogType = "Infra.Addresses")]
         public Int32? AddressId
         {
             get { return Fields.AddressId[this]; }
@@ -47,7 +49,17 @@ namespace Ledger.HR.Entities
             set { Fields.AddressType[this] = value; }
         }
 
+        [DisplayName("Address Type"), Size(50)]
+        public AddressTypeId? AddressTypeId
+        {
+            get { return (AddressTypeId?)Fields.AddressTypeId[this]; }
+            set { Fields.AddressTypeId[this] = (Int16?)value; }
+        }
+
+        #endregion EmployeeAddress
+
         #region Special Fields
+
         [Insertable(false), Updatable(false)]
         public Int32? TenantId
         {
@@ -81,11 +93,11 @@ namespace Ledger.HR.Entities
         {
             get { return Fields.IsActive; }
         }
+
         #endregion Special Fields
 
-        #endregion EmployeeAddress
-
         #region Employee
+
         [DisplayName("Employee First Name"), Expression("jEmployee.[FirstName]")]
         public String EmployeeFirstName
         {
@@ -107,7 +119,7 @@ namespace Ledger.HR.Entities
             set { Fields.EmployeeSurName[this] = value; }
         }
 
-        [DisplayName("Full Name"), Expression("CONCAT(T0.[FirstName], ' ', T0.[MiddleName], ' ', T0.[SurName])"), QuickSearch]
+        [DisplayName("Full Name"), Expression("CONCAT(jEmployee.[FirstName], ' ', jEmployee.[MiddleName], ' ', jEmployee.[SurName])"), QuickSearch]
         public String FullName
         {
             get { return Fields.FullName[this]; }
@@ -159,6 +171,7 @@ namespace Ledger.HR.Entities
         #endregion Employee
 
         #region Address
+
         [DisplayName("Address"), Expression("jAddress.[Address]")]
         public String Address
         {
@@ -214,13 +227,16 @@ namespace Ledger.HR.Entities
 
         public class RowFields : LoggingRowFields
         {
+            //EmployeeAddress
             public Int32Field EmployeeAddressId;
             public Int32Field EmployeeId;
             public Int32Field AddressId;
             public StringField AddressType;
+            public Int16Field AddressTypeId;
             public Int32Field TenantId;
             public Int16Field IsActive;
-
+            
+            //Employee
             public StringField EmployeeFirstName;
             public StringField EmployeeMiddleName;
             public StringField EmployeeSurName;
@@ -232,6 +248,7 @@ namespace Ledger.HR.Entities
             public StringField EmployeePhoto;
             public DoubleField EmployeeSalary;
 
+            //Address
             public StringField Address;
             public StringField AddressZipCode;
             public StringField AddressCity;

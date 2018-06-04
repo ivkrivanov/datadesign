@@ -1,164 +1,69 @@
-﻿declare namespace Ledger.Northwind {
-    class TerritoryDialog extends Serenity.EntityDialog<TerritoryRow, any> {
+﻿declare namespace Ledger.ScriptInitialization {
+}
+declare namespace Ledger.Administration {
+    class LanguageDialog extends Serenity.EntityDialog<LanguageRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getNameProperty(): string;
         protected getService(): string;
-        protected form: TerritoryForm;
-        protected getLanguages(): string[][];
+        protected form: LanguageForm;
     }
 }
-declare namespace Ledger.Northwind {
-    class TerritoryGrid extends Serenity.EntityGrid<TerritoryRow, any> {
+declare namespace Ledger.Administration {
+    class LanguageGrid extends Serenity.EntityGrid<LanguageRow, any> {
         protected getColumnsKey(): string;
-        protected getDialogType(): any;
+        protected getDialogType(): typeof LanguageDialog;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        protected getDefaultSortBy(): string[];
     }
 }
-declare namespace Ledger.Northwind {
-    class SupplierDialog extends Serenity.EntityDialog<SupplierRow, any> {
+declare namespace Ledger.Administration {
+    class RoleDialog extends Serenity.EntityDialog<RoleRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getNameProperty(): string;
         protected getService(): string;
-        protected form: SupplierForm;
-        protected getLanguages(): string[][];
-    }
-}
-declare namespace Ledger.Northwind {
-    class SupplierGrid extends Serenity.EntityGrid<SupplierRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): any;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Ledger.Northwind {
-    class ShipperDialog extends Serenity.EntityDialog<ShipperRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: ShipperForm;
-        protected getLanguages(): string[][];
-    }
-}
-declare namespace Ledger.Northwind {
-    class ShipperFormatter implements Slick.Formatter {
-        format(ctx: Slick.FormatterContext): string;
-    }
-}
-declare namespace Ledger.Northwind {
-    class ShipperGrid extends Serenity.EntityGrid<ShipperRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): any;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Ledger.Northwind {
-    class PhoneEditor extends Serenity.StringEditor {
-        constructor(input: JQuery);
-        protected formatValue(): void;
-        protected getFormattedValue(): string;
-        multiple: boolean;
-        get_value(): string;
-        set_value(value: string): void;
-        static validate(phone: string, isMultiple: boolean): string;
-        static isValidPhone(phone: string): boolean;
-        static formatPhone(phone: any): any;
-        static formatMulti(phone: string, format: (s: string) => string): string;
-        static isValidMulti(phone: string, check: (s: string) => boolean): boolean;
-    }
-}
-declare namespace Ledger.Northwind {
-    class RegionDialog extends Serenity.EntityDialog<RegionRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: RegionForm;
-        protected getLanguages(): string[][];
-    }
-}
-declare namespace Ledger.Northwind {
-    class RegionGrid extends Serenity.EntityGrid<RegionRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): any;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Ledger.Northwind {
-    class ProductDialog extends Serenity.EntityDialog<ProductRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: ProductForm;
-        protected getLanguages(): string[][];
-    }
-}
-declare namespace Ledger.Northwind {
-    class ProductGrid extends Serenity.EntityGrid<ProductRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): any;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        private pendingChanges;
-        constructor(container: JQuery);
-        protected getButtons(): Serenity.ToolButton[];
-        protected onViewProcessData(response: any): Serenity.ListResponse<ProductRow>;
-        /**
-         * It would be nice if we could use autonumeric, Serenity editors etc. here, to control input validation,
-         * but it's not supported by SlickGrid as we are only allowed to return a string, and should attach
-         * no event handlers to rendered cell contents
-         */
-        private numericInputFormatter(ctx);
-        private stringInputFormatter(ctx);
-        /**
-         * Sorry but you cannot use LookupEditor, e.g. Select2 here, only possible is a SELECT element
-         */
-        private selectFormatter(ctx, idField, lookup);
-        private getEffectiveValue(item, field);
-        protected getColumns(): Slick.Column[];
-        private inputsChange(e);
-        private setSaveButtonState();
-        private saveClick();
-    }
-}
-declare namespace Ledger.Common {
-    class GridEditorDialog<TEntity> extends Serenity.EntityDialog<TEntity, any> {
-        protected getIdProperty(): string;
-        onSave: (options: Serenity.ServiceOptions<Serenity.SaveResponse>, callback: (response: Serenity.SaveResponse) => void) => void;
-        onDelete: (options: Serenity.ServiceOptions<Serenity.DeleteResponse>, callback: (response: Serenity.DeleteResponse) => void) => void;
-        destroy(): void;
+        protected form: RoleForm;
+        protected getToolbarButtons(): Serenity.ToolButton[];
         protected updateInterface(): void;
-        protected saveHandler(options: Serenity.ServiceOptions<Serenity.SaveResponse>, callback: (response: Serenity.SaveResponse) => void): void;
-        protected deleteHandler(options: Serenity.ServiceOptions<Serenity.DeleteResponse>, callback: (response: Serenity.DeleteResponse) => void): void;
     }
 }
-declare namespace Ledger.Northwind {
-    class OrderDetailDialog extends Common.GridEditorDialog<OrderDetailRow> {
-        protected getFormKey(): string;
+declare namespace Ledger.Administration {
+    class RoleGrid extends Serenity.EntityGrid<RoleRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof RoleDialog;
+        protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
-        protected form: OrderDetailForm;
-        constructor();
+        protected getService(): string;
+        constructor(container: JQuery);
+        protected getDefaultSortBy(): string[];
+    }
+}
+declare namespace Ledger.Administration {
+    class RolePermissionDialog extends Serenity.TemplatedDialog<RolePermissionDialogOptions> {
+        private permissions;
+        constructor(opt: RolePermissionDialogOptions);
+        protected getDialogOptions(): JQueryUI.DialogOptions;
+        protected getTemplate(): string;
+    }
+    interface RolePermissionDialogOptions {
+        roleID?: number;
+        title?: string;
+    }
+}
+declare namespace Ledger.Administration {
+    class TenantDialog extends Serenity.EntityDialog<TenantRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: TenantForm;
     }
 }
 declare namespace Ledger.Common {
@@ -183,18 +88,174 @@ declare namespace Ledger.Common {
         protected createQuickSearchInput(): void;
     }
 }
-declare namespace Ledger.Northwind {
-    class OrderDetailsEditor extends Common.GridEditorBase<OrderDetailRow> {
+declare namespace Ledger.Administration {
+    class TenantEditor extends Common.GridEditorBase<TenantRow> {
         protected getColumnsKey(): string;
-        protected getDialogType(): typeof OrderDetailDialog;
+        protected getDialogType(): typeof TenantEditorDialog;
         protected getLocalTextPrefix(): string;
         constructor(container: JQuery);
-        validateEntity(row: any, id: any): boolean;
     }
 }
-declare namespace Ledger.Northwind {
-    class FreightFormatter implements Slick.Formatter {
-        format(ctx: Slick.FormatterContext): string;
+declare namespace Ledger.Common {
+    class GridEditorDialog<TEntity> extends Serenity.EntityDialog<TEntity, any> {
+        protected getIdProperty(): string;
+        onSave: (options: Serenity.ServiceOptions<Serenity.SaveResponse>, callback: (response: Serenity.SaveResponse) => void) => void;
+        onDelete: (options: Serenity.ServiceOptions<Serenity.DeleteResponse>, callback: (response: Serenity.DeleteResponse) => void) => void;
+        destroy(): void;
+        protected updateInterface(): void;
+        protected saveHandler(options: Serenity.ServiceOptions<Serenity.SaveResponse>, callback: (response: Serenity.SaveResponse) => void): void;
+        protected deleteHandler(options: Serenity.ServiceOptions<Serenity.DeleteResponse>, callback: (response: Serenity.DeleteResponse) => void): void;
+    }
+}
+declare namespace Ledger.Administration {
+    class TenantEditorDialog extends Common.GridEditorDialog<TenantRow> {
+        protected getFormKey(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected form: TenantForm;
+    }
+}
+declare namespace Ledger.Administration {
+    class TenantGrid extends Serenity.EntityGrid<TenantRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof TenantDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Ledger.Administration {
+    class TranslationGrid extends Serenity.EntityGrid<TranslationItem, any> {
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        private hasChanges;
+        private searchText;
+        private sourceLanguage;
+        private targetLanguage;
+        private targetLanguageKey;
+        constructor(container: JQuery);
+        protected onClick(e: JQueryEventObject, row: number, cell: number): any;
+        protected getColumns(): Slick.Column[];
+        protected createToolbarExtensions(): void;
+        protected saveChanges(language: string): RSVP.Promise<any>;
+        protected onViewSubmit(): boolean;
+        protected getButtons(): Serenity.ToolButton[];
+        protected createQuickSearchInput(): void;
+        protected onViewFilter(item: TranslationItem): boolean;
+        protected usePager(): boolean;
+    }
+}
+declare namespace Ledger.Administration {
+    class UserDialog extends Serenity.EntityDialog<UserRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getIsActiveProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: UserForm;
+        constructor();
+        protected getToolbarButtons(): Serenity.ToolButton[];
+        protected updateInterface(): void;
+        protected afterLoadEntity(): void;
+        protected getPropertyItems(): Serenity.PropertyItem[];
+    }
+}
+declare namespace Ledger.Administration {
+    class UserGrid extends Serenity.EntityGrid<UserRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof UserDialog;
+        protected getIdProperty(): string;
+        protected getIsActiveProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+        protected getDefaultSortBy(): string[];
+    }
+}
+declare namespace Ledger.Administration {
+    class PermissionCheckEditor extends Serenity.DataGrid<PermissionCheckItem, PermissionCheckEditorOptions> {
+        protected getIdProperty(): string;
+        private searchText;
+        private byParentKey;
+        private rolePermissions;
+        constructor(container: JQuery, opt: PermissionCheckEditorOptions);
+        private getItemGrantRevokeClass(item, grant);
+        private getItemEffectiveClass(item);
+        protected getColumns(): Slick.Column[];
+        setItems(items: PermissionCheckItem[]): void;
+        protected onViewSubmit(): boolean;
+        protected onViewFilter(item: PermissionCheckItem): boolean;
+        private matchContains(item);
+        private getDescendants(item, excludeGroups);
+        protected onClick(e: any, row: any, cell: any): void;
+        private getParentKey(key);
+        protected getButtons(): Serenity.ToolButton[];
+        protected createToolbarExtensions(): void;
+        private getSortedGroupAndPermissionKeys(titleByKey);
+        get_value(): UserPermissionRow[];
+        set_value(value: UserPermissionRow[]): void;
+        get_rolePermissions(): string[];
+        set_rolePermissions(value: string[]): void;
+    }
+    interface PermissionCheckEditorOptions {
+        showRevoke?: boolean;
+    }
+    interface PermissionCheckItem {
+        ParentKey?: string;
+        Key?: string;
+        Title?: string;
+        IsGroup?: boolean;
+        GrantRevoke?: boolean;
+    }
+}
+declare namespace Ledger.Administration {
+    class UserPermissionDialog extends Serenity.TemplatedDialog<UserPermissionDialogOptions> {
+        private permissions;
+        constructor(opt: UserPermissionDialogOptions);
+        protected getDialogOptions(): JQueryUI.DialogOptions;
+        protected getTemplate(): string;
+    }
+    interface UserPermissionDialogOptions {
+        userID?: number;
+        username?: string;
+    }
+}
+declare namespace Ledger.Administration {
+    class RoleCheckEditor extends Serenity.CheckTreeEditor<Serenity.CheckTreeItem<any>, any> {
+        private searchText;
+        constructor(div: JQuery);
+        protected createToolbarExtensions(): void;
+        protected getButtons(): any[];
+        protected getTreeItems(): Serenity.CheckTreeItem<any>[];
+        protected onViewFilter(item: any): boolean;
+    }
+}
+declare namespace Ledger.Administration {
+    class UserRoleDialog extends Serenity.TemplatedDialog<UserRoleDialogOptions> {
+        private permissions;
+        constructor(opt: UserRoleDialogOptions);
+        protected getDialogOptions(): JQueryUI.DialogOptions;
+        protected getTemplate(): string;
+    }
+    interface UserRoleDialogOptions {
+        userID: number;
+        username: string;
+    }
+}
+declare namespace Ledger {
+    class BasicProgressDialog extends Serenity.TemplatedDialog<any> {
+        constructor();
+        cancelled: boolean;
+        max: number;
+        value: number;
+        title: string;
+        cancelTitle: string;
+        getDialogOptions(): JQueryUI.DialogOptions;
+        initDialog(): void;
+        getTemplate(): string;
     }
 }
 declare namespace Ledger.Common {
@@ -235,118 +296,122 @@ declare namespace Ledger.Common {
         set_errorCount(value: number): void;
     }
 }
-declare namespace Ledger.BasicSamples {
-    class OrderBulkAction extends Common.BulkServiceAction {
-        /**
-         * This controls how many service requests will be used in parallel.
-         * Determine this number based on how many requests your server
-         * might be able to handle, and amount of wait on external resources.
-         */
-        protected getParallelRequests(): number;
-        /**
-         * These number of records IDs will be sent to your service in one
-         * service call. If your service is designed to handle one record only,
-         * set it to 1. But note that, if you have 5000 records, this will
-         * result in 5000 service calls / requests.
-         */
-        protected getBatchSize(): number;
-        /**
-         * This is where you should call your service.
-         * Batch parameter contains the selected order IDs
-         * that should be processed in this service call.
-         */
-        protected executeForBatch(batch: any): void;
+declare namespace Ledger.DialogUtils {
+    function pendingChangesConfirmation(element: JQuery, hasPendingChanges: () => boolean): void;
+}
+declare namespace Ledger.Common {
+    interface ExcelExportOptions {
+        grid: Serenity.DataGrid<any, any>;
+        service: string;
+        onViewSubmit: () => boolean;
+        title?: string;
+        hint?: string;
+        separator?: boolean;
+    }
+    namespace ExcelExportHelper {
+        function createToolButton(options: ExcelExportOptions): Serenity.ToolButton;
     }
 }
-declare namespace Ledger.Northwind {
-    class OrderDialog extends Serenity.EntityDialog<OrderRow, any> {
+declare namespace Ledger.LanguageList {
+    function getValue(): string[][];
+}
+declare namespace Ledger.Common {
+    interface ReportButtonOptions {
+        title?: string;
+        cssClass?: string;
+        icon?: string;
+        download?: boolean;
+        reportKey: string;
+        extension?: string;
+        getParams?: () => any;
+        target?: string;
+    }
+    namespace ReportHelper {
+        function createToolButton(options: ReportButtonOptions): Serenity.ToolButton;
+    }
+}
+declare namespace Ledger.Common {
+    class LanguageSelection extends Serenity.Widget<any> {
+        constructor(select: JQuery, currentLanguage: string);
+    }
+}
+declare namespace Ledger.Common {
+    class SidebarSearch extends Serenity.Widget<any> {
+        private menuUL;
+        constructor(input: JQuery, menuUL: JQuery);
+        protected updateMatchFlags(text: string): void;
+    }
+}
+declare namespace Ledger.Common {
+    class ThemeSelection extends Serenity.Widget<any> {
+        constructor(select: JQuery);
+        protected getCurrentTheme(): string;
+    }
+}
+declare namespace Ledger.Common {
+    interface PdfExportOptions {
+        grid: Serenity.DataGrid<any, any>;
+        onViewSubmit: () => boolean;
+        title?: string;
+        hint?: string;
+        separator?: boolean;
+        reportTitle?: string;
+        titleTop?: number;
+        titleFontSize?: number;
+        fileName?: string;
+        pageNumbers?: boolean;
+        columnTitles?: {
+            [key: string]: string;
+        };
+        tableOptions?: jsPDF.AutoTableOptions;
+    }
+    namespace PdfExportHelper {
+        function exportToPdf(options: PdfExportOptions): void;
+        function createToolButton(options: PdfExportOptions): Serenity.ToolButton;
+    }
+}
+declare namespace Ledger.Common {
+    class UserPreferenceStorage implements Serenity.SettingStorage {
+        getItem(key: string): string;
+        setItem(key: string, data: string): void;
+    }
+}
+declare namespace Ledger.HR {
+    class EmployeeDialog extends Serenity.EntityDialog<EmployeeRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getNameProperty(): string;
         protected getService(): string;
-        protected form: OrderForm;
-        constructor();
-        getToolbarButtons(): Serenity.ToolButton[];
-    }
-}
-declare namespace Ledger.Northwind {
-    class OrderGrid extends Serenity.EntityGrid<OrderRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): any;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        protected shippingStateFilter: Serenity.EnumEditor;
-        constructor(container: JQuery);
-        protected createQuickFilters(): void;
-        protected getButtons(): Serenity.ToolButton[];
-        set_shippingState(value: number): void;
-    }
-}
-declare namespace Ledger.Northwind {
-    class NoteDialog extends Serenity.TemplatedDialog<any> {
-        private textEditor;
-        constructor();
-        protected getTemplate(): string;
-        protected getDialogOptions(): JQueryUI.DialogOptions;
-        text: string;
-        okClick: () => void;
-    }
-}
-declare namespace Ledger.Northwind {
-    class NotesEditor extends Serenity.TemplatedWidget<any> implements Serenity.IGetEditValue, Serenity.ISetEditValue {
-        private isDirty;
-        private items;
-        constructor(div: JQuery);
-        protected getTemplate(): string;
-        protected updateContent(): void;
-        protected addClick(): void;
-        protected editClick(e: any): void;
-        deleteClick(e: any): void;
-        value: NoteRow[];
-        getEditValue(prop: Serenity.PropertyItem, target: any): void;
-        setEditValue(source: any, prop: Serenity.PropertyItem): void;
-        get_isDirty(): boolean;
-        set_isDirty(value: any): void;
-        onChange: () => void;
-    }
-}
-declare namespace Ledger.Northwind {
-    class EmployeeFormatter implements Slick.Formatter {
-        format(ctx: Slick.FormatterContext): string;
-        genderProperty: string;
-        initializeColumn(column: Slick.Column): void;
-    }
-}
-declare namespace Ledger.Northwind {
-    class CustomerDialog extends Serenity.EntityDialog<CustomerRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: CustomerForm;
-        private ordersGrid;
+        protected form: EmployeeForm;
         private loadedState;
         constructor();
         getSaveState(): string;
-        loadResponse(data: any): void;
-        loadEntity(entity: CustomerRow): void;
-        onSaveSuccess(response: any): void;
+        loadResponce(data: any): void;
+        loadEntity(entity: EmployeeRow): void;
+        onSaveSuccess(responce: any): void;
     }
 }
-declare namespace Ledger.Northwind {
-    class CustomerEditor extends Serenity.LookupEditorBase<CustomerRow, any> {
-        constructor(hidden: JQuery);
-        protected getLookupKey(): string;
-        protected getItemText(item: any, lookup: any): string;
-    }
-}
-declare namespace Ledger.Northwind {
-    class CustomerGrid extends Serenity.EntityGrid<CustomerRow, any> {
+declare namespace Ledger.HR {
+    class EmployeeEditor extends Common.GridEditorBase<EmployeeRow> {
         protected getColumnsKey(): string;
-        protected getDialogType(): any;
+        protected getDialogType(): typeof EmployeeEditorDialog;
+        protected getLocalTextPrefix(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Ledger.HR {
+    class EmployeeEditorDialog extends Common.GridEditorDialog<EmployeeRow> {
+        protected getFormKey(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected form: EmployeeForm;
+    }
+}
+declare namespace Ledger.HR {
+    class EmployeeGrid extends Serenity.EntityGrid<EmployeeRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof EmployeeDialog;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;
@@ -354,432 +419,39 @@ declare namespace Ledger.Northwind {
         getButtons(): Serenity.ToolButton[];
     }
 }
-declare namespace Ledger.Northwind {
-    class CustomerOrderDialog extends OrderDialog {
+declare namespace Ledger.HR {
+    class EmployeeAddressDialog extends Serenity.EntityDialog<EmployeeAddressRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: EmployeeAddressForm;
+    }
+}
+declare namespace Ledger.HR {
+    class EmployeeAddressEditor extends Common.GridEditorBase<EmployeeAddressRow> {
+        protected getColumnsKey(): string;
+        protected getLocalTextPrefix(): string;
+        protected getDialogType(): typeof EmployeeAddressEditorDialog;
+        constructor(container: JQuery);
+        protected getAddButtonCaption(): string;
+        protected validateEntity(row: EmployeeAddressRow, id: number): boolean;
+    }
+}
+declare namespace Ledger.HR {
+    class EmployeeAddressEditorDialog extends Common.GridEditorDialog<EmployeeAddressRow> {
+        protected getFormKey(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected form: EmployeeAddressForm;
         constructor();
-        updateInterface(): void;
-    }
-}
-declare namespace Ledger.Northwind {
-    class CustomerOrdersGrid extends OrderGrid {
-        protected getDialogType(): typeof CustomerOrderDialog;
-        constructor(container: JQuery);
-        protected getColumns(): Slick.Column[];
-        protected initEntityDialog(itemType: any, dialog: any): void;
-        protected addButtonClick(): void;
-        protected getInitialTitle(): any;
-        protected getGridCanLoad(): boolean;
-        private _customerID;
-        customerID: string;
-    }
-}
-declare namespace Ledger.Northwind {
-    class EmployeeListFormatter implements Slick.Formatter {
-        format(ctx: Slick.FormatterContext): string;
-    }
-}
-declare namespace Ledger.Northwind {
-    class CategoryDialog extends Serenity.EntityDialog<CategoryRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: CategoryForm;
-        protected getLanguages(): string[][];
-    }
-}
-declare namespace Ledger.Northwind {
-    class CategoryGrid extends Serenity.EntityGrid<CategoryRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): any;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Ledger.Membership {
-    class LoginPanel extends Serenity.PropertyPanel<LoginRequest, any> {
-        protected getFormKey(): string;
-        private form;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Ledger.Membership {
-    class SignUpPanel extends Serenity.PropertyPanel<SignUpRequest, any> {
-        protected getFormKey(): string;
-        private form;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Ledger.Membership {
-    class ResetPasswordPanel extends Serenity.PropertyPanel<ResetPasswordRequest, any> {
-        protected getFormKey(): string;
-        private form;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Ledger.Membership {
-    class ForgotPasswordPanel extends Serenity.PropertyPanel<ForgotPasswordRequest, any> {
-        protected getFormKey(): string;
-        private form;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Ledger.Membership {
-    class ChangePasswordPanel extends Serenity.PropertyPanel<ChangePasswordRequest, any> {
-        protected getFormKey(): string;
-        private form;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Ledger.Infra {
-    class SupportTypeStringDialog extends Serenity.EntityDialog<SupportTypeStringRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: SupportTypeStringForm;
-    }
-}
-declare namespace Ledger.Infra {
-    class SupportTypeStringEditor extends Common.GridEditorBase<SupportTypeStringRow> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof SupportTypeStringEditorDialog;
-        protected getLocalTextPrefix(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Ledger.Infra {
-    class SupportTypeStringEditorDialog extends Common.GridEditorDialog<SupportTypeStringRow> {
-        protected getFormKey(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected form: SupportTypeStringForm;
-    }
-}
-declare namespace Ledger.Infra {
-    class SupportTypeStringGrid extends Serenity.EntityGrid<SupportTypeStringRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof SupportTypeStringDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Ledger.Infra {
-    class SupportTypeDialog extends Serenity.EntityDialog<SupportTypeRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: SupportTypeForm;
-    }
-}
-declare namespace Ledger.Infra {
-    class SupportTypeEditor extends Common.GridEditorBase<SupportTypeRow> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof SupportTypeEditorDialog;
-        protected getLocalTextPrefix(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Ledger.Infra {
-    class SupportTypeEditorDialog extends Common.GridEditorDialog<SupportTypeRow> {
-        protected getFormKey(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected form: SupportTypeForm;
-    }
-}
-declare namespace Ledger.Infra {
-    class SupportTypeGrid extends Serenity.EntityGrid<SupportTypeRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof SupportTypeDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Ledger.Infra {
-    class SupportDialog extends Serenity.EntityDialog<SupportRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: SupportForm;
-    }
-}
-declare namespace Ledger.Infra {
-    class SupportEditor extends Common.GridEditorBase<SupportRow> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof SupportEditorDialog;
-        protected getLocalTextPrefix(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Ledger.Infra {
-    class SupportEditorDialog extends Common.GridEditorDialog<SupportRow> {
-        protected getFormKey(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected form: SupportForm;
-    }
-}
-declare namespace Ledger.Infra {
-    class SupportGrid extends Serenity.EntityGrid<SupportRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof SupportDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Ledger.Infra {
-    class PhoneDialog extends Serenity.EntityDialog<PhoneRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: PhoneForm;
-    }
-}
-declare namespace Ledger.Infra {
-    class PhoneEditor extends Common.GridEditorBase<PhoneRow> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof PhoneEditorDialog;
-        protected getLocalTextPrefix(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Ledger.Infra {
-    class PhoneEditorDialog extends Common.GridEditorDialog<PhoneRow> {
-        protected getFormKey(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected form: PhoneForm;
-    }
-}
-declare namespace Ledger.Infra {
-    class PhoneGrid extends Serenity.EntityGrid<PhoneRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof PhoneDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Ledger.Infra {
-    class NoteDialog extends Serenity.TemplatedDialog<any> {
-        private textEditor;
-        constructor();
-        protected getTemplate(): string;
-        protected getDialogOptions(): JQueryUI.DialogOptions;
-        text: string;
-        okClick: () => void;
-    }
-}
-declare namespace Ledger.Infra {
-    class NotesEditor extends Serenity.TemplatedWidget<any> implements Serenity.IGetEditValue, Serenity.ISetEditValue {
-        private isDirty;
-        private items;
-        constructor(div: JQuery);
-        protected getTemplate(): string;
-        protected updateContent(): void;
-        protected addClick(): void;
-        protected editClick(e: any): void;
-        deleteClick(e: any): void;
-        value: NoteRow[];
-        getEditValue(prop: Serenity.PropertyItem, target: any): void;
-        setEditValue(source: any, prop: Serenity.PropertyItem): void;
-        get_isDirty(): boolean;
-        set_isDirty(value: any): void;
-        onChange: () => void;
-    }
-}
-declare namespace Ledger.Infra {
-    class EmailDialog extends Serenity.EntityDialog<EmailRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: EmailForm;
-    }
-}
-declare namespace Ledger.Infra {
-    class EmailEditor extends Common.GridEditorBase<EmailRow> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof EmailEditorDialog;
-        protected getLocalTextPrefix(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Ledger.Infra {
-    class EmailEditorDialog extends Common.GridEditorDialog<EmailRow> {
-        protected getFormKey(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected form: EmailForm;
-    }
-}
-declare namespace Ledger.Infra {
-    class EmailGrid extends Serenity.EntityGrid<EmailRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof EmailDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Ledger.Infra {
-    class CurrencyDialog extends Serenity.EntityDialog<CurrencyRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: CurrencyForm;
-    }
-}
-declare namespace Ledger.Infra {
-    class CurrencyEditor extends Common.GridEditorBase<CurrencyRow> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof CurrencyEditorDialog;
-        protected getLocalTextPrefix(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Ledger.Infra {
-    class CurrencyEditorDialog extends Common.GridEditorDialog<CurrencyRow> {
-        protected getFormKey(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected form: CurrencyForm;
-    }
-}
-declare namespace Ledger.Infra {
-    class CurrencyGrid extends Serenity.EntityGrid<CurrencyRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof CurrencyDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Ledger.Infra {
-    class CategoryDialog extends Serenity.EntityDialog<CategoryRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: CategoryForm;
-    }
-}
-declare namespace Ledger.Infra {
-    class CategoryEditor extends Common.GridEditorBase<CategoryRow> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof CategoryEditorDialog;
-        protected getLocalTextPrefix(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Ledger.Infra {
-    class CategoryEditorDialog extends Common.GridEditorDialog<CategoryRow> {
-        protected getFormKey(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected form: CategoryForm;
-    }
-}
-declare namespace Ledger.Infra {
-    class CategoryGrid extends Serenity.EntityGrid<CategoryRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof CategoryDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Ledger.Infra {
-    class AddressesDialog extends Serenity.EntityDialog<AddressesRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: AddressesForm;
-    }
-}
-declare namespace Ledger.Infra {
-    class AddressesEditor extends Common.GridEditorBase<AddressesRow> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof AddressesEditorDialog;
-        protected getLocalTextPrefix(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Ledger.Infra {
-    class AddressesEditorDialog extends Common.GridEditorDialog<AddressesRow> {
-        protected getFormKey(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected form: AddressesForm;
-    }
-}
-declare namespace Ledger.Infra {
-    class AddressesGrid extends Serenity.EntityGrid<AddressesRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof AddressesDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
     }
 }
 declare namespace Ledger.HR {
-    class EmployeePhoneDialog extends Serenity.EntityDialog<EmployeePhoneRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: EmployeePhoneForm;
-    }
-}
-declare namespace Ledger.HR {
-    class EmployeePhoneEditor extends Common.GridEditorBase<EmployeePhoneRow> {
+    class EmployeeAddressGrid extends Serenity.EntityGrid<EmployeeAddressRow, any> {
         protected getColumnsKey(): string;
-        protected getDialogType(): typeof EmployeePhoneEditorDialog;
-        protected getLocalTextPrefix(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Ledger.HR {
-    class EmployeePhoneEditorDialog extends Common.GridEditorDialog<EmployeePhoneRow> {
-        protected getFormKey(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected form: EmployeePhoneForm;
-    }
-}
-declare namespace Ledger.HR {
-    class EmployeePhoneGrid extends Serenity.EntityGrid<EmployeePhoneRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof EmployeePhoneDialog;
+        protected getDialogType(): typeof EmployeeAddressDialog;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;
@@ -826,132 +498,1082 @@ declare namespace Ledger.HR {
     }
 }
 declare namespace Ledger.HR {
-    class EmployeeAddressDialog extends Serenity.EntityDialog<EmployeeAddressRow, any> {
+    class EmployeePhoneDialog extends Serenity.EntityDialog<EmployeePhoneRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getNameProperty(): string;
         protected getService(): string;
-        protected form: EmployeeAddressForm;
+        protected form: EmployeePhoneForm;
     }
 }
 declare namespace Ledger.HR {
-    class EmployeeAddressEditor extends Common.GridEditorBase<EmployeeAddressRow> {
+    class EmployeePhoneEditor extends Common.GridEditorBase<EmployeePhoneRow> {
         protected getColumnsKey(): string;
+        protected getDialogType(): typeof EmployeePhoneEditorDialog;
         protected getLocalTextPrefix(): string;
-        protected getDialogType(): typeof EmployeeAddressEditorDialog;
         constructor(container: JQuery);
-        protected getAddButtonCaption(): string;
-        protected validateEntity(row: EmployeeAddressRow, id: number): boolean;
     }
 }
 declare namespace Ledger.HR {
-    class EmployeeAddressEditorDialog extends Common.GridEditorDialog<EmployeeAddressRow> {
+    class EmployeePhoneEditorDialog extends Common.GridEditorDialog<EmployeePhoneRow> {
         protected getFormKey(): string;
         protected getLocalTextPrefix(): string;
         protected getNameProperty(): string;
-        protected form: EmployeeAddressForm;
+        protected form: EmployeePhoneForm;
+    }
+}
+declare namespace Ledger.HR {
+    class EmployeePhoneGrid extends Serenity.EntityGrid<EmployeePhoneRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof EmployeePhoneDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Ledger.Infra {
+    class AddressesDialog extends Serenity.EntityDialog<AddressesRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: AddressesForm;
+    }
+}
+declare namespace Ledger.Infra {
+    class AddressesEditor extends Common.GridEditorBase<AddressesRow> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof AddressesEditorDialog;
+        protected getLocalTextPrefix(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Ledger.Infra {
+    class AddressesEditorDialog extends Common.GridEditorDialog<AddressesRow> {
+        protected getFormKey(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected form: AddressesForm;
+    }
+}
+declare namespace Ledger.Infra {
+    class AddressesGrid extends Serenity.EntityGrid<AddressesRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof AddressesDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Ledger.Infra {
+    class CategoryDialog extends Serenity.EntityDialog<CategoryRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: CategoryForm;
+    }
+}
+declare namespace Ledger.Infra {
+    class CategoryEditor extends Common.GridEditorBase<CategoryRow> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof CategoryEditorDialog;
+        protected getLocalTextPrefix(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Ledger.Infra {
+    class CategoryEditorDialog extends Common.GridEditorDialog<CategoryRow> {
+        protected getFormKey(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected form: CategoryForm;
+    }
+}
+declare namespace Ledger.Infra {
+    class CategoryGrid extends Serenity.EntityGrid<CategoryRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof CategoryDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Ledger.Infra {
+    class CurrencyDialog extends Serenity.EntityDialog<CurrencyRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: CurrencyForm;
+    }
+}
+declare namespace Ledger.Infra {
+    class CurrencyEditor extends Common.GridEditorBase<CurrencyRow> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof CurrencyEditorDialog;
+        protected getLocalTextPrefix(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Ledger.Infra {
+    class CurrencyEditorDialog extends Common.GridEditorDialog<CurrencyRow> {
+        protected getFormKey(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected form: CurrencyForm;
+    }
+}
+declare namespace Ledger.Infra {
+    class CurrencyGrid extends Serenity.EntityGrid<CurrencyRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof CurrencyDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Ledger.Infra {
+    class EmailDialog extends Serenity.EntityDialog<EmailRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: EmailForm;
+    }
+}
+declare namespace Ledger.Infra {
+    class EmailEditor extends Common.GridEditorBase<EmailRow> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof EmailEditorDialog;
+        protected getLocalTextPrefix(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Ledger.Infra {
+    class EmailEditorDialog extends Common.GridEditorDialog<EmailRow> {
+        protected getFormKey(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected form: EmailForm;
+    }
+}
+declare namespace Ledger.Infra {
+    class EmailGrid extends Serenity.EntityGrid<EmailRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof EmailDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Ledger.Infra {
+    class NoteDialog extends Serenity.TemplatedDialog<any> {
+        private textEditor;
         constructor();
+        protected getTemplate(): string;
+        protected getDialogOptions(): JQueryUI.DialogOptions;
+        text: string;
+        okClick: () => void;
     }
 }
-declare namespace Ledger.HR {
-    class EmployeeAddressGrid extends Serenity.EntityGrid<EmployeeAddressRow, any> {
+declare namespace Ledger.Infra {
+    class NotesEditor extends Serenity.TemplatedWidget<any> implements Serenity.IGetEditValue, Serenity.ISetEditValue {
+        private isDirty;
+        private items;
+        constructor(div: JQuery);
+        protected getTemplate(): string;
+        protected updateContent(): void;
+        protected addClick(): void;
+        protected editClick(e: any): void;
+        deleteClick(e: any): void;
+        value: NoteRow[];
+        getEditValue(prop: Serenity.PropertyItem, target: any): void;
+        setEditValue(source: any, prop: Serenity.PropertyItem): void;
+        get_isDirty(): boolean;
+        set_isDirty(value: any): void;
+        onChange: () => void;
+    }
+}
+declare namespace Ledger.Infra {
+    class PhoneDialog extends Serenity.EntityDialog<PhoneRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: PhoneForm;
+    }
+}
+declare namespace Ledger.Infra {
+    class PhoneEditor extends Common.GridEditorBase<PhoneRow> {
         protected getColumnsKey(): string;
-        protected getDialogType(): typeof EmployeeAddressDialog;
+        protected getDialogType(): typeof PhoneEditorDialog;
+        protected getLocalTextPrefix(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Ledger.Infra {
+    class PhoneEditorDialog extends Common.GridEditorDialog<PhoneRow> {
+        protected getFormKey(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected form: PhoneForm;
+    }
+}
+declare namespace Ledger.Infra {
+    class PhoneGrid extends Serenity.EntityGrid<PhoneRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof PhoneDialog;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
     }
 }
-declare namespace Ledger.HR {
-    class EmployeeDialog extends Serenity.EntityDialog<EmployeeRow, any> {
+declare namespace Ledger.Infra {
+    class SupportDialog extends Serenity.EntityDialog<SupportRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getNameProperty(): string;
         protected getService(): string;
-        protected form: EmployeeForm;
+        protected form: SupportForm;
+    }
+}
+declare namespace Ledger.Infra {
+    class SupportEditor extends Common.GridEditorBase<SupportRow> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof SupportEditorDialog;
+        protected getLocalTextPrefix(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Ledger.Infra {
+    class SupportEditorDialog extends Common.GridEditorDialog<SupportRow> {
+        protected getFormKey(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected form: SupportForm;
+    }
+}
+declare namespace Ledger.Infra {
+    class SupportGrid extends Serenity.EntityGrid<SupportRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof SupportDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Ledger.Infra {
+    class SupportTypeDialog extends Serenity.EntityDialog<SupportTypeRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: SupportTypeForm;
+    }
+}
+declare namespace Ledger.Infra {
+    class SupportTypeEditor extends Common.GridEditorBase<SupportTypeRow> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof SupportTypeEditorDialog;
+        protected getLocalTextPrefix(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Ledger.Infra {
+    class SupportTypeEditorDialog extends Common.GridEditorDialog<SupportTypeRow> {
+        protected getFormKey(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected form: SupportTypeForm;
+    }
+}
+declare namespace Ledger.Infra {
+    class SupportTypeGrid extends Serenity.EntityGrid<SupportTypeRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof SupportTypeDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Ledger.Infra {
+    class SupportTypeStringDialog extends Serenity.EntityDialog<SupportTypeStringRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: SupportTypeStringForm;
+    }
+}
+declare namespace Ledger.Infra {
+    class SupportTypeStringEditor extends Common.GridEditorBase<SupportTypeStringRow> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof SupportTypeStringEditorDialog;
+        protected getLocalTextPrefix(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Ledger.Infra {
+    class SupportTypeStringEditorDialog extends Common.GridEditorDialog<SupportTypeStringRow> {
+        protected getFormKey(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected form: SupportTypeStringForm;
+    }
+}
+declare namespace Ledger.Infra {
+    class SupportTypeStringGrid extends Serenity.EntityGrid<SupportTypeStringRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof SupportTypeStringDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Ledger.Membership {
+    class LoginPanel extends Serenity.PropertyPanel<LoginRequest, any> {
+        protected getFormKey(): string;
+        private form;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Ledger.Northwind {
+    class CategoryDialog extends Serenity.EntityDialog<CategoryRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: CategoryForm;
+        protected getLanguages(): string[][];
+    }
+}
+declare namespace Ledger.Northwind {
+    class CategoryGrid extends Serenity.EntityGrid<CategoryRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): any;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Ledger.Northwind {
+    class CustomerDialog extends Serenity.EntityDialog<CustomerRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: CustomerForm;
+        private ordersGrid;
         private loadedState;
         constructor();
         getSaveState(): string;
-        loadResponce(data: any): void;
-        loadEntity(entity: EmployeeRow): void;
-        onSaveSuccess(responce: any): void;
+        loadResponse(data: any): void;
+        loadEntity(entity: CustomerRow): void;
+        onSaveSuccess(response: any): void;
     }
 }
-declare namespace Ledger.HR {
-    class EmployeeEditor extends Common.GridEditorBase<EmployeeRow> {
+declare namespace Ledger.Northwind {
+    class CustomerEditor extends Serenity.LookupEditorBase<CustomerRow, any> {
+        constructor(hidden: JQuery);
+        protected getLookupKey(): string;
+        protected getItemText(item: any, lookup: any): string;
+    }
+}
+declare namespace Ledger.Northwind {
+    class CustomerGrid extends Serenity.EntityGrid<CustomerRow, any> {
         protected getColumnsKey(): string;
-        protected getDialogType(): typeof EmployeeEditorDialog;
+        protected getDialogType(): any;
+        protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
+        protected getService(): string;
         constructor(container: JQuery);
+        getButtons(): Serenity.ToolButton[];
     }
 }
-declare namespace Ledger.HR {
-    class EmployeeEditorDialog extends Common.GridEditorDialog<EmployeeRow> {
+declare namespace Ledger.Northwind {
+    class OrderDialog extends Serenity.EntityDialog<OrderRow, any> {
         protected getFormKey(): string;
+        protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getNameProperty(): string;
-        protected form: EmployeeForm;
+        protected getService(): string;
+        protected form: OrderForm;
+        constructor();
+        getToolbarButtons(): Serenity.ToolButton[];
     }
 }
-declare namespace Ledger.HR {
-    class EmployeeGrid extends Serenity.EntityGrid<EmployeeRow, any> {
+declare namespace Ledger.Northwind {
+    class CustomerOrderDialog extends OrderDialog {
+        constructor();
+        updateInterface(): void;
+    }
+}
+declare namespace Ledger.Northwind {
+    class OrderGrid extends Serenity.EntityGrid<OrderRow, any> {
         protected getColumnsKey(): string;
-        protected getDialogType(): typeof EmployeeDialog;
+        protected getDialogType(): any;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        protected shippingStateFilter: Serenity.EnumEditor;
+        constructor(container: JQuery);
+        protected createQuickFilters(): void;
+        protected getButtons(): Serenity.ToolButton[];
+        set_shippingState(value: number): void;
+    }
+}
+declare namespace Ledger.Northwind {
+    class CustomerOrdersGrid extends OrderGrid {
+        protected getDialogType(): typeof CustomerOrderDialog;
+        constructor(container: JQuery);
+        protected getColumns(): Slick.Column[];
+        protected initEntityDialog(itemType: any, dialog: any): void;
+        protected addButtonClick(): void;
+        protected getInitialTitle(): any;
+        protected getGridCanLoad(): boolean;
+        private _customerID;
+        customerID: string;
+    }
+}
+declare namespace Ledger.Northwind {
+    class EmployeeListFormatter implements Slick.Formatter {
+        format(ctx: Slick.FormatterContext): string;
+    }
+}
+declare namespace Ledger.Northwind {
+    class EmployeeFormatter implements Slick.Formatter {
+        format(ctx: Slick.FormatterContext): string;
+        genderProperty: string;
+        initializeColumn(column: Slick.Column): void;
+    }
+}
+declare namespace Ledger.Northwind {
+    class NoteDialog extends Serenity.TemplatedDialog<any> {
+        private textEditor;
+        constructor();
+        protected getTemplate(): string;
+        protected getDialogOptions(): JQueryUI.DialogOptions;
+        text: string;
+        okClick: () => void;
+    }
+}
+declare namespace Ledger.Northwind {
+    class NotesEditor extends Serenity.TemplatedWidget<any> implements Serenity.IGetEditValue, Serenity.ISetEditValue {
+        private isDirty;
+        private items;
+        constructor(div: JQuery);
+        protected getTemplate(): string;
+        protected updateContent(): void;
+        protected addClick(): void;
+        protected editClick(e: any): void;
+        deleteClick(e: any): void;
+        value: NoteRow[];
+        getEditValue(prop: Serenity.PropertyItem, target: any): void;
+        setEditValue(source: any, prop: Serenity.PropertyItem): void;
+        get_isDirty(): boolean;
+        set_isDirty(value: any): void;
+        onChange: () => void;
+    }
+}
+declare namespace Ledger.Northwind {
+    class FreightFormatter implements Slick.Formatter {
+        format(ctx: Slick.FormatterContext): string;
+    }
+}
+declare namespace Ledger.BasicSamples {
+    class OrderBulkAction extends Common.BulkServiceAction {
+        /**
+         * This controls how many service requests will be used in parallel.
+         * Determine this number based on how many requests your server
+         * might be able to handle, and amount of wait on external resources.
+         */
+        protected getParallelRequests(): number;
+        /**
+         * These number of records IDs will be sent to your service in one
+         * service call. If your service is designed to handle one record only,
+         * set it to 1. But note that, if you have 5000 records, this will
+         * result in 5000 service calls / requests.
+         */
+        protected getBatchSize(): number;
+        /**
+         * This is where you should call your service.
+         * Batch parameter contains the selected order IDs
+         * that should be processed in this service call.
+         */
+        protected executeForBatch(batch: any): void;
+    }
+}
+declare namespace Ledger.Northwind {
+    class OrderDetailDialog extends Common.GridEditorDialog<OrderDetailRow> {
+        protected getFormKey(): string;
+        protected getLocalTextPrefix(): string;
+        protected form: OrderDetailForm;
+        constructor();
+    }
+}
+declare namespace Ledger.Northwind {
+    class OrderDetailsEditor extends Common.GridEditorBase<OrderDetailRow> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof OrderDetailDialog;
+        protected getLocalTextPrefix(): string;
+        constructor(container: JQuery);
+        validateEntity(row: any, id: any): boolean;
+    }
+}
+declare namespace Ledger.Northwind {
+    class ProductDialog extends Serenity.EntityDialog<ProductRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: ProductForm;
+        protected getLanguages(): string[][];
+    }
+}
+declare namespace Ledger.Northwind {
+    class ProductGrid extends Serenity.EntityGrid<ProductRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): any;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        private pendingChanges;
+        constructor(container: JQuery);
+        protected getButtons(): Serenity.ToolButton[];
+        protected onViewProcessData(response: any): Serenity.ListResponse<ProductRow>;
+        /**
+         * It would be nice if we could use autonumeric, Serenity editors etc. here, to control input validation,
+         * but it's not supported by SlickGrid as we are only allowed to return a string, and should attach
+         * no event handlers to rendered cell contents
+         */
+        private numericInputFormatter(ctx);
+        private stringInputFormatter(ctx);
+        /**
+         * Sorry but you cannot use LookupEditor, e.g. Select2 here, only possible is a SELECT element
+         */
+        private selectFormatter(ctx, idField, lookup);
+        private getEffectiveValue(item, field);
+        protected getColumns(): Slick.Column[];
+        private inputsChange(e);
+        private setSaveButtonState();
+        private saveClick();
+    }
+}
+declare namespace Ledger.Northwind {
+    class RegionDialog extends Serenity.EntityDialog<RegionRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: RegionForm;
+        protected getLanguages(): string[][];
+    }
+}
+declare namespace Ledger.Northwind {
+    class RegionGrid extends Serenity.EntityGrid<RegionRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): any;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
     }
 }
-declare namespace Ledger.ScriptInitialization {
-}
-declare namespace Ledger.Common {
-    class UserPreferenceStorage implements Serenity.SettingStorage {
-        getItem(key: string): string;
-        setItem(key: string, data: string): void;
+declare namespace Ledger.Northwind {
+    class PhoneEditor extends Serenity.StringEditor {
+        constructor(input: JQuery);
+        protected formatValue(): void;
+        protected getFormattedValue(): string;
+        multiple: boolean;
+        get_value(): string;
+        set_value(value: string): void;
+        static validate(phone: string, isMultiple: boolean): string;
+        static isValidPhone(phone: string): boolean;
+        static formatPhone(phone: any): any;
+        static formatMulti(phone: string, format: (s: string) => string): string;
+        static isValidMulti(phone: string, check: (s: string) => boolean): boolean;
     }
 }
-declare namespace Ledger.Common {
-    interface PdfExportOptions {
-        grid: Serenity.DataGrid<any, any>;
-        onViewSubmit: () => boolean;
-        title?: string;
-        hint?: string;
-        separator?: boolean;
-        reportTitle?: string;
-        titleTop?: number;
-        titleFontSize?: number;
-        fileName?: string;
-        pageNumbers?: boolean;
-        columnTitles?: {
-            [key: string]: string;
-        };
-        tableOptions?: jsPDF.AutoTableOptions;
-    }
-    namespace PdfExportHelper {
-        function exportToPdf(options: PdfExportOptions): void;
-        function createToolButton(options: PdfExportOptions): Serenity.ToolButton;
+declare namespace Ledger.Northwind {
+    class ShipperDialog extends Serenity.EntityDialog<ShipperRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: ShipperForm;
+        protected getLanguages(): string[][];
     }
 }
-declare namespace Ledger.Common {
-    class LanguageSelection extends Serenity.Widget<any> {
-        constructor(select: JQuery, currentLanguage: string);
+declare namespace Ledger.Northwind {
+    class ShipperFormatter implements Slick.Formatter {
+        format(ctx: Slick.FormatterContext): string;
     }
 }
-declare namespace Ledger.Common {
-    class SidebarSearch extends Serenity.Widget<any> {
-        private menuUL;
-        constructor(input: JQuery, menuUL: JQuery);
-        protected updateMatchFlags(text: string): void;
+declare namespace Ledger.Northwind {
+    class ShipperGrid extends Serenity.EntityGrid<ShipperRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): any;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
     }
 }
-declare namespace Ledger.Common {
-    class ThemeSelection extends Serenity.Widget<any> {
-        constructor(select: JQuery);
-        protected getCurrentTheme(): string;
+declare namespace Ledger.Northwind {
+    class SupplierDialog extends Serenity.EntityDialog<SupplierRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: SupplierForm;
+        protected getLanguages(): string[][];
+    }
+}
+declare namespace Ledger.Northwind {
+    class SupplierGrid extends Serenity.EntityGrid<SupplierRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): any;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Ledger.Northwind {
+    class TerritoryDialog extends Serenity.EntityDialog<TerritoryRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: TerritoryForm;
+        protected getLanguages(): string[][];
+    }
+}
+declare namespace Ledger.Northwind {
+    class TerritoryGrid extends Serenity.EntityGrid<TerritoryRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): any;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Ledger.Authorization {
+    let userDefinition: ScriptUserDefinition;
+    function hasPermission(permissionKey: string): boolean;
+}
+declare var Morris: any;
+declare namespace Ledger.BasicSamples {
+    class ChartInDialog extends Serenity.TemplatedDialog<any> {
+        private areaChart;
+        static initializePage(): void;
+        protected onDialogOpen(): void;
+        protected arrange(): void;
+        protected getTemplate(): string;
+        protected getDialogOptions(): JQueryUI.DialogOptions;
+    }
+}
+declare namespace Ledger.BasicSamples {
+    class CloneableEntityDialog extends Northwind.ProductDialog {
+        protected updateInterface(): void;
+        /**
+         * Overriding this method is optional to customize cloned entity
+         */
+        protected getCloningEntity(): Northwind.ProductRow;
+    }
+}
+declare namespace Ledger.BasicSamples {
+    /**
+     * Subclass of ProductGrid to override dialog type to CloneableEntityDialog
+     */
+    class CloneableEntityGrid extends Northwind.ProductGrid {
+        protected getDialogType(): typeof CloneableEntityDialog;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Ledger.BasicSamples {
+    class DefaultValuesInNewGrid extends Northwind.OrderGrid {
+        constructor(container: JQuery);
+        /**
+         * This method is called when New Item button is clicked.
+         * By default, it calls EditItem with an empty entity.
+         * This is a good place to fill in default values for New Item button.
+         */
+        protected addButtonClick(): void;
+        protected getButtons(): Serenity.ToolButton[];
+    }
+}
+declare namespace Ledger.BasicSamples.DialogBoxes {
+    function initializePage(): void;
+}
+declare namespace Ledger.BasicSamples {
+    class GetInsertedRecordIdDialog extends Northwind.CategoryDialog {
+        /**
+         * This method is called after the save request to service
+         * is completed succesfully. This can be an insert or update.
+         *
+         * @param response Response that is returned from server
+         */
+        protected onSaveSuccess(response: Serenity.SaveResponse): void;
+    }
+}
+declare namespace Ledger.BasicSamples {
+    /**
+     * Subclass of CategoryGrid to override dialog type to GetInsertedRecordIdDialog
+     */
+    class GetInsertedRecordIdGrid extends Northwind.CategoryGrid {
+        protected getDialogType(): typeof GetInsertedRecordIdDialog;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Ledger.BasicSamples {
+    /**
+     * Styling for columns is done with CSS in site.basicsamples.less file.
+     * When comparing this to MultiColumnDialog sample, you may notice that
+     * this version requires much less JS and CSS code.
+     */
+    class MultiColumnResponsiveDialog extends Northwind.OrderDialog {
+        constructor();
+    }
+}
+declare namespace Ledger.BasicSamples {
+    /**
+     * Subclass of OrderGrid to override dialog type to MultiColumnResponsiveDialog
+     */
+    class MultiColumnResponsiveGrid extends Northwind.OrderGrid {
+        protected getDialogType(): typeof MultiColumnResponsiveDialog;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Ledger.BasicSamples {
+    class ReadOnlyDialog extends Northwind.SupplierDialog {
+        /**
+         * This is the method that gets list of tool
+         * buttons to be created in a dialog.
+         *
+         * Here we'll remove save and close button, and
+         * apply changes buttons.
+         */
+        protected getToolbarButtons(): Serenity.ToolButton[];
+        /**
+         * This method is a good place to update states of
+         * interface elements. It is called after dialog
+         * is initialized and an entity is loaded into dialog.
+         * This is also called in new item mode.
+         */
+        protected updateInterface(): void;
+    }
+}
+declare namespace Ledger.BasicSamples {
+    /**
+     * A readonly grid that launches ReadOnlyDialog
+     */
+    class ReadOnlyGrid extends Northwind.SupplierGrid {
+        protected getDialogType(): typeof ReadOnlyDialog;
+        constructor(container: JQuery);
+        /**
+         * Removing add button from grid using its css class
+         */
+        protected getButtons(): Serenity.ToolButton[];
+    }
+}
+declare namespace Ledger.BasicSamples {
+    /**
+     * Adding Responsive attribute makes this dialog use full screen in mobile devices.
+     */
+    class ResponsiveDialog extends Serenity.EntityDialog<Northwind.OrderRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        constructor();
+    }
+}
+declare namespace Ledger.BasicSamples {
+    /**
+     * Subclass of OrderGrid to override dialog type to ResponsiveDialog
+     */
+    class ResponsiveGrid extends Northwind.OrderGrid {
+        protected getDialogType(): typeof ResponsiveDialog;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Ledger.BasicSamples {
+    /**
+     * Our subclass of Order Details editor with a CategoryID property
+     */
+    class FilteredLookupDetailEditor extends Northwind.OrderDetailsEditor {
+        protected getDialogType(): typeof FilteredLookupOrderDetailDialog;
+        constructor(container: JQuery);
+        categoryID: number;
+        /**
+         * This method is called to initialize an edit dialog created by
+         * grid editor when Add button or an edit link is clicked
+         * We have an opportunity here to pass CategoryID to edit dialog
+         */
+        protected initEntityDialog(itemType: string, dialog: Serenity.Widget<any>): void;
+    }
+}
+declare namespace Ledger.BasicSamples {
+    /**
+     * Basic order dialog with a category selection
+     */
+    class FilteredLookupInDetailDialog extends Serenity.EntityDialog<Northwind.OrderRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        private form;
+        constructor();
+    }
+}
+declare namespace Ledger.BasicSamples {
+    /**
+     * Subclass of OrderGrid to override dialog type to FilteredLookupInDetailDialog
+     */
+    class FilteredLookupInDetailGrid extends Northwind.OrderGrid {
+        protected getDialogType(): typeof FilteredLookupInDetailDialog;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Ledger.BasicSamples {
+    /**
+     * Our subclass of order detail dialog with a CategoryID property
+     * that will be used to set CascadeValue of product editor
+     */
+    class FilteredLookupOrderDetailDialog extends Northwind.OrderDetailDialog {
+        constructor();
+        /**
+         * This method is called just before an entity is loaded to dialog
+         * This is also called for new record mode with an empty entity
+         */
+        protected beforeLoadEntity(entity: any): void;
+        categoryID: number;
+    }
+}
+declare namespace Ledger.BasicSamples {
+    /**
+     * This is our custom product dialog that uses a different product form
+     * (LookupFilterByMultipleForm) with our special category editor.
+     */
+    class LookupFilterByMultipleDialog extends Northwind.ProductDialog {
+        protected getFormKey(): string;
+    }
+}
+declare namespace Ledger.BasicSamples {
+    /**
+     * Subclass of ProductGrid to override dialog type to CloneableEntityDialog
+     */
+    class LookupFilterByMultipleGrid extends Northwind.ProductGrid {
+        protected getDialogType(): typeof LookupFilterByMultipleDialog;
+        constructor(container: JQuery);
+        /**
+         * This method is called just before List request is sent to service.
+         * You have an opportunity here to cancel request or modify it.
+         * Here we'll add a custom criteria to list request.
+         */
+        protected onViewSubmit(): boolean;
+    }
+}
+declare namespace Ledger.BasicSamples {
+    /**
+     * This is our category editor that will show only categories of Produce and
+     * Seafood. We are subclassing LookupEditorBase which also LookupEditor
+     * derives from.
+     *
+     * After compiling and transforming templates, this editor type will be
+     * available in server side to use in our LookupFilterByMultipleForm,
+     * which is a version of ProductForm that uses our custom editor.
+     */
+    class ProduceSeafoodCategoryEditor extends Serenity.LookupEditorBase<Serenity.LookupEditorOptions, Northwind.CategoryRow> {
+        constructor(container: JQuery, opt: Serenity.LookupEditorOptions);
+        /**
+         * Normally LookupEditor requires a lookup key to determine which set of
+         * lookup data to show in editor. As our editor will only show category
+         * data, we lock it to category lookup key.
+         */
+        protected getLookupKey(): string;
+        /**
+         * Here we are filtering by category name but you could filter by any field.
+         * Just make sure the fields you filter on has [LookupInclude] attribute on them,
+         * otherwise their value will be null in client side as they are not sent back
+         * from server in lookup script.
+         */
+        protected getItems(lookup: Q.Lookup<Northwind.CategoryRow>): Northwind.CategoryRow[];
+    }
+}
+declare namespace Ledger.BasicSamples {
+    class CancellableBulkActionGrid extends Northwind.OrderGrid {
+        private rowSelection;
+        constructor(container: JQuery);
+        protected createToolbarExtensions(): void;
+        protected getButtons(): {
+            title: string;
+            cssClass: string;
+            onClick: () => void;
+        }[];
+        protected getColumns(): Slick.Column[];
+        protected getViewOptions(): Slick.RemoteViewOptions;
+    }
+}
+declare namespace Ledger.BasicSamples {
+    class ConditionalFormattingGrid extends Serenity.EntityGrid<Northwind.ProductRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): any;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+        /**
+         * We override getColumns() to be able to add a custom CSS class to UnitPrice
+         * We could also add this class in ProductColumns.cs but didn't want to modify
+         * it solely for this sample.
+         */
+        protected getColumns(): Slick.Column[];
+        /**
+         * This method is called for all rows
+         * @param item Data item for current row
+         * @param index Index of the row in grid
+         */
+        protected getItemCssClass(item: Northwind.ProductRow, index: number): string;
+    }
+}
+declare namespace Ledger.BasicSamples {
+    class CustomLinksInGrid extends Northwind.OrderGrid {
+        constructor(container: JQuery);
+        /**
+         * We override getColumns() to change format functions for some columns.
+         * You could also write them as formatter classes, and use them at server side
+         */
+        protected getColumns(): Slick.Column[];
+        protected onClick(e: JQueryEventObject, row: number, cell: number): void;
+        /**
+         * This method is called for columns with [EditLink] attribute,
+         * but only for edit links of this grid's own item type.
+         * It is also called by Add Product button with a NULL entityOrId
+         * parameter so we should check that entityOrId is a string
+         * to be sure it is originating from a link.
+         *
+         * As we changed format for other columns, this will only be called
+         * for links in remaining OrderID column
+         */
+        protected editItem(entityOrId: any): void;
+    }
+}
+declare namespace Ledger.BasicSamples {
+    class GridFilteredByCriteria extends Northwind.ProductGrid {
+        constructor(container: JQuery);
+        protected onViewSubmit(): boolean;
+    }
+}
+declare namespace Ledger.BasicSamples {
+    class GroupingAndSummariesInGrid extends Northwind.ProductGrid {
+        constructor(container: JQuery);
+        protected createSlickGrid(): Slick.Grid;
+        protected getColumns(): Slick.Column[];
+        protected getSlickOptions(): Slick.GridOptions;
+        protected usePager(): boolean;
+        protected getButtons(): {
+            title: string;
+            cssClass: string;
+            onClick: () => void;
+        }[];
+    }
+}
+declare namespace Ledger.BasicSamples {
+    class InitialValuesForQuickFilters extends Northwind.OrderGrid {
+        constructor(container: JQuery);
+        /**
+         * This method is called to get list of quick filters to be created for this grid.
+         * By default, it returns quick filter objects corresponding to properties that
+         * have a [QuickFilter] attribute at server side OrderColumns.cs
+         */
+        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
+        /**
+         * This method is another possible place to modify quick filter widgets.
+         * It is where the quick filter widgets are actually created.
+         *
+         * By default, it calls getQuickFilters() then renders UI for these
+         * quick filters.
+         *
+         * We could use getQuickFilters() method for ShipVia too,
+         * but this is for demonstration purposes
+         */
+        protected createQuickFilters(): void;
+    }
+}
+declare namespace Ledger.BasicSamples {
+    class InlineImageFormatter implements Slick.Formatter, Serenity.IInitializeColumn {
+        format(ctx: Slick.FormatterContext): string;
+        initializeColumn(column: Slick.Column): void;
+        fileProperty: string;
+        thumb: boolean;
+    }
+}
+declare namespace Ledger.BasicSamples {
+    class InlineImageInGrid extends Serenity.EntityGrid<Northwind.ProductRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): any;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+        protected getSlickOptions(): Slick.GridOptions;
+    }
+}
+declare namespace Ledger.BasicSamples {
+    class RemovingAddButton extends Northwind.SupplierGrid {
+        constructor(container: JQuery);
+        /**
+         * This method is called to get list of buttons to be created.
+         */
+        protected getButtons(): Serenity.ToolButton[];
+    }
+}
+declare namespace Ledger.BasicSamples {
+    class ViewWithoutIDGrid extends Serenity.EntityGrid<Northwind.SalesByCategoryRow, any> {
+        protected getColumnsKey(): string;
+        protected getIdProperty(): string;
+        protected getNameProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        private nextId;
+        constructor(container: JQuery);
+        /**
+         * This method is called to preprocess data returned from the list service
+         */
+        protected onViewProcessData(response: Serenity.ListResponse<Northwind.SalesByCategoryRow>): Serenity.ListResponse<Northwind.SalesByCategoryRow>;
+        protected getButtons(): any[];
     }
 }
 declare namespace Ledger.Administration {
@@ -972,10 +1594,10 @@ declare namespace Ledger.Administration {
         LanguageName?: string;
     }
     namespace LanguageRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "Id";
+        const nameProperty = "LanguageName";
+        const localTextPrefix = "Administration.Language";
+        const lookupKey = "Administration.Language";
         function getLookup(): Q.Lookup<LanguageRow>;
         namespace Fields {
             const Id: string;
@@ -986,7 +1608,7 @@ declare namespace Ledger.Administration {
 }
 declare namespace Ledger.Administration {
     namespace LanguageService {
-        const baseUrl: string;
+        const baseUrl = "Administration/Language";
         function Create(request: Serenity.SaveRequest<LanguageRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<LanguageRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -1030,9 +1652,9 @@ declare namespace Ledger.Administration {
         RoleRoleName?: string;
     }
     namespace RolePermissionRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "RolePermissionId";
+        const nameProperty = "PermissionKey";
+        const localTextPrefix = "Administration.RolePermission";
         namespace Fields {
             const RolePermissionId: string;
             const RoleId: string;
@@ -1043,7 +1665,7 @@ declare namespace Ledger.Administration {
 }
 declare namespace Ledger.Administration {
     namespace RolePermissionService {
-        const baseUrl: string;
+        const baseUrl = "Administration/RolePermission";
         function Update(request: RolePermissionUpdateRequest, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function List(request: RolePermissionListRequest, onSuccess?: (response: RolePermissionListResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         namespace Methods {
@@ -1067,10 +1689,10 @@ declare namespace Ledger.Administration {
         TenantId?: number;
     }
     namespace RoleRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "RoleId";
+        const nameProperty = "RoleName";
+        const localTextPrefix = "Administration.Role";
+        const lookupKey = "Administration.Role";
         function getLookup(): Q.Lookup<RoleRow>;
         namespace Fields {
             const RoleId: string;
@@ -1081,7 +1703,7 @@ declare namespace Ledger.Administration {
 }
 declare namespace Ledger.Administration {
     namespace RoleService {
-        const baseUrl: string;
+        const baseUrl = "Administration/Role";
         function Create(request: Serenity.SaveRequest<RoleRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<RoleRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -1112,10 +1734,10 @@ declare namespace Ledger.Administration {
         TenantName?: string;
     }
     namespace TenantRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "TenantId";
+        const nameProperty = "TenantName";
+        const localTextPrefix = "Administration.Tenants";
+        const lookupKey = "Administration.Tenant";
         function getLookup(): Q.Lookup<TenantRow>;
         namespace Fields {
             const TenantId: string;
@@ -1125,7 +1747,7 @@ declare namespace Ledger.Administration {
 }
 declare namespace Ledger.Administration {
     namespace TenantService {
-        const baseUrl: string;
+        const baseUrl = "Administration/Tenant";
         function Create(request: Serenity.SaveRequest<TenantRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<TenantRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -1156,7 +1778,7 @@ declare namespace Ledger.Administration {
 }
 declare namespace Ledger.Administration {
     namespace TranslationService {
-        const baseUrl: string;
+        const baseUrl = "Administration/Translation";
         function List(request: TranslationListRequest, onSuccess?: (response: Serenity.ListResponse<TranslationItem>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: TranslationUpdateRequest, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         namespace Methods {
@@ -1206,9 +1828,9 @@ declare namespace Ledger.Administration {
         User?: string;
     }
     namespace UserPermissionRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "UserPermissionId";
+        const nameProperty = "PermissionKey";
+        const localTextPrefix = "Administration.UserPermission";
         namespace Fields {
             const UserPermissionId: string;
             const UserId: string;
@@ -1221,7 +1843,7 @@ declare namespace Ledger.Administration {
 }
 declare namespace Ledger.Administration {
     namespace UserPermissionService {
-        const baseUrl: string;
+        const baseUrl = "Administration/UserPermission";
         function Update(request: UserPermissionUpdateRequest, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function List(request: UserPermissionListRequest, onSuccess?: (response: Serenity.ListResponse<UserPermissionRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function ListRolePermissions(request: UserPermissionListRequest, onSuccess?: (response: Serenity.ListResponse<string>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -1260,8 +1882,8 @@ declare namespace Ledger.Administration {
         User?: string;
     }
     namespace UserRoleRow {
-        const idProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "UserRoleId";
+        const localTextPrefix = "Administration.UserRole";
         namespace Fields {
             const UserRoleId: string;
             const UserId: string;
@@ -1273,7 +1895,7 @@ declare namespace Ledger.Administration {
 }
 declare namespace Ledger.Administration {
     namespace UserRoleService {
-        const baseUrl: string;
+        const baseUrl = "Administration/UserRole";
         function Update(request: UserRoleUpdateRequest, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function List(request: UserRoleListRequest, onSuccess?: (response: UserRoleListResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         namespace Methods {
@@ -1309,10 +1931,10 @@ declare namespace Ledger.Administration {
         UpdateDate?: string;
     }
     namespace UserRow {
-        const idProperty: string;
-        const isActiveProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "UserId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "Username";
+        const localTextPrefix = "Administration.User";
         namespace Fields {
             const UserId: string;
             const Username: string;
@@ -1336,7 +1958,7 @@ declare namespace Ledger.Administration {
 }
 declare namespace Ledger.Administration {
     namespace UserService {
-        const baseUrl: string;
+        const baseUrl = "Administration/User";
         function Create(request: Serenity.SaveRequest<UserRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<UserRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -1355,7 +1977,7 @@ declare namespace Ledger.Administration {
 }
 declare namespace Ledger.BasicSamples {
     namespace BasicSamplesService {
-        const baseUrl: string;
+        const baseUrl = "BasicSamples/BasicSamples";
         function OrdersByShipper(request: OrdersByShipperRequest, onSuccess?: (response: OrdersByShipperResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function OrderBulkAction(request: OrderBulkActionRequest, onSuccess?: (response: Serenity.ServiceResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         namespace Methods {
@@ -1441,9 +2063,9 @@ declare namespace Ledger.Common {
         Value?: string;
     }
     namespace UserPreferenceRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "UserPreferenceId";
+        const nameProperty = "Name";
+        const localTextPrefix = "Common.UserPreference";
         namespace Fields {
             const UserPreferenceId: string;
             const UserId: string;
@@ -1455,7 +2077,7 @@ declare namespace Ledger.Common {
 }
 declare namespace Ledger.Common {
     namespace UserPreferenceService {
-        const baseUrl: string;
+        const baseUrl = "Common/UserPreference";
         function Update(request: UserPreferenceUpdateRequest, onSuccess?: (response: Serenity.ServiceResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Retrieve(request: UserPreferenceRetrieveRequest, onSuccess?: (response: UserPreferenceRetrieveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         namespace Methods {
@@ -1472,6 +2094,13 @@ declare namespace Ledger.Common {
     }
 }
 declare namespace Ledger.HR {
+    enum AddressTypeId {
+        HomeAddress = 1,
+        PostalAddress = 2,
+        WorkAddress = 3,
+    }
+}
+declare namespace Ledger.HR {
 }
 declare namespace Ledger.HR {
     class EmployeeAddressForm extends Serenity.PrefixedContext {
@@ -1480,6 +2109,7 @@ declare namespace Ledger.HR {
     interface EmployeeAddressForm {
         AddressId: Serenity.LookupEditor;
         AddressType: Serenity.StringEditor;
+        AddressTypeId: Serenity.EnumEditor;
     }
 }
 declare namespace Ledger.HR {
@@ -1488,6 +2118,7 @@ declare namespace Ledger.HR {
         EmployeeId?: number;
         AddressId?: number;
         AddressType?: string;
+        AddressTypeId?: AddressTypeId;
         TenantId?: number;
         IsActive?: number;
         EmployeeFirstName?: string;
@@ -1512,17 +2143,18 @@ declare namespace Ledger.HR {
         UpdateDate?: string;
     }
     namespace EmployeeAddressRow {
-        const idProperty: string;
-        const isActiveProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "EmployeeAddressId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "AddressType";
+        const localTextPrefix = "HR.EmployeeAddress";
+        const lookupKey = "HR.EmployeeAddress";
         function getLookup(): Q.Lookup<EmployeeAddressRow>;
         namespace Fields {
             const EmployeeAddressId: string;
             const EmployeeId: string;
             const AddressId: string;
             const AddressType: string;
+            const AddressTypeId: string;
             const TenantId: string;
             const IsActive: string;
             const EmployeeFirstName: string;
@@ -1550,7 +2182,7 @@ declare namespace Ledger.HR {
 }
 declare namespace Ledger.HR {
     namespace EmployeeAddressService {
-        const baseUrl: string;
+        const baseUrl = "HR/EmployeeAddress";
         function Create(request: Serenity.SaveRequest<EmployeeAddressRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<EmployeeAddressRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -1604,10 +2236,10 @@ declare namespace Ledger.HR {
         UpdateDate?: string;
     }
     namespace EmployeeEmailRow {
-        const idProperty: string;
-        const isActiveProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "EmployeeEmailId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "EmailType";
+        const localTextPrefix = "HR.EmployeeEmail";
         namespace Fields {
             const EmployeeEmailId: string;
             const EmployeeId: string;
@@ -1635,7 +2267,7 @@ declare namespace Ledger.HR {
 }
 declare namespace Ledger.HR {
     namespace EmployeeEmailService {
-        const baseUrl: string;
+        const baseUrl = "HR/EmployeeEmail";
         function Create(request: Serenity.SaveRequest<EmployeeEmailRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<EmployeeEmailRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -1709,10 +2341,10 @@ declare namespace Ledger.HR {
         UpdateDate?: string;
     }
     namespace EmployeePhoneRow {
-        const idProperty: string;
-        const isActiveProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "EmployeePhoneId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "PhoneType";
+        const localTextPrefix = "HR.EmployeePhone";
         namespace Fields {
             const EmployeePhoneId: string;
             const EmployeeId: string;
@@ -1740,7 +2372,7 @@ declare namespace Ledger.HR {
 }
 declare namespace Ledger.HR {
     namespace EmployeePhoneService {
-        const baseUrl: string;
+        const baseUrl = "HR/EmployeePhone";
         function Create(request: Serenity.SaveRequest<EmployeePhoneRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<EmployeePhoneRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -1780,11 +2412,11 @@ declare namespace Ledger.HR {
         UpdateDate?: string;
     }
     namespace EmployeeRow {
-        const idProperty: string;
-        const isActiveProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "EmployeeId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "FullName";
+        const localTextPrefix = "HR.Employee";
+        const lookupKey = "HR.Employee";
         function getLookup(): Q.Lookup<EmployeeRow>;
         namespace Fields {
             const EmployeeId: string;
@@ -1813,7 +2445,7 @@ declare namespace Ledger.HR {
 }
 declare namespace Ledger.HR {
     namespace EmployeeService {
-        const baseUrl: string;
+        const baseUrl = "HR/Employee";
         function Create(request: Serenity.SaveRequest<EmployeeRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<EmployeeRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -1865,11 +2497,11 @@ declare namespace Ledger.Infra {
         UpdateDate?: string;
     }
     namespace AddressesRow {
-        const idProperty: string;
-        const isActiveProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "AddressId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "StreetAddress";
+        const localTextPrefix = "Infra.Addresses";
+        const lookupKey = "Infra.Addresses";
         function getLookup(): Q.Lookup<AddressesRow>;
         namespace Fields {
             const AddressId: string;
@@ -1890,7 +2522,7 @@ declare namespace Ledger.Infra {
 }
 declare namespace Ledger.Infra {
     namespace AddressesService {
-        const baseUrl: string;
+        const baseUrl = "Infra/Addresses";
         function Create(request: Serenity.SaveRequest<AddressesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<AddressesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -1936,11 +2568,11 @@ declare namespace Ledger.Infra {
         UpdateDate?: string;
     }
     namespace CategoryRow {
-        const idProperty: string;
-        const isActiveProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "CategoryId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "CategoryCode";
+        const localTextPrefix = "Infra.Category";
+        const lookupKey = "Infra.Category";
         function getLookup(): Q.Lookup<CategoryRow>;
         namespace Fields {
             const CategoryId: string;
@@ -1960,7 +2592,7 @@ declare namespace Ledger.Infra {
 }
 declare namespace Ledger.Infra {
     namespace CategoryService {
-        const baseUrl: string;
+        const baseUrl = "Infra/Category";
         function Create(request: Serenity.SaveRequest<CategoryRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<CategoryRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -2000,11 +2632,11 @@ declare namespace Ledger.Infra {
         UpdateDate?: string;
     }
     namespace CurrencyRow {
-        const idProperty: string;
-        const isActiveProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "CurrencyId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "Code";
+        const localTextPrefix = "Infra.Currency";
+        const lookupKey = "Infra.Currency";
         function getLookup(): Q.Lookup<CurrencyRow>;
         namespace Fields {
             const CurrencyId: string;
@@ -2021,7 +2653,7 @@ declare namespace Ledger.Infra {
 }
 declare namespace Ledger.Infra {
     namespace CurrencyService {
-        const baseUrl: string;
+        const baseUrl = "Infra/Currency";
         function Create(request: Serenity.SaveRequest<CurrencyRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<CurrencyRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -2058,11 +2690,11 @@ declare namespace Ledger.Infra {
         UpdateDate?: string;
     }
     namespace EmailRow {
-        const idProperty: string;
-        const isActiveProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "EmailId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "EmailAddress";
+        const localTextPrefix = "Infra.Email";
+        const lookupKey = "Infra.Email";
         function getLookup(): Q.Lookup<EmailRow>;
         namespace Fields {
             const EmailId: string;
@@ -2078,7 +2710,7 @@ declare namespace Ledger.Infra {
 }
 declare namespace Ledger.Infra {
     namespace EmailService {
-        const baseUrl: string;
+        const baseUrl = "Infra/Email";
         function Create(request: Serenity.SaveRequest<EmailRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<EmailRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -2095,28 +2727,26 @@ declare namespace Ledger.Infra {
 }
 declare namespace Ledger.Infra {
     interface NoteRow {
-        NoteId?: number;
+        NoteID?: number;
         EntityType?: string;
         EntityId?: number;
         Text?: string;
         InsertUserId?: number;
         InsertDate?: string;
         InsertUserDisplayName?: string;
-        TenantId?: number;
     }
     namespace NoteRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "NoteID";
+        const nameProperty = "EntityType";
+        const localTextPrefix = "Infra.Note";
         namespace Fields {
-            const NoteId: string;
+            const NoteID: string;
             const EntityType: string;
             const EntityId: string;
             const Text: string;
             const InsertUserId: string;
             const InsertDate: string;
             const InsertUserDisplayName: string;
-            const TenantId: string;
         }
     }
 }
@@ -2142,11 +2772,11 @@ declare namespace Ledger.Infra {
         UpdateDate?: string;
     }
     namespace PhoneRow {
-        const idProperty: string;
-        const isActiveProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "PhoneId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "PhoneNumber";
+        const localTextPrefix = "Infra.Phone";
+        const lookupKey = "Infra.Email";
         function getLookup(): Q.Lookup<PhoneRow>;
         namespace Fields {
             const PhoneId: string;
@@ -2162,7 +2792,7 @@ declare namespace Ledger.Infra {
 }
 declare namespace Ledger.Infra {
     namespace PhoneService {
-        const baseUrl: string;
+        const baseUrl = "Infra/Phone";
         function Create(request: Serenity.SaveRequest<PhoneRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<PhoneRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -2209,10 +2839,10 @@ declare namespace Ledger.Infra {
         UpdateDate?: string;
     }
     namespace SupportRow {
-        const idProperty: string;
-        const isActiveProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "SupportId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "SupportCode";
+        const localTextPrefix = "Infra.Support";
         namespace Fields {
             const SupportId: string;
             const Guid: string;
@@ -2234,7 +2864,7 @@ declare namespace Ledger.Infra {
 }
 declare namespace Ledger.Infra {
     namespace SupportService {
-        const baseUrl: string;
+        const baseUrl = "Infra/Support";
         function Create(request: Serenity.SaveRequest<SupportRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<SupportRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -2272,10 +2902,10 @@ declare namespace Ledger.Infra {
         UpdateDate?: string;
     }
     namespace SupportTypeRow {
-        const idProperty: string;
-        const isActiveProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "EnumValue";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "EnumName";
+        const localTextPrefix = "Infra.SupportType";
         namespace Fields {
             const EnumValue: string;
             const EnumName: string;
@@ -2290,7 +2920,7 @@ declare namespace Ledger.Infra {
 }
 declare namespace Ledger.Infra {
     namespace SupportTypeService {
-        const baseUrl: string;
+        const baseUrl = "Infra/SupportType";
         function Create(request: Serenity.SaveRequest<SupportTypeRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<SupportTypeRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -2331,11 +2961,11 @@ declare namespace Ledger.Infra {
         UpdateDate?: string;
     }
     namespace SupportTypeStringRow {
-        const idProperty: string;
-        const isActiveProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "EnumLocaleId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "DisplayName";
+        const localTextPrefix = "Infra.SupportTypeString";
+        const lookupKey = "Infra.SupportTypeString";
         function getLookup(): Q.Lookup<SupportTypeStringRow>;
         namespace Fields {
             const EnumLocaleId: string;
@@ -2353,7 +2983,7 @@ declare namespace Ledger.Infra {
 }
 declare namespace Ledger.Infra {
     namespace SupportTypeStringService {
-        const baseUrl: string;
+        const baseUrl = "Infra/SupportTypeString";
         function Create(request: Serenity.SaveRequest<SupportTypeStringRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<SupportTypeStringRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -2468,9 +3098,9 @@ declare namespace Ledger.Northwind {
         Description?: string;
     }
     namespace CategoryLangRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "Id";
+        const nameProperty = "CategoryName";
+        const localTextPrefix = "Northwind.CategoryLang";
         namespace Fields {
             const Id: string;
             const CategoryId: string;
@@ -2482,7 +3112,7 @@ declare namespace Ledger.Northwind {
 }
 declare namespace Ledger.Northwind {
     namespace CategoryLangService {
-        const baseUrl: string;
+        const baseUrl = "Northwind/CategoryLang";
         function Create(request: Serenity.SaveRequest<CategoryLangRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<CategoryLangRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -2506,10 +3136,10 @@ declare namespace Ledger.Northwind {
         TenantId?: number;
     }
     namespace CategoryRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "CategoryID";
+        const nameProperty = "CategoryName";
+        const localTextPrefix = "Northwind.Category";
+        const lookupKey = "Northwind.Category";
         function getLookup(): Q.Lookup<CategoryRow>;
         namespace Fields {
             const CategoryID: string;
@@ -2522,7 +3152,7 @@ declare namespace Ledger.Northwind {
 }
 declare namespace Ledger.Northwind {
     namespace CategoryService {
-        const baseUrl: string;
+        const baseUrl = "Northwind/Category";
         function Create(request: Serenity.SaveWithLocalizationRequest<CategoryRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveWithLocalizationRequest<CategoryRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -2559,9 +3189,9 @@ declare namespace Ledger.Northwind {
         CustomerTypeCustomerDesc?: string;
     }
     namespace CustomerCustomerDemoRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "ID";
+        const nameProperty = "CustomerID";
+        const localTextPrefix = "Northwind.CustomerCustomerDemo";
         namespace Fields {
             const ID: string;
             const CustomerID: string;
@@ -2587,9 +3217,9 @@ declare namespace Ledger.Northwind {
         CustomerDesc?: string;
     }
     namespace CustomerDemographicRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "ID";
+        const nameProperty = "CustomerTypeID";
+        const localTextPrefix = "Northwind.CustomerDemographic";
         namespace Fields {
             const ID: string;
             const CustomerTypeID: string;
@@ -2624,8 +3254,8 @@ declare namespace Ledger.Northwind {
         EmployeeId?: number;
     }
     namespace CustomerRepresentativesRow {
-        const idProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "RepresentativeId";
+        const localTextPrefix = "CustomerRepresentatives";
         namespace Fields {
             const RepresentativeId: string;
             const CustomerId: string;
@@ -2652,10 +3282,10 @@ declare namespace Ledger.Northwind {
         TenantId?: number;
     }
     namespace CustomerRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "ID";
+        const nameProperty = "CompanyName";
+        const localTextPrefix = "Northwind.Customer";
+        const lookupKey = "Northwind.Customer";
         function getLookup(): Q.Lookup<CustomerRow>;
         namespace Fields {
             const ID: string;
@@ -2678,7 +3308,7 @@ declare namespace Ledger.Northwind {
 }
 declare namespace Ledger.Northwind {
     namespace CustomerService {
-        const baseUrl: string;
+        const baseUrl = "Northwind/Customer";
         function Create(request: Serenity.SaveRequest<CustomerRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<CustomerRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -2736,10 +3366,10 @@ declare namespace Ledger.Northwind {
         TenantId?: number;
     }
     namespace EmployeeRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "EmployeeID";
+        const nameProperty = "FullName";
+        const localTextPrefix = "Northwind.Employee";
+        const lookupKey = "Northwind.Employee";
         function getLookup(): Q.Lookup<EmployeeRow>;
         namespace Fields {
             const EmployeeID: string;
@@ -2809,9 +3439,9 @@ declare namespace Ledger.Northwind {
         TerritoryRegionID?: number;
     }
     namespace EmployeeTerritoryRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "EmployeeID";
+        const nameProperty = "TerritoryID";
+        const localTextPrefix = "Northwind.EmployeeTerritory";
         namespace Fields {
             const EmployeeID: string;
             const TerritoryID: string;
@@ -2854,9 +3484,9 @@ declare namespace Ledger.Northwind {
         InsertUserDisplayName?: string;
     }
     namespace NoteRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "NoteId";
+        const nameProperty = "EntityType";
+        const localTextPrefix = "Northwind.Note";
         namespace Fields {
             const NoteId: string;
             const EntityType: string;
@@ -2906,8 +3536,8 @@ declare namespace Ledger.Northwind {
         LineTotal?: number;
     }
     namespace OrderDetailRow {
-        const idProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "DetailID";
+        const localTextPrefix = "Northwind.OrderDetail";
         namespace Fields {
             const DetailID: string;
             const OrderID: string;
@@ -2933,7 +3563,7 @@ declare namespace Ledger.Northwind {
 }
 declare namespace Ledger.Northwind {
     namespace OrderDetailService {
-        const baseUrl: string;
+        const baseUrl = "Northwind/OrderDetail";
         function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<OrderDetailRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<OrderDetailRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         namespace Methods {
@@ -2996,10 +3626,10 @@ declare namespace Ledger.Northwind {
         TenantId?: number;
     }
     namespace OrderRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "OrderID";
+        const nameProperty = "CustomerID";
+        const localTextPrefix = "Northwind.Order";
+        const lookupKey = "Northwind.OrderShipCity";
         function getLookup(): Q.Lookup<OrderRow>;
         namespace Fields {
             const OrderID: string;
@@ -3036,7 +3666,7 @@ declare namespace Ledger.Northwind {
 }
 declare namespace Ledger.Northwind {
     namespace OrderService {
-        const baseUrl: string;
+        const baseUrl = "Northwind/Order";
         function Create(request: Serenity.SaveRequest<OrderRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<OrderRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -3084,9 +3714,9 @@ declare namespace Ledger.Northwind {
         ProductName?: string;
     }
     namespace ProductLangRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "Id";
+        const nameProperty = "ProductName";
+        const localTextPrefix = "Northwind.ProductLang";
         namespace Fields {
             const Id: string;
             const ProductId: string;
@@ -3097,7 +3727,7 @@ declare namespace Ledger.Northwind {
 }
 declare namespace Ledger.Northwind {
     namespace ProductLangService {
-        const baseUrl: string;
+        const baseUrl = "Northwind/ProductLang";
         function Create(request: Serenity.SaveRequest<ProductLangRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<ProductLangRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -3132,8 +3762,8 @@ declare namespace Ledger.Northwind {
         ReorderLevel?: number;
     }
     namespace ProductLogRow {
-        const idProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "ProductLogID";
+        const localTextPrefix = "Northwind.ProductLog";
         namespace Fields {
             const ProductLogID: string;
             const OperationType: string;
@@ -3184,10 +3814,10 @@ declare namespace Ledger.Northwind {
         TenantId?: number;
     }
     namespace ProductRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "ProductID";
+        const nameProperty = "ProductName";
+        const localTextPrefix = "Northwind.Product";
+        const lookupKey = "Northwind.Product";
         function getLookup(): Q.Lookup<ProductRow>;
         namespace Fields {
             const ProductID: string;
@@ -3221,7 +3851,7 @@ declare namespace Ledger.Northwind {
 }
 declare namespace Ledger.Northwind {
     namespace ProductService {
-        const baseUrl: string;
+        const baseUrl = "Northwind/Product";
         function Create(request: Serenity.SaveWithLocalizationRequest<ProductRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveWithLocalizationRequest<ProductRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -3256,10 +3886,10 @@ declare namespace Ledger.Northwind {
         TenantId?: number;
     }
     namespace RegionRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "RegionID";
+        const nameProperty = "RegionDescription";
+        const localTextPrefix = "Northwind.Region";
+        const lookupKey = "Northwind.Region";
         function getLookup(): Q.Lookup<RegionRow>;
         namespace Fields {
             const RegionID: string;
@@ -3270,7 +3900,7 @@ declare namespace Ledger.Northwind {
 }
 declare namespace Ledger.Northwind {
     namespace RegionService {
-        const baseUrl: string;
+        const baseUrl = "Northwind/Region";
         function Create(request: Serenity.SaveRequest<RegionRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<RegionRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -3295,8 +3925,8 @@ declare namespace Ledger.Northwind {
         ProductSales?: number;
     }
     namespace SalesByCategoryRow {
-        const nameProperty: string;
-        const localTextPrefix: string;
+        const nameProperty = "CategoryName";
+        const localTextPrefix = "Northwind.SalesByCategory";
         namespace Fields {
             const CategoryId: string;
             const CategoryName: string;
@@ -3307,7 +3937,7 @@ declare namespace Ledger.Northwind {
 }
 declare namespace Ledger.Northwind {
     namespace SalesByCategoryService {
-        const baseUrl: string;
+        const baseUrl = "Northwind/SalesByCategory";
         function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<SalesByCategoryRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         namespace Methods {
             const List: string;
@@ -3333,10 +3963,10 @@ declare namespace Ledger.Northwind {
         TenantId?: number;
     }
     namespace ShipperRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "ShipperID";
+        const nameProperty = "CompanyName";
+        const localTextPrefix = "Northwind.Shipper";
+        const lookupKey = "Northwind.Shipper";
         function getLookup(): Q.Lookup<ShipperRow>;
         namespace Fields {
             const ShipperID: string;
@@ -3348,7 +3978,7 @@ declare namespace Ledger.Northwind {
 }
 declare namespace Ledger.Northwind {
     namespace ShipperService {
-        const baseUrl: string;
+        const baseUrl = "Northwind/Shipper";
         function Create(request: Serenity.SaveRequest<ShipperRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<ShipperRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -3400,10 +4030,10 @@ declare namespace Ledger.Northwind {
         TenantId?: number;
     }
     namespace SupplierRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "SupplierID";
+        const nameProperty = "CompanyName";
+        const localTextPrefix = "Northwind.Supplier";
+        const lookupKey = "Northwind.Supplier";
         function getLookup(): Q.Lookup<SupplierRow>;
         namespace Fields {
             const SupplierID: string;
@@ -3424,7 +4054,7 @@ declare namespace Ledger.Northwind {
 }
 declare namespace Ledger.Northwind {
     namespace SupplierService {
-        const baseUrl: string;
+        const baseUrl = "Northwind/Supplier";
         function Create(request: Serenity.SaveRequest<SupplierRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<SupplierRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -3461,10 +4091,10 @@ declare namespace Ledger.Northwind {
         TenantId?: number;
     }
     namespace TerritoryRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "ID";
+        const nameProperty = "TerritoryID";
+        const localTextPrefix = "Northwind.Territory";
+        const lookupKey = "Northwind.Territory";
         function getLookup(): Q.Lookup<TerritoryRow>;
         namespace Fields {
             const ID: string;
@@ -3478,7 +4108,7 @@ declare namespace Ledger.Northwind {
 }
 declare namespace Ledger.Northwind {
     namespace TerritoryService {
-        const baseUrl: string;
+        const baseUrl = "Northwind/Territory";
         function Create(request: Serenity.SaveRequest<TerritoryRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<TerritoryRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -3502,652 +4132,31 @@ declare namespace Ledger {
         };
     }
 }
-declare namespace Ledger {
-    class BasicProgressDialog extends Serenity.TemplatedDialog<any> {
-        constructor();
-        cancelled: boolean;
-        max: number;
-        value: number;
-        title: string;
-        cancelTitle: string;
-        getDialogOptions(): JQueryUI.DialogOptions;
-        initDialog(): void;
-        getTemplate(): string;
-    }
-}
-declare namespace Ledger.DialogUtils {
-    function pendingChangesConfirmation(element: JQuery, hasPendingChanges: () => boolean): void;
-}
-declare namespace Ledger.Common {
-    interface ExcelExportOptions {
-        grid: Serenity.DataGrid<any, any>;
-        service: string;
-        onViewSubmit: () => boolean;
-        title?: string;
-        hint?: string;
-        separator?: boolean;
-    }
-    namespace ExcelExportHelper {
-        function createToolButton(options: ExcelExportOptions): Serenity.ToolButton;
-    }
-}
-declare namespace Ledger.LanguageList {
-    function getValue(): string[][];
-}
-declare namespace Ledger.Common {
-    interface ReportButtonOptions {
-        title?: string;
-        cssClass?: string;
-        icon?: string;
-        download?: boolean;
-        reportKey: string;
-        extension?: string;
-        getParams?: () => any;
-        target?: string;
-    }
-    namespace ReportHelper {
-        function createToolButton(options: ReportButtonOptions): Serenity.ToolButton;
-    }
-}
-declare namespace Ledger.BasicSamples {
-    class ViewWithoutIDGrid extends Serenity.EntityGrid<Northwind.SalesByCategoryRow, any> {
-        protected getColumnsKey(): string;
-        protected getIdProperty(): string;
-        protected getNameProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        private nextId;
-        constructor(container: JQuery);
-        /**
-         * This method is called to preprocess data returned from the list service
-         */
-        protected onViewProcessData(response: Serenity.ListResponse<Northwind.SalesByCategoryRow>): Serenity.ListResponse<Northwind.SalesByCategoryRow>;
-        protected getButtons(): any[];
-    }
-}
-declare namespace Ledger.BasicSamples {
-    class RemovingAddButton extends Northwind.SupplierGrid {
-        constructor(container: JQuery);
-        /**
-         * This method is called to get list of buttons to be created.
-         */
-        protected getButtons(): Serenity.ToolButton[];
-    }
-}
-declare namespace Ledger.BasicSamples {
-    class InlineImageFormatter implements Slick.Formatter, Serenity.IInitializeColumn {
-        format(ctx: Slick.FormatterContext): string;
-        initializeColumn(column: Slick.Column): void;
-        fileProperty: string;
-        thumb: boolean;
-    }
-}
-declare namespace Ledger.BasicSamples {
-    class InlineImageInGrid extends Serenity.EntityGrid<Northwind.ProductRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): any;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-        protected getSlickOptions(): Slick.GridOptions;
-    }
-}
-declare namespace Ledger.BasicSamples {
-    class InitialValuesForQuickFilters extends Northwind.OrderGrid {
-        constructor(container: JQuery);
-        /**
-         * This method is called to get list of quick filters to be created for this grid.
-         * By default, it returns quick filter objects corresponding to properties that
-         * have a [QuickFilter] attribute at server side OrderColumns.cs
-         */
-        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
-        /**
-         * This method is another possible place to modify quick filter widgets.
-         * It is where the quick filter widgets are actually created.
-         *
-         * By default, it calls getQuickFilters() then renders UI for these
-         * quick filters.
-         *
-         * We could use getQuickFilters() method for ShipVia too,
-         * but this is for demonstration purposes
-         */
-        protected createQuickFilters(): void;
-    }
-}
-declare namespace Ledger.BasicSamples {
-    class GroupingAndSummariesInGrid extends Northwind.ProductGrid {
-        constructor(container: JQuery);
-        protected createSlickGrid(): Slick.Grid;
-        protected getColumns(): Slick.Column[];
-        protected getSlickOptions(): Slick.GridOptions;
-        protected usePager(): boolean;
-        protected getButtons(): {
-            title: string;
-            cssClass: string;
-            onClick: () => void;
-        }[];
-    }
-}
-declare namespace Ledger.BasicSamples {
-    class GridFilteredByCriteria extends Northwind.ProductGrid {
-        constructor(container: JQuery);
-        protected onViewSubmit(): boolean;
-    }
-}
-declare namespace Ledger.BasicSamples {
-    class CustomLinksInGrid extends Northwind.OrderGrid {
-        constructor(container: JQuery);
-        /**
-         * We override getColumns() to change format functions for some columns.
-         * You could also write them as formatter classes, and use them at server side
-         */
-        protected getColumns(): Slick.Column[];
-        protected onClick(e: JQueryEventObject, row: number, cell: number): void;
-        /**
-         * This method is called for columns with [EditLink] attribute,
-         * but only for edit links of this grid's own item type.
-         * It is also called by Add Product button with a NULL entityOrId
-         * parameter so we should check that entityOrId is a string
-         * to be sure it is originating from a link.
-         *
-         * As we changed format for other columns, this will only be called
-         * for links in remaining OrderID column
-         */
-        protected editItem(entityOrId: any): void;
-    }
-}
-declare namespace Ledger.BasicSamples {
-    class ConditionalFormattingGrid extends Serenity.EntityGrid<Northwind.ProductRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): any;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-        /**
-         * We override getColumns() to be able to add a custom CSS class to UnitPrice
-         * We could also add this class in ProductColumns.cs but didn't want to modify
-         * it solely for this sample.
-         */
-        protected getColumns(): Slick.Column[];
-        /**
-         * This method is called for all rows
-         * @param item Data item for current row
-         * @param index Index of the row in grid
-         */
-        protected getItemCssClass(item: Northwind.ProductRow, index: number): string;
-    }
-}
-declare namespace Ledger.BasicSamples {
-    class CancellableBulkActionGrid extends Northwind.OrderGrid {
-        private rowSelection;
-        constructor(container: JQuery);
-        protected createToolbarExtensions(): void;
-        protected getButtons(): {
-            title: string;
-            cssClass: string;
-            onClick: () => void;
-        }[];
-        protected getColumns(): Slick.Column[];
-        protected getViewOptions(): Slick.RemoteViewOptions;
-    }
-}
-declare namespace Ledger.BasicSamples {
-    /**
-     * This is our custom product dialog that uses a different product form
-     * (LookupFilterByMultipleForm) with our special category editor.
-     */
-    class LookupFilterByMultipleDialog extends Northwind.ProductDialog {
+declare namespace Ledger.Membership {
+    class ChangePasswordPanel extends Serenity.PropertyPanel<ChangePasswordRequest, any> {
         protected getFormKey(): string;
-    }
-}
-declare namespace Ledger.BasicSamples {
-    /**
-     * Subclass of ProductGrid to override dialog type to CloneableEntityDialog
-     */
-    class LookupFilterByMultipleGrid extends Northwind.ProductGrid {
-        protected getDialogType(): typeof LookupFilterByMultipleDialog;
-        constructor(container: JQuery);
-        /**
-         * This method is called just before List request is sent to service.
-         * You have an opportunity here to cancel request or modify it.
-         * Here we'll add a custom criteria to list request.
-         */
-        protected onViewSubmit(): boolean;
-    }
-}
-declare namespace Ledger.BasicSamples {
-    /**
-     * This is our category editor that will show only categories of Produce and
-     * Seafood. We are subclassing LookupEditorBase which also LookupEditor
-     * derives from.
-     *
-     * After compiling and transforming templates, this editor type will be
-     * available in server side to use in our LookupFilterByMultipleForm,
-     * which is a version of ProductForm that uses our custom editor.
-     */
-    class ProduceSeafoodCategoryEditor extends Serenity.LookupEditorBase<Serenity.LookupEditorOptions, Northwind.CategoryRow> {
-        constructor(container: JQuery, opt: Serenity.LookupEditorOptions);
-        /**
-         * Normally LookupEditor requires a lookup key to determine which set of
-         * lookup data to show in editor. As our editor will only show category
-         * data, we lock it to category lookup key.
-         */
-        protected getLookupKey(): string;
-        /**
-         * Here we are filtering by category name but you could filter by any field.
-         * Just make sure the fields you filter on has [LookupInclude] attribute on them,
-         * otherwise their value will be null in client side as they are not sent back
-         * from server in lookup script.
-         */
-        protected getItems(lookup: Q.Lookup<Northwind.CategoryRow>): Northwind.CategoryRow[];
-    }
-}
-declare namespace Ledger.BasicSamples {
-    /**
-     * Our subclass of Order Details editor with a CategoryID property
-     */
-    class FilteredLookupDetailEditor extends Northwind.OrderDetailsEditor {
-        protected getDialogType(): typeof FilteredLookupOrderDetailDialog;
-        constructor(container: JQuery);
-        categoryID: number;
-        /**
-         * This method is called to initialize an edit dialog created by
-         * grid editor when Add button or an edit link is clicked
-         * We have an opportunity here to pass CategoryID to edit dialog
-         */
-        protected initEntityDialog(itemType: string, dialog: Serenity.Widget<any>): void;
-    }
-}
-declare namespace Ledger.BasicSamples {
-    /**
-     * Basic order dialog with a category selection
-     */
-    class FilteredLookupInDetailDialog extends Serenity.EntityDialog<Northwind.OrderRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
         private form;
-        constructor();
-    }
-}
-declare namespace Ledger.BasicSamples {
-    /**
-     * Subclass of OrderGrid to override dialog type to FilteredLookupInDetailDialog
-     */
-    class FilteredLookupInDetailGrid extends Northwind.OrderGrid {
-        protected getDialogType(): typeof FilteredLookupInDetailDialog;
         constructor(container: JQuery);
     }
 }
-declare namespace Ledger.BasicSamples {
-    /**
-     * Our subclass of order detail dialog with a CategoryID property
-     * that will be used to set CascadeValue of product editor
-     */
-    class FilteredLookupOrderDetailDialog extends Northwind.OrderDetailDialog {
-        constructor();
-        /**
-         * This method is called just before an entity is loaded to dialog
-         * This is also called for new record mode with an empty entity
-         */
-        protected beforeLoadEntity(entity: any): void;
-        categoryID: number;
-    }
-}
-declare namespace Ledger.BasicSamples {
-    /**
-     * Adding Responsive attribute makes this dialog use full screen in mobile devices.
-     */
-    class ResponsiveDialog extends Serenity.EntityDialog<Northwind.OrderRow, any> {
+declare namespace Ledger.Membership {
+    class ForgotPasswordPanel extends Serenity.PropertyPanel<ForgotPasswordRequest, any> {
         protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        constructor();
-    }
-}
-declare namespace Ledger.BasicSamples {
-    /**
-     * Subclass of OrderGrid to override dialog type to ResponsiveDialog
-     */
-    class ResponsiveGrid extends Northwind.OrderGrid {
-        protected getDialogType(): typeof ResponsiveDialog;
+        private form;
         constructor(container: JQuery);
     }
 }
-declare namespace Ledger.BasicSamples {
-    class ReadOnlyDialog extends Northwind.SupplierDialog {
-        /**
-         * This is the method that gets list of tool
-         * buttons to be created in a dialog.
-         *
-         * Here we'll remove save and close button, and
-         * apply changes buttons.
-         */
-        protected getToolbarButtons(): Serenity.ToolButton[];
-        /**
-         * This method is a good place to update states of
-         * interface elements. It is called after dialog
-         * is initialized and an entity is loaded into dialog.
-         * This is also called in new item mode.
-         */
-        protected updateInterface(): void;
-    }
-}
-declare namespace Ledger.BasicSamples {
-    /**
-     * A readonly grid that launches ReadOnlyDialog
-     */
-    class ReadOnlyGrid extends Northwind.SupplierGrid {
-        protected getDialogType(): typeof ReadOnlyDialog;
-        constructor(container: JQuery);
-        /**
-         * Removing add button from grid using its css class
-         */
-        protected getButtons(): Serenity.ToolButton[];
-    }
-}
-declare namespace Ledger.BasicSamples {
-    /**
-     * Styling for columns is done with CSS in site.basicsamples.less file.
-     * When comparing this to MultiColumnDialog sample, you may notice that
-     * this version requires much less JS and CSS code.
-     */
-    class MultiColumnResponsiveDialog extends Northwind.OrderDialog {
-        constructor();
-    }
-}
-declare namespace Ledger.BasicSamples {
-    /**
-     * Subclass of OrderGrid to override dialog type to MultiColumnResponsiveDialog
-     */
-    class MultiColumnResponsiveGrid extends Northwind.OrderGrid {
-        protected getDialogType(): typeof MultiColumnResponsiveDialog;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Ledger.BasicSamples {
-    class GetInsertedRecordIdDialog extends Northwind.CategoryDialog {
-        /**
-         * This method is called after the save request to service
-         * is completed succesfully. This can be an insert or update.
-         *
-         * @param response Response that is returned from server
-         */
-        protected onSaveSuccess(response: Serenity.SaveResponse): void;
-    }
-}
-declare namespace Ledger.BasicSamples {
-    /**
-     * Subclass of CategoryGrid to override dialog type to GetInsertedRecordIdDialog
-     */
-    class GetInsertedRecordIdGrid extends Northwind.CategoryGrid {
-        protected getDialogType(): typeof GetInsertedRecordIdDialog;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Ledger.BasicSamples.DialogBoxes {
-    function initializePage(): void;
-}
-declare namespace Ledger.BasicSamples {
-    class DefaultValuesInNewGrid extends Northwind.OrderGrid {
-        constructor(container: JQuery);
-        /**
-         * This method is called when New Item button is clicked.
-         * By default, it calls EditItem with an empty entity.
-         * This is a good place to fill in default values for New Item button.
-         */
-        protected addButtonClick(): void;
-        protected getButtons(): Serenity.ToolButton[];
-    }
-}
-declare namespace Ledger.BasicSamples {
-    class CloneableEntityDialog extends Northwind.ProductDialog {
-        protected updateInterface(): void;
-        /**
-         * Overriding this method is optional to customize cloned entity
-         */
-        protected getCloningEntity(): Northwind.ProductRow;
-    }
-}
-declare namespace Ledger.BasicSamples {
-    /**
-     * Subclass of ProductGrid to override dialog type to CloneableEntityDialog
-     */
-    class CloneableEntityGrid extends Northwind.ProductGrid {
-        protected getDialogType(): typeof CloneableEntityDialog;
-        constructor(container: JQuery);
-    }
-}
-declare var Morris: any;
-declare namespace Ledger.BasicSamples {
-    class ChartInDialog extends Serenity.TemplatedDialog<any> {
-        private areaChart;
-        static initializePage(): void;
-        protected onDialogOpen(): void;
-        protected arrange(): void;
-        protected getTemplate(): string;
-        protected getDialogOptions(): JQueryUI.DialogOptions;
-    }
-}
-declare namespace Ledger.Administration {
-    class RoleCheckEditor extends Serenity.CheckTreeEditor<Serenity.CheckTreeItem<any>, any> {
-        private searchText;
-        constructor(div: JQuery);
-        protected createToolbarExtensions(): void;
-        protected getButtons(): any[];
-        protected getTreeItems(): Serenity.CheckTreeItem<any>[];
-        protected onViewFilter(item: any): boolean;
-    }
-}
-declare namespace Ledger.Administration {
-    class UserRoleDialog extends Serenity.TemplatedDialog<UserRoleDialogOptions> {
-        private permissions;
-        constructor(opt: UserRoleDialogOptions);
-        protected getDialogOptions(): JQueryUI.DialogOptions;
-        protected getTemplate(): string;
-    }
-    interface UserRoleDialogOptions {
-        userID: number;
-        username: string;
-    }
-}
-declare namespace Ledger.Administration {
-    class PermissionCheckEditor extends Serenity.DataGrid<PermissionCheckItem, PermissionCheckEditorOptions> {
-        protected getIdProperty(): string;
-        private searchText;
-        private byParentKey;
-        private rolePermissions;
-        constructor(container: JQuery, opt: PermissionCheckEditorOptions);
-        private getItemGrantRevokeClass(item, grant);
-        private getItemEffectiveClass(item);
-        protected getColumns(): Slick.Column[];
-        setItems(items: PermissionCheckItem[]): void;
-        protected onViewSubmit(): boolean;
-        protected onViewFilter(item: PermissionCheckItem): boolean;
-        private matchContains(item);
-        private getDescendants(item, excludeGroups);
-        protected onClick(e: any, row: any, cell: any): void;
-        private getParentKey(key);
-        protected getButtons(): Serenity.ToolButton[];
-        protected createToolbarExtensions(): void;
-        private getSortedGroupAndPermissionKeys(titleByKey);
-        get_value(): UserPermissionRow[];
-        set_value(value: UserPermissionRow[]): void;
-        get_rolePermissions(): string[];
-        set_rolePermissions(value: string[]): void;
-    }
-    interface PermissionCheckEditorOptions {
-        showRevoke?: boolean;
-    }
-    interface PermissionCheckItem {
-        ParentKey?: string;
-        Key?: string;
-        Title?: string;
-        IsGroup?: boolean;
-        GrantRevoke?: boolean;
-    }
-}
-declare namespace Ledger.Administration {
-    class UserPermissionDialog extends Serenity.TemplatedDialog<UserPermissionDialogOptions> {
-        private permissions;
-        constructor(opt: UserPermissionDialogOptions);
-        protected getDialogOptions(): JQueryUI.DialogOptions;
-        protected getTemplate(): string;
-    }
-    interface UserPermissionDialogOptions {
-        userID?: number;
-        username?: string;
-    }
-}
-declare namespace Ledger.Administration {
-    class UserDialog extends Serenity.EntityDialog<UserRow, any> {
+declare namespace Ledger.Membership {
+    class ResetPasswordPanel extends Serenity.PropertyPanel<ResetPasswordRequest, any> {
         protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getIsActiveProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: UserForm;
-        constructor();
-        protected getToolbarButtons(): Serenity.ToolButton[];
-        protected updateInterface(): void;
-        protected afterLoadEntity(): void;
-        protected getPropertyItems(): Serenity.PropertyItem[];
-    }
-}
-declare namespace Ledger.Administration {
-    class UserGrid extends Serenity.EntityGrid<UserRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof UserDialog;
-        protected getIdProperty(): string;
-        protected getIsActiveProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
+        private form;
         constructor(container: JQuery);
-        protected getDefaultSortBy(): string[];
     }
 }
-declare namespace Ledger.Authorization {
-    let userDefinition: ScriptUserDefinition;
-    function hasPermission(permissionKey: string): boolean;
-}
-declare namespace Ledger.Administration {
-    class TranslationGrid extends Serenity.EntityGrid<TranslationItem, any> {
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        private hasChanges;
-        private searchText;
-        private sourceLanguage;
-        private targetLanguage;
-        private targetLanguageKey;
-        constructor(container: JQuery);
-        protected onClick(e: JQueryEventObject, row: number, cell: number): any;
-        protected getColumns(): Slick.Column[];
-        protected createToolbarExtensions(): void;
-        protected saveChanges(language: string): RSVP.Promise<any>;
-        protected onViewSubmit(): boolean;
-        protected getButtons(): Serenity.ToolButton[];
-        protected createQuickSearchInput(): void;
-        protected onViewFilter(item: TranslationItem): boolean;
-        protected usePager(): boolean;
-    }
-}
-declare namespace Ledger.Administration {
-    class TenantDialog extends Serenity.EntityDialog<TenantRow, any> {
+declare namespace Ledger.Membership {
+    class SignUpPanel extends Serenity.PropertyPanel<SignUpRequest, any> {
         protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: TenantForm;
-    }
-}
-declare namespace Ledger.Administration {
-    class TenantEditor extends Common.GridEditorBase<TenantRow> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof TenantEditorDialog;
-        protected getLocalTextPrefix(): string;
+        private form;
         constructor(container: JQuery);
-    }
-}
-declare namespace Ledger.Administration {
-    class TenantEditorDialog extends Common.GridEditorDialog<TenantRow> {
-        protected getFormKey(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected form: TenantForm;
-    }
-}
-declare namespace Ledger.Administration {
-    class TenantGrid extends Serenity.EntityGrid<TenantRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof TenantDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Ledger.Administration {
-    class RolePermissionDialog extends Serenity.TemplatedDialog<RolePermissionDialogOptions> {
-        private permissions;
-        constructor(opt: RolePermissionDialogOptions);
-        protected getDialogOptions(): JQueryUI.DialogOptions;
-        protected getTemplate(): string;
-    }
-    interface RolePermissionDialogOptions {
-        roleID?: number;
-        title?: string;
-    }
-}
-declare namespace Ledger.Administration {
-    class RoleDialog extends Serenity.EntityDialog<RoleRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: RoleForm;
-        protected getToolbarButtons(): Serenity.ToolButton[];
-        protected updateInterface(): void;
-    }
-}
-declare namespace Ledger.Administration {
-    class RoleGrid extends Serenity.EntityGrid<RoleRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof RoleDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-        protected getDefaultSortBy(): string[];
-    }
-}
-declare namespace Ledger.Administration {
-    class LanguageDialog extends Serenity.EntityDialog<LanguageRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: LanguageForm;
-    }
-}
-declare namespace Ledger.Administration {
-    class LanguageGrid extends Serenity.EntityGrid<LanguageRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof LanguageDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-        protected getDefaultSortBy(): string[];
     }
 }

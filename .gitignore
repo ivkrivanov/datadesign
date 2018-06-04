@@ -89,6 +89,7 @@ artifacts/
 #Files built by Visual Studio
 *_i.c
 *_p.c
+*_i.h
 *.ilk
 *.meta
 *.obj
@@ -108,7 +109,7 @@ artifacts/
 *.vssscc
 .builds
 *.pidb
-*.log
+*.svclog
 *.scc
 
 # Visual C++ cache files
@@ -123,6 +124,7 @@ ipch/
 *.psess
 *.vsp
 *.vspx
+*.sap
 
 # Guidance Automation Toolkit
 *.gpState
@@ -162,9 +164,17 @@ publish/
 *.pubxml
 *.publishproj
 
-# NuGet Packages Directory
-## TODO: If you have NuGet Package Restore enabled, uncomment the next line
-#packages/
+# NuGet Packages
+*.nupkg
+# The packages folder can be ignored because of Package Restore
+**/packages/*
+# except build/, which is used as an MSBuild target.
+!**/packages/build/
+# Uncomment if necessary however generally it will be regenerated when needed
+#!**/packages/repositories.config
+# NuGet v3's project.json files produces more ignoreable files
+*.nuget.props
+*.nuget.targets
 
 # Windows Azure Build Output
 csx
@@ -175,7 +185,9 @@ AppPackages/
 
 # Others
 sql/
-*.Cache
+*.[Cc]ache
+
+
 ClientBin/
 [Ss]tyle[Cc]op.*
 ~$*
@@ -251,6 +263,7 @@ pip-log.txt
 #Mr Developer
 .mr.developer.cfg
 
+
 #temporarily solution to avoid committing configs to git
 lib/
 packages/
@@ -261,4 +274,3 @@ Build_Artifacts/Logs/*.*
 /RGBIZOT/Hisar_VMA/DB/Backup (25236) of HISAR_data.mdb
 /Ledger/Ledger/Ledger.Web/web.config
 /Store/Store/Ledger.Web/web.config
-/Store

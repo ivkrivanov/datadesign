@@ -2,6 +2,7 @@
 namespace Ledger.HR.Columns
 {
     using System;
+    using System.ComponentModel;
     using Serenity.ComponentModel;
 
     [ColumnsScript("HR.EmployeeAddress")]
@@ -9,9 +10,13 @@ namespace Ledger.HR.Columns
     public class EmployeeAddressColumns
     {
         //[EditLink(ItemType = "Infra.Addresses"), Width(220), QuickFilter]
-        [EditLink, Width(220)]
+        [EditLink, DisplayName("Address"), Width(220)]
         public string StreetAddress { get; set; }
+
         [EditLink, Width(150)]
         public String AddressType { get; set; }
+
+        [Width(150)]
+        public Int16 AddressTypeId { get; set; }
     }
 }

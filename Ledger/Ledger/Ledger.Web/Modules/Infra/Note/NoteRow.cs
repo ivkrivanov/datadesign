@@ -63,17 +63,17 @@
         //    set { Fields.InsertDate[this] = value; }
         //}
 
-        [Insertable(false), Updatable(false)]
-        public Int32? TenantId
-        {
-            get { return Fields.TenantId[this]; }
-            set { Fields.TenantId[this] = value; }
-        }
+        //[Insertable(false), Updatable(false)]
+        //public Int32? TenantId
+        //{
+        //    get { return Fields.TenantId[this]; }
+        //    set { Fields.TenantId[this] = value; }
+        //}
 
-        public Int32Field TenantIdField
-        {
-            get { return Fields.TenantId; }
-        }
+        //public Int32Field TenantIdField
+        //{
+        //    get { return Fields.TenantId; }
+        //}
 
         IIdField IIdRow.IdField
         {

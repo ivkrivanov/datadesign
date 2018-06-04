@@ -10,6 +10,7 @@ namespace Ledger.HR.Forms
     [BasedOnRow(typeof(Entities.EmployeeRow))]
     public class EmployeeForm
     {
+        [Category("General")]
         public String FirstName { get; set; }
         public String MiddleName { get; set; }
         public String SurName { get; set; }
@@ -33,5 +34,7 @@ namespace Ledger.HR.Forms
         public List<Entities.EmployeePhoneRow> PhoneList { get; set; }
 
         public List<object> NotesList { get; set; }
+
+        //public Int32? TenantId { get; set; }
     }
 }

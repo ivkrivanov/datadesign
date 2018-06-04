@@ -54,8 +54,8 @@ namespace Ledger.HR.Entities
         [DisplayName("Gender"), NotNull]
         public Gender? Gender
         {
-            get { return (Gender)Fields.Gender[this]; }
-            set { Fields.Gender[this] = (Int16)value; }
+            get { return (Gender?)Fields.Gender[this]; }
+            set { Fields.Gender[this] = (Int16?)value; }
         }
 
         [DisplayName("Egn"), Column("EGN"), Size(255), NotNull]
@@ -195,9 +195,9 @@ namespace Ledger.HR.Entities
             public Int16Field IsActive;
             public Int32Field TenantId;
 
-            public readonly RowListField<EmployeeAddressRow> AddressList;
-            public readonly RowListField<EmployeeEmailRow> EmailList;
-            public readonly RowListField<EmployeePhoneRow> PhoneList;
+            public RowListField<EmployeeAddressRow> AddressList;
+            public RowListField<EmployeeEmailRow> EmailList;
+            public RowListField<EmployeePhoneRow> PhoneList;
 
             public RowListField<NoteRow> NotesList;
 
