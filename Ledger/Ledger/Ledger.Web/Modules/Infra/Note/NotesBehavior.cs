@@ -87,7 +87,7 @@ namespace Ledger.Infra
         private void SaveNote(IUnitOfWork uow, NoteRow note, string entityType, Int64 entityId, Int64? noteId)
         {
             note = note.Clone();
-            note.NoteId = noteId;
+            note.NoteID = noteId;
             note.EntityType = entityType;
             note.EntityId = entityId;
             note.InsertDate = null;
@@ -230,13 +230,13 @@ namespace Ledger.Infra
             var deleteList = new List<Int64>();
             new SqlQuery()
                     .From(row)
-                    .Select(fld.NoteId)
+                    .Select(fld.NoteID)
                     .Where(
                         fld.EntityType == handler.Row.Table &
                         fld.EntityId == idField[handler.Row].Value)
                     .ForEach(handler.Connection, () =>
                     {
-                        deleteList.Add(row.NoteId.Value);
+                        deleteList.Add(row.NoteID.Value);
                     });
 
             foreach (var id in deleteList)

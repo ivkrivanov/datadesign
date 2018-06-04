@@ -44,7 +44,7 @@ namespace Ledger.HR.Entities
             set { Fields.SurName[this] = value; }
         }
 
-        [DisplayName("Full Name"), Expression("CONCAT(t0.[FirstName], ' ', t0.[MiddleName], ' ', t0.[SurName])"), QuickSearch]
+        [DisplayName("Full Name"), Expression("CONCAT(T0.[FirstName], ' ', T0.[MiddleName], ' ', T0.[SurName])"), QuickSearch]
         public String FullName
         {
             get { return Fields.FullName[this]; }
@@ -97,7 +97,7 @@ namespace Ledger.HR.Entities
 
         #region Address
 
-        [DisplayName("Address List"), MasterDetailRelation(foreignKey: "EmployeeId"), ClientSide]
+        [DisplayName("Address List"), MasterDetailRelation(foreignKey: "EmployeeId"), NotMapped]
         public List<EmployeeAddressRow> AddressList
         {
             get { return Fields.AddressList[this]; }
@@ -108,7 +108,7 @@ namespace Ledger.HR.Entities
 
         #region Email
 
-        [DisplayName("Email List"), MasterDetailRelation(foreignKey: "EmailId"), ClientSide]
+        [DisplayName("Email List"), MasterDetailRelation(foreignKey: "EmailId"), NotMapped]
         public List<EmployeeEmailRow> EmailList
         {
             get { return Fields.EmailList[this]; }
@@ -119,7 +119,7 @@ namespace Ledger.HR.Entities
 
         #region Phone
 
-        [DisplayName("Phone List"), MasterDetailRelation(foreignKey: "PhoneId"), ClientSide]
+        [DisplayName("Phone List"), MasterDetailRelation(foreignKey: "PhoneId"), NotMapped]
         public List<EmployeePhoneRow> PhoneList
         {
             get { return Fields.PhoneList[this]; }
@@ -130,7 +130,7 @@ namespace Ledger.HR.Entities
 
         #region Notes
 
-        [Infra.NotesEditor, ClientSide]
+        [Infra.NotesEditor, NotMapped]
         public List<NoteRow> NotesList
         {
             get { return Fields.NotesList[this]; }

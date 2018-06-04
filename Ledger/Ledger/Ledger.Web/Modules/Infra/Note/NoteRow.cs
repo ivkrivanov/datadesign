@@ -1,21 +1,24 @@
 ﻿namespace Ledger.Infra.Entities
 {
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel;
+    using Ledger.Administration.Entities;
     using Serenity.ComponentModel;
     using Serenity.Data;
     using Serenity.Data.Mapping;
+    using Infra.Entities;
 
     [ConnectionKey("Default"), DisplayName("Notes"), InstanceName("Note"), TwoLevelCached]
     [ReadPermission(Infra.PermissionKeys.General)]
     [ModifyPermission(Infra.PermissionKeys.General)]
-    public sealed class NoteRow : Row, IIdRow, INameRow, IMultiTenantRow, IInsertLogRow //, IIsActiveRow
+    public sealed class NoteRow : LoggingRow, IIdRow, INameRow, IMultiTenantRow, IInsertLogRow //, IIsActiveRow
     {
         [DisplayName("Note Id"), Identity]
-        public Int64? NoteId
+        public Int64? NoteID
         {
-            get { return Fields.NoteId[this]; }
-            set { Fields.NoteId[this] = value; }
+            get { return Fields.NoteID[this]; }
+            set { Fields.NoteID[this] = value; }
         }
 
         [DisplayName("Entity Type"), Size(100), NotNull, QuickSearch, Updatable(false)]
@@ -39,32 +42,25 @@
             set { Fields.Text[this] = value; }
         }
 
-        [DisplayName("Insert User Id"), NotNull, Insertable(false), Updatable(false)]
-        public Int32? InsertUserId 
-        {
-            get { return Fields.InsertUserId[this]; }
-            set { Fields.InsertUserId[this] = value; }
-        }
+        //[DisplayName("Insert User Id"), NotNull, Insertable(false), Updatable(false)]
+        //public Int32? InsertUserId 
+        //{
+        //    get { return Fields.InsertUserId[this]; }
+        //    set { Fields.InsertUserId[this] = value; }
+        //}
 
-        [DisplayName("Insert User"), ClientSide]
+        [DisplayName("Insert User"), NotMapped]
         public String InsertUserDisplayName
         {
             get { return Fields.InsertUserDisplayName[this]; }
             set { Fields.InsertUserDisplayName[this] = value; }
         }
 
-        [DisplayName("Insert Date"), NotNull, Insertable(false), Updatable(false)]
-        public DateTime? InsertDate
-        {
-            get { return Fields.InsertDate[this]; }
-            set { Fields.InsertDate[this] = value; }
-        }
-
-        //[NotNull, Insertable(false), Updatable(true)]
-        //public Int16? IsActive
+        //[DisplayName("Insert Date"), NotNull, Insertable(false), Updatable(false)]
+        //public DateTime? InsertDate
         //{
-        //    get { return Fields.IsActive[this]; }
-        //    set { Fields.IsActive[this] = value; }
+        //    get { return Fields.InsertDate[this]; }
+        //    set { Fields.InsertDate[this] = value; }
         //}
 
         [Insertable(false), Updatable(false)]
@@ -81,18 +77,13 @@
 
         IIdField IIdRow.IdField
         {
-            get { return Fields.NoteId; }
+            get { return Fields.NoteID; }
         }
 
         StringField INameRow.NameField
         {
             get { return Fields.EntityType; }
         }
-
-        //Int16Field IIsActiveRow.IsActiveField
-        //{
-        //    get { return Fields.IsActive; }
-        //}
 
         public IIdField InsertUserIdField
         {
@@ -117,18 +108,17 @@
         {
         }
 
-        public class RowFields : RowFieldsBase
+        public class RowFields : LoggingRowFields
         {
-            public Int64Field NoteId;
+            public Int64Field NoteID;
             public StringField EntityType;
             public Int64Field EntityId;
             public StringField Text;
 
-            public Int32Field InsertUserId;
-            public DateTimeField InsertDate;
+            //public Int32Field InsertUserId;
+            //public DateTimeField InsertDate;
             public StringField InsertUserDisplayName;
             
-            //public Int16Field IsActive;
             public readonly Int32Field TenantId;
 
             public RowFields()
