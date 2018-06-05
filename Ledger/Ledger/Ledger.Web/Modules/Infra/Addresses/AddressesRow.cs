@@ -57,7 +57,7 @@ namespace Ledger.Infra.Entities
             set { Fields.Country[this] = value; }
         }
 
-        [DisplayName("Street Address"), Expression("CONCAT(t0.[Address], ' ', t0.[City], ' ', t0.[Country])"), QuickSearch]
+        [DisplayName("Street Address"), Expression("CONCAT(T0.[Address], ' ', T0.[City], ' ', T0.[Country])"), QuickSearch]
         public String StreetAddress
         {
             get { return Fields.StreetAddress[this]; }
