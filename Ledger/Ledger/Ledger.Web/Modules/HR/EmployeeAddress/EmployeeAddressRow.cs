@@ -34,7 +34,7 @@ namespace Ledger.HR.Entities
         }
 
         [DisplayName("Address"), NotNull, ForeignKey("[ldg].[Addresses]", "AddressId"), LeftJoin("jAddress"), LookupInclude]
-        [TextualField("StreetAddress")]
+        //[TextualField("StreetAddress")]
         [LookupEditor(typeof(AddressesRow), InplaceAdd = true)] //, DialogType = "Infra.Addresses")]
         public Int32? AddressId
         {

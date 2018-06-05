@@ -64,6 +64,8 @@ namespace Ledger.Infra.Entities
             set { Fields.StreetAddress[this] = value; }
         }
 
+        #region Active
+
         [NotNull, Insertable(false), Updatable(true)]
         public Int16? IsActive
         {
@@ -71,6 +73,9 @@ namespace Ledger.Infra.Entities
             set { Fields.IsActive[this] = value; }
         }
 
+        #endregion Active
+
+        #region Tenant
 
         [Insertable(false), Updatable(false)]
         public Int32? TenantId
@@ -83,6 +88,10 @@ namespace Ledger.Infra.Entities
         {
             get { return Fields.TenantId; }
         }
+
+        #endregion Tenant
+
+        #region Fields
 
         IIdField IIdRow.IdField
         {
@@ -98,6 +107,8 @@ namespace Ledger.Infra.Entities
         {
             get { return Fields.IsActive; }
         }
+
+        #endregion Fields
 
         public static readonly RowFields Fields = new RowFields().Init();
 
