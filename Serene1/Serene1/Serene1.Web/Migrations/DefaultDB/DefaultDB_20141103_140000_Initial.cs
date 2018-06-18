@@ -22,7 +22,8 @@ namespace Serene1.Migrations.DefaultDB
                 .WithColumn("InsertUserId").AsInt32().NotNullable()
                 .WithColumn("UpdateDate").AsDateTime().Nullable()
                 .WithColumn("UpdateUserId").AsInt32().Nullable()
-                .WithColumn("IsActive").AsInt16().NotNullable().WithDefaultValue(1));
+                .WithColumn("IsActive").AsInt16().NotNullable().WithDefaultValue(1)
+                .WithColumn("TenantId").AsInt32().NotNullable().WithDefaultValue(1));
 
             Insert.IntoTable("Users").Row(new {
                 Username = "admin",
@@ -36,9 +37,17 @@ namespace Serene1.Migrations.DefaultDB
                 IsActive = 1
             });
 
+            this.CreateTableWithId32("Tenants", "TenantId", s => s
+                .WithColumn("TenantName").AsString(100).NotNullable());
+
+            Insert.IntoTable("Tenants").Row(new { TenantName = "Primary	Tenant" });
+            Insert.IntoTable("Tenants").Row(new { TenantName = "Second Tenant" });
+            Insert.IntoTable("Tenants").Row(new { TenantName = "Third Tenant" });
+
             this.CreateTableWithId32("Languages", "Id", s => s
                 .WithColumn("LanguageId").AsString(10).NotNullable()
-                .WithColumn("LanguageName").AsString(50).NotNullable());
+                .WithColumn("LanguageName").AsString(50).NotNullable()
+                .WithColumn("TenantId").AsInt32().NotNullable().WithDefaultValue(1));
 
             Insert.IntoTable("Languages").Row(new
             {
@@ -104,6 +113,12 @@ namespace Serene1.Migrations.DefaultDB
             {
                 LanguageId = "vi-VN",
                 LanguageName = "Vietnamese (Vietnam)"
+            });
+
+            Insert.IntoTable("Languages").Row(new
+            {
+                LanguageId = "bg-BG",
+                LanguageName = "Bulgarian (Bulgaria)"
             });
         }
     }

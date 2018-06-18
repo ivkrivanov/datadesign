@@ -114,6 +114,11 @@ namespace Serene1.Administration.Repositories
                     editable.Remove(fld.Source);
                     editable.Remove(fld.IsActive);
                 }
+
+                if (!Authorization.HasPermission(Administration.PermissionKeys.Tenant))
+                {
+                    editable.Remove(fld.TenantId);
+                }
             }
 
             private static bool IsInvariantLetter(Char c)
@@ -185,6 +190,10 @@ namespace Serene1.Administration.Repositories
 
                 if (IsUpdate)
                 {
+                    var user = (UserDefinition)Authorization.UserDefinition;
+                    if (Old.TenantId != user.TenantId)
+                        Authorization.ValidatePermission(PermissionKeys.Tenant);
+
                     CheckPublicDemo(Row.UserId);
 
                     if (Row.IsAssigned(fld.Password) && !Row.Password.IsEmptyOrNull())
@@ -213,6 +222,13 @@ namespace Serene1.Administration.Repositories
                 {
                     Row.Source = "site";
                     Row.IsActive = Row.IsActive ?? 1;
+                }
+
+                if (!Authorization.HasPermission(Administration.PermissionKeys.Tenant) ||
+                    Row.TenantId == null)
+                {
+                    Row.TenantId = ((UserDefinition)Authorization.UserDefinition)
+                        .TenantId;
                 }
 
                 if (IsCreate || !Row.Password.IsEmptyOrNull())
@@ -248,12 +264,48 @@ namespace Serene1.Administration.Repositories
             {
                 base.ValidateRequest();
 
+                var user = (UserDefinition)Authorization.UserDefinition;
+                if (Row.TenantId != user.TenantId)
+                    Authorization.ValidatePermission(PermissionKeys.Tenant);
+
                 CheckPublicDemo(Row.UserId);
             }
         }
 
-        private class MyUndeleteHandler : UndeleteRequestHandler<MyRow> { }
-        private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> { }
-        private class MyListHandler : ListRequestHandler<MyRow> { }
+        private class MyUndeleteHandler : UndeleteRequestHandler<MyRow>
+        {
+            protected override void ValidateRequest()
+            {
+                base.ValidateRequest();
+
+                var user = (UserDefinition)Authorization.UserDefinition;
+                if (Row.TenantId != user.TenantId)
+                    Authorization.ValidatePermission(PermissionKeys.Tenant);
+            }
+        }
+
+        private class MyRetrieveHandler : RetrieveRequestHandler<MyRow>
+        {
+            protected override void PrepareQuery(SqlQuery query)
+            {
+                base.PrepareQuery(query);
+
+                var user = (UserDefinition)Authorization.UserDefinition;
+                if (!Authorization.HasPermission(PermissionKeys.Tenant))
+                    query.Where(fld.TenantId == user.TenantId);
+            }
+        }
+
+        private class MyListHandler : ListRequestHandler<MyRow>
+        {
+            protected override void ApplyFilters(SqlQuery query)
+            {
+                base.ApplyFilters(query);
+
+                var user = (UserDefinition)Authorization.UserDefinition;
+                if (!Authorization.HasPermission(PermissionKeys.Tenant))
+                    query.Where(fld.TenantId == user.TenantId);
+            }
+        }
     }
 }

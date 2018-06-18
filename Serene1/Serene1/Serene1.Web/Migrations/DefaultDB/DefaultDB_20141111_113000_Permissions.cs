@@ -20,7 +20,8 @@ namespace Serene1.Migrations.DefaultDB
                 .WithOptions().Unique();
 
             this.CreateTableWithId32("Roles", "RoleId", s => s
-                .WithColumn("RoleName").AsString(100).NotNullable());
+                .WithColumn("RoleName").AsString(100).NotNullable()
+                .WithColumn("TenantId").AsInt32().NotNullable().WithDefaultValue(1));
 
             this.CreateTableWithId64("RolePermissions", "RolePermissionId", s => s
                 .WithColumn("RoleId").AsInt32().NotNullable()

@@ -12,6 +12,8 @@
         IsActive?: number;
         Password?: string;
         PasswordConfirm?: string;
+        TenantId?: number;
+        TenantName?: string;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -42,6 +44,8 @@
             IsActive = "IsActive",
             Password = "Password",
             PasswordConfirm = "PasswordConfirm",
+            TenantId = "TenantId",
+            TenantName = "TenantName",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",

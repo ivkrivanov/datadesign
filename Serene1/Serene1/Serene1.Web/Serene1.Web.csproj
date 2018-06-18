@@ -811,7 +811,11 @@
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
+    <Content Include="Web.config" />
     <Content Include="wkhtmltopdf-license.txt" />
+    <Content Include="Modules\Default\Infra\Addresses\AddressesIndex.cshtml" />
+    <Content Include="Modules\Administration\Tenant\TenantIndex.cshtml" />
+    <Content Include="Modules\Default\Employees\EmployeesAddresses\EmployeesAddressesIndex.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -962,6 +966,78 @@
     <Content Include="tools\Node\lessc.cmd" />
     <Content Include="tools\JsEngine\lib.d.ts_" />
     <None Include="tsconfig.json" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <TypeScriptCompile Include="Imports\ServerTypings\Administration.TenantColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Administration.TenantForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Administration.TenantRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Administration.TenantService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Default.Employees.EmployeesAddressesColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Default.Employees.EmployeesAddressesForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Default.Employees.EmployeesAddressesRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Default.Employees.EmployeesAddressesService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Default.Infra.AddressesColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Default.Infra.AddressesForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Default.Infra.AddressesRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Default.Infra.AddressesService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Default.Infra.AddressTypeColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Default.Infra.AddressTypeForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Default.Infra.AddressTypeRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Default.Infra.AddressTypeService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Default.Infra.AddressTypeStringColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Default.Infra.AddressTypeStringForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Default.Infra.AddressTypeStringRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Default.Infra.AddressTypeStringService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Administration\Tenant\TenantDialog.ts" />
+    <TypeScriptCompile Include="Modules\Administration\Tenant\TenantEditor.ts" />
+    <TypeScriptCompile Include="Modules\Administration\Tenant\TenantEditorDialog.ts" />
+    <TypeScriptCompile Include="Modules\Administration\Tenant\TenantGrid.ts" />
+    <TypeScriptCompile Include="Modules\Default\Infra\Addresses\AddressesDialog.ts" />
+    <TypeScriptCompile Include="Modules\Default\Infra\Addresses\AddressesGrid.ts" />
     <TypeScriptCompile Include="node_modules\%40types\jquery\index.d.ts" />
     <TypeScriptCompile Include="node_modules\%40types\jqueryui\index.d.ts" />
     <TypeScriptCompile Include="node_modules\%40types\jquery.blockui\index.d.ts" />
@@ -1610,6 +1686,14 @@
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Scripts\typings\serenity\Serenity.CoreLib.d.ts" />
+    <Content Include="Modules\Default\Infra\AddressType\AddressTypeIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Default\Infra\AddressType\AddressTypeDialog.ts" />
+    <TypeScriptCompile Include="Modules\Default\Infra\AddressType\AddressTypeGrid.ts" />
+    <Content Include="Modules\Default\Infra\AddressTypeString\AddressTypeStringIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Default\Infra\AddressTypeString\AddressTypeStringDialog.ts" />
+    <TypeScriptCompile Include="Modules\Default\Infra\AddressTypeString\AddressTypeStringGrid.ts" />
+    <TypeScriptCompile Include="Modules\Default\Employees\EmployeesAddresses\EmployeesAddressesDialog.ts" />
+    <TypeScriptCompile Include="Modules\Default\Employees\EmployeesAddresses\EmployeesAddressesGrid.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -1624,6 +1708,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Imports\ClientTypes\Administration.TenantEditorAttribute.cs">
+      <DependentUpon>ClientTypes.tt</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\DefaultDB\DefaultDB_20180618_120000_Infra_Addresses.cs" />
     <Compile Include="Migrations\DefaultDB\DefaultDB_20180618_121000_HR_Addresses.cs" />
     <Compile Include="Modules\Administration\AdministrationNavigation.cs" />
@@ -1632,6 +1719,15 @@
     <Compile Include="Modules\Administration\RolePermission\RolePermissionListResponse.cs" />
     <Compile Include="Modules\Administration\RolePermission\RolePermissionListRequest.cs" />
     <Compile Include="Modules\Administration\AdministrationPermissionKeys.cs" />
+    <Compile Include="Modules\Administration\Tenant\IMultiTenantRow.cs" />
+    <Compile Include="Modules\Administration\Tenant\MultiTenantBehavior.cs" />
+    <Compile Include="Modules\Administration\Tenant\MultiTenantRowLookupScript.cs" />
+    <Compile Include="Modules\Administration\Tenant\TenantColumns.cs" />
+    <Compile Include="Modules\Administration\Tenant\TenantEndpoint.cs" />
+    <Compile Include="Modules\Administration\Tenant\TenantForm.cs" />
+    <Compile Include="Modules\Administration\Tenant\TenantPage.cs" />
+    <Compile Include="Modules\Administration\Tenant\TenantRepository.cs" />
+    <Compile Include="Modules\Administration\Tenant\TenantRow.cs" />
     <Compile Include="Modules\Administration\UserPermission\ImplicitPermissionAttribute.cs" />
     <Compile Include="Modules\Administration\UserPermission\UserPermissionListRequest.cs" />
     <Compile Include="Modules\Administration\UserPermission\UserPermissionUpdateRequest.cs" />
@@ -1645,6 +1741,15 @@
     <Compile Include="Modules\Administration\User\Authentication\IDirectoryService.cs" />
     <Compile Include="Modules\Administration\User\Authentication\ScriptUserDefinition.cs" />
     <Compile Include="Modules\Administration\User\UserColumns.cs" />
+    <Compile Include="Modules\Default\Employees\EmployeesNavigation.cs" />
+    <Compile Include="Modules\Default\Infra\Addresses\AddressesColumns.cs" />
+    <Compile Include="Modules\Default\Infra\Addresses\AddressesEndpoint.cs" />
+    <Compile Include="Modules\Default\Infra\Addresses\AddressesForm.cs" />
+    <Compile Include="Modules\Default\Infra\Addresses\AddressesPage.cs" />
+    <Compile Include="Modules\Default\Infra\Addresses\AddressesRepository.cs" />
+    <Compile Include="Modules\Default\Infra\Addresses\AddressesRow.cs" />
+    <Compile Include="Modules\Default\Infra\InfraNavigations.cs" />
+    <Compile Include="Modules\Default\Infra\PermissionKeys.cs" />
     <Compile Include="Modules\Northwind\Customer\CustomerGrossSalesRow.cs" />
     <Compile Include="Modules\Common\Helpers\EmailHelper.cs" />
     <Compile Include="Modules\Common\Helpers\ExcelImportRequest.cs" />
@@ -1655,21 +1760,6 @@
       <DependentUpon>ClientTypes.tt</DependentUpon>
     </Compile>
     <Compile Include="Imports\ClientTypes\Administration.RoleCheckEditorAttribute.cs">
-      <DependentUpon>ClientTypes.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Imports\ClientTypes\BasicSamples.ChangingLookupTextEditorAttribute.cs">
-      <DependentUpon>ClientTypes.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Imports\ClientTypes\BasicSamples.FilteredLookupDetailEditorAttribute.cs">
-      <DependentUpon>ClientTypes.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Imports\ClientTypes\BasicSamples.HardcodedValuesEditorAttribute.cs">
-      <DependentUpon>ClientTypes.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Imports\ClientTypes\BasicSamples.InlineImageFormatterAttribute.cs">
-      <DependentUpon>ClientTypes.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Imports\ClientTypes\BasicSamples.ProduceSeafoodCategoryEditorAttribute.cs">
       <DependentUpon>ClientTypes.tt</DependentUpon>
     </Compile>
     <Compile Include="Imports\ClientTypes\Common.EnumSelectFormatterAttribute.cs">
@@ -1885,6 +1975,24 @@
     <Compile Include="Modules\Northwind\SalesByCategory\SalesByCategoryRepository.cs" />
     <Compile Include="Modules\Northwind\SalesByCategory\SalesByCategoryEndpoint.cs" />
     <Compile Include="Modules\Northwind\CustomerDetails\CustomerDetailsRow.cs" />
+    <Compile Include="Modules\Default\Infra\AddressType\AddressTypeRow.cs" />
+    <Compile Include="Modules\Default\Infra\AddressType\AddressTypeRepository.cs" />
+    <Compile Include="Modules\Default\Infra\AddressType\AddressTypeEndpoint.cs" />
+    <Compile Include="Modules\Default\Infra\AddressType\AddressTypePage.cs" />
+    <Compile Include="Modules\Default\Infra\AddressType\AddressTypeColumns.cs" />
+    <Compile Include="Modules\Default\Infra\AddressType\AddressTypeForm.cs" />
+    <Compile Include="Modules\Default\Infra\AddressTypeString\AddressTypeStringRow.cs" />
+    <Compile Include="Modules\Default\Infra\AddressTypeString\AddressTypeStringRepository.cs" />
+    <Compile Include="Modules\Default\Infra\AddressTypeString\AddressTypeStringEndpoint.cs" />
+    <Compile Include="Modules\Default\Infra\AddressTypeString\AddressTypeStringPage.cs" />
+    <Compile Include="Modules\Default\Infra\AddressTypeString\AddressTypeStringColumns.cs" />
+    <Compile Include="Modules\Default\Infra\AddressTypeString\AddressTypeStringForm.cs" />
+    <Compile Include="Modules\Default\Employees\EmployeesAddresses\EmployeesAddressesRow.cs" />
+    <Compile Include="Modules\Default\Employees\EmployeesAddresses\EmployeesAddressesRepository.cs" />
+    <Compile Include="Modules\Default\Employees\EmployeesAddresses\EmployeesAddressesEndpoint.cs" />
+    <Compile Include="Modules\Default\Employees\EmployeesAddresses\EmployeesAddressesPage.cs" />
+    <Compile Include="Modules\Default\Employees\EmployeesAddresses\EmployeesAddressesColumns.cs" />
+    <Compile Include="Modules\Default\Employees\EmployeesAddresses\EmployeesAddressesForm.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

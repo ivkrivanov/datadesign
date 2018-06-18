@@ -12,7 +12,7 @@ namespace Serene1.Administration.Entities
     [ReadPermission(PermissionKeys.Security)]
     [ModifyPermission(PermissionKeys.Security)]
     [LookupScript]
-    public sealed class RoleRow : Row, IIdRow, INameRow
+    public sealed class RoleRow : Row, IIdRow, INameRow, IMultiTenantRow
     {
         [DisplayName("Role Id"), Identity, ForeignKey("Roles", "RoleId"), LeftJoin("jRole")]
         public Int32? RoleId
@@ -28,6 +28,17 @@ namespace Serene1.Administration.Entities
             set { Fields.RoleName[this] = value; }
         }
 
+        [Insertable(false), Updatable(false)]
+        public Int32? TenantId
+        {
+            get { return Fields.TenantId[this]; }
+            set { Fields.TenantId[this] = value; }
+        }
+
+        public Int32Field TenantIdField
+        {
+            get { return Fields.TenantId; }
+        }
 
         IIdField IIdRow.IdField
         {
@@ -50,6 +61,7 @@ namespace Serene1.Administration.Entities
         {
             public Int32Field RoleId;
             public StringField RoleName;
+            public readonly Int32Field TenantId;
         }
     }
 }

@@ -13,5 +13,8 @@ namespace Serene1.Administration
 
         [Description("Languages and Translations")]
         public const string Translation = "Administration:Translation";
+
+        [Description("Multy tenant mode")]
+        public const string Tenant = "Administration:Tenants";
     }
 }
