@@ -1580,12 +1580,6 @@
     <Content Include="Views\Errors\AccessDenied.cshtml" />
     <Content Include="Views\Shared\_LayoutSlim.cshtml" />
     <Content Include="Views\Shared\_LayoutSlimHead.cshtml" />
-    <None Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-    <None Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
     <Content Include="Modules\Administration\User\UserIndex.cshtml" />
     <Content Include="Modules\Northwind\Category\CategoryIndex.cshtml" />
     <Content Include="Modules\Northwind\Customer\CustomerIndex.cshtml" />
@@ -1619,9 +1613,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -1633,6 +1624,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\DefaultDB\DefaultDB_20180618_120000_Infra_Addresses.cs" />
+    <Compile Include="Migrations\DefaultDB\DefaultDB_20180618_121000_HR_Addresses.cs" />
     <Compile Include="Modules\Administration\AdministrationNavigation.cs" />
     <Compile Include="Modules\Administration\Language\LanguageLookup.cs" />
     <Compile Include="Modules\Administration\RolePermission\RolePermissionUpdateRequest.cs" />
