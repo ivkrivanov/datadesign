@@ -1,5 +1,5 @@
 ﻿
-namespace Serene1.Default {
+namespace Serene1.Default.Infra {
 
     @Serenity.Decorators.registerClass()
     export class AddressTypeStringGrid extends Serenity.EntityGrid<AddressTypeStringRow, any> {

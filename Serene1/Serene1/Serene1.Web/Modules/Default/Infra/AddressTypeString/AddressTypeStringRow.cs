@@ -12,7 +12,7 @@ namespace Serene1.Default.Infra.Entities
     [DisplayName("Address Type String"), InstanceName("Address Type String")]
     [ReadPermission("Administration:General")]
     [ModifyPermission("Administration:General")]
-    public sealed class AddressTypeStringRow : LoggingRow, IIdRow, INameRow
+    public sealed class AddressTypeStringRow : LoggingRow, IIdRow, INameRow, IIsActiveRow
     {
 
         [DisplayName("Enum Locale Id"), Column("EnumLocaleID"), Identity]
@@ -43,12 +43,18 @@ namespace Serene1.Default.Infra.Entities
             set { Fields.Language[this] = value; }
         }
 
+        #region Active
+
         [NotNull, Insertable(false), Updatable(true)]
         public Int16? IsActive
         {
             get { return Fields.IsActive[this]; }
             set { Fields.IsActive[this] = value; }
         }
+
+        #endregion Active
+
+        #region Tenant
 
         [Insertable(false), Updatable(false)]
         public Int32? TenantId
@@ -62,6 +68,10 @@ namespace Serene1.Default.Infra.Entities
             get { return Fields.TenantId; }
         }
 
+        #endregion Tenant
+
+        #region Fields
+
         IIdField IIdRow.IdField
         {
             get { return Fields.EnumLocaleId; }
@@ -71,6 +81,13 @@ namespace Serene1.Default.Infra.Entities
         {
             get { return Fields.DisplayName; }
         }
+
+        Int16Field IIsActiveRow.IsActiveField
+        {
+            get { return Fields.IsActive; }
+        }
+
+        #endregion Fields
 
         public static readonly RowFields Fields = new RowFields().Init();
 

@@ -12,7 +12,7 @@ namespace Serene1.Default.Infra.Entities
     [DisplayName("Address Type"), InstanceName("Address Type")]
     [ReadPermission("Administration:General")]
     [ModifyPermission("Administration:General")]
-    public sealed class AddressTypeRow : LoggingRow, IIdRow, INameRow
+    public sealed class AddressTypeRow : LoggingRow, IIdRow, INameRow, IMultiTenantRow, IIsActiveRow
     {
 
         [DisplayName("Enum Value"), PrimaryKey]
@@ -29,21 +29,34 @@ namespace Serene1.Default.Infra.Entities
             set { Fields.EnumName[this] = value; }
         }
 
-        [DisplayName("Tenant Id"), NotNull]
-        public Int32? TenantId
-        {
-            get { return Fields.TenantId[this]; }
-            set { Fields.TenantId[this] = value; }
-        }
+        #region Active
 
-        [DisplayName("Is Active"), NotNull]
+        [NotNull, Insertable(false), Updatable(true)]
         public Int16? IsActive
         {
             get { return Fields.IsActive[this]; }
             set { Fields.IsActive[this] = value; }
         }
 
+        #endregion Active
 
+        #region Tenant
+
+        [Insertable(false), Updatable(false)]
+        public Int32? TenantId
+        {
+            get { return Fields.TenantId[this]; }
+            set { Fields.TenantId[this] = value; }
+        }
+
+        public Int32Field TenantIdField
+        {
+            get { return Fields.TenantId; }
+        }
+
+        #endregion Tenant
+
+        #region Fields
 
         IIdField IIdRow.IdField
         {
@@ -54,6 +67,13 @@ namespace Serene1.Default.Infra.Entities
         {
             get { return Fields.EnumName; }
         }
+
+        Int16Field IIsActiveRow.IsActiveField
+        {
+            get { return Fields.IsActive; }
+        }
+
+        #endregion Fields
 
         public static readonly RowFields Fields = new RowFields().Init();
 
@@ -66,6 +86,7 @@ namespace Serene1.Default.Infra.Entities
         {
             public Int32Field EnumValue;
             public StringField EnumName;
+
             public Int32Field TenantId;
             public Int16Field IsActive;
 		}

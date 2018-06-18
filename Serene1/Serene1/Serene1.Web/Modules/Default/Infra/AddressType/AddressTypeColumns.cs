@@ -9,7 +9,7 @@ namespace Serene1.Default.Infra.Columns
     using System.Collections.Generic;
     using System.IO;
 
-    [ColumnsScript("Default.AddressType")]
+    [ColumnsScript("Default.Infra.AddressType")]
     [BasedOnRow(typeof(Entities.AddressTypeRow), CheckNames = true)]
     public class AddressTypeColumns
     {
