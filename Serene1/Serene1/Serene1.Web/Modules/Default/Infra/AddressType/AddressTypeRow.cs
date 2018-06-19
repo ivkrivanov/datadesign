@@ -12,17 +12,20 @@ namespace Serene1.Default.Infra.Entities
     [DisplayName("Address Type"), InstanceName("Address Type")]
     [ReadPermission("Administration:General")]
     [ModifyPermission("Administration:General")]
+    [LookupScript("Default.Infra.AddressType")]
     public sealed class AddressTypeRow : LoggingRow, IIdRow, INameRow, IMultiTenantRow, IIsActiveRow
     {
 
-        [DisplayName("Enum Value"), PrimaryKey]
+        [DisplayName("Enum Value"), PrimaryKey, LookupInclude]
+        //[DisplayName("Enum Value"), NotNull, ForeignKey("[ldg].[AddressTypeString]", "EnumValue"), LeftJoin("jAddrTypeString")]
         public Int32? EnumValue
         {
             get { return Fields.EnumValue[this]; }
             set { Fields.EnumValue[this] = value; }
         }
 
-        [DisplayName("Enum Name"), Size(256), QuickSearch]
+        [DisplayName("Enum Name"), Size(256), QuickSearch, LookupInclude]
+        //[DisplayName("Type"), Expression("jAddrTypeString.[DisplayName]"), Size(256), QuickSearch, LookupInclude]
         public String EnumName
         {
             get { return Fields.EnumName[this]; }

@@ -695,9 +695,8 @@ declare namespace Serene1.Default.Infra {
 }
 declare namespace Serene1.Default.Infra {
     interface AddressTypeForm {
+        EnumValue: Serenity.IntegerEditor;
         EnumName: Serenity.StringEditor;
-        TenantId: Serenity.IntegerEditor;
-        IsActive: Serenity.IntegerEditor;
     }
     class AddressTypeForm extends Serenity.PrefixedContext {
         static formKey: string;
@@ -754,9 +753,9 @@ declare namespace Serene1.Default.Infra {
 }
 declare namespace Serene1.Default.Infra {
     interface AddressTypeStringForm {
-        EnumValue: Serenity.IntegerEditor;
+        EnumValue: Serenity.LookupEditor;
         DisplayName: Serenity.StringEditor;
-        Language: Serenity.IntegerEditor;
+        Language: Serenity.LookupEditor;
     }
     class AddressTypeStringForm extends Serenity.PrefixedContext {
         static formKey: string;
@@ -770,6 +769,7 @@ declare namespace Serene1.Default.Infra {
         EnumValue?: number;
         DisplayName?: string;
         Language?: number;
+        LanguageName?: string;
         TenantId?: number;
         IsActive?: number;
         InsertUserId?: number;
@@ -787,6 +787,7 @@ declare namespace Serene1.Default.Infra {
             EnumValue = "EnumValue",
             DisplayName = "DisplayName",
             Language = "Language",
+            LanguageName = "LanguageName",
             TenantId = "TenantId",
             IsActive = "IsActive",
             InsertUserId = "InsertUserId",

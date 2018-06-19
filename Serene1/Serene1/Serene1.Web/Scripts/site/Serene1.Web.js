@@ -645,12 +645,11 @@ var Serene1;
                     if (!AddressTypeForm.init) {
                         AddressTypeForm.init = true;
                         var s = Serenity;
-                        var w0 = s.StringEditor;
-                        var w1 = s.IntegerEditor;
+                        var w0 = s.IntegerEditor;
+                        var w1 = s.StringEditor;
                         Q.initFormType(AddressTypeForm, [
-                            'EnumName', w0,
-                            'TenantId', w1,
-                            'IsActive', w1
+                            'EnumValue', w0,
+                            'EnumName', w1
                         ]);
                     }
                     return _this;
@@ -715,7 +714,7 @@ var Serene1;
                     if (!AddressTypeStringForm.init) {
                         AddressTypeStringForm.init = true;
                         var s = Serenity;
-                        var w0 = s.IntegerEditor;
+                        var w0 = s.LookupEditor;
                         var w1 = s.StringEditor;
                         Q.initFormType(AddressTypeStringForm, [
                             'EnumValue', w0,

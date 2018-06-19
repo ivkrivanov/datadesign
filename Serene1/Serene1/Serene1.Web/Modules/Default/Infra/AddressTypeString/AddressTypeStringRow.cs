@@ -12,7 +12,7 @@ namespace Serene1.Default.Infra.Entities
     [DisplayName("Address Type String"), InstanceName("Address Type String")]
     [ReadPermission("Administration:General")]
     [ModifyPermission("Administration:General")]
-    public sealed class AddressTypeStringRow : LoggingRow, IIdRow, INameRow, IIsActiveRow
+    public sealed class AddressTypeStringRow : LoggingRow, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
     {
 
         [DisplayName("Enum Locale Id"), Column("EnumLocaleID"), Identity]
@@ -22,7 +22,7 @@ namespace Serene1.Default.Infra.Entities
             set { Fields.EnumLocaleId[this] = value; }
         }
 
-        [DisplayName("Enum Value")]
+        [DisplayName("Enum Value"), NotNull, ForeignKey("AddressType", "EnumValue"), LeftJoin("jAddrType")]
         public Int32? EnumValue
         {
             get { return Fields.EnumValue[this]; }
@@ -36,11 +36,17 @@ namespace Serene1.Default.Infra.Entities
             set { Fields.DisplayName[this] = value; }
         }
 
-        [DisplayName("Language")]
+        [DisplayName("Language"), NotNull, ForeignKey("Languages", "Id"), LeftJoin("jLang")]
         public Int32? Language
         {
             get { return Fields.Language[this]; }
             set { Fields.Language[this] = value; }
+        }
+        [DisplayName("Language"), Expression("jLang.[LanguageName]"), QuickSearch, LookupInclude]
+        public String LanguageName
+        {
+            get { return Fields.LanguageName[this]; }
+            set { Fields.LanguageName[this] = value; }
         }
 
         #region Active
@@ -103,6 +109,9 @@ namespace Serene1.Default.Infra.Entities
             public Int32Field EnumValue;
             public StringField DisplayName;
             public Int32Field Language;
+
+            public StringField LanguageName;
+
 
             public Int32Field TenantId;
             public Int16Field IsActive;

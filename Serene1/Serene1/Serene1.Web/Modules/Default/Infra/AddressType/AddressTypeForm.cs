@@ -14,8 +14,7 @@ namespace Serene1.Default.Infra.Forms
     [BasedOnRow(typeof(Entities.AddressTypeRow), CheckNames = true)]
     public class AddressTypeForm
     {
+        public Int32 EnumValue { get; set; }
         public String EnumName { get; set; }
-        public Int32 TenantId { get; set; }
-        public Int16 IsActive { get; set; }
     }
 }

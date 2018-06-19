@@ -4,6 +4,7 @@
         EnumValue?: number;
         DisplayName?: string;
         Language?: number;
+        LanguageName?: string;
         TenantId?: number;
         IsActive?: number;
         InsertUserId?: number;
@@ -23,6 +24,7 @@
             EnumValue = "EnumValue",
             DisplayName = "DisplayName",
             Language = "Language",
+            LanguageName = "LanguageName",
             TenantId = "TenantId",
             IsActive = "IsActive",
             InsertUserId = "InsertUserId",
