@@ -3,8 +3,6 @@
         EnumValue: Serenity.IntegerEditor;
         DisplayName: Serenity.StringEditor;
         Language: Serenity.IntegerEditor;
-        TenantId: Serenity.IntegerEditor;
-        IsActive: Serenity.IntegerEditor;
     }
 
     export class AddressTypeStringForm extends Serenity.PrefixedContext {
@@ -24,9 +22,7 @@
                 Q.initFormType(AddressTypeStringForm, [
                     'EnumValue', w0,
                     'DisplayName', w1,
-                    'Language', w0,
-                    'TenantId', w0,
-                    'IsActive', w0
+                    'Language', w0
                 ]);
             }
         }

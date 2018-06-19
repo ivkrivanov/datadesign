@@ -14,6 +14,7 @@
 
     export namespace AddressTypeStringRow {
         export const idProperty = 'EnumLocaleId';
+        export const isActiveProperty = 'IsActive';
         export const nameProperty = 'DisplayName';
         export const localTextPrefix = 'Default.AddressTypeString';
 

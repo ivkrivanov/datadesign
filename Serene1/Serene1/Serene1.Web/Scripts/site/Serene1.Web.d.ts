@@ -541,108 +541,9 @@ declare namespace Serene1.Default {
         }
     }
 }
-declare namespace Serene1.Default {
-    class AddressTypeForm extends Serenity.PrefixedContext {
-        static formKey: string;
-    }
-    interface AddressTypeForm {
-        EnumName: Serenity.StringEditor;
-        TenantId: Serenity.IntegerEditor;
-        IsActive: Serenity.IntegerEditor;
-    }
+declare namespace Serene1.Default.Employees {
 }
-declare namespace Serene1.Default {
-    interface AddressTypeRow {
-        EnumValue?: number;
-        EnumName?: string;
-        TenantId?: number;
-        IsActive?: number;
-    }
-    namespace AddressTypeRow {
-        const idProperty = "EnumValue";
-        const nameProperty = "EnumName";
-        const localTextPrefix = "Default.AddressType";
-        namespace Fields {
-            const EnumValue: any;
-            const EnumName: any;
-            const TenantId: any;
-            const IsActive: any;
-        }
-    }
-}
-declare namespace Serene1.Default {
-    namespace AddressTypeService {
-        const baseUrl = "Default/AddressType";
-        function Create(request: Serenity.SaveRequest<AddressTypeRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Update(request: Serenity.SaveRequest<AddressTypeRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<AddressTypeRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<AddressTypeRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        namespace Methods {
-            const Create: string;
-            const Update: string;
-            const Delete: string;
-            const Retrieve: string;
-            const List: string;
-        }
-    }
-}
-declare namespace Serene1.Default {
-    class AddressTypeStringForm extends Serenity.PrefixedContext {
-        static formKey: string;
-    }
-    interface AddressTypeStringForm {
-        EnumValue: Serenity.IntegerEditor;
-        DisplayName: Serenity.StringEditor;
-        Language: Serenity.IntegerEditor;
-        TenantId: Serenity.IntegerEditor;
-        IsActive: Serenity.IntegerEditor;
-    }
-}
-declare namespace Serene1.Default {
-    interface AddressTypeStringRow {
-        EnumLocaleId?: number;
-        EnumValue?: number;
-        DisplayName?: string;
-        Language?: number;
-        TenantId?: number;
-        IsActive?: number;
-    }
-    namespace AddressTypeStringRow {
-        const idProperty = "EnumLocaleId";
-        const nameProperty = "DisplayName";
-        const localTextPrefix = "Default.AddressTypeString";
-        namespace Fields {
-            const EnumLocaleId: any;
-            const EnumValue: any;
-            const DisplayName: any;
-            const Language: any;
-            const TenantId: any;
-            const IsActive: any;
-        }
-    }
-}
-declare namespace Serene1.Default {
-    namespace AddressTypeStringService {
-        const baseUrl = "Default/AddressTypeString";
-        function Create(request: Serenity.SaveRequest<AddressTypeStringRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Update(request: Serenity.SaveRequest<AddressTypeStringRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<AddressTypeStringRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<AddressTypeStringRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        namespace Methods {
-            const Create: string;
-            const Update: string;
-            const Delete: string;
-            const Retrieve: string;
-            const List: string;
-        }
-    }
-}
-declare namespace Serene1.Default {
-    class EmployeesAddressesForm extends Serenity.PrefixedContext {
-        static formKey: string;
-    }
+declare namespace Serene1.Default.Employees {
     interface EmployeesAddressesForm {
         EmployeeId: Serenity.IntegerEditor;
         AddressId: Serenity.IntegerEditor;
@@ -650,8 +551,13 @@ declare namespace Serene1.Default {
         TenantId: Serenity.IntegerEditor;
         IsActive: Serenity.IntegerEditor;
     }
+    class EmployeesAddressesForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
 }
-declare namespace Serene1.Default {
+declare namespace Serene1.Default.Employees {
     interface EmployeesAddressesRow {
         EmployeeAddressId?: number;
         EmployeeId?: number;
@@ -666,41 +572,49 @@ declare namespace Serene1.Default {
         AddressCountry?: string;
         AddressIsActive?: number;
         AddressTenantId?: number;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
     }
     namespace EmployeesAddressesRow {
         const idProperty = "EmployeeAddressId";
         const localTextPrefix = "Default.EmployeesAddresses";
-        namespace Fields {
-            const EmployeeAddressId: any;
-            const EmployeeId: any;
-            const AddressId: any;
-            const AddressTypeId: any;
-            const TenantId: any;
-            const IsActive: any;
-            const Address: any;
-            const AddressZipCode: any;
-            const AddressCity: any;
-            const AddressState: any;
-            const AddressCountry: any;
-            const AddressIsActive: any;
-            const AddressTenantId: any;
+        const enum Fields {
+            EmployeeAddressId = "EmployeeAddressId",
+            EmployeeId = "EmployeeId",
+            AddressId = "AddressId",
+            AddressTypeId = "AddressTypeId",
+            TenantId = "TenantId",
+            IsActive = "IsActive",
+            Address = "Address",
+            AddressZipCode = "AddressZipCode",
+            AddressCity = "AddressCity",
+            AddressState = "AddressState",
+            AddressCountry = "AddressCountry",
+            AddressIsActive = "AddressIsActive",
+            AddressTenantId = "AddressTenantId",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate",
         }
     }
 }
-declare namespace Serene1.Default {
+declare namespace Serene1.Default.Employees {
     namespace EmployeesAddressesService {
-        const baseUrl = "Default/EmployeesAddresses";
+        const baseUrl = "Default/Employees/EmployeesAddresses";
         function Create(request: Serenity.SaveRequest<EmployeesAddressesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<EmployeesAddressesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<EmployeesAddressesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<EmployeesAddressesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        namespace Methods {
-            const Create: string;
-            const Update: string;
-            const Delete: string;
-            const Retrieve: string;
-            const List: string;
+        const enum Methods {
+            Create = "Default/Employees/EmployeesAddresses/Create",
+            Update = "Default/Employees/EmployeesAddresses/Update",
+            Delete = "Default/Employees/EmployeesAddresses/Delete",
+            Retrieve = "Default/Employees/EmployeesAddresses/Retrieve",
+            List = "Default/Employees/EmployeesAddresses/List",
         }
     }
 }
@@ -713,12 +627,6 @@ declare namespace Serene1.Default.Infra {
         City: Serenity.StringEditor;
         State: Serenity.StringEditor;
         Country: Serenity.StringEditor;
-        InsertUserId: Serenity.IntegerEditor;
-        InsertDate: Serenity.DateEditor;
-        UpdateUserId: Serenity.IntegerEditor;
-        UpdateDate: Serenity.DateEditor;
-        IsActive: Serenity.IntegerEditor;
-        TenantId: Serenity.IntegerEditor;
     }
     class AddressesForm extends Serenity.PrefixedContext {
         static formKey: string;
@@ -747,6 +655,8 @@ declare namespace Serene1.Default.Infra {
         const isActiveProperty = "IsActive";
         const nameProperty = "StreetAddress";
         const localTextPrefix = "Default.Addresses";
+        const lookupKey = "Infra.Addresses";
+        function getLookup(): Q.Lookup<AddressesRow>;
         const enum Fields {
             AddressId = "AddressId",
             Address = "Address",
@@ -778,6 +688,128 @@ declare namespace Serene1.Default.Infra {
             Delete = "Default/Infra/Addresses/Delete",
             Retrieve = "Default/Infra/Addresses/Retrieve",
             List = "Default/Infra/Addresses/List",
+        }
+    }
+}
+declare namespace Serene1.Default.Infra {
+}
+declare namespace Serene1.Default.Infra {
+    interface AddressTypeForm {
+        EnumName: Serenity.StringEditor;
+        TenantId: Serenity.IntegerEditor;
+        IsActive: Serenity.IntegerEditor;
+    }
+    class AddressTypeForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace Serene1.Default.Infra {
+    interface AddressTypeRow {
+        EnumValue?: number;
+        EnumName?: string;
+        TenantId?: number;
+        IsActive?: number;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+    }
+    namespace AddressTypeRow {
+        const idProperty = "EnumValue";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "EnumName";
+        const localTextPrefix = "Default.AddressType";
+        const enum Fields {
+            EnumValue = "EnumValue",
+            EnumName = "EnumName",
+            TenantId = "TenantId",
+            IsActive = "IsActive",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate",
+        }
+    }
+}
+declare namespace Serene1.Default.Infra {
+    namespace AddressTypeService {
+        const baseUrl = "Default/Infra/AddressType";
+        function Create(request: Serenity.SaveRequest<AddressTypeRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<AddressTypeRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<AddressTypeRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<AddressTypeRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Default/Infra/AddressType/Create",
+            Update = "Default/Infra/AddressType/Update",
+            Delete = "Default/Infra/AddressType/Delete",
+            Retrieve = "Default/Infra/AddressType/Retrieve",
+            List = "Default/Infra/AddressType/List",
+        }
+    }
+}
+declare namespace Serene1.Default.Infra {
+}
+declare namespace Serene1.Default.Infra {
+    interface AddressTypeStringForm {
+        EnumValue: Serenity.IntegerEditor;
+        DisplayName: Serenity.StringEditor;
+        Language: Serenity.IntegerEditor;
+    }
+    class AddressTypeStringForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace Serene1.Default.Infra {
+    interface AddressTypeStringRow {
+        EnumLocaleId?: number;
+        EnumValue?: number;
+        DisplayName?: string;
+        Language?: number;
+        TenantId?: number;
+        IsActive?: number;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+    }
+    namespace AddressTypeStringRow {
+        const idProperty = "EnumLocaleId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "DisplayName";
+        const localTextPrefix = "Default.AddressTypeString";
+        const enum Fields {
+            EnumLocaleId = "EnumLocaleId",
+            EnumValue = "EnumValue",
+            DisplayName = "DisplayName",
+            Language = "Language",
+            TenantId = "TenantId",
+            IsActive = "IsActive",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate",
+        }
+    }
+}
+declare namespace Serene1.Default.Infra {
+    namespace AddressTypeStringService {
+        const baseUrl = "Default/Infra/AddressTypeString";
+        function Create(request: Serenity.SaveRequest<AddressTypeStringRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<AddressTypeStringRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<AddressTypeStringRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<AddressTypeStringRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Default/Infra/AddressTypeString/Create",
+            Update = "Default/Infra/AddressTypeString/Update",
+            Delete = "Default/Infra/AddressTypeString/Delete",
+            Retrieve = "Default/Infra/AddressTypeString/Retrieve",
+            List = "Default/Infra/AddressTypeString/List",
         }
     }
 }
@@ -2879,10 +2911,10 @@ declare namespace Serene1.Default.Infra {
         protected form: AddressTypeStringForm;
     }
 }
-declare namespace Serene1.Default {
+declare namespace Serene1.Default.Infra {
     class AddressTypeStringGrid extends Serenity.EntityGrid<AddressTypeStringRow, any> {
         protected getColumnsKey(): string;
-        protected getDialogType(): any;
+        protected getDialogType(): typeof AddressTypeStringDialog;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;
