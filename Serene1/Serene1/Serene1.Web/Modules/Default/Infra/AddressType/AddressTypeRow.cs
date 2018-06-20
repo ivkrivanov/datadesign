@@ -41,6 +41,11 @@ namespace Serene1.Default.Infra.Entities
             set { Fields.IsActive[this] = value; }
         }
 
+        Int16Field IIsActiveRow.IsActiveField
+        {
+            get { return Fields.IsActive; }
+        }
+
         #endregion Active
 
         #region Tenant
@@ -71,10 +76,6 @@ namespace Serene1.Default.Infra.Entities
             get { return Fields.EnumName; }
         }
 
-        Int16Field IIsActiveRow.IsActiveField
-        {
-            get { return Fields.IsActive; }
-        }
 
         #endregion Fields
 
@@ -90,7 +91,7 @@ namespace Serene1.Default.Infra.Entities
             public Int32Field EnumValue;
             public StringField EnumName;
 
-            public Int32Field TenantId;
+            public readonly Int32Field TenantId;
             public Int16Field IsActive;
 		}
     }

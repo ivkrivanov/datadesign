@@ -15,6 +15,11 @@
         export const isActiveProperty = 'IsActive';
         export const nameProperty = 'EnumName';
         export const localTextPrefix = 'Default.AddressType';
+        export const lookupKey = 'Default.Infra.AddressType';
+
+        export function getLookup(): Q.Lookup<AddressTypeRow> {
+            return Q.getLookup<AddressTypeRow>('Default.Infra.AddressType');
+        }
 
         export declare const enum Fields {
             EnumValue = "EnumValue",

@@ -570,8 +570,6 @@ declare namespace Serene1.Default.Employees {
         AddressCity?: string;
         AddressState?: string;
         AddressCountry?: string;
-        AddressIsActive?: number;
-        AddressTenantId?: number;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -579,6 +577,8 @@ declare namespace Serene1.Default.Employees {
     }
     namespace EmployeesAddressesRow {
         const idProperty = "EmployeeAddressId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "Address";
         const localTextPrefix = "Default.EmployeesAddresses";
         const enum Fields {
             EmployeeAddressId = "EmployeeAddressId",
@@ -592,8 +592,6 @@ declare namespace Serene1.Default.Employees {
             AddressCity = "AddressCity",
             AddressState = "AddressState",
             AddressCountry = "AddressCountry",
-            AddressIsActive = "AddressIsActive",
-            AddressTenantId = "AddressTenantId",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",
@@ -720,6 +718,8 @@ declare namespace Serene1.Default.Infra {
         const isActiveProperty = "IsActive";
         const nameProperty = "EnumName";
         const localTextPrefix = "Default.AddressType";
+        const lookupKey = "Default.Infra.AddressType";
+        function getLookup(): Q.Lookup<AddressTypeRow>;
         const enum Fields {
             EnumValue = "EnumValue",
             EnumName = "EnumName",
@@ -2237,6 +2237,7 @@ declare namespace Serene1.Administration {
         protected getService(): string;
         protected form: UserForm;
         constructor();
+        protected getPropertyItems(): Serenity.PropertyItem[];
         protected getToolbarButtons(): Serenity.ToolButton[];
         protected updateInterface(): void;
         protected afterLoadEntity(): void;

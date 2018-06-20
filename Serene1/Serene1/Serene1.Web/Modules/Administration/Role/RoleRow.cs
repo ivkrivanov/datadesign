@@ -61,7 +61,7 @@ namespace Serene1.Administration.Entities
         {
             public Int32Field RoleId;
             public StringField RoleName;
-            public readonly Int32Field TenantId;
+            public Int32Field TenantId;
         }
     }
 }

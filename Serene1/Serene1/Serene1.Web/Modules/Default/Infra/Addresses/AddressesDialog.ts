@@ -13,5 +13,6 @@ namespace Serene1.Default.Infra {
 
         protected getLanguages(): string[][] {
             return LanguageList.getValue();
+        }
     }
 }

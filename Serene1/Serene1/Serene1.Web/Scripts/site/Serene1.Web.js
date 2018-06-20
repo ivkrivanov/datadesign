@@ -527,6 +527,8 @@ var Serene1;
             var EmployeesAddressesRow;
             (function (EmployeesAddressesRow) {
                 EmployeesAddressesRow.idProperty = 'EmployeeAddressId';
+                EmployeesAddressesRow.isActiveProperty = 'IsActive';
+                EmployeesAddressesRow.nameProperty = 'Address';
                 EmployeesAddressesRow.localTextPrefix = 'Default.EmployeesAddresses';
             })(EmployeesAddressesRow = Employees.EmployeesAddressesRow || (Employees.EmployeesAddressesRow = {}));
         })(Employees = Default.Employees || (Default.Employees = {}));
@@ -673,6 +675,11 @@ var Serene1;
                 AddressTypeRow.isActiveProperty = 'IsActive';
                 AddressTypeRow.nameProperty = 'EnumName';
                 AddressTypeRow.localTextPrefix = 'Default.AddressType';
+                AddressTypeRow.lookupKey = 'Default.Infra.AddressType';
+                function getLookup() {
+                    return Q.getLookup('Default.Infra.AddressType');
+                }
+                AddressTypeRow.getLookup = getLookup;
             })(AddressTypeRow = Infra.AddressTypeRow || (Infra.AddressTypeRow = {}));
         })(Infra = Default.Infra || (Default.Infra = {}));
     })(Default = Serene1.Default || (Serene1.Default = {}));
@@ -2446,6 +2453,12 @@ var Serene1;
             UserDialog.prototype.getLocalTextPrefix = function () { return Administration.UserRow.localTextPrefix; };
             UserDialog.prototype.getNameProperty = function () { return Administration.UserRow.nameProperty; };
             UserDialog.prototype.getService = function () { return Administration.UserService.baseUrl; };
+            UserDialog.prototype.getPropertyItems = function () {
+                var items = _super.prototype.getPropertyItems.call(this);
+                if (!Q.Authorization.hasPermission("Administration.Tenants"))
+                    items = items.filter(function (x) { return x.name != "TenantId" /* TenantId */; });
+                return items;
+            };
             UserDialog.prototype.getToolbarButtons = function () {
                 var _this = this;
                 var buttons = _super.prototype.getToolbarButtons.call(this);

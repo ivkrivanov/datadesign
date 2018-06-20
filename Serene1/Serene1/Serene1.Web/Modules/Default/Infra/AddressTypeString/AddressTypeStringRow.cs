@@ -57,6 +57,10 @@ namespace Serene1.Default.Infra.Entities
             get { return Fields.IsActive[this]; }
             set { Fields.IsActive[this] = value; }
         }
+        Int16Field IIsActiveRow.IsActiveField
+        {
+            get { return Fields.IsActive; }
+        }
 
         #endregion Active
 
@@ -66,7 +70,7 @@ namespace Serene1.Default.Infra.Entities
         public Int32? TenantId
         {
             get { return Fields.TenantId[this]; }
-            set { Fields.TenantId[this] = value; }
+            //set { Fields.TenantId[this] = value; }
         }
 
         public Int32Field TenantIdField
@@ -88,10 +92,6 @@ namespace Serene1.Default.Infra.Entities
             get { return Fields.DisplayName; }
         }
 
-        Int16Field IIsActiveRow.IsActiveField
-        {
-            get { return Fields.IsActive; }
-        }
 
         #endregion Fields
 
@@ -112,8 +112,7 @@ namespace Serene1.Default.Infra.Entities
 
             public StringField LanguageName;
 
-
-            public Int32Field TenantId;
+            public readonly Int32Field TenantId;
             public Int16Field IsActive;
 
 
