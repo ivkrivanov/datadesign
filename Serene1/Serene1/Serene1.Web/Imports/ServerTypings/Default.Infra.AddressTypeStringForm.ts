@@ -1,8 +1,10 @@
 ﻿namespace Serene1.Default.Infra {
     export interface AddressTypeStringForm {
-        EnumValue: Serenity.LookupEditor;
+        EnumValue: Serenity.IntegerEditor;
         DisplayName: Serenity.StringEditor;
-        Language: Serenity.LookupEditor;
+        Language: Serenity.IntegerEditor;
+        TenantId: Serenity.IntegerEditor;
+        IsActive: Serenity.IntegerEditor;
     }
 
     export class AddressTypeStringForm extends Serenity.PrefixedContext {
@@ -16,13 +18,15 @@
                 AddressTypeStringForm.init = true;
 
                 var s = Serenity;
-                var w0 = s.LookupEditor;
+                var w0 = s.IntegerEditor;
                 var w1 = s.StringEditor;
 
                 Q.initFormType(AddressTypeStringForm, [
                     'EnumValue', w0,
                     'DisplayName', w1,
-                    'Language', w0
+                    'Language', w0,
+                    'TenantId', w0,
+                    'IsActive', w0
                 ]);
             }
         }

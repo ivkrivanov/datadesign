@@ -9,10 +9,10 @@ namespace Serene1.Default.Infra.Entities
     using System.ComponentModel;
 
     [ConnectionKey("Default"), Module("Default"), TableName("[ldg].[AddressType]")]
-    [DisplayName("Address Type"), InstanceName("Address Type")]
+    [DisplayName("Address Type"), InstanceName("AddressType")]
     [ReadPermission("Administration:General")]
     [ModifyPermission("Administration:General")]
-    [LookupScript("Default.Infra.AddressType")]
+    [LookupScript] //("Default.Infra.AddressType")] //, LookupType = typeof(MultiTenantRowLookupScript<>))]
     public sealed class AddressTypeRow : LoggingRow, IIdRow, INameRow, IMultiTenantRow, IIsActiveRow
     {
 

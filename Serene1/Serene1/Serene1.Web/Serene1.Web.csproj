@@ -1689,11 +1689,21 @@
     <Content Include="Modules\Default\Infra\AddressType\AddressTypeIndex.cshtml" />
     <TypeScriptCompile Include="Modules\Default\Infra\AddressType\AddressTypeDialog.ts" />
     <TypeScriptCompile Include="Modules\Default\Infra\AddressType\AddressTypeGrid.ts" />
+    <TypeScriptCompile Include="Modules\Default\Employees\EmployeesAddresses\EmployeesAddressesDialog.ts" />
+    <TypeScriptCompile Include="Modules\Default\Employees\EmployeesAddresses\EmployeesAddressesGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Default\Infra.AddressTypeStringRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Default\Infra.AddressTypeStringService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <Content Include="Modules\Default\Infra\AddressTypeString\AddressTypeStringIndex.cshtml" />
     <TypeScriptCompile Include="Modules\Default\Infra\AddressTypeString\AddressTypeStringDialog.ts" />
     <TypeScriptCompile Include="Modules\Default\Infra\AddressTypeString\AddressTypeStringGrid.ts" />
-    <TypeScriptCompile Include="Modules\Default\Employees\EmployeesAddresses\EmployeesAddressesDialog.ts" />
-    <TypeScriptCompile Include="Modules\Default\Employees\EmployeesAddresses\EmployeesAddressesGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Default\Infra.AddressTypeStringForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Content\site\site.default\infra.less" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -1713,6 +1723,7 @@
     </Compile>
     <Compile Include="Migrations\DefaultDB\DefaultDB_20180618_120000_Infra_Addresses.cs" />
     <Compile Include="Migrations\DefaultDB\DefaultDB_20180618_121000_HR_Addresses.cs" />
+    <Compile Include="Migrations\DefaultDB\DefaultDB_20180626_120000_InfraAddressTypeKeys.cs" />
     <Compile Include="Modules\Administration\AdministrationNavigation.cs" />
     <Compile Include="Modules\Administration\Language\LanguageLookup.cs" />
     <Compile Include="Modules\Administration\RolePermission\RolePermissionUpdateRequest.cs" />
@@ -1748,6 +1759,7 @@
     <Compile Include="Modules\Default\Infra\Addresses\AddressesPage.cs" />
     <Compile Include="Modules\Default\Infra\Addresses\AddressesRepository.cs" />
     <Compile Include="Modules\Default\Infra\Addresses\AddressesRow.cs" />
+    <Compile Include="Modules\Default\Infra\AddressType\AddressTypeLookup.cs" />
     <Compile Include="Modules\Default\Infra\InfraNavigations.cs" />
     <Compile Include="Modules\Default\Infra\PermissionKeys.cs" />
     <Compile Include="Modules\Northwind\Customer\CustomerGrossSalesRow.cs" />
@@ -1981,18 +1993,18 @@
     <Compile Include="Modules\Default\Infra\AddressType\AddressTypePage.cs" />
     <Compile Include="Modules\Default\Infra\AddressType\AddressTypeColumns.cs" />
     <Compile Include="Modules\Default\Infra\AddressType\AddressTypeForm.cs" />
-    <Compile Include="Modules\Default\Infra\AddressTypeString\AddressTypeStringRow.cs" />
-    <Compile Include="Modules\Default\Infra\AddressTypeString\AddressTypeStringRepository.cs" />
-    <Compile Include="Modules\Default\Infra\AddressTypeString\AddressTypeStringEndpoint.cs" />
-    <Compile Include="Modules\Default\Infra\AddressTypeString\AddressTypeStringPage.cs" />
-    <Compile Include="Modules\Default\Infra\AddressTypeString\AddressTypeStringColumns.cs" />
-    <Compile Include="Modules\Default\Infra\AddressTypeString\AddressTypeStringForm.cs" />
     <Compile Include="Modules\Default\Employees\EmployeesAddresses\EmployeesAddressesRow.cs" />
     <Compile Include="Modules\Default\Employees\EmployeesAddresses\EmployeesAddressesRepository.cs" />
     <Compile Include="Modules\Default\Employees\EmployeesAddresses\EmployeesAddressesEndpoint.cs" />
     <Compile Include="Modules\Default\Employees\EmployeesAddresses\EmployeesAddressesPage.cs" />
     <Compile Include="Modules\Default\Employees\EmployeesAddresses\EmployeesAddressesColumns.cs" />
     <Compile Include="Modules\Default\Employees\EmployeesAddresses\EmployeesAddressesForm.cs" />
+    <Compile Include="Modules\Default\Infra\AddressTypeString\AddressTypeStringRow.cs" />
+    <Compile Include="Modules\Default\Infra\AddressTypeString\AddressTypeStringRepository.cs" />
+    <Compile Include="Modules\Default\Infra\AddressTypeString\AddressTypeStringEndpoint.cs" />
+    <Compile Include="Modules\Default\Infra\AddressTypeString\AddressTypeStringPage.cs" />
+    <Compile Include="Modules\Default\Infra\AddressTypeString\AddressTypeStringColumns.cs" />
+    <Compile Include="Modules\Default\Infra\AddressTypeString\AddressTypeStringForm.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

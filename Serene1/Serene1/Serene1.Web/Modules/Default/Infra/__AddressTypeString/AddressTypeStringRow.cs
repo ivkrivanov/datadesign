@@ -8,11 +8,12 @@ namespace Serene1.Default.Infra.Entities
     using System;
     using System.ComponentModel;
 
-    [ConnectionKey("Default"), Module("Default.Infra"), TableName("[ldg].[AddressTypeString]")]
+    [ConnectionKey("Default"), Module("Default"), TableName("[ldg].[AddressTypeString]")]
     [DisplayName("Address Type String"), InstanceName("Address Type String")]
     [ReadPermission("Administration:General")]
     [ModifyPermission("Administration:General")]
-    public sealed class AddressTypeStringRow :LoggingRow, IIdRow, INameRow, IMultiTenantRow, IIsActiveRow
+    [LookupScript] //("Default.Infra.AddressTypeString")] //, LookupType = typeof(MultiTenantRowLookupScript<>))]
+    public sealed class AddressTypeStringRow : LoggingRow, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
     {
 
         [DisplayName("Enum Locale Id"), Column("EnumLocaleID"), Identity]
@@ -22,7 +23,7 @@ namespace Serene1.Default.Infra.Entities
             set { Fields.EnumLocaleId[this] = value; }
         }
 
-        [DisplayName("Enum Value"), ForeignKey("[ldg].[AddressType]", "EnumValue"), LeftJoin("jEnumValue"), TextualField("EnumValueEnumName")]
+        [DisplayName("Enum Value"), NotNull, ForeignKey("AddressType", "EnumValue"), LeftJoin("jAddrType")]
         public Int32? EnumValue
         {
             get { return Fields.EnumValue[this]; }
@@ -36,28 +37,18 @@ namespace Serene1.Default.Infra.Entities
             set { Fields.DisplayName[this] = value; }
         }
 
-        [DisplayName("Language")]
+        [DisplayName("Language"), NotNull, ForeignKey("Languages", "Id"), LeftJoin("jLang")]
         public Int32? Language
         {
             get { return Fields.Language[this]; }
             set { Fields.Language[this] = value; }
         }
-
-        #region Tenant
-
-        [Insertable(false), Updatable(false)]
-        public Int32? TenantId
+        [DisplayName("Language"), Expression("jLang.[LanguageName]"), QuickSearch, LookupInclude]
+        public String LanguageName
         {
-            get { return Fields.TenantId[this]; }
-            set { Fields.TenantId[this] = value; }
+            get { return Fields.LanguageName[this]; }
+            set { Fields.LanguageName[this] = value; }
         }
-
-        public Int32Field TenantIdField
-        {
-            get { return Fields.TenantId; }
-        }
-
-        #endregion Tenant
 
         #region Active
 
@@ -67,7 +58,6 @@ namespace Serene1.Default.Infra.Entities
             get { return Fields.IsActive[this]; }
             set { Fields.IsActive[this] = value; }
         }
-
         Int16Field IIsActiveRow.IsActiveField
         {
             get { return Fields.IsActive; }
@@ -75,29 +65,23 @@ namespace Serene1.Default.Infra.Entities
 
         #endregion Active
 
+        #region Tenant
 
-        [DisplayName("Enum Value Enum Name"), Expression("jEnumValue.[EnumName]")]
-        public String EnumValueEnumName
+        [Insertable(false), Updatable(false)]
+        public Int32? TenantId
         {
-            get { return Fields.EnumValueEnumName[this]; }
-            set { Fields.EnumValueEnumName[this] = value; }
+            get { return Fields.TenantId[this]; }
+            //set { Fields.TenantId[this] = value; }
         }
 
-        //[DisplayName("Enum Value Tenant Id"), Expression("jEnumValue.[TenantId]")]
-        //public Int32? EnumValueTenantId
-        //{
-        //    get { return Fields.EnumValueTenantId[this]; }
-        //    set { Fields.EnumValueTenantId[this] = value; }
-        //}
+        public Int32Field TenantIdField
+        {
+            get { return Fields.TenantId; }
+        }
 
-        //[DisplayName("Enum Value Is Active"), Expression("jEnumValue.[IsActive]")]
-        //public Int16? EnumValueIsActive
-        //{
-        //    get { return Fields.EnumValueIsActive[this]; }
-        //    set { Fields.EnumValueIsActive[this] = value; }
-        //}
+        #endregion Tenant
 
-
+        #region Fields
 
         IIdField IIdRow.IdField
         {
@@ -109,6 +93,22 @@ namespace Serene1.Default.Infra.Entities
             get { return Fields.DisplayName; }
         }
 
+        #endregion Fields
+
+        [Expression("jAddrType.[EnumValue]")]
+        public Int32? TypeEnumValue
+        {
+            get { return Fields.TypeEnumValue[this]; }
+            set { Fields.TypeEnumValue[this] = value; }
+        }
+
+        [DisplayName("Type Name"), Expression("jAddrType.[EnumName]")]
+        public String TypeDisplayName
+        {
+            get { return Fields.TypeDisplayName[this]; }
+            set { Fields.TypeDisplayName[this] = value; }
+        }
+
         public static readonly RowFields Fields = new RowFields().Init();
 
         public AddressTypeStringRow()
@@ -116,19 +116,21 @@ namespace Serene1.Default.Infra.Entities
         {
         }
 
-        public class RowFields :LoggingRowFields
+        public class RowFields : LoggingRowFields
         {
+
             public Int32Field EnumLocaleId;
             public Int32Field EnumValue;
             public StringField DisplayName;
             public Int32Field Language;
-            public Int32Field TenantId;
+
+            public StringField LanguageName;
+
+            public readonly Int32Field TenantId;
             public Int16Field IsActive;
 
-            public StringField EnumValueEnumName;
-            //public Int32Field EnumValueTenantId;
-            //public Int16Field EnumValueIsActive;
-
+            public Int32Field TypeEnumValue;
+            public StringField TypeDisplayName;
 		}
     }
 }
