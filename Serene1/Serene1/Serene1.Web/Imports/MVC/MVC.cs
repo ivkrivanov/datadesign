@@ -60,11 +60,6 @@ namespace MVC
 
             public static class Infra
             {
-                public static class __AddressTypeString
-                {
-                    public const string AddressTypeStringIndex = "~/Modules/Default/Infra/__AddressTypeString/AddressTypeStringIndex.cshtml";
-                }
-
                 public static class Addresses
                 {
                     public const string AddressesIndex = "~/Modules/Default/Infra/Addresses/AddressesIndex.cshtml";

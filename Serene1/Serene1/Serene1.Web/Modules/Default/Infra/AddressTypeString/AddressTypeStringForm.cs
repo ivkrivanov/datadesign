@@ -16,7 +16,5 @@ namespace Serene1.Default.Infra.Forms
         public Int32 EnumValue { get; set; }
         public String DisplayName { get; set; }
         public Int32 Language { get; set; }
-        public Int32 TenantId { get; set; }
-        public Int16 IsActive { get; set; }
     }
 }

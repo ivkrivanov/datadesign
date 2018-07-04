@@ -726,9 +726,7 @@ var Serene1;
                         Q.initFormType(AddressTypeStringForm, [
                             'EnumValue', w0,
                             'DisplayName', w1,
-                            'Language', w0,
-                            'TenantId', w0,
-                            'IsActive', w0
+                            'Language', w0
                         ]);
                     }
                     return _this;
@@ -1899,6 +1897,63 @@ var Serene1;
                 enumerable: true,
                 configurable: true
             }); });
+        })(Infra = Default.Infra || (Default.Infra = {}));
+    })(Default = Serene1.Default || (Serene1.Default = {}));
+})(Serene1 || (Serene1 = {}));
+var Serene1;
+(function (Serene1) {
+    var Default;
+    (function (Default) {
+        var Infra;
+        (function (Infra) {
+            var AddressTypeStringRow;
+            (function (AddressTypeStringRow) {
+                AddressTypeStringRow.idProperty = 'EnumLocaleId';
+                AddressTypeStringRow.nameProperty = 'DisplayName';
+                AddressTypeStringRow.localTextPrefix = 'Default/Infra.AddressTypeString';
+                var Fields;
+                (function (Fields) {
+                })(Fields = AddressTypeStringRow.Fields || (AddressTypeStringRow.Fields = {}));
+                [
+                    'EnumLocaleId',
+                    'EnumValue',
+                    'DisplayName',
+                    'Language',
+                    'TenantId',
+                    'IsActive',
+                    'EnumValueEnumName',
+                    'EnumValueTenantId',
+                    'EnumValueIsActive'
+                ].forEach(function (x) { return Fields[x] = x; });
+            })(AddressTypeStringRow = Infra.AddressTypeStringRow || (Infra.AddressTypeStringRow = {}));
+        })(Infra = Default.Infra || (Default.Infra = {}));
+    })(Default = Serene1.Default || (Serene1.Default = {}));
+})(Serene1 || (Serene1 = {}));
+var Serene1;
+(function (Serene1) {
+    var Default;
+    (function (Default) {
+        var Infra;
+        (function (Infra) {
+            var AddressTypeStringService;
+            (function (AddressTypeStringService) {
+                AddressTypeStringService.baseUrl = 'Default/Infra/AddressTypeString';
+                var Methods;
+                (function (Methods) {
+                })(Methods = AddressTypeStringService.Methods || (AddressTypeStringService.Methods = {}));
+                [
+                    'Create',
+                    'Update',
+                    'Delete',
+                    'Retrieve',
+                    'List'
+                ].forEach(function (x) {
+                    AddressTypeStringService[x] = function (r, s, o) {
+                        return Q.serviceRequest(AddressTypeStringService.baseUrl + '/' + x, r, s, o);
+                    };
+                    Methods[x] = AddressTypeStringService.baseUrl + '/' + x;
+                });
+            })(AddressTypeStringService = Infra.AddressTypeStringService || (Infra.AddressTypeStringService = {}));
         })(Infra = Default.Infra || (Default.Infra = {}));
     })(Default = Serene1.Default || (Serene1.Default = {}));
 })(Serene1 || (Serene1 = {}));
@@ -5579,58 +5634,6 @@ var Serene1;
                 return AddressTypeGrid;
             }(Serenity.EntityGrid));
             Infra.AddressTypeGrid = AddressTypeGrid;
-        })(Infra = Default.Infra || (Default.Infra = {}));
-    })(Default = Serene1.Default || (Serene1.Default = {}));
-})(Serene1 || (Serene1 = {}));
-var Serene1;
-(function (Serene1) {
-    var Default;
-    (function (Default) {
-        var Infra;
-        (function (Infra) {
-            var AddressTypeStringDialog = /** @class */ (function (_super) {
-                __extends(AddressTypeStringDialog, _super);
-                function AddressTypeStringDialog() {
-                    var _this = _super !== null && _super.apply(this, arguments) || this;
-                    _this.form = new Infra.AddressTypeStringForm(_this.idPrefix);
-                    return _this;
-                }
-                AddressTypeStringDialog.prototype.getFormKey = function () { return Infra.AddressTypeStringForm.formKey; };
-                AddressTypeStringDialog.prototype.getIdProperty = function () { return Infra.AddressTypeStringRow.idProperty; };
-                AddressTypeStringDialog.prototype.getLocalTextPrefix = function () { return Infra.AddressTypeStringRow.localTextPrefix; };
-                AddressTypeStringDialog.prototype.getNameProperty = function () { return Infra.AddressTypeStringRow.nameProperty; };
-                AddressTypeStringDialog.prototype.getService = function () { return Infra.AddressTypeStringService.baseUrl; };
-                AddressTypeStringDialog = __decorate([
-                    Serenity.Decorators.registerClass()
-                ], AddressTypeStringDialog);
-                return AddressTypeStringDialog;
-            }(Serenity.EntityDialog));
-            Infra.AddressTypeStringDialog = AddressTypeStringDialog;
-        })(Infra = Default.Infra || (Default.Infra = {}));
-    })(Default = Serene1.Default || (Serene1.Default = {}));
-})(Serene1 || (Serene1 = {}));
-var Serene1;
-(function (Serene1) {
-    var Default;
-    (function (Default) {
-        var Infra;
-        (function (Infra) {
-            var AddressTypeStringGrid = /** @class */ (function (_super) {
-                __extends(AddressTypeStringGrid, _super);
-                function AddressTypeStringGrid(container) {
-                    return _super.call(this, container) || this;
-                }
-                AddressTypeStringGrid.prototype.getColumnsKey = function () { return 'Default.Infra.AddressTypeString'; };
-                AddressTypeStringGrid.prototype.getDialogType = function () { return Infra.AddressTypeStringDialog; };
-                AddressTypeStringGrid.prototype.getIdProperty = function () { return Infra.AddressTypeStringRow.idProperty; };
-                AddressTypeStringGrid.prototype.getLocalTextPrefix = function () { return Infra.AddressTypeStringRow.localTextPrefix; };
-                AddressTypeStringGrid.prototype.getService = function () { return Infra.AddressTypeStringService.baseUrl; };
-                AddressTypeStringGrid = __decorate([
-                    Serenity.Decorators.registerClass()
-                ], AddressTypeStringGrid);
-                return AddressTypeStringGrid;
-            }(Serenity.EntityGrid));
-            Infra.AddressTypeStringGrid = AddressTypeStringGrid;
         })(Infra = Default.Infra || (Default.Infra = {}));
     })(Default = Serene1.Default || (Serene1.Default = {}));
 })(Serene1 || (Serene1 = {}));
