@@ -11,10 +11,10 @@
         export const idProperty = 'ID';
         export const nameProperty = 'TerritoryID';
         export const localTextPrefix = 'Northwind.Territory';
-        export const lookupKey = 'Northwind.Territory';
+        export const lookupKey = '';
 
         export function getLookup(): Q.Lookup<TerritoryRow> {
-            return Q.getLookup<TerritoryRow>('Northwind.Territory');
+            return Q.getLookup<TerritoryRow>('');
         }
 
         export declare const enum Fields {

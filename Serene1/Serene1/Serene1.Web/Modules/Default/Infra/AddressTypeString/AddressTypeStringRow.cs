@@ -22,7 +22,8 @@ namespace Serene1.Default.Infra.Entities
             set { Fields.EnumLocaleId[this] = value; }
         }
 
-        [DisplayName("Enum Value")]
+        //[DisplayName("Enum Value")]
+        [DisplayName("Enum Value"), ForeignKey("[ldg].[AddressType]", "EnumValue"), LeftJoin("jEnumValue"), TextualField("EnumValueEnumName")]
         public Int32? EnumValue
         {
             get { return Fields.EnumValue[this]; }
@@ -41,6 +42,27 @@ namespace Serene1.Default.Infra.Entities
         {
             get { return Fields.Language[this]; }
             set { Fields.Language[this] = value; }
+        }
+
+        [DisplayName("Enum Value Enum Name"), Expression("jEnumValue.[EnumName]")]
+        public String EnumValueEnumName
+        {
+            get { return Fields.EnumValueEnumName[this]; }
+            set { Fields.EnumValueEnumName[this] = value; }
+        }
+
+        [DisplayName("Enum Value Tenant Id"), Expression("jEnumValue.[TenantId]")]
+        public Int32? EnumValueTenantId
+        {
+            get { return Fields.EnumValueTenantId[this]; }
+            set { Fields.EnumValueTenantId[this] = value; }
+        }
+
+        [DisplayName("Enum Value Is Active"), Expression("jEnumValue.[IsActive]")]
+        public Int16? EnumValueIsActive
+        {
+            get { return Fields.EnumValueIsActive[this]; }
+            set { Fields.EnumValueIsActive[this] = value; }
         }
 
         #region Active
@@ -107,7 +129,10 @@ namespace Serene1.Default.Infra.Entities
             public Int32Field TenantId;
             public Int16Field IsActive;
 
+            public StringField EnumValueEnumName;
 
-		}
+            public Int32Field EnumValueTenantId;
+            public Int16Field EnumValueIsActive;
+        }
     }
 }

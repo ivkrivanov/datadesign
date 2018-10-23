@@ -10,10 +10,10 @@
         export const idProperty = 'CategoryID';
         export const nameProperty = 'CategoryName';
         export const localTextPrefix = 'Northwind.Category';
-        export const lookupKey = 'Northwind.Category';
+        export const lookupKey = '';
 
         export function getLookup(): Q.Lookup<CategoryRow> {
-            return Q.getLookup<CategoryRow>('Northwind.Category');
+            return Q.getLookup<CategoryRow>('');
         }
 
         export declare const enum Fields {

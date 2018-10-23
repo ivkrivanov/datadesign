@@ -44,10 +44,10 @@
         export const idProperty = 'EmployeeID';
         export const nameProperty = 'FullName';
         export const localTextPrefix = 'Northwind.Employee';
-        export const lookupKey = 'Northwind.Employee';
+        export const lookupKey = '';
 
         export function getLookup(): Q.Lookup<EmployeeRow> {
-            return Q.getLookup<EmployeeRow>('Northwind.Employee');
+            return Q.getLookup<EmployeeRow>('');
         }
 
         export declare const enum Fields {

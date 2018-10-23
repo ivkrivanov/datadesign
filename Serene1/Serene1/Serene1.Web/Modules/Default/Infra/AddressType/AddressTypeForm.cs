@@ -15,7 +15,7 @@ namespace Serene1.Default.Infra.Forms
     public class AddressTypeForm
     {
         public String EnumName { get; set; }
-        public Int32 TenantId { get; set; }
-        public Int16 IsActive { get; set; }
+        //public Int32 TenantId { get; set; }
+        //public Int16 IsActive { get; set; }
     }
 }

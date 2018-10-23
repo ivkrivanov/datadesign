@@ -8,10 +8,10 @@
         export const idProperty = 'RegionID';
         export const nameProperty = 'RegionDescription';
         export const localTextPrefix = 'Northwind.Region';
-        export const lookupKey = 'Northwind.Region';
+        export const lookupKey = '';
 
         export function getLookup(): Q.Lookup<RegionRow> {
-            return Q.getLookup<RegionRow>('Northwind.Region');
+            return Q.getLookup<RegionRow>('');
         }
 
         export declare const enum Fields {

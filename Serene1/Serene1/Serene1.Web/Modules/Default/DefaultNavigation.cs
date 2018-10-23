@@ -1,6 +1,7 @@
 ﻿using Serenity.Navigation;
 //using MyPages = Serene1.Default.Pages;
 using MyPages = Serene1.Default.Infra.Pages;
+using MyPages = Serene1.Default.Pages;
 using Serene1.Default.Employees.Pages;
 
 [assembly: NavigationLink(int.MaxValue, "Default/Infra/Addresses", typeof(MyPages.AddressesController), icon: null)]

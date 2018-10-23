@@ -6,6 +6,9 @@
         Language?: number;
         TenantId?: number;
         IsActive?: number;
+        EnumValueEnumName?: string;
+        EnumValueTenantId?: number;
+        EnumValueIsActive?: number;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -14,6 +17,7 @@
 
     export namespace AddressTypeStringRow {
         export const idProperty = 'EnumLocaleId';
+        export const isActiveProperty = 'IsActive';
         export const nameProperty = 'DisplayName';
         export const localTextPrefix = 'Default.AddressTypeString';
 
@@ -24,6 +28,9 @@
             Language = "Language",
             TenantId = "TenantId",
             IsActive = "IsActive",
+            EnumValueEnumName = "EnumValueEnumName",
+            EnumValueTenantId = "EnumValueTenantId",
+            EnumValueIsActive = "EnumValueIsActive",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",

@@ -35,6 +35,11 @@
         export const idProperty = 'OrderID';
         export const nameProperty = 'CustomerID';
         export const localTextPrefix = 'Northwind.Order';
+        export const lookupKey = '';
+
+        export function getLookup(): Q.Lookup<OrderRow> {
+            return Q.getLookup<OrderRow>('');
+        }
 
         export declare const enum Fields {
             OrderID = "OrderID",

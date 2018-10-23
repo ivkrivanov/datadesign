@@ -49,14 +49,6 @@ namespace MVC
 
         public static class Default
         {
-            public static class Employees
-            {
-                public static class EmployeesAddresses
-                {
-                    public const string EmployeesAddressesIndex = "~/Modules/Default/Employees/EmployeesAddresses/EmployeesAddressesIndex.cshtml";
-                }
-
-            }
 
             public static class Infra
             {

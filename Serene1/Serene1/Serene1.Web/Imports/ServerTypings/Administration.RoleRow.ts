@@ -9,10 +9,10 @@
         export const idProperty = 'RoleId';
         export const nameProperty = 'RoleName';
         export const localTextPrefix = 'Administration.Role';
-        export const lookupKey = 'Administration.Role';
+        export const lookupKey = '';
 
         export function getLookup(): Q.Lookup<RoleRow> {
-            return Q.getLookup<RoleRow>('Administration.Role');
+            return Q.getLookup<RoleRow>('');
         }
 
         export declare const enum Fields {

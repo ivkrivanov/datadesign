@@ -9,10 +9,10 @@
         export const idProperty = 'ShipperID';
         export const nameProperty = 'CompanyName';
         export const localTextPrefix = 'Northwind.Shipper';
-        export const lookupKey = 'Northwind.Shipper';
+        export const lookupKey = '';
 
         export function getLookup(): Q.Lookup<ShipperRow> {
-            return Q.getLookup<ShipperRow>('Northwind.Shipper');
+            return Q.getLookup<ShipperRow>('');
         }
 
         export declare const enum Fields {
