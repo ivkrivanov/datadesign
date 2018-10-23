@@ -2124,21 +2124,11 @@ var Ledger;
             function EmployeeAddressGrid(container) {
                 return _super.call(this, container) || this;
             }
-            EmployeeAddressGrid.prototype.getColumnsKey = function () {
-                return 'HR.EmployeeAddress';
-            };
-            EmployeeAddressGrid.prototype.getDialogType = function () {
-                return HR.EmployeeAddressDialog;
-            };
-            EmployeeAddressGrid.prototype.getIdProperty = function () {
-                return HR.EmployeeAddressRow.idProperty;
-            };
-            EmployeeAddressGrid.prototype.getLocalTextPrefix = function () {
-                return HR.EmployeeAddressRow.localTextPrefix;
-            };
-            EmployeeAddressGrid.prototype.getService = function () {
-                return HR.EmployeeAddressService.baseUrl;
-            };
+            EmployeeAddressGrid.prototype.getColumnsKey = function () { return 'HR.EmployeeAddress'; };
+            EmployeeAddressGrid.prototype.getDialogType = function () { return HR.EmployeeAddressDialog; };
+            EmployeeAddressGrid.prototype.getIdProperty = function () { return HR.EmployeeAddressRow.idProperty; };
+            EmployeeAddressGrid.prototype.getLocalTextPrefix = function () { return HR.EmployeeAddressRow.localTextPrefix; };
+            EmployeeAddressGrid.prototype.getService = function () { return HR.EmployeeAddressService.baseUrl; };
             EmployeeAddressGrid = __decorate([
                 Serenity.Decorators.registerClass()
             ], EmployeeAddressGrid);
@@ -2365,20 +2355,13 @@ var Ledger;
                 _this.form = new Infra.AddressesForm(_this.idPrefix);
                 return _this;
             }
-            AddressesDialog.prototype.getFormKey = function () {
-                return Infra.AddressesForm.formKey;
-            };
-            AddressesDialog.prototype.getIdProperty = function () {
-                return Infra.AddressesRow.idProperty;
-            };
-            AddressesDialog.prototype.getLocalTextPrefix = function () {
-                return Infra.AddressesRow.localTextPrefix;
-            };
-            AddressesDialog.prototype.getNameProperty = function () {
-                return Infra.AddressesRow.nameProperty;
-            };
-            AddressesDialog.prototype.getService = function () {
-                return Infra.AddressesService.baseUrl;
+            AddressesDialog.prototype.getFormKey = function () { return Infra.AddressesForm.formKey; };
+            AddressesDialog.prototype.getIdProperty = function () { return Infra.AddressesRow.idProperty; };
+            AddressesDialog.prototype.getLocalTextPrefix = function () { return Infra.AddressesRow.localTextPrefix; };
+            AddressesDialog.prototype.getNameProperty = function () { return Infra.AddressesRow.nameProperty; };
+            AddressesDialog.prototype.getService = function () { return Infra.AddressesService.baseUrl; };
+            AddressesDialog.prototype.getLanguages = function () {
+                return Ledger.LanguageList.getValue();
             };
             AddressesDialog = __decorate([
                 Serenity.Decorators.registerClass(),

@@ -34,6 +34,7 @@ namespace Ledger.HR.Entities
         }
 
         [DisplayName("Address"), NotNull, ForeignKey("[ldg].[Addresses]", "AddressId"), LeftJoin("jAddress"), LookupInclude]
+        [LinkingSetRelation(typeof(AddressesRow), "EmployeeAddressId", "AddressId")]
         //[TextualField("StreetAddress")]
         [LookupEditor(typeof(AddressesRow), InplaceAdd = true)] //, DialogType = "Infra.Addresses")]
         public Int32? AddressId

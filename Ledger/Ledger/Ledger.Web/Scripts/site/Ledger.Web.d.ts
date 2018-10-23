@@ -541,6 +541,7 @@ declare namespace Ledger.Infra {
         protected getNameProperty(): string;
         protected getService(): string;
         protected form: AddressesForm;
+        protected getLanguages(): string[][];
     }
 }
 declare namespace Ledger.Infra {

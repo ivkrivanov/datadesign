@@ -13,6 +13,7 @@ namespace Ledger.Northwind.Forms
         public Int32 TerritoryID { get; set; }
         [EditLink, Width(200)]
         public String TerritoryDescription { get; set; }
+
         [EditLink(ItemType = "Northwind.Region", IdField = "RegionID"), Width(150)]
         [LookupEditor(typeof(Entities.RegionRow)), QuickFilter]
         public String RegionDescription { get; set; }
