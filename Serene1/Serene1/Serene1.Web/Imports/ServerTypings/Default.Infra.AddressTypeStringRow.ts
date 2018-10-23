@@ -3,7 +3,7 @@
         EnumLocaleId?: number;
         EnumValue?: number;
         DisplayName?: string;
-        Language?: number;
+        LanguageId?: number;
         TenantId?: number;
         IsActive?: number;
         EnumValueEnumName?: string;
@@ -25,7 +25,7 @@
             EnumLocaleId = "EnumLocaleId",
             EnumValue = "EnumValue",
             DisplayName = "DisplayName",
-            Language = "Language",
+            LanguageId = "LanguageId",
             TenantId = "TenantId",
             IsActive = "IsActive",
             EnumValueEnumName = "EnumValueEnumName",

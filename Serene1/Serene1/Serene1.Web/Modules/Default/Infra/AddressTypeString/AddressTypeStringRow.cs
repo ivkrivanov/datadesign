@@ -23,7 +23,8 @@ namespace Serene1.Default.Infra.Entities
         }
 
         //[DisplayName("Enum Value")]
-        [DisplayName("Enum Value"), ForeignKey("[ldg].[AddressType]", "EnumValue"), LeftJoin("jEnumValue"), TextualField("EnumValueEnumName")]
+        [DisplayName("Enum Value"), ForeignKey("[ldg].[AddressType]", "EnumValue"), LeftJoin("jEnumValue"), TextualField("EnumValueEnumName"), LookupInclude]
+        [LookupEditor(typeof(AddressTypeRow), InplaceAdd = true)]
         public Int32? EnumValue
         {
             get { return Fields.EnumValue[this]; }
@@ -37,11 +38,12 @@ namespace Serene1.Default.Infra.Entities
             set { Fields.DisplayName[this] = value; }
         }
 
-        [DisplayName("Language")]
-        public Int32? Language
+        //[DisplayName("Language"), ForeignKey("[dbo].[Languages]","LanguageId"), LeftJoin("jLang"), TextualField("LanguageName"), LookupInclude]
+        //[LookupEditor(typeof(LanguageRow), InplaceAdd = true)]
+        public Int32? LanguageId
         {
-            get { return Fields.Language[this]; }
-            set { Fields.Language[this] = value; }
+            get { return Fields.LanguageId[this]; }
+            set { Fields.LanguageId[this] = value; }
         }
 
         [DisplayName("Enum Value Enum Name"), Expression("jEnumValue.[EnumName]")]
@@ -124,7 +126,8 @@ namespace Serene1.Default.Infra.Entities
             public Int32Field EnumLocaleId;
             public Int32Field EnumValue;
             public StringField DisplayName;
-            public Int32Field Language;
+            //public Int32Field Language;
+            public Int32Field LanguageId;
 
             public Int32Field TenantId;
             public Int16Field IsActive;

@@ -12,6 +12,7 @@ namespace Serene1.Default.Infra.Entities
     [DisplayName("Address Type"), InstanceName("Address Type")]
     [ReadPermission("Administration:General")]
     [ModifyPermission("Administration:General")]
+    [LookupScript("Default.Infra.AddressType")]
     public sealed class AddressTypeRow : LoggingRow, IIdRow, INameRow, IMultiTenantRow, IIsActiveRow
     {
 

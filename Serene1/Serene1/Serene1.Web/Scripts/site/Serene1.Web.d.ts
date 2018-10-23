@@ -28,7 +28,7 @@ declare namespace Serene1.Administration {
         const enum Fields {
             Id = "Id",
             LanguageId = "LanguageId",
-            LanguageName = "LanguageName",
+            LanguageName = "LanguageName"
         }
     }
 }
@@ -45,7 +45,7 @@ declare namespace Serene1.Administration {
             Update = "Administration/Language/Update",
             Delete = "Administration/Language/Delete",
             Retrieve = "Administration/Language/Retrieve",
-            List = "Administration/Language/List",
+            List = "Administration/Language/List"
         }
     }
 }
@@ -87,7 +87,7 @@ declare namespace Serene1.Administration {
             RolePermissionId = "RolePermissionId",
             RoleId = "RoleId",
             PermissionKey = "PermissionKey",
-            RoleRoleName = "RoleRoleName",
+            RoleRoleName = "RoleRoleName"
         }
     }
 }
@@ -98,7 +98,7 @@ declare namespace Serene1.Administration {
         function List(request: RolePermissionListRequest, onSuccess?: (response: RolePermissionListResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         const enum Methods {
             Update = "Administration/RolePermission/Update",
-            List = "Administration/RolePermission/List",
+            List = "Administration/RolePermission/List"
         }
     }
 }
@@ -120,12 +120,12 @@ declare namespace Serene1.Administration {
         const idProperty = "RoleId";
         const nameProperty = "RoleName";
         const localTextPrefix = "Administration.Role";
-        const lookupKey = "Administration.Role";
+        const lookupKey = "";
         function getLookup(): Q.Lookup<RoleRow>;
         const enum Fields {
             RoleId = "RoleId",
             RoleName = "RoleName",
-            TenantId = "TenantId",
+            TenantId = "TenantId"
         }
     }
 }
@@ -142,7 +142,7 @@ declare namespace Serene1.Administration {
             Update = "Administration/Role/Update",
             Delete = "Administration/Role/Delete",
             Retrieve = "Administration/Role/Retrieve",
-            List = "Administration/Role/List",
+            List = "Administration/Role/List"
         }
     }
 }
@@ -171,7 +171,7 @@ declare namespace Serene1.Administration {
         function getLookup(): Q.Lookup<TenantRow>;
         const enum Fields {
             TenantId = "TenantId",
-            TenantName = "TenantName",
+            TenantName = "TenantName"
         }
     }
 }
@@ -188,7 +188,7 @@ declare namespace Serene1.Administration {
             Update = "Administration/Tenant/Update",
             Delete = "Administration/Tenant/Delete",
             Retrieve = "Administration/Tenant/Retrieve",
-            List = "Administration/Tenant/List",
+            List = "Administration/Tenant/List"
         }
     }
 }
@@ -213,7 +213,7 @@ declare namespace Serene1.Administration {
         function Update(request: TranslationUpdateRequest, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         const enum Methods {
             List = "Administration/Translation/List",
-            Update = "Administration/Translation/Update",
+            Update = "Administration/Translation/Update"
         }
     }
 }
@@ -270,7 +270,7 @@ declare namespace Serene1.Administration {
             PermissionKey = "PermissionKey",
             Granted = "Granted",
             Username = "Username",
-            User = "User",
+            User = "User"
         }
     }
 }
@@ -285,7 +285,7 @@ declare namespace Serene1.Administration {
             Update = "Administration/UserPermission/Update",
             List = "Administration/UserPermission/List",
             ListRolePermissions = "Administration/UserPermission/ListRolePermissions",
-            ListPermissionKeys = "Administration/UserPermission/ListPermissionKeys",
+            ListPermissionKeys = "Administration/UserPermission/ListPermissionKeys"
         }
     }
 }
@@ -322,7 +322,7 @@ declare namespace Serene1.Administration {
             UserId = "UserId",
             RoleId = "RoleId",
             Username = "Username",
-            User = "User",
+            User = "User"
         }
     }
 }
@@ -333,7 +333,7 @@ declare namespace Serene1.Administration {
         function List(request: UserRoleListRequest, onSuccess?: (response: UserRoleListResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         const enum Methods {
             Update = "Administration/UserRole/Update",
-            List = "Administration/UserRole/List",
+            List = "Administration/UserRole/List"
         }
     }
 }
@@ -369,7 +369,7 @@ declare namespace Serene1.Administration {
         const isActiveProperty = "IsActive";
         const nameProperty = "Username";
         const localTextPrefix = "Administration.User";
-        const lookupKey = "Administration.User";
+        const lookupKey = "";
         function getLookup(): Q.Lookup<UserRow>;
         const enum Fields {
             UserId = "UserId",
@@ -389,7 +389,7 @@ declare namespace Serene1.Administration {
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",
-            UpdateDate = "UpdateDate",
+            UpdateDate = "UpdateDate"
         }
     }
 }
@@ -408,7 +408,7 @@ declare namespace Serene1.Administration {
             Delete = "Administration/User/Delete",
             Undelete = "Administration/User/Undelete",
             Retrieve = "Administration/User/Retrieve",
-            List = "Administration/User/List",
+            List = "Administration/User/List"
         }
     }
 }
@@ -449,7 +449,7 @@ declare namespace Serene1.Common {
             UserId = "UserId",
             PreferenceType = "PreferenceType",
             Name = "Name",
-            Value = "Value",
+            Value = "Value"
         }
     }
 }
@@ -460,7 +460,7 @@ declare namespace Serene1.Common {
         function Retrieve(request: UserPreferenceRetrieveRequest, onSuccess?: (response: UserPreferenceRetrieveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         const enum Methods {
             Update = "Common/UserPreference/Update",
-            Retrieve = "Common/UserPreference/Retrieve",
+            Retrieve = "Common/UserPreference/Retrieve"
         }
     }
 }
@@ -541,110 +541,6 @@ declare namespace Serene1.Default {
         }
     }
 }
-declare namespace Serene1.Default {
-    class AddressTypeForm extends Serenity.PrefixedContext {
-        static formKey: string;
-    }
-    interface AddressTypeForm {
-        EnumName: Serenity.StringEditor;
-        TenantId: Serenity.IntegerEditor;
-        IsActive: Serenity.IntegerEditor;
-    }
-}
-declare namespace Serene1.Default {
-    interface AddressTypeRow {
-        EnumValue?: number;
-        EnumName?: string;
-        TenantId?: number;
-        IsActive?: number;
-    }
-    namespace AddressTypeRow {
-        const idProperty = "EnumValue";
-        const nameProperty = "EnumName";
-        const localTextPrefix = "Default.AddressType";
-        namespace Fields {
-            const EnumValue: any;
-            const EnumName: any;
-            const TenantId: any;
-            const IsActive: any;
-        }
-    }
-}
-declare namespace Serene1.Default {
-    namespace AddressTypeService {
-        const baseUrl = "Default/AddressType";
-        function Create(request: Serenity.SaveRequest<AddressTypeRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Update(request: Serenity.SaveRequest<AddressTypeRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<AddressTypeRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<AddressTypeRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        namespace Methods {
-            const Create: string;
-            const Update: string;
-            const Delete: string;
-            const Retrieve: string;
-            const List: string;
-        }
-    }
-}
-declare namespace Serene1.Default {
-    class AddressTypeStringForm extends Serenity.PrefixedContext {
-        static formKey: string;
-    }
-    interface AddressTypeStringForm {
-        EnumValue: Serenity.IntegerEditor;
-        DisplayName: Serenity.StringEditor;
-        Language: Serenity.IntegerEditor;
-        TenantId: Serenity.IntegerEditor;
-        IsActive: Serenity.IntegerEditor;
-    }
-}
-declare namespace Serene1.Default {
-    interface AddressTypeStringRow {
-        EnumLocaleId?: number;
-        EnumValue?: number;
-        DisplayName?: string;
-        Language?: number;
-        TenantId?: number;
-        IsActive?: number;
-        EnumValueEnumName?: string;
-        EnumValueTenantId?: number;
-        EnumValueIsActive?: number;
-    }
-    namespace AddressTypeStringRow {
-        const idProperty = "EnumLocaleId";
-        const nameProperty = "DisplayName";
-        const localTextPrefix = "Default.AddressTypeString";
-        namespace Fields {
-            const EnumLocaleId: any;
-            const EnumValue: any;
-            const DisplayName: any;
-            const Language: any;
-            const TenantId: any;
-            const IsActive: any;
-            const EnumValueEnumName: any;
-            const EnumValueTenantId: any;
-            const EnumValueIsActive: any;
-        }
-    }
-}
-declare namespace Serene1.Default {
-    namespace AddressTypeStringService {
-        const baseUrl = "Default/AddressTypeString";
-        function Create(request: Serenity.SaveRequest<AddressTypeStringRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Update(request: Serenity.SaveRequest<AddressTypeStringRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<AddressTypeStringRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<AddressTypeStringRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        namespace Methods {
-            const Create: string;
-            const Update: string;
-            const Delete: string;
-            const Retrieve: string;
-            const List: string;
-        }
-    }
-}
 declare namespace Serene1.Default.Employees {
 }
 declare namespace Serene1.Default.Employees {
@@ -701,7 +597,7 @@ declare namespace Serene1.Default.Employees {
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",
-            UpdateDate = "UpdateDate",
+            UpdateDate = "UpdateDate"
         }
     }
 }
@@ -718,7 +614,7 @@ declare namespace Serene1.Default.Employees {
             Update = "Default/Employees/EmployeesAddresses/Update",
             Delete = "Default/Employees/EmployeesAddresses/Delete",
             Retrieve = "Default/Employees/EmployeesAddresses/Retrieve",
-            List = "Default/Employees/EmployeesAddresses/List",
+            List = "Default/Employees/EmployeesAddresses/List"
         }
     }
 }
@@ -774,7 +670,7 @@ declare namespace Serene1.Default.Infra {
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",
-            UpdateDate = "UpdateDate",
+            UpdateDate = "UpdateDate"
         }
     }
 }
@@ -791,7 +687,7 @@ declare namespace Serene1.Default.Infra {
             Update = "Default/Infra/Addresses/Update",
             Delete = "Default/Infra/Addresses/Delete",
             Retrieve = "Default/Infra/Addresses/Retrieve",
-            List = "Default/Infra/Addresses/List",
+            List = "Default/Infra/Addresses/List"
         }
     }
 }
@@ -800,8 +696,6 @@ declare namespace Serene1.Default.Infra {
 declare namespace Serene1.Default.Infra {
     interface AddressTypeForm {
         EnumName: Serenity.StringEditor;
-        TenantId: Serenity.IntegerEditor;
-        IsActive: Serenity.IntegerEditor;
     }
     class AddressTypeForm extends Serenity.PrefixedContext {
         static formKey: string;
@@ -822,8 +716,11 @@ declare namespace Serene1.Default.Infra {
     }
     namespace AddressTypeRow {
         const idProperty = "EnumValue";
+        const isActiveProperty = "IsActive";
         const nameProperty = "EnumName";
         const localTextPrefix = "Default.AddressType";
+        const lookupKey = "Default.Infra.AddressType";
+        function getLookup(): Q.Lookup<AddressTypeRow>;
         const enum Fields {
             EnumValue = "EnumValue",
             EnumName = "EnumName",
@@ -832,7 +729,7 @@ declare namespace Serene1.Default.Infra {
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",
-            UpdateDate = "UpdateDate",
+            UpdateDate = "UpdateDate"
         }
     }
 }
@@ -849,7 +746,7 @@ declare namespace Serene1.Default.Infra {
             Update = "Default/Infra/AddressType/Update",
             Delete = "Default/Infra/AddressType/Delete",
             Retrieve = "Default/Infra/AddressType/Retrieve",
-            List = "Default/Infra/AddressType/List",
+            List = "Default/Infra/AddressType/List"
         }
     }
 }
@@ -857,11 +754,9 @@ declare namespace Serene1.Default.Infra {
 }
 declare namespace Serene1.Default.Infra {
     interface AddressTypeStringForm {
-        EnumValue: Serenity.IntegerEditor;
+        EnumValue: Serenity.LookupEditor;
         DisplayName: Serenity.StringEditor;
-        Language: Serenity.IntegerEditor;
-        TenantId: Serenity.IntegerEditor;
-        IsActive: Serenity.IntegerEditor;
+        LanguageId: Serenity.IntegerEditor;
     }
     class AddressTypeStringForm extends Serenity.PrefixedContext {
         static formKey: string;
@@ -874,9 +769,12 @@ declare namespace Serene1.Default.Infra {
         EnumLocaleId?: number;
         EnumValue?: number;
         DisplayName?: string;
-        Language?: number;
+        LanguageId?: number;
         TenantId?: number;
         IsActive?: number;
+        EnumValueEnumName?: string;
+        EnumValueTenantId?: number;
+        EnumValueIsActive?: number;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -884,19 +782,23 @@ declare namespace Serene1.Default.Infra {
     }
     namespace AddressTypeStringRow {
         const idProperty = "EnumLocaleId";
+        const isActiveProperty = "IsActive";
         const nameProperty = "DisplayName";
         const localTextPrefix = "Default.AddressTypeString";
         const enum Fields {
             EnumLocaleId = "EnumLocaleId",
             EnumValue = "EnumValue",
             DisplayName = "DisplayName",
-            Language = "Language",
+            LanguageId = "LanguageId",
             TenantId = "TenantId",
             IsActive = "IsActive",
+            EnumValueEnumName = "EnumValueEnumName",
+            EnumValueTenantId = "EnumValueTenantId",
+            EnumValueIsActive = "EnumValueIsActive",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",
-            UpdateDate = "UpdateDate",
+            UpdateDate = "UpdateDate"
         }
     }
 }
@@ -913,7 +815,7 @@ declare namespace Serene1.Default.Infra {
             Update = "Default/Infra/AddressTypeString/Update",
             Delete = "Default/Infra/AddressTypeString/Delete",
             Retrieve = "Default/Infra/AddressTypeString/Retrieve",
-            List = "Default/Infra/AddressTypeString/List",
+            List = "Default/Infra/AddressTypeString/List"
         }
     }
 }
@@ -1061,7 +963,7 @@ declare namespace Serene1.Northwind {
             CategoryId = "CategoryId",
             LanguageId = "LanguageId",
             CategoryName = "CategoryName",
-            Description = "Description",
+            Description = "Description"
         }
     }
 }
@@ -1078,7 +980,7 @@ declare namespace Serene1.Northwind {
             Update = "Northwind/CategoryLang/Update",
             Delete = "Northwind/CategoryLang/Delete",
             Retrieve = "Northwind/CategoryLang/Retrieve",
-            List = "Northwind/CategoryLang/List",
+            List = "Northwind/CategoryLang/List"
         }
     }
 }
@@ -1093,13 +995,13 @@ declare namespace Serene1.Northwind {
         const idProperty = "CategoryID";
         const nameProperty = "CategoryName";
         const localTextPrefix = "Northwind.Category";
-        const lookupKey = "Northwind.Category";
+        const lookupKey = "";
         function getLookup(): Q.Lookup<CategoryRow>;
         const enum Fields {
             CategoryID = "CategoryID",
             CategoryName = "CategoryName",
             Description = "Description",
-            Picture = "Picture",
+            Picture = "Picture"
         }
     }
 }
@@ -1116,7 +1018,7 @@ declare namespace Serene1.Northwind {
             Update = "Northwind/Category/Update",
             Delete = "Northwind/Category/Delete",
             Retrieve = "Northwind/Category/Retrieve",
-            List = "Northwind/Category/List",
+            List = "Northwind/Category/List"
         }
     }
 }
@@ -1157,7 +1059,7 @@ declare namespace Serene1.Northwind {
             CustomerCountry = "CustomerCountry",
             CustomerPhone = "CustomerPhone",
             CustomerFax = "CustomerFax",
-            CustomerTypeCustomerDesc = "CustomerTypeCustomerDesc",
+            CustomerTypeCustomerDesc = "CustomerTypeCustomerDesc"
         }
     }
 }
@@ -1174,7 +1076,7 @@ declare namespace Serene1.Northwind {
         const enum Fields {
             ID = "ID",
             CustomerTypeID = "CustomerTypeID",
-            CustomerDesc = "CustomerDesc",
+            CustomerDesc = "CustomerDesc"
         }
     }
 }
@@ -1229,7 +1131,7 @@ declare namespace Serene1.Northwind {
             LastContactedByPhoto = "LastContactedByPhoto",
             LastContactedByNotes = "LastContactedByNotes",
             LastContactedByReportsTo = "LastContactedByReportsTo",
-            LastContactedByPhotoPath = "LastContactedByPhotoPath",
+            LastContactedByPhotoPath = "LastContactedByPhotoPath"
         }
     }
 }
@@ -1275,7 +1177,7 @@ declare namespace Serene1.Northwind {
             ContactName = "ContactName",
             ProductId = "ProductId",
             ProductName = "ProductName",
-            GrossAmount = "GrossAmount",
+            GrossAmount = "GrossAmount"
         }
     }
 }
@@ -1291,7 +1193,7 @@ declare namespace Serene1.Northwind {
         const enum Fields {
             RepresentativeId = "RepresentativeId",
             CustomerId = "CustomerId",
-            EmployeeId = "EmployeeId",
+            EmployeeId = "EmployeeId"
         }
     }
 }
@@ -1340,7 +1242,7 @@ declare namespace Serene1.Northwind {
             LastContactDate = "LastContactDate",
             LastContactedBy = "LastContactedBy",
             Email = "Email",
-            SendBulletin = "SendBulletin",
+            SendBulletin = "SendBulletin"
         }
     }
 }
@@ -1359,7 +1261,7 @@ declare namespace Serene1.Northwind {
             Delete = "Northwind/Customer/Delete",
             GetNextNumber = "Northwind/Customer/GetNextNumber",
             Retrieve = "Northwind/Customer/Retrieve",
-            List = "Northwind/Customer/List",
+            List = "Northwind/Customer/List"
         }
     }
 }
@@ -1408,7 +1310,7 @@ declare namespace Serene1.Northwind {
         const idProperty = "EmployeeID";
         const nameProperty = "FullName";
         const localTextPrefix = "Northwind.Employee";
-        const lookupKey = "Northwind.Employee";
+        const lookupKey = "";
         function getLookup(): Q.Lookup<EmployeeRow>;
         const enum Fields {
             EmployeeID = "EmployeeID",
@@ -1448,7 +1350,7 @@ declare namespace Serene1.Northwind {
             ReportsToNotes = "ReportsToNotes",
             ReportsToReportsTo = "ReportsToReportsTo",
             ReportsToPhotoPath = "ReportsToPhotoPath",
-            Gender = "Gender",
+            Gender = "Gender"
         }
     }
 }
@@ -1501,14 +1403,14 @@ declare namespace Serene1.Northwind {
             EmployeeReportsTo = "EmployeeReportsTo",
             EmployeePhotoPath = "EmployeePhotoPath",
             TerritoryTerritoryDescription = "TerritoryTerritoryDescription",
-            TerritoryRegionID = "TerritoryRegionID",
+            TerritoryRegionID = "TerritoryRegionID"
         }
     }
 }
 declare namespace Serene1.Northwind {
     enum Gender {
         Male = 1,
-        Female = 2,
+        Female = 2
     }
 }
 declare namespace Serene1.Northwind {
@@ -1532,7 +1434,7 @@ declare namespace Serene1.Northwind {
             Text = "Text",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
-            InsertUserDisplayName = "InsertUserDisplayName",
+            InsertUserDisplayName = "InsertUserDisplayName"
         }
     }
 }
@@ -1597,7 +1499,7 @@ declare namespace Serene1.Northwind {
             ProductSupplierID = "ProductSupplierID",
             ProductQuantityPerUnit = "ProductQuantityPerUnit",
             ProductUnitPrice = "ProductUnitPrice",
-            LineTotal = "LineTotal",
+            LineTotal = "LineTotal"
         }
     }
 }
@@ -1608,7 +1510,7 @@ declare namespace Serene1.Northwind {
         function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<OrderDetailRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         const enum Methods {
             Retrieve = "Northwind/OrderDetail/Retrieve",
-            List = "Northwind/OrderDetail/List",
+            List = "Northwind/OrderDetail/List"
         }
     }
 }
@@ -1676,6 +1578,8 @@ declare namespace Serene1.Northwind {
         const idProperty = "OrderID";
         const nameProperty = "CustomerID";
         const localTextPrefix = "Northwind.Order";
+        const lookupKey = "";
+        function getLookup(): Q.Lookup<OrderRow>;
         const enum Fields {
             OrderID = "OrderID",
             CustomerID = "CustomerID",
@@ -1705,7 +1609,7 @@ declare namespace Serene1.Northwind {
             ShipViaCompanyName = "ShipViaCompanyName",
             ShipViaPhone = "ShipViaPhone",
             ShippingState = "ShippingState",
-            DetailList = "DetailList",
+            DetailList = "DetailList"
         }
     }
 }
@@ -1722,14 +1626,14 @@ declare namespace Serene1.Northwind {
             Update = "Northwind/Order/Update",
             Delete = "Northwind/Order/Delete",
             Retrieve = "Northwind/Order/Retrieve",
-            List = "Northwind/Order/List",
+            List = "Northwind/Order/List"
         }
     }
 }
 declare namespace Serene1.Northwind {
     enum OrderShippingState {
         NotShipped = 0,
-        Shipped = 1,
+        Shipped = 1
     }
 }
 declare namespace Serene1.Northwind {
@@ -1768,7 +1672,7 @@ declare namespace Serene1.Northwind {
             Id = "Id",
             ProductId = "ProductId",
             LanguageId = "LanguageId",
-            ProductName = "ProductName",
+            ProductName = "ProductName"
         }
     }
 }
@@ -1785,7 +1689,7 @@ declare namespace Serene1.Northwind {
             Update = "Northwind/ProductLang/Update",
             Delete = "Northwind/ProductLang/Delete",
             Retrieve = "Northwind/ProductLang/Retrieve",
-            List = "Northwind/ProductLang/List",
+            List = "Northwind/ProductLang/List"
         }
     }
 }
@@ -1827,7 +1731,7 @@ declare namespace Serene1.Northwind {
             UnitPrice = "UnitPrice",
             UnitsInStock = "UnitsInStock",
             UnitsOnOrder = "UnitsOnOrder",
-            ReorderLevel = "ReorderLevel",
+            ReorderLevel = "ReorderLevel"
         }
     }
 }
@@ -1863,7 +1767,7 @@ declare namespace Serene1.Northwind {
         const idProperty = "ProductID";
         const nameProperty = "ProductName";
         const localTextPrefix = "Northwind.Product";
-        const lookupKey = "Northwind.Product";
+        const lookupKey = "";
         function getLookup(): Q.Lookup<ProductRow>;
         const enum Fields {
             ProductID = "ProductID",
@@ -1890,7 +1794,7 @@ declare namespace Serene1.Northwind {
             SupplierHomePage = "SupplierHomePage",
             CategoryName = "CategoryName",
             CategoryDescription = "CategoryDescription",
-            CategoryPicture = "CategoryPicture",
+            CategoryPicture = "CategoryPicture"
         }
     }
 }
@@ -1907,7 +1811,7 @@ declare namespace Serene1.Northwind {
             Update = "Northwind/Product/Update",
             Delete = "Northwind/Product/Delete",
             Retrieve = "Northwind/Product/Retrieve",
-            List = "Northwind/Product/List",
+            List = "Northwind/Product/List"
         }
     }
 }
@@ -1933,11 +1837,11 @@ declare namespace Serene1.Northwind {
         const idProperty = "RegionID";
         const nameProperty = "RegionDescription";
         const localTextPrefix = "Northwind.Region";
-        const lookupKey = "Northwind.Region";
+        const lookupKey = "";
         function getLookup(): Q.Lookup<RegionRow>;
         const enum Fields {
             RegionID = "RegionID",
-            RegionDescription = "RegionDescription",
+            RegionDescription = "RegionDescription"
         }
     }
 }
@@ -1954,7 +1858,7 @@ declare namespace Serene1.Northwind {
             Update = "Northwind/Region/Update",
             Delete = "Northwind/Region/Delete",
             Retrieve = "Northwind/Region/Retrieve",
-            List = "Northwind/Region/List",
+            List = "Northwind/Region/List"
         }
     }
 }
@@ -1974,7 +1878,7 @@ declare namespace Serene1.Northwind {
             CategoryId = "CategoryId",
             CategoryName = "CategoryName",
             ProductName = "ProductName",
-            ProductSales = "ProductSales",
+            ProductSales = "ProductSales"
         }
     }
 }
@@ -1983,7 +1887,7 @@ declare namespace Serene1.Northwind {
         const baseUrl = "Northwind/SalesByCategory";
         function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<SalesByCategoryRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         const enum Methods {
-            List = "Northwind/SalesByCategory/List",
+            List = "Northwind/SalesByCategory/List"
         }
     }
 }
@@ -2010,12 +1914,12 @@ declare namespace Serene1.Northwind {
         const idProperty = "ShipperID";
         const nameProperty = "CompanyName";
         const localTextPrefix = "Northwind.Shipper";
-        const lookupKey = "Northwind.Shipper";
+        const lookupKey = "";
         function getLookup(): Q.Lookup<ShipperRow>;
         const enum Fields {
             ShipperID = "ShipperID",
             CompanyName = "CompanyName",
-            Phone = "Phone",
+            Phone = "Phone"
         }
     }
 }
@@ -2032,7 +1936,7 @@ declare namespace Serene1.Northwind {
             Update = "Northwind/Shipper/Update",
             Delete = "Northwind/Shipper/Delete",
             Retrieve = "Northwind/Shipper/Retrieve",
-            List = "Northwind/Shipper/List",
+            List = "Northwind/Shipper/List"
         }
     }
 }
@@ -2077,7 +1981,7 @@ declare namespace Serene1.Northwind {
         const idProperty = "SupplierID";
         const nameProperty = "CompanyName";
         const localTextPrefix = "Northwind.Supplier";
-        const lookupKey = "Northwind.Supplier";
+        const lookupKey = "";
         function getLookup(): Q.Lookup<SupplierRow>;
         const enum Fields {
             SupplierID = "SupplierID",
@@ -2091,7 +1995,7 @@ declare namespace Serene1.Northwind {
             Country = "Country",
             Phone = "Phone",
             Fax = "Fax",
-            HomePage = "HomePage",
+            HomePage = "HomePage"
         }
     }
 }
@@ -2108,7 +2012,7 @@ declare namespace Serene1.Northwind {
             Update = "Northwind/Supplier/Update",
             Delete = "Northwind/Supplier/Delete",
             Retrieve = "Northwind/Supplier/Retrieve",
-            List = "Northwind/Supplier/List",
+            List = "Northwind/Supplier/List"
         }
     }
 }
@@ -2138,14 +2042,14 @@ declare namespace Serene1.Northwind {
         const idProperty = "ID";
         const nameProperty = "TerritoryID";
         const localTextPrefix = "Northwind.Territory";
-        const lookupKey = "Northwind.Territory";
+        const lookupKey = "";
         function getLookup(): Q.Lookup<TerritoryRow>;
         const enum Fields {
             ID = "ID",
             TerritoryID = "TerritoryID",
             TerritoryDescription = "TerritoryDescription",
             RegionID = "RegionID",
-            RegionDescription = "RegionDescription",
+            RegionDescription = "RegionDescription"
         }
     }
 }
@@ -2162,7 +2066,7 @@ declare namespace Serene1.Northwind {
             Update = "Northwind/Territory/Update",
             Delete = "Northwind/Territory/Delete",
             Retrieve = "Northwind/Territory/Retrieve",
-            List = "Northwind/Territory/List",
+            List = "Northwind/Territory/List"
         }
     }
 }
@@ -2363,20 +2267,20 @@ declare namespace Serene1.Administration {
         private searchText;
         private byParentKey;
         constructor(container: JQuery, opt: PermissionCheckEditorOptions);
-        private getItemGrantRevokeClass(item, grant);
-        private roleOrImplicit(key);
-        private getItemEffectiveClass(item);
+        private getItemGrantRevokeClass;
+        private roleOrImplicit;
+        private getItemEffectiveClass;
         protected getColumns(): Slick.Column[];
         setItems(items: PermissionCheckItem[]): void;
         protected onViewSubmit(): boolean;
         protected onViewFilter(item: PermissionCheckItem): boolean;
-        private matchContains(item);
-        private getDescendants(item, excludeGroups);
+        private matchContains;
+        private getDescendants;
         protected onClick(e: any, row: any, cell: any): void;
-        private getParentKey(key);
+        private getParentKey;
         protected getButtons(): Serenity.ToolButton[];
         protected createToolbarExtensions(): void;
-        private getSortedGroupAndPermissionKeys(titleByKey);
+        private getSortedGroupAndPermissionKeys;
         value: UserPermissionRow[];
         private _rolePermissions;
         rolePermissions: string[];
@@ -2512,7 +2416,7 @@ declare namespace Serene1 {
     class StaticTextBlock extends Serenity.Widget<StaticTextBlockOptions> implements Serenity.ISetEditValue {
         private value;
         constructor(container: JQuery, options: StaticTextBlockOptions);
-        private updateElementContent();
+        private updateElementContent;
         /**
          * By implementing ISetEditValue interface, we allow this editor to display its field value.
          * But only do this when our text content is not explicitly set in options
@@ -2628,46 +2532,6 @@ declare namespace Serene1.Common {
     class UserPreferenceStorage implements Serenity.SettingStorage {
         getItem(key: string): string;
         setItem(key: string, data: string): void;
-    }
-}
-declare namespace Serene1.Default {
-    class AddressTypeDialog extends Serenity.EntityDialog<AddressTypeRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: AddressTypeForm;
-    }
-}
-declare namespace Serene1.Default {
-    class AddressTypeGrid extends Serenity.EntityGrid<AddressTypeRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof AddressTypeDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Serene1.Default {
-    class AddressTypeStringDialog extends Serenity.EntityDialog<AddressTypeStringRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: AddressTypeStringForm;
-    }
-}
-declare namespace Serene1.Default {
-    class AddressTypeStringGrid extends Serenity.EntityGrid<AddressTypeStringRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof AddressTypeStringDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
     }
 }
 declare namespace Serene1.Northwind {
@@ -2863,17 +2727,17 @@ declare namespace Serene1.Northwind {
          * but it's not supported by SlickGrid as we are only allowed to return a string, and should attach
          * no event handlers to rendered cell contents
          */
-        private numericInputFormatter(ctx);
-        private stringInputFormatter(ctx);
+        private numericInputFormatter;
+        private stringInputFormatter;
         /**
          * Sorry but you cannot use LookupEditor, e.g. Select2 here, only possible is a SELECT element
          */
-        private selectFormatter(ctx, idField, lookup);
-        private getEffectiveValue(item, field);
+        private selectFormatter;
+        private getEffectiveValue;
         protected getColumns(): Slick.Column[];
-        private inputsChange(e);
-        private setSaveButtonState();
-        private saveClick();
+        private inputsChange;
+        private setSaveButtonState;
+        private saveClick;
         protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
     }
 }

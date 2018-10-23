@@ -18,7 +18,7 @@ namespace Serene1.Default.Infra.Columns
         public Int32 EnumValue { get; set; }
         [EditLink]
         public String DisplayName { get; set; }
-        public Int32 Language { get; set; }
+        public Int32 LanguageId { get; set; }
         //public Int32 TenantId { get; set; }
         //public Int16 IsActive { get; set; }
     }

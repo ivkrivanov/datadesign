@@ -671,6 +671,11 @@ var Serene1;
                 AddressTypeRow.isActiveProperty = 'IsActive';
                 AddressTypeRow.nameProperty = 'EnumName';
                 AddressTypeRow.localTextPrefix = 'Default.AddressType';
+                AddressTypeRow.lookupKey = 'Default.Infra.AddressType';
+                function getLookup() {
+                    return Q.getLookup('Default.Infra.AddressType');
+                }
+                AddressTypeRow.getLookup = getLookup;
             })(AddressTypeRow = Infra.AddressTypeRow || (Infra.AddressTypeRow = {}));
         })(Infra = Default.Infra || (Default.Infra = {}));
     })(Default = Serene1.Default || (Serene1.Default = {}));
@@ -712,12 +717,13 @@ var Serene1;
                     if (!AddressTypeStringForm.init) {
                         AddressTypeStringForm.init = true;
                         var s = Serenity;
-                        var w0 = s.IntegerEditor;
+                        var w0 = s.LookupEditor;
                         var w1 = s.StringEditor;
+                        var w2 = s.IntegerEditor;
                         Q.initFormType(AddressTypeStringForm, [
                             'EnumValue', w0,
                             'DisplayName', w1,
-                            'Language', w0
+                            'LanguageId', w2
                         ]);
                     }
                     return _this;
@@ -3961,98 +3967,6 @@ var Serene1;
         }());
         Common.UserPreferenceStorage = UserPreferenceStorage;
     })(Common = Serene1.Common || (Serene1.Common = {}));
-})(Serene1 || (Serene1 = {}));
-var Serene1;
-(function (Serene1) {
-    var Default;
-    (function (Default) {
-        var AddressTypeDialog = /** @class */ (function (_super) {
-            __extends(AddressTypeDialog, _super);
-            function AddressTypeDialog() {
-                var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new AddressTypeForm(_this.idPrefix);
-                return _this;
-            }
-            AddressTypeDialog.prototype.getFormKey = function () { return AddressTypeForm.formKey; };
-            AddressTypeDialog.prototype.getIdProperty = function () { return AddressTypeRow.idProperty; };
-            AddressTypeDialog.prototype.getLocalTextPrefix = function () { return AddressTypeRow.localTextPrefix; };
-            AddressTypeDialog.prototype.getNameProperty = function () { return AddressTypeRow.nameProperty; };
-            AddressTypeDialog.prototype.getService = function () { return AddressTypeService.baseUrl; };
-            AddressTypeDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], AddressTypeDialog);
-            return AddressTypeDialog;
-        }(Serenity.EntityDialog));
-        Default.AddressTypeDialog = AddressTypeDialog;
-    })(Default = Serene1.Default || (Serene1.Default = {}));
-})(Serene1 || (Serene1 = {}));
-var Serene1;
-(function (Serene1) {
-    var Default;
-    (function (Default) {
-        var AddressTypeGrid = /** @class */ (function (_super) {
-            __extends(AddressTypeGrid, _super);
-            function AddressTypeGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            AddressTypeGrid.prototype.getColumnsKey = function () { return 'Default.AddressType'; };
-            AddressTypeGrid.prototype.getDialogType = function () { return Default.AddressTypeDialog; };
-            AddressTypeGrid.prototype.getIdProperty = function () { return AddressTypeRow.idProperty; };
-            AddressTypeGrid.prototype.getLocalTextPrefix = function () { return AddressTypeRow.localTextPrefix; };
-            AddressTypeGrid.prototype.getService = function () { return AddressTypeService.baseUrl; };
-            AddressTypeGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], AddressTypeGrid);
-            return AddressTypeGrid;
-        }(Serenity.EntityGrid));
-        Default.AddressTypeGrid = AddressTypeGrid;
-    })(Default = Serene1.Default || (Serene1.Default = {}));
-})(Serene1 || (Serene1 = {}));
-var Serene1;
-(function (Serene1) {
-    var Default;
-    (function (Default) {
-        var AddressTypeStringDialog = /** @class */ (function (_super) {
-            __extends(AddressTypeStringDialog, _super);
-            function AddressTypeStringDialog() {
-                var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new AddressTypeStringForm(_this.idPrefix);
-                return _this;
-            }
-            AddressTypeStringDialog.prototype.getFormKey = function () { return AddressTypeStringForm.formKey; };
-            AddressTypeStringDialog.prototype.getIdProperty = function () { return AddressTypeStringRow.idProperty; };
-            AddressTypeStringDialog.prototype.getLocalTextPrefix = function () { return AddressTypeStringRow.localTextPrefix; };
-            AddressTypeStringDialog.prototype.getNameProperty = function () { return AddressTypeStringRow.nameProperty; };
-            AddressTypeStringDialog.prototype.getService = function () { return AddressTypeStringService.baseUrl; };
-            AddressTypeStringDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], AddressTypeStringDialog);
-            return AddressTypeStringDialog;
-        }(Serenity.EntityDialog));
-        Default.AddressTypeStringDialog = AddressTypeStringDialog;
-    })(Default = Serene1.Default || (Serene1.Default = {}));
-})(Serene1 || (Serene1 = {}));
-var Serene1;
-(function (Serene1) {
-    var Default;
-    (function (Default) {
-        var AddressTypeStringGrid = /** @class */ (function (_super) {
-            __extends(AddressTypeStringGrid, _super);
-            function AddressTypeStringGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            AddressTypeStringGrid.prototype.getColumnsKey = function () { return 'Default.AddressTypeString'; };
-            AddressTypeStringGrid.prototype.getDialogType = function () { return Default.AddressTypeStringDialog; };
-            AddressTypeStringGrid.prototype.getIdProperty = function () { return AddressTypeStringRow.idProperty; };
-            AddressTypeStringGrid.prototype.getLocalTextPrefix = function () { return AddressTypeStringRow.localTextPrefix; };
-            AddressTypeStringGrid.prototype.getService = function () { return AddressTypeStringService.baseUrl; };
-            AddressTypeStringGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], AddressTypeStringGrid);
-            return AddressTypeStringGrid;
-        }(Serenity.EntityGrid));
-        Default.AddressTypeStringGrid = AddressTypeStringGrid;
-    })(Default = Serene1.Default || (Serene1.Default = {}));
 })(Serene1 || (Serene1 = {}));
 var Serene1;
 (function (Serene1) {
