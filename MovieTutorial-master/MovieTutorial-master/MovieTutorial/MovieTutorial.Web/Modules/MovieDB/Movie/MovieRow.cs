@@ -69,8 +69,8 @@ namespace MovieTutorial.MovieDB.Entities
             set { Fields.Kind[this] = (Int32?)value; }
         }
 
-        [DisplayName("Genres")]
-        [LookupEditor(typeof(GenreRow), Multiple = true), ClientSide]
+        [DisplayName("Genres"), ForeignKey("[mov].Genre", "GenreId"), LeftJoin("g")]
+        [LookupEditor(typeof(GenreRow), Multiple = true, InplaceAdd = true), ClientSide]
         [LinkingSetRelation(typeof(MovieGenresRow), "MovieId", "GenreId")]
         public List<Int32> GenreList
         {
