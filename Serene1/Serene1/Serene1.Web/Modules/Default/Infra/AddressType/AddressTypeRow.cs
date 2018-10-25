@@ -8,11 +8,11 @@ namespace Serene1.Default.Infra.Entities
     using System;
     using System.ComponentModel;
 
-    [ConnectionKey("Default"), Module("Default"), TableName("[ldg].[AddressType]")]
-    [DisplayName("Address Type"), InstanceName("Address Type")]
+    [ConnectionKey("Default"), Module("Default"), DisplayName("Address Type"), InstanceName("Address Type"), TableName("[ldg].[AddressType]"), TwoLevelCached]
     [ReadPermission("Administration:General")]
     [ModifyPermission("Administration:General")]
     [LookupScript("Default.Infra.AddressType")]
+    [LocalizationRow(typeof(AddressTypeLangRow))]
     public sealed class AddressTypeRow : LoggingRow, IIdRow, INameRow, IMultiTenantRow, IIsActiveRow
     {
 

@@ -736,15 +736,17 @@ declare namespace Serene1.Default.Infra {
 declare namespace Serene1.Default.Infra {
     namespace AddressTypeService {
         const baseUrl = "Default/Infra/AddressType";
-        function Create(request: Serenity.SaveRequest<AddressTypeRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Update(request: Serenity.SaveRequest<AddressTypeRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Create(request: Serenity.SaveWithLocalizationRequest<AddressTypeRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveWithLocalizationRequest<AddressTypeRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function RetrieveLocalization(request: Serenity.RetrieveLocalizationRequest, onSuccess?: (response: Serenity.RetrieveLocalizationResponse<AddressTypeRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<AddressTypeRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<AddressTypeRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         const enum Methods {
             Create = "Default/Infra/AddressType/Create",
             Update = "Default/Infra/AddressType/Update",
             Delete = "Default/Infra/AddressType/Delete",
+            RetrieveLocalization = "Default/Infra/AddressType/RetrieveLocalization",
             Retrieve = "Default/Infra/AddressType/Retrieve",
             List = "Default/Infra/AddressType/List"
         }
@@ -772,9 +774,6 @@ declare namespace Serene1.Default.Infra {
         LanguageId?: number;
         TenantId?: number;
         IsActive?: number;
-        EnumValueEnumName?: string;
-        EnumValueTenantId?: number;
-        EnumValueIsActive?: number;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -792,9 +791,6 @@ declare namespace Serene1.Default.Infra {
             LanguageId = "LanguageId",
             TenantId = "TenantId",
             IsActive = "IsActive",
-            EnumValueEnumName = "EnumValueEnumName",
-            EnumValueTenantId = "EnumValueTenantId",
-            EnumValueIsActive = "EnumValueIsActive",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",
@@ -2897,6 +2893,7 @@ declare namespace Serene1.Default.Infra {
         protected getNameProperty(): string;
         protected getService(): string;
         protected form: AddressTypeForm;
+        protected getLanguages(): string[][];
     }
 }
 declare namespace Serene1.Default.Infra {

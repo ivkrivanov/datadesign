@@ -115,7 +115,7 @@ namespace Serene1.Administration.Repositories
                     editable.Remove(fld.IsActive);
                 }
 
-                if (!Authorization.HasPermission(Administration.PermissionKeys.Tenant))
+                if (!Authorization.HasPermission(Administration.PermissionKeys.Tenants))
                 {
                     editable.Remove(fld.TenantId);
                 }
@@ -192,7 +192,7 @@ namespace Serene1.Administration.Repositories
                 {
                     var user = (UserDefinition)Authorization.UserDefinition;
                     if (Old.TenantId != user.TenantId)
-                        Authorization.ValidatePermission(PermissionKeys.Tenant);
+                        Authorization.ValidatePermission(PermissionKeys.Tenants);
 
                     CheckPublicDemo(Row.UserId);
 
@@ -224,7 +224,7 @@ namespace Serene1.Administration.Repositories
                     Row.IsActive = Row.IsActive ?? 1;
                 }
 
-                if (!Authorization.HasPermission(Administration.PermissionKeys.Tenant) ||
+                if (!Authorization.HasPermission(Administration.PermissionKeys.Tenants) ||
                     Row.TenantId == null)
                 {
                     Row.TenantId = ((UserDefinition)Authorization.UserDefinition)
@@ -266,7 +266,7 @@ namespace Serene1.Administration.Repositories
 
                 var user = (UserDefinition)Authorization.UserDefinition;
                 if (Row.TenantId != user.TenantId)
-                    Authorization.ValidatePermission(PermissionKeys.Tenant);
+                    Authorization.ValidatePermission(PermissionKeys.Tenants);
 
                 CheckPublicDemo(Row.UserId);
             }
@@ -280,7 +280,7 @@ namespace Serene1.Administration.Repositories
 
                 var user = (UserDefinition)Authorization.UserDefinition;
                 if (Row.TenantId != user.TenantId)
-                    Authorization.ValidatePermission(PermissionKeys.Tenant);
+                    Authorization.ValidatePermission(PermissionKeys.Tenants);
             }
         }
 
@@ -291,7 +291,7 @@ namespace Serene1.Administration.Repositories
                 base.PrepareQuery(query);
 
                 var user = (UserDefinition)Authorization.UserDefinition;
-                if (!Authorization.HasPermission(PermissionKeys.Tenant))
+                if (!Authorization.HasPermission(PermissionKeys.Tenants))
                     query.Where(fld.TenantId == user.TenantId);
             }
         }
@@ -303,7 +303,7 @@ namespace Serene1.Administration.Repositories
                 base.ApplyFilters(query);
 
                 var user = (UserDefinition)Authorization.UserDefinition;
-                if (!Authorization.HasPermission(PermissionKeys.Tenant))
+                if (!Authorization.HasPermission(PermissionKeys.Tenants))
                     query.Where(fld.TenantId == user.TenantId);
             }
         }

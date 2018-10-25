@@ -1,5 +1,4 @@
-﻿
-namespace Serene1.Default.Infra {
+﻿namespace Serene1.Default.Infra {
 
     @Serenity.Decorators.registerClass()
     export class AddressTypeDialog extends Serenity.EntityDialog<AddressTypeRow, any> {
@@ -11,5 +10,8 @@ namespace Serene1.Default.Infra {
 
         protected form = new AddressTypeForm(this.idPrefix);
 
+        protected getLanguages(): string[][] {
+            return LanguageList.getValue();
+        }
     }
 }

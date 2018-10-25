@@ -7836,3 +7836,9 @@ section.content > .s-DataGrid {
 .s-Default-EmployeesAddressesDialog .caption {
   width: 150px;
 }
+.s-Default-AddressTypeLangDialog > .size {
+  width: 650px;
+}
+.s-Default-AddressTypeLangDialog .caption {
+  width: 150px;
+}

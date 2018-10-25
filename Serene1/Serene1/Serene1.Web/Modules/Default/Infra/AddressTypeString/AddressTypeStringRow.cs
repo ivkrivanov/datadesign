@@ -1,5 +1,4 @@
-﻿
-namespace Serene1.Default.Infra.Entities
+﻿namespace Serene1.Default.Infra.Entities
 {
     using Administration.Entities;
     using Serenity.ComponentModel;
@@ -8,27 +7,33 @@ namespace Serene1.Default.Infra.Entities
     using System;
     using System.ComponentModel;
 
-    [ConnectionKey("Default"), Module("Default"), TableName("[ldg].[AddressTypeString]")]
-    [DisplayName("Address Type String"), InstanceName("Address Type String")]
+    [ConnectionKey("Default"), Module("Default"), DisplayName("AddressLang"), InstanceName("AddressLang"),TableName("[ldg].[AddressTypeString]"), TwoLevelCached]
     [ReadPermission("Administration:General")]
     [ModifyPermission("Administration:General")]
-    public sealed class AddressTypeStringRow : LoggingRow, IIdRow, INameRow, IIsActiveRow
+    public sealed class AddressTypeStringRow : LoggingRow, IIdRow, INameRow, IIsActiveRow, ILocalizationRow
     {
 
-        [DisplayName("Enum Locale Id"), Column("EnumLocaleID"), Identity]
+        [DisplayName("Enum Lang Id"), Column("EnumLocaleID"), Identity]
         public Int32? EnumLocaleId
         {
             get { return Fields.EnumLocaleId[this]; }
             set { Fields.EnumLocaleId[this] = value; }
         }
 
-        //[DisplayName("Enum Value")]
-        [DisplayName("Enum Value"), ForeignKey("[ldg].[AddressType]", "EnumValue"), LeftJoin("jEnumValue"), TextualField("EnumValueEnumName"), LookupInclude]
-        [LookupEditor(typeof(AddressTypeRow), InplaceAdd = true)]
+        //[DisplayName("Enum Value"), ForeignKey("[ldg].[AddressType]", "EnumValue"), LeftJoin("jEnumValue"), TextualField("EnumValueEnumName"), LookupInclude]
+        //[LookupEditor(typeof(AddressTypeRow), InplaceAdd = true)]
+        [DisplayName("Type Id"), Column("EnumValue"), NotNull]
         public Int32? EnumValue
         {
             get { return Fields.EnumValue[this]; }
             set { Fields.EnumValue[this] = value; }
+        }
+
+        [DisplayName("Language Id"), Column("LanguageID"), NotNull]
+        public Int32? LanguageId
+        {
+            get { return Fields.LanguageId[this]; }
+            set { Fields.LanguageId[this] = value; }
         }
 
         [DisplayName("Display Name"), Size(256), QuickSearch]
@@ -36,35 +41,6 @@ namespace Serene1.Default.Infra.Entities
         {
             get { return Fields.DisplayName[this]; }
             set { Fields.DisplayName[this] = value; }
-        }
-
-        //[DisplayName("Language"), ForeignKey("[dbo].[Languages]","LanguageId"), LeftJoin("jLang"), TextualField("LanguageName"), LookupInclude]
-        //[LookupEditor(typeof(LanguageRow), InplaceAdd = true)]
-        public Int32? LanguageId
-        {
-            get { return Fields.LanguageId[this]; }
-            set { Fields.LanguageId[this] = value; }
-        }
-
-        [DisplayName("Enum Value Enum Name"), Expression("jEnumValue.[EnumName]")]
-        public String EnumValueEnumName
-        {
-            get { return Fields.EnumValueEnumName[this]; }
-            set { Fields.EnumValueEnumName[this] = value; }
-        }
-
-        [DisplayName("Enum Value Tenant Id"), Expression("jEnumValue.[TenantId]")]
-        public Int32? EnumValueTenantId
-        {
-            get { return Fields.EnumValueTenantId[this]; }
-            set { Fields.EnumValueTenantId[this] = value; }
-        }
-
-        [DisplayName("Enum Value Is Active"), Expression("jEnumValue.[IsActive]")]
-        public Int16? EnumValueIsActive
-        {
-            get { return Fields.EnumValueIsActive[this]; }
-            set { Fields.EnumValueIsActive[this] = value; }
         }
 
         #region Active
@@ -111,6 +87,10 @@ namespace Serene1.Default.Infra.Entities
             get { return Fields.IsActive; }
         }
 
+        public Field CultureIdField
+        {
+            get { return Fields.LanguageId; }
+        }
         #endregion Fields
 
         public static readonly RowFields Fields = new RowFields().Init();
@@ -126,16 +106,12 @@ namespace Serene1.Default.Infra.Entities
             public Int32Field EnumLocaleId;
             public Int32Field EnumValue;
             public StringField DisplayName;
-            //public Int32Field Language;
             public Int32Field LanguageId;
 
             public Int32Field TenantId;
             public Int16Field IsActive;
 
-            public StringField EnumValueEnumName;
 
-            public Int32Field EnumValueTenantId;
-            public Int16Field EnumValueIsActive;
         }
     }
 }

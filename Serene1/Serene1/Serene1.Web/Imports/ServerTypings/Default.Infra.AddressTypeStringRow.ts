@@ -6,9 +6,6 @@
         LanguageId?: number;
         TenantId?: number;
         IsActive?: number;
-        EnumValueEnumName?: string;
-        EnumValueTenantId?: number;
-        EnumValueIsActive?: number;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -28,9 +25,6 @@
             LanguageId = "LanguageId",
             TenantId = "TenantId",
             IsActive = "IsActive",
-            EnumValueEnumName = "EnumValueEnumName",
-            EnumValueTenantId = "EnumValueTenantId",
-            EnumValueIsActive = "EnumValueIsActive",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",

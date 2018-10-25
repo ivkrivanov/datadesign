@@ -1029,12 +1029,6 @@
     <TypeScriptCompile Include="Imports\ServerTypings\Default.Infra.AddressTypeService.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Default.Infra.AddressTypeStringColumns.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Default.Infra.AddressTypeStringForm.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\Default.Infra.AddressTypeStringRow.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
@@ -1684,12 +1678,18 @@
     <Content Include="Modules\Default\Infra\AddressType\AddressTypeIndex.cshtml" />
     <TypeScriptCompile Include="Modules\Default\Infra\AddressType\AddressTypeDialog.ts" />
     <TypeScriptCompile Include="Modules\Default\Infra\AddressType\AddressTypeGrid.ts" />
-    <Content Include="Modules\Default\Infra\AddressTypeString\AddressTypeStringIndex.cshtml" />
-    <TypeScriptCompile Include="Modules\Default\Infra\AddressTypeString\AddressTypeStringDialog.ts" />
-    <TypeScriptCompile Include="Modules\Default\Infra\AddressTypeString\AddressTypeStringGrid.ts" />
     <TypeScriptCompile Include="Modules\Default\Employees\EmployeesAddresses\EmployeesAddressesDialog.ts" />
     <TypeScriptCompile Include="Modules\Default\Employees\EmployeesAddresses\EmployeesAddressesGrid.ts" />
     <TypeScriptCompile Include="Scripts\typings\serenity\Serenity.CoreLib.d.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Default.AddressTypeLangRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Default.AddressTypeLangService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Default.AddressTypeLangForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -1980,15 +1980,15 @@
     <Compile Include="Modules\Default\Infra\AddressTypeString\AddressTypeStringRow.cs" />
     <Compile Include="Modules\Default\Infra\AddressTypeString\AddressTypeStringRepository.cs" />
     <Compile Include="Modules\Default\Infra\AddressTypeString\AddressTypeStringEndpoint.cs" />
-    <Compile Include="Modules\Default\Infra\AddressTypeString\AddressTypeStringPage.cs" />
-    <Compile Include="Modules\Default\Infra\AddressTypeString\AddressTypeStringColumns.cs" />
-    <Compile Include="Modules\Default\Infra\AddressTypeString\AddressTypeStringForm.cs" />
     <Compile Include="Modules\Default\Employees\EmployeesAddresses\EmployeesAddressesRow.cs" />
     <Compile Include="Modules\Default\Employees\EmployeesAddresses\EmployeesAddressesRepository.cs" />
     <Compile Include="Modules\Default\Employees\EmployeesAddresses\EmployeesAddressesEndpoint.cs" />
     <Compile Include="Modules\Default\Employees\EmployeesAddresses\EmployeesAddressesPage.cs" />
     <Compile Include="Modules\Default\Employees\EmployeesAddresses\EmployeesAddressesColumns.cs" />
     <Compile Include="Modules\Default\Employees\EmployeesAddresses\EmployeesAddressesForm.cs" />
+    <Compile Include="Modules\Default\Infra\AddressTypeLang\AddressTypeLangRow.cs" />
+    <Compile Include="Modules\Default\Infra\AddressTypeLang\AddressTypeLangRepository.cs" />
+    <Compile Include="Modules\Default\Infra\AddressTypeLang\AddressTypeLangEndpoint.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

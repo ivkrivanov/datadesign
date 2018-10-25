@@ -1,11 +1,14 @@
-﻿namespace Serene1.Default.Infra.Repositories
+﻿
+namespace Serene1.Default.Infra.Repositories
 {
+    using Serenity;
     using Serenity.Data;
     using Serenity.Services;
+    using System;
     using System.Data;
-    using MyRow = Entities.AddressTypeStringRow;
+    using MyRow = Entities.AddressTypeLangRow;
 
-    public class AddressTypeStringRepository
+    public class AddressTypeLangRepository
     {
         private static MyRow.RowFields fld { get { return MyRow.Fields; } }
 

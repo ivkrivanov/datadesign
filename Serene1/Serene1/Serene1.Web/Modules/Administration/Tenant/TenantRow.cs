@@ -12,8 +12,8 @@ namespace Serene1.Administration.Entities
     using System.IO;
 
     [ConnectionKey("Default"), DisplayName("Tenants"), InstanceName("Tenant"), TwoLevelCached]
-    [ReadPermission(PermissionKeys.Tenant)]
-    [ModifyPermission(PermissionKeys.Tenant)]
+    [ReadPermission(PermissionKeys.Tenants)]
+    [ModifyPermission(PermissionKeys.Tenants)]
     [LookupScript("Administration.Tenant")]
     public sealed class TenantRow : Row, IIdRow, INameRow
     {

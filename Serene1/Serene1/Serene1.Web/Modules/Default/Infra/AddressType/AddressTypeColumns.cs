@@ -1,13 +1,9 @@
 ﻿
 namespace Serene1.Default.Infra.Columns
 {
-    using Serenity;
     using Serenity.ComponentModel;
-    using Serenity.Data;
     using System;
     using System.ComponentModel;
-    using System.Collections.Generic;
-    using System.IO;
 
     [ColumnsScript("Default.Infra.AddressType")]
     [BasedOnRow(typeof(Entities.AddressTypeRow), CheckNames = true)]
@@ -15,7 +11,7 @@ namespace Serene1.Default.Infra.Columns
     {
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         public Int32 EnumValue { get; set; }
-        [EditLink]
+        [EditLink, Width(250)]
         public String EnumName { get; set; }
     }
 }

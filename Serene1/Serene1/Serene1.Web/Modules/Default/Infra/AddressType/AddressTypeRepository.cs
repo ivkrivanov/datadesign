@@ -1,7 +1,5 @@
-﻿
-namespace Serene1.Default.Infra.Repositories
+﻿namespace Serene1.Default.Infra.Repositories
 {
-    using Serenity;
     using Serenity.Data;
     using Serenity.Services;
     using System;
@@ -12,12 +10,12 @@ namespace Serene1.Default.Infra.Repositories
     {
         private static MyRow.RowFields fld { get { return MyRow.Fields; } }
 
-        public SaveResponse Create(IUnitOfWork uow, SaveRequest<MyRow> request)
+        public SaveResponse Create(IUnitOfWork uow, SaveWithLocalizationRequest<MyRow> request)
         {
             return new MySaveHandler().Process(uow, request, SaveRequestType.Create);
         }
 
-        public SaveResponse Update(IUnitOfWork uow, SaveRequest<MyRow> request)
+        public SaveResponse Update(IUnitOfWork uow, SaveWithLocalizationRequest<MyRow> request)
         {
             return new MySaveHandler().Process(uow, request, SaveRequestType.Update);
         }
@@ -26,10 +24,19 @@ namespace Serene1.Default.Infra.Repositories
         {
             return new MyDeleteHandler().Process(uow, request);
         }
+        public UndeleteResponse Undelete(IUnitOfWork uow, UndeleteRequest request)
+        {
+            return new MyUndeleteHandler().Process(uow, request);
+        }
 
         public RetrieveResponse<MyRow> Retrieve(IDbConnection connection, RetrieveRequest request)
         {
             return new MyRetrieveHandler().Process(connection, request);
+        }
+
+        public RetrieveLocalizationResponse<MyRow> RetrieveLocalization(IDbConnection connection, RetrieveLocalizationRequest request)
+        {
+            return new LocalizationRowHandler<MyRow>().Retrieve(connection, request);
         }
 
         public ListResponse<MyRow> List(IDbConnection connection, ListRequest request)
@@ -37,8 +44,23 @@ namespace Serene1.Default.Infra.Repositories
             return new MyListHandler().Process(connection, request);
         }
 
-        private class MySaveHandler : SaveRequestHandler<MyRow> { }
+        private class MySaveHandler : SaveRequestHandler<MyRow, SaveWithLocalizationRequest<MyRow>, SaveResponse>
+        {
+            protected override void AfterSave()
+            {
+                base.AfterSave();
+
+                if (Request.Localizations != null)
+                    foreach (var pair in Request.Localizations)
+                    {
+                        pair.Value.EnumValue = Row.EnumValue.Value;
+                        new LocalizationRowHandler<MyRow>().Update<Entities.AddressTypeStringRow>(this.UnitOfWork, pair.Value, Convert.ToInt32(pair.Key));
+                    }
+            }
+        }
+
         private class MyDeleteHandler : DeleteRequestHandler<MyRow> { }
+        private class MyUndeleteHandler : UndeleteRequestHandler<MyRow> { }
         private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> { }
         private class MyListHandler : ListRequestHandler<MyRow> { }
     }

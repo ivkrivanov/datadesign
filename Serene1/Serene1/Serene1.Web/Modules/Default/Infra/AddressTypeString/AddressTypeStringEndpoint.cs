@@ -1,7 +1,5 @@
-﻿
-namespace Serene1.Default.Infra.Endpoints
+﻿namespace Serene1.Default.Infra.Endpoints
 {
-    using Serenity;
     using Serenity.Data;
     using Serenity.Services;
     using System.Data;

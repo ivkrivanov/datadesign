@@ -1,9 +1,9 @@
 ﻿
-using Serenity.Extensibility;
-using System.ComponentModel;
-
 namespace Serene1.Administration
 {
+    using Serenity.Extensibility;
+    using System.ComponentModel;
+
     [NestedPermissionKeys]
     [DisplayName("Administration")]
     public class PermissionKeys
@@ -15,6 +15,6 @@ namespace Serene1.Administration
         public const string Translation = "Administration:Translation";
 
         [Description("Multy tenant mode")]
-        public const string Tenant = "Administration:Tenants";
+        public const string Tenants = "Administration:Tenants";
     }
 }
