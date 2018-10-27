@@ -49,7 +49,7 @@
                 .Create.Table("AddressType").InSchema("ldg")
                 .WithColumn("EnumValue").AsInt32().PrimaryKey().NotNullable());
 
-            Utils.AddOracleIdentity(this, "SupportType", "EnumValue");
+            Utils.AddOracleIdentity(this, "AddressType", "EnumValue");
 
             Action<ICreateTableWithColumnSyntax> addAddressTypeStringCols = expr => expr
                 .WithColumn("EnumValue").AsInt32().Nullable()
@@ -70,7 +70,7 @@
                 .Create.Table("AddressTypeString").InSchema("ldg")
                 .WithColumn("EnumLocaleID").AsInt32().PrimaryKey().NotNullable());
 
-            Utils.AddOracleIdentity(this, "SupportTypeString", "EnumLocaleID");
+            Utils.AddOracleIdentity(this, "AddressTypeString", "EnumLocaleID");
         }
     }
 }

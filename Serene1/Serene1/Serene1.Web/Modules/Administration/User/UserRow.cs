@@ -101,6 +101,7 @@ namespace Serene1.Administration.Entities
 
         [DisplayName("Tenant"), ForeignKey("Tenants", "TenantId"), LeftJoin("tnt")]
         [LookupEditor(typeof(TenantRow))]
+        [ReadPermission(PermissionKeys.Tenants)]
         public Int32? TenantId
         {
             get { return Fields.TenantId[this]; }

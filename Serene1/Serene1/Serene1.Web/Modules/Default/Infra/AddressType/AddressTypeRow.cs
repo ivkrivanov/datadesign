@@ -9,10 +9,10 @@ namespace Serene1.Default.Infra.Entities
     using System.ComponentModel;
 
     [ConnectionKey("Default"), Module("Default"), TableName("[ldg].[AddressType]")]
-    [DisplayName("Address Type"), InstanceName("Address Type")]
+    [DisplayName("Address Type"), InstanceName("AddressType")]
     [ReadPermission("Administration:General")]
     [ModifyPermission("Administration:General")]
-    [LookupScript("Default.Infra.AddressType")]
+    [LookupScript] //("Default.Infra.AddressType")] //, LookupType = typeof(MultiTenantRowLookupScript<>))]
     public sealed class AddressTypeRow : LoggingRow, IIdRow, INameRow, IMultiTenantRow, IIsActiveRow
     {
 
@@ -39,6 +39,11 @@ namespace Serene1.Default.Infra.Entities
         {
             get { return Fields.IsActive[this]; }
             set { Fields.IsActive[this] = value; }
+        }
+
+        Int16Field IIsActiveRow.IsActiveField
+        {
+            get { return Fields.IsActive; }
         }
 
         #endregion Active
@@ -71,10 +76,6 @@ namespace Serene1.Default.Infra.Entities
             get { return Fields.EnumName; }
         }
 
-        Int16Field IIsActiveRow.IsActiveField
-        {
-            get { return Fields.IsActive; }
-        }
 
         #endregion Fields
 
@@ -90,7 +91,7 @@ namespace Serene1.Default.Infra.Entities
             public Int32Field EnumValue;
             public StringField EnumName;
 
-            public Int32Field TenantId;
+            public readonly Int32Field TenantId;
             public Int16Field IsActive;
 		}
     }

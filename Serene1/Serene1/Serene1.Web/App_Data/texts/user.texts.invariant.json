@@ -1,0 +1,15 @@
+{
+  "Db.Default.Addresses.Address": "Адрес",
+  "Db.Default.Addresses.City": "Град",
+  "Db.Default.Addresses.Country": "Държава",
+  "Db.Default.Addresses.State": "Област",
+  "Db.Default.Addresses.StreetAddress": "Адрес",
+  "Db.Default.Addresses.ZipCode": "Пощенски код",
+  "Db.Default.AddressTypeString.DisplayName": "Тип на адреса",
+  "Db.Default.AddressTypeString.LanguageName": "Език",
+  "Db.Default.EmployeesAddresses.Address": "Адрес",
+  "Db.Default.EmployeesAddresses.AddressCity": "Град",
+  "Db.Default.EmployeesAddresses.AddressCountry": "Държава",
+  "Db.Default.EmployeesAddresses.AddressState": "Област",
+  "Db.Default.EmployeesAddresses.AddressZipCode": "Пощенски код"
+}

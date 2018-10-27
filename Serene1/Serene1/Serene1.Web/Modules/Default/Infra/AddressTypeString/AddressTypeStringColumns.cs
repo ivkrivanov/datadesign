@@ -14,7 +14,6 @@ namespace Serene1.Default.Infra.Columns
     public class AddressTypeStringColumns
     {
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
-        [LookupEditor(typeof(Entities.AddressTypeRow)), QuickFilter]
         public Int32 EnumLocaleId { get; set; }
 
         public Int32 EnumValue { get; set; }

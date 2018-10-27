@@ -26,14 +26,14 @@ namespace Serene1
         public void OnPrepareQuery(IRetrieveRequestHandler handler, SqlQuery query)
         {
             var user = (UserDefinition)Authorization.UserDefinition;
-            if (!Authorization.HasPermission(PermissionKeys.Tenant))
+            if (!Authorization.HasPermission(PermissionKeys.Tenants))
                 query.Where(fldTenantId == user.TenantId);
         }
 
         public void OnPrepareQuery(IListRequestHandler handler, SqlQuery query)
         {
             var user = (UserDefinition)Authorization.UserDefinition;
-            if (!Authorization.HasPermission(PermissionKeys.Tenant))
+            if (!Authorization.HasPermission(PermissionKeys.Tenants))
                 query.Where(fldTenantId == user.TenantId);
         }
 
@@ -48,7 +48,7 @@ namespace Serene1
         {
             var user = (UserDefinition)Authorization.UserDefinition;
             if (fldTenantId[handler.Row] != user.TenantId)
-                Authorization.ValidatePermission(PermissionKeys.Tenant);
+                Authorization.ValidatePermission(PermissionKeys.Tenants);
         }
         public void OnAfterDelete(IDeleteRequestHandler handler) { }
         public void OnAfterExecuteQuery(IRetrieveRequestHandler handler) { }

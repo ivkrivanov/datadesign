@@ -11,8 +11,6 @@
         AddressCity?: string;
         AddressState?: string;
         AddressCountry?: string;
-        AddressIsActive?: number;
-        AddressTenantId?: number;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -21,6 +19,8 @@
 
     export namespace EmployeesAddressesRow {
         export const idProperty = 'EmployeeAddressId';
+        export const isActiveProperty = 'IsActive';
+        export const nameProperty = 'Address';
         export const localTextPrefix = 'Default.EmployeesAddresses';
 
         export declare const enum Fields {
@@ -35,8 +35,6 @@
             AddressCity = "AddressCity",
             AddressState = "AddressState",
             AddressCountry = "AddressCountry",
-            AddressIsActive = "AddressIsActive",
-            AddressTenantId = "AddressTenantId",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",

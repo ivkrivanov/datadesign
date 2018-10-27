@@ -13,7 +13,8 @@ namespace Serene1.Default.Employees.Entities
     [DisplayName("Employees Addresses"), InstanceName("Employees Addresses")]
     [ReadPermission("Administration:General")]
     [ModifyPermission("Administration:General")]
-    public sealed class EmployeesAddressesRow : LoggingRow, IIdRow
+    //[LookupScript("Employees.EmployeesAddresses", LookupType = typeof(MultiTenantRowLookupScript<>))]
+    public sealed class EmployeesAddressesRow : LoggingRow, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
     {
 
         [DisplayName("Employee Address Id"), Identity]
@@ -44,21 +45,49 @@ namespace Serene1.Default.Employees.Entities
             set { Fields.AddressTypeId[this] = value; }
         }
 
-        [DisplayName("Tenant Id"), NotNull]
-        public Int32? TenantId
-        {
-            get { return Fields.TenantId[this]; }
-            set { Fields.TenantId[this] = value; }
-        }
+        #region Active
 
-        [DisplayName("Is Active"), NotNull]
+        [NotNull, Insertable(false), Updatable(true)]
         public Int16? IsActive
         {
             get { return Fields.IsActive[this]; }
             set { Fields.IsActive[this] = value; }
         }
+        Int16Field IIsActiveRow.IsActiveField
+        {
+            get { return Fields.IsActive; }
+        }
+
+        #endregion Active
+
+        #region Tenant
+
+        [Insertable(false), Updatable(false)]
+        public Int32? TenantId
+        {
+            get { return Fields.TenantId[this]; }
+            //set { Fields.TenantId[this] = value; }
+        }
+
+        public Int32Field TenantIdField
+        {
+            get { return Fields.TenantId; }
+        }
+
+        #endregion Tenant
+
+        #region Fields
+        IIdField IIdRow.IdField
+        {
+            get { return Fields.EmployeeAddressId; }
+        }
+        StringField INameRow.NameField
+        {
+            get { return Fields.Address; }
+        }
 
 
+        #endregion Fields
 
         [DisplayName("Address"), Expression("jAddress.[Address]")]
         public String Address
@@ -95,26 +124,6 @@ namespace Serene1.Default.Employees.Entities
             set { Fields.AddressCountry[this] = value; }
         }
 
-        [DisplayName("Address Is Active"), Expression("jAddress.[IsActive]")]
-        public Int16? AddressIsActive
-        {
-            get { return Fields.AddressIsActive[this]; }
-            set { Fields.AddressIsActive[this] = value; }
-        }
-
-        [DisplayName("Address Tenant Id"), Expression("jAddress.[TenantId]")]
-        public Int32? AddressTenantId
-        {
-            get { return Fields.AddressTenantId[this]; }
-            set { Fields.AddressTenantId[this] = value; }
-        }
-
-
-
-        IIdField IIdRow.IdField
-        {
-            get { return Fields.EmployeeAddressId; }
-        }
 
         public static readonly RowFields Fields = new RowFields().Init();
 
@@ -125,36 +134,22 @@ namespace Serene1.Default.Employees.Entities
 
         public class RowFields : LoggingRowFields
         {
-
+            #region Employee Address
             public Int32Field EmployeeAddressId;
-
             public Int32Field EmployeeId;
-
             public Int32Field AddressId;
-
             public Int16Field AddressTypeId;
-
             public Int32Field TenantId;
-
             public Int16Field IsActive;
+            #endregion Employee Address
 
-
-
+            #region Address
             public StringField Address;
-
             public StringField AddressZipCode;
-
             public StringField AddressCity;
-
             public StringField AddressState;
-
             public StringField AddressCountry;
-
-            public Int16Field AddressIsActive;
-
-            public Int32Field AddressTenantId;
-
-
-		}
+            #endregion Address
+        }
     }
 }
