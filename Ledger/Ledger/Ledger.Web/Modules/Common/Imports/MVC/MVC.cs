@@ -213,6 +213,11 @@ namespace MVC
 
         public static class HR
         {
+            public static class EmplAddressType
+            {
+                public const string EmplAddressTypeIndex = "~/Modules/HR/EmplAddressType/EmplAddressTypeIndex.cshtml";
+            }
+
             public static class Employee
             {
                 public const string EmployeeIndex = "~/Modules/HR/Employee/EmployeeIndex.cshtml";

@@ -22,7 +22,7 @@ namespace Serene1.Default.Infra.Entities
             set { Fields.EnumLocaleId[this] = value; }
         }
 
-        [DisplayName("Enum Value"), NotNull, ForeignKey("AddressType", "EnumValue"), LeftJoin("jAddrType")]
+        [DisplayName("Enum Value"), NotNull, ForeignKey("[ldg].[AddressType]", "EnumValue"), LeftJoin("jAddrType")]
         public Int32? EnumValue
         {
             get { return Fields.EnumValue[this]; }

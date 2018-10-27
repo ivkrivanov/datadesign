@@ -8029,3 +8029,9 @@ section.content > .s-DataGrid {
 .s-Infra-SupportDialog .caption {
   width: 150px;
 }
+.s-Default-EmplAddressTypeDialog > .size {
+  width: 650px;
+}
+.s-Default-EmplAddressTypeDialog .caption {
+  width: 150px;
+}

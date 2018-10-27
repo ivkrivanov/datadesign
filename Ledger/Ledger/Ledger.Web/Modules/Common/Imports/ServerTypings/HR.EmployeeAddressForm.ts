@@ -6,10 +6,9 @@
 
     export interface EmployeeAddressForm {
         AddressId: Serenity.LookupEditor;
-        AddressType: Serenity.StringEditor;
         AddressTypeId: Serenity.EnumEditor;
     }
 
-    [['AddressId', () => Serenity.LookupEditor], ['AddressType', () => Serenity.StringEditor], ['AddressTypeId', () => Serenity.EnumEditor]].forEach(x => Object.defineProperty(EmployeeAddressForm.prototype, <string>x[0], { get: function () { return this.w(x[0], (x[1] as any)()); }, enumerable: true, configurable: true }));
+    [['AddressId', () => Serenity.LookupEditor], ['AddressTypeId', () => Serenity.EnumEditor]].forEach(x => Object.defineProperty(EmployeeAddressForm.prototype, <string>x[0], { get: function () { return this.w(x[0], (x[1] as any)()); }, enumerable: true, configurable: true }));
 }
 

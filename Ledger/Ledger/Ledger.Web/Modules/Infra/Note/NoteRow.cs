@@ -49,6 +49,19 @@
             set { Fields.InsertUserDisplayName[this] = value; }
         }
 
+        #region Active
+
+        [NotNull, Insertable(false), Updatable(true)]
+        public Int16? IsActive
+        {
+            get { return Fields.IsActive[this]; }
+            set { Fields.IsActive[this] = value; }
+        }
+
+        #endregion Active
+
+        #region Tenant
+
         [Insertable(false), Updatable(false)]
         public Int32? TenantId
         {
@@ -60,6 +73,8 @@
         {
             get { return Fields.TenantId; }
         }
+
+        #endregion Tenant
 
         IIdField IIdRow.IdField
         {

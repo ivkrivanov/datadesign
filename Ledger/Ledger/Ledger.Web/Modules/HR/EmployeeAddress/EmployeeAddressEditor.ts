@@ -6,22 +6,12 @@ namespace Ledger.HR {
     @Serenity.Decorators.registerClass()
     export class EmployeeAddressEditor extends Common.GridEditorBase<EmployeeAddressRow> {
 
-        protected getColumnsKey() {
-            return 'HR.EmployeeAddress';
-        }
-
-        protected getLocalTextPrefix() {
-            return EmployeeAddressRow.localTextPrefix;
-        }
-
-        protected getDialogType() {
-            return EmployeeAddressEditorDialog;
-        }
-
+        protected getColumnsKey() { return 'HR.EmployeeAddress'; }
+        protected getLocalTextPrefix() { return EmployeeAddressRow.localTextPrefix; }
+        protected getDialogType() { return EmployeeAddressEditorDialog; }
         constructor(container: JQuery) {
             super(container);
         }
-
         protected getAddButtonCaption() {
             return "Add Address";
         }

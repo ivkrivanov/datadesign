@@ -1,14 +1,13 @@
 ﻿
 namespace Ledger.HR.Entities
 {
-    using System;
-    using System.ComponentModel;
     using Ledger.Administration.Entities;
+    using Ledger.Infra.Entities;
     using Serenity.ComponentModel;
     using Serenity.Data;
     using Serenity.Data.Mapping;
-    using System.IO;
-    using Ledger.Infra.Entities;
+    using System;
+    using System.ComponentModel;
 
     [ConnectionKey("Default"), DisplayName("Employee Addresses"), InstanceName("EmployeesAddresses"), TwoLevelCached]
     [ReadPermission(HR.PermissionKeys.HR.View)]

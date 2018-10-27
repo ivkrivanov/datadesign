@@ -10,7 +10,7 @@ namespace Ledger.HR.Forms
     {
         [LookupEditor("Infra.Addresses")]
         public Int32 AddressId { get; set; }
-        public String AddressType { get; set; }
+        //public String AddressType { get; set; }
 
         public AddressTypeId AddressTypeId { get; set; }
     }
