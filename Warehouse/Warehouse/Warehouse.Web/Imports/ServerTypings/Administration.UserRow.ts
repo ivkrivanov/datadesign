@@ -9,6 +9,8 @@
         Email?: string;
         UserImage?: string;
         LastDirectoryUpdate?: string;
+        TenantId?: number;
+        TenantName?: string;
         IsActive?: number;
         Password?: string;
         PasswordConfirm?: string;
@@ -39,6 +41,8 @@
             Email = "Email",
             UserImage = "UserImage",
             LastDirectoryUpdate = "LastDirectoryUpdate",
+            TenantId = "TenantId",
+            TenantName = "TenantName",
             IsActive = "IsActive",
             Password = "Password",
             PasswordConfirm = "PasswordConfirm",

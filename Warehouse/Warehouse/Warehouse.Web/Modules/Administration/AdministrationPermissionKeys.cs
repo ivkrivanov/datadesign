@@ -13,5 +13,8 @@ namespace Warehouse.Administration
 
         [Description("Languages and Translations")]
         public const string Translation = "Administration:Translation";
+
+        [Description("Tenants")]
+        public const string Tenants = "Administration:Tenants";
     }
 }

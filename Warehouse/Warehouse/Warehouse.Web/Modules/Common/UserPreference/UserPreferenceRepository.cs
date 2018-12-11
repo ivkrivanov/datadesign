@@ -6,6 +6,7 @@ namespace Warehouse.Common.Repositories
     using Serenity.Data;
     using Serenity.Services;
     using System.Data;
+    using Warehouse.Administration;
     using MyRow = Entities.UserPreferenceRow;
 
     public class UserPreferenceRepository

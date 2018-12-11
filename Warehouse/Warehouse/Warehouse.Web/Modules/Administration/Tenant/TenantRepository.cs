@@ -1,14 +1,14 @@
 ﻿
-
 namespace Warehouse.Administration.Repositories
 {
     using Serenity;
     using Serenity.Data;
     using Serenity.Services;
+    using System;
     using System.Data;
-    using MyRow = Entities.RoleRow;
+    using MyRow = Entities.TenantRow;
 
-    public class RoleRepository
+    public class TenantRepository
     {
         private static MyRow.RowFields fld { get { return MyRow.Fields; } }
 

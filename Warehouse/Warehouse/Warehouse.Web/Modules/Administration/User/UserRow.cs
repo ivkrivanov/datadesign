@@ -98,6 +98,22 @@ namespace Warehouse.Administration.Entities
             get { return Fields.LastDirectoryUpdate[this]; }
             set { Fields.LastDirectoryUpdate[this] = value; }
         }
+        [DisplayName("Tenant"), ForeignKey("Tenants", "TenantId"), LeftJoin("tnt")]
+        [ReadPermission(PermissionKeys.Tenants)]
+        [LookupEditor(typeof(TenantRow))]
+        public Int32? TenantId
+        {
+            get { return Fields.TenantId[this]; }
+            set { Fields.TenantId[this] = value; }
+        }
+
+        [DisplayName("Tenant"), Expression("tnt.TenantName")]
+        public String TenantName
+        {
+            get
+            { return Fields.TenantName[this]; }
+            set { Fields.TenantName[this] = value; }
+        }
 
         IIdField IIdRow.IdField
         {
@@ -132,6 +148,8 @@ namespace Warehouse.Administration.Entities
             public StringField Email;
             public StringField UserImage;
             public DateTimeField LastDirectoryUpdate;
+            public readonly Int32Field TenantId;
+            public readonly StringField TenantName;
             public Int16Field IsActive;
 
             public StringField Password;
