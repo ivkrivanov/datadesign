@@ -1,0 +1,72 @@
+﻿namespace Warehouse.Store {
+    export interface EmployeeForm {
+        LastName: Serenity.StringEditor;
+        FirstName: Serenity.StringEditor;
+        Title: Serenity.StringEditor;
+        TitleOfCourtesy: Serenity.StringEditor;
+        BirthDate: Serenity.DateEditor;
+        HireDate: Serenity.DateEditor;
+        Address: Serenity.StringEditor;
+        City: Serenity.StringEditor;
+        Region: Serenity.StringEditor;
+        PostalCode: Serenity.StringEditor;
+        Country: Serenity.StringEditor;
+        HomePhone: Serenity.StringEditor;
+        Extension: Serenity.StringEditor;
+        Photo: Serenity.StringEditor;
+        Notes: Serenity.StringEditor;
+        ReportsTo: Serenity.IntegerEditor;
+        PhotoPath: Serenity.StringEditor;
+        InsertDate: Serenity.DateEditor;
+        InsertUserId: Serenity.IntegerEditor;
+        UpdateDate: Serenity.DateEditor;
+        UpdateUserId: Serenity.IntegerEditor;
+        IsActive: Serenity.IntegerEditor;
+        TenantId: Serenity.IntegerEditor;
+    }
+
+    export class EmployeeForm extends Serenity.PrefixedContext {
+        static formKey = 'Store.Employee';
+        private static init: boolean;
+
+        constructor(prefix: string) {
+            super(prefix);
+
+            if (!EmployeeForm.init)  {
+                EmployeeForm.init = true;
+
+                var s = Serenity;
+                var w0 = s.StringEditor;
+                var w1 = s.DateEditor;
+                var w2 = s.IntegerEditor;
+
+                Q.initFormType(EmployeeForm, [
+                    'LastName', w0,
+                    'FirstName', w0,
+                    'Title', w0,
+                    'TitleOfCourtesy', w0,
+                    'BirthDate', w1,
+                    'HireDate', w1,
+                    'Address', w0,
+                    'City', w0,
+                    'Region', w0,
+                    'PostalCode', w0,
+                    'Country', w0,
+                    'HomePhone', w0,
+                    'Extension', w0,
+                    'Photo', w0,
+                    'Notes', w0,
+                    'ReportsTo', w2,
+                    'PhotoPath', w0,
+                    'InsertDate', w1,
+                    'InsertUserId', w2,
+                    'UpdateDate', w1,
+                    'UpdateUserId', w2,
+                    'IsActive', w2,
+                    'TenantId', w2
+                ]);
+            }
+        }
+    }
+}
+

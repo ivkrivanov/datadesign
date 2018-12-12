@@ -593,6 +593,7 @@
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
+    <EmbeddedResource Include="Migrations\StoreDB\StoreDBScript_SqlServer..sql" />
     <Content Include="wkhtmltopdf-license.txt" />
     <None Include="packages.config" />
     <Content Include="Scripts\ckeditor\adapters\jquery.js" />
@@ -886,9 +887,28 @@
     <TypeScriptCompile Include="Imports\ServerTypings\Administration.TenantColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.CategoriesColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.EmployeeColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.EmployeeForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.EmployeeRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.EmployeeService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.Gender.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\Texts.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Store\Employee\EmployeeFormatter.ts" />
     <TypeScriptCompile Include="node_modules\%40types\jquery\index.d.ts" />
     <TypeScriptCompile Include="node_modules\%40types\jqueryui\index.d.ts" />
     <TypeScriptCompile Include="node_modules\%40types\jquery.blockui\index.d.ts" />
@@ -1579,6 +1599,28 @@
     <TypeScriptCompile Include="Imports\ServerTypings\Administration.TenantForm.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.CategoriesRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.CategoriesService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Modules\Store\Categories\CategoriesIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Store\Categories\CategoriesDialog.ts" />
+    <TypeScriptCompile Include="Modules\Store\Categories\CategoriesGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.CategoriesForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Content\site\site.store.less" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.CategoryLangRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.CategoryLangService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Modules\Store\Employee\EmployeeIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Store\Employee\EmployeeDialog.ts" />
+    <TypeScriptCompile Include="Modules\Store\Employee\EmployeeGrid.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -1596,7 +1638,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Imports\ClientTypes\Store.EmployeeFormatterAttribute.cs">
+      <DependentUpon>ClientTypes.tt</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\DefaultDB\DefaultDB_20160724_101700_MultiTenant.cs" />
+    <Compile Include="Migrations\StoreDB\StoreDB_20181212_143000_DataLocalization.cs" />
+    <Compile Include="Migrations\StoreDB\StoreDB_20181212_140000.cs" />
     <Compile Include="Modules\Administration\AdministrationNavigation.cs" />
     <Compile Include="Modules\Administration\Language\LanguageLookup.cs" />
     <Compile Include="Modules\Administration\RolePermission\RolePermissionUpdateRequest.cs" />
@@ -1677,6 +1724,8 @@
     <Compile Include="Modules\Common\UserPreference\UserPreferenceRow.cs" />
     <Compile Include="Modules\Common\Helpers\GetNextNumberHelper.cs" />
     <Compile Include="Modules\Common\Helpers\GetNextNumberRequest.cs" />
+    <Compile Include="Modules\Store\Employee\Gender.cs" />
+    <Compile Include="Modules\Store\StorePermissionKeys.cs" />
     <Compile Include="Modules\Texts.cs" />
     <Compile Include="Modules\Membership\Account\AccountPage.cs" />
     <Compile Include="Modules\Administration\User\Authentication\AuthorizationService.cs" />
@@ -1721,6 +1770,22 @@
     <Compile Include="Modules\Administration\Tenant\TenantPage.cs" />
     <Compile Include="Modules\Administration\Tenant\TenantColumns.cs" />
     <Compile Include="Modules\Administration\Tenant\TenantForm.cs" />
+    <Compile Include="Modules\Store\Categories\CategoriesRow.cs" />
+    <Compile Include="Modules\Store\Categories\CategoriesRepository.cs" />
+    <Compile Include="Modules\Store\Categories\CategoriesEndpoint.cs" />
+    <Compile Include="Modules\Store\Categories\CategoriesPage.cs" />
+    <Compile Include="Modules\Store\Categories\CategoriesColumns.cs" />
+    <Compile Include="Modules\Store\Categories\CategoriesForm.cs" />
+    <Compile Include="Modules\Store\StoreNavigation.cs" />
+    <Compile Include="Modules\Store\CategoryLang\CategoryLangRow.cs" />
+    <Compile Include="Modules\Store\CategoryLang\CategoryLangRepository.cs" />
+    <Compile Include="Modules\Store\CategoryLang\CategoryLangEndpoint.cs" />
+    <Compile Include="Modules\Store\Employee\EmployeeRow.cs" />
+    <Compile Include="Modules\Store\Employee\EmployeeRepository.cs" />
+    <Compile Include="Modules\Store\Employee\EmployeeEndpoint.cs" />
+    <Compile Include="Modules\Store\Employee\EmployeePage.cs" />
+    <Compile Include="Modules\Store\Employee\EmployeeColumns.cs" />
+    <Compile Include="Modules\Store\Employee\EmployeeForm.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -95,6 +95,24 @@ namespace MVC
             public const string Error = "~/Views/Shared/Error.cshtml";
             public const string LeftNavigation = "~/Views/Shared/LeftNavigation.cshtml";
         }
+
+        public static class Store
+        {
+            public static class Categories
+            {
+                public const string CategoriesIndex = "~/Modules/Store/Categories/CategoriesIndex.cshtml";
+            }
+
+            public static class CategoryLang
+            {
+                public const string CategoryLangIndex = "~/Modules/Store/CategoryLang/CategoryLangIndex.cshtml";
+            }
+
+            public static class Employee
+            {
+                public const string EmployeeIndex = "~/Modules/Store/Employee/EmployeeIndex.cshtml";
+            }
+        }
     }
 }
 

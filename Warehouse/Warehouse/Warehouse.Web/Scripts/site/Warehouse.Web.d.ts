@@ -114,6 +114,7 @@ declare namespace Warehouse.Administration {
     interface RoleRow {
         RoleId?: number;
         RoleName?: string;
+        TenantId?: number;
     }
     namespace RoleRow {
         const idProperty = "RoleId";
@@ -123,7 +124,8 @@ declare namespace Warehouse.Administration {
         function getLookup(): Q.Lookup<RoleRow>;
         const enum Fields {
             RoleId = "RoleId",
-            RoleName = "RoleName"
+            RoleName = "RoleName",
+            TenantId = "TenantId"
         }
     }
 }
@@ -584,6 +586,267 @@ declare namespace Warehouse {
         };
     }
 }
+declare namespace Warehouse.Store {
+}
+declare namespace Warehouse.Store {
+    interface CategoriesForm {
+        CategoryName: Serenity.StringEditor;
+        Description: Serenity.StringEditor;
+    }
+    class CategoriesForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace Warehouse.Store {
+    interface CategoriesRow {
+        CategoryId?: number;
+        CategoryName?: string;
+        Description?: string;
+        Picture?: number[];
+        IsActive?: number;
+        TenantId?: number;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+    }
+    namespace CategoriesRow {
+        const idProperty = "CategoryId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "CategoryName";
+        const localTextPrefix = "Store.Categories";
+        const lookupKey = "Store.Categories";
+        function getLookup(): Q.Lookup<CategoriesRow>;
+        const enum Fields {
+            CategoryId = "CategoryId",
+            CategoryName = "CategoryName",
+            Description = "Description",
+            Picture = "Picture",
+            IsActive = "IsActive",
+            TenantId = "TenantId",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate"
+        }
+    }
+}
+declare namespace Warehouse.Store {
+    namespace CategoriesService {
+        const baseUrl = "Store/Categories";
+        function Create(request: Serenity.SaveRequest<CategoriesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<CategoriesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<CategoriesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<CategoriesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Store/Categories/Create",
+            Update = "Store/Categories/Update",
+            Delete = "Store/Categories/Delete",
+            Retrieve = "Store/Categories/Retrieve",
+            List = "Store/Categories/List"
+        }
+    }
+}
+declare namespace Warehouse.Store {
+    interface CategoryLangRow {
+        Id?: number;
+        CategoryId?: number;
+        LanguageId?: number;
+        CategoryName?: string;
+        Description?: string;
+    }
+    namespace CategoryLangRow {
+        const idProperty = "Id";
+        const nameProperty = "CategoryName";
+        const localTextPrefix = "Store.CategoryLang";
+        const enum Fields {
+            Id = "Id",
+            CategoryId = "CategoryId",
+            LanguageId = "LanguageId",
+            CategoryName = "CategoryName",
+            Description = "Description"
+        }
+    }
+}
+declare namespace Warehouse.Store {
+    namespace CategoryLangService {
+        const baseUrl = "Store/CategoryLang";
+        function Create(request: Serenity.SaveRequest<CategoryLangRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<CategoryLangRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<CategoryLangRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<CategoryLangRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Store/CategoryLang/Create",
+            Update = "Store/CategoryLang/Update",
+            Delete = "Store/CategoryLang/Delete",
+            Retrieve = "Store/CategoryLang/Retrieve",
+            List = "Store/CategoryLang/List"
+        }
+    }
+}
+declare namespace Warehouse.Store {
+}
+declare namespace Warehouse.Store {
+    interface EmployeeForm {
+        LastName: Serenity.StringEditor;
+        FirstName: Serenity.StringEditor;
+        Title: Serenity.StringEditor;
+        TitleOfCourtesy: Serenity.StringEditor;
+        BirthDate: Serenity.DateEditor;
+        HireDate: Serenity.DateEditor;
+        Address: Serenity.StringEditor;
+        City: Serenity.StringEditor;
+        Region: Serenity.StringEditor;
+        PostalCode: Serenity.StringEditor;
+        Country: Serenity.StringEditor;
+        HomePhone: Serenity.StringEditor;
+        Extension: Serenity.StringEditor;
+        Photo: Serenity.StringEditor;
+        Notes: Serenity.StringEditor;
+        ReportsTo: Serenity.IntegerEditor;
+        PhotoPath: Serenity.StringEditor;
+        InsertDate: Serenity.DateEditor;
+        InsertUserId: Serenity.IntegerEditor;
+        UpdateDate: Serenity.DateEditor;
+        UpdateUserId: Serenity.IntegerEditor;
+        IsActive: Serenity.IntegerEditor;
+        TenantId: Serenity.IntegerEditor;
+    }
+    class EmployeeForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace Warehouse.Store {
+    interface EmployeeRow {
+        EmployeeId?: number;
+        LastName?: string;
+        FirstName?: string;
+        FullName?: string;
+        Title?: string;
+        TitleOfCourtesy?: string;
+        BirthDate?: string;
+        HireDate?: string;
+        Address?: string;
+        City?: string;
+        Region?: string;
+        PostalCode?: string;
+        Country?: string;
+        HomePhone?: string;
+        Extension?: string;
+        Photo?: number[];
+        Notes?: string;
+        ReportsTo?: number;
+        PhotoPath?: string;
+        IsActive?: number;
+        TenantId?: number;
+        ReportsToFullName?: string;
+        ReportsToLastName?: string;
+        ReportsToFirstName?: string;
+        ReportsToTitle?: string;
+        ReportsToTitleOfCourtesy?: string;
+        ReportsToBirthDate?: string;
+        ReportsToHireDate?: string;
+        ReportsToAddress?: string;
+        ReportsToCity?: string;
+        ReportsToRegion?: string;
+        ReportsToPostalCode?: string;
+        ReportsToCountry?: string;
+        ReportsToHomePhone?: string;
+        ReportsToExtension?: string;
+        ReportsToPhoto?: number[];
+        ReportsToNotes?: string;
+        ReportsToReportsTo?: number;
+        ReportsToPhotoPath?: string;
+        Gender?: Gender;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+    }
+    namespace EmployeeRow {
+        const idProperty = "EmployeeId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "FullName";
+        const localTextPrefix = "Store.Employee";
+        const lookupKey = "Store.Employee";
+        function getLookup(): Q.Lookup<EmployeeRow>;
+        const enum Fields {
+            EmployeeId = "EmployeeId",
+            LastName = "LastName",
+            FirstName = "FirstName",
+            FullName = "FullName",
+            Title = "Title",
+            TitleOfCourtesy = "TitleOfCourtesy",
+            BirthDate = "BirthDate",
+            HireDate = "HireDate",
+            Address = "Address",
+            City = "City",
+            Region = "Region",
+            PostalCode = "PostalCode",
+            Country = "Country",
+            HomePhone = "HomePhone",
+            Extension = "Extension",
+            Photo = "Photo",
+            Notes = "Notes",
+            ReportsTo = "ReportsTo",
+            PhotoPath = "PhotoPath",
+            IsActive = "IsActive",
+            TenantId = "TenantId",
+            ReportsToFullName = "ReportsToFullName",
+            ReportsToLastName = "ReportsToLastName",
+            ReportsToFirstName = "ReportsToFirstName",
+            ReportsToTitle = "ReportsToTitle",
+            ReportsToTitleOfCourtesy = "ReportsToTitleOfCourtesy",
+            ReportsToBirthDate = "ReportsToBirthDate",
+            ReportsToHireDate = "ReportsToHireDate",
+            ReportsToAddress = "ReportsToAddress",
+            ReportsToCity = "ReportsToCity",
+            ReportsToRegion = "ReportsToRegion",
+            ReportsToPostalCode = "ReportsToPostalCode",
+            ReportsToCountry = "ReportsToCountry",
+            ReportsToHomePhone = "ReportsToHomePhone",
+            ReportsToExtension = "ReportsToExtension",
+            ReportsToPhoto = "ReportsToPhoto",
+            ReportsToNotes = "ReportsToNotes",
+            ReportsToReportsTo = "ReportsToReportsTo",
+            ReportsToPhotoPath = "ReportsToPhotoPath",
+            Gender = "Gender",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate"
+        }
+    }
+}
+declare namespace Warehouse.Store {
+    namespace EmployeeService {
+        const baseUrl = "Store/Employee";
+        function Create(request: Serenity.SaveRequest<EmployeeRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<EmployeeRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<EmployeeRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<EmployeeRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Store/Employee/Create",
+            Update = "Store/Employee/Update",
+            Delete = "Store/Employee/Delete",
+            Retrieve = "Store/Employee/Retrieve",
+            List = "Store/Employee/List"
+        }
+    }
+}
+declare namespace Warehouse.Store {
+    enum Gender {
+        Male = 1,
+        Female = 2
+    }
+}
 declare namespace Warehouse.Texts {
 }
 declare namespace Warehouse.LanguageList {
@@ -1023,6 +1286,73 @@ declare namespace Warehouse.Common {
     class UserPreferenceStorage implements Serenity.SettingStorage {
         getItem(key: string): string;
         setItem(key: string, data: string): void;
+    }
+}
+declare namespace Warehouse.Store {
+    class CategoriesDialog extends Serenity.EntityDialog<CategoriesRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: CategoriesForm;
+    }
+}
+declare namespace Warehouse.Store {
+    class CategoriesGrid extends Serenity.EntityGrid<CategoriesRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof CategoriesDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Warehouse.Store {
+    class CategoryLangDialog extends Serenity.EntityDialog<CategoryLangRow, any> {
+        protected getFormKey(): any;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: any;
+    }
+}
+declare namespace Warehouse.Store {
+    class CategoryLangGrid extends Serenity.EntityGrid<CategoryLangRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof CategoryLangDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Warehouse.Store {
+    class EmployeeDialog extends Serenity.EntityDialog<EmployeeRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: EmployeeForm;
+    }
+}
+declare namespace Warehouse.Store {
+    class EmployeeFormatter implements Slick.Formatter {
+        format(ctx: Slick.FormatterContext): string;
+        genderProperty: string;
+        initializeColumn(column: Slick.Column): void;
+    }
+}
+declare namespace Warehouse.Store {
+    class EmployeeGrid extends Serenity.EntityGrid<EmployeeRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof EmployeeDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
     }
 }
 declare namespace Warehouse.Authorization {

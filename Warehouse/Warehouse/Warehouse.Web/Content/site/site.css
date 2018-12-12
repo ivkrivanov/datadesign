@@ -7410,3 +7410,53 @@ section.content > .s-DataGrid {
   font-style: italic;
   color: #966;
 }
+.s-Store-CategoriesDialog > .size {
+  min-width: 650px;
+  width: 650px;
+}
+.s-Store-CategoriesDialog .tab-pane {
+  height: auto;
+}
+.s-Store-CategoriesDialog .caption {
+  width: 150px;
+}
+.s-Store-CategoriesDialog .editor {
+  width: 400px;
+}
+.s-Store-CategoriesDialog input.editor[type=checkbox] {
+  width: auto;
+}
+.s-Store-CategoriesDialog .s-Form .editor.dateQ {
+  width: 376px;
+}
+.s-Store-CategoriesDialog .s-Form .editor.emailuser {
+  width: 170px;
+}
+.s-Store-CategoriesDialog .s-Form .editor.dateQ.s-DateTimeEditor {
+  width: 281px;
+}
+.s-Store-CategoriesDialog .s-Form .editor.s-DateTimeEditor.time {
+  width: 64px;
+  margin-left: 4px;
+}
+.s-Store-CategoriesDialog .s-Form .editor.has-inplace-button {
+  width: 374px;
+}
+.s-Store-CategoriesDialog .s-Form .emaildomain {
+  width: 215px;
+}
+.s-Store-CategoriesDialog .s-PropertyGrid .categories {
+  height: 260px;
+}
+.s-Store-CategoryLangDialog > .size {
+  width: 650px;
+}
+.s-Store-CategoryLangDialog .caption {
+  width: 150px;
+}
+.s-Store-EmployeeDialog > .size {
+  width: 650px;
+}
+.s-Store-EmployeeDialog .caption {
+  width: 150px;
+}

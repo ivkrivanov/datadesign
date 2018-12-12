@@ -532,9 +532,205 @@ var Warehouse;
 })(Warehouse || (Warehouse = {}));
 var Warehouse;
 (function (Warehouse) {
+    var Store;
+    (function (Store) {
+        var CategoriesForm = /** @class */ (function (_super) {
+            __extends(CategoriesForm, _super);
+            function CategoriesForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!CategoriesForm.init) {
+                    CategoriesForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.StringEditor;
+                    Q.initFormType(CategoriesForm, [
+                        'CategoryName', w0,
+                        'Description', w0
+                    ]);
+                }
+                return _this;
+            }
+            CategoriesForm.formKey = 'Store.Categories';
+            return CategoriesForm;
+        }(Serenity.PrefixedContext));
+        Store.CategoriesForm = CategoriesForm;
+    })(Store = Warehouse.Store || (Warehouse.Store = {}));
+})(Warehouse || (Warehouse = {}));
+var Warehouse;
+(function (Warehouse) {
+    var Store;
+    (function (Store) {
+        var CategoriesRow;
+        (function (CategoriesRow) {
+            CategoriesRow.idProperty = 'CategoryId';
+            CategoriesRow.isActiveProperty = 'IsActive';
+            CategoriesRow.nameProperty = 'CategoryName';
+            CategoriesRow.localTextPrefix = 'Store.Categories';
+            CategoriesRow.lookupKey = 'Store.Categories';
+            function getLookup() {
+                return Q.getLookup('Store.Categories');
+            }
+            CategoriesRow.getLookup = getLookup;
+        })(CategoriesRow = Store.CategoriesRow || (Store.CategoriesRow = {}));
+    })(Store = Warehouse.Store || (Warehouse.Store = {}));
+})(Warehouse || (Warehouse = {}));
+var Warehouse;
+(function (Warehouse) {
+    var Store;
+    (function (Store) {
+        var CategoriesService;
+        (function (CategoriesService) {
+            CategoriesService.baseUrl = 'Store/Categories';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                CategoriesService[x] = function (r, s, o) {
+                    return Q.serviceRequest(CategoriesService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(CategoriesService = Store.CategoriesService || (Store.CategoriesService = {}));
+    })(Store = Warehouse.Store || (Warehouse.Store = {}));
+})(Warehouse || (Warehouse = {}));
+var Warehouse;
+(function (Warehouse) {
+    var Store;
+    (function (Store) {
+        var CategoryLangRow;
+        (function (CategoryLangRow) {
+            CategoryLangRow.idProperty = 'Id';
+            CategoryLangRow.nameProperty = 'CategoryName';
+            CategoryLangRow.localTextPrefix = 'Store.CategoryLang';
+        })(CategoryLangRow = Store.CategoryLangRow || (Store.CategoryLangRow = {}));
+    })(Store = Warehouse.Store || (Warehouse.Store = {}));
+})(Warehouse || (Warehouse = {}));
+var Warehouse;
+(function (Warehouse) {
+    var Store;
+    (function (Store) {
+        var CategoryLangService;
+        (function (CategoryLangService) {
+            CategoryLangService.baseUrl = 'Store/CategoryLang';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                CategoryLangService[x] = function (r, s, o) {
+                    return Q.serviceRequest(CategoryLangService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(CategoryLangService = Store.CategoryLangService || (Store.CategoryLangService = {}));
+    })(Store = Warehouse.Store || (Warehouse.Store = {}));
+})(Warehouse || (Warehouse = {}));
+var Warehouse;
+(function (Warehouse) {
+    var Store;
+    (function (Store) {
+        var EmployeeForm = /** @class */ (function (_super) {
+            __extends(EmployeeForm, _super);
+            function EmployeeForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!EmployeeForm.init) {
+                    EmployeeForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.StringEditor;
+                    var w1 = s.DateEditor;
+                    var w2 = s.IntegerEditor;
+                    Q.initFormType(EmployeeForm, [
+                        'LastName', w0,
+                        'FirstName', w0,
+                        'Title', w0,
+                        'TitleOfCourtesy', w0,
+                        'BirthDate', w1,
+                        'HireDate', w1,
+                        'Address', w0,
+                        'City', w0,
+                        'Region', w0,
+                        'PostalCode', w0,
+                        'Country', w0,
+                        'HomePhone', w0,
+                        'Extension', w0,
+                        'Photo', w0,
+                        'Notes', w0,
+                        'ReportsTo', w2,
+                        'PhotoPath', w0,
+                        'InsertDate', w1,
+                        'InsertUserId', w2,
+                        'UpdateDate', w1,
+                        'UpdateUserId', w2,
+                        'IsActive', w2,
+                        'TenantId', w2
+                    ]);
+                }
+                return _this;
+            }
+            EmployeeForm.formKey = 'Store.Employee';
+            return EmployeeForm;
+        }(Serenity.PrefixedContext));
+        Store.EmployeeForm = EmployeeForm;
+    })(Store = Warehouse.Store || (Warehouse.Store = {}));
+})(Warehouse || (Warehouse = {}));
+var Warehouse;
+(function (Warehouse) {
+    var Store;
+    (function (Store) {
+        var EmployeeRow;
+        (function (EmployeeRow) {
+            EmployeeRow.idProperty = 'EmployeeId';
+            EmployeeRow.isActiveProperty = 'IsActive';
+            EmployeeRow.nameProperty = 'FullName';
+            EmployeeRow.localTextPrefix = 'Store.Employee';
+            EmployeeRow.lookupKey = 'Store.Employee';
+            function getLookup() {
+                return Q.getLookup('Store.Employee');
+            }
+            EmployeeRow.getLookup = getLookup;
+        })(EmployeeRow = Store.EmployeeRow || (Store.EmployeeRow = {}));
+    })(Store = Warehouse.Store || (Warehouse.Store = {}));
+})(Warehouse || (Warehouse = {}));
+var Warehouse;
+(function (Warehouse) {
+    var Store;
+    (function (Store) {
+        var EmployeeService;
+        (function (EmployeeService) {
+            EmployeeService.baseUrl = 'Store/Employee';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                EmployeeService[x] = function (r, s, o) {
+                    return Q.serviceRequest(EmployeeService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(EmployeeService = Store.EmployeeService || (Store.EmployeeService = {}));
+    })(Store = Warehouse.Store || (Warehouse.Store = {}));
+})(Warehouse || (Warehouse = {}));
+var Warehouse;
+(function (Warehouse) {
+    var Store;
+    (function (Store) {
+        var Gender;
+        (function (Gender) {
+            Gender[Gender["Male"] = 1] = "Male";
+            Gender[Gender["Female"] = 2] = "Female";
+        })(Gender = Store.Gender || (Store.Gender = {}));
+        Serenity.Decorators.registerEnumType(Gender, 'Warehouse.Store.Gender', 'Warehouse.Store.Entities.Gender');
+    })(Store = Warehouse.Store || (Warehouse.Store = {}));
+})(Warehouse || (Warehouse = {}));
+var Warehouse;
+(function (Warehouse) {
     var Texts;
     (function (Texts) {
-        Warehouse['Texts'] = Q.proxyTexts(Texts, '', { Db: { Administration: { Language: { Id: 1, LanguageId: 1, LanguageName: 1 }, Role: { RoleId: 1, RoleName: 1 }, RolePermission: { PermissionKey: 1, RoleId: 1, RolePermissionId: 1, RoleRoleName: 1 }, Tenant: { TenantId: 1, TenantName: 1 }, Translation: { CustomText: 1, EntityPlural: 1, Key: 1, OverrideConfirmation: 1, SaveChangesButton: 1, SourceLanguage: 1, SourceText: 1, TargetLanguage: 1, TargetText: 1 }, User: { DisplayName: 1, Email: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, LastDirectoryUpdate: 1, Password: 1, PasswordConfirm: 1, PasswordHash: 1, PasswordSalt: 1, Source: 1, TenantId: 1, TenantName: 1, UpdateDate: 1, UpdateUserId: 1, UserId: 1, UserImage: 1, Username: 1 }, UserPermission: { Granted: 1, PermissionKey: 1, User: 1, UserId: 1, UserPermissionId: 1, Username: 1 }, UserRole: { RoleId: 1, User: 1, UserId: 1, UserRoleId: 1, Username: 1 } }, Common: { UserPreference: { Name: 1, PreferenceType: 1, UserId: 1, UserPreferenceId: 1, Value: 1 } } }, Forms: { Membership: { ChangePassword: { FormTitle: 1, SubmitButton: 1, Success: 1 }, ForgotPassword: { BackToLogin: 1, FormInfo: 1, FormTitle: 1, SubmitButton: 1, Success: 1 }, Login: { FacebookButton: 1, ForgotPassword: 1, FormTitle: 1, GoogleButton: 1, OR: 1, RememberMe: 1, SignInButton: 1, SignUpButton: 1 }, ResetPassword: { BackToLogin: 1, EmailSubject: 1, FormTitle: 1, SubmitButton: 1, Success: 1 }, SignUp: { AcceptTerms: 1, ActivateEmailSubject: 1, ActivationCompleteMessage: 1, BackToLogin: 1, ConfirmEmail: 1, ConfirmPassword: 1, DisplayName: 1, Email: 1, FormInfo: 1, FormTitle: 1, Password: 1, SubmitButton: 1, Success: 1 } } }, Site: { AccessDenied: { ClickToChangeUser: 1, ClickToLogin: 1, LackPermissions: 1, NotLoggedIn: 1, PageTitle: 1 }, BasicProgressDialog: { CancelTitle: 1, PleaseWait: 1 }, BulkServiceAction: { AllHadErrorsFormat: 1, AllSuccessFormat: 1, ConfirmationFormat: 1, ErrorCount: 1, NothingToProcess: 1, SomeHadErrorsFormat: 1, SuccessCount: 1 }, Dashboard: { ContentDescription: 1 }, Layout: { FooterCopyright: 1, FooterInfo: 1, FooterRights: 1, GeneralSettings: 1, Language: 1, Theme: 1, ThemeBlack: 1, ThemeBlackLight: 1, ThemeBlue: 1, ThemeBlueLight: 1, ThemeGreen: 1, ThemeGreenLight: 1, ThemePurple: 1, ThemePurpleLight: 1, ThemeRed: 1, ThemeRedLight: 1, ThemeYellow: 1, ThemeYellowLight: 1 }, RolePermissionDialog: { DialogTitle: 1, EditButton: 1, SaveSuccess: 1 }, UserDialog: { EditPermissionsButton: 1, EditRolesButton: 1 }, UserPermissionDialog: { DialogTitle: 1, Grant: 1, Permission: 1, Revoke: 1, SaveSuccess: 1 }, UserRoleDialog: { DialogTitle: 1, SaveSuccess: 1 }, ValidationError: { Title: 1 } }, Validation: { AuthenticationError: 1, CantFindUserWithEmail: 1, CurrentPasswordMismatch: 1, DeleteForeignKeyError: 1, EmailConfirm: 1, EmailInUse: 1, InvalidActivateToken: 1, InvalidResetToken: 1, MinRequiredPasswordLength: 1, SavePrimaryKeyError: 1 } });
+        Warehouse['Texts'] = Q.proxyTexts(Texts, '', { Db: { Administration: { Language: { Id: 1, LanguageId: 1, LanguageName: 1 }, Role: { RoleId: 1, RoleName: 1, TenantId: 1 }, RolePermission: { PermissionKey: 1, RoleId: 1, RolePermissionId: 1, RoleRoleName: 1 }, Tenant: { TenantId: 1, TenantName: 1 }, Translation: { CustomText: 1, EntityPlural: 1, Key: 1, OverrideConfirmation: 1, SaveChangesButton: 1, SourceLanguage: 1, SourceText: 1, TargetLanguage: 1, TargetText: 1 }, User: { DisplayName: 1, Email: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, LastDirectoryUpdate: 1, Password: 1, PasswordConfirm: 1, PasswordHash: 1, PasswordSalt: 1, Source: 1, TenantId: 1, TenantName: 1, UpdateDate: 1, UpdateUserId: 1, UserId: 1, UserImage: 1, Username: 1 }, UserPermission: { Granted: 1, PermissionKey: 1, User: 1, UserId: 1, UserPermissionId: 1, Username: 1 }, UserRole: { RoleId: 1, User: 1, UserId: 1, UserRoleId: 1, Username: 1 } }, Common: { UserPreference: { Name: 1, PreferenceType: 1, UserId: 1, UserPreferenceId: 1, Value: 1 } }, Store: { Categories: { CategoryId: 1, CategoryName: 1, Description: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, Picture: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, CategoryLang: { CategoryId: 1, CategoryName: 1, Description: 1, Id: 1, LanguageId: 1 }, Employee: { Address: 1, BirthDate: 1, City: 1, Country: 1, EmployeeId: 1, Extension: 1, FirstName: 1, FullName: 1, Gender: 1, HireDate: 1, HomePhone: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, LastName: 1, Notes: 1, Photo: 1, PhotoPath: 1, PostalCode: 1, Region: 1, ReportsTo: 1, ReportsToAddress: 1, ReportsToBirthDate: 1, ReportsToCity: 1, ReportsToCountry: 1, ReportsToExtension: 1, ReportsToFirstName: 1, ReportsToFullName: 1, ReportsToHireDate: 1, ReportsToHomePhone: 1, ReportsToLastName: 1, ReportsToNotes: 1, ReportsToPhoto: 1, ReportsToPhotoPath: 1, ReportsToPostalCode: 1, ReportsToRegion: 1, ReportsToReportsTo: 1, ReportsToTitle: 1, ReportsToTitleOfCourtesy: 1, TenantId: 1, Title: 1, TitleOfCourtesy: 1, UpdateDate: 1, UpdateUserId: 1 } } }, Forms: { Membership: { ChangePassword: { FormTitle: 1, SubmitButton: 1, Success: 1 }, ForgotPassword: { BackToLogin: 1, FormInfo: 1, FormTitle: 1, SubmitButton: 1, Success: 1 }, Login: { FacebookButton: 1, ForgotPassword: 1, FormTitle: 1, GoogleButton: 1, OR: 1, RememberMe: 1, SignInButton: 1, SignUpButton: 1 }, ResetPassword: { BackToLogin: 1, EmailSubject: 1, FormTitle: 1, SubmitButton: 1, Success: 1 }, SignUp: { AcceptTerms: 1, ActivateEmailSubject: 1, ActivationCompleteMessage: 1, BackToLogin: 1, ConfirmEmail: 1, ConfirmPassword: 1, DisplayName: 1, Email: 1, FormInfo: 1, FormTitle: 1, Password: 1, SubmitButton: 1, Success: 1 } } }, Site: { AccessDenied: { ClickToChangeUser: 1, ClickToLogin: 1, LackPermissions: 1, NotLoggedIn: 1, PageTitle: 1 }, BasicProgressDialog: { CancelTitle: 1, PleaseWait: 1 }, BulkServiceAction: { AllHadErrorsFormat: 1, AllSuccessFormat: 1, ConfirmationFormat: 1, ErrorCount: 1, NothingToProcess: 1, SomeHadErrorsFormat: 1, SuccessCount: 1 }, Dashboard: { ContentDescription: 1 }, Layout: { FooterCopyright: 1, FooterInfo: 1, FooterRights: 1, GeneralSettings: 1, Language: 1, Theme: 1, ThemeBlack: 1, ThemeBlackLight: 1, ThemeBlue: 1, ThemeBlueLight: 1, ThemeGreen: 1, ThemeGreenLight: 1, ThemePurple: 1, ThemePurpleLight: 1, ThemeRed: 1, ThemeRedLight: 1, ThemeYellow: 1, ThemeYellowLight: 1 }, RolePermissionDialog: { DialogTitle: 1, EditButton: 1, SaveSuccess: 1 }, UserDialog: { EditPermissionsButton: 1, EditRolesButton: 1 }, UserPermissionDialog: { DialogTitle: 1, Grant: 1, Permission: 1, Revoke: 1, SaveSuccess: 1 }, UserRoleDialog: { DialogTitle: 1, SaveSuccess: 1 }, ValidationError: { Title: 1 } }, Validation: { AuthenticationError: 1, CantFindUserWithEmail: 1, CurrentPasswordMismatch: 1, DeleteForeignKeyError: 1, EmailConfirm: 1, EmailInUse: 1, InvalidActivateToken: 1, InvalidResetToken: 1, MinRequiredPasswordLength: 1, SavePrimaryKeyError: 1 } });
     })(Texts = Warehouse.Texts || (Warehouse.Texts = {}));
 })(Warehouse || (Warehouse = {}));
 var Warehouse;
@@ -2704,6 +2900,177 @@ var Warehouse;
         }());
         Common.UserPreferenceStorage = UserPreferenceStorage;
     })(Common = Warehouse.Common || (Warehouse.Common = {}));
+})(Warehouse || (Warehouse = {}));
+var Warehouse;
+(function (Warehouse) {
+    var Store;
+    (function (Store) {
+        var CategoriesDialog = /** @class */ (function (_super) {
+            __extends(CategoriesDialog, _super);
+            function CategoriesDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Store.CategoriesForm(_this.idPrefix);
+                return _this;
+            }
+            CategoriesDialog.prototype.getFormKey = function () { return Store.CategoriesForm.formKey; };
+            CategoriesDialog.prototype.getIdProperty = function () { return Store.CategoriesRow.idProperty; };
+            CategoriesDialog.prototype.getLocalTextPrefix = function () { return Store.CategoriesRow.localTextPrefix; };
+            CategoriesDialog.prototype.getNameProperty = function () { return Store.CategoriesRow.nameProperty; };
+            CategoriesDialog.prototype.getService = function () { return Store.CategoriesService.baseUrl; };
+            CategoriesDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], CategoriesDialog);
+            return CategoriesDialog;
+        }(Serenity.EntityDialog));
+        Store.CategoriesDialog = CategoriesDialog;
+    })(Store = Warehouse.Store || (Warehouse.Store = {}));
+})(Warehouse || (Warehouse = {}));
+var Warehouse;
+(function (Warehouse) {
+    var Store;
+    (function (Store) {
+        var CategoriesGrid = /** @class */ (function (_super) {
+            __extends(CategoriesGrid, _super);
+            function CategoriesGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            CategoriesGrid.prototype.getColumnsKey = function () { return 'Store.Categories'; };
+            CategoriesGrid.prototype.getDialogType = function () { return Store.CategoriesDialog; };
+            CategoriesGrid.prototype.getIdProperty = function () { return Store.CategoriesRow.idProperty; };
+            CategoriesGrid.prototype.getLocalTextPrefix = function () { return Store.CategoriesRow.localTextPrefix; };
+            CategoriesGrid.prototype.getService = function () { return Store.CategoriesService.baseUrl; };
+            CategoriesGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], CategoriesGrid);
+            return CategoriesGrid;
+        }(Serenity.EntityGrid));
+        Store.CategoriesGrid = CategoriesGrid;
+    })(Store = Warehouse.Store || (Warehouse.Store = {}));
+})(Warehouse || (Warehouse = {}));
+var Warehouse;
+(function (Warehouse) {
+    var Store;
+    (function (Store) {
+        var CategoryLangDialog = /** @class */ (function (_super) {
+            __extends(CategoryLangDialog, _super);
+            function CategoryLangDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new CategoryLangForm(_this.idPrefix);
+                return _this;
+            }
+            CategoryLangDialog.prototype.getFormKey = function () { return CategoryLangForm.formKey; };
+            CategoryLangDialog.prototype.getIdProperty = function () { return Store.CategoryLangRow.idProperty; };
+            CategoryLangDialog.prototype.getLocalTextPrefix = function () { return Store.CategoryLangRow.localTextPrefix; };
+            CategoryLangDialog.prototype.getNameProperty = function () { return Store.CategoryLangRow.nameProperty; };
+            CategoryLangDialog.prototype.getService = function () { return Store.CategoryLangService.baseUrl; };
+            CategoryLangDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], CategoryLangDialog);
+            return CategoryLangDialog;
+        }(Serenity.EntityDialog));
+        Store.CategoryLangDialog = CategoryLangDialog;
+    })(Store = Warehouse.Store || (Warehouse.Store = {}));
+})(Warehouse || (Warehouse = {}));
+var Warehouse;
+(function (Warehouse) {
+    var Store;
+    (function (Store) {
+        var CategoryLangGrid = /** @class */ (function (_super) {
+            __extends(CategoryLangGrid, _super);
+            function CategoryLangGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            CategoryLangGrid.prototype.getColumnsKey = function () { return 'Store.CategoryLang'; };
+            CategoryLangGrid.prototype.getDialogType = function () { return Store.CategoryLangDialog; };
+            CategoryLangGrid.prototype.getIdProperty = function () { return Store.CategoryLangRow.idProperty; };
+            CategoryLangGrid.prototype.getLocalTextPrefix = function () { return Store.CategoryLangRow.localTextPrefix; };
+            CategoryLangGrid.prototype.getService = function () { return Store.CategoryLangService.baseUrl; };
+            CategoryLangGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], CategoryLangGrid);
+            return CategoryLangGrid;
+        }(Serenity.EntityGrid));
+        Store.CategoryLangGrid = CategoryLangGrid;
+    })(Store = Warehouse.Store || (Warehouse.Store = {}));
+})(Warehouse || (Warehouse = {}));
+var Warehouse;
+(function (Warehouse) {
+    var Store;
+    (function (Store) {
+        var EmployeeDialog = /** @class */ (function (_super) {
+            __extends(EmployeeDialog, _super);
+            function EmployeeDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Store.EmployeeForm(_this.idPrefix);
+                return _this;
+            }
+            EmployeeDialog.prototype.getFormKey = function () { return Store.EmployeeForm.formKey; };
+            EmployeeDialog.prototype.getIdProperty = function () { return Store.EmployeeRow.idProperty; };
+            EmployeeDialog.prototype.getLocalTextPrefix = function () { return Store.EmployeeRow.localTextPrefix; };
+            EmployeeDialog.prototype.getNameProperty = function () { return Store.EmployeeRow.nameProperty; };
+            EmployeeDialog.prototype.getService = function () { return Store.EmployeeService.baseUrl; };
+            EmployeeDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], EmployeeDialog);
+            return EmployeeDialog;
+        }(Serenity.EntityDialog));
+        Store.EmployeeDialog = EmployeeDialog;
+    })(Store = Warehouse.Store || (Warehouse.Store = {}));
+})(Warehouse || (Warehouse = {}));
+var Warehouse;
+(function (Warehouse) {
+    var Store;
+    (function (Store) {
+        var EmployeeFormatter = /** @class */ (function () {
+            function EmployeeFormatter() {
+            }
+            EmployeeFormatter.prototype.format = function (ctx) {
+                var text = Q.htmlEncode(ctx.value);
+                if (!this.genderProperty) {
+                    return text;
+                }
+                var gender = ctx.item[this.genderProperty];
+                return "<span class='" + ((gender === Store.Gender.Female) ?
+                    'employee-symbol female' : 'employee-symbol male') +
+                    "'>" + text + '</span>';
+            };
+            EmployeeFormatter.prototype.initializeColumn = function (column) {
+                column.referencedFields = column.referencedFields || [];
+                if (this.genderProperty)
+                    column.referencedFields.push(this.genderProperty);
+            };
+            __decorate([
+                Serenity.Decorators.option()
+            ], EmployeeFormatter.prototype, "genderProperty", void 0);
+            EmployeeFormatter = __decorate([
+                Serenity.Decorators.registerFormatter([Serenity.ISlickFormatter, Serenity.IInitializeColumn])
+            ], EmployeeFormatter);
+            return EmployeeFormatter;
+        }());
+        Store.EmployeeFormatter = EmployeeFormatter;
+    })(Store = Warehouse.Store || (Warehouse.Store = {}));
+})(Warehouse || (Warehouse = {}));
+var Warehouse;
+(function (Warehouse) {
+    var Store;
+    (function (Store) {
+        var EmployeeGrid = /** @class */ (function (_super) {
+            __extends(EmployeeGrid, _super);
+            function EmployeeGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            EmployeeGrid.prototype.getColumnsKey = function () { return 'Store.Employee'; };
+            EmployeeGrid.prototype.getDialogType = function () { return Store.EmployeeDialog; };
+            EmployeeGrid.prototype.getIdProperty = function () { return Store.EmployeeRow.idProperty; };
+            EmployeeGrid.prototype.getLocalTextPrefix = function () { return Store.EmployeeRow.localTextPrefix; };
+            EmployeeGrid.prototype.getService = function () { return Store.EmployeeService.baseUrl; };
+            EmployeeGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], EmployeeGrid);
+            return EmployeeGrid;
+        }(Serenity.EntityGrid));
+        Store.EmployeeGrid = EmployeeGrid;
+    })(Store = Warehouse.Store || (Warehouse.Store = {}));
 })(Warehouse || (Warehouse = {}));
 var Warehouse;
 (function (Warehouse) {
