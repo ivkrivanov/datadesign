@@ -14,7 +14,7 @@ namespace Warehouse.Store.Columns
     public class EmployeeColumns
     {
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
-        public Int32 EmployeeId { get; set; }
+        public Int32 EmployeeID { get; set; }
         [EditLink]
         public String LastName { get; set; }
         public String FirstName { get; set; }
@@ -33,11 +33,5 @@ namespace Warehouse.Store.Columns
         public String Notes { get; set; }
         public Int32 ReportsTo { get; set; }
         public String PhotoPath { get; set; }
-        public DateTime InsertDate { get; set; }
-        public Int32 InsertUserId { get; set; }
-        public DateTime UpdateDate { get; set; }
-        public Int32 UpdateUserId { get; set; }
-        public Int16 IsActive { get; set; }
-        public Int32 TenantId { get; set; }
     }
 }

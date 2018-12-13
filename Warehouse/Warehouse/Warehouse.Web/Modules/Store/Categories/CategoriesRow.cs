@@ -56,6 +56,8 @@ namespace Warehouse.Store.Entities
             get { return Fields.CategoryName; }
         }
 
+        #region Tenant & Activ
+
         [Insertable(false), Updatable(false)]
         public Int32? TenantId
         {
@@ -75,11 +77,12 @@ namespace Warehouse.Store.Entities
             set { Fields.IsActive[this] = value; }
         }
 
-
         Int16Field IIsActiveRow.IsActiveField
         {
             get { return Fields.IsActive; }
         }
+
+        #endregion Tenant & Activ
 
         public static readonly RowFields Fields = new RowFields().Init();
 

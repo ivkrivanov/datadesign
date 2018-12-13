@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = Serenity.LocalText.Get("Db.Store.Order.EntityPlural");
+}
+
+@section Head {
+    @Html.Script("dynamic://Lookup.Store.Customer")
+    @Html.Script("dynamic://Lookup.Store.CustomerCountry")
+    @Html.Script("dynamic://Lookup.Store.CustomerCity")
+    @Html.Script("dynamic://Lookup.Store.Employee")
+    @Html.Script("dynamic://Lookup.Store.OrderShipCountry")
+    @Html.Script("dynamic://Lookup.Store.OrderShipCity")
+    @Html.Script("dynamic://Lookup.Store.Product")
+    @Html.Script("dynamic://Lookup.Store.Shipper")
+}
+<div id="GridDiv"></div>
+
+<script type="text/javascript">
+    jQuery(function () {
+        new Warehouse.Store.OrderGrid($('#GridDiv'), {}).init();
+
+        Q.initFullHeightGridPage($('#GridDiv'));
+    });
+</script>

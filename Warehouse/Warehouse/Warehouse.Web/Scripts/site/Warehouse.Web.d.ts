@@ -691,6 +691,186 @@ declare namespace Warehouse.Store {
 declare namespace Warehouse.Store {
 }
 declare namespace Warehouse.Store {
+    interface CustomerDetailsRow {
+        Id?: number;
+        LastContactDate?: string;
+        LastContactedBy?: number;
+        Email?: string;
+        SendBulletin?: boolean;
+        LastContactedByLastName?: string;
+        LastContactedByFirstName?: string;
+        LastContactedByTitle?: string;
+        LastContactedByTitleOfCourtesy?: string;
+        LastContactedByBirthDate?: string;
+        LastContactedByHireDate?: string;
+        LastContactedByAddress?: string;
+        LastContactedByCity?: string;
+        LastContactedByRegion?: string;
+        LastContactedByPostalCode?: string;
+        LastContactedByCountry?: string;
+        LastContactedByHomePhone?: string;
+        LastContactedByExtension?: string;
+        LastContactedByPhoto?: number[];
+        LastContactedByNotes?: string;
+        LastContactedByReportsTo?: number;
+        LastContactedByPhotoPath?: string;
+    }
+    namespace CustomerDetailsRow {
+        const idProperty = "Id";
+        const nameProperty = "Email";
+        const localTextPrefix = "Store.CustomerDetails";
+        const enum Fields {
+            Id = "Id",
+            LastContactDate = "LastContactDate",
+            LastContactedBy = "LastContactedBy",
+            Email = "Email",
+            SendBulletin = "SendBulletin",
+            LastContactedByLastName = "LastContactedByLastName",
+            LastContactedByFirstName = "LastContactedByFirstName",
+            LastContactedByTitle = "LastContactedByTitle",
+            LastContactedByTitleOfCourtesy = "LastContactedByTitleOfCourtesy",
+            LastContactedByBirthDate = "LastContactedByBirthDate",
+            LastContactedByHireDate = "LastContactedByHireDate",
+            LastContactedByAddress = "LastContactedByAddress",
+            LastContactedByCity = "LastContactedByCity",
+            LastContactedByRegion = "LastContactedByRegion",
+            LastContactedByPostalCode = "LastContactedByPostalCode",
+            LastContactedByCountry = "LastContactedByCountry",
+            LastContactedByHomePhone = "LastContactedByHomePhone",
+            LastContactedByExtension = "LastContactedByExtension",
+            LastContactedByPhoto = "LastContactedByPhoto",
+            LastContactedByNotes = "LastContactedByNotes",
+            LastContactedByReportsTo = "LastContactedByReportsTo",
+            LastContactedByPhotoPath = "LastContactedByPhotoPath"
+        }
+    }
+}
+declare namespace Warehouse.Store {
+    interface CustomerForm {
+        CustomerID: Serenity.StringEditor;
+        CompanyName: Serenity.StringEditor;
+        ContactName: Serenity.StringEditor;
+        ContactTitle: Serenity.StringEditor;
+        Representatives: Serenity.LookupEditor;
+        Address: Serenity.StringEditor;
+        Country: Serenity.LookupEditor;
+        City: Serenity.LookupEditor;
+        Region: Serenity.StringEditor;
+        PostalCode: Serenity.StringEditor;
+        Phone: Serenity.StringEditor;
+        Fax: Serenity.StringEditor;
+        NoteList: NotesEditor;
+        LastContactDate: Serenity.DateEditor;
+        LastContactedBy: Serenity.LookupEditor;
+        Email: Serenity.EmailEditor;
+        SendBulletin: Serenity.BooleanEditor;
+    }
+    class CustomerForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace Warehouse.Store {
+    interface CustomerRepresentativesRow {
+        RepresentativeId?: number;
+        CustomerId?: number;
+        EmployeeId?: number;
+    }
+    namespace CustomerRepresentativesRow {
+        const idProperty = "RepresentativeId";
+        const localTextPrefix = "Store.CustomerRepresentatives";
+        const enum Fields {
+            RepresentativeId = "RepresentativeId",
+            CustomerId = "CustomerId",
+            EmployeeId = "EmployeeId"
+        }
+    }
+}
+declare namespace Warehouse.Store {
+    interface CustomerRow {
+        Id?: number;
+        CustomerID?: string;
+        CompanyName?: string;
+        ContactName?: string;
+        ContactTitle?: string;
+        Address?: string;
+        City?: string;
+        Region?: string;
+        PostalCode?: string;
+        Country?: string;
+        Phone?: string;
+        Fax?: string;
+        IsActive?: number;
+        TenantId?: number;
+        LastContactDate?: string;
+        LastContactedBy?: number;
+        Email?: string;
+        SendBulletin?: boolean;
+        NoteList?: NoteRow[];
+        Representatives?: number[];
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+    }
+    namespace CustomerRow {
+        const idProperty = "Id";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "CustomerID";
+        const localTextPrefix = "Store.Customer";
+        const lookupKey = "Store.Customer";
+        function getLookup(): Q.Lookup<CustomerRow>;
+        const enum Fields {
+            Id = "Id",
+            CustomerID = "CustomerID",
+            CompanyName = "CompanyName",
+            ContactName = "ContactName",
+            ContactTitle = "ContactTitle",
+            Address = "Address",
+            City = "City",
+            Region = "Region",
+            PostalCode = "PostalCode",
+            Country = "Country",
+            Phone = "Phone",
+            Fax = "Fax",
+            IsActive = "IsActive",
+            TenantId = "TenantId",
+            LastContactDate = "LastContactDate",
+            LastContactedBy = "LastContactedBy",
+            Email = "Email",
+            SendBulletin = "SendBulletin",
+            NoteList = "NoteList",
+            Representatives = "Representatives",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate"
+        }
+    }
+}
+declare namespace Warehouse.Store {
+    namespace CustomerService {
+        const baseUrl = "Store/Customer";
+        function Create(request: Serenity.SaveRequest<CustomerRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<CustomerRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function GetNextNumber(request: GetNextNumberRequest, onSuccess?: (response: GetNextNumberResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<CustomerRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<CustomerRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Store/Customer/Create",
+            Update = "Store/Customer/Update",
+            Delete = "Store/Customer/Delete",
+            GetNextNumber = "Store/Customer/GetNextNumber",
+            Retrieve = "Store/Customer/Retrieve",
+            List = "Store/Customer/List"
+        }
+    }
+}
+declare namespace Warehouse.Store {
+}
+declare namespace Warehouse.Store {
     interface EmployeeForm {
         LastName: Serenity.StringEditor;
         FirstName: Serenity.StringEditor;
@@ -709,12 +889,6 @@ declare namespace Warehouse.Store {
         Notes: Serenity.StringEditor;
         ReportsTo: Serenity.IntegerEditor;
         PhotoPath: Serenity.StringEditor;
-        InsertDate: Serenity.DateEditor;
-        InsertUserId: Serenity.IntegerEditor;
-        UpdateDate: Serenity.DateEditor;
-        UpdateUserId: Serenity.IntegerEditor;
-        IsActive: Serenity.IntegerEditor;
-        TenantId: Serenity.IntegerEditor;
     }
     class EmployeeForm extends Serenity.PrefixedContext {
         static formKey: string;
@@ -724,7 +898,7 @@ declare namespace Warehouse.Store {
 }
 declare namespace Warehouse.Store {
     interface EmployeeRow {
-        EmployeeId?: number;
+        EmployeeID?: number;
         LastName?: string;
         FirstName?: string;
         FullName?: string;
@@ -770,14 +944,14 @@ declare namespace Warehouse.Store {
         UpdateDate?: string;
     }
     namespace EmployeeRow {
-        const idProperty = "EmployeeId";
+        const idProperty = "EmployeeID";
         const isActiveProperty = "IsActive";
         const nameProperty = "FullName";
         const localTextPrefix = "Store.Employee";
         const lookupKey = "Store.Employee";
         function getLookup(): Q.Lookup<EmployeeRow>;
         const enum Fields {
-            EmployeeId = "EmployeeId",
+            EmployeeID = "EmployeeID",
             LastName = "LastName",
             FirstName = "FirstName",
             FullName = "FullName",
@@ -845,6 +1019,596 @@ declare namespace Warehouse.Store {
     enum Gender {
         Male = 1,
         Female = 2
+    }
+}
+declare namespace Warehouse.Store {
+    interface NoteRow {
+        NoteId?: number;
+        EntityType?: string;
+        EntityId?: number;
+        Text?: string;
+        InsertUserId?: number;
+        InsertDate?: string;
+        InsertUserDisplayName?: string;
+    }
+    namespace NoteRow {
+        const idProperty = "NoteId";
+        const nameProperty = "EntityType";
+        const localTextPrefix = "Store.Note";
+        const enum Fields {
+            NoteId = "NoteId",
+            EntityType = "EntityType",
+            EntityId = "EntityId",
+            Text = "Text",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            InsertUserDisplayName = "InsertUserDisplayName"
+        }
+    }
+}
+declare namespace Warehouse.Store {
+}
+declare namespace Warehouse.Store {
+}
+declare namespace Warehouse.Store {
+    interface OrderDetailForm {
+        ProductID: Serenity.LookupEditor;
+        UnitPrice: Serenity.DecimalEditor;
+        Quantity: Serenity.IntegerEditor;
+        Discount: Serenity.DecimalEditor;
+    }
+    class OrderDetailForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace Warehouse.Store {
+    interface OrderDetailRow {
+        DetailID?: number;
+        OrderID?: number;
+        ProductID?: number;
+        UnitPrice?: number;
+        Quantity?: number;
+        Discount?: number;
+        IsActive?: number;
+        TenantId?: number;
+        OrderCustomerID?: string;
+        OrderEmployeeID?: number;
+        OrderDate?: string;
+        OrderShippedDate?: string;
+        OrderShipVia?: number;
+        OrderShipCity?: string;
+        OrderShipCountry?: string;
+        ProductName?: string;
+        ProductDiscontinued?: boolean;
+        ProductSupplierID?: number;
+        ProductQuantityPerUnit?: string;
+        ProductUnitPrice?: number;
+        LineTotal?: number;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+    }
+    namespace OrderDetailRow {
+        const idProperty = "DetailID";
+        const isActiveProperty = "IsActive";
+        const localTextPrefix = "Store.OrderDetail";
+        const enum Fields {
+            DetailID = "DetailID",
+            OrderID = "OrderID",
+            ProductID = "ProductID",
+            UnitPrice = "UnitPrice",
+            Quantity = "Quantity",
+            Discount = "Discount",
+            IsActive = "IsActive",
+            TenantId = "TenantId",
+            OrderCustomerID = "OrderCustomerID",
+            OrderEmployeeID = "OrderEmployeeID",
+            OrderDate = "OrderDate",
+            OrderShippedDate = "OrderShippedDate",
+            OrderShipVia = "OrderShipVia",
+            OrderShipCity = "OrderShipCity",
+            OrderShipCountry = "OrderShipCountry",
+            ProductName = "ProductName",
+            ProductDiscontinued = "ProductDiscontinued",
+            ProductSupplierID = "ProductSupplierID",
+            ProductQuantityPerUnit = "ProductQuantityPerUnit",
+            ProductUnitPrice = "ProductUnitPrice",
+            LineTotal = "LineTotal",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate"
+        }
+    }
+}
+declare namespace Warehouse.Store {
+    namespace OrderDetailService {
+        const baseUrl = "Store/OrderDetail";
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<OrderDetailRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<OrderDetailRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Retrieve = "Store/OrderDetail/Retrieve",
+            List = "Store/OrderDetail/List"
+        }
+    }
+}
+declare namespace Warehouse.Store {
+    interface OrderForm {
+        CustomerID: CustomerEditor;
+        OrderDate: Serenity.DateEditor;
+        RequiredDate: Serenity.DateEditor;
+        EmployeeID: Serenity.LookupEditor;
+        DetailList: OrderDetailsEditor;
+        ShippedDate: Serenity.DateEditor;
+        ShipVia: Serenity.LookupEditor;
+        Freight: Serenity.DecimalEditor;
+        ShipName: Serenity.StringEditor;
+        ShipAddress: Serenity.StringEditor;
+        ShipCity: Serenity.StringEditor;
+        ShipRegion: Serenity.StringEditor;
+        ShipPostalCode: Serenity.StringEditor;
+        ShipCountry: Serenity.StringEditor;
+    }
+    class OrderForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace Warehouse.Store {
+    interface OrderListRequest extends Serenity.ListRequest {
+        ProductID?: number;
+    }
+}
+declare namespace Warehouse.Store {
+    interface OrderRow {
+        OrderID?: number;
+        CustomerID?: string;
+        EmployeeID?: number;
+        OrderDate?: string;
+        RequiredDate?: string;
+        ShippedDate?: string;
+        ShipVia?: number;
+        Freight?: number;
+        ShipName?: string;
+        ShipAddress?: string;
+        ShipCity?: string;
+        ShipRegion?: string;
+        ShipPostalCode?: string;
+        ShipCountry?: string;
+        IsActive?: number;
+        TenantId?: number;
+        CustomerCompanyName?: string;
+        CustomerContactName?: string;
+        CustomerContactTitle?: string;
+        CustomerCity?: string;
+        CustomerRegion?: string;
+        CustomerCountry?: string;
+        CustomerPhone?: string;
+        CustomerFax?: string;
+        EmployeeFullName?: string;
+        EmployeeGender?: Gender;
+        EmployeeReportsToFullName?: string;
+        ShipViaCompanyName?: string;
+        ShipViaPhone?: string;
+        ShippingState?: OrderShippingState;
+        DetailList?: OrderDetailRow[];
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+    }
+    namespace OrderRow {
+        const idProperty = "OrderID";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "CustomerID";
+        const localTextPrefix = "Store.Order";
+        const enum Fields {
+            OrderID = "OrderID",
+            CustomerID = "CustomerID",
+            EmployeeID = "EmployeeID",
+            OrderDate = "OrderDate",
+            RequiredDate = "RequiredDate",
+            ShippedDate = "ShippedDate",
+            ShipVia = "ShipVia",
+            Freight = "Freight",
+            ShipName = "ShipName",
+            ShipAddress = "ShipAddress",
+            ShipCity = "ShipCity",
+            ShipRegion = "ShipRegion",
+            ShipPostalCode = "ShipPostalCode",
+            ShipCountry = "ShipCountry",
+            IsActive = "IsActive",
+            TenantId = "TenantId",
+            CustomerCompanyName = "CustomerCompanyName",
+            CustomerContactName = "CustomerContactName",
+            CustomerContactTitle = "CustomerContactTitle",
+            CustomerCity = "CustomerCity",
+            CustomerRegion = "CustomerRegion",
+            CustomerCountry = "CustomerCountry",
+            CustomerPhone = "CustomerPhone",
+            CustomerFax = "CustomerFax",
+            EmployeeFullName = "EmployeeFullName",
+            EmployeeGender = "EmployeeGender",
+            EmployeeReportsToFullName = "EmployeeReportsToFullName",
+            ShipViaCompanyName = "ShipViaCompanyName",
+            ShipViaPhone = "ShipViaPhone",
+            ShippingState = "ShippingState",
+            DetailList = "DetailList",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate"
+        }
+    }
+}
+declare namespace Warehouse.Store {
+    namespace OrderService {
+        const baseUrl = "Store/Order";
+        function Create(request: Serenity.SaveRequest<OrderRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<OrderRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<OrderRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: OrderListRequest, onSuccess?: (response: Serenity.ListResponse<OrderRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Store/Order/Create",
+            Update = "Store/Order/Update",
+            Delete = "Store/Order/Delete",
+            Retrieve = "Store/Order/Retrieve",
+            List = "Store/Order/List"
+        }
+    }
+}
+declare namespace Warehouse.Store {
+    enum OrderShippingState {
+        NotShipped = 0,
+        Shipped = 1
+    }
+}
+declare namespace Warehouse.Store {
+}
+declare namespace Warehouse.Store {
+    interface ProductForm {
+        ProductName: Serenity.StringEditor;
+        ProductImage: Serenity.ImageUploadEditor;
+        Discontinued: Serenity.BooleanEditor;
+        SupplierID: Serenity.LookupEditor;
+        CategoryID: Serenity.LookupEditor;
+        QuantityPerUnit: Serenity.StringEditor;
+        UnitPrice: Serenity.DecimalEditor;
+        UnitsInStock: Serenity.IntegerEditor;
+        UnitsOnOrder: Serenity.IntegerEditor;
+        ReorderLevel: Serenity.IntegerEditor;
+    }
+    class ProductForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace Warehouse.Store {
+    interface ProductLangRow {
+        Id?: number;
+        ProductId?: number;
+        LanguageId?: number;
+        ProductName?: string;
+    }
+    namespace ProductLangRow {
+        const idProperty = "Id";
+        const nameProperty = "ProductName";
+        const localTextPrefix = "Store.ProductLang";
+        const enum Fields {
+            Id = "Id",
+            ProductId = "ProductId",
+            LanguageId = "LanguageId",
+            ProductName = "ProductName"
+        }
+    }
+}
+declare namespace Warehouse.Store {
+    namespace ProductLangService {
+        const baseUrl = "Store/ProductLang";
+        function Create(request: Serenity.SaveRequest<ProductLangRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<ProductLangRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<ProductLangRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<ProductLangRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Store/ProductLang/Create",
+            Update = "Store/ProductLang/Update",
+            Delete = "Store/ProductLang/Delete",
+            Retrieve = "Store/ProductLang/Retrieve",
+            List = "Store/ProductLang/List"
+        }
+    }
+}
+declare namespace Warehouse.Store {
+    interface ProductLogRow {
+        ProductLogID?: number;
+        OperationType?: Serenity.CaptureOperationType;
+        ChangingUserId?: number;
+        ValidFrom?: string;
+        ValidUntil?: string;
+        ProductID?: number;
+        ProductName?: string;
+        ProductImage?: string;
+        Discontinued?: boolean;
+        SupplierID?: number;
+        CategoryID?: number;
+        QuantityPerUnit?: string;
+        UnitPrice?: number;
+        UnitsInStock?: number;
+        UnitsOnOrder?: number;
+        ReorderLevel?: number;
+    }
+    namespace ProductLogRow {
+        const idProperty = "ProductLogID";
+        const localTextPrefix = "Store.ProductLog";
+        const enum Fields {
+            ProductLogID = "ProductLogID",
+            OperationType = "OperationType",
+            ChangingUserId = "ChangingUserId",
+            ValidFrom = "ValidFrom",
+            ValidUntil = "ValidUntil",
+            ProductID = "ProductID",
+            ProductName = "ProductName",
+            ProductImage = "ProductImage",
+            Discontinued = "Discontinued",
+            SupplierID = "SupplierID",
+            CategoryID = "CategoryID",
+            QuantityPerUnit = "QuantityPerUnit",
+            UnitPrice = "UnitPrice",
+            UnitsInStock = "UnitsInStock",
+            UnitsOnOrder = "UnitsOnOrder",
+            ReorderLevel = "ReorderLevel"
+        }
+    }
+}
+declare namespace Warehouse.Store {
+    interface ProductRow {
+        ProductID?: number;
+        ProductName?: string;
+        ProductImage?: string;
+        Discontinued?: boolean;
+        SupplierID?: number;
+        CategoryID?: number;
+        QuantityPerUnit?: string;
+        UnitPrice?: number;
+        UnitsInStock?: number;
+        UnitsOnOrder?: number;
+        ReorderLevel?: number;
+        IsActive?: number;
+        TenantId?: number;
+        SupplierCompanyName?: string;
+        SupplierContactName?: string;
+        SupplierContactTitle?: string;
+        SupplierAddress?: string;
+        SupplierCity?: string;
+        SupplierRegion?: string;
+        SupplierPostalCode?: string;
+        SupplierCountry?: string;
+        SupplierPhone?: string;
+        SupplierFax?: string;
+        SupplierHomePage?: string;
+        CategoryName?: string;
+        CategoryDescription?: string;
+        CategoryPicture?: number[];
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+    }
+    namespace ProductRow {
+        const idProperty = "ProductID";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "ProductName";
+        const localTextPrefix = "Store.Product";
+        const lookupKey = "Store.Product";
+        function getLookup(): Q.Lookup<ProductRow>;
+        const enum Fields {
+            ProductID = "ProductID",
+            ProductName = "ProductName",
+            ProductImage = "ProductImage",
+            Discontinued = "Discontinued",
+            SupplierID = "SupplierID",
+            CategoryID = "CategoryID",
+            QuantityPerUnit = "QuantityPerUnit",
+            UnitPrice = "UnitPrice",
+            UnitsInStock = "UnitsInStock",
+            UnitsOnOrder = "UnitsOnOrder",
+            ReorderLevel = "ReorderLevel",
+            IsActive = "IsActive",
+            TenantId = "TenantId",
+            SupplierCompanyName = "SupplierCompanyName",
+            SupplierContactName = "SupplierContactName",
+            SupplierContactTitle = "SupplierContactTitle",
+            SupplierAddress = "SupplierAddress",
+            SupplierCity = "SupplierCity",
+            SupplierRegion = "SupplierRegion",
+            SupplierPostalCode = "SupplierPostalCode",
+            SupplierCountry = "SupplierCountry",
+            SupplierPhone = "SupplierPhone",
+            SupplierFax = "SupplierFax",
+            SupplierHomePage = "SupplierHomePage",
+            CategoryName = "CategoryName",
+            CategoryDescription = "CategoryDescription",
+            CategoryPicture = "CategoryPicture",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate"
+        }
+    }
+}
+declare namespace Warehouse.Store {
+    namespace ProductService {
+        const baseUrl = "Store/Product";
+        function Create(request: Serenity.SaveRequest<ProductRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<ProductRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<ProductRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<ProductRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Store/Product/Create",
+            Update = "Store/Product/Update",
+            Delete = "Store/Product/Delete",
+            Retrieve = "Store/Product/Retrieve",
+            List = "Store/Product/List"
+        }
+    }
+}
+declare namespace Warehouse.Store {
+}
+declare namespace Warehouse.Store {
+    interface ShipperForm {
+        CompanyName: Serenity.StringEditor;
+        Phone: PhoneEditor;
+    }
+    class ShipperForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace Warehouse.Store {
+    interface ShipperRow {
+        ShipperID?: number;
+        CompanyName?: string;
+        Phone?: string;
+        IsActive?: number;
+        TenantId?: number;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+    }
+    namespace ShipperRow {
+        const idProperty = "ShipperID";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "CompanyName";
+        const localTextPrefix = "Store.Shipper";
+        const lookupKey = "Store.Shipper";
+        function getLookup(): Q.Lookup<ShipperRow>;
+        const enum Fields {
+            ShipperID = "ShipperID",
+            CompanyName = "CompanyName",
+            Phone = "Phone",
+            IsActive = "IsActive",
+            TenantId = "TenantId",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate"
+        }
+    }
+}
+declare namespace Warehouse.Store {
+    namespace ShipperService {
+        const baseUrl = "Store/Shipper";
+        function Create(request: Serenity.SaveRequest<ShipperRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<ShipperRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<ShipperRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<ShipperRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Store/Shipper/Create",
+            Update = "Store/Shipper/Update",
+            Delete = "Store/Shipper/Delete",
+            Retrieve = "Store/Shipper/Retrieve",
+            List = "Store/Shipper/List"
+        }
+    }
+}
+declare namespace Warehouse.Store {
+}
+declare namespace Warehouse.Store {
+    interface SupplierForm {
+        CompanyName: Serenity.StringEditor;
+        ContactName: Serenity.StringEditor;
+        ContactTitle: Serenity.StringEditor;
+        Address: Serenity.StringEditor;
+        Region: Serenity.StringEditor;
+        PostalCode: Serenity.StringEditor;
+        Country: Serenity.StringEditor;
+        City: Serenity.StringEditor;
+        Phone: Serenity.StringEditor;
+        Fax: Serenity.StringEditor;
+        HomePage: Serenity.StringEditor;
+    }
+    class SupplierForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace Warehouse.Store {
+    interface SupplierRow {
+        SupplierID?: number;
+        CompanyName?: string;
+        ContactName?: string;
+        ContactTitle?: string;
+        Address?: string;
+        City?: string;
+        Region?: string;
+        PostalCode?: string;
+        Country?: string;
+        Phone?: string;
+        Fax?: string;
+        HomePage?: string;
+        IsActive?: number;
+        TenantId?: number;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+    }
+    namespace SupplierRow {
+        const idProperty = "SupplierID";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "CompanyName";
+        const localTextPrefix = "Store.Supplier";
+        const lookupKey = "Store.Supplier";
+        function getLookup(): Q.Lookup<SupplierRow>;
+        const enum Fields {
+            SupplierID = "SupplierID",
+            CompanyName = "CompanyName",
+            ContactName = "ContactName",
+            ContactTitle = "ContactTitle",
+            Address = "Address",
+            City = "City",
+            Region = "Region",
+            PostalCode = "PostalCode",
+            Country = "Country",
+            Phone = "Phone",
+            Fax = "Fax",
+            HomePage = "HomePage",
+            IsActive = "IsActive",
+            TenantId = "TenantId",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate"
+        }
+    }
+}
+declare namespace Warehouse.Store {
+    namespace SupplierService {
+        const baseUrl = "Store/Supplier";
+        function Create(request: Serenity.SaveRequest<SupplierRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<SupplierRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<SupplierRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<SupplierRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Store/Supplier/Create",
+            Update = "Store/Supplier/Update",
+            Delete = "Store/Supplier/Delete",
+            Retrieve = "Store/Supplier/Retrieve",
+            List = "Store/Supplier/List"
+        }
     }
 }
 declare namespace Warehouse.Texts {
@@ -1329,6 +2093,85 @@ declare namespace Warehouse.Store {
     }
 }
 declare namespace Warehouse.Store {
+    class CustomerDialog extends Serenity.EntityDialog<CustomerRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: CustomerForm;
+        private ordersGrid;
+        private loadedState;
+        constructor();
+        getSaveState(): string;
+        loadResponse(data: any): void;
+        loadEntity(entity: CustomerRow): void;
+        onSaveSuccess(response: any): void;
+    }
+}
+declare namespace Warehouse.Store {
+    class CustomerEditor extends Serenity.LookupEditorBase<Serenity.LookupEditorOptions, CustomerRow> {
+        constructor(hidden: JQuery);
+        protected getLookupKey(): string;
+        protected getItemText(item: any, lookup: any): string;
+    }
+}
+declare namespace Warehouse.Store {
+    class CustomerGrid extends Serenity.EntityGrid<CustomerRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): any;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+        getButtons(): Serenity.ToolButton[];
+    }
+}
+declare namespace Warehouse.Store {
+    class OrderDialog extends Serenity.EntityDialog<OrderRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: OrderForm;
+        constructor();
+        getToolbarButtons(): Serenity.ToolButton[];
+        protected updateInterface(): void;
+    }
+}
+declare namespace Warehouse.Store {
+    class CustomerOrderDialog extends OrderDialog {
+        constructor();
+        updateInterface(): void;
+    }
+}
+declare namespace Warehouse.Store {
+    class EmployeeListFormatter implements Slick.Formatter {
+        format(ctx: Slick.FormatterContext): string;
+    }
+}
+declare namespace Warehouse.Store {
+    class CustomerDetailsDialog extends Serenity.EntityDialog<CustomerDetailsRow, any> {
+        protected getFormKey(): any;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): any;
+        protected form: any;
+    }
+}
+declare namespace Warehouse.Store {
+    class CustomerDetailsGrid extends Serenity.EntityGrid<CustomerDetailsRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof CustomerDetailsDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): any;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Warehouse.Store {
     class EmployeeDialog extends Serenity.EntityDialog<EmployeeRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
@@ -1349,6 +2192,215 @@ declare namespace Warehouse.Store {
     class EmployeeGrid extends Serenity.EntityGrid<EmployeeRow, any> {
         protected getColumnsKey(): string;
         protected getDialogType(): typeof EmployeeDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Warehouse.Store {
+    class NoteDialog extends Serenity.EntityDialog<NoteRow, any> {
+        private textEditor;
+        constructor();
+        protected getTemplate(): string;
+        protected getDialogOptions(): JQueryUI.DialogOptions;
+        text: string;
+        okClick: () => void;
+    }
+}
+declare namespace Warehouse.Store {
+    class NoteGrid extends Serenity.EntityGrid<NoteRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof NoteDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): any;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Warehouse.Store {
+    class NotesEditor extends Serenity.TemplatedWidget<any> implements Serenity.IGetEditValue, Serenity.ISetEditValue {
+        private isDirty;
+        private items;
+        constructor(div: JQuery);
+        protected getTemplate(): string;
+        protected updateContent(): void;
+        protected addClick(): void;
+        protected editClick(e: any): void;
+        deleteClick(e: any): void;
+        value: NoteRow[];
+        getEditValue(prop: Serenity.PropertyItem, target: any): void;
+        setEditValue(source: any, prop: Serenity.PropertyItem): void;
+        get_isDirty(): boolean;
+        set_isDirty(value: any): void;
+        onChange: () => void;
+    }
+}
+declare namespace Warehouse.Store {
+    class FreightFormatter implements Slick.Formatter {
+        format(ctx: Slick.FormatterContext): string;
+    }
+}
+declare namespace Warehouse.Store {
+    class OrderGrid extends Serenity.EntityGrid<OrderRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): any;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        protected shippingStateFilter: Serenity.EnumEditor;
+        constructor(container: JQuery);
+        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
+        protected createQuickFilters(): void;
+        protected getButtons(): Serenity.ToolButton[];
+        protected getColumns(): Slick.Column[];
+        protected onClick(e: JQueryEventObject, row: number, cell: number): void;
+        set_shippingState(value: number): void;
+        protected addButtonClick(): void;
+    }
+}
+declare namespace Warehouse.Store {
+    class OrderDetailDialog extends Common.GridEditorDialog<OrderDetailRow> {
+        protected getFormKey(): string;
+        protected getLocalTextPrefix(): string;
+        protected form: OrderDetailForm;
+        constructor();
+    }
+}
+declare namespace Warehouse.Store {
+    class OrderDetailGrid extends Serenity.EntityGrid<OrderDetailRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof OrderDetailDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Warehouse.Store {
+    class OrderDetailsEditor extends Common.GridEditorBase<OrderDetailRow> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof OrderDetailDialog;
+        protected getLocalTextPrefix(): string;
+        constructor(container: JQuery);
+        validateEntity(row: any, id: any): boolean;
+    }
+}
+declare namespace Warehouse.Store {
+    class ProductDialog extends Serenity.EntityDialog<ProductRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: ProductForm;
+    }
+}
+declare namespace Warehouse.Store {
+    class ProductGrid extends Serenity.EntityGrid<ProductRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof ProductDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        private pendingChanges;
+        constructor(container: JQuery);
+        protected getButtons(): Serenity.ToolButton[];
+        protected onViewProcessData(response: any): Serenity.ListResponse<ProductRow>;
+        /**
+         * It would be nice if we could use autonumeric, Serenity editors etc. here, to control input validation,
+         * but it's not supported by SlickGrid as we are only allowed to return a string, and should attach
+         * no event handlers to rendered cell contents
+         */
+        private numericInputFormatter;
+        private stringInputFormatter;
+        /**
+         * Sorry but you cannot use LookupEditor, e.g. Select2 here, only possible is a SELECT element
+         */
+        private selectFormatter;
+        private getEffectiveValue;
+        protected getColumns(): Slick.Column[];
+        private inputsChange;
+        private setSaveButtonState;
+        private saveClick;
+        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
+    }
+}
+declare namespace Warehouse.Store {
+    class ProductLangDialog extends Serenity.EntityDialog<ProductLangRow, any> {
+        protected getFormKey(): any;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: any;
+    }
+}
+declare namespace Warehouse.Store {
+    class ProductLangGrid extends Serenity.EntityGrid<ProductLangRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof ProductLangDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Warehouse.Store {
+    class PhoneEditor extends Serenity.StringEditor {
+        constructor(input: JQuery);
+        protected formatValue(): void;
+        protected getFormattedValue(): string;
+        multiple: boolean;
+        get_value(): string;
+        set_value(value: string): void;
+        static validate(phone: string, isMultiple: boolean): string;
+        static isValidPhone(phone: string): boolean;
+        static formatPhone(phone: any): any;
+        static formatMulti(phone: string, format: (s: string) => string): string;
+        static isValidMulti(phone: string, check: (s: string) => boolean): boolean;
+    }
+}
+declare namespace Warehouse.Store {
+    class ShipperDialog extends Serenity.EntityDialog<ShipperRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: ShipperForm;
+    }
+}
+declare namespace Warehouse.Store {
+    class ShipperFormatter implements Slick.Formatter {
+        format(ctx: Slick.FormatterContext): string;
+    }
+}
+declare namespace Warehouse.Store {
+    class ShipperGrid extends Serenity.EntityGrid<ShipperRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof ShipperDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Warehouse.Store {
+    class SupplierDialog extends Serenity.EntityDialog<SupplierRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: SupplierForm;
+        protected getLanguages(): string[][];
+    }
+}
+declare namespace Warehouse.Store {
+    class SupplierGrid extends Serenity.EntityGrid<SupplierRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof SupplierDialog;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;

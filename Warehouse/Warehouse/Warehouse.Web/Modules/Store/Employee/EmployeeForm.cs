@@ -30,11 +30,5 @@ namespace Warehouse.Store.Forms
         public String Notes { get; set; }
         public Int32 ReportsTo { get; set; }
         public String PhotoPath { get; set; }
-        public DateTime InsertDate { get; set; }
-        public Int32 InsertUserId { get; set; }
-        public DateTime UpdateDate { get; set; }
-        public Int32 UpdateUserId { get; set; }
-        public Int16 IsActive { get; set; }
-        public Int32 TenantId { get; set; }
     }
 }

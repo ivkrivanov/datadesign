@@ -18,10 +18,10 @@ namespace Warehouse.Store.Entities
     public sealed class EmployeeRow : LoggingRow, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
     {
         [DisplayName("Employee Id"), Identity]
-        public Int32? EmployeeId
+        public Int32? EmployeeID
         {
-            get { return Fields.EmployeeId[this]; }
-            set { Fields.EmployeeId[this] = value; }
+            get { return Fields.EmployeeID[this]; }
+            set { Fields.EmployeeID[this] = value; }
         }
 
         [DisplayName("Last Name"), Size(20), NotNull]
@@ -311,7 +311,7 @@ namespace Warehouse.Store.Entities
 
         IIdField IIdRow.IdField
         {
-            get { return Fields.EmployeeId; }
+            get { return Fields.EmployeeID; }
         }
 
         StringField INameRow.NameField
@@ -328,7 +328,7 @@ namespace Warehouse.Store.Entities
 
         public class RowFields : LoggingRowFields
         {
-            public Int32Field EmployeeId;
+            public Int32Field EmployeeID;
             public StringField LastName;
             public StringField FirstName;
             public StringField FullName;

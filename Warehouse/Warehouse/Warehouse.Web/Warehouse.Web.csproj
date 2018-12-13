@@ -594,6 +594,7 @@
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
     <EmbeddedResource Include="Migrations\StoreDB\StoreDBScript_SqlServer..sql" />
+    <Content Include="Modules\Store\Customer\Northwind.CustomerDialog.Template.html" />
     <Content Include="wkhtmltopdf-license.txt" />
     <None Include="packages.config" />
     <Content Include="Scripts\ckeditor\adapters\jquery.js" />
@@ -890,6 +891,12 @@
     <TypeScriptCompile Include="Imports\ServerTypings\Store.CategoriesColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.CustomerColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.CustomerRepresentativesRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\Store.EmployeeColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
@@ -905,10 +912,95 @@
     <TypeScriptCompile Include="Imports\ServerTypings\Store.Gender.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.NoteRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.OrderColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.OrderDetailColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.OrderDetailForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.OrderDetailRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.OrderDetailService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.OrderForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.OrderListRequest.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.OrderRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.OrderService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.OrderShippingState.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ProductColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ProductForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ProductLangRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ProductLangService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ProductLogRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ProductRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ProductService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ShipperColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ShipperForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ShipperRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ShipperService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.SupplierColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.SupplierForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.SupplierRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.SupplierService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\Texts.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Store\Customer\CustomerEditor.ts" />
+    <TypeScriptCompile Include="Modules\Store\Customer\EmployeeListFormatter.ts" />
     <TypeScriptCompile Include="Modules\Store\Employee\EmployeeFormatter.ts" />
+    <TypeScriptCompile Include="Modules\Store\Note\NotesEditor.ts" />
+    <TypeScriptCompile Include="Modules\Store\OrderDetail\OrderDetailsEditor.ts" />
+    <TypeScriptCompile Include="Modules\Store\Order\FreightFormatter.ts" />
+    <TypeScriptCompile Include="Modules\Store\Shared\PhoneEditor.ts" />
+    <TypeScriptCompile Include="Modules\Store\Shipper\ShipperFormatter.ts" />
     <TypeScriptCompile Include="node_modules\%40types\jquery\index.d.ts" />
     <TypeScriptCompile Include="node_modules\%40types\jqueryui\index.d.ts" />
     <TypeScriptCompile Include="node_modules\%40types\jquery.blockui\index.d.ts" />
@@ -1573,9 +1665,6 @@
     <Content Include="Views\Errors\AccessDenied.cshtml" />
     <Content Include="Views\Shared\_LayoutSlim.cshtml" />
     <Content Include="Views\Shared\_LayoutSlimHead.cshtml" />
-    <None Include="Web.config.base">
-      <SubType>Designer</SubType>
-    </None>
     <Content Include="Modules\Administration\User\UserIndex.cshtml" />
     <Content Include="Modules\Administration\Language\LanguageIndex.cshtml" />
     <Content Include="Modules\Administration\Translation\TranslationIndex.cshtml" />
@@ -1621,6 +1710,36 @@
     <Content Include="Modules\Store\Employee\EmployeeIndex.cshtml" />
     <TypeScriptCompile Include="Modules\Store\Employee\EmployeeDialog.ts" />
     <TypeScriptCompile Include="Modules\Store\Employee\EmployeeGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.CustomerDetailsRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.CustomerRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.CustomerService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Modules\Store\Customer\CustomerIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Store\Customer\CustomerDialog.ts" />
+    <TypeScriptCompile Include="Modules\Store\Customer\CustomerGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.CustomerForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Store\Note\NoteDialog.ts" />
+    <Content Include="Modules\Store\OrderDetail\OrderDetailIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Store\OrderDetail\OrderDetailDialog.ts" />
+    <Content Include="Modules\Store\Order\OrderIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Store\Order\OrderDialog.ts" />
+    <TypeScriptCompile Include="Modules\Store\Order\OrderGrid.ts" />
+    <Content Include="Modules\Store\Product\ProductIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Store\Product\ProductDialog.ts" />
+    <TypeScriptCompile Include="Modules\Store\Product\ProductGrid.ts" />
+    <Content Include="Modules\Store\Supplier\SupplierIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Store\Supplier\SupplierDialog.ts" />
+    <TypeScriptCompile Include="Modules\Store\Supplier\SupplierGrid.ts" />
+    <Content Include="Modules\Store\Shipper\ShipperIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Store\Shipper\ShipperDialog.ts" />
+    <TypeScriptCompile Include="Modules\Store\Shipper\ShipperGrid.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -1638,12 +1757,36 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Imports\ClientTypes\Store.CustomerEditorAttribute.cs">
+      <DependentUpon>ClientTypes.tt</DependentUpon>
+    </Compile>
     <Compile Include="Imports\ClientTypes\Store.EmployeeFormatterAttribute.cs">
+      <DependentUpon>ClientTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Imports\ClientTypes\Store.EmployeeListFormatterAttribute.cs">
+      <DependentUpon>ClientTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Imports\ClientTypes\Store.FreightFormatterAttribute.cs">
+      <DependentUpon>ClientTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Imports\ClientTypes\Store.NotesEditorAttribute.cs">
+      <DependentUpon>ClientTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Imports\ClientTypes\Store.OrderDetailsEditorAttribute.cs">
+      <DependentUpon>ClientTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Imports\ClientTypes\Store.PhoneEditorAttribute.cs">
+      <DependentUpon>ClientTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Imports\ClientTypes\Store.ShipperFormatterAttribute.cs">
       <DependentUpon>ClientTypes.tt</DependentUpon>
     </Compile>
     <Compile Include="Migrations\DefaultDB\DefaultDB_20160724_101700_MultiTenant.cs" />
     <Compile Include="Migrations\StoreDB\StoreDB_20181212_143000_DataLocalization.cs" />
     <Compile Include="Migrations\StoreDB\StoreDB_20181212_140000.cs" />
+    <Compile Include="Migrations\StoreDB\StoreDB_20181213_140000_CustomerDetails.cs" />
+    <Compile Include="Migrations\StoreDB\StoreDB_20181213_150000_Notes.cs" />
+    <Compile Include="Migrations\StoreDB\StoreDB_20181213_160000_ProductLog.cs" />
     <Compile Include="Modules\Administration\AdministrationNavigation.cs" />
     <Compile Include="Modules\Administration\Language\LanguageLookup.cs" />
     <Compile Include="Modules\Administration\RolePermission\RolePermissionUpdateRequest.cs" />
@@ -1724,8 +1867,20 @@
     <Compile Include="Modules\Common\UserPreference\UserPreferenceRow.cs" />
     <Compile Include="Modules\Common\Helpers\GetNextNumberHelper.cs" />
     <Compile Include="Modules\Common\Helpers\GetNextNumberRequest.cs" />
+    <Compile Include="Modules\Store\Customer\CustomerCity.cs" />
+    <Compile Include="Modules\Store\Customer\CustomerCountryLookup.cs" />
+    <Compile Include="Modules\Store\Customer\CustomerLookup.cs" />
+    <Compile Include="Modules\Store\Customer\CustomerRepresentativesRow.cs" />
+    <Compile Include="Modules\Store\Customer\EmployeeListDecorator.cs" />
     <Compile Include="Modules\Store\Employee\Gender.cs" />
+    <Compile Include="Modules\Store\Note\NotesBehavior.cs" />
+    <Compile Include="Modules\Store\Order\OrderListRequest.cs" />
+    <Compile Include="Modules\Store\Order\OrderShipCity.cs" />
+    <Compile Include="Modules\Store\Order\OrderShipCountry.cs" />
+    <Compile Include="Modules\Store\Order\OrderShippingState.cs" />
+    <Compile Include="Modules\Store\Product\ProductLogRow.cs" />
     <Compile Include="Modules\Store\StorePermissionKeys.cs" />
+    <Compile Include="Modules\Store\Supplier\SupplierCountryLookup.cs" />
     <Compile Include="Modules\Texts.cs" />
     <Compile Include="Modules\Membership\Account\AccountPage.cs" />
     <Compile Include="Modules\Administration\User\Authentication\AuthorizationService.cs" />
@@ -1786,6 +1941,48 @@
     <Compile Include="Modules\Store\Employee\EmployeePage.cs" />
     <Compile Include="Modules\Store\Employee\EmployeeColumns.cs" />
     <Compile Include="Modules\Store\Employee\EmployeeForm.cs" />
+    <Compile Include="Modules\Store\CustomerDetails\CustomerDetailsRow.cs" />
+    <Compile Include="Modules\Store\Customer\CustomerRow.cs" />
+    <Compile Include="Modules\Store\Customer\CustomerRepository.cs" />
+    <Compile Include="Modules\Store\Customer\CustomerEndpoint.cs" />
+    <Compile Include="Modules\Store\Customer\CustomerPage.cs" />
+    <Compile Include="Modules\Store\Customer\CustomerColumns.cs" />
+    <Compile Include="Modules\Store\Customer\CustomerForm.cs" />
+    <Compile Include="Modules\Store\Note\NoteRow.cs" />
+    <Compile Include="Modules\Store\Note\NoteRepository.cs" />
+    <Compile Include="Modules\Store\OrderDetail\OrderDetailRow.cs" />
+    <Compile Include="Modules\Store\OrderDetail\OrderDetailRepository.cs" />
+    <Compile Include="Modules\Store\OrderDetail\OrderDetailEndpoint.cs" />
+    <Compile Include="Modules\Store\OrderDetail\OrderDetailPage.cs" />
+    <Compile Include="Modules\Store\OrderDetail\OrderDetailColumns.cs" />
+    <Compile Include="Modules\Store\OrderDetail\OrderDetailForm.cs" />
+    <Compile Include="Modules\Store\Order\OrderRow.cs" />
+    <Compile Include="Modules\Store\Order\OrderRepository.cs" />
+    <Compile Include="Modules\Store\Order\OrderEndpoint.cs" />
+    <Compile Include="Modules\Store\Order\OrderPage.cs" />
+    <Compile Include="Modules\Store\Order\OrderColumns.cs" />
+    <Compile Include="Modules\Store\Order\OrderForm.cs" />
+    <Compile Include="Modules\Store\ProductLang\ProductLangRow.cs" />
+    <Compile Include="Modules\Store\ProductLang\ProductLangRepository.cs" />
+    <Compile Include="Modules\Store\ProductLang\ProductLangEndpoint.cs" />
+    <Compile Include="Modules\Store\Product\ProductRow.cs" />
+    <Compile Include="Modules\Store\Product\ProductRepository.cs" />
+    <Compile Include="Modules\Store\Product\ProductEndpoint.cs" />
+    <Compile Include="Modules\Store\Product\ProductPage.cs" />
+    <Compile Include="Modules\Store\Product\ProductColumns.cs" />
+    <Compile Include="Modules\Store\Product\ProductForm.cs" />
+    <Compile Include="Modules\Store\Supplier\SupplierRow.cs" />
+    <Compile Include="Modules\Store\Supplier\SupplierRepository.cs" />
+    <Compile Include="Modules\Store\Supplier\SupplierEndpoint.cs" />
+    <Compile Include="Modules\Store\Supplier\SupplierPage.cs" />
+    <Compile Include="Modules\Store\Supplier\SupplierColumns.cs" />
+    <Compile Include="Modules\Store\Supplier\SupplierForm.cs" />
+    <Compile Include="Modules\Store\Shipper\ShipperRow.cs" />
+    <Compile Include="Modules\Store\Shipper\ShipperRepository.cs" />
+    <Compile Include="Modules\Store\Shipper\ShipperEndpoint.cs" />
+    <Compile Include="Modules\Store\Shipper\ShipperPage.cs" />
+    <Compile Include="Modules\Store\Shipper\ShipperColumns.cs" />
+    <Compile Include="Modules\Store\Shipper\ShipperForm.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

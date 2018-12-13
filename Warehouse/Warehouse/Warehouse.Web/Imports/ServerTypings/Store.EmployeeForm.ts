@@ -17,12 +17,6 @@
         Notes: Serenity.StringEditor;
         ReportsTo: Serenity.IntegerEditor;
         PhotoPath: Serenity.StringEditor;
-        InsertDate: Serenity.DateEditor;
-        InsertUserId: Serenity.IntegerEditor;
-        UpdateDate: Serenity.DateEditor;
-        UpdateUserId: Serenity.IntegerEditor;
-        IsActive: Serenity.IntegerEditor;
-        TenantId: Serenity.IntegerEditor;
     }
 
     export class EmployeeForm extends Serenity.PrefixedContext {
@@ -57,13 +51,7 @@
                     'Photo', w0,
                     'Notes', w0,
                     'ReportsTo', w2,
-                    'PhotoPath', w0,
-                    'InsertDate', w1,
-                    'InsertUserId', w2,
-                    'UpdateDate', w1,
-                    'UpdateUserId', w2,
-                    'IsActive', w2,
-                    'TenantId', w2
+                    'PhotoPath', w0
                 ]);
             }
         }

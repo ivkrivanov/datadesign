@@ -1,6 +1,6 @@
 ﻿namespace Warehouse.Store {
     export interface EmployeeRow {
-        EmployeeId?: number;
+        EmployeeID?: number;
         LastName?: string;
         FirstName?: string;
         FullName?: string;
@@ -47,7 +47,7 @@
     }
 
     export namespace EmployeeRow {
-        export const idProperty = 'EmployeeId';
+        export const idProperty = 'EmployeeID';
         export const isActiveProperty = 'IsActive';
         export const nameProperty = 'FullName';
         export const localTextPrefix = 'Store.Employee';
@@ -58,7 +58,7 @@
         }
 
         export declare const enum Fields {
-            EmployeeId = "EmployeeId",
+            EmployeeID = "EmployeeID",
             LastName = "LastName",
             FirstName = "FirstName",
             FullName = "FullName",

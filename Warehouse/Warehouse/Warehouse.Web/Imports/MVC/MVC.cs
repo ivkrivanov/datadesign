@@ -108,9 +108,54 @@ namespace MVC
                 public const string CategoryLangIndex = "~/Modules/Store/CategoryLang/CategoryLangIndex.cshtml";
             }
 
+            public static class Customer
+            {
+                public const string CustomerIndex = "~/Modules/Store/Customer/CustomerIndex.cshtml";
+            }
+
+            public static class CustomerDetails
+            {
+                public const string CustomerDetailsIndex = "~/Modules/Store/CustomerDetails/CustomerDetailsIndex.cshtml";
+            }
+
             public static class Employee
             {
                 public const string EmployeeIndex = "~/Modules/Store/Employee/EmployeeIndex.cshtml";
+            }
+
+            public static class Note
+            {
+                public const string NoteIndex = "~/Modules/Store/Note/NoteIndex.cshtml";
+            }
+
+            public static class Order
+            {
+                public const string OrderIndex = "~/Modules/Store/Order/OrderIndex.cshtml";
+            }
+
+            public static class OrderDetail
+            {
+                public const string OrderDetailIndex = "~/Modules/Store/OrderDetail/OrderDetailIndex.cshtml";
+            }
+
+            public static class Product
+            {
+                public const string ProductIndex = "~/Modules/Store/Product/ProductIndex.cshtml";
+            }
+
+            public static class ProductLang
+            {
+                public const string ProductLangIndex = "~/Modules/Store/ProductLang/ProductLangIndex.cshtml";
+            }
+
+            public static class Shipper
+            {
+                public const string ShipperIndex = "~/Modules/Store/Shipper/ShipperIndex.cshtml";
+            }
+
+            public static class Supplier
+            {
+                public const string SupplierIndex = "~/Modules/Store/Supplier/SupplierIndex.cshtml";
             }
         }
     }
