@@ -38,13 +38,11 @@ namespace Warehouse.Store.Endpoints
             return new MyRepository().GetNextNumber(connection, request);
         }
 
-        [HttpPost]
         public RetrieveResponse<MyRow> Retrieve(IDbConnection connection, RetrieveRequest request)
         {
             return new MyRepository().Retrieve(connection, request);
         }
 
-        [HttpPost]
         public ListResponse<MyRow> List(IDbConnection connection, ListRequest request)
         {
             return new MyRepository().List(connection, request);

@@ -1,7 +1,6 @@
 ﻿
 namespace Warehouse.Store.Entities
 {
-    using Serenity;
     using Serenity.ComponentModel;
     using Serenity.Data;
     using Serenity.Data.Mapping;

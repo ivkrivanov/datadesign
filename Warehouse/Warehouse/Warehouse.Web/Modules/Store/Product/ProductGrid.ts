@@ -157,7 +157,7 @@
 
             var category = Q.first(columns, x => x.field === fld.CategoryName);
             category.referencedFields = [fld.CategoryID];
-            category.format = ctx => this.selectFormatter(ctx, fld.CategoryID, CategoryRow.getLookup());
+            category.format = ctx => this.selectFormatter(ctx, fld.CategoryID, CategoriesRow.getLookup());
 
             var supplier = Q.first(columns, x => x.field === fld.SupplierCompanyName);
             supplier.referencedFields = [fld.SupplierID];

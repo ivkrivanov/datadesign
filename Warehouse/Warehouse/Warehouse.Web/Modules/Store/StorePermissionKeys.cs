@@ -17,6 +17,15 @@ namespace Warehouse.Store
             public const string Modify = "Store:Customer:Modify";
             public const string View = "Store:Customer:View";
         }
+        [DisplayName("Suppliers")]
+        public class Supplier
+        {
+            [ImplicitPermission(General), ImplicitPermission(View)]
+            public const string Delete = "Store:Supplier:Delete";
+            [Description("Create/Update"), ImplicitPermission(General), ImplicitPermission(View)]
+            public const string Modify = "Store:Supplier:Modify";
+            public const string View = "Store:Supplier:View";
+        }
 
         [Description("[General]")]
         public const string General = "Store:General";

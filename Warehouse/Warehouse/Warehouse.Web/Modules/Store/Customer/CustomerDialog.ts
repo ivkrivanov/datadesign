@@ -1,5 +1,4 @@
-﻿
-namespace Warehouse.Store {
+﻿namespace Warehouse.Store {
 
     @Serenity.Decorators.registerClass()
     @Serenity.Decorators.panel()

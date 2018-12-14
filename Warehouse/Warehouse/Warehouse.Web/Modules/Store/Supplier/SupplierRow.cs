@@ -10,8 +10,8 @@ namespace Warehouse.Store.Entities
 
     [ConnectionKey("Store"), Module("Store"), TableName("[dbo].[Suppliers]")]
     [DisplayName("Suppliers"), InstanceName("Supplier")]
-    [ReadPermission(PermissionKeys.General)]
-    [ModifyPermission(PermissionKeys.General)]
+    [ReadPermission(PermissionKeys.Supplier.View)]
+    [ModifyPermission(PermissionKeys.Supplier.Modify)]
     [LookupScript]
     public sealed class SupplierRow : LoggingRow, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
     {

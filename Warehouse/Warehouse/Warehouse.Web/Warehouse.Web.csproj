@@ -594,7 +594,7 @@
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
     <EmbeddedResource Include="Migrations\StoreDB\StoreDBScript_SqlServer..sql" />
-    <Content Include="Modules\Store\Customer\Northwind.CustomerDialog.Template.html" />
+    <Content Include="Modules\Store\Customer\Store.CustomerDialog.Template.html" />
     <Content Include="wkhtmltopdf-license.txt" />
     <None Include="packages.config" />
     <Content Include="Scripts\ckeditor\adapters\jquery.js" />
@@ -888,6 +888,9 @@
     <TypeScriptCompile Include="Imports\ServerTypings\Administration.TenantColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Modules.Store.Customer.CustomerGrossSalesRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\Store.CategoriesColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
@@ -994,6 +997,8 @@
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Store\Customer\CustomerEditor.ts" />
+    <TypeScriptCompile Include="Modules\Store\Customer\CustomerOrderDialog.ts" />
+    <TypeScriptCompile Include="Modules\Store\Customer\CustomerOrdersGrid.ts" />
     <TypeScriptCompile Include="Modules\Store\Customer\EmployeeListFormatter.ts" />
     <TypeScriptCompile Include="Modules\Store\Employee\EmployeeFormatter.ts" />
     <TypeScriptCompile Include="Modules\Store\Note\NotesEditor.ts" />
@@ -1787,6 +1792,7 @@
     <Compile Include="Migrations\StoreDB\StoreDB_20181213_140000_CustomerDetails.cs" />
     <Compile Include="Migrations\StoreDB\StoreDB_20181213_150000_Notes.cs" />
     <Compile Include="Migrations\StoreDB\StoreDB_20181213_160000_ProductLog.cs" />
+    <Compile Include="Migrations\StoreDB\StoreDB_20181214_100000_CustomerGrossSales.cs" />
     <Compile Include="Modules\Administration\AdministrationNavigation.cs" />
     <Compile Include="Modules\Administration\Language\LanguageLookup.cs" />
     <Compile Include="Modules\Administration\RolePermission\RolePermissionUpdateRequest.cs" />
@@ -1869,6 +1875,7 @@
     <Compile Include="Modules\Common\Helpers\GetNextNumberRequest.cs" />
     <Compile Include="Modules\Store\Customer\CustomerCity.cs" />
     <Compile Include="Modules\Store\Customer\CustomerCountryLookup.cs" />
+    <Compile Include="Modules\Store\Customer\CustomerGrossSalesRow.cs" />
     <Compile Include="Modules\Store\Customer\CustomerLookup.cs" />
     <Compile Include="Modules\Store\Customer\CustomerRepresentativesRow.cs" />
     <Compile Include="Modules\Store\Customer\EmployeeListDecorator.cs" />

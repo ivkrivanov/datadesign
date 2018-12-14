@@ -1052,7 +1052,7 @@ declare namespace Warehouse.Store {
 }
 declare namespace Warehouse.Store {
     interface OrderDetailForm {
-        ProductID: Serenity.LookupEditor;
+        ProductId: Serenity.IntegerEditor;
         UnitPrice: Serenity.DecimalEditor;
         Quantity: Serenity.IntegerEditor;
         Discount: Serenity.DecimalEditor;
@@ -1137,10 +1137,10 @@ declare namespace Warehouse.Store {
 }
 declare namespace Warehouse.Store {
     interface OrderForm {
-        CustomerID: CustomerEditor;
+        CustomerID: Serenity.StringEditor;
         OrderDate: Serenity.DateEditor;
         RequiredDate: Serenity.DateEditor;
-        EmployeeID: Serenity.LookupEditor;
+        EmployeeId: Serenity.IntegerEditor;
         DetailList: OrderDetailsEditor;
         ShippedDate: Serenity.DateEditor;
         ShipVia: Serenity.LookupEditor;
@@ -1166,7 +1166,6 @@ declare namespace Warehouse.Store {
 declare namespace Warehouse.Store {
     interface OrderRow {
         OrderID?: number;
-        CustomerID?: string;
         EmployeeID?: number;
         OrderDate?: string;
         RequiredDate?: string;
@@ -1208,7 +1207,6 @@ declare namespace Warehouse.Store {
         const localTextPrefix = "Store.Order";
         const enum Fields {
             OrderID = "OrderID",
-            CustomerID = "CustomerID",
             EmployeeID = "EmployeeID",
             OrderDate = "OrderDate",
             RequiredDate = "RequiredDate",
@@ -1613,11 +1611,6 @@ declare namespace Warehouse.Store {
 }
 declare namespace Warehouse.Texts {
 }
-declare namespace Warehouse.LanguageList {
-    function getValue(): string[][];
-}
-declare namespace Warehouse.ScriptInitialization {
-}
 declare namespace Warehouse.Administration {
     class LanguageDialog extends Serenity.EntityDialog<LanguageRow, any> {
         protected getFormKey(): string;
@@ -1744,6 +1737,10 @@ declare namespace Warehouse.Administration {
         protected getDefaultSortBy(): UserRow.Fields[];
     }
 }
+declare namespace Warehouse.Authorization {
+    let userDefinition: ScriptUserDefinition;
+    function hasPermission(permissionKey: string): boolean;
+}
 declare namespace Warehouse.Administration {
     class PermissionCheckEditor extends Serenity.DataGrid<PermissionCheckItem, PermissionCheckEditorOptions> {
         protected getIdProperty(): string;
@@ -1814,6 +1811,11 @@ declare namespace Warehouse.Administration {
         userID: number;
         username: string;
     }
+}
+declare namespace Warehouse.LanguageList {
+    function getValue(): string[][];
+}
+declare namespace Warehouse.ScriptInitialization {
 }
 declare namespace Warehouse {
     class BasicProgressDialog extends Serenity.TemplatedDialog<any> {
@@ -2052,6 +2054,34 @@ declare namespace Warehouse.Common {
         setItem(key: string, data: string): void;
     }
 }
+declare namespace Warehouse.Membership {
+    class ChangePasswordPanel extends Serenity.PropertyPanel<ChangePasswordRequest, any> {
+        protected getFormKey(): string;
+        private form;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Warehouse.Membership {
+    class ForgotPasswordPanel extends Serenity.PropertyPanel<ForgotPasswordRequest, any> {
+        protected getFormKey(): string;
+        private form;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Warehouse.Membership {
+    class ResetPasswordPanel extends Serenity.PropertyPanel<ResetPasswordRequest, any> {
+        protected getFormKey(): string;
+        private form;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Warehouse.Membership {
+    class SignUpPanel extends Serenity.PropertyPanel<SignUpRequest, any> {
+        protected getFormKey(): string;
+        private form;
+        constructor(container: JQuery);
+    }
+}
 declare namespace Warehouse.Store {
     class CategoriesDialog extends Serenity.EntityDialog<CategoriesRow, any> {
         protected getFormKey(): string;
@@ -2147,6 +2177,37 @@ declare namespace Warehouse.Store {
     }
 }
 declare namespace Warehouse.Store {
+    class OrderGrid extends Serenity.EntityGrid<OrderRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): any;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        protected shippingStateFilter: Serenity.EnumEditor;
+        constructor(container: JQuery);
+        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
+        protected createQuickFilters(): void;
+        protected getButtons(): Serenity.ToolButton[];
+        protected getColumns(): Slick.Column[];
+        protected onClick(e: JQueryEventObject, row: number, cell: number): void;
+        set_shippingState(value: number): void;
+        protected addButtonClick(): void;
+    }
+}
+declare namespace Warehouse.Store {
+    class CustomerOrdersGrid extends OrderGrid {
+        protected getDialogType(): typeof CustomerOrderDialog;
+        constructor(container: JQuery);
+        protected getColumns(): Slick.Column[];
+        protected initEntityDialog(itemType: any, dialog: any): void;
+        protected addButtonClick(): void;
+        protected getInitialTitle(): any;
+        protected getGridCanLoad(): boolean;
+        private _customerID;
+        customerID: string;
+    }
+}
+declare namespace Warehouse.Store {
     class EmployeeListFormatter implements Slick.Formatter {
         format(ctx: Slick.FormatterContext): string;
     }
@@ -2239,24 +2300,6 @@ declare namespace Warehouse.Store {
 declare namespace Warehouse.Store {
     class FreightFormatter implements Slick.Formatter {
         format(ctx: Slick.FormatterContext): string;
-    }
-}
-declare namespace Warehouse.Store {
-    class OrderGrid extends Serenity.EntityGrid<OrderRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): any;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        protected shippingStateFilter: Serenity.EnumEditor;
-        constructor(container: JQuery);
-        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
-        protected createQuickFilters(): void;
-        protected getButtons(): Serenity.ToolButton[];
-        protected getColumns(): Slick.Column[];
-        protected onClick(e: JQueryEventObject, row: number, cell: number): void;
-        set_shippingState(value: number): void;
-        protected addButtonClick(): void;
     }
 }
 declare namespace Warehouse.Store {
@@ -2404,38 +2447,6 @@ declare namespace Warehouse.Store {
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Warehouse.Authorization {
-    let userDefinition: ScriptUserDefinition;
-    function hasPermission(permissionKey: string): boolean;
-}
-declare namespace Warehouse.Membership {
-    class ChangePasswordPanel extends Serenity.PropertyPanel<ChangePasswordRequest, any> {
-        protected getFormKey(): string;
-        private form;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Warehouse.Membership {
-    class ForgotPasswordPanel extends Serenity.PropertyPanel<ForgotPasswordRequest, any> {
-        protected getFormKey(): string;
-        private form;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Warehouse.Membership {
-    class ResetPasswordPanel extends Serenity.PropertyPanel<ResetPasswordRequest, any> {
-        protected getFormKey(): string;
-        private form;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Warehouse.Membership {
-    class SignUpPanel extends Serenity.PropertyPanel<SignUpRequest, any> {
-        protected getFormKey(): string;
-        private form;
         constructor(container: JQuery);
     }
 }
