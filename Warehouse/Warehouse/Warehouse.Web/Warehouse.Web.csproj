@@ -1800,7 +1800,7 @@
     <Compile Include="Modules\Administration\RolePermission\RolePermissionListRequest.cs" />
     <Compile Include="Modules\Administration\AdministrationPermissionKeys.cs" />
     <Compile Include="Modules\Administration\Tenant\IMultiTenantRow.cs" />
-    <Compile Include="Modules\Administration\Tenant\MultiTenantBehavior.cs.cs" />
+    <Compile Include="Modules\Administration\Tenant\MultiTenantBehavior.cs" />
     <Compile Include="Modules\Administration\UserPermission\ImplicitPermissionAttribute.cs" />
     <Compile Include="Modules\Administration\UserPermission\UserPermissionListRequest.cs" />
     <Compile Include="Modules\Administration\UserPermission\UserPermissionUpdateRequest.cs" />
@@ -1886,6 +1886,7 @@
     <Compile Include="Modules\Store\Order\OrderShipCountry.cs" />
     <Compile Include="Modules\Store\Order\OrderShippingState.cs" />
     <Compile Include="Modules\Store\Product\ProductLogRow.cs" />
+    <Compile Include="Modules\Store\Scripts\MultiTenantRowLookupScript.cs" />
     <Compile Include="Modules\Store\StorePermissionKeys.cs" />
     <Compile Include="Modules\Store\Supplier\SupplierCountryLookup.cs" />
     <Compile Include="Modules\Texts.cs" />

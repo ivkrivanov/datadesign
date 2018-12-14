@@ -7,12 +7,13 @@ namespace Warehouse.Store.Entities
     using System;
     using System.ComponentModel;
     using Warehouse.Administration.Entities;
+    using Warehouse.Store.Scripts;
 
     [ConnectionKey("Store"), Module("Store"), TableName("[dbo].[Suppliers]")]
     [DisplayName("Suppliers"), InstanceName("Supplier")]
     [ReadPermission(PermissionKeys.Supplier.View)]
     [ModifyPermission(PermissionKeys.Supplier.Modify)]
-    [LookupScript]
+    [LookupScript("Store.Supplier", LookupType = typeof(MultiTenantRowLookupScript<>))]
     public sealed class SupplierRow : LoggingRow, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
     {
         [DisplayName("Supplier Id"), Identity]

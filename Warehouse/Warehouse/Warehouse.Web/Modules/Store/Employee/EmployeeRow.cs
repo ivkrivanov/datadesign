@@ -9,12 +9,13 @@ namespace Warehouse.Store.Entities
     using System.IO;
     using Warehouse.Administration.Entities;
     using Warehouse.Store;
+    using Warehouse.Store.Scripts;
 
     [ConnectionKey("Store"), Module("Store"), TableName("[dbo].[Employees]")]
     [DisplayName("Employees"), InstanceName("Employee")]
     [ReadPermission(PermissionKeys.General)]
     [ModifyPermission(PermissionKeys.General)]
-    [LookupScript]
+    [LookupScript("Store.Employee", LookupType	= typeof(MultiTenantRowLookupScript<>))] 
     public sealed class EmployeeRow : LoggingRow, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
     {
         [DisplayName("Employee Id"), Identity]

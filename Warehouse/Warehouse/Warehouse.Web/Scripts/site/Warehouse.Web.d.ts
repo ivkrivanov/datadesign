@@ -576,6 +576,26 @@ declare namespace Warehouse.Membership {
         Password?: string;
     }
 }
+declare namespace Warehouse.Modules.Store.Customer {
+    interface CustomerGrossSalesRow {
+        CustomerId?: string;
+        ContactName?: string;
+        ProductId?: number;
+        ProductName?: string;
+        GrossAmount?: number;
+    }
+    namespace CustomerGrossSalesRow {
+        const nameProperty = "ContactName";
+        const localTextPrefix = "Northwind.CustomerGrossSales";
+        const enum Fields {
+            CustomerId = "CustomerId",
+            ContactName = "ContactName",
+            ProductId = "ProductId",
+            ProductName = "ProductName",
+            GrossAmount = "GrossAmount"
+        }
+    }
+}
 declare namespace Warehouse {
     interface ScriptUserDefinition {
         Username?: string;
@@ -1052,7 +1072,7 @@ declare namespace Warehouse.Store {
 }
 declare namespace Warehouse.Store {
     interface OrderDetailForm {
-        ProductId: Serenity.IntegerEditor;
+        ProductID: Serenity.LookupEditor;
         UnitPrice: Serenity.DecimalEditor;
         Quantity: Serenity.IntegerEditor;
         Discount: Serenity.DecimalEditor;
@@ -1137,10 +1157,10 @@ declare namespace Warehouse.Store {
 }
 declare namespace Warehouse.Store {
     interface OrderForm {
-        CustomerID: Serenity.StringEditor;
+        CustomerID: CustomerEditor;
         OrderDate: Serenity.DateEditor;
         RequiredDate: Serenity.DateEditor;
-        EmployeeId: Serenity.IntegerEditor;
+        EmployeeID: Serenity.LookupEditor;
         DetailList: OrderDetailsEditor;
         ShippedDate: Serenity.DateEditor;
         ShipVia: Serenity.LookupEditor;
@@ -1166,6 +1186,7 @@ declare namespace Warehouse.Store {
 declare namespace Warehouse.Store {
     interface OrderRow {
         OrderID?: number;
+        CustomerID?: string;
         EmployeeID?: number;
         OrderDate?: string;
         RequiredDate?: string;
@@ -1207,6 +1228,7 @@ declare namespace Warehouse.Store {
         const localTextPrefix = "Store.Order";
         const enum Fields {
             OrderID = "OrderID",
+            CustomerID = "CustomerID",
             EmployeeID = "EmployeeID",
             OrderDate = "OrderDate",
             RequiredDate = "RequiredDate",
@@ -1611,6 +1633,11 @@ declare namespace Warehouse.Store {
 }
 declare namespace Warehouse.Texts {
 }
+declare namespace Warehouse.LanguageList {
+    function getValue(): string[][];
+}
+declare namespace Warehouse.ScriptInitialization {
+}
 declare namespace Warehouse.Administration {
     class LanguageDialog extends Serenity.EntityDialog<LanguageRow, any> {
         protected getFormKey(): string;
@@ -1737,10 +1764,6 @@ declare namespace Warehouse.Administration {
         protected getDefaultSortBy(): UserRow.Fields[];
     }
 }
-declare namespace Warehouse.Authorization {
-    let userDefinition: ScriptUserDefinition;
-    function hasPermission(permissionKey: string): boolean;
-}
 declare namespace Warehouse.Administration {
     class PermissionCheckEditor extends Serenity.DataGrid<PermissionCheckItem, PermissionCheckEditorOptions> {
         protected getIdProperty(): string;
@@ -1811,11 +1834,6 @@ declare namespace Warehouse.Administration {
         userID: number;
         username: string;
     }
-}
-declare namespace Warehouse.LanguageList {
-    function getValue(): string[][];
-}
-declare namespace Warehouse.ScriptInitialization {
 }
 declare namespace Warehouse {
     class BasicProgressDialog extends Serenity.TemplatedDialog<any> {
@@ -2052,34 +2070,6 @@ declare namespace Warehouse.Common {
     class UserPreferenceStorage implements Serenity.SettingStorage {
         getItem(key: string): string;
         setItem(key: string, data: string): void;
-    }
-}
-declare namespace Warehouse.Membership {
-    class ChangePasswordPanel extends Serenity.PropertyPanel<ChangePasswordRequest, any> {
-        protected getFormKey(): string;
-        private form;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Warehouse.Membership {
-    class ForgotPasswordPanel extends Serenity.PropertyPanel<ForgotPasswordRequest, any> {
-        protected getFormKey(): string;
-        private form;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Warehouse.Membership {
-    class ResetPasswordPanel extends Serenity.PropertyPanel<ResetPasswordRequest, any> {
-        protected getFormKey(): string;
-        private form;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Warehouse.Membership {
-    class SignUpPanel extends Serenity.PropertyPanel<SignUpRequest, any> {
-        protected getFormKey(): string;
-        private form;
-        constructor(container: JQuery);
     }
 }
 declare namespace Warehouse.Store {
@@ -2447,6 +2437,38 @@ declare namespace Warehouse.Store {
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Warehouse.Authorization {
+    let userDefinition: ScriptUserDefinition;
+    function hasPermission(permissionKey: string): boolean;
+}
+declare namespace Warehouse.Membership {
+    class ChangePasswordPanel extends Serenity.PropertyPanel<ChangePasswordRequest, any> {
+        protected getFormKey(): string;
+        private form;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Warehouse.Membership {
+    class ForgotPasswordPanel extends Serenity.PropertyPanel<ForgotPasswordRequest, any> {
+        protected getFormKey(): string;
+        private form;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Warehouse.Membership {
+    class ResetPasswordPanel extends Serenity.PropertyPanel<ResetPasswordRequest, any> {
+        protected getFormKey(): string;
+        private form;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Warehouse.Membership {
+    class SignUpPanel extends Serenity.PropertyPanel<SignUpRequest, any> {
+        protected getFormKey(): string;
+        private form;
         constructor(container: JQuery);
     }
 }

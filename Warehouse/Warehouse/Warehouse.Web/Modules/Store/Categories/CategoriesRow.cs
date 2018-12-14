@@ -9,12 +9,13 @@ namespace Warehouse.Store.Entities
     using System.IO;
     using Warehouse.Administration.Entities;
     using Warehouse.Store;
+    using Warehouse.Store.Scripts;
 
     [ConnectionKey("Store"), Module("Store"), TableName("[dbo].[Categories]")]
     [DisplayName("Categories"), InstanceName("Category")]
     [ReadPermission(PermissionKeys.General)]
     [ModifyPermission(PermissionKeys.General)]
-    [LookupScript]
+    [LookupScript("Store.Categories", LookupType = typeof(MultiTenantRowLookupScript<>))]
     [LocalizationRow(typeof(CategoryLangRow))]
     public sealed class CategoriesRow : LoggingRow, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
     {

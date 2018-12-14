@@ -4,9 +4,10 @@ namespace Warehouse.Store.Lookups
     using Serenity.ComponentModel;
     using Serenity.Data;
     using Serenity.Web;
+    using Warehouse.Store.Scripts;
 
-    [LookupScript]
-    public class SupplierCountryLookup : RowLookupScript<Entities.SupplierRow>
+    [LookupScript("Store.SupplierCountry")]
+    public class SupplierCountryLookup : MultiTenantRowLookupScript<Entities.SupplierRow>
     {
         public SupplierCountryLookup()
         {

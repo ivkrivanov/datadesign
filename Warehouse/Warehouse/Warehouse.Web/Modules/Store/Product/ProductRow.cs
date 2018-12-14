@@ -8,12 +8,13 @@ namespace Warehouse.Store.Entities
     using System.ComponentModel;
     using System.IO;
     using Warehouse.Administration.Entities;
+    using Warehouse.Store.Scripts;
 
     [ConnectionKey("Store"), Module("Store"), TableName("[dbo].[Products]")]
     [DisplayName("Products"), InstanceName("Product")]
     [ReadPermission(PermissionKeys.General)]
     [ModifyPermission(PermissionKeys.General)]
-    [LookupScript]
+    [LookupScript("Store.Product", LookupType = typeof(MultiTenantRowLookupScript<>))]
     [CaptureLog(typeof(ProductLogRow))]
     [LocalizationRow(typeof(ProductLangRow))]
     public sealed class ProductRow : LoggingRow, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
