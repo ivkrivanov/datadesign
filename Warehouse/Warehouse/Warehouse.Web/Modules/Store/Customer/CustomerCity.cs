@@ -26,6 +26,8 @@ namespace Warehouse.Store.Lookups
                     new Criteria(fld.Country).IsNotNull() &
                     new Criteria(fld.City) != "" &
                     new Criteria(fld.City).IsNotNull());
+
+            AddTenantFilter(query);
         }
 
         protected override void ApplyOrder(SqlQuery query)

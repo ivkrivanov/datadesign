@@ -22,6 +22,8 @@ namespace Warehouse.Store.Lookups
                 .Where(
                     new Criteria(fld.Country) != "" &
                     new Criteria(fld.Country).IsNotNull());
+
+            AddTenantFilter(query);
         }
 
         protected override void ApplyOrder(SqlQuery query)

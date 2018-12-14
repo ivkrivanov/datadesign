@@ -5,9 +5,10 @@ namespace Warehouse.Store.Lookups
     using Serenity.ComponentModel;
     using Serenity.Data;
     using Serenity.Web;
+    using Warehouse.Store.Scripts;
 
     [LookupScript]
-    public class OrderShipCityLookup : RowLookupScript<Entities.OrderRow>
+    public class OrderShipCityLookup : MultiTenantRowLookupScript<Entities.OrderRow>
     {
         public OrderShipCityLookup()
         {
@@ -25,6 +26,8 @@ namespace Warehouse.Store.Lookups
                     new Criteria(fld.ShipCountry).IsNotNull() &
                     new Criteria(fld.ShipCity) != "" &
                     new Criteria(fld.ShipCity).IsNotNull());
+
+            AddTenantFilter(query);
         }
 
         protected override void ApplyOrder(SqlQuery query)
