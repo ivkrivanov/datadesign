@@ -27,6 +27,7 @@
         CategoryName?: string;
         CategoryDescription?: string;
         CategoryPicture?: number[];
+        DetailList?: ProductDetailRow[];
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -72,6 +73,7 @@
             CategoryName = "CategoryName",
             CategoryDescription = "CategoryDescription",
             CategoryPicture = "CategoryPicture",
+            DetailList = "DetailList",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",

@@ -1,42 +1,58 @@
 ﻿
 namespace Warehouse.Store.Entities
 {
-    using Serenity;
     using Serenity.ComponentModel;
     using Serenity.Data;
     using Serenity.Data.Mapping;
     using System;
     using System.ComponentModel;
-    using System.IO;
+    using Warehouse.Administration.Entities;
 
     [ConnectionKey("Store"), Module("Store"), TableName("[dbo].[Product Details]")]
     [DisplayName("Product Detail"), InstanceName("Product Detail")]
     [ReadPermission("Store:General")]
     [ModifyPermission("Store:General")]
-    public sealed class ProductDetailRow : Row, IIdRow
+    public sealed class ProductDetailRow : LoggingRow, IIdRow, IIsActiveRow, IMultiTenantRow
     {
         [DisplayName("Detail Id"), Column("DetailID"), Identity]
         public Int32? DetailId
         {
-            get { return Fields.DetailId[this]; }
-            set { Fields.DetailId[this] = value; }
+            get { return Fields.DetailID[this]; }
+            set { Fields.DetailID[this] = value; }
         }
 
-        [DisplayName("Product Id"), Column("ProductID"), NotNull]
-        public Int32? ProductId
+        //[DisplayName("Product Id"), Column("ProductID"), NotNull]
+        //public Int32? ProductId
+        //{
+        //    get { return Fields.ProductId[this]; }
+        //    set { Fields.ProductId[this] = value; }
+        //}
+
+        [DisplayName("Product Id"), PrimaryKey, ForeignKey(typeof(ProductRow)), LeftJoin("p"), Updatable(false)]
+        public Int32? ProductID
         {
-            get { return Fields.ProductId[this]; }
-            set { Fields.ProductId[this] = value; }
+            get { return Fields.ProductID[this]; }
+            set { Fields.ProductID[this] = value; }
         }
 
-        [DisplayName("Quantity"), NotNull]
+        //[DisplayName("Product"), PrimaryKey, ForeignKey(typeof(ProductRow)), LeftJoin("p")]
+        //[LookupEditor(typeof(ProductRow))]
+        //public Int32? ProductID
+        //{
+        //    get { return Fields.ProductID[this]; }
+        //    set { Fields.ProductID[this] = value; }
+        //}
+
+
+
+        [DisplayName("Quantity"), NotNull, DefaultValue(1), AlignRight]
         public Single? Quantity
         {
             get { return Fields.Quantity[this]; }
             set { Fields.Quantity[this] = value; }
         }
 
-        [DisplayName("Product Quantity"), NotNull]
+        [DisplayName("Product Quantity"), NotNull, DefaultValue(1),  AlignRight]
         public Single? ProductQuantity
         {
             get { return Fields.ProductQuantity[this]; }
@@ -57,51 +73,72 @@ namespace Warehouse.Store.Entities
             set { Fields.PlanPrice[this] = value; }
         }
 
-        [DisplayName("Insert Date"), NotNull]
-        public DateTime? InsertDate
+        [Origin("p"), MinSelectLevel(SelectLevel.List)]
+        public String ProductName
         {
-            get { return Fields.InsertDate[this]; }
-            set { Fields.InsertDate[this] = value; }
+            get { return Fields.ProductName[this]; }
+            set { Fields.ProductName[this] = value; }
         }
 
-        [DisplayName("Insert User Id"), NotNull]
-        public Int32? InsertUserId
+        [Origin("p")]
+        public Boolean? ProductDiscontinued
         {
-            get { return Fields.InsertUserId[this]; }
-            set { Fields.InsertUserId[this] = value; }
+            get { return Fields.ProductDiscontinued[this]; }
+            set { Fields.ProductDiscontinued[this] = value; }
         }
 
-        [DisplayName("Update Date")]
-        public DateTime? UpdateDate
+        [Origin("p")]
+        public Int32? ProductSupplierID
         {
-            get { return Fields.UpdateDate[this]; }
-            set { Fields.UpdateDate[this] = value; }
+            get { return Fields.ProductSupplierID[this]; }
+            set { Fields.ProductSupplierID[this] = value; }
         }
 
-        [DisplayName("Update User Id")]
-        public Int32? UpdateUserId
+        [Origin("p")]
+        public String ProductQuantityPerUnit
         {
-            get { return Fields.UpdateUserId[this]; }
-            set { Fields.UpdateUserId[this] = value; }
+            get { return Fields.ProductQuantityPerUnit[this]; }
+            set { Fields.ProductQuantityPerUnit[this] = value; }
         }
 
-        [DisplayName("Is Active"), NotNull]
-        public Int16? IsActive
+        [Origin("p")]
+        public Decimal? ProductUnitPrice
         {
-            get { return Fields.IsActive[this]; }
-            set { Fields.IsActive[this] = value; }
+            get { return Fields.ProductUnitPrice[this]; }
+            set { Fields.ProductUnitPrice[this] = value; }
         }
 
-        [DisplayName("Tenant Id"), NotNull]
+        #region Tenant & Activ
+
+        [Insertable(false), Updatable(false)]
         public Int32? TenantId
         {
             get { return Fields.TenantId[this]; }
             set { Fields.TenantId[this] = value; }
         }
 
+        public Int32Field TenantIdField
+        {
+            get { return Fields.TenantId; }
+        }
+
+        [NotNull, Insertable(false), Updatable(true)]
+        public Int16? IsActive
+        {
+            get { return Fields.IsActive[this]; }
+            set { Fields.IsActive[this] = value; }
+        }
+
+        Int16Field IIsActiveRow.IsActiveField
+        {
+            get { return Fields.IsActive; }
+        }
+
+        #endregion Tenant & Activ
+
         IIdField IIdRow.IdField
         {
-            get { return Fields.DetailId; }
+            get { return Fields.DetailID; }
         }
 
         public static readonly RowFields Fields = new RowFields().Init();
@@ -111,20 +148,23 @@ namespace Warehouse.Store.Entities
         {
         }
 
-        public class RowFields : RowFieldsBase
+        public class RowFields : LoggingRowFields
         {
-            public Int32Field DetailId;
-            public Int32Field ProductId;
+            public Int32Field DetailID;
+            public Int32Field ProductID;
             public SingleField Quantity;
             public SingleField ProductQuantity;
             public SingleField Reduction;
             public DecimalField PlanPrice;
-            public DateTimeField InsertDate;
-            public Int32Field InsertUserId;
-            public DateTimeField UpdateDate;
-            public Int32Field UpdateUserId;
+
             public Int16Field IsActive;
             public Int32Field TenantId;
+
+            public StringField ProductName;
+            public BooleanField ProductDiscontinued;
+            public Int32Field ProductSupplierID;
+            public StringField ProductQuantityPerUnit;
+            public DecimalField ProductUnitPrice;
         }
     }
 }

@@ -3,6 +3,7 @@ namespace Warehouse.Store.Forms
 {
     using Serenity.ComponentModel;
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel;
 
     [FormScript("Store.Product")]
@@ -15,6 +16,11 @@ namespace Warehouse.Store.Forms
         public Boolean Discontinued { get; set; }
         public Int32 SupplierID { get; set; }
         public Int32 CategoryID { get; set; }
+
+        [Category("Order Details")]
+        [ProductDetailsEditor]
+        public List<Entities.ProductDetailRow> DetailList { get; set; }
+
         [Category("Pricing")]
         public String QuantityPerUnit { get; set; }
         public Decimal UnitPrice { get; set; }

@@ -1,52 +1,46 @@
-﻿
-namespace Warehouse.Store {
+﻿namespace Warehouse.Store {
     export interface ProductDetailRow {
-        DetailId?: number;
-        ProductId?: number;
+        ProductID?: number;
         Quantity?: number;
         ProductQuantity?: number;
         Reduction?: number;
         PlanPrice?: number;
-        InsertDate?: string;
-        InsertUserId?: number;
-        UpdateDate?: string;
-        UpdateUserId?: number;
         IsActive?: number;
         TenantId?: number;
+        ProductName?: string;
+        ProductDiscontinued?: boolean;
+        ProductSupplierID?: number;
+        ProductQuantityPerUnit?: string;
+        ProductUnitPrice?: number;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
     }
 
     export namespace ProductDetailRow {
-        export const idProperty = 'DetailId';
+        export const idProperty = 'DetailID';
+        export const isActiveProperty = 'IsActive';
         export const localTextPrefix = 'Store.ProductDetail';
 
-        export namespace Fields {
-            export declare const DetailId;
-            export declare const ProductId;
-            export declare const Quantity;
-            export declare const ProductQuantity;
-            export declare const Reduction;
-            export declare const PlanPrice;
-            export declare const InsertDate;
-            export declare const InsertUserId;
-            export declare const UpdateDate;
-            export declare const UpdateUserId;
-            export declare const IsActive;
-            export declare const TenantId;
+        export declare const enum Fields {
+            ProductID = "ProductID",
+            Quantity = "Quantity",
+            ProductQuantity = "ProductQuantity",
+            Reduction = "Reduction",
+            PlanPrice = "PlanPrice",
+            IsActive = "IsActive",
+            TenantId = "TenantId",
+            ProductName = "ProductName",
+            ProductDiscontinued = "ProductDiscontinued",
+            ProductSupplierID = "ProductSupplierID",
+            ProductQuantityPerUnit = "ProductQuantityPerUnit",
+            ProductUnitPrice = "ProductUnitPrice",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate"
         }
-
-        [
-            'DetailId',
-            'ProductId',
-            'Quantity',
-            'ProductQuantity',
-            'Reduction',
-            'PlanPrice',
-            'InsertDate',
-            'InsertUserId',
-            'UpdateDate',
-            'UpdateUserId',
-            'IsActive',
-            'TenantId'
-        ].forEach(x => (<any>Fields)[x] = x);
     }
 }
+

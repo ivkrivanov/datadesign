@@ -1291,54 +1291,61 @@ declare namespace Warehouse.Store {
 declare namespace Warehouse.Store {
 }
 declare namespace Warehouse.Store {
-    class ProductDetailForm extends Serenity.PrefixedContext {
-        static formKey: string;
-    }
+}
+declare namespace Warehouse.Store {
     interface ProductDetailForm {
-        ProductId: Serenity.IntegerEditor;
+        ProductID: Serenity.IntegerEditor;
         Quantity: Serenity.DecimalEditor;
         ProductQuantity: Serenity.DecimalEditor;
         Reduction: Serenity.DecimalEditor;
         PlanPrice: Serenity.DecimalEditor;
-        InsertDate: Serenity.DateEditor;
-        InsertUserId: Serenity.IntegerEditor;
-        UpdateDate: Serenity.DateEditor;
-        UpdateUserId: Serenity.IntegerEditor;
-        IsActive: Serenity.IntegerEditor;
-        TenantId: Serenity.IntegerEditor;
+    }
+    class ProductDetailForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
     }
 }
 declare namespace Warehouse.Store {
     interface ProductDetailRow {
-        DetailId?: number;
-        ProductId?: number;
+        ProductID?: number;
         Quantity?: number;
         ProductQuantity?: number;
         Reduction?: number;
         PlanPrice?: number;
-        InsertDate?: string;
-        InsertUserId?: number;
-        UpdateDate?: string;
-        UpdateUserId?: number;
         IsActive?: number;
         TenantId?: number;
+        ProductName?: string;
+        ProductDiscontinued?: boolean;
+        ProductSupplierID?: number;
+        ProductQuantityPerUnit?: string;
+        ProductUnitPrice?: number;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
     }
     namespace ProductDetailRow {
-        const idProperty = "DetailId";
+        const idProperty = "DetailID";
+        const isActiveProperty = "IsActive";
         const localTextPrefix = "Store.ProductDetail";
-        namespace Fields {
-            const DetailId: any;
-            const ProductId: any;
-            const Quantity: any;
-            const ProductQuantity: any;
-            const Reduction: any;
-            const PlanPrice: any;
-            const InsertDate: any;
-            const InsertUserId: any;
-            const UpdateDate: any;
-            const UpdateUserId: any;
-            const IsActive: any;
-            const TenantId: any;
+        const enum Fields {
+            ProductID = "ProductID",
+            Quantity = "Quantity",
+            ProductQuantity = "ProductQuantity",
+            Reduction = "Reduction",
+            PlanPrice = "PlanPrice",
+            IsActive = "IsActive",
+            TenantId = "TenantId",
+            ProductName = "ProductName",
+            ProductDiscontinued = "ProductDiscontinued",
+            ProductSupplierID = "ProductSupplierID",
+            ProductQuantityPerUnit = "ProductQuantityPerUnit",
+            ProductUnitPrice = "ProductUnitPrice",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate"
         }
     }
 }
@@ -1350,12 +1357,12 @@ declare namespace Warehouse.Store {
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<ProductDetailRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<ProductDetailRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        namespace Methods {
-            const Create: string;
-            const Update: string;
-            const Delete: string;
-            const Retrieve: string;
-            const List: string;
+        const enum Methods {
+            Create = "Store/ProductDetail/Create",
+            Update = "Store/ProductDetail/Update",
+            Delete = "Store/ProductDetail/Delete",
+            Retrieve = "Store/ProductDetail/Retrieve",
+            List = "Store/ProductDetail/List"
         }
     }
 }
@@ -1366,6 +1373,7 @@ declare namespace Warehouse.Store {
         Discontinued: Serenity.BooleanEditor;
         SupplierID: Serenity.LookupEditor;
         CategoryID: Serenity.LookupEditor;
+        DetailList: ProductDetailsEditor;
         QuantityPerUnit: Serenity.StringEditor;
         UnitPrice: Serenity.DecimalEditor;
         UnitsInStock: Serenity.IntegerEditor;
@@ -1485,6 +1493,7 @@ declare namespace Warehouse.Store {
         CategoryName?: string;
         CategoryDescription?: string;
         CategoryPicture?: number[];
+        DetailList?: ProductDetailRow[];
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -1525,6 +1534,7 @@ declare namespace Warehouse.Store {
             CategoryName = "CategoryName",
             CategoryDescription = "CategoryDescription",
             CategoryPicture = "CategoryPicture",
+            DetailList = "DetailList",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",
@@ -2431,10 +2441,9 @@ declare namespace Warehouse.Store {
 declare namespace Warehouse.Store {
     class ProductDetailDialog extends Serenity.EntityDialog<ProductDetailRow, any> {
         protected getFormKey(): string;
-        protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
-        protected getService(): string;
         protected form: ProductDetailForm;
+        constructor();
     }
 }
 declare namespace Warehouse.Store {
@@ -2445,6 +2454,15 @@ declare namespace Warehouse.Store {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+    }
+}
+declare namespace Warehouse.Store {
+    class ProductDetailsEditor extends Common.GridEditorBase<ProductDetailRow> {
+        protected getColumsKey(): string;
+        protected readonly DialogType: typeof ProductDetailDialog;
+        protected getLocalTextPrefix(): string;
+        constructor(container: JQuery);
+        validateEntity(row: any, id: any): boolean;
     }
 }
 declare namespace Warehouse.Store {

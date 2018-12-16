@@ -5,6 +5,7 @@ namespace Warehouse.Store.Entities
     using Serenity.Data;
     using Serenity.Data.Mapping;
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel;
     using System.IO;
     using Warehouse.Administration.Entities;
@@ -197,6 +198,13 @@ namespace Warehouse.Store.Entities
             set { Fields.CategoryPicture[this] = value; }
         }
 
+        [DisplayName("Details"), MasterDetailRelation(foreignKey:"ProductID"), NotMapped]
+        public List<ProductDetailRow> DetailList
+        {
+            get { return Fields.DetailList[this]; }
+            set { Fields.DetailList[this] = value; }
+        }
+
         #region Tenant & Activ
 
         [Insertable(false), Updatable(false)]
@@ -275,6 +283,9 @@ namespace Warehouse.Store.Entities
             public StringField CategoryName;
             public StringField CategoryDescription;
             public StreamField CategoryPicture;
+
+            public RowListField<ProductDetailRow> DetailList;
+
         }
     }
 }

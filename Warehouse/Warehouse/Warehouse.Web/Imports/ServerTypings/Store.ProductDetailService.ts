@@ -1,5 +1,4 @@
-﻿
-namespace Warehouse.Store {
+﻿namespace Warehouse.Store {
     export namespace ProductDetailService {
         export const baseUrl = 'Store/ProductDetail';
 
@@ -9,12 +8,12 @@ namespace Warehouse.Store {
         export declare function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<ProductDetailRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         export declare function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<ProductDetailRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
 
-        export namespace Methods {
-            export declare const Create: string;
-            export declare const Update: string;
-            export declare const Delete: string;
-            export declare const Retrieve: string;
-            export declare const List: string;
+        export declare const enum Methods {
+            Create = "Store/ProductDetail/Create",
+            Update = "Store/ProductDetail/Update",
+            Delete = "Store/ProductDetail/Delete",
+            Retrieve = "Store/ProductDetail/Retrieve",
+            List = "Store/ProductDetail/List"
         }
 
         [
@@ -24,10 +23,10 @@ namespace Warehouse.Store {
             'Retrieve', 
             'List'
         ].forEach(x => {
-            (<any>ProductDetailService)[x] = function (r, s, o) { 
-                return Q.serviceRequest(baseUrl + '/' + x, r, s, o); 
+            (<any>ProductDetailService)[x] = function (r, s, o) {
+                return Q.serviceRequest(baseUrl + '/' + x, r, s, o);
             };
-            (<any>Methods)[x] = baseUrl + '/' + x;
         });
     }
 }
+

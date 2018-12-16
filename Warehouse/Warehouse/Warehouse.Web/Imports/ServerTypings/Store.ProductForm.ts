@@ -5,6 +5,7 @@
         Discontinued: Serenity.BooleanEditor;
         SupplierID: Serenity.LookupEditor;
         CategoryID: Serenity.LookupEditor;
+        DetailList: ProductDetailsEditor;
         QuantityPerUnit: Serenity.StringEditor;
         UnitPrice: Serenity.DecimalEditor;
         UnitsInStock: Serenity.IntegerEditor;
@@ -27,8 +28,9 @@
                 var w1 = s.ImageUploadEditor;
                 var w2 = s.BooleanEditor;
                 var w3 = s.LookupEditor;
-                var w4 = s.DecimalEditor;
-                var w5 = s.IntegerEditor;
+                var w4 = ProductDetailsEditor;
+                var w5 = s.DecimalEditor;
+                var w6 = s.IntegerEditor;
 
                 Q.initFormType(ProductForm, [
                     'ProductName', w0,
@@ -36,11 +38,12 @@
                     'Discontinued', w2,
                     'SupplierID', w3,
                     'CategoryID', w3,
+                    'DetailList', w4,
                     'QuantityPerUnit', w0,
-                    'UnitPrice', w4,
-                    'UnitsInStock', w5,
-                    'UnitsOnOrder', w5,
-                    'ReorderLevel', w5
+                    'UnitPrice', w5,
+                    'UnitsInStock', w6,
+                    'UnitsOnOrder', w6,
+                    'ReorderLevel', w6
                 ]);
             }
         }
