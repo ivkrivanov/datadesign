@@ -21,5 +21,5 @@ using MyPages = Warehouse.Store.Pages;
 //[assembly: NavigationLink(int.MaxValue, "Store/Order Detail", typeof(MyPages.OrderDetailController), icon: null)]
 
 //[assembly: NavigationLink(int.MaxValue, "Store/Product Lang", typeof(MyPages.ProductLangController), icon: null)]
-
+[assembly: NavigationLink(int.MaxValue, "Store/Product Detail", typeof(MyPages.ProductDetailController), icon: null)]
 

@@ -27,7 +27,7 @@ namespace Warehouse.Store.Entities
             set { Fields.Id[this] = value; }
         }
 
-        [DisplayName("Customer Id"), Size(5), PrimaryKey, NotNull, QuickSearch, Updatable(false), LookupInclude]
+        [DisplayName("Customer Id"), Size(14), PrimaryKey, NotNull, QuickSearch, Updatable(false), LookupInclude]
         public String CustomerID
         {
             get { return Fields.CustomerID[this]; }

@@ -1745,6 +1745,18 @@
     <Content Include="Modules\Store\Shipper\ShipperIndex.cshtml" />
     <TypeScriptCompile Include="Modules\Store\Shipper\ShipperDialog.ts" />
     <TypeScriptCompile Include="Modules\Store\Shipper\ShipperGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ProductDetailRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ProductDetailService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Modules\Store\ProductDetail\ProductDetailIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Store\ProductDetail\ProductDetailDialog.ts" />
+    <TypeScriptCompile Include="Modules\Store\ProductDetail\ProductDetailGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ProductDetailForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -1793,6 +1805,7 @@
     <Compile Include="Migrations\StoreDB\StoreDB_20181213_150000_Notes.cs" />
     <Compile Include="Migrations\StoreDB\StoreDB_20181213_160000_ProductLog.cs" />
     <Compile Include="Migrations\StoreDB\StoreDB_20181214_100000_CustomerGrossSales.cs" />
+    <Compile Include="Migrations\StoreDB\StoreDB_20181216_14000000_Product_Detail.cs" />
     <Compile Include="Modules\Administration\AdministrationNavigation.cs" />
     <Compile Include="Modules\Administration\Language\LanguageLookup.cs" />
     <Compile Include="Modules\Administration\RolePermission\RolePermissionUpdateRequest.cs" />
@@ -1991,9 +2004,16 @@
     <Compile Include="Modules\Store\Shipper\ShipperPage.cs" />
     <Compile Include="Modules\Store\Shipper\ShipperColumns.cs" />
     <Compile Include="Modules\Store\Shipper\ShipperForm.cs" />
+    <Compile Include="Modules\Store\ProductDetail\ProductDetailRow.cs" />
+    <Compile Include="Modules\Store\ProductDetail\ProductDetailRepository.cs" />
+    <Compile Include="Modules\Store\ProductDetail\ProductDetailEndpoint.cs" />
+    <Compile Include="Modules\Store\ProductDetail\ProductDetailPage.cs" />
+    <Compile Include="Modules\Store\ProductDetail\ProductDetailColumns.cs" />
+    <Compile Include="Modules\Store\ProductDetail\ProductDetailForm.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Modules\Store\ProductLog\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

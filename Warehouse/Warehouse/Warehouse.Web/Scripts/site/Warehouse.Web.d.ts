@@ -1291,6 +1291,75 @@ declare namespace Warehouse.Store {
 declare namespace Warehouse.Store {
 }
 declare namespace Warehouse.Store {
+    class ProductDetailForm extends Serenity.PrefixedContext {
+        static formKey: string;
+    }
+    interface ProductDetailForm {
+        ProductId: Serenity.IntegerEditor;
+        Quantity: Serenity.DecimalEditor;
+        ProductQuantity: Serenity.DecimalEditor;
+        Reduction: Serenity.DecimalEditor;
+        PlanPrice: Serenity.DecimalEditor;
+        InsertDate: Serenity.DateEditor;
+        InsertUserId: Serenity.IntegerEditor;
+        UpdateDate: Serenity.DateEditor;
+        UpdateUserId: Serenity.IntegerEditor;
+        IsActive: Serenity.IntegerEditor;
+        TenantId: Serenity.IntegerEditor;
+    }
+}
+declare namespace Warehouse.Store {
+    interface ProductDetailRow {
+        DetailId?: number;
+        ProductId?: number;
+        Quantity?: number;
+        ProductQuantity?: number;
+        Reduction?: number;
+        PlanPrice?: number;
+        InsertDate?: string;
+        InsertUserId?: number;
+        UpdateDate?: string;
+        UpdateUserId?: number;
+        IsActive?: number;
+        TenantId?: number;
+    }
+    namespace ProductDetailRow {
+        const idProperty = "DetailId";
+        const localTextPrefix = "Store.ProductDetail";
+        namespace Fields {
+            const DetailId: any;
+            const ProductId: any;
+            const Quantity: any;
+            const ProductQuantity: any;
+            const Reduction: any;
+            const PlanPrice: any;
+            const InsertDate: any;
+            const InsertUserId: any;
+            const UpdateDate: any;
+            const UpdateUserId: any;
+            const IsActive: any;
+            const TenantId: any;
+        }
+    }
+}
+declare namespace Warehouse.Store {
+    namespace ProductDetailService {
+        const baseUrl = "Store/ProductDetail";
+        function Create(request: Serenity.SaveRequest<ProductDetailRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<ProductDetailRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<ProductDetailRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<ProductDetailRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        namespace Methods {
+            const Create: string;
+            const Update: string;
+            const Delete: string;
+            const Retrieve: string;
+            const List: string;
+        }
+    }
+}
+declare namespace Warehouse.Store {
     interface ProductForm {
         ProductName: Serenity.StringEditor;
         ProductImage: Serenity.ImageUploadEditor;
@@ -2357,6 +2426,25 @@ declare namespace Warehouse.Store {
         private setSaveButtonState;
         private saveClick;
         protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
+    }
+}
+declare namespace Warehouse.Store {
+    class ProductDetailDialog extends Serenity.EntityDialog<ProductDetailRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        protected form: ProductDetailForm;
+    }
+}
+declare namespace Warehouse.Store {
+    class ProductDetailGrid extends Serenity.EntityGrid<ProductDetailRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof ProductDetailDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
     }
 }
 declare namespace Warehouse.Store {

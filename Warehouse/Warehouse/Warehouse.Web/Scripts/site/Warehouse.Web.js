@@ -1008,6 +1008,93 @@ var Warehouse;
 (function (Warehouse) {
     var Store;
     (function (Store) {
+        var ProductDetailForm = /** @class */ (function (_super) {
+            __extends(ProductDetailForm, _super);
+            function ProductDetailForm() {
+                return _super !== null && _super.apply(this, arguments) || this;
+            }
+            ProductDetailForm.formKey = 'Store.ProductDetail';
+            return ProductDetailForm;
+        }(Serenity.PrefixedContext));
+        Store.ProductDetailForm = ProductDetailForm;
+        [,
+            ['ProductId', function () { return Serenity.IntegerEditor; }],
+            ['Quantity', function () { return Serenity.DecimalEditor; }],
+            ['ProductQuantity', function () { return Serenity.DecimalEditor; }],
+            ['Reduction', function () { return Serenity.DecimalEditor; }],
+            ['PlanPrice', function () { return Serenity.DecimalEditor; }],
+            ['InsertDate', function () { return Serenity.DateEditor; }],
+            ['InsertUserId', function () { return Serenity.IntegerEditor; }],
+            ['UpdateDate', function () { return Serenity.DateEditor; }],
+            ['UpdateUserId', function () { return Serenity.IntegerEditor; }],
+            ['IsActive', function () { return Serenity.IntegerEditor; }],
+            ['TenantId', function () { return Serenity.IntegerEditor; }]
+        ].forEach(function (x) { return Object.defineProperty(ProductDetailForm.prototype, x[0], {
+            get: function () {
+                return this.w(x[0], x[1]());
+            },
+            enumerable: true,
+            configurable: true
+        }); });
+    })(Store = Warehouse.Store || (Warehouse.Store = {}));
+})(Warehouse || (Warehouse = {}));
+var Warehouse;
+(function (Warehouse) {
+    var Store;
+    (function (Store) {
+        var ProductDetailRow;
+        (function (ProductDetailRow) {
+            ProductDetailRow.idProperty = 'DetailId';
+            ProductDetailRow.localTextPrefix = 'Store.ProductDetail';
+            var Fields;
+            (function (Fields) {
+            })(Fields = ProductDetailRow.Fields || (ProductDetailRow.Fields = {}));
+            [
+                'DetailId',
+                'ProductId',
+                'Quantity',
+                'ProductQuantity',
+                'Reduction',
+                'PlanPrice',
+                'InsertDate',
+                'InsertUserId',
+                'UpdateDate',
+                'UpdateUserId',
+                'IsActive',
+                'TenantId'
+            ].forEach(function (x) { return Fields[x] = x; });
+        })(ProductDetailRow = Store.ProductDetailRow || (Store.ProductDetailRow = {}));
+    })(Store = Warehouse.Store || (Warehouse.Store = {}));
+})(Warehouse || (Warehouse = {}));
+var Warehouse;
+(function (Warehouse) {
+    var Store;
+    (function (Store) {
+        var ProductDetailService;
+        (function (ProductDetailService) {
+            ProductDetailService.baseUrl = 'Store/ProductDetail';
+            var Methods;
+            (function (Methods) {
+            })(Methods = ProductDetailService.Methods || (ProductDetailService.Methods = {}));
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                ProductDetailService[x] = function (r, s, o) {
+                    return Q.serviceRequest(ProductDetailService.baseUrl + '/' + x, r, s, o);
+                };
+                Methods[x] = ProductDetailService.baseUrl + '/' + x;
+            });
+        })(ProductDetailService = Store.ProductDetailService || (Store.ProductDetailService = {}));
+    })(Store = Warehouse.Store || (Warehouse.Store = {}));
+})(Warehouse || (Warehouse = {}));
+var Warehouse;
+(function (Warehouse) {
+    var Store;
+    (function (Store) {
         var ProductForm = /** @class */ (function (_super) {
             __extends(ProductForm, _super);
             function ProductForm(prefix) {
@@ -4585,6 +4672,51 @@ var Warehouse;
             return ProductGrid;
         }(Serenity.EntityGrid));
         Store.ProductGrid = ProductGrid;
+    })(Store = Warehouse.Store || (Warehouse.Store = {}));
+})(Warehouse || (Warehouse = {}));
+var Warehouse;
+(function (Warehouse) {
+    var Store;
+    (function (Store) {
+        var ProductDetailDialog = /** @class */ (function (_super) {
+            __extends(ProductDetailDialog, _super);
+            function ProductDetailDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Store.ProductDetailForm(_this.idPrefix);
+                return _this;
+            }
+            ProductDetailDialog.prototype.getFormKey = function () { return Store.ProductDetailForm.formKey; };
+            ProductDetailDialog.prototype.getIdProperty = function () { return Store.ProductDetailRow.idProperty; };
+            ProductDetailDialog.prototype.getLocalTextPrefix = function () { return Store.ProductDetailRow.localTextPrefix; };
+            ProductDetailDialog.prototype.getService = function () { return Store.ProductDetailService.baseUrl; };
+            ProductDetailDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], ProductDetailDialog);
+            return ProductDetailDialog;
+        }(Serenity.EntityDialog));
+        Store.ProductDetailDialog = ProductDetailDialog;
+    })(Store = Warehouse.Store || (Warehouse.Store = {}));
+})(Warehouse || (Warehouse = {}));
+var Warehouse;
+(function (Warehouse) {
+    var Store;
+    (function (Store) {
+        var ProductDetailGrid = /** @class */ (function (_super) {
+            __extends(ProductDetailGrid, _super);
+            function ProductDetailGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            ProductDetailGrid.prototype.getColumnsKey = function () { return 'Store.ProductDetail'; };
+            ProductDetailGrid.prototype.getDialogType = function () { return Store.ProductDetailDialog; };
+            ProductDetailGrid.prototype.getIdProperty = function () { return Store.ProductDetailRow.idProperty; };
+            ProductDetailGrid.prototype.getLocalTextPrefix = function () { return Store.ProductDetailRow.localTextPrefix; };
+            ProductDetailGrid.prototype.getService = function () { return Store.ProductDetailService.baseUrl; };
+            ProductDetailGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], ProductDetailGrid);
+            return ProductDetailGrid;
+        }(Serenity.EntityGrid));
+        Store.ProductDetailGrid = ProductDetailGrid;
     })(Store = Warehouse.Store || (Warehouse.Store = {}));
 })(Warehouse || (Warehouse = {}));
 var Warehouse;
