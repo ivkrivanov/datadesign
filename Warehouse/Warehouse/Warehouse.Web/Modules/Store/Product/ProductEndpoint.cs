@@ -38,12 +38,12 @@ namespace Warehouse.Store.Endpoints
             return new MyRepository().Retrieve(connection, request);
         }
 
-        public ListResponse<MyRow> List(IDbConnection connection, ListRequest request)
+        public ListResponse<MyRow> List(IDbConnection connection, ProductListRequest request)
         {
             return new MyRepository().List(connection, request);
         }
 
-        public FileContentResult ListExcel(IDbConnection connection, ListRequest request)
+        public FileContentResult ListExcel(IDbConnection connection, ProductListRequest request)
         {
             var data = List(connection, request).Entities;
             var report = new DynamicDataReport(data, request.IncludeColumns, typeof(Columns.ProductColumns));

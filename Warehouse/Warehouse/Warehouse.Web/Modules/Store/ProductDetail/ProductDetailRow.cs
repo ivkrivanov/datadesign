@@ -10,12 +10,12 @@ namespace Warehouse.Store.Entities
 
     [ConnectionKey("Store"), Module("Store"), TableName("[dbo].[Product Details]")]
     [DisplayName("Product Detail"), InstanceName("Product Detail")]
-    [ReadPermission("Store:General")]
-    [ModifyPermission("Store:General")]
+    [ReadPermission(PermissionKeys.General)]
+    [ModifyPermission(PermissionKeys.General)]
     public sealed class ProductDetailRow : LoggingRow, IIdRow, IIsActiveRow, IMultiTenantRow
     {
-        [DisplayName("Detail Id"), Column("DetailID"), Identity]
-        public Int32? DetailId
+        [DisplayName("Detail Id"), Identity]
+        public Int32? DetailID
         {
             get { return Fields.DetailID[this]; }
             set { Fields.DetailID[this] = value; }
@@ -29,6 +29,7 @@ namespace Warehouse.Store.Entities
         //}
 
         [DisplayName("Product Id"), PrimaryKey, ForeignKey(typeof(ProductRow)), LeftJoin("p"), Updatable(false)]
+        [LookupEditor(typeof(ProductRow))]
         public Int32? ProductID
         {
             get { return Fields.ProductID[this]; }
@@ -42,8 +43,6 @@ namespace Warehouse.Store.Entities
         //    get { return Fields.ProductID[this]; }
         //    set { Fields.ProductID[this] = value; }
         //}
-
-
 
         [DisplayName("Quantity"), NotNull, DefaultValue(1), AlignRight]
         public Single? Quantity

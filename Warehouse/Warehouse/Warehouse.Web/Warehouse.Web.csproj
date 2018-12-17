@@ -963,6 +963,9 @@
     <TypeScriptCompile Include="Imports\ServerTypings\Store.ProductLangService.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ProductListRequest.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\Store.ProductLogRow.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
@@ -1757,7 +1760,6 @@
     </TypeScriptCompile>
     <Content Include="Modules\Store\ProductDetail\ProductDetailIndex.cshtml" />
     <TypeScriptCompile Include="Modules\Store\ProductDetail\ProductDetailDialog.ts" />
-    <TypeScriptCompile Include="Modules\Store\ProductDetail\ProductDetailGrid.ts" />
     <TypeScriptCompile Include="Imports\ServerTypings\Store.ProductDetailForm.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
@@ -1905,6 +1907,7 @@
     <Compile Include="Modules\Store\Order\OrderShipCity.cs" />
     <Compile Include="Modules\Store\Order\OrderShipCountry.cs" />
     <Compile Include="Modules\Store\Order\OrderShippingState.cs" />
+    <Compile Include="Modules\Store\Product\ProductListRequest.cs" />
     <Compile Include="Modules\Store\Product\ProductLogRow.cs" />
     <Compile Include="Modules\Store\Scripts\MultiTenantRowLookupScript.cs" />
     <Compile Include="Modules\Store\StorePermissionKeys.cs" />

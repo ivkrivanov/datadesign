@@ -17,7 +17,7 @@ namespace Warehouse.Store.Forms
         public Int32 SupplierID { get; set; }
         public Int32 CategoryID { get; set; }
 
-        [Category("Order Details")]
+        [Category("Product Details")]
         [ProductDetailsEditor]
         public List<Entities.ProductDetailRow> DetailList { get; set; }
 

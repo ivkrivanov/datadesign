@@ -7514,3 +7514,9 @@ section.content > .s-DataGrid {
 .s-Store-ShipperDialog .caption {
   width: 150px;
 }
+.s-Store-ProductDetailDialog > .size {
+  width: 650px;
+}
+.s-Store-ProductDetailDialog .caption {
+  width: 150px;
+}

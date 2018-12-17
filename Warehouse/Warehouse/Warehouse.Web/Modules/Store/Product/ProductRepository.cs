@@ -36,7 +36,7 @@ namespace Warehouse.Store.Repositories
             return new MyRetrieveHandler().Process(connection, request);
         }
 
-        public ListResponse<MyRow> List(IDbConnection connection, ListRequest request)
+        public ListResponse<MyRow> List(IDbConnection connection, ProductListRequest request)
         {
             return new MyListHandler().Process(connection, request);
         }
@@ -59,6 +59,26 @@ namespace Warehouse.Store.Repositories
         private class MyDeleteHandler : DeleteRequestHandler<MyRow> { }
         private class MyUndeleteHandler : UndeleteRequestHandler<MyRow> { }
         private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> { }
-        private class MyListHandler : ListRequestHandler<MyRow> { }
+        private class MyListHandler : ListRequestHandler<MyRow, ProductListRequest>
+        {
+            protected override void ApplyFilters(SqlQuery query)
+            {
+                base.ApplyFilters(query);
+
+                if (Request.ProductID != null)
+                {
+                    var pd = Entities.ProductDetailRow.Fields.As("pd");
+
+                    query.Where(Criteria.Exists(
+                        query.SubQuery()
+                            .Select("1")
+                            .From(pd)
+                            .Where(
+                                pd.DetailID == fld.ProductID &
+                                pd.ProductID == Request.ProductID.Value)
+                                .ToString()));
+                }
+            }
+        }
     }
 }

@@ -16,7 +16,12 @@ namespace Warehouse.Store {
 
             this.form = new ProductDetailForm(this.idPrefix);
 
-
+            this.form.ProductID.changeSelect2(e => {
+                var productID = Q.toId(this.form.ProductID.value);
+                if (productID != null) {
+                    this.form.PlanPrice.value = ProductRow.getLookup().itemById[productID].UnitPrice;
+                }
+            });
 
         }
     }

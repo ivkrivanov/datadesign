@@ -1,5 +1,5 @@
 ﻿
-namespace Warehouse.Store.Columns
+namespace Warehouse.Store.Forms
 {
     using Serenity.ComponentModel;
     using System;

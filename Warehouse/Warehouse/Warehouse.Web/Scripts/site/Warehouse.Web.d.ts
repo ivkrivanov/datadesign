@@ -1294,7 +1294,7 @@ declare namespace Warehouse.Store {
 }
 declare namespace Warehouse.Store {
     interface ProductDetailForm {
-        ProductID: Serenity.IntegerEditor;
+        ProductID: Serenity.LookupEditor;
         Quantity: Serenity.DecimalEditor;
         ProductQuantity: Serenity.DecimalEditor;
         Reduction: Serenity.DecimalEditor;
@@ -1308,6 +1308,7 @@ declare namespace Warehouse.Store {
 }
 declare namespace Warehouse.Store {
     interface ProductDetailRow {
+        DetailID?: number;
         ProductID?: number;
         Quantity?: number;
         ProductQuantity?: number;
@@ -1330,6 +1331,7 @@ declare namespace Warehouse.Store {
         const isActiveProperty = "IsActive";
         const localTextPrefix = "Store.ProductDetail";
         const enum Fields {
+            DetailID = "DetailID",
             ProductID = "ProductID",
             Quantity = "Quantity",
             ProductQuantity = "ProductQuantity",
@@ -1352,15 +1354,9 @@ declare namespace Warehouse.Store {
 declare namespace Warehouse.Store {
     namespace ProductDetailService {
         const baseUrl = "Store/ProductDetail";
-        function Create(request: Serenity.SaveRequest<ProductDetailRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Update(request: Serenity.SaveRequest<ProductDetailRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<ProductDetailRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<ProductDetailRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         const enum Methods {
-            Create = "Store/ProductDetail/Create",
-            Update = "Store/ProductDetail/Update",
-            Delete = "Store/ProductDetail/Delete",
             Retrieve = "Store/ProductDetail/Retrieve",
             List = "Store/ProductDetail/List"
         }
@@ -1420,6 +1416,11 @@ declare namespace Warehouse.Store {
             Retrieve = "Store/ProductLang/Retrieve",
             List = "Store/ProductLang/List"
         }
+    }
+}
+declare namespace Warehouse.Store {
+    interface ProductListRequest extends Serenity.ListRequest {
+        ProductID?: number;
     }
 }
 declare namespace Warehouse.Store {
@@ -1549,7 +1550,7 @@ declare namespace Warehouse.Store {
         function Update(request: Serenity.SaveRequest<ProductRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<ProductRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<ProductRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: ProductListRequest, onSuccess?: (response: Serenity.ListResponse<ProductRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         const enum Methods {
             Create = "Store/Product/Create",
             Update = "Store/Product/Update",

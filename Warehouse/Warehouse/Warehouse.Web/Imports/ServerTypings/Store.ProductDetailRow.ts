@@ -1,5 +1,6 @@
 ﻿namespace Warehouse.Store {
     export interface ProductDetailRow {
+        DetailID?: number;
         ProductID?: number;
         Quantity?: number;
         ProductQuantity?: number;
@@ -24,6 +25,7 @@
         export const localTextPrefix = 'Store.ProductDetail';
 
         export declare const enum Fields {
+            DetailID = "DetailID",
             ProductID = "ProductID",
             Quantity = "Quantity",
             ProductQuantity = "ProductQuantity",
