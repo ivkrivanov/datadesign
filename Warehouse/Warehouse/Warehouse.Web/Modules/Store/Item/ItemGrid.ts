@@ -1,15 +1,15 @@
 ﻿namespace Warehouse.Store {
 
-    import fld = ProductRow.Fields;
+    import fld = ItemRow.Fields;
 
     @Serenity.Decorators.registerClass()
     @Serenity.Decorators.filterable()
-    export class ProductGrid extends Serenity.EntityGrid<ProductRow, any> {
-        protected getColumnsKey() { return 'Store.Product'; }
-        protected getDialogType() { return ProductDialog; }
-        protected getIdProperty() { return ProductRow.idProperty; }
-        protected getLocalTextPrefix() { return ProductRow.localTextPrefix; }
-        protected getService() { return ProductService.baseUrl; }
+    export class ItemGrid extends Serenity.EntityGrid<ItemRow, any> {
+        protected getColumnsKey() { return 'Store.Item'; }
+        protected getDialogType() { return ItemDialog; }
+        protected getIdProperty() { return ItemRow.idProperty; }
+        protected getLocalTextPrefix() { return ItemRow.localTextPrefix; }
+        protected getService() { return ItemService.baseUrl; }
 
         private pendingChanges: Q.Dictionary<any> = {};
 
@@ -32,7 +32,7 @@
             buttons.push(Common.PdfExportHelper.createToolButton({
                 grid: this,
                 onViewSubmit: () => this.onViewSubmit(),
-                reportTitle: 'Product List',
+                reportTitle: 'Item List',
                 columnTitles: {
                     'Discontinued': 'Dis.',
                 },
@@ -80,8 +80,8 @@
 
         private numericInputFormatter(ctx) {
             var klass = 'edit numeric';
-            var item = ctx.item as ProductRow;
-            var pending = this.pendingChanges[item.ProductID];
+            var item = ctx.item as ItemRow;
+            var pending = this.pendingChanges[item.ItemID];
 
             if (pending && pending[ctx.column.field] !== undefined) {
                 klass += ' dirty';
@@ -117,8 +117,8 @@
          */
         private selectFormatter(ctx: Slick.FormatterContext, idField: string, lookup: Q.Lookup<any>) {
             var klass = 'edit';
-            var item = ctx.item as ProductRow;
-            var pending = this.pendingChanges[item.ProductID];
+            var item = ctx.item as ItemRow;
+            var pending = this.pendingChanges[item.ItemID];
             var column = ctx.column as Slick.Column;
 
             if (pending && pending[idField] !== undefined) {
@@ -141,13 +141,14 @@
         }
 
         private getEffectiveValue(item, field): any {
-            var pending = this.pendingChanges[item.ProductID];
+            var pending = this.pendingChanges[item.ItemID];
             if (pending && pending[field] !== undefined) {
                 return pending[field];
             }
 
             return item[field];
         }
+
 
         protected getColumns() {
             var columns = super.getColumns();
@@ -165,9 +166,9 @@
             supplier.format = ctx => this.selectFormatter(ctx, fld.SupplierID, SupplierRow.getLookup());
 
             Q.first(columns, x => x.field === fld.UnitPrice).format = num;
-            Q.first(columns, x => x.field === fld.UnitsInStock).format = num;
-            Q.first(columns, x => x.field === fld.UnitsOnOrder).format = num;
-            Q.first(columns, x => x.field === fld.ReorderLevel).format = num;
+            //Q.first(columns, x => x.field === fld.UnitsInStock).format = num;
+            //Q.first(columns, x => x.field === fld.UnitsOnOrder).format = num;
+            //Q.first(columns, x => x.field === fld.ReorderLevel).format = num;
 
             return columns;
         }
@@ -225,6 +226,7 @@
 
             this.setSaveButtonState();
         }
+
         private setSaveButtonState() {
             this.toolbar.findButton('apply-changes-button').toggleClass('disabled',
                 Object.keys(this.pendingChanges).length === 0);
@@ -250,7 +252,7 @@
                 var key = keys[current];
                 var entity = Q.deepClone(self.pendingChanges[key]);
                 entity.ProductID = key;
-                Q.serviceRequest('Warehouse/Product/Update', {
+                Q.serviceRequest('Warehouse/Item/Update', {
                     EntityId: key,
                     Entity: entity
                 }, (response) => {

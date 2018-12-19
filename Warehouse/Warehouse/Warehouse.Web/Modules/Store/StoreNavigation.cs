@@ -22,4 +22,5 @@ using MyPages = Warehouse.Store.Pages;
 
 //[assembly: NavigationLink(int.MaxValue, "Store/Product Lang", typeof(MyPages.ProductLangController), icon: null)]
 [assembly: NavigationLink(int.MaxValue, "Store/Product Detail", typeof(MyPages.ProductDetailController), icon: null)]
-
+[assembly: NavigationLink(int.MaxValue, "Store/Item", typeof(MyPages.ItemController), icon: null)]
+//[assembly: NavigationLink(int.MaxValue, "Store/Item Lang", typeof(MyPages.ItemLangController), icon: null)]

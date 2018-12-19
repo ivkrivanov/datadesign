@@ -7,11 +7,11 @@ namespace Warehouse.Store.Entities
     using System;
     using System.ComponentModel;
 
-    [ConnectionKey("Store"), Module("Store"), TableName("[dbo].[CategoryLang]")]
-    [DisplayName("Category Lang"), InstanceName("CategoryLang")]
+    [ConnectionKey("Store"), Module("Store"), TableName("[dbo].[ItemLang]")]
+    [DisplayName("Item Lang"), InstanceName("Item Lang")]
     [ReadPermission("Store:General")]
     [ModifyPermission("Store:General")]
-    public sealed class CategoryLangRow : Row, IIdRow, INameRow, ILocalizationRow
+    public sealed class ItemLangRow : Row, IIdRow, INameRow, ILocalizationRow
     {
         [DisplayName("Id"), Column("ID"), Identity]
         public Int32? Id
@@ -20,11 +20,11 @@ namespace Warehouse.Store.Entities
             set { Fields.Id[this] = value; }
         }
 
-        [DisplayName("Category Id"), Column("CategoryID"), NotNull]
-        public Int32? CategoryId
+        [DisplayName("Item Id"), Column("ItemID"), NotNull]
+        public Int32? ItemId
         {
-            get { return Fields.CategoryId[this]; }
-            set { Fields.CategoryId[this] = value; }
+            get { return Fields.ItemId[this]; }
+            set { Fields.ItemId[this] = value; }
         }
 
         [DisplayName("Language Id"), Column("LanguageID"), NotNull]
@@ -34,11 +34,11 @@ namespace Warehouse.Store.Entities
             set { Fields.LanguageId[this] = value; }
         }
 
-        [DisplayName("Category Name"), Size(15), QuickSearch]
-        public String CategoryName
+        [DisplayName("Item Name"), Size(40), QuickSearch]
+        public String ItemName
         {
-            get { return Fields.CategoryName[this]; }
-            set { Fields.CategoryName[this] = value; }
+            get { return Fields.ItemName[this]; }
+            set { Fields.ItemName[this] = value; }
         }
 
         [DisplayName("Description")]
@@ -55,7 +55,7 @@ namespace Warehouse.Store.Entities
 
         StringField INameRow.NameField
         {
-            get { return Fields.CategoryName; }
+            get { return Fields.ItemName; }
         }
 
         public Field CultureIdField
@@ -65,7 +65,7 @@ namespace Warehouse.Store.Entities
 
         public static readonly RowFields Fields = new RowFields().Init();
 
-        public CategoryLangRow()
+        public ItemLangRow()
             : base(Fields)
         {
         }
@@ -73,9 +73,9 @@ namespace Warehouse.Store.Entities
         public class RowFields : RowFieldsBase
         {
             public Int32Field Id;
-            public Int32Field CategoryId;
+            public Int32Field ItemId;
             public Int32Field LanguageId;
-            public StringField CategoryName;
+            public StringField ItemName;
             public StringField Description;
         }
     }

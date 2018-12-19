@@ -594,6 +594,8 @@
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
     <EmbeddedResource Include="Migrations\StoreDB\StoreDBScript_SqlServer..sql" />
+    <Content Include="Migrations\StoreDB\StoreDBScript_Constrants_SqlServer.sql" />
+    <Content Include="Migrations\StoreDB\StoreDBScript_Items_SqlServer.sql" />
     <Content Include="Modules\Store\Customer\Store.CustomerDialog.Template.html" />
     <Content Include="wkhtmltopdf-license.txt" />
     <None Include="packages.config" />
@@ -913,6 +915,12 @@
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\Store.Gender.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ItemColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ItemListRequest.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\Store.NoteRow.ts">
@@ -1763,6 +1771,24 @@
     <TypeScriptCompile Include="Imports\ServerTypings\Store.ProductDetailForm.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ItemRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ItemService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Modules\Store\Item\ItemIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Store\Item\ItemDialog.ts" />
+    <TypeScriptCompile Include="Modules\Store\Item\ItemGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ItemForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ItemLangRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ItemLangService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -1815,6 +1841,7 @@
     <Compile Include="Migrations\StoreDB\StoreDB_20181213_160000_ProductLog.cs" />
     <Compile Include="Migrations\StoreDB\StoreDB_20181214_100000_CustomerGrossSales.cs" />
     <Compile Include="Migrations\StoreDB\StoreDB_20181216_14000000_Product_Detail.cs" />
+    <Compile Include="Migrations\StoreDB\StoreDB_20181219_11000000_Items.cs" />
     <Compile Include="Modules\Administration\AdministrationNavigation.cs" />
     <Compile Include="Modules\Administration\Language\LanguageLookup.cs" />
     <Compile Include="Modules\Administration\RolePermission\RolePermissionUpdateRequest.cs" />
@@ -1902,6 +1929,7 @@
     <Compile Include="Modules\Store\Customer\CustomerRepresentativesRow.cs" />
     <Compile Include="Modules\Store\Customer\EmployeeListDecorator.cs" />
     <Compile Include="Modules\Store\Employee\Gender.cs" />
+    <Compile Include="Modules\Store\Item\ItemListRequest.cs" />
     <Compile Include="Modules\Store\Note\NotesBehavior.cs" />
     <Compile Include="Modules\Store\Order\OrderListRequest.cs" />
     <Compile Include="Modules\Store\Order\OrderShipCity.cs" />
@@ -2020,6 +2048,15 @@
     <Compile Include="Modules\Store\ProductDetail\ProductDetailPage.cs" />
     <Compile Include="Modules\Store\ProductDetail\ProductDetailColumns.cs" />
     <Compile Include="Modules\Store\ProductDetail\ProductDetailForm.cs" />
+    <Compile Include="Modules\Store\Item\ItemRow.cs" />
+    <Compile Include="Modules\Store\Item\ItemRepository.cs" />
+    <Compile Include="Modules\Store\Item\ItemEndpoint.cs" />
+    <Compile Include="Modules\Store\Item\ItemPage.cs" />
+    <Compile Include="Modules\Store\Item\ItemColumns.cs" />
+    <Compile Include="Modules\Store\Item\ItemForm.cs" />
+    <Compile Include="Modules\Store\ItemLang\ItemLangRow.cs" />
+    <Compile Include="Modules\Store\ItemLang\ItemLangRepository.cs" />
+    <Compile Include="Modules\Store\ItemLang\ItemLangEndpoint.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

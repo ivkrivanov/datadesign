@@ -123,6 +123,16 @@ namespace MVC
                 public const string EmployeeIndex = "~/Modules/Store/Employee/EmployeeIndex.cshtml";
             }
 
+            public static class Item
+            {
+                public const string ItemIndex = "~/Modules/Store/Item/ItemIndex.cshtml";
+            }
+
+            public static class ItemLang
+            {
+                public const string ItemLangIndex = "~/Modules/Store/ItemLang/ItemLangIndex.cshtml";
+            }
+
             public static class Note
             {
                 public const string NoteIndex = "~/Modules/Store/Note/NoteIndex.cshtml";

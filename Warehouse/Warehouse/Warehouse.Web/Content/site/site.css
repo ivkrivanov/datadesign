@@ -7520,3 +7520,15 @@ section.content > .s-DataGrid {
 .s-Store-ProductDetailDialog .caption {
   width: 150px;
 }
+.s-Store-ItemDialog > .size {
+  width: 650px;
+}
+.s-Store-ItemDialog .caption {
+  width: 150px;
+}
+.s-Store-ItemLangDialog > .size {
+  width: 650px;
+}
+.s-Store-ItemLangDialog .caption {
+  width: 150px;
+}

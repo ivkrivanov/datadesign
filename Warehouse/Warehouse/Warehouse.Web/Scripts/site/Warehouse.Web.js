@@ -849,6 +849,114 @@ var Warehouse;
 (function (Warehouse) {
     var Store;
     (function (Store) {
+        var ItemForm = /** @class */ (function (_super) {
+            __extends(ItemForm, _super);
+            function ItemForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!ItemForm.init) {
+                    ItemForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.StringEditor;
+                    var w1 = s.IntegerEditor;
+                    var w2 = s.DecimalEditor;
+                    Q.initFormType(ItemForm, [
+                        'ItemCode', w0,
+                        'ItemBarcode', w0,
+                        'ItemLabel', w0,
+                        'ItemName', w0,
+                        'ItemImage', w0,
+                        'SupplierID', w1,
+                        'CategoryID', w1,
+                        'MeasureID', w1,
+                        'QuantityPerUnit', w1,
+                        'UnitPrice', w2,
+                        'AccountID', w1
+                    ]);
+                }
+                return _this;
+            }
+            ItemForm.formKey = 'Store.Item';
+            return ItemForm;
+        }(Serenity.PrefixedContext));
+        Store.ItemForm = ItemForm;
+    })(Store = Warehouse.Store || (Warehouse.Store = {}));
+})(Warehouse || (Warehouse = {}));
+var Warehouse;
+(function (Warehouse) {
+    var Store;
+    (function (Store) {
+        var ItemLangRow;
+        (function (ItemLangRow) {
+            ItemLangRow.idProperty = 'Id';
+            ItemLangRow.nameProperty = 'ItemName';
+            ItemLangRow.localTextPrefix = 'Store.ItemLang';
+        })(ItemLangRow = Store.ItemLangRow || (Store.ItemLangRow = {}));
+    })(Store = Warehouse.Store || (Warehouse.Store = {}));
+})(Warehouse || (Warehouse = {}));
+var Warehouse;
+(function (Warehouse) {
+    var Store;
+    (function (Store) {
+        var ItemLangService;
+        (function (ItemLangService) {
+            ItemLangService.baseUrl = 'Store/ItemLang';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                ItemLangService[x] = function (r, s, o) {
+                    return Q.serviceRequest(ItemLangService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(ItemLangService = Store.ItemLangService || (Store.ItemLangService = {}));
+    })(Store = Warehouse.Store || (Warehouse.Store = {}));
+})(Warehouse || (Warehouse = {}));
+var Warehouse;
+(function (Warehouse) {
+    var Store;
+    (function (Store) {
+        var ItemRow;
+        (function (ItemRow) {
+            ItemRow.idProperty = 'ItemID';
+            ItemRow.isActiveProperty = 'IsActive';
+            ItemRow.nameProperty = 'ItemName';
+            ItemRow.localTextPrefix = 'Store.Item';
+            ItemRow.lookupKey = 'Store.Item';
+            function getLookup() {
+                return Q.getLookup('Store.Item');
+            }
+            ItemRow.getLookup = getLookup;
+        })(ItemRow = Store.ItemRow || (Store.ItemRow = {}));
+    })(Store = Warehouse.Store || (Warehouse.Store = {}));
+})(Warehouse || (Warehouse = {}));
+var Warehouse;
+(function (Warehouse) {
+    var Store;
+    (function (Store) {
+        var ItemService;
+        (function (ItemService) {
+            ItemService.baseUrl = 'Store/Item';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                ItemService[x] = function (r, s, o) {
+                    return Q.serviceRequest(ItemService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(ItemService = Store.ItemService || (Store.ItemService = {}));
+    })(Store = Warehouse.Store || (Warehouse.Store = {}));
+})(Warehouse || (Warehouse = {}));
+var Warehouse;
+(function (Warehouse) {
+    var Store;
+    (function (Store) {
         var NoteRow;
         (function (NoteRow) {
             NoteRow.idProperty = 'NoteId';
@@ -1328,7 +1436,7 @@ var Warehouse;
 (function (Warehouse) {
     var Texts;
     (function (Texts) {
-        Warehouse['Texts'] = Q.proxyTexts(Texts, '', { Db: { Administration: { Language: { Id: 1, LanguageId: 1, LanguageName: 1 }, Role: { RoleId: 1, RoleName: 1, TenantId: 1 }, RolePermission: { PermissionKey: 1, RoleId: 1, RolePermissionId: 1, RoleRoleName: 1 }, Tenant: { TenantId: 1, TenantName: 1 }, Translation: { CustomText: 1, EntityPlural: 1, Key: 1, OverrideConfirmation: 1, SaveChangesButton: 1, SourceLanguage: 1, SourceText: 1, TargetLanguage: 1, TargetText: 1 }, User: { DisplayName: 1, Email: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, LastDirectoryUpdate: 1, Password: 1, PasswordConfirm: 1, PasswordHash: 1, PasswordSalt: 1, Source: 1, TenantId: 1, TenantName: 1, UpdateDate: 1, UpdateUserId: 1, UserId: 1, UserImage: 1, Username: 1 }, UserPermission: { Granted: 1, PermissionKey: 1, User: 1, UserId: 1, UserPermissionId: 1, Username: 1 }, UserRole: { RoleId: 1, User: 1, UserId: 1, UserRoleId: 1, Username: 1 } }, Common: { UserPreference: { Name: 1, PreferenceType: 1, UserId: 1, UserPreferenceId: 1, Value: 1 } }, Northwind: { CustomerGrossSales: { ContactName: 1, CustomerId: 1, GrossAmount: 1, ProductId: 1, ProductName: 1 } }, Store: { Categories: { CategoryId: 1, CategoryName: 1, Description: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, Picture: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, CategoryLang: { CategoryId: 1, CategoryName: 1, Description: 1, Id: 1, LanguageId: 1 }, Customer: { Address: 1, City: 1, CompanyName: 1, ContactName: 1, ContactTitle: 1, Country: 1, CustomerID: 1, Email: 1, Fax: 1, Id: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, LastContactDate: 1, LastContactedBy: 1, NoteList: 1, Phone: 1, PostalCode: 1, Region: 1, Representatives: 1, SendBulletin: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, CustomerDetails: { Email: 1, Id: 1, LastContactDate: 1, LastContactedBy: 1, LastContactedByAddress: 1, LastContactedByBirthDate: 1, LastContactedByCity: 1, LastContactedByCountry: 1, LastContactedByExtension: 1, LastContactedByFirstName: 1, LastContactedByHireDate: 1, LastContactedByHomePhone: 1, LastContactedByLastName: 1, LastContactedByNotes: 1, LastContactedByPhoto: 1, LastContactedByPhotoPath: 1, LastContactedByPostalCode: 1, LastContactedByRegion: 1, LastContactedByReportsTo: 1, LastContactedByTitle: 1, LastContactedByTitleOfCourtesy: 1, SendBulletin: 1 }, CustomerRepresentatives: { CustomerId: 1, EmployeeId: 1, RepresentativeId: 1 }, Employee: { Address: 1, BirthDate: 1, City: 1, Country: 1, EmployeeID: 1, Extension: 1, FirstName: 1, FullName: 1, Gender: 1, HireDate: 1, HomePhone: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, LastName: 1, Notes: 1, Photo: 1, PhotoPath: 1, PostalCode: 1, Region: 1, ReportsTo: 1, ReportsToAddress: 1, ReportsToBirthDate: 1, ReportsToCity: 1, ReportsToCountry: 1, ReportsToExtension: 1, ReportsToFirstName: 1, ReportsToFullName: 1, ReportsToHireDate: 1, ReportsToHomePhone: 1, ReportsToLastName: 1, ReportsToNotes: 1, ReportsToPhoto: 1, ReportsToPhotoPath: 1, ReportsToPostalCode: 1, ReportsToRegion: 1, ReportsToReportsTo: 1, ReportsToTitle: 1, ReportsToTitleOfCourtesy: 1, TenantId: 1, Title: 1, TitleOfCourtesy: 1, UpdateDate: 1, UpdateUserId: 1 }, Note: { EntityId: 1, EntityType: 1, InsertDate: 1, InsertUserDisplayName: 1, InsertUserId: 1, NoteId: 1, Text: 1 }, Order: { CustomerCity: 1, CustomerCompanyName: 1, CustomerContactName: 1, CustomerContactTitle: 1, CustomerCountry: 1, CustomerFax: 1, CustomerID: 1, CustomerPhone: 1, CustomerRegion: 1, DetailList: 1, EmployeeFullName: 1, EmployeeGender: 1, EmployeeID: 1, EmployeeReportsToFullName: 1, Freight: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, OrderDate: 1, OrderID: 1, RequiredDate: 1, ShipAddress: 1, ShipCity: 1, ShipCountry: 1, ShipName: 1, ShipPostalCode: 1, ShipRegion: 1, ShipVia: 1, ShipViaCompanyName: 1, ShipViaPhone: 1, ShippedDate: 1, ShippingState: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, OrderDetail: { DetailID: 1, Discount: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, LineTotal: 1, OrderCustomerID: 1, OrderDate: 1, OrderEmployeeID: 1, OrderID: 1, OrderShipCity: 1, OrderShipCountry: 1, OrderShipVia: 1, OrderShippedDate: 1, ProductDiscontinued: 1, ProductID: 1, ProductName: 1, ProductQuantityPerUnit: 1, ProductSupplierID: 1, ProductUnitPrice: 1, Quantity: 1, TenantId: 1, UnitPrice: 1, UpdateDate: 1, UpdateUserId: 1 }, Product: { CategoryDescription: 1, CategoryID: 1, CategoryName: 1, CategoryPicture: 1, DetailList: 1, Discontinued: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, ProductID: 1, ProductImage: 1, ProductName: 1, QuantityPerUnit: 1, ReorderLevel: 1, SupplierAddress: 1, SupplierCity: 1, SupplierCompanyName: 1, SupplierContactName: 1, SupplierContactTitle: 1, SupplierCountry: 1, SupplierFax: 1, SupplierHomePage: 1, SupplierID: 1, SupplierPhone: 1, SupplierPostalCode: 1, SupplierRegion: 1, TenantId: 1, UnitPrice: 1, UnitsInStock: 1, UnitsOnOrder: 1, UpdateDate: 1, UpdateUserId: 1 }, ProductDetail: { DetailID: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, PlanPrice: 1, ProductDiscontinued: 1, ProductID: 1, ProductName: 1, ProductQuantity: 1, ProductQuantityPerUnit: 1, ProductSupplierID: 1, ProductUnitPrice: 1, Quantity: 1, Reduction: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, ProductLang: { Id: 1, LanguageId: 1, ProductId: 1, ProductName: 1 }, ProductLog: { CategoryID: 1, ChangingUserId: 1, Discontinued: 1, OperationType: 1, ProductID: 1, ProductImage: 1, ProductLogID: 1, ProductName: 1, QuantityPerUnit: 1, ReorderLevel: 1, SupplierID: 1, UnitPrice: 1, UnitsInStock: 1, UnitsOnOrder: 1, ValidFrom: 1, ValidUntil: 1 }, Shipper: { CompanyName: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, Phone: 1, ShipperID: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, Supplier: { Address: 1, City: 1, CompanyName: 1, ContactName: 1, ContactTitle: 1, Country: 1, Fax: 1, HomePage: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, Phone: 1, PostalCode: 1, Region: 1, SupplierID: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 } } }, Forms: { Membership: { ChangePassword: { FormTitle: 1, SubmitButton: 1, Success: 1 }, ForgotPassword: { BackToLogin: 1, FormInfo: 1, FormTitle: 1, SubmitButton: 1, Success: 1 }, Login: { FacebookButton: 1, ForgotPassword: 1, FormTitle: 1, GoogleButton: 1, OR: 1, RememberMe: 1, SignInButton: 1, SignUpButton: 1 }, ResetPassword: { BackToLogin: 1, EmailSubject: 1, FormTitle: 1, SubmitButton: 1, Success: 1 }, SignUp: { AcceptTerms: 1, ActivateEmailSubject: 1, ActivationCompleteMessage: 1, BackToLogin: 1, ConfirmEmail: 1, ConfirmPassword: 1, DisplayName: 1, Email: 1, FormInfo: 1, FormTitle: 1, Password: 1, SubmitButton: 1, Success: 1 } } }, Site: { AccessDenied: { ClickToChangeUser: 1, ClickToLogin: 1, LackPermissions: 1, NotLoggedIn: 1, PageTitle: 1 }, BasicProgressDialog: { CancelTitle: 1, PleaseWait: 1 }, BulkServiceAction: { AllHadErrorsFormat: 1, AllSuccessFormat: 1, ConfirmationFormat: 1, ErrorCount: 1, NothingToProcess: 1, SomeHadErrorsFormat: 1, SuccessCount: 1 }, Dashboard: { ContentDescription: 1 }, Layout: { FooterCopyright: 1, FooterInfo: 1, FooterRights: 1, GeneralSettings: 1, Language: 1, Theme: 1, ThemeBlack: 1, ThemeBlackLight: 1, ThemeBlue: 1, ThemeBlueLight: 1, ThemeGreen: 1, ThemeGreenLight: 1, ThemePurple: 1, ThemePurpleLight: 1, ThemeRed: 1, ThemeRedLight: 1, ThemeYellow: 1, ThemeYellowLight: 1 }, RolePermissionDialog: { DialogTitle: 1, EditButton: 1, SaveSuccess: 1 }, UserDialog: { EditPermissionsButton: 1, EditRolesButton: 1 }, UserPermissionDialog: { DialogTitle: 1, Grant: 1, Permission: 1, Revoke: 1, SaveSuccess: 1 }, UserRoleDialog: { DialogTitle: 1, SaveSuccess: 1 }, ValidationError: { Title: 1 } }, Validation: { AuthenticationError: 1, CantFindUserWithEmail: 1, CurrentPasswordMismatch: 1, DeleteForeignKeyError: 1, EmailConfirm: 1, EmailInUse: 1, InvalidActivateToken: 1, InvalidResetToken: 1, MinRequiredPasswordLength: 1, SavePrimaryKeyError: 1 } });
+        Warehouse['Texts'] = Q.proxyTexts(Texts, '', { Db: { Administration: { Language: { Id: 1, LanguageId: 1, LanguageName: 1 }, Role: { RoleId: 1, RoleName: 1, TenantId: 1 }, RolePermission: { PermissionKey: 1, RoleId: 1, RolePermissionId: 1, RoleRoleName: 1 }, Tenant: { TenantId: 1, TenantName: 1 }, Translation: { CustomText: 1, EntityPlural: 1, Key: 1, OverrideConfirmation: 1, SaveChangesButton: 1, SourceLanguage: 1, SourceText: 1, TargetLanguage: 1, TargetText: 1 }, User: { DisplayName: 1, Email: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, LastDirectoryUpdate: 1, Password: 1, PasswordConfirm: 1, PasswordHash: 1, PasswordSalt: 1, Source: 1, TenantId: 1, TenantName: 1, UpdateDate: 1, UpdateUserId: 1, UserId: 1, UserImage: 1, Username: 1 }, UserPermission: { Granted: 1, PermissionKey: 1, User: 1, UserId: 1, UserPermissionId: 1, Username: 1 }, UserRole: { RoleId: 1, User: 1, UserId: 1, UserRoleId: 1, Username: 1 } }, Common: { UserPreference: { Name: 1, PreferenceType: 1, UserId: 1, UserPreferenceId: 1, Value: 1 } }, Northwind: { CustomerGrossSales: { ContactName: 1, CustomerId: 1, GrossAmount: 1, ProductId: 1, ProductName: 1 } }, Store: { Categories: { CategoryId: 1, CategoryName: 1, Description: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, Picture: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, CategoryLang: { CategoryId: 1, CategoryName: 1, Description: 1, Id: 1, LanguageId: 1 }, Customer: { Address: 1, City: 1, CompanyName: 1, ContactName: 1, ContactTitle: 1, Country: 1, CustomerID: 1, Email: 1, Fax: 1, Id: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, LastContactDate: 1, LastContactedBy: 1, NoteList: 1, Phone: 1, PostalCode: 1, Region: 1, Representatives: 1, SendBulletin: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, CustomerDetails: { Email: 1, Id: 1, LastContactDate: 1, LastContactedBy: 1, LastContactedByAddress: 1, LastContactedByBirthDate: 1, LastContactedByCity: 1, LastContactedByCountry: 1, LastContactedByExtension: 1, LastContactedByFirstName: 1, LastContactedByHireDate: 1, LastContactedByHomePhone: 1, LastContactedByLastName: 1, LastContactedByNotes: 1, LastContactedByPhoto: 1, LastContactedByPhotoPath: 1, LastContactedByPostalCode: 1, LastContactedByRegion: 1, LastContactedByReportsTo: 1, LastContactedByTitle: 1, LastContactedByTitleOfCourtesy: 1, SendBulletin: 1 }, CustomerRepresentatives: { CustomerId: 1, EmployeeId: 1, RepresentativeId: 1 }, Employee: { Address: 1, BirthDate: 1, City: 1, Country: 1, EmployeeID: 1, Extension: 1, FirstName: 1, FullName: 1, Gender: 1, HireDate: 1, HomePhone: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, LastName: 1, Notes: 1, Photo: 1, PhotoPath: 1, PostalCode: 1, Region: 1, ReportsTo: 1, ReportsToAddress: 1, ReportsToBirthDate: 1, ReportsToCity: 1, ReportsToCountry: 1, ReportsToExtension: 1, ReportsToFirstName: 1, ReportsToFullName: 1, ReportsToHireDate: 1, ReportsToHomePhone: 1, ReportsToLastName: 1, ReportsToNotes: 1, ReportsToPhoto: 1, ReportsToPhotoPath: 1, ReportsToPostalCode: 1, ReportsToRegion: 1, ReportsToReportsTo: 1, ReportsToTitle: 1, ReportsToTitleOfCourtesy: 1, TenantId: 1, Title: 1, TitleOfCourtesy: 1, UpdateDate: 1, UpdateUserId: 1 }, Item: { AccountID: 1, CategoryDescription: 1, CategoryID: 1, CategoryName: 1, CategoryPicture: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, ItemBarcode: 1, ItemCode: 1, ItemID: 1, ItemImage: 1, ItemLabel: 1, ItemName: 1, MeasureID: 1, QuantityPerUnit: 1, SupplierAddress: 1, SupplierCity: 1, SupplierCompanyName: 1, SupplierContactName: 1, SupplierContactTitle: 1, SupplierCountry: 1, SupplierFax: 1, SupplierHomePage: 1, SupplierID: 1, SupplierPhone: 1, SupplierPostalCode: 1, SupplierRegion: 1, TenantID: 1, UnitPrice: 1, UpdateDate: 1, UpdateUserId: 1 }, ItemLang: { Description: 1, Id: 1, ItemId: 1, ItemName: 1, LanguageId: 1 }, Note: { EntityId: 1, EntityType: 1, InsertDate: 1, InsertUserDisplayName: 1, InsertUserId: 1, NoteId: 1, Text: 1 }, Order: { CustomerCity: 1, CustomerCompanyName: 1, CustomerContactName: 1, CustomerContactTitle: 1, CustomerCountry: 1, CustomerFax: 1, CustomerID: 1, CustomerPhone: 1, CustomerRegion: 1, DetailList: 1, EmployeeFullName: 1, EmployeeGender: 1, EmployeeID: 1, EmployeeReportsToFullName: 1, Freight: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, OrderDate: 1, OrderID: 1, RequiredDate: 1, ShipAddress: 1, ShipCity: 1, ShipCountry: 1, ShipName: 1, ShipPostalCode: 1, ShipRegion: 1, ShipVia: 1, ShipViaCompanyName: 1, ShipViaPhone: 1, ShippedDate: 1, ShippingState: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, OrderDetail: { DetailID: 1, Discount: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, LineTotal: 1, OrderCustomerID: 1, OrderDate: 1, OrderEmployeeID: 1, OrderID: 1, OrderShipCity: 1, OrderShipCountry: 1, OrderShipVia: 1, OrderShippedDate: 1, ProductDiscontinued: 1, ProductID: 1, ProductName: 1, ProductQuantityPerUnit: 1, ProductSupplierID: 1, ProductUnitPrice: 1, Quantity: 1, TenantId: 1, UnitPrice: 1, UpdateDate: 1, UpdateUserId: 1 }, Product: { CategoryDescription: 1, CategoryID: 1, CategoryName: 1, CategoryPicture: 1, DetailList: 1, Discontinued: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, ProductID: 1, ProductImage: 1, ProductName: 1, QuantityPerUnit: 1, ReorderLevel: 1, SupplierAddress: 1, SupplierCity: 1, SupplierCompanyName: 1, SupplierContactName: 1, SupplierContactTitle: 1, SupplierCountry: 1, SupplierFax: 1, SupplierHomePage: 1, SupplierID: 1, SupplierPhone: 1, SupplierPostalCode: 1, SupplierRegion: 1, TenantId: 1, UnitPrice: 1, UnitsInStock: 1, UnitsOnOrder: 1, UpdateDate: 1, UpdateUserId: 1 }, ProductDetail: { DetailID: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, PlanPrice: 1, ProductDiscontinued: 1, ProductID: 1, ProductName: 1, ProductQuantity: 1, ProductQuantityPerUnit: 1, ProductSupplierID: 1, ProductUnitPrice: 1, Quantity: 1, Reduction: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, ProductLang: { Id: 1, LanguageId: 1, ProductId: 1, ProductName: 1 }, ProductLog: { CategoryID: 1, ChangingUserId: 1, Discontinued: 1, OperationType: 1, ProductID: 1, ProductImage: 1, ProductLogID: 1, ProductName: 1, QuantityPerUnit: 1, ReorderLevel: 1, SupplierID: 1, UnitPrice: 1, UnitsInStock: 1, UnitsOnOrder: 1, ValidFrom: 1, ValidUntil: 1 }, Shipper: { CompanyName: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, Phone: 1, ShipperID: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, Supplier: { Address: 1, City: 1, CompanyName: 1, ContactName: 1, ContactTitle: 1, Country: 1, Fax: 1, HomePage: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, Phone: 1, PostalCode: 1, Region: 1, SupplierID: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 } } }, Forms: { Membership: { ChangePassword: { FormTitle: 1, SubmitButton: 1, Success: 1 }, ForgotPassword: { BackToLogin: 1, FormInfo: 1, FormTitle: 1, SubmitButton: 1, Success: 1 }, Login: { FacebookButton: 1, ForgotPassword: 1, FormTitle: 1, GoogleButton: 1, OR: 1, RememberMe: 1, SignInButton: 1, SignUpButton: 1 }, ResetPassword: { BackToLogin: 1, EmailSubject: 1, FormTitle: 1, SubmitButton: 1, Success: 1 }, SignUp: { AcceptTerms: 1, ActivateEmailSubject: 1, ActivationCompleteMessage: 1, BackToLogin: 1, ConfirmEmail: 1, ConfirmPassword: 1, DisplayName: 1, Email: 1, FormInfo: 1, FormTitle: 1, Password: 1, SubmitButton: 1, Success: 1 } } }, Site: { AccessDenied: { ClickToChangeUser: 1, ClickToLogin: 1, LackPermissions: 1, NotLoggedIn: 1, PageTitle: 1 }, BasicProgressDialog: { CancelTitle: 1, PleaseWait: 1 }, BulkServiceAction: { AllHadErrorsFormat: 1, AllSuccessFormat: 1, ConfirmationFormat: 1, ErrorCount: 1, NothingToProcess: 1, SomeHadErrorsFormat: 1, SuccessCount: 1 }, Dashboard: { ContentDescription: 1 }, Layout: { FooterCopyright: 1, FooterInfo: 1, FooterRights: 1, GeneralSettings: 1, Language: 1, Theme: 1, ThemeBlack: 1, ThemeBlackLight: 1, ThemeBlue: 1, ThemeBlueLight: 1, ThemeGreen: 1, ThemeGreenLight: 1, ThemePurple: 1, ThemePurpleLight: 1, ThemeRed: 1, ThemeRedLight: 1, ThemeYellow: 1, ThemeYellowLight: 1 }, RolePermissionDialog: { DialogTitle: 1, EditButton: 1, SaveSuccess: 1 }, UserDialog: { EditPermissionsButton: 1, EditRolesButton: 1 }, UserPermissionDialog: { DialogTitle: 1, Grant: 1, Permission: 1, Revoke: 1, SaveSuccess: 1 }, UserRoleDialog: { DialogTitle: 1, SaveSuccess: 1 }, ValidationError: { Title: 1 } }, Validation: { AuthenticationError: 1, CantFindUserWithEmail: 1, CurrentPasswordMismatch: 1, DeleteForeignKeyError: 1, EmailConfirm: 1, EmailInUse: 1, InvalidActivateToken: 1, InvalidResetToken: 1, MinRequiredPasswordLength: 1, SavePrimaryKeyError: 1 } });
     })(Texts = Warehouse.Texts || (Warehouse.Texts = {}));
 })(Warehouse || (Warehouse = {}));
 var Warehouse;
@@ -4065,6 +4173,318 @@ var Warehouse;
             return EmployeeGrid;
         }(Serenity.EntityGrid));
         Store.EmployeeGrid = EmployeeGrid;
+    })(Store = Warehouse.Store || (Warehouse.Store = {}));
+})(Warehouse || (Warehouse = {}));
+var Warehouse;
+(function (Warehouse) {
+    var Store;
+    (function (Store) {
+        var ItemDialog = /** @class */ (function (_super) {
+            __extends(ItemDialog, _super);
+            function ItemDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Store.ItemForm(_this.idPrefix);
+                return _this;
+            }
+            ItemDialog.prototype.getFormKey = function () { return Store.ItemForm.formKey; };
+            ItemDialog.prototype.getIdProperty = function () { return Store.ItemRow.idProperty; };
+            ItemDialog.prototype.getLocalTextPrefix = function () { return Store.ItemRow.localTextPrefix; };
+            ItemDialog.prototype.getNameProperty = function () { return Store.ItemRow.nameProperty; };
+            ItemDialog.prototype.getService = function () { return Store.ItemService.baseUrl; };
+            ItemDialog = __decorate([
+                Serenity.Decorators.registerClass(),
+                Serenity.Decorators.maximizable()
+            ], ItemDialog);
+            return ItemDialog;
+        }(Serenity.EntityDialog));
+        Store.ItemDialog = ItemDialog;
+    })(Store = Warehouse.Store || (Warehouse.Store = {}));
+})(Warehouse || (Warehouse = {}));
+var Warehouse;
+(function (Warehouse) {
+    var Store;
+    (function (Store) {
+        var ItemGrid = /** @class */ (function (_super) {
+            __extends(ItemGrid, _super);
+            function ItemGrid(container) {
+                var _this = _super.call(this, container) || this;
+                _this.pendingChanges = {};
+                _this.slickContainer.on('change', '.edit:input', function (e) { return _this.inputsChange(e); });
+                return _this;
+            }
+            ItemGrid.prototype.getColumnsKey = function () { return 'Store.Item'; };
+            ItemGrid.prototype.getDialogType = function () { return Store.ItemDialog; };
+            ItemGrid.prototype.getIdProperty = function () { return Store.ItemRow.idProperty; };
+            ItemGrid.prototype.getLocalTextPrefix = function () { return Store.ItemRow.localTextPrefix; };
+            ItemGrid.prototype.getService = function () { return Store.ItemService.baseUrl; };
+            ItemGrid.prototype.getButtons = function () {
+                var _this = this;
+                var buttons = _super.prototype.getButtons.call(this);
+                buttons.push(Warehouse.Common.ExcelExportHelper.createToolButton({
+                    grid: this,
+                    service: Store.ProductService.baseUrl + '/ListExcel',
+                    onViewSubmit: function () { return _this.onViewSubmit(); },
+                    separator: true
+                }));
+                buttons.push(Warehouse.Common.PdfExportHelper.createToolButton({
+                    grid: this,
+                    onViewSubmit: function () { return _this.onViewSubmit(); },
+                    reportTitle: 'Item List',
+                    columnTitles: {
+                        'Discontinued': 'Dis.',
+                    },
+                    tableOptions: {
+                        columnStyles: {
+                            ProductID: {
+                                columnWidth: 25,
+                                halign: 'right'
+                            },
+                            Discountinued: {
+                                columnWidth: 25
+                            }
+                        }
+                    }
+                }));
+                buttons.push({
+                    title: 'Save Changes',
+                    cssClass: 'apply-changes-button disabled',
+                    onClick: function (e) { return _this.saveClick(); },
+                    separator: true
+                });
+                return buttons;
+            };
+            ItemGrid.prototype.onViewProcessData = function (response) {
+                this.pendingChanges = {};
+                this.setSaveButtonState();
+                return _super.prototype.onViewProcessData.call(this, response);
+            };
+            // PLEASE NOTE! Inline editing in grids is not something Serenity supports nor recommends.
+            // SlickGrid has some set of limitations, UI is very hard to use on some devices like mobile, 
+            // custom widgets and validations are not possible, and as a bonus the code can become a mess.
+            // 
+            // This was just a sample how-to after much requests, and is not supported. 
+            // This is all we can offer, please don't ask us to Guide you...
+            /**
+             * It would be nice if we could use autonumeric, Serenity editors etc. here, to control input validation,
+             * but it's not supported by SlickGrid as we are only allowed to return a string, and should attach
+             * no event handlers to rendered cell contents
+             */
+            ItemGrid.prototype.numericInputFormatter = function (ctx) {
+                var klass = 'edit numeric';
+                var item = ctx.item;
+                var pending = this.pendingChanges[item.ItemID];
+                if (pending && pending[ctx.column.field] !== undefined) {
+                    klass += ' dirty';
+                }
+                var value = this.getEffectiveValue(item, ctx.column.field);
+                return "<input type='text' class='" + klass +
+                    "' data-field='" + ctx.column.field +
+                    "' value='" + Q.formatNumber(value, '0.##') + "'/>";
+            };
+            ItemGrid.prototype.stringInputFormatter = function (ctx) {
+                var klass = 'edit string';
+                var item = ctx.item;
+                var pending = this.pendingChanges[item.ProductID];
+                var column = ctx.column;
+                if (pending && pending[column.field] !== undefined) {
+                    klass += ' dirty';
+                }
+                var value = this.getEffectiveValue(item, column.field);
+                return "<input type='text' class='" + klass +
+                    "' data-field='" + column.field +
+                    "' value='" + Q.attrEncode(value) +
+                    "' maxlength='" + column.sourceItem.maxLength + "'/>";
+            };
+            /**
+             * Sorry but you cannot use LookupEditor, e.g. Select2 here, only possible is a SELECT element
+             */
+            ItemGrid.prototype.selectFormatter = function (ctx, idField, lookup) {
+                var klass = 'edit';
+                var item = ctx.item;
+                var pending = this.pendingChanges[item.ItemID];
+                var column = ctx.column;
+                if (pending && pending[idField] !== undefined) {
+                    klass += ' dirty';
+                }
+                var value = this.getEffectiveValue(item, idField);
+                var markup = "<select class='" + klass +
+                    "' data-field='" + idField +
+                    "' style='width: 100%; max-width: 100%'>";
+                for (var _i = 0, _a = lookup.items; _i < _a.length; _i++) {
+                    var c = _a[_i];
+                    var id = c[lookup.idField];
+                    markup += "<option value='" + Q.attrEncode(id) + "'";
+                    if (id == value) {
+                        markup += " selected";
+                    }
+                    markup += ">" + Q.htmlEncode(c[lookup.textField]) + "</option>";
+                }
+                return markup + "</select>";
+            };
+            ItemGrid.prototype.getEffectiveValue = function (item, field) {
+                var pending = this.pendingChanges[item.ItemID];
+                if (pending && pending[field] !== undefined) {
+                    return pending[field];
+                }
+                return item[field];
+            };
+            ItemGrid.prototype.getColumns = function () {
+                var _this = this;
+                var columns = _super.prototype.getColumns.call(this);
+                var num = function (ctx) { return _this.numericInputFormatter(ctx); };
+                var str = function (ctx) { return _this.stringInputFormatter(ctx); };
+                Q.first(columns, function (x) { return x.field === 'QuantityPerUnit'; }).format = str;
+                var category = Q.first(columns, function (x) { return x.field === "CategoryName" /* CategoryName */; });
+                category.referencedFields = ["CategoryID" /* CategoryID */];
+                category.format = function (ctx) { return _this.selectFormatter(ctx, "CategoryID" /* CategoryID */, Store.CategoriesRow.getLookup()); };
+                var supplier = Q.first(columns, function (x) { return x.field === "SupplierCompanyName" /* SupplierCompanyName */; });
+                supplier.referencedFields = ["SupplierID" /* SupplierID */];
+                supplier.format = function (ctx) { return _this.selectFormatter(ctx, "SupplierID" /* SupplierID */, Store.SupplierRow.getLookup()); };
+                Q.first(columns, function (x) { return x.field === "UnitPrice" /* UnitPrice */; }).format = num;
+                //Q.first(columns, x => x.field === fld.UnitsInStock).format = num;
+                //Q.first(columns, x => x.field === fld.UnitsOnOrder).format = num;
+                //Q.first(columns, x => x.field === fld.ReorderLevel).format = num;
+                return columns;
+            };
+            ItemGrid.prototype.inputsChange = function (e) {
+                var cell = this.slickGrid.getCellFromEvent(e);
+                var item = this.itemAt(cell.row);
+                var input = $(e.target);
+                var field = input.data('field');
+                var text = Q.coalesce(Q.trimToNull(input.val()), '0');
+                var pending = this.pendingChanges[item.ProductID];
+                var effective = this.getEffectiveValue(item, field);
+                var oldText;
+                if (input.hasClass("numeric"))
+                    oldText = Q.formatNumber(effective, '0.##');
+                else
+                    oldText = effective;
+                var value;
+                if (field === 'UnitPrice') {
+                    value = Q.parseDecimal(text);
+                    if (value == null || isNaN(value)) {
+                        Q.notifyError(Q.text('Validation.Decimal'), '', null);
+                        input.val(oldText);
+                        input.focus();
+                        return;
+                    }
+                }
+                else if (input.hasClass("numeric")) {
+                    var i = Q.parseInteger(text);
+                    if (isNaN(i) || i > 32767 || i < 0) {
+                        Q.notifyError(Q.text('Validation.Integer'), '', null);
+                        input.val(oldText);
+                        input.focus();
+                        return;
+                    }
+                    value = i;
+                }
+                else
+                    value = text;
+                if (!pending) {
+                    this.pendingChanges[item.ProductID] = pending = {};
+                }
+                pending[field] = value;
+                item[field] = value;
+                this.view.refresh();
+                if (input.hasClass("numeric"))
+                    value = Q.formatNumber(value, '0.##');
+                input.val(value).addClass('dirty');
+                this.setSaveButtonState();
+            };
+            ItemGrid.prototype.setSaveButtonState = function () {
+                this.toolbar.findButton('apply-changes-button').toggleClass('disabled', Object.keys(this.pendingChanges).length === 0);
+            };
+            ItemGrid.prototype.saveClick = function () {
+                if (Object.keys(this.pendingChanges).length === 0) {
+                    return;
+                }
+                // this calls save service for all modified rows, one by one
+                // you could write a batch update service
+                var keys = Object.keys(this.pendingChanges);
+                var current = -1;
+                var self = this;
+                (function saveNext() {
+                    if (++current >= keys.length) {
+                        self.refresh();
+                        return;
+                    }
+                    var key = keys[current];
+                    var entity = Q.deepClone(self.pendingChanges[key]);
+                    entity.ProductID = key;
+                    Q.serviceRequest('Warehouse/Item/Update', {
+                        EntityId: key,
+                        Entity: entity
+                    }, function (response) {
+                        delete self.pendingChanges[key];
+                        saveNext();
+                    });
+                })();
+            };
+            ItemGrid.prototype.getQuickFilters = function () {
+                var flt = _super.prototype.getQuickFilters.call(this);
+                var q = Q.parseQueryString();
+                if (q["cat"]) {
+                    var category = Q.tryFirst(flt, function (x) { return x.field == "CategoryID"; });
+                    category.init = function (e) {
+                        e.element.getWidget(Serenity.LookupEditor).value = q["cat"];
+                    };
+                }
+                return flt;
+            };
+            ItemGrid = __decorate([
+                Serenity.Decorators.registerClass(),
+                Serenity.Decorators.filterable()
+            ], ItemGrid);
+            return ItemGrid;
+        }(Serenity.EntityGrid));
+        Store.ItemGrid = ItemGrid;
+    })(Store = Warehouse.Store || (Warehouse.Store = {}));
+})(Warehouse || (Warehouse = {}));
+var Warehouse;
+(function (Warehouse) {
+    var Store;
+    (function (Store) {
+        var ItemLangDialog = /** @class */ (function (_super) {
+            __extends(ItemLangDialog, _super);
+            function ItemLangDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new ItemLangForm(_this.idPrefix);
+                return _this;
+            }
+            ItemLangDialog.prototype.getFormKey = function () { return ItemLangForm.formKey; };
+            ItemLangDialog.prototype.getIdProperty = function () { return Store.ItemLangRow.idProperty; };
+            ItemLangDialog.prototype.getLocalTextPrefix = function () { return Store.ItemLangRow.localTextPrefix; };
+            ItemLangDialog.prototype.getNameProperty = function () { return Store.ItemLangRow.nameProperty; };
+            ItemLangDialog.prototype.getService = function () { return Store.ItemLangService.baseUrl; };
+            ItemLangDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], ItemLangDialog);
+            return ItemLangDialog;
+        }(Serenity.EntityDialog));
+        Store.ItemLangDialog = ItemLangDialog;
+    })(Store = Warehouse.Store || (Warehouse.Store = {}));
+})(Warehouse || (Warehouse = {}));
+var Warehouse;
+(function (Warehouse) {
+    var Store;
+    (function (Store) {
+        var ItemLangGrid = /** @class */ (function (_super) {
+            __extends(ItemLangGrid, _super);
+            function ItemLangGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            ItemLangGrid.prototype.getColumnsKey = function () { return 'Store.ItemLang'; };
+            ItemLangGrid.prototype.getDialogType = function () { return Store.ItemLangDialog; };
+            ItemLangGrid.prototype.getIdProperty = function () { return Store.ItemLangRow.idProperty; };
+            ItemLangGrid.prototype.getLocalTextPrefix = function () { return Store.ItemLangRow.localTextPrefix; };
+            ItemLangGrid.prototype.getService = function () { return Store.ItemLangService.baseUrl; };
+            ItemLangGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], ItemLangGrid);
+            return ItemLangGrid;
+        }(Serenity.EntityGrid));
+        Store.ItemLangGrid = ItemLangGrid;
     })(Store = Warehouse.Store || (Warehouse.Store = {}));
 })(Warehouse || (Warehouse = {}));
 var Warehouse;

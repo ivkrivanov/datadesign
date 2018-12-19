@@ -5,9 +5,9 @@ namespace Warehouse.Store.Repositories
     using Serenity.Services;
     using System;
     using System.Data;
-    using MyRow = Entities.ProductRow;
+    using MyRow = Entities.ItemRow;
 
-    public class ProductRepository
+    public class ItemRepository
     {
         private static MyRow.RowFields fld { get { return MyRow.Fields; } }
 
@@ -36,7 +36,7 @@ namespace Warehouse.Store.Repositories
             return new MyRetrieveHandler().Process(connection, request);
         }
 
-        public ListResponse<MyRow> List(IDbConnection connection, ProductListRequest request)
+        public ListResponse<MyRow> List(IDbConnection connection, ItemListRequest request)
         {
             return new MyListHandler().Process(connection, request);
         }
@@ -50,37 +50,38 @@ namespace Warehouse.Store.Repositories
                 if (Request.Localizations != null)
                     foreach (var pair in Request.Localizations)
                     {
-                        pair.Value.ProductID = Row.ProductID.Value;
+                        pair.Value.ItemID = Row.ItemID.Value;
                         new LocalizationRowHandler<MyRow>().
-                            Update<Entities.ProductLangRow>(this.UnitOfWork, pair.Value, 
+                            Update<Entities.ItemLangRow>(this.UnitOfWork, pair.Value,
                             Convert.ToInt32(pair.Key));
                     }
             }
-        }
 
+
+        }
         private class MyDeleteHandler : DeleteRequestHandler<MyRow> { }
         private class MyUndeleteHandler : UndeleteRequestHandler<MyRow> { }
         private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> { }
-        private class MyListHandler : ListRequestHandler<MyRow, ProductListRequest>
+        private class MyListHandler : ListRequestHandler<MyRow, ItemListRequest>
         {
-            protected override void ApplyFilters(SqlQuery query)
-            {
-                base.ApplyFilters(query);
+            //protected override void ApplyFilters(SqlQuery query)
+            //{
+            //    base.ApplyFilters(query);
 
-                if (Request.ProductID != null)
-                {
-                    var pd = Entities.ProductDetailRow.Fields.As("pd");
+            //    if (Request.ItemID != null)
+            //    {
+            //        var pd = Entities.ItemDetailRow.Fields.As("pd");
 
-                    query.Where(Criteria.Exists(
-                        query.SubQuery()
-                            .Select("1")
-                            .From(pd)
-                            .Where(
-                                pd.DetailID == fld.ProductID &
-                                pd.ProductID == Request.ProductID.Value)
-                                .ToString()));
-                }
-            }
+            //        query.Where(Criteria.Exists(
+            //            query.SubQuery()
+            //                .Select("1")
+            //                .From(pd)
+            //                .Where(
+            //                    pd.DetailID == fld.ItemID &
+            //                    pd.ProductID == Request.ItemID.Value)
+            //                    .ToString()));
+            //    }
+            //}
         }
     }
 }
