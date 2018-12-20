@@ -55,7 +55,9 @@ namespace Warehouse.Store.Entities
             set { Fields.ItemName[this] = value; }
         }
 
-        [DisplayName("Item Image"), Size(2147483647)]
+        [DisplayName("Item Image"), Size(100)]
+        [ImageUploadEditor(FilenameFormat = "ItemImage/~", CopyToHistory = true)]
+
         public Stream ItemImage
         {
             get { return Fields.ItemImage[this]; }
@@ -69,11 +71,11 @@ namespace Warehouse.Store.Entities
             set { Fields.SupplierID[this] = value; }
         }
 
-        [DisplayName("Category ID"), ForeignKey(typeof(CategoriesRow)), LeftJoin("cat"), LookupInclude]
-        public Int32? CategoryID
+        [DisplayName("Category Item ID"), Column("ItemCategoryID"), ForeignKey(typeof(ItemCategoryRow)), LeftJoin("cat"), LookupInclude]
+        public Int32? ItemCategoryID
         {
-            get { return Fields.CategoryID[this]; }
-            set { Fields.CategoryID[this] = value; }
+            get { return Fields.ItemCategoryID[this]; }
+            set { Fields.ItemCategoryID[this] = value; }
         }
 
         [DisplayName("Measure Id"), NotNull]
@@ -201,24 +203,31 @@ namespace Warehouse.Store.Entities
         //}
 
         [Origin("cat"), DisplayName("Category")]
-        public String CategoryName
+        public String ItemCategoryName
         {
-            get { return Fields.CategoryName[this]; }
-            set { Fields.CategoryName[this] = value; }
+            get { return Fields.ItemCategoryName[this]; }
+            set { Fields.ItemCategoryName[this] = value; }
+        }
+
+        [Origin("cat"), DisplayName("Category")]
+        public String ItemCategoryCode
+        {
+            get { return Fields.ItemCategoryCode[this]; }
+            set { Fields.ItemCategoryCode[this] = value; }
         }
 
         [Origin("cat")]
-        public String CategoryDescription
+        public String ItemCatDescription
         {
-            get { return Fields.CategoryDescription[this]; }
-            set { Fields.CategoryDescription[this] = value; }
+            get { return Fields.ItemCatDescription[this]; }
+            set { Fields.ItemCatDescription[this] = value; }
         }
 
         [Origin("cat")]
-        public Stream CategoryPicture
+        public String ItemCatImage
         {
-            get { return Fields.CategoryPicture[this]; }
-            set { Fields.CategoryPicture[this] = value; }
+            get { return Fields.ItemCatImage[this]; }
+            set { Fields.ItemCatImage[this] = value; }
         }
 
         #region Tenant & Activ
@@ -275,7 +284,7 @@ namespace Warehouse.Store.Entities
             public StringField ItemName;
             public StreamField ItemImage;
             public Int32Field SupplierID;
-            public Int32Field CategoryID;
+            public Int32Field ItemCategoryID;
             public Int32Field MeasureID;
             public Int32Field QuantityPerUnit;
             public DecimalField UnitPrice;
@@ -298,9 +307,11 @@ namespace Warehouse.Store.Entities
 
             //public StringField SupplierSupplierStat;
 
-            public StringField CategoryName;
-            public StringField CategoryDescription;
-            public StreamField CategoryPicture;
+            //public Int32Field ItemCategoryID;
+            public StringField ItemCategoryCode;
+            public StringField ItemCategoryName;
+            public StringField ItemCatDescription;
+            public StringField ItemCatImage;
         }
     }
 }

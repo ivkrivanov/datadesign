@@ -1,12 +1,12 @@
 ﻿namespace Warehouse.Store {
     export interface ItemForm {
+        ItemCategoryID: Serenity.IntegerEditor;
         ItemCode: Serenity.StringEditor;
         ItemBarcode: Serenity.StringEditor;
         ItemLabel: Serenity.StringEditor;
         ItemName: Serenity.StringEditor;
-        ItemImage: Serenity.StringEditor;
+        ItemImage: Serenity.ImageUploadEditor;
         SupplierID: Serenity.IntegerEditor;
-        CategoryID: Serenity.IntegerEditor;
         MeasureID: Serenity.IntegerEditor;
         QuantityPerUnit: Serenity.IntegerEditor;
         UnitPrice: Serenity.DecimalEditor;
@@ -24,22 +24,23 @@
                 ItemForm.init = true;
 
                 var s = Serenity;
-                var w0 = s.StringEditor;
-                var w1 = s.IntegerEditor;
-                var w2 = s.DecimalEditor;
+                var w0 = s.IntegerEditor;
+                var w1 = s.StringEditor;
+                var w2 = s.ImageUploadEditor;
+                var w3 = s.DecimalEditor;
 
                 Q.initFormType(ItemForm, [
-                    'ItemCode', w0,
-                    'ItemBarcode', w0,
-                    'ItemLabel', w0,
-                    'ItemName', w0,
-                    'ItemImage', w0,
-                    'SupplierID', w1,
-                    'CategoryID', w1,
-                    'MeasureID', w1,
-                    'QuantityPerUnit', w1,
-                    'UnitPrice', w2,
-                    'AccountID', w1
+                    'ItemCategoryID', w0,
+                    'ItemCode', w1,
+                    'ItemBarcode', w1,
+                    'ItemLabel', w1,
+                    'ItemName', w1,
+                    'ItemImage', w2,
+                    'SupplierID', w0,
+                    'MeasureID', w0,
+                    'QuantityPerUnit', w0,
+                    'UnitPrice', w3,
+                    'AccountID', w0
                 ]);
             }
         }

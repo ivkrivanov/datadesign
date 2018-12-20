@@ -2,6 +2,7 @@
     export interface ProductDetailRow {
         DetailID?: number;
         ProductID?: number;
+        ItemID?: number;
         Quantity?: number;
         ProductQuantity?: number;
         Reduction?: number;
@@ -13,6 +14,8 @@
         ProductSupplierID?: number;
         ProductQuantityPerUnit?: string;
         ProductUnitPrice?: number;
+        ItemCode?: string;
+        ItemName?: string;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -27,6 +30,7 @@
         export declare const enum Fields {
             DetailID = "DetailID",
             ProductID = "ProductID",
+            ItemID = "ItemID",
             Quantity = "Quantity",
             ProductQuantity = "ProductQuantity",
             Reduction = "Reduction",
@@ -38,6 +42,8 @@
             ProductSupplierID = "ProductSupplierID",
             ProductQuantityPerUnit = "ProductQuantityPerUnit",
             ProductUnitPrice = "ProductUnitPrice",
+            ItemCode = "ItemCode",
+            ItemName = "ItemName",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",

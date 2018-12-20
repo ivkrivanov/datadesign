@@ -14,6 +14,8 @@ namespace Warehouse.Store.Forms
         //public Int32 ProductId { get; set; }
         [EditLink, Width(200)]
         public String ProductName { get; set; }
+        [EditLink, Width(200)]
+        public String ItemName { get; set; }
         [Width(100)]
         public Single Quantity { get; set; }
         [Width(100)]

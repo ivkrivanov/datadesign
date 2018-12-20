@@ -7,7 +7,6 @@
         ItemName?: string;
         ItemImage?: number[];
         SupplierID?: number;
-        CategoryID?: number;
         MeasureID?: number;
         QuantityPerUnit?: number;
         UnitPrice?: number;
@@ -25,9 +24,9 @@
         SupplierPhone?: string;
         SupplierFax?: string;
         SupplierHomePage?: string;
-        CategoryName?: string;
-        CategoryDescription?: string;
-        CategoryPicture?: number[];
+        ItemCategoryID?: number;
+        ItemCatDescription?: string;
+        ItemCatImage?: string;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -53,7 +52,6 @@
             ItemName = "ItemName",
             ItemImage = "ItemImage",
             SupplierID = "SupplierID",
-            CategoryID = "CategoryID",
             MeasureID = "MeasureID",
             QuantityPerUnit = "QuantityPerUnit",
             UnitPrice = "UnitPrice",
@@ -71,9 +69,9 @@
             SupplierPhone = "SupplierPhone",
             SupplierFax = "SupplierFax",
             SupplierHomePage = "SupplierHomePage",
-            CategoryName = "CategoryName",
-            CategoryDescription = "CategoryDescription",
-            CategoryPicture = "CategoryPicture",
+            ItemCategoryID = "ItemCategoryID",
+            ItemCatDescription = "ItemCatDescription",
+            ItemCatImage = "ItemCatImage",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",

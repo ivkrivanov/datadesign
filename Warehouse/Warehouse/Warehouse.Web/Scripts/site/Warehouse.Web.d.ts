@@ -1042,16 +1042,122 @@ declare namespace Warehouse.Store {
     }
 }
 declare namespace Warehouse.Store {
+    interface ItemCategoriesLangRow {
+        Id?: number;
+        ItemCategoryId?: number;
+        LanguageId?: number;
+        ItemCategoryName?: string;
+        Description?: string;
+    }
+    namespace ItemCategoriesLangRow {
+        const idProperty = "Id";
+        const nameProperty = "ItemCategoryName";
+        const localTextPrefix = "Store.ItemCategoriesLang";
+        const enum Fields {
+            Id = "Id",
+            ItemCategoryId = "ItemCategoryId",
+            LanguageId = "LanguageId",
+            ItemCategoryName = "ItemCategoryName",
+            Description = "Description"
+        }
+    }
+}
+declare namespace Warehouse.Store {
+    namespace ItemCategoriesLangService {
+        const baseUrl = "Store/ItemCategoriesLang";
+        function Create(request: Serenity.SaveRequest<ItemCategoriesLangRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<ItemCategoriesLangRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<ItemCategoriesLangRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<ItemCategoriesLangRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Store/ItemCategoriesLang/Create",
+            Update = "Store/ItemCategoriesLang/Update",
+            Delete = "Store/ItemCategoriesLang/Delete",
+            Retrieve = "Store/ItemCategoriesLang/Retrieve",
+            List = "Store/ItemCategoriesLang/List"
+        }
+    }
+}
+declare namespace Warehouse.Store {
+}
+declare namespace Warehouse.Store {
+    interface ItemCategoryForm {
+        ItemCategoryCode: Serenity.StringEditor;
+        ItemCategoryName: Serenity.StringEditor;
+        ItemCatImage: Serenity.ImageUploadEditor;
+        ItemDescription: Serenity.StringEditor;
+    }
+    class ItemCategoryForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace Warehouse.Store {
+    interface ItemCategoryRow {
+        ItemCategoryID?: number;
+        ItemCategoryCode?: string;
+        ItemCategoryName?: string;
+        ItemDescription?: string;
+        ItemCatImage?: string;
+        IsActive?: number;
+        TenantId?: number;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+    }
+    namespace ItemCategoryRow {
+        const idProperty = "ItemCategoryID";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "ItemCategoryName";
+        const localTextPrefix = "Store.ItemCategory";
+        const lookupKey = "Store.ItemCategories";
+        function getLookup(): Q.Lookup<ItemCategoryRow>;
+        const enum Fields {
+            ItemCategoryID = "ItemCategoryID",
+            ItemCategoryCode = "ItemCategoryCode",
+            ItemCategoryName = "ItemCategoryName",
+            ItemDescription = "ItemDescription",
+            ItemCatImage = "ItemCatImage",
+            IsActive = "IsActive",
+            TenantId = "TenantId",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate"
+        }
+    }
+}
+declare namespace Warehouse.Store {
+    namespace ItemCategoryService {
+        const baseUrl = "Store/ItemCategory";
+        function Create(request: Serenity.SaveRequest<ItemCategoryRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<ItemCategoryRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<ItemCategoryRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<ItemCategoryRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Store/ItemCategory/Create",
+            Update = "Store/ItemCategory/Update",
+            Delete = "Store/ItemCategory/Delete",
+            Retrieve = "Store/ItemCategory/Retrieve",
+            List = "Store/ItemCategory/List"
+        }
+    }
+}
+declare namespace Warehouse.Store {
 }
 declare namespace Warehouse.Store {
     interface ItemForm {
+        ItemCategoryID: Serenity.IntegerEditor;
         ItemCode: Serenity.StringEditor;
         ItemBarcode: Serenity.StringEditor;
         ItemLabel: Serenity.StringEditor;
         ItemName: Serenity.StringEditor;
-        ItemImage: Serenity.StringEditor;
+        ItemImage: Serenity.ImageUploadEditor;
         SupplierID: Serenity.IntegerEditor;
-        CategoryID: Serenity.IntegerEditor;
         MeasureID: Serenity.IntegerEditor;
         QuantityPerUnit: Serenity.IntegerEditor;
         UnitPrice: Serenity.DecimalEditor;
@@ -1115,7 +1221,6 @@ declare namespace Warehouse.Store {
         ItemName?: string;
         ItemImage?: number[];
         SupplierID?: number;
-        CategoryID?: number;
         MeasureID?: number;
         QuantityPerUnit?: number;
         UnitPrice?: number;
@@ -1133,9 +1238,9 @@ declare namespace Warehouse.Store {
         SupplierPhone?: string;
         SupplierFax?: string;
         SupplierHomePage?: string;
-        CategoryName?: string;
-        CategoryDescription?: string;
-        CategoryPicture?: number[];
+        ItemCategoryID?: number;
+        ItemCatDescription?: string;
+        ItemCatImage?: string;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -1156,7 +1261,6 @@ declare namespace Warehouse.Store {
             ItemName = "ItemName",
             ItemImage = "ItemImage",
             SupplierID = "SupplierID",
-            CategoryID = "CategoryID",
             MeasureID = "MeasureID",
             QuantityPerUnit = "QuantityPerUnit",
             UnitPrice = "UnitPrice",
@@ -1174,9 +1278,9 @@ declare namespace Warehouse.Store {
             SupplierPhone = "SupplierPhone",
             SupplierFax = "SupplierFax",
             SupplierHomePage = "SupplierHomePage",
-            CategoryName = "CategoryName",
-            CategoryDescription = "CategoryDescription",
-            CategoryPicture = "CategoryPicture",
+            ItemCategoryID = "ItemCategoryID",
+            ItemCatDescription = "ItemCatDescription",
+            ItemCatImage = "ItemCatImage",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",
@@ -1455,6 +1559,7 @@ declare namespace Warehouse.Store {
 declare namespace Warehouse.Store {
     interface ProductDetailForm {
         ProductID: Serenity.LookupEditor;
+        ItemID: Serenity.LookupEditor;
         Quantity: Serenity.DecimalEditor;
         ProductQuantity: Serenity.DecimalEditor;
         Reduction: Serenity.DecimalEditor;
@@ -1470,6 +1575,7 @@ declare namespace Warehouse.Store {
     interface ProductDetailRow {
         DetailID?: number;
         ProductID?: number;
+        ItemID?: number;
         Quantity?: number;
         ProductQuantity?: number;
         Reduction?: number;
@@ -1481,6 +1587,8 @@ declare namespace Warehouse.Store {
         ProductSupplierID?: number;
         ProductQuantityPerUnit?: string;
         ProductUnitPrice?: number;
+        ItemCode?: string;
+        ItemName?: string;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -1493,6 +1601,7 @@ declare namespace Warehouse.Store {
         const enum Fields {
             DetailID = "DetailID",
             ProductID = "ProductID",
+            ItemID = "ItemID",
             Quantity = "Quantity",
             ProductQuantity = "ProductQuantity",
             Reduction = "Reduction",
@@ -1504,6 +1613,8 @@ declare namespace Warehouse.Store {
             ProductSupplierID = "ProductSupplierID",
             ProductQuantityPerUnit = "ProductQuantityPerUnit",
             ProductUnitPrice = "ProductUnitPrice",
+            ItemCode = "ItemCode",
+            ItemName = "ItemName",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",
@@ -2527,6 +2638,46 @@ declare namespace Warehouse.Store {
         private setSaveButtonState;
         private saveClick;
         protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
+    }
+}
+declare namespace Warehouse.Store {
+    class ItemCategoriesLangDialog extends Serenity.EntityDialog<ItemCategoriesLangRow, any> {
+        protected getFormKey(): any;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: any;
+    }
+}
+declare namespace Warehouse.Store {
+    class ItemCategoriesLangGrid extends Serenity.EntityGrid<ItemCategoriesLangRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof ItemCategoriesLangDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Warehouse.Store {
+    class ItemCategoryDialog extends Serenity.EntityDialog<ItemCategoryRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: ItemCategoryForm;
+    }
+}
+declare namespace Warehouse.Store {
+    class ItemCategoryGrid extends Serenity.EntityGrid<ItemCategoryRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof ItemCategoryDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
     }
 }
 declare namespace Warehouse.Store {

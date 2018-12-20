@@ -2,15 +2,50 @@
 GO
 SET QUOTED_IDENTIFIER ON
 GO
+CREATE TABLE [dbo].[ItemCategories](
+	[ItemCategoryID] [int] IDENTITY(1,1) NOT NULL,
+	[ItemCategoryCode] [VARCHAR](8) NOT NULL,
+	[ItemCategoryName] [nvarchar](15) NOT NULL,
+	[ItemCatDescription] [ntext] NULL,
+	[ItemCatImage] [nvarchar](255) NULL,
+	[InsertDate] [datetime] NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    [InsertUserId] [int] NOT NULL DEFAULT (1),
+    [UpdateDate] [datetime] NULL,
+    [UpdateUserId] [int] NULL,
+    [IsActive] [int] NOT NULL DEFAULT (1),
+    [TenantId] [int] NOT NULL DEFAULT(1),
+ CONSTRAINT [PK_ItemCategories] PRIMARY KEY CLUSTERED 
+(
+	[ItemCategoryID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON)
+)
+GO
+CREATE NONCLUSTERED INDEX [ItemCategoryName] ON [dbo].[ItemCategories] 
+(
+	[ItemCategoryName] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON)
+
+GO
+CREATE TABLE [dbo].[ItemCategoriesLang](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[ItemCategoryID] [int] NOT NULL,
+	[LanguageID] [int] NOT NULL,
+	[ItemCategoryName] [nvarchar](40),
+CONSTRAINT [PK_ItemCategoriesLang] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON)
+)
+
 CREATE TABLE [dbo].[Items](
 	[ItemID] [int] IDENTITY(1,1) NOT NULL,
 	[ItemCode] [nvarchar](15) NOT NULL,
 	[ItemBarcode] [nvarchar](15) NULL,
 	[ItemLabel] [nvarchar](10) NULL,
 	[ItemName] [nvarchar](40) NULL,
-	[ItemImage] [image] NULL,
+	[ItemImage] [nvarchar](255) NULL,
 	[SupplierID] [int] NULL,
-	[CategoryID] [int] NULL,
+	[ItemCategoryID] [int] NULL,
 	[MeasureId] [int] NOT NULL,
 	[QuantityPerUnit] [int] NULL,
 	[UnitPrice] [money] NULL,
@@ -27,14 +62,14 @@ CONSTRAINT [PK_Items] PRIMARY KEY CLUSTERED
 	)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON)
 )
 GO
-CREATE NONCLUSTERED INDEX [CategoriesItems] ON [dbo].[Items] 
+CREATE NONCLUSTERED INDEX [ItemCategoriesItems] ON [dbo].[Items]
 (
-	[CategoryID] ASC
+	[ItemCategoryID] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON)
 GO
-CREATE NONCLUSTERED INDEX [CategoryID] ON [dbo].[Items] 
+CREATE NONCLUSTERED INDEX [ItemCategoryID] ON [dbo].[Items] 
 (
-	[CategoryID] ASC
+	[ItemCategoryID] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON)
 GO
 CREATE NONCLUSTERED INDEX [ItemName] ON [dbo].[Items] 

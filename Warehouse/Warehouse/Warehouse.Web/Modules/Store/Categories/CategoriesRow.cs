@@ -101,12 +101,6 @@ namespace Warehouse.Store.Entities
 
             public Int16Field IsActive;
             public readonly Int32Field TenantId;
-
-            //public RowFields()
-            //    : base("Categories")
-            //{
-            //    LocalTextPrefix = "Store.Category";
-            //}
         }
     }
 }

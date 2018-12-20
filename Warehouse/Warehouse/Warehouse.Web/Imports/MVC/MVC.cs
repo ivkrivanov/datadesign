@@ -128,6 +128,16 @@ namespace MVC
                 public const string ItemIndex = "~/Modules/Store/Item/ItemIndex.cshtml";
             }
 
+            public static class ItemCategoriesLang
+            {
+                public const string ItemCategoriesLangIndex = "~/Modules/Store/ItemCategoriesLang/ItemCategoriesLangIndex.cshtml";
+            }
+
+            public static class ItemCategory
+            {
+                public const string ItemCategoryIndex = "~/Modules/Store/ItemCategory/ItemCategoryIndex.cshtml";
+            }
+
             public static class ItemLang
             {
                 public const string ItemLangIndex = "~/Modules/Store/ItemLang/ItemLangIndex.cshtml";

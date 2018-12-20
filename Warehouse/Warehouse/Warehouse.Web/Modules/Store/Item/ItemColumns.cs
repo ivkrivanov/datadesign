@@ -17,14 +17,11 @@ namespace Warehouse.Store.Columns
         public String ItemBarcode { get; set; }
         public String ItemLabel { get; set; }
         public String ItemName { get; set; }
-        public Stream ItemImage { get; set; }
         [EditLink(ItemType = "Store.Category"), Width(150), QuickFilter, QuickFilterOption("multiple", true)]
-        public String CategoryName { get; set; }
-        public String SupplierCompanyName { get; set; }
-        public Int32 CategoryID { get; set; }
+        public String ItemCategoryName { get; set; }
+        public Int32 ItemCategoryID { get; set; }
         public Int32 MeasureID { get; set; }
         public Int32 QuantityPerUnit { get; set; }
         public Decimal UnitPrice { get; set; }
-        public Int32 AccountID { get; set; }
     }
 }

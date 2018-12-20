@@ -36,13 +36,13 @@ namespace Warehouse.Store.Entities
             set { Fields.ProductID[this] = value; }
         }
 
-        //[DisplayName("Product"), PrimaryKey, ForeignKey(typeof(ProductRow)), LeftJoin("p")]
-        //[LookupEditor(typeof(ProductRow))]
-        //public Int32? ProductID
-        //{
-        //    get { return Fields.ProductID[this]; }
-        //    set { Fields.ProductID[this] = value; }
-        //}
+        [DisplayName("Item"), PrimaryKey, ForeignKey(typeof(ItemRow)), LeftJoin("i")]
+        [LookupEditor(typeof(ProductRow))]
+        public Int32? ItemID
+        {
+            get { return Fields.ItemID[this]; }
+            set { Fields.ItemID[this] = value; }
+        }
 
         [DisplayName("Quantity"), NotNull, DefaultValue(1), AlignRight]
         public Single? Quantity
@@ -107,6 +107,20 @@ namespace Warehouse.Store.Entities
             set { Fields.ProductUnitPrice[this] = value; }
         }
 
+        [Origin("i")]
+        public String ItemCode
+        {
+            get { return Fields.ItemCode[this]; }
+            set { Fields.ItemCode[this] = value; }
+        }
+
+        [Origin("i")]
+        public String ItemName
+        {
+            get { return Fields.ItemName[this]; }
+            set { Fields.ItemName[this] = value; }
+        }
+                              
         #region Tenant & Activ
 
         [Insertable(false), Updatable(false)]
@@ -151,6 +165,7 @@ namespace Warehouse.Store.Entities
         {
             public Int32Field DetailID;
             public Int32Field ProductID;
+            public Int32Field ItemID;
             public SingleField Quantity;
             public SingleField ProductQuantity;
             public SingleField Reduction;
@@ -164,6 +179,9 @@ namespace Warehouse.Store.Entities
             public Int32Field ProductSupplierID;
             public StringField ProductQuantityPerUnit;
             public DecimalField ProductUnitPrice;
+
+            public StringField ItemCode;
+            public StringField ItemName;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿namespace Warehouse.Store {
     export interface ProductDetailForm {
         ProductID: Serenity.LookupEditor;
+        ItemID: Serenity.LookupEditor;
         Quantity: Serenity.DecimalEditor;
         ProductQuantity: Serenity.DecimalEditor;
         Reduction: Serenity.DecimalEditor;
@@ -23,6 +24,7 @@
 
                 Q.initFormType(ProductDetailForm, [
                     'ProductID', w0,
+                    'ItemID', w0,
                     'Quantity', w1,
                     'ProductQuantity', w1,
                     'Reduction', w1,

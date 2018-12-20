@@ -917,6 +917,9 @@
     <TypeScriptCompile Include="Imports\ServerTypings\Store.Gender.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ItemCategoryColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\Store.ItemColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
@@ -1789,6 +1792,24 @@
     <TypeScriptCompile Include="Imports\ServerTypings\Store.ItemLangService.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ItemCategoryRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ItemCategoryService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Modules\Store\ItemCategory\ItemCategoryIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Store\ItemCategory\ItemCategoryDialog.ts" />
+    <TypeScriptCompile Include="Modules\Store\ItemCategory\ItemCategoryGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ItemCategoryForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ItemCategoriesLangRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ItemCategoriesLangService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -2057,6 +2078,15 @@
     <Compile Include="Modules\Store\ItemLang\ItemLangRow.cs" />
     <Compile Include="Modules\Store\ItemLang\ItemLangRepository.cs" />
     <Compile Include="Modules\Store\ItemLang\ItemLangEndpoint.cs" />
+    <Compile Include="Modules\Store\ItemCategory\ItemCategoryRow.cs" />
+    <Compile Include="Modules\Store\ItemCategory\ItemCategoryRepository.cs" />
+    <Compile Include="Modules\Store\ItemCategory\ItemCategoryEndpoint.cs" />
+    <Compile Include="Modules\Store\ItemCategory\ItemCategoryPage.cs" />
+    <Compile Include="Modules\Store\ItemCategory\ItemCategoryColumns.cs" />
+    <Compile Include="Modules\Store\ItemCategory\ItemCategoryForm.cs" />
+    <Compile Include="Modules\Store\ItemCategoriesLang\ItemCategoriesLangRow.cs" />
+    <Compile Include="Modules\Store\ItemCategoriesLang\ItemCategoriesLangRepository.cs" />
+    <Compile Include="Modules\Store\ItemCategoriesLang\ItemCategoriesLangEndpoint.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
