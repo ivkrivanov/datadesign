@@ -11,12 +11,12 @@ namespace Warehouse.Store.Repositories
     {
         private static MyRow.RowFields fld { get { return MyRow.Fields; } }
 
-        public SaveResponse Create(IUnitOfWork uow, SaveRequest<MyRow> request)
+        public SaveResponse Create(IUnitOfWork uow, SaveWithLocalizationRequest<MyRow> request)
         {
             return new MySaveHandler().Process(uow, request, SaveRequestType.Create);
         }
 
-        public SaveResponse Update(IUnitOfWork uow, SaveRequest<MyRow> request)
+        public SaveResponse Update(IUnitOfWork uow, SaveWithLocalizationRequest<MyRow> request)
         {
             return new MySaveHandler().Process(uow, request, SaveRequestType.Update);
         }
@@ -36,12 +36,18 @@ namespace Warehouse.Store.Repositories
             return new MyRetrieveHandler().Process(connection, request);
         }
 
+        public RetrieveLocalizationResponse<MyRow> RetrieveLocalization(IDbConnection connection, RetrieveLocalizationRequest request)
+        {
+            return new LocalizationRowHandler<MyRow>().Retrieve(connection, request);
+        }
+
+
         public ListResponse<MyRow> List(IDbConnection connection, ItemListRequest request)
         {
             return new MyListHandler().Process(connection, request);
         }
 
-        private class MySaveHandler : SaveRequestHandler<MyRow>
+        private class MySaveHandler : SaveRequestHandler<MyRow, SaveWithLocalizationRequest<MyRow>, SaveResponse>
         {
             protected override void AfterSave()
             {
@@ -51,9 +57,8 @@ namespace Warehouse.Store.Repositories
                     foreach (var pair in Request.Localizations)
                     {
                         pair.Value.ItemID = Row.ItemID.Value;
-                        new LocalizationRowHandler<MyRow>().
-                            Update<Entities.ItemLangRow>(this.UnitOfWork, pair.Value,
-                            Convert.ToInt32(pair.Key));
+                        new LocalizationRowHandler<MyRow>().Update<Entities.ItemLangRow>(
+                            this.UnitOfWork, pair.Value, Convert.ToInt32(pair.Key));
                     }
             }
 
@@ -62,26 +67,6 @@ namespace Warehouse.Store.Repositories
         private class MyDeleteHandler : DeleteRequestHandler<MyRow> { }
         private class MyUndeleteHandler : UndeleteRequestHandler<MyRow> { }
         private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> { }
-        private class MyListHandler : ListRequestHandler<MyRow, ItemListRequest>
-        {
-            //protected override void ApplyFilters(SqlQuery query)
-            //{
-            //    base.ApplyFilters(query);
-
-            //    if (Request.ItemID != null)
-            //    {
-            //        var pd = Entities.ItemDetailRow.Fields.As("pd");
-
-            //        query.Where(Criteria.Exists(
-            //            query.SubQuery()
-            //                .Select("1")
-            //                .From(pd)
-            //                .Where(
-            //                    pd.DetailID == fld.ItemID &
-            //                    pd.ProductID == Request.ItemID.Value)
-            //                    .ToString()));
-            //    }
-            //}
-        }
+        private class MyListHandler : ListRequestHandler<MyRow, ItemListRequest> { }
     }
 }

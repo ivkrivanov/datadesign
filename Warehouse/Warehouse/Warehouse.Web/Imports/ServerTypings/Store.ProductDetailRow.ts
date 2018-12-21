@@ -9,13 +9,13 @@
         PlanPrice?: number;
         IsActive?: number;
         TenantId?: number;
-        ProductName?: string;
+        ProductProductName?: string;
         ProductDiscontinued?: boolean;
         ProductSupplierID?: number;
         ProductQuantityPerUnit?: string;
         ProductUnitPrice?: number;
-        ItemCode?: string;
-        ItemName?: string;
+        ItemItemCode?: string;
+        ItemItemName?: string;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -37,13 +37,13 @@
             PlanPrice = "PlanPrice",
             IsActive = "IsActive",
             TenantId = "TenantId",
-            ProductName = "ProductName",
+            ProductProductName = "ProductProductName",
             ProductDiscontinued = "ProductDiscontinued",
             ProductSupplierID = "ProductSupplierID",
             ProductQuantityPerUnit = "ProductQuantityPerUnit",
             ProductUnitPrice = "ProductUnitPrice",
-            ItemCode = "ItemCode",
-            ItemName = "ItemName",
+            ItemItemCode = "ItemItemCode",
+            ItemItemName = "ItemItemName",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",

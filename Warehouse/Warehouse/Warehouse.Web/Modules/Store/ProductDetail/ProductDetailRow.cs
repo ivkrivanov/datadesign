@@ -14,6 +14,7 @@ namespace Warehouse.Store.Entities
     [ModifyPermission(PermissionKeys.General)]
     public sealed class ProductDetailRow : LoggingRow, IIdRow, IIsActiveRow, IMultiTenantRow
     {
+        #region Product Detail
         [DisplayName("Detail Id"), Identity]
         public Int32? DetailID
         {
@@ -22,13 +23,7 @@ namespace Warehouse.Store.Entities
         }
 
         //[DisplayName("Product Id"), Column("ProductID"), NotNull]
-        //public Int32? ProductId
-        //{
-        //    get { return Fields.ProductId[this]; }
-        //    set { Fields.ProductId[this] = value; }
-        //}
-
-        [DisplayName("Product Id"), PrimaryKey, ForeignKey(typeof(ProductRow)), LeftJoin("p"), Updatable(false)]
+        [DisplayName("Product"), PrimaryKey, ForeignKey(typeof(ProductRow)), LeftJoin("pro"), NotNull]
         [LookupEditor(typeof(ProductRow))]
         public Int32? ProductID
         {
@@ -36,8 +31,8 @@ namespace Warehouse.Store.Entities
             set { Fields.ProductID[this] = value; }
         }
 
-        [DisplayName("Item"), PrimaryKey, ForeignKey(typeof(ItemRow)), LeftJoin("i")]
-        [LookupEditor(typeof(ProductRow))]
+        [DisplayName("Item"), PrimaryKey, ForeignKey(typeof(ItemRow)), LeftJoin("ite")]
+        [LookupEditor(typeof(ItemRow))]
         public Int32? ItemID
         {
             get { return Fields.ItemID[this]; }
@@ -65,62 +60,73 @@ namespace Warehouse.Store.Entities
             set { Fields.Reduction[this] = value; }
         }
 
-        [DisplayName("Plan Price"), Size(19), Scale(4), NotNull]
+        [DisplayName("Plan Price"), Scale(4), NotNull, AlignRight, DisplayFormat("#,##0.00")]
         public Decimal? PlanPrice
         {
             get { return Fields.PlanPrice[this]; }
             set { Fields.PlanPrice[this] = value; }
         }
 
-        [Origin("p"), MinSelectLevel(SelectLevel.List)]
-        public String ProductName
+        #endregion
+
+        #region Product
+
+        [Origin("pro"), MinSelectLevel(SelectLevel.List)]
+        public String ProductProductName
         {
-            get { return Fields.ProductName[this]; }
-            set { Fields.ProductName[this] = value; }
+            get { return Fields.ProductProductName[this]; }
+            set { Fields.ProductProductName[this] = value; }
         }
 
-        [Origin("p")]
+        [Origin("pro")]
         public Boolean? ProductDiscontinued
         {
             get { return Fields.ProductDiscontinued[this]; }
             set { Fields.ProductDiscontinued[this] = value; }
         }
 
-        [Origin("p")]
+        [Origin("pro")]
         public Int32? ProductSupplierID
         {
             get { return Fields.ProductSupplierID[this]; }
             set { Fields.ProductSupplierID[this] = value; }
         }
 
-        [Origin("p")]
+        [Origin("pro")]
         public String ProductQuantityPerUnit
         {
             get { return Fields.ProductQuantityPerUnit[this]; }
             set { Fields.ProductQuantityPerUnit[this] = value; }
         }
 
-        [Origin("p")]
+        [Origin("pro")]
         public Decimal? ProductUnitPrice
         {
             get { return Fields.ProductUnitPrice[this]; }
             set { Fields.ProductUnitPrice[this] = value; }
         }
 
-        [Origin("i")]
-        public String ItemCode
+        #endregion
+
+        #region Items
+
+
+        [Origin("ite")]
+        public String ItemItemCode
         {
-            get { return Fields.ItemCode[this]; }
-            set { Fields.ItemCode[this] = value; }
+            get { return Fields.ItemItemCode[this]; }
+            set { Fields.ItemItemCode[this] = value; }
         }
 
-        [Origin("i")]
-        public String ItemName
+        [Origin("ite")]
+        public String ItemItemName
         {
-            get { return Fields.ItemName[this]; }
-            set { Fields.ItemName[this] = value; }
+            get { return Fields.ItemItemName[this]; }
+            set { Fields.ItemItemName[this] = value; }
         }
-                              
+
+        #endregion
+
         #region Tenant & Activ
 
         [Insertable(false), Updatable(false)]
@@ -174,14 +180,25 @@ namespace Warehouse.Store.Entities
             public Int16Field IsActive;
             public Int32Field TenantId;
 
-            public StringField ProductName;
+            public StringField ProductProductName;
+            //public StringField ProductProductImage;
             public BooleanField ProductDiscontinued;
             public Int32Field ProductSupplierID;
+            //public Int32Field ProductCategoryID;
             public StringField ProductQuantityPerUnit;
             public DecimalField ProductUnitPrice;
+            //public Int16Field ProductUnitsInStock;
+            //public Int16Field ProductUnitsOnOrder;
+            //public Int16Field ProductReorderLevel;
 
-            public StringField ItemCode;
-            public StringField ItemName;
+            public StringField ItemItemCode;
+            //public StringField ItemItemBarcode;
+            //public StringField ItemItemLabel;
+            public StringField ItemItemName;
+            //public StringField ItemItemImage;
+            //public Int32Field ItemItemCategoryID;
+            //public Int32Field ItemMeasureID;
+            //public Int32Field ItemAccountID;
         }
     }
 }

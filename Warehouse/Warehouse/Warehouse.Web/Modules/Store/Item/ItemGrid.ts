@@ -24,7 +24,7 @@
 
             buttons.push(Common.ExcelExportHelper.createToolButton({
                 grid: this,
-                service: ProductService.baseUrl + '/ListExcel',
+                service: ItemService.baseUrl + '/ListExcel',
                 onViewSubmit: () => this.onViewSubmit(),
                 separator: true
             }));
@@ -38,7 +38,7 @@
                 },
                 tableOptions: {
                     columnStyles: {
-                        ProductID: {
+                        ItemID: {
                             columnWidth: 25,
                             halign: 'right'
                         },
@@ -96,8 +96,8 @@
 
         private stringInputFormatter(ctx) {
             var klass = 'edit string';
-            var item = ctx.item as ProductRow;
-            var pending = this.pendingChanges[item.ProductID];
+            var item = ctx.item as ItemRow;
+            var pending = this.pendingChanges[item.ItemID];
             var column = ctx.column as Slick.Column;
 
             if (pending && pending[column.field] !== undefined) {
@@ -157,18 +157,18 @@
 
             Q.first(columns, x => x.field === 'QuantityPerUnit').format = str;
 
-            var category = Q.first(columns, x => x.field === fld.CategoryName);
-            category.referencedFields = [fld.CategoryID];
-            category.format = ctx => this.selectFormatter(ctx, fld.CategoryID, CategoriesRow.getLookup());
+            var itemcategory = Q.first(columns, x => x.field === fld.ItemCategoryName);
+            itemcategory.referencedFields = [fld.ItemCategoryID];
+            itemcategory.format = ctx => this.selectFormatter(ctx, fld.ItemCategoryID, ItemCategoryRow.getLookup());
 
-            var supplier = Q.first(columns, x => x.field === fld.SupplierCompanyName);
-            supplier.referencedFields = [fld.SupplierID];
-            supplier.format = ctx => this.selectFormatter(ctx, fld.SupplierID, SupplierRow.getLookup());
+            //var supplier = Q.first(columns, x => x.field === fld.SupplierCompanyName);
+            //supplier.referencedFields = [fld.SupplierID];
+            //supplier.format = ctx => this.selectFormatter(ctx, fld.SupplierID, SupplierRow.getLookup());
 
             Q.first(columns, x => x.field === fld.UnitPrice).format = num;
-            //Q.first(columns, x => x.field === fld.UnitsInStock).format = num;
-            //Q.first(columns, x => x.field === fld.UnitsOnOrder).format = num;
-            //Q.first(columns, x => x.field === fld.ReorderLevel).format = num;
+        //    //Q.first(columns, x => x.field === fld.UnitsInStock).format = num;
+        //    //Q.first(columns, x => x.field === fld.UnitsOnOrder).format = num;
+        //    //Q.first(columns, x => x.field === fld.ReorderLevel).format = num;
 
             return columns;
         }
@@ -179,7 +179,7 @@
             var input = $(e.target);
             var field = input.data('field');
             var text = Q.coalesce(Q.trimToNull(input.val()), '0');
-            var pending = this.pendingChanges[item.ProductID];
+            var pending = this.pendingChanges[item.ItemID];
 
             var effective = this.getEffectiveValue(item, field);
             var oldText: string;
@@ -212,7 +212,7 @@
                 value = text;
 
             if (!pending) {
-                this.pendingChanges[item.ProductID] = pending = {};
+                this.pendingChanges[item.ItemID] = pending = {};
             }
 
             pending[field] = value;
@@ -251,7 +251,7 @@
 
                 var key = keys[current];
                 var entity = Q.deepClone(self.pendingChanges[key]);
-                entity.ProductID = key;
+                entity.ItemID = key;
                 Q.serviceRequest('Warehouse/Item/Update', {
                     EntityId: key,
                     Entity: entity
@@ -267,7 +267,7 @@
 
             var q = Q.parseQueryString();
             if (q["cat"]) {
-                var category = Q.tryFirst(flt, x => x.field == "CategoryID");
+                var category = Q.tryFirst(flt, x => x.field == "ItemCategoryID");
                 category.init = e => {
                     e.element.getWidget(Serenity.LookupEditor).value = q["cat"];
                 };

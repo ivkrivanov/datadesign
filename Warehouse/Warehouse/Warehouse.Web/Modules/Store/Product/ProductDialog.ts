@@ -9,6 +9,7 @@ namespace Warehouse.Store {
         protected getLocalTextPrefix() { return ProductRow.localTextPrefix; }
         protected getNameProperty() { return ProductRow.nameProperty; }
         protected getService() { return ProductService.baseUrl; }
+        protected getLanguages(): string[][] { return LanguageList.getValue(); }
 
         protected form = new ProductForm(this.idPrefix);
 

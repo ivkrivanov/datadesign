@@ -49,6 +49,7 @@ CREATE TABLE [dbo].[Items](
 	[MeasureId] [int] NOT NULL,
 	[QuantityPerUnit] [int] NULL,
 	[UnitPrice] [money] NULL,
+	[Discontinued] [bit] NOT NULL,
 	[AccountID] [int] NULL,
 	[InsertDate] [datetime] NOT NULL DEFAULT CURRENT_TIMESTAMP,
     [InsertUserId] [int] NOT NULL DEFAULT (1),

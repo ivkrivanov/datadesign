@@ -15,7 +15,7 @@ namespace Warehouse.Store.Entities
     [DisplayName("Item Categories"), InstanceName("Item Category")]
     [ReadPermission(PermissionKeys.General)]
     [ModifyPermission(PermissionKeys.General)]
-    [LookupScript("Store.ItemCategories", LookupType = typeof(MultiTenantRowLookupScript<>))]
+    [LookupScript("Store.ItemCategory", LookupType = typeof(MultiTenantRowLookupScript<>))]
     [LocalizationRow(typeof(ItemCategoriesLangRow))]
     public sealed class ItemCategoryRow : LoggingRow, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
     {

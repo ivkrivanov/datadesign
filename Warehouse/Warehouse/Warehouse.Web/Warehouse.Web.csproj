@@ -1021,7 +1021,7 @@
     <TypeScriptCompile Include="Modules\Store\Note\NotesEditor.ts" />
     <TypeScriptCompile Include="Modules\Store\OrderDetail\OrderDetailsEditor.ts" />
     <TypeScriptCompile Include="Modules\Store\Order\FreightFormatter.ts" />
-    <TypeScriptCompile Include="Modules\Store\ProductDetail\ProductDetailsEditor.ts" />
+    <TypeScriptCompile Include="Modules\Store\ProductDetail\ProductDetailEditor.ts" />
     <TypeScriptCompile Include="Modules\Store\Shared\PhoneEditor.ts" />
     <TypeScriptCompile Include="Modules\Store\Shipper\ShipperFormatter.ts" />
     <TypeScriptCompile Include="node_modules\%40types\jquery\index.d.ts" />

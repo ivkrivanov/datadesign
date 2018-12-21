@@ -3,7 +3,7 @@
         ItemCategoryID?: number;
         ItemCategoryCode?: string;
         ItemCategoryName?: string;
-        ItemDescription?: string;
+        ItemCatDescription?: string;
         ItemCatImage?: string;
         IsActive?: number;
         TenantId?: number;
@@ -18,17 +18,17 @@
         export const isActiveProperty = 'IsActive';
         export const nameProperty = 'ItemCategoryName';
         export const localTextPrefix = 'Store.ItemCategory';
-        export const lookupKey = 'Store.ItemCategories';
+        export const lookupKey = 'Store.ItemCategory';
 
         export function getLookup(): Q.Lookup<ItemCategoryRow> {
-            return Q.getLookup<ItemCategoryRow>('Store.ItemCategories');
+            return Q.getLookup<ItemCategoryRow>('Store.ItemCategory');
         }
 
         export declare const enum Fields {
             ItemCategoryID = "ItemCategoryID",
             ItemCategoryCode = "ItemCategoryCode",
             ItemCategoryName = "ItemCategoryName",
-            ItemDescription = "ItemDescription",
+            ItemCatDescription = "ItemCatDescription",
             ItemCatImage = "ItemCatImage",
             IsActive = "IsActive",
             TenantId = "TenantId",

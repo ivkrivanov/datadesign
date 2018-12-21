@@ -1,5 +1,4 @@
 ﻿
-
 namespace Warehouse.Store
 { 
     using Serenity.Services;

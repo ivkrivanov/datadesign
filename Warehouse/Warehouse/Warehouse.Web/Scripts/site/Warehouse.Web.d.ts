@@ -1086,7 +1086,7 @@ declare namespace Warehouse.Store {
         ItemCategoryCode: Serenity.StringEditor;
         ItemCategoryName: Serenity.StringEditor;
         ItemCatImage: Serenity.ImageUploadEditor;
-        ItemDescription: Serenity.StringEditor;
+        ItemCatDescription: Serenity.StringEditor;
     }
     class ItemCategoryForm extends Serenity.PrefixedContext {
         static formKey: string;
@@ -1099,7 +1099,7 @@ declare namespace Warehouse.Store {
         ItemCategoryID?: number;
         ItemCategoryCode?: string;
         ItemCategoryName?: string;
-        ItemDescription?: string;
+        ItemCatDescription?: string;
         ItemCatImage?: string;
         IsActive?: number;
         TenantId?: number;
@@ -1113,13 +1113,13 @@ declare namespace Warehouse.Store {
         const isActiveProperty = "IsActive";
         const nameProperty = "ItemCategoryName";
         const localTextPrefix = "Store.ItemCategory";
-        const lookupKey = "Store.ItemCategories";
+        const lookupKey = "Store.ItemCategory";
         function getLookup(): Q.Lookup<ItemCategoryRow>;
         const enum Fields {
             ItemCategoryID = "ItemCategoryID",
             ItemCategoryCode = "ItemCategoryCode",
             ItemCategoryName = "ItemCategoryName",
-            ItemDescription = "ItemDescription",
+            ItemCatDescription = "ItemCatDescription",
             ItemCatImage = "ItemCatImage",
             IsActive = "IsActive",
             TenantId = "TenantId",
@@ -1151,13 +1151,14 @@ declare namespace Warehouse.Store {
 }
 declare namespace Warehouse.Store {
     interface ItemForm {
-        ItemCategoryID: Serenity.IntegerEditor;
+        ItemCategoryID: Serenity.LookupEditor;
         ItemCode: Serenity.StringEditor;
         ItemBarcode: Serenity.StringEditor;
         ItemLabel: Serenity.StringEditor;
         ItemName: Serenity.StringEditor;
         ItemImage: Serenity.ImageUploadEditor;
-        SupplierID: Serenity.IntegerEditor;
+        Discontinued: Serenity.BooleanEditor;
+        SupplierID: Serenity.LookupEditor;
         MeasureID: Serenity.IntegerEditor;
         QuantityPerUnit: Serenity.IntegerEditor;
         UnitPrice: Serenity.DecimalEditor;
@@ -1219,8 +1220,10 @@ declare namespace Warehouse.Store {
         ItemBarcode?: string;
         ItemLabel?: string;
         ItemName?: string;
-        ItemImage?: number[];
+        ItemImage?: string;
+        Discontinued?: boolean;
         SupplierID?: number;
+        ItemCategoryID?: number;
         MeasureID?: number;
         QuantityPerUnit?: number;
         UnitPrice?: number;
@@ -1238,7 +1241,8 @@ declare namespace Warehouse.Store {
         SupplierPhone?: string;
         SupplierFax?: string;
         SupplierHomePage?: string;
-        ItemCategoryID?: number;
+        ItemCategoryCode?: string;
+        ItemCategoryName?: string;
         ItemCatDescription?: string;
         ItemCatImage?: string;
         InsertUserId?: number;
@@ -1260,7 +1264,9 @@ declare namespace Warehouse.Store {
             ItemLabel = "ItemLabel",
             ItemName = "ItemName",
             ItemImage = "ItemImage",
+            Discontinued = "Discontinued",
             SupplierID = "SupplierID",
+            ItemCategoryID = "ItemCategoryID",
             MeasureID = "MeasureID",
             QuantityPerUnit = "QuantityPerUnit",
             UnitPrice = "UnitPrice",
@@ -1278,7 +1284,8 @@ declare namespace Warehouse.Store {
             SupplierPhone = "SupplierPhone",
             SupplierFax = "SupplierFax",
             SupplierHomePage = "SupplierHomePage",
-            ItemCategoryID = "ItemCategoryID",
+            ItemCategoryCode = "ItemCategoryCode",
+            ItemCategoryName = "ItemCategoryName",
             ItemCatDescription = "ItemCatDescription",
             ItemCatImage = "ItemCatImage",
             InsertUserId = "InsertUserId",
@@ -1291,16 +1298,18 @@ declare namespace Warehouse.Store {
 declare namespace Warehouse.Store {
     namespace ItemService {
         const baseUrl = "Store/Item";
-        function Create(request: Serenity.SaveRequest<ItemRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Update(request: Serenity.SaveRequest<ItemRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Create(request: Serenity.SaveWithLocalizationRequest<ItemRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveWithLocalizationRequest<ItemRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<ItemRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function RetrieveLocalization(request: Serenity.RetrieveLocalizationRequest, onSuccess?: (response: Serenity.RetrieveLocalizationResponse<ItemRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function List(request: ItemListRequest, onSuccess?: (response: Serenity.ListResponse<ItemRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         const enum Methods {
             Create = "Store/Item/Create",
             Update = "Store/Item/Update",
             Delete = "Store/Item/Delete",
             Retrieve = "Store/Item/Retrieve",
+            RetrieveLocalization = "Store/Item/RetrieveLocalization",
             List = "Store/Item/List"
         }
     }
@@ -1558,7 +1567,6 @@ declare namespace Warehouse.Store {
 }
 declare namespace Warehouse.Store {
     interface ProductDetailForm {
-        ProductID: Serenity.LookupEditor;
         ItemID: Serenity.LookupEditor;
         Quantity: Serenity.DecimalEditor;
         ProductQuantity: Serenity.DecimalEditor;
@@ -1582,13 +1590,13 @@ declare namespace Warehouse.Store {
         PlanPrice?: number;
         IsActive?: number;
         TenantId?: number;
-        ProductName?: string;
+        ProductProductName?: string;
         ProductDiscontinued?: boolean;
         ProductSupplierID?: number;
         ProductQuantityPerUnit?: string;
         ProductUnitPrice?: number;
-        ItemCode?: string;
-        ItemName?: string;
+        ItemItemCode?: string;
+        ItemItemName?: string;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -1608,13 +1616,13 @@ declare namespace Warehouse.Store {
             PlanPrice = "PlanPrice",
             IsActive = "IsActive",
             TenantId = "TenantId",
-            ProductName = "ProductName",
+            ProductProductName = "ProductProductName",
             ProductDiscontinued = "ProductDiscontinued",
             ProductSupplierID = "ProductSupplierID",
             ProductQuantityPerUnit = "ProductQuantityPerUnit",
             ProductUnitPrice = "ProductUnitPrice",
-            ItemCode = "ItemCode",
-            ItemName = "ItemName",
+            ItemItemCode = "ItemItemCode",
+            ItemItemName = "ItemItemName",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",
@@ -1817,16 +1825,18 @@ declare namespace Warehouse.Store {
 declare namespace Warehouse.Store {
     namespace ProductService {
         const baseUrl = "Store/Product";
-        function Create(request: Serenity.SaveRequest<ProductRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Update(request: Serenity.SaveRequest<ProductRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Create(request: Serenity.SaveWithLocalizationRequest<ProductRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveWithLocalizationRequest<ProductRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<ProductRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function RetrieveLocalization(request: Serenity.RetrieveLocalizationRequest, onSuccess?: (response: Serenity.RetrieveLocalizationResponse<ProductRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function List(request: ProductListRequest, onSuccess?: (response: Serenity.ListResponse<ProductRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         const enum Methods {
             Create = "Store/Product/Create",
             Update = "Store/Product/Update",
             Delete = "Store/Product/Delete",
             Retrieve = "Store/Product/Retrieve",
+            RetrieveLocalization = "Store/Product/RetrieveLocalization",
             List = "Store/Product/List"
         }
     }
@@ -2607,6 +2617,7 @@ declare namespace Warehouse.Store {
         protected getLocalTextPrefix(): string;
         protected getNameProperty(): string;
         protected getService(): string;
+        protected getLanguages(): string[][];
         protected form: ItemForm;
     }
 }
@@ -2777,6 +2788,7 @@ declare namespace Warehouse.Store {
         protected getLocalTextPrefix(): string;
         protected getNameProperty(): string;
         protected getService(): string;
+        protected getLanguages(): string[][];
         protected form: ProductForm;
     }
 }

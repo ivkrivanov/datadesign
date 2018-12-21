@@ -5,8 +5,10 @@
         ItemBarcode?: string;
         ItemLabel?: string;
         ItemName?: string;
-        ItemImage?: number[];
+        ItemImage?: string;
+        Discontinued?: boolean;
         SupplierID?: number;
+        ItemCategoryID?: number;
         MeasureID?: number;
         QuantityPerUnit?: number;
         UnitPrice?: number;
@@ -24,7 +26,8 @@
         SupplierPhone?: string;
         SupplierFax?: string;
         SupplierHomePage?: string;
-        ItemCategoryID?: number;
+        ItemCategoryCode?: string;
+        ItemCategoryName?: string;
         ItemCatDescription?: string;
         ItemCatImage?: string;
         InsertUserId?: number;
@@ -51,7 +54,9 @@
             ItemLabel = "ItemLabel",
             ItemName = "ItemName",
             ItemImage = "ItemImage",
+            Discontinued = "Discontinued",
             SupplierID = "SupplierID",
+            ItemCategoryID = "ItemCategoryID",
             MeasureID = "MeasureID",
             QuantityPerUnit = "QuantityPerUnit",
             UnitPrice = "UnitPrice",
@@ -69,7 +74,8 @@
             SupplierPhone = "SupplierPhone",
             SupplierFax = "SupplierFax",
             SupplierHomePage = "SupplierHomePage",
-            ItemCategoryID = "ItemCategoryID",
+            ItemCategoryCode = "ItemCategoryCode",
+            ItemCategoryName = "ItemCategoryName",
             ItemCatDescription = "ItemCatDescription",
             ItemCatImage = "ItemCatImage",
             InsertUserId = "InsertUserId",

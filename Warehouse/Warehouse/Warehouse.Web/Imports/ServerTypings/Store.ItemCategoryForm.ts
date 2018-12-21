@@ -3,7 +3,7 @@
         ItemCategoryCode: Serenity.StringEditor;
         ItemCategoryName: Serenity.StringEditor;
         ItemCatImage: Serenity.ImageUploadEditor;
-        ItemDescription: Serenity.StringEditor;
+        ItemCatDescription: Serenity.StringEditor;
     }
 
     export class ItemCategoryForm extends Serenity.PrefixedContext {
@@ -24,7 +24,7 @@
                     'ItemCategoryCode', w0,
                     'ItemCategoryName', w0,
                     'ItemCatImage', w1,
-                    'ItemDescription', w0
+                    'ItemCatDescription', w0
                 ]);
             }
         }

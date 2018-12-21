@@ -58,13 +58,21 @@ namespace Warehouse.Store.Entities
         [DisplayName("Item Image"), Size(100)]
         [ImageUploadEditor(FilenameFormat = "ItemImage/~", CopyToHistory = true)]
 
-        public Stream ItemImage
+        public String ItemImage
         {
             get { return Fields.ItemImage[this]; }
             set { Fields.ItemImage[this] = value; }
         }
 
-        [DisplayName("Supplier"), Column("SupplierID"), ForeignKey(typeof(SupplierRow)), LeftJoin("sup"), TextualField("SupplierCompanyName")]
+        [DisplayName("Discontinued"), NotNull]
+        public Boolean? Discontinued
+        {
+            get { return Fields.Discontinued[this]; }
+            set { Fields.Discontinued[this] = value; }
+        }
+
+        [DisplayName("Supplier"), ForeignKey(typeof(SupplierRow)), LeftJoin("sup"), TextualField("SupplierCompanyName")]
+        [LookupEditor(typeof(SupplierRow), InplaceAdd = true)]
         public Int32? SupplierID
         {
             get { return Fields.SupplierID[this]; }
@@ -72,6 +80,7 @@ namespace Warehouse.Store.Entities
         }
 
         [DisplayName("Category Item ID"), Column("ItemCategoryID"), ForeignKey(typeof(ItemCategoryRow)), LeftJoin("cat"), LookupInclude]
+        [LookupEditor(typeof(ItemCategoryRow), InplaceAdd = true)]
         public Int32? ItemCategoryID
         {
             get { return Fields.ItemCategoryID[this]; }
@@ -202,14 +211,14 @@ namespace Warehouse.Store.Entities
         //    set { Fields.SupplierSupplierStat[this] = value; }
         //}
 
-        [Origin("cat"), DisplayName("Category")]
+        [Origin("cat"), DisplayName("Category Name")]
         public String ItemCategoryName
         {
             get { return Fields.ItemCategoryName[this]; }
             set { Fields.ItemCategoryName[this] = value; }
         }
 
-        [Origin("cat"), DisplayName("Category")]
+        [Origin("cat"), DisplayName("Category Code")]
         public String ItemCategoryCode
         {
             get { return Fields.ItemCategoryCode[this]; }
@@ -282,7 +291,8 @@ namespace Warehouse.Store.Entities
             public StringField ItemBarcode;
             public StringField ItemLabel;
             public StringField ItemName;
-            public StreamField ItemImage;
+            public StringField ItemImage;
+            public BooleanField Discontinued;
             public Int32Field SupplierID;
             public Int32Field ItemCategoryID;
             public Int32Field MeasureID;

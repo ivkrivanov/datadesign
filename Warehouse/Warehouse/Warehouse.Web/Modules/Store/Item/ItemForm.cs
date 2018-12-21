@@ -17,6 +17,7 @@ namespace Warehouse.Store.Forms
         public String ItemLabel { get; set; }
         public String ItemName { get; set; }
         public Stream ItemImage { get; set; }
+        public Boolean Discontinued { get; set; }
         public Int32 SupplierID { get; set; }
 
         [Category("Pricing")]

@@ -13,16 +13,16 @@ namespace Warehouse.Store {
         }
 
         validateEntity(row, id) {
-            row.ProductID = Q.toId(row.ProductID);
+            row.ItemID = Q.toId(row.ItemID);
 
-            var sameProduct = Q.tryFirst(this.view.getItems(), x => x.ProductID === row.ProductID);
-            if (sameProduct && this.id(sameProduct) !== id) {
-                Q.alert('This product is already in order details!');
+            var sameItem = Q.tryFirst(this.view.getItems(), x => x.ItemID === row.ItemID);
+            if (sameItem && this.id(sameItem) !== id) {
+                Q.alert('This item is already in product details!');
                 return false;
             }
 
-            row.ProductName = ProductRow.getLookup().itemById[row.ProductID].ProductName;
-            //row.LineTotal = (row.Quantity || 0) * (row.UnitPrice || 0) - (row.Discount || 0);
+            row.ItemName = ItemRow.getLookup().itemById[row.ItemID].ItemName;
+            row.LineTotal = (row.Quantity || 0) * (row.UnitPrice || 0) - (row.Discount || 0);
             return true;
         }
     }

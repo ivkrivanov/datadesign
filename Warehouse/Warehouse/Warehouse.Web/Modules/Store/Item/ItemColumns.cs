@@ -12,16 +12,23 @@ namespace Warehouse.Store.Columns
     {
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         public Int32 ItemID { get; set; }
-        [EditLink]
+        [EditLink, Width(100)]
         public String ItemCode { get; set; }
+        [EditLink, Width(100)]
         public String ItemBarcode { get; set; }
+        [EditLink, Width(250)]
         public String ItemLabel { get; set; }
+        [EditLink, Width(250)]
         public String ItemName { get; set; }
-        [EditLink(ItemType = "Store.Category"), Width(150), QuickFilter, QuickFilterOption("multiple", true)]
+        [QuickFilter]
+        public Boolean Discontinued { get; set; }
+        [EditLink(ItemType = "Store.ItemCategory"), Width(150), QuickFilter, QuickFilterOption("multiple", true)]
         public String ItemCategoryName { get; set; }
-        public Int32 ItemCategoryID { get; set; }
+
         public Int32 MeasureID { get; set; }
+        [Width(80), AlignRight]
         public Int32 QuantityPerUnit { get; set; }
+        [Width(80), AlignRight]
         public Decimal UnitPrice { get; set; }
     }
 }
