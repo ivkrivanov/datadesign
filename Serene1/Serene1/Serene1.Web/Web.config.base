@@ -14,8 +14,8 @@
   </appSettings>
 
   <connectionStrings>
-    <add name="Default" connectionString="Data Source=(LocalDB)\MSSQLLocalDB; Initial Catalog=Ledger_Default_v1; Integrated Security=True" providerName="System.Data.SqlClient" />
-    <add name="Northwind" connectionString="Data Source=(LocalDB)\MSSQLLocalDB; Initial Catalog=Ledger_Northwind_v1; Integrated Security=True" providerName="System.Data.SqlClient" />
+    <add name="Default" connectionString="Data Source=(LocalDB)\MSSQLLocalDB; Initial Catalog=Serene1_Default_v1; Integrated Security=True" providerName="System.Data.SqlClient" />
+    <add name="Northwind" connectionString="Data Source=(LocalDB)\MSSQLLocalDB; Initial Catalog=Serene1_Default_v1; Integrated Security=True" providerName="System.Data.SqlClient" />
   </connectionStrings>
 
   <system.net>

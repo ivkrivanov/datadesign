@@ -14,15 +14,10 @@ namespace Serene1.Default.Infra.Columns
     public class AddressTypeStringColumns
     {
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
-        [LookupEditor(typeof(Entities.AddressTypeRow)), QuickFilter]
         public Int32 EnumLocaleId { get; set; }
-        public Int32 EnumValue { get; set; }
+        public String EnumValueEnumName { get; set; }
         [EditLink]
         public String DisplayName { get; set; }
-        [EditLink(ItemType = "Default.Administration.Language", IdField = "Id"), Width(150)]
-        [LookupEditor(typeof(Serene1.Administration.Entities.LanguageRow)), QuickFilter]
         public Int32 Language { get; set; }
-        //public Int32 TenantId { get; set; }
-        //public Int16 IsActive { get; set; }
     }
 }

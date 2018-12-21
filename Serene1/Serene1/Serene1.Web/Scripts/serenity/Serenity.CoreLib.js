@@ -8,37 +8,12 @@
                 r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __skipExtends = {
-    "__metadata": true,
-    "__typeName": true,
-    "__componentFactory": true
-};
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b)
-        if (b.hasOwnProperty(p) && __skipExtends[p] !== true)
+        if (b.hasOwnProperty(p) && p !== '__metadata' && p !== '__typeName')
             d[p] = b[p];
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
-var __assign = Object.assign || function (t) {
-    for (var s, i = 1, n = arguments.length; i < n; i++) {
-        s = arguments[i];
-        for (var p in s)
-            if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-    }
-    return t;
-};
-var __rest = function (s, e) {
-    var t = {};
-    for (var p in s)
-        if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-            t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++)
-            if (e.indexOf(p[i]) < 0)
-                t[p[i]] = s[p[i]];
-    return t;
 };
 /**
  * Represents the completion of an asynchronous operation
@@ -168,36 +143,6 @@ var Q;
     }
     Q.toGrouping = toGrouping;
     /**
-     * Groups an array with keys determined by specified getKey() callback.
-     * Resulting object contains group objects in order and a dictionary to access by key.
-     */
-    function groupBy(items, getKey) {
-        var result = {
-            byKey: Object.create(null),
-            inOrder: []
-        };
-        for (var index = 0; index < items.length; index++) {
-            var item = items[index];
-            var key = Q.coalesce(getKey(item), "");
-            var group = result.byKey[key];
-            if (group === undefined) {
-                group = {
-                    order: result.inOrder.length,
-                    key: key,
-                    items: [item],
-                    start: index
-                };
-                result.byKey[key] = group;
-                result.inOrder.push(group);
-            }
-            else {
-                group.items.push(item);
-            }
-        }
-        return result;
-    }
-    Q.groupBy = groupBy;
-    /**
      * Gets first element in an array that matches given predicate.
      * Returns null if no match is found.
      */
@@ -314,64 +259,6 @@ var Q;
         return s;
     }
     Q.zeroPad = zeroPad;
-    /**
-     * Returns a function, that, as long as it continues to be invoked, will not
-     * be triggered. The function will be called after it stops being called for
-     * N milliseconds. If `immediate` is passed, trigger the function on the
-     * leading edge, instead of the trailing. The function also has a property 'clear'
-     * that is a function which will clear the timer to prevent previously scheduled executions.
-     *
-     * @source underscore.js
-     */
-    function debounce(func, wait, immediate) {
-        var timeout, args, context, timestamp, result;
-        if (null == wait)
-            wait = 100;
-        function later() {
-            var last = Date.now() - timestamp;
-            if (last < wait && last >= 0) {
-                timeout = setTimeout(later, wait - last);
-            }
-            else {
-                timeout = null;
-                if (!immediate) {
-                    result = func.apply(context, args);
-                    context = args = null;
-                }
-            }
-        }
-        ;
-        var debounced = function () {
-            context = this;
-            args = arguments;
-            timestamp = Date.now();
-            var callNow = immediate && !timeout;
-            if (!timeout)
-                timeout = setTimeout(later, wait);
-            if (callNow) {
-                result = func.apply(context, args);
-                context = args = null;
-            }
-            return result;
-        };
-        debounced.clear = function () {
-            if (timeout) {
-                clearTimeout(timeout);
-                timeout = null;
-            }
-        };
-        debounced.flush = function () {
-            if (timeout) {
-                result = func.apply(context, args);
-                context = args = null;
-                clearTimeout(timeout);
-                timeout = null;
-            }
-        };
-        return debounced;
-    }
-    Q.debounce = debounce;
-    ;
     // derived from https://github.com/mistic100/jQuery.extendext/blob/master/jQuery.extendext.js
     function deepClone(arg1) {
         var args = [];
@@ -891,44 +778,10 @@ var Q;
         return t;
     }
     Q.text = text;
-    function dbText(prefix) {
-        return function (key) {
-            return text("Db." + prefix + "." + key);
-        };
-    }
-    Q.dbText = dbText;
-    function prefixedText(prefix) {
-        return function (text, key) {
-            if (text != null && !Q.startsWith(text, '`')) {
-                var local = Q.tryGetText(text);
-                if (local != null) {
-                    return local;
-                }
-            }
-            if (text != null && Q.startsWith(text, '`')) {
-                text = text.substr(1);
-            }
-            if (!Q.isEmptyOrNull(prefix)) {
-                var textKey = typeof (key) == "function" ? key(prefix) : (prefix + key);
-                var localText = Q.tryGetText(textKey);
-                if (localText != null) {
-                    return localText;
-                }
-            }
-            return text;
-        };
-    }
-    Q.prefixedText = prefixedText;
     function tryGetText(key) {
         return LT.$table[key];
     }
     Q.tryGetText = tryGetText;
-    function dbTryText(prefix) {
-        return function (key) {
-            return text("Db." + prefix + "." + key);
-        };
-    }
-    Q.dbTryText = dbTryText;
     var LT = /** @class */ (function () {
         function LT(key) {
             this.key = key;
@@ -1326,7 +1179,7 @@ var Q;
     Q.confirm = confirm;
     function iframeDialog(options) {
         var doc;
-        var e = $('<div style="overflow: hidden"><iframe></iframe></div>');
+        var e = $('<div><iframe></iframe></div>');
         var settings = $.extend({
             autoOpen: true,
             modal: true,
@@ -1442,35 +1295,6 @@ var Q;
             Q.alert(msg);
         }
         ErrorHandling.showServiceError = showServiceError;
-        function runtimeErrorHandler(message, filename, lineno, colno, error) {
-            try {
-                var host = (window.location.host || "").toLowerCase();
-                if (host.indexOf("localhost") < 0 &&
-                    host.indexOf("127.0.0.1") < 0)
-                    return;
-                if (!window['toastr'])
-                    return;
-                var errorInfo = JSON.stringify(error || {});
-                message =
-                    '<p></p><p>Message: ' + Q.htmlEncode(message) +
-                        '</p><p>File: ' + Q.htmlEncode(filename) +
-                        ', Line: ' + lineno + ', Column: ' + colno +
-                        (errorInfo != "{}" ? '</p><p>Error: ' : "") + '</p>';
-                window.setTimeout(function () {
-                    try {
-                        Q.notifyError(message, "SCRIPT ERROR! See browser console (F12) for details.", {
-                            escapeHtml: false,
-                            timeOut: 15000
-                        });
-                    }
-                    catch (_a) {
-                    }
-                });
-            }
-            catch (_a) {
-            }
-        }
-        ErrorHandling.runtimeErrorHandler = runtimeErrorHandler;
     })(ErrorHandling = Q.ErrorHandling || (Q.ErrorHandling = {}));
 })(Q || (Q = {}));
 var Q;
@@ -1822,60 +1646,13 @@ var Q;
             $(document.body).unbind('scriptdatachange.' + regClass);
         }
         ScriptData.unbindFromChange = unbindFromChange;
-        function loadOptions(name, async) {
-            return {
-                async: async,
-                cache: true,
-                type: 'GET',
-                url: Q.resolveUrl('~/DynJS.axd/') + name + '.js?' + registered[name],
-                data: null,
-                dataType: 'text',
-                converters: {
-                    "text script": function (text) {
-                        return text;
-                    }
-                },
-                success: function (data, textStatus, jqXHR) {
-                    $.globalEval(data);
-                },
-                error: function (xhr, textStatus, errorThrown) {
-                    var isLookup = Q.startsWith(name, "Lookup.");
-                    if (xhr.status == 403 && isLookup) {
-                        Q.notifyError('<p>Access denied while trying to load the lookup: "<b>' +
-                            name.substr(7) + '</b>". Please check if current user has required permissions for this lookup.</p> ' +
-                            '<p><em>Lookups use the ReadPermission of their row by default. You may override that for the lookup ' +
-                            'like [LookupScript("Some.Lookup", Permission = "?")] to grant all ' +
-                            'authenticated users to read it (or use "*" for public).</em></p>' +
-                            '<p><em>Note that this might be a security risk if the lookup contains sensitive data, ' +
-                            'so it could be better to set a separate permission for lookups, like "MyModule:Lookups".</em></p>', null, {
-                            timeOut: 10000,
-                            escapeHtml: false
-                        });
-                        return;
-                    }
-                    Q.notifyError("An error occured while trying to load " +
-                        (isLookup ? ' the lookup: "' + name.substr(7) :
-                            ' dynamic script: "' + name) +
-                        '"!. Please check the error message displayed in the dialog below for more info.');
-                    var html = xhr.responseText;
-                    if (!html) {
-                        if (!xhr.status)
-                            Q.alert("An unknown connection error occured! Check browser console for details.");
-                        else if (xhr.status == 500)
-                            Q.alert("HTTP 500: Connection refused! Check browser console for details.");
-                        else
-                            Q.alert("HTTP " + xhr.status + ' error! Check browser console for details.');
-                    }
-                    else
-                        Q.iframeDialog({ html: html });
-                }
-            };
+        function syncLoadScript(url) {
+            $.ajax({ async: false, cache: true, type: 'GET', url: url, data: null, dataType: 'script' });
         }
-        function loadScriptAsync(name) {
+        function loadScriptAsync(url) {
             return Promise.resolve().then(function () {
                 Q.blockUI(null);
-                return Promise.resolve($.ajax(loadOptions(name, false))
-                    .always(function () {
+                return Promise.resolve($.ajax({ async: true, cache: true, type: 'GET', url: url, data: null, dataType: 'script' }).always(function () {
                     Q.blockUndo();
                 }));
             }, null);
@@ -1884,14 +1661,16 @@ var Q;
             if (registered[name] == null) {
                 throw new Error(Q.format('Script data {0} is not found in registered script list!', name));
             }
-            $.ajax(loadOptions(name, false));
+            name = name + '.js?' + registered[name];
+            syncLoadScript(Q.resolveUrl('~/DynJS.axd/') + name);
         }
         function loadScriptDataAsync(name) {
             return Promise.resolve().then(function () {
                 if (registered[name] == null) {
                     throw new Error(Q.format('Script data {0} is not found in registered script list!', name));
                 }
-                return loadScriptAsync(name);
+                name = name + '.js?' + registered[name];
+                return loadScriptAsync(Q.resolveUrl('~/DynJS.axd/') + name);
             }, null);
         }
         function ensure(name) {
@@ -1970,14 +1749,6 @@ var Q;
     }
     Q.getRemoteDataAsync = getRemoteDataAsync;
     function getLookup(key) {
-        var name = 'Lookup.' + key;
-        if (!ScriptData.canLoad(name)) {
-            var message = 'No lookup with key "' + key + '" is registered. Please make sure you have a' +
-                ' [LookupScript("' + key + '")] attribute in server side code on top of a row / custom lookup and ' +
-                ' its key is exactly the same.';
-            Q.notifyError(message);
-            throw new Error(message);
-        }
         return ScriptData.ensure('Lookup.' + key);
     }
     Q.getLookup = getLookup;
@@ -2053,21 +1824,6 @@ var Q;
         });
     }
     Q.prop = prop;
-    function typeByFullName(fullName, global) {
-        if (!fullName)
-            return null;
-        var parts = fullName.split('.');
-        var root = global || window;
-        for (var i = 0; i < parts.length; i++) {
-            root = root[parts[i]];
-            if (root == null)
-                return null;
-        }
-        if (typeof root != "function")
-            return null;
-        return root;
-    }
-    Q.typeByFullName = typeByFullName;
     function enumerateTypes(global, namespaces, callback) {
         function scan(root, fullName, depth) {
             if (!root)
@@ -2551,6 +2307,16 @@ var System;
         return CategoryAttribute;
     }());
     Serenity.CategoryAttribute = CategoryAttribute;
+    var CollapsibleAttribute = /** @class */ (function () {
+        function CollapsibleAttribute(value) {
+            this.value = value;
+        }
+        CollapsibleAttribute = __decorate([
+            Attr('Collapsible')
+        ], CollapsibleAttribute);
+        return CollapsibleAttribute;
+    }());
+    Serenity.CollapsibleAttribute = CollapsibleAttribute;
     var ColumnsKeyAttribute = /** @class */ (function () {
         function ColumnsKeyAttribute(value) {
             this.value = value;
@@ -2937,6 +2703,12 @@ var System;
             type.__metadata.attr.push(attr);
         }
         Decorators.addAttribute = addAttribute;
+        function columnsKey(value) {
+            return function (target) {
+                addAttribute(target, new Serenity.ColumnsKeyAttribute(value));
+            };
+        }
+        Decorators.columnsKey = columnsKey;
         function dialogType(value) {
             return function (target) {
                 addAttribute(target, new Serenity.DialogTypeAttribute(value));
@@ -2958,6 +2730,12 @@ var System;
             };
         }
         Decorators.element = element;
+        function entityType(value) {
+            return function (target) {
+                addAttribute(target, new Serenity.EntityTypeAttribute(value));
+            };
+        }
+        Decorators.entityType = entityType;
         function enumKey(value) {
             return function (target) {
                 addAttribute(target, new Serenity.EnumKeyAttribute(value));
@@ -2971,6 +2749,24 @@ var System;
             };
         }
         Decorators.flexify = flexify;
+        function formKey(value) {
+            return function (target) {
+                addAttribute(target, new Serenity.FormKeyAttribute(value));
+            };
+        }
+        Decorators.formKey = formKey;
+        function generatedCode(origin) {
+            return function (target) {
+                addAttribute(target, new Serenity.GeneratedCodeAttribute(origin));
+            };
+        }
+        Decorators.generatedCode = generatedCode;
+        function idProperty(value) {
+            return function (target) {
+                addAttribute(target, new Serenity.IdPropertyAttribute(value));
+            };
+        }
+        Decorators.idProperty = idProperty;
         function registerEnum(target, enumKey, name) {
             if (!target.__enum) {
                 Object.defineProperty(target, '__enum', {
@@ -3013,6 +2809,18 @@ var System;
             };
         }
         Decorators.itemName = itemName;
+        function isActiveProperty(value) {
+            return function (target) {
+                addAttribute(target, new Serenity.IsActivePropertyAttribute(value));
+            };
+        }
+        Decorators.isActiveProperty = isActiveProperty;
+        function localTextPrefix(value) {
+            return function (target) {
+                addAttribute(target, new Serenity.LocalTextPrefixAttribute(value));
+            };
+        }
+        Decorators.localTextPrefix = localTextPrefix;
         function maximizable(value) {
             if (value === void 0) { value = true; }
             return function (target) {
@@ -3020,6 +2828,12 @@ var System;
             };
         }
         Decorators.maximizable = maximizable;
+        function nameProperty(value) {
+            return function (target) {
+                addAttribute(target, new Serenity.NamePropertyAttribute(value));
+            };
+        }
+        Decorators.nameProperty = nameProperty;
         function option() {
             return function (target, propertyKey) {
                 var isGetSet = Q.startsWith(propertyKey, 'get_') || Q.startsWith(propertyKey, 'set_');
@@ -4180,52 +3994,30 @@ var Serenity;
         return IAsyncInit;
     }());
     Serenity.IAsyncInit = IAsyncInit;
-    if (typeof React === "undefined") {
-        if (window['preact'] != null) {
-            window['React'] = window['ReactDOM'] = window['preact'];
-            React.Fragment = Q.coalesce(React.Fragment, "x-fragment");
-        }
-        else if (window['Nerv'] != null) {
-            window['React'] = window['ReactDOM'] = window['Nerv'];
-            React.Fragment = Q.coalesce(React.Fragment, "x-fragment");
-        }
-        else {
-            window['React'] = {
-                Component: function () { },
-                Fragment: "x-fragment",
-                createElement: function () { return { _reactNotLoaded: true }; }
-            };
-            window['ReactDOM'] = {
-                render: function () { throw Error("To use React, it should be included before Serenity.CoreLib.js"); }
-            };
-        }
-    }
-    var Widget = /** @class */ (function (_super) {
-        __extends(Widget, _super);
+    var Widget = /** @class */ (function () {
         function Widget(element, options) {
-            var _this = _super.call(this, options) || this;
-            _this.element = element;
-            _this.options = options || {};
-            _this.widgetName = Widget_1.getWidgetName(ss.getInstanceType(_this));
-            _this.uniqueName = _this.widgetName + (Widget_1.nextWidgetNumber++).toString();
-            if (element.data(_this.widgetName)) {
-                throw new ss.Exception(Q.format("The element already has widget '{0}'!", _this.widgetName));
+            var _this = this;
+            this.element = element;
+            this.options = options || {};
+            this.widgetName = Widget_1.getWidgetName(ss.getInstanceType(this));
+            this.uniqueName = this.widgetName + (Widget_1.nextWidgetNumber++).toString();
+            if (element.data(this.widgetName)) {
+                throw new ss.Exception(Q.format("The element already has widget '{0}'!", this.widgetName));
             }
-            element.bind('remove.' + _this.widgetName, function (e) {
+            element.bind('remove.' + this.widgetName, function (e) {
                 if (e.bubbles || e.cancelable) {
                     return;
                 }
                 _this.destroy();
-            }).data(_this.widgetName, _this);
-            _this.addCssClass();
-            if (_this.isAsyncWidget()) {
+            }).data(this.widgetName, this);
+            this.addCssClass();
+            if (this.isAsyncWidget()) {
                 window.setTimeout(function () {
                     if (element && !_this.asyncPromise) {
                         _this.asyncPromise = _this.initializeAsync();
                     }
                 }, 0);
             }
-            return _this;
         }
         Widget_1 = Widget;
         Widget.prototype.destroy = function () {
@@ -4305,13 +4097,12 @@ var Serenity;
             return this.asyncPromise;
         };
         Widget.nextWidgetNumber = 0;
-        Widget.__isWidgetType = true;
         Widget = Widget_1 = __decorate([
             Serenity.Decorators.registerClass()
         ], Widget);
         return Widget;
         var Widget_1;
-    }(React.Component));
+    }());
     Serenity.Widget = Widget;
     Widget.prototype.addValidationRule = function (eventClass, rule) {
         return Serenity.VX.addValidationRule(this.element, eventClass, rule);
@@ -5405,7 +5196,6 @@ var Serenity;
                 }
                 this.element.select2('val', val)
                     .triggerHandler('change', [true]);
-                this.updateInplaceReadOnly();
             }
         };
         Select2Editor.prototype.get_values = function () {
@@ -5462,18 +5252,13 @@ var Serenity;
             enumerable: true,
             configurable: true
         });
-        Select2Editor.prototype.updateInplaceReadOnly = function () {
-            var readOnly = this.get_readOnly() &&
-                (this.multiple || !this.value);
-            this.element.nextAll('.inplace-create')
-                .attr('disabled', (readOnly ? 'disabled' : ''))
-                .css('opacity', (readOnly ? '0.1' : ''))
-                .css('cursor', (readOnly ? 'default' : ''));
-        };
         Select2Editor.prototype.set_readOnly = function (value) {
             if (value !== this.get_readOnly()) {
                 Serenity.EditorUtils.setReadonly(this.element, value);
-                this.updateInplaceReadOnly();
+                this.element.nextAll('.inplace-create')
+                    .attr('disabled', (value ? 'disabled' : ''))
+                    .css('opacity', (value ? '0.1' : ''))
+                    .css('cursor', (value ? 'default' : ''));
             }
         };
         Select2Editor = __decorate([
@@ -5703,18 +5488,11 @@ var Serenity;
         };
         LookupEditorBase.prototype.inplaceCreateClick = function (e) {
             var _this = this;
-            if (this.get_readOnly() &&
-                ((this.multiple && !e['editItem']) || !this.value))
+            if (this.get_readOnly()) {
                 return;
+            }
             var self = this;
             this.createEditDialog(function (dialog) {
-                // an ugly workaround
-                if (_this.get_readOnly() &&
-                    dialog.element)
-                    dialog.element
-                        .find('.tool-button.delete-button')
-                        .addClass('disabled')
-                        .unbind('click');
                 Serenity.SubDialogHelper.bindToDataChange(dialog, _this, function (x, dci) {
                     Q.reloadLookup(_this.getLookupKey());
                     self.updateItems();
@@ -5955,11 +5733,6 @@ var Serenity;
             initialize();
             var editorType = knownTypes[key.toLowerCase()];
             if (editorType == null) {
-                var type = Q.typeByFullName(key);
-                if (type != null) {
-                    knownTypes[key.toLowerCase()] = type;
-                    return type;
-                }
                 throw new ss.Exception(Q.format("Can't find {0} editor type!", key));
             }
             return editorType;
@@ -6011,19 +5784,15 @@ var Serenity;
             var keys = Object.keys(knownTypes);
             for (var _i = 0, keys_3 = keys; _i < keys_3.length; _i++) {
                 var k = keys_3[_i];
-                setWithoutSuffix(k, knownTypes[k]);
+                if (!Q.endsWith(k, suffix))
+                    continue;
+                var p = k.substr(0, k.length - suffix.length);
+                if (Q.isEmptyOrNull(p))
+                    continue;
+                if (knownTypes[p] != null)
+                    continue;
+                knownTypes[p] = knownTypes[k];
             }
-        }
-        function setWithoutSuffix(key, t) {
-            var suffix = 'editor';
-            if (!Q.endsWith(key, suffix))
-                return;
-            var p = key.substr(0, key.length - suffix.length);
-            if (Q.isEmptyOrNull(p))
-                return;
-            if (knownTypes[p] != null)
-                return;
-            knownTypes[p] = knownTypes[key];
         }
     })(EditorTypeRegistry = Serenity.EditorTypeRegistry || (Serenity.EditorTypeRegistry = {}));
     var EditorUtils;
@@ -6751,12 +6520,10 @@ var Serenity;
             }
             $('<script/>').attr('type', 'text/javascript')
                 .attr('id', 'CKEditorScript')
-                .attr('src', Q.resolveUrl('~/Scripts/CKEditor/ckeditor.js?v=' +
-                HtmlContentEditor_1.CKEditorVer))
+                .attr('src', Q.resolveUrl('~/Scripts/CKEditor/ckeditor.js'))
                 .appendTo(window.document.head);
         };
         ;
-        HtmlContentEditor.CKEditorVer = "4.7.1";
         HtmlContentEditor = HtmlContentEditor_1 = __decorate([
             Editor('HtmlContent', [Serenity.IStringValue, Serenity.IReadOnly]),
             Element('<textarea/>')
@@ -7306,8 +7073,7 @@ var Serenity;
             // ignore
         };
         Recaptcha = __decorate([
-            Serenity.Decorators.registerEditor('Serenity.Recaptcha', [Serenity.IStringValue]),
-            Serenity.Decorators.element("<div/>")
+            Serenity.Decorators.registerEditor('Serenity.Recaptcha', [Serenity.IStringValue])
         ], Recaptcha);
         return Recaptcha;
     }(Serenity.Widget));
@@ -8940,9 +8706,9 @@ var Serenity;
                         $this: _this
                     }, function (e) {
                         e.preventDefault();
-                        this.$this.fieldChanged = !ss.referenceEquals(self.field, this.field.$);
+                        this.$this.$fieldChanged = !ss.referenceEquals(self.field, this.field.$);
                         self.field = this.field.$;
-                        this.$this.updateInputPlaceHolder();
+                        this.$this.$updateInputPlaceHolder();
                         this.$this.checkIfValueChanged();
                     }));
                 }
@@ -10338,6 +10104,186 @@ var Serenity;
         var PropertyGrid_1;
     }(Serenity.Widget));
     Serenity.PropertyGrid = PropertyGrid;
+    var PropertyItemHelper;
+    (function (PropertyItemHelper) {
+        function getPropertyItemsFor(type) {
+            if (type == null) {
+                throw new ss.Exception('type');
+            }
+            var list = [];
+            var $t1 = ss.getMembers(type, 31, 20);
+            for (var $t2 = 0; $t2 < $t1.length; $t2++) {
+                var member = $t1[$t2];
+                var pi = {};
+                if (member.type !== 16 && member.type !== 4) {
+                    continue;
+                }
+                var hiddenAttribute = (member.attr || []).filter(function (a) {
+                    return ss.isInstanceOfType(a, Serenity.HiddenAttribute);
+                });
+                if (hiddenAttribute.length > 0) {
+                    continue;
+                }
+                var displayNameAttribute = (member.attr || []).filter(function (a) {
+                    return ss.isInstanceOfType(a, System.ComponentModel.DisplayNameAttribute);
+                });
+                var hintAttribute = (member.attr || []).filter(function (a) {
+                    return ss.isInstanceOfType(a, Serenity.HintAttribute);
+                });
+                var placeholderAttribute = (member.attr || []).filter(function (a) {
+                    return ss.isInstanceOfType(a, Serenity.PlaceholderAttribute);
+                });
+                var memberType = ((member.type === 16) ? ss.cast(member, member != null && member.type === 16)
+                    .returnType : ss.cast(member, member != null && member.type === 4).returnType);
+                if (member.type === 16) {
+                    var p = ss.cast(member, member && member.type === 16);
+                    if (p.fname == null) {
+                        continue;
+                    }
+                    pi.name = p.fname;
+                }
+                else if (member.type === 4) {
+                    var f = ss.cast(member, member != null && member.type === 4);
+                    pi.name = f.sname;
+                }
+                else {
+                    continue;
+                }
+                var categoryAttribute = (member.attr || []).filter(function (a) {
+                    return ss.isInstanceOfType(a, Serenity.CategoryAttribute);
+                });
+                if (categoryAttribute.length > 0) {
+                    pi.category = ss.cast(categoryAttribute[0], Serenity.CategoryAttribute).category;
+                }
+                else if (list.length > 0) {
+                    pi.category = list[list.length - 1].category;
+                }
+                var collapsibleAttribute = (member.attr || []).filter(function (a) {
+                    return ss.isInstanceOfType(a, Serenity.CollapsibleAttribute);
+                });
+                if (collapsibleAttribute.length > 0 && ss.cast(collapsibleAttribute[0], Serenity.CollapsibleAttribute).value) {
+                    pi.collapsible = true;
+                    pi.collapsed = ss.cast(collapsibleAttribute[0], Serenity.CollapsibleAttribute).collapsed;
+                }
+                var cssClassAttr = (member.attr || []).filter(function (a) {
+                    return ss.isInstanceOfType(a, Serenity.CssClassAttribute);
+                });
+                if (cssClassAttr.length > 0) {
+                    pi.cssClass = ss.cast(cssClassAttr[0], Serenity.CssClassAttribute).cssClass;
+                }
+                if ((member.attr || []).filter(function (a) {
+                    return ss.isInstanceOfType(a, Serenity.OneWayAttribute);
+                }).length > 0) {
+                    pi.oneWay = true;
+                }
+                if ((member.attr || []).filter(function (a) {
+                    return ss.isInstanceOfType(a, Serenity.ReadOnlyAttribute);
+                }).length > 0) {
+                    pi.readOnly = true;
+                }
+                if (displayNameAttribute.length > 0) {
+                    pi.title = ss.cast(displayNameAttribute[0], System.ComponentModel.DisplayNameAttribute).displayName;
+                }
+                if (hintAttribute.length > 0) {
+                    pi.hint = ss.cast(hintAttribute[0], Serenity.HintAttribute).hint;
+                }
+                if (placeholderAttribute.length > 0) {
+                    pi.placeholder = ss.cast(placeholderAttribute[0], Serenity.PlaceholderAttribute).value;
+                }
+                if (pi.title == null) {
+                    pi.title = pi.name;
+                }
+                var defaultValueAttribute = (member.attr || []).filter(function (a) {
+                    return ss.isInstanceOfType(a, Serenity.DefaultValueAttribute);
+                });
+                if (defaultValueAttribute.length === 1) {
+                    pi.defaultValue = ss.cast(defaultValueAttribute[0], Serenity.DefaultValueAttribute).value;
+                }
+                var insertableAttribute = (member.attr || []).filter(function (a) {
+                    return ss.isInstanceOfType(a, Serenity.InsertableAttribute);
+                });
+                if (insertableAttribute.length > 0) {
+                    pi.insertable = insertableAttribute[0].value;
+                }
+                else {
+                    pi.insertable = true;
+                }
+                var updatableAttribute = (member.attr || []).filter(function (a) {
+                    return ss.isInstanceOfType(a, Serenity.UpdatableAttribute);
+                });
+                if (updatableAttribute.length > 0) {
+                    pi.updatable = updatableAttribute[0].value;
+                }
+                else {
+                    pi.updatable = true;
+                }
+                var typeAttrArray = (member.attr || []).filter(function (a) {
+                    return ss.isInstanceOfType(a, Serenity.EditorTypeAttribute);
+                });
+                var nullableType = memberType;
+                //Nullable.GetUnderlyingType(memberType);
+                var enumType = null;
+                if (ss.isEnum(memberType)) {
+                    enumType = memberType;
+                }
+                else if (nullableType && ss.isEnum(nullableType)) {
+                    enumType = nullableType;
+                }
+                if (typeAttrArray.length === 0) {
+                    if (enumType) {
+                        pi.editorType = 'Select';
+                    }
+                    else if (memberType === ss.JsDate) {
+                        pi.editorType = 'Date';
+                    }
+                    else if (memberType === Boolean) {
+                        pi.editorType = 'Boolean';
+                    }
+                    else if (memberType === Number) {
+                        pi.editorType = 'Decimal';
+                    }
+                    else if (memberType === ss.Int32) {
+                        pi.editorType = 'Integer';
+                    }
+                    else {
+                        pi.editorType = 'String';
+                    }
+                }
+                else {
+                    var et = ss.cast(typeAttrArray[0], Serenity.EditorTypeAttribute);
+                    pi.editorType = et.editorType;
+                    et.setParams(pi.editorParams);
+                }
+                var reqAttr = (member.attr || []).filter(function (a) {
+                    return ss.isInstanceOfType(a, Serenity.RequiredAttribute);
+                });
+                if (reqAttr.length > 0) {
+                    pi.required = reqAttr[0].isRequired;
+                }
+                var maxLengthAttr = (member.attr || []).filter(function (a) {
+                    return ss.isInstanceOfType(a, Serenity.MaxLengthAttribute);
+                });
+                if (maxLengthAttr.length > 0) {
+                    pi.maxLength = maxLengthAttr.maxLength;
+                    pi.editorParams['maxLength'] = pi.maxLength;
+                }
+                var $t3 = (member.attr || []).filter(function (a) {
+                    return ss.isInstanceOfType(a, Serenity.EditorOptionAttribute);
+                });
+                for (var $t4 = 0; $t4 < $t3.length; $t4++) {
+                    var param = $t3[$t4];
+                    var key = param.key;
+                    if (key != null && key.length >= 1) {
+                        key = key.substr(0, 1).toLowerCase() + key.substring(1);
+                    }
+                    pi.editorParams[key] = param.value;
+                }
+                list.push(pi);
+            }
+            return list;
+        }
+        PropertyItemHelper.getPropertyItemsFor = getPropertyItemsFor;
+    })(PropertyItemHelper = Serenity.PropertyItemHelper || (Serenity.PropertyItemHelper = {}));
 })(Serenity || (Serenity = {}));
 var Serenity;
 (function (Serenity) {
@@ -10722,7 +10668,7 @@ var Serenity;
         };
         TemplatedDialog.prototype.onDialogOpen = function () {
             if (!$(document.body).hasClass('mobile-device'))
-                $(':input', this.element).not('button').eq(0).focus();
+                $(':input:eq(0)', this.element).focus();
             this.arrange();
             this.tabs && this.tabs.tabs('option', 'active', 0);
         };
@@ -11260,8 +11206,7 @@ var Serenity;
             return el.tryGetWidget(type);
         };
         DataGrid.prototype.createIncludeDeletedButton = function () {
-            if (!Q.isEmptyOrNull(this.getIsActiveProperty()) ||
-                !Q.isEmptyOrNull(this.getIsDeletedProperty())) {
+            if (!Q.isEmptyOrNull(this.getIsActiveProperty())) {
                 Serenity.GridUtils.addIncludeDeletedToggle(this.toolbar.element, this.view, null, false);
             }
         };
@@ -11296,31 +11241,25 @@ var Serenity;
         };
         DataGrid.prototype.getItemCssClass = function (item, index) {
             var activeFieldName = this.getIsActiveProperty();
-            var deletedFieldName = this.getIsDeletedProperty();
-            if (Q.isEmptyOrNull(activeFieldName) && Q.isEmptyOrNull(deletedFieldName)) {
+            if (Q.isEmptyOrNull(activeFieldName)) {
                 return null;
             }
-            if (activeFieldName) {
-                var value = item[activeFieldName];
-                if (value == null) {
-                    return null;
+            var value = item[activeFieldName];
+            if (value == null) {
+                return null;
+            }
+            if (typeof (value) === 'number') {
+                if (value < 0) {
+                    return 'deleted';
                 }
-                if (typeof (value) === 'number') {
-                    if (value < 0) {
-                        return 'deleted';
-                    }
-                    else if (value === 0) {
-                        return 'inactive';
-                    }
-                }
-                else if (typeof (value) === 'boolean') {
-                    if (value === false) {
-                        return 'deleted';
-                    }
+                else if (value === 0) {
+                    return 'inactive';
                 }
             }
-            else {
-                return item[deletedFieldName] ? 'deleted' : null;
+            else if (typeof (value) === 'boolean') {
+                if (value === false) {
+                    return 'deleted';
+                }
             }
             return null;
         };
@@ -11366,7 +11305,6 @@ var Serenity;
                     _this.filterBar.get_store().add_changed(function (s, e) {
                         if (_this.restoringSettings <= 0) {
                             self.persistSettings(null);
-                            self.view && (self.view.seekToPage = 1);
                             self.refresh();
                         }
                     });
@@ -11462,7 +11400,6 @@ var Serenity;
                         }
                         sortBy.push(col.field + (!!p.sortAsc ? '' : ' DESC'));
                     }
-                    self.view.seekToPage = 1;
                     self.view.sortBy = sortBy;
                 }
                 finally {
@@ -11634,7 +11571,6 @@ var Serenity;
                 this.filterBar.get_store().add_changed(function (s, e) {
                     if (_this.restoringSettings <= 0) {
                         self.persistSettings(null);
-                        self.view && (self.view.seekToPage = 1);
                         self.refresh();
                     }
                 });
@@ -11845,9 +11781,6 @@ var Serenity;
                 }
             }
             return this.idProperty;
-        };
-        DataGrid.prototype.getIsDeletedProperty = function () {
-            return null;
         };
         DataGrid.prototype.getIsActiveProperty = function () {
             if (this.isActiveProperty == null) {
@@ -12165,7 +12098,6 @@ var Serenity;
         };
         DataGrid.prototype.quickFilterChange = function (e) {
             this.persistSettings(null);
-            this.view && (this.view.seekToPage = 1);
             this.refresh();
         };
         DataGrid.prototype.getPersistanceStorage = function () {
@@ -12771,14 +12703,13 @@ var Serenity;
             this.updateFlags();
         };
         CheckTreeEditor.prototype.getEditValue = function (property, target) {
-            if (this.getDelimited())
-                target[property.name] = this.get_value().join(",");
-            else
-                target[property.name] = this.get_value();
+            target[property.name] = this.get_value();
         };
         CheckTreeEditor.prototype.setEditValue = function (source, property) {
             var value = source[property.name];
-            this.set_value(value);
+            if (Q.isArray(value)) {
+                this.set_value(value);
+            }
         };
         CheckTreeEditor.prototype.getButtons = function () {
             var _this = this;
@@ -12971,9 +12902,6 @@ var Serenity;
             }
             return true;
         };
-        CheckTreeEditor.prototype.getDelimited = function () {
-            return !!!!this.options['delimited'];
-        };
         CheckTreeEditor.prototype.anyDescendantsSelected = function (item) {
             if (item.children.length > 0) {
                 for (var i = 0; i < item.children.length; i++) {
@@ -13077,11 +13005,6 @@ var Serenity;
         CheckTreeEditor.prototype.set_value = function (value) {
             var selected = {};
             if (value != null) {
-                if (typeof value == "string") {
-                    value = value.split(',')
-                        .map(function (x) { return Q.trimToNull(x); })
-                        .filter(function (x) { return x != null; });
-                }
                 for (var i = 0; i < value.length; i++) {
                     selected[value[i]] = true;
                 }
@@ -13112,203 +13035,6 @@ var Serenity;
         return CheckTreeEditor;
     }(Serenity.DataGrid));
     Serenity.CheckTreeEditor = CheckTreeEditor;
-    var CheckLookupEditor = /** @class */ (function (_super) {
-        __extends(CheckLookupEditor, _super);
-        function CheckLookupEditor(div, options) {
-            var _this = _super.call(this, div, options) || this;
-            _this.enableUpdateItems = true;
-            _this.setCascadeFrom(_this.options.cascadeFrom);
-            _this.updateItems();
-            Q.ScriptData.bindToChange('Lookup.' + _this.getLookupKey(), _this.uniqueName, function () { return _this.updateItems(); });
-            return _this;
-        }
-        CheckLookupEditor.prototype.updateItems = function () {
-            if (this.enableUpdateItems)
-                _super.prototype.updateItems.call(this);
-        };
-        CheckLookupEditor.prototype.getLookupKey = function () {
-            return this.options.lookupKey;
-        };
-        CheckLookupEditor.prototype.getButtons = function () {
-            return Q.coalesce(_super.prototype.getButtons.call(this), this.options.hideSearch ? null : []);
-        };
-        CheckLookupEditor.prototype.createToolbarExtensions = function () {
-            var _this = this;
-            _super.prototype.createToolbarExtensions.call(this);
-            Serenity.GridUtils.addQuickSearchInputCustom(this.toolbar.element, function (field, text) {
-                _this.searchText = Select2.util.stripDiacritics(text || '').toUpperCase();
-                _this.view.setItems(_this.view.getItems(), true);
-            });
-        };
-        CheckLookupEditor.prototype.getSelectAllText = function () {
-            if (!this.options.showSelectAll)
-                return null;
-            return _super.prototype.getSelectAllText.call(this);
-        };
-        CheckLookupEditor.prototype.cascadeItems = function (items) {
-            var val = this.get_cascadeValue();
-            if (val == null || val === '') {
-                if (!Q.isEmptyOrNull(this.get_cascadeField())) {
-                    return [];
-                }
-                return items;
-            }
-            var key = val.toString();
-            var fld = this.get_cascadeField();
-            return items.filter(function (x) {
-                var itemKey = Q.coalesce(x[fld], Serenity.ReflectionUtils.getPropertyValue(x, fld));
-                return !!(itemKey != null && itemKey.toString() === key);
-            });
-        };
-        CheckLookupEditor.prototype.filterItems = function (items) {
-            var val = this.get_filterValue();
-            if (val == null || val === '') {
-                return items;
-            }
-            var key = val.toString();
-            var fld = this.get_filterField();
-            return items.filter(function (x) {
-                var itemKey = Q.coalesce(x[fld], Serenity.ReflectionUtils.getPropertyValue(x, fld));
-                return !!(itemKey != null && itemKey.toString() === key);
-            });
-        };
-        CheckLookupEditor.prototype.getLookupItems = function (lookup) {
-            return this.filterItems(this.cascadeItems(lookup.items));
-        };
-        CheckLookupEditor.prototype.getTreeItems = function () {
-            var lookup = Q.getLookup(this.options.lookupKey);
-            var items = this.getLookupItems(lookup);
-            return items.map(function (item) { return ({
-                id: Q.coalesce(item[lookup.idField], "").toString(),
-                text: Q.coalesce(item[lookup.textField], "").toString(),
-                source: item
-            }); });
-        };
-        CheckLookupEditor.prototype.onViewFilter = function (item) {
-            return _super.prototype.onViewFilter.call(this, item) &&
-                (Q.isEmptyOrNull(this.searchText) ||
-                    Select2.util.stripDiacritics(item.text || '')
-                        .toUpperCase().indexOf(this.searchText) >= 0);
-        };
-        CheckLookupEditor.prototype.moveSelectedUp = function () {
-            return this.options.checkedOnTop;
-        };
-        CheckLookupEditor.prototype.get_cascadeFrom = function () {
-            return this.options.cascadeFrom;
-        };
-        Object.defineProperty(CheckLookupEditor.prototype, "cascadeFrom", {
-            get: function () {
-                return this.get_cascadeFrom();
-            },
-            set: function (value) {
-                this.set_cascadeFrom(value);
-            },
-            enumerable: true,
-            configurable: true
-        });
-        CheckLookupEditor.prototype.getCascadeFromValue = function (parent) {
-            return Serenity.EditorUtils.getValue(parent);
-        };
-        CheckLookupEditor.prototype.setCascadeFrom = function (value) {
-            var _this = this;
-            if (Q.isEmptyOrNull(value)) {
-                if (this.cascadeLink != null) {
-                    this.cascadeLink.set_parentID(null);
-                    this.cascadeLink = null;
-                }
-                this.options.cascadeFrom = null;
-                return;
-            }
-            this.cascadeLink = new Serenity.CascadedWidgetLink(Serenity.Widget, this, function (p) {
-                _this.set_cascadeValue(_this.getCascadeFromValue(p));
-            });
-            this.cascadeLink.set_parentID(value);
-            this.options.cascadeFrom = value;
-        };
-        CheckLookupEditor.prototype.set_cascadeFrom = function (value) {
-            if (value !== this.options.cascadeFrom) {
-                this.setCascadeFrom(value);
-                this.updateItems();
-            }
-        };
-        CheckLookupEditor.prototype.get_cascadeField = function () {
-            return Q.coalesce(this.options.cascadeField, this.options.cascadeFrom);
-        };
-        Object.defineProperty(CheckLookupEditor.prototype, "cascadeField", {
-            get: function () {
-                return this.get_cascadeField();
-            },
-            set: function (value) {
-                this.set_cascadeField(value);
-            },
-            enumerable: true,
-            configurable: true
-        });
-        CheckLookupEditor.prototype.set_cascadeField = function (value) {
-            this.options.cascadeField = value;
-        };
-        CheckLookupEditor.prototype.get_cascadeValue = function () {
-            return this.options.cascadeValue;
-        };
-        Object.defineProperty(CheckLookupEditor.prototype, "cascadeValue", {
-            get: function () {
-                return this.get_cascadeValue();
-            },
-            set: function (value) {
-                this.set_cascadeValue(value);
-            },
-            enumerable: true,
-            configurable: true
-        });
-        CheckLookupEditor.prototype.set_cascadeValue = function (value) {
-            if (this.options.cascadeValue !== value) {
-                this.options.cascadeValue = value;
-                this.value = [];
-                this.updateItems();
-            }
-        };
-        CheckLookupEditor.prototype.get_filterField = function () {
-            return this.options.filterField;
-        };
-        Object.defineProperty(CheckLookupEditor.prototype, "filterField", {
-            get: function () {
-                return this.get_filterField();
-            },
-            set: function (value) {
-                this.set_filterField(value);
-            },
-            enumerable: true,
-            configurable: true
-        });
-        CheckLookupEditor.prototype.set_filterField = function (value) {
-            this.options.filterField = value;
-        };
-        CheckLookupEditor.prototype.get_filterValue = function () {
-            return this.options.filterValue;
-        };
-        Object.defineProperty(CheckLookupEditor.prototype, "filterValue", {
-            get: function () {
-                return this.get_filterValue();
-            },
-            set: function (value) {
-                this.set_filterValue(value);
-            },
-            enumerable: true,
-            configurable: true
-        });
-        CheckLookupEditor.prototype.set_filterValue = function (value) {
-            if (this.options.filterValue !== value) {
-                this.options.filterValue = value;
-                this.value = null;
-                this.updateItems();
-            }
-        };
-        CheckLookupEditor = __decorate([
-            Serenity.Decorators.registerEditor("Serenity.CheckLookupEditor")
-        ], CheckLookupEditor);
-        return CheckLookupEditor;
-    }(CheckTreeEditor));
-    Serenity.CheckLookupEditor = CheckLookupEditor;
 })(Serenity || (Serenity = {}));
 var Serenity;
 (function (Serenity) {
@@ -13600,10 +13326,6 @@ var Serenity;
             if (this.get_entityId() == null) {
                 return false;
             }
-            var isDeletedProperty = this.getIsDeletedProperty();
-            if (isDeletedProperty) {
-                return !!this.get_entity()[isDeletedProperty];
-            }
             var value = this.get_entity()[this.getIsActiveProperty()];
             if (value == null) {
                 return false;
@@ -13737,9 +13459,6 @@ var Serenity;
             else
                 this.isActiveProperty = 'IsActive';
             return this.isActiveProperty;
-        };
-        EntityDialog.prototype.getIsDeletedProperty = function () {
-            return null;
         };
         EntityDialog.prototype.getService = function () {
             if (this.service != null)
@@ -14290,10 +14009,6 @@ var Serenity;
             var isActiveField = this.getIsActiveProperty();
             if (!Q.isEmptyOrNull(isActiveField)) {
                 delete clone[isActiveField];
-            }
-            var isDeletedField = this.getIsDeletedProperty();
-            if (!Q.isEmptyOrNull(isDeletedField)) {
-                delete clone[isDeletedField];
             }
             return clone;
         };
@@ -15369,7 +15084,6 @@ var Slick;
                         item.title = gi.formatter ? gi.formatter(item) : item.value;
                     }
                 }
-                // if this is a totals row, make sure it's calculated
                 else if (item && item.__groupTotals && !item.initialized) {
                     calculateTotals(item);
                 }
@@ -16759,7 +16473,6 @@ var Serenity;
             });
             return dialog;
         }
-        DialogExtensions.dialogCloseOnEnter = dialogCloseOnEnter;
     })(DialogExtensions = Serenity.DialogExtensions || (Serenity.DialogExtensions = {}));
 })(Serenity || (Serenity = {}));
 (function (Serenity) {

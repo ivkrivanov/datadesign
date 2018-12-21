@@ -8,7 +8,9 @@ namespace Serene1
     using System;
 
     public abstract class MultiTenantRowLookupScript<TRow> : RowLookupScript<TRow>
-        where TRow : Row, IMultiTenantRow, new()
+        //where TRow : Row, IMultiTenantRow, new()
+
+        where TRow : Administration.Entities.LoggingRow, IMultiTenantRow, new()
     {
         public MultiTenantRowLookupScript()
         {

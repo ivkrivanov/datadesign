@@ -16,7 +16,7 @@
     var generator = new ServerTypingsGenerator(typeof(Serene1.SiteInitialization).Assembly);
     generator.RootNamespaces.Add("Serene1");
 
-    if (System.IO.File.Exists(solutionDir + @"Serene1\Serene1.Script\Serene1.Script.csproj"))
+    if (System.IO.File.Exists(solutionDir + @"Serene1\Serene1.Script.Serene1.Script.csproj"))
     {
         var ssDir = solutionDir + @"Serene1\Serene1.Script\bin\debug\";
         var ssTypeLister = new SSTypeLister(

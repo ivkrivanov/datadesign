@@ -13,6 +13,7 @@ namespace Serene1.Default.Employees.Entities
     [DisplayName("Employees Addresses"), InstanceName("Employees Addresses")]
     [ReadPermission("Administration:General")]
     [ModifyPermission("Administration:General")]
+    //[LookupScript("Employees.EmployeesAddresses", LookupType = typeof(MultiTenantRowLookupScript<>))]
     public sealed class EmployeesAddressesRow : LoggingRow, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
     {
 

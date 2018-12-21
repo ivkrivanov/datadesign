@@ -4,9 +4,9 @@
         EnumValue?: number;
         DisplayName?: string;
         Language?: number;
-        LanguageName?: string;
         TenantId?: number;
         IsActive?: number;
+        EnumValueEnumName?: string;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -17,16 +17,16 @@
         export const idProperty = 'EnumLocaleId';
         export const isActiveProperty = 'IsActive';
         export const nameProperty = 'DisplayName';
-        export const localTextPrefix = 'Default.AddressTypeString';
+        export const localTextPrefix = 'Default.Infra.AddressTypeString';
 
         export declare const enum Fields {
             EnumLocaleId = "EnumLocaleId",
             EnumValue = "EnumValue",
             DisplayName = "DisplayName",
             Language = "Language",
-            LanguageName = "LanguageName",
             TenantId = "TenantId",
             IsActive = "IsActive",
+            EnumValueEnumName = "EnumValueEnumName",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",
