@@ -143,6 +143,11 @@ namespace MVC
                 public const string ItemLangIndex = "~/Modules/Store/ItemLang/ItemLangIndex.cshtml";
             }
 
+            public static class Measure
+            {
+                public const string MeasureIndex = "~/Modules/Store/Measure/MeasureIndex.cshtml";
+            }
+
             public static class Note
             {
                 public const string NoteIndex = "~/Modules/Store/Note/NoteIndex.cshtml";

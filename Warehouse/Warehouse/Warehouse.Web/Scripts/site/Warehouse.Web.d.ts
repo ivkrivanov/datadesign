@@ -1315,6 +1315,71 @@ declare namespace Warehouse.Store {
     }
 }
 declare namespace Warehouse.Store {
+}
+declare namespace Warehouse.Store {
+    interface MeasureForm {
+        MeasureName: Serenity.StringEditor;
+        InsertDate: Serenity.DateEditor;
+        InsertUserId: Serenity.IntegerEditor;
+        UpdateDate: Serenity.DateEditor;
+        UpdateUserId: Serenity.IntegerEditor;
+        IsActive: Serenity.IntegerEditor;
+        TenantId: Serenity.IntegerEditor;
+    }
+    class MeasureForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace Warehouse.Store {
+    interface MeasureRow {
+        MeasureId?: number;
+        MeasureName?: string;
+        IsActive?: number;
+        TenantId?: number;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+    }
+    namespace MeasureRow {
+        const idProperty = "MeasureId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "MeasureName";
+        const localTextPrefix = "Store.Measure";
+        const lookupKey = "Store.Measure";
+        function getLookup(): Q.Lookup<MeasureRow>;
+        const enum Fields {
+            MeasureId = "MeasureId",
+            MeasureName = "MeasureName",
+            IsActive = "IsActive",
+            TenantId = "TenantId",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate"
+        }
+    }
+}
+declare namespace Warehouse.Store {
+    namespace MeasureService {
+        const baseUrl = "Store/Measure";
+        function Create(request: Serenity.SaveRequest<MeasureRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<MeasureRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<MeasureRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<MeasureRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Store/Measure/Create",
+            Update = "Store/Measure/Update",
+            Delete = "Store/Measure/Delete",
+            Retrieve = "Store/Measure/Retrieve",
+            List = "Store/Measure/List"
+        }
+    }
+}
+declare namespace Warehouse.Store {
     interface NoteRow {
         NoteId?: number;
         EntityType?: string;
@@ -2712,6 +2777,26 @@ declare namespace Warehouse.Store {
     }
 }
 declare namespace Warehouse.Store {
+    class MeasureDialog extends Serenity.EntityDialog<MeasureRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: MeasureForm;
+    }
+}
+declare namespace Warehouse.Store {
+    class MeasureGrid extends Serenity.EntityGrid<MeasureRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof MeasureDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Warehouse.Store {
     class NoteDialog extends Serenity.EntityDialog<NoteRow, any> {
         private textEditor;
         constructor();
@@ -2831,6 +2916,15 @@ declare namespace Warehouse.Store {
     }
 }
 declare namespace Warehouse.Store {
+    class ProductDetailsEditor extends Common.GridEditorBase<ProductDetailRow> {
+        protected getColumsKey(): string;
+        protected readonly DialogType: typeof ProductDetailDialog;
+        protected getLocalTextPrefix(): string;
+        constructor(container: JQuery);
+        validateEntity(row: any, id: any): boolean;
+    }
+}
+declare namespace Warehouse.Store {
     class ProductDetailGrid extends Serenity.EntityGrid<ProductDetailRow, any> {
         protected getColumnsKey(): string;
         protected getDialogType(): typeof ProductDetailDialog;
@@ -2838,15 +2932,6 @@ declare namespace Warehouse.Store {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
-    }
-}
-declare namespace Warehouse.Store {
-    class ProductDetailsEditor extends Common.GridEditorBase<ProductDetailRow> {
-        protected getColumsKey(): string;
-        protected readonly DialogType: typeof ProductDetailDialog;
-        protected getLocalTextPrefix(): string;
-        constructor(container: JQuery);
-        validateEntity(row: any, id: any): boolean;
     }
 }
 declare namespace Warehouse.Store {

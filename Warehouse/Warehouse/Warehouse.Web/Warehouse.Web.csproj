@@ -594,8 +594,6 @@
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
     <EmbeddedResource Include="Migrations\StoreDB\StoreDBScript_SqlServer..sql" />
-    <Content Include="Migrations\StoreDB\StoreDBScript_Constrants_SqlServer.sql" />
-    <Content Include="Migrations\StoreDB\StoreDBScript_Items_SqlServer.sql" />
     <Content Include="Modules\Store\Customer\Store.CustomerDialog.Template.html" />
     <Content Include="wkhtmltopdf-license.txt" />
     <None Include="packages.config" />
@@ -924,6 +922,9 @@
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\Store.ItemListRequest.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.MeasureColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\Store.NoteRow.ts">
@@ -1810,6 +1811,18 @@
     <TypeScriptCompile Include="Imports\ServerTypings\Store.ItemCategoriesLangService.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.MeasureRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.MeasureService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Modules\Store\Measure\MeasureIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Store\Measure\MeasureDialog.ts" />
+    <TypeScriptCompile Include="Modules\Store\Measure\MeasureGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.MeasureForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -1855,14 +1868,11 @@
       <DependentUpon>ClientTypes.tt</DependentUpon>
     </Compile>
     <Compile Include="Migrations\DefaultDB\DefaultDB_20160724_101700_MultiTenant.cs" />
-    <Compile Include="Migrations\StoreDB\StoreDB_20181212_143000_DataLocalization.cs" />
-    <Compile Include="Migrations\StoreDB\StoreDB_20181212_140000.cs" />
     <Compile Include="Migrations\StoreDB\StoreDB_20181213_140000_CustomerDetails.cs" />
     <Compile Include="Migrations\StoreDB\StoreDB_20181213_150000_Notes.cs" />
     <Compile Include="Migrations\StoreDB\StoreDB_20181213_160000_ProductLog.cs" />
     <Compile Include="Migrations\StoreDB\StoreDB_20181214_100000_CustomerGrossSales.cs" />
     <Compile Include="Migrations\StoreDB\StoreDB_20181216_14000000_Product_Detail.cs" />
-    <Compile Include="Migrations\StoreDB\StoreDB_20181219_11000000_Items.cs" />
     <Compile Include="Modules\Administration\AdministrationNavigation.cs" />
     <Compile Include="Modules\Administration\Language\LanguageLookup.cs" />
     <Compile Include="Modules\Administration\RolePermission\RolePermissionUpdateRequest.cs" />
@@ -2087,6 +2097,12 @@
     <Compile Include="Modules\Store\ItemCategoriesLang\ItemCategoriesLangRow.cs" />
     <Compile Include="Modules\Store\ItemCategoriesLang\ItemCategoriesLangRepository.cs" />
     <Compile Include="Modules\Store\ItemCategoriesLang\ItemCategoriesLangEndpoint.cs" />
+    <Compile Include="Modules\Store\Measure\MeasureRow.cs" />
+    <Compile Include="Modules\Store\Measure\MeasureRepository.cs" />
+    <Compile Include="Modules\Store\Measure\MeasureEndpoint.cs" />
+    <Compile Include="Modules\Store\Measure\MeasurePage.cs" />
+    <Compile Include="Modules\Store\Measure\MeasureColumns.cs" />
+    <Compile Include="Modules\Store\Measure\MeasureForm.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2238,7 +2254,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>0</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:55555/</IISUrl>
+          <IISUrl>http://localhost:57846/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

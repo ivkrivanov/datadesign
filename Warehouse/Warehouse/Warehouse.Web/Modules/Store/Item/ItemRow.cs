@@ -87,7 +87,8 @@ namespace Warehouse.Store.Entities
             set { Fields.ItemCategoryID[this] = value; }
         }
 
-        [DisplayName("Measure Id"), NotNull]
+        [DisplayName("Measure Id"), Column("MeasureID"), ForeignKey(typeof(MeasureRow)), LeftJoin("meas"), LookupInclude]
+        [LookupEditor(typeof(MeasureRow), InplaceAdd = true)]
         public Int32? MeasureID
         {
             get { return Fields.MeasureID[this]; }
@@ -239,6 +240,13 @@ namespace Warehouse.Store.Entities
             set { Fields.ItemCatImage[this] = value; }
         }
 
+        [Origin("meas")]
+        public String MeasureName
+        {
+            get { return Fields.MeasureName[this]; }
+            set { Fields.MeasureName[this] = value; }
+        }
+
         #region Tenant & Activ
 
         [Insertable(false), Updatable(false)]
@@ -322,6 +330,8 @@ namespace Warehouse.Store.Entities
             public StringField ItemCategoryName;
             public StringField ItemCatDescription;
             public StringField ItemCatImage;
+
+            public StringField MeasureName;
         }
     }
 }

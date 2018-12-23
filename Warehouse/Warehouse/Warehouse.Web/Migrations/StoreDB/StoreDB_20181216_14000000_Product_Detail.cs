@@ -10,16 +10,19 @@ namespace Warehouse.Migrations.StoreDB
     {
         public override void Up()
         {
-            Alter.Table("Customers")
-                .AlterColumn("CustomerID").AsString(14).NotNullable();
+            //Alter.Table("Customers")
+            //    .AlterColumn("CustomerID").AsString(14).NotNullable();
 
-            Alter.Table("Suppliers")
-                .AddColumn("SupplierSTAT").AsString(14).NotNullable().WithDefaultValue(00000000000000);
+            //Alter.Table("Suppliers")
+            //    .AddColumn("SupplierSTAT").AsString(14).NotNullable().WithDefaultValue(00000000000000);
 
             IfDatabase(Utils.AllExceptOracle)
                 .Create.Table("Product Details")
                 .WithColumn("DetailID").AsInt32().Identity().NotNullable()
                 .WithColumn("ProductID").AsInt32().NotNullable()
+                    .ForeignKey("FK_ProductDetail_Product","Products","ProductID")
+                .WithColumn("ItemID").AsInt32().NotNullable()
+                    .ForeignKey("FK_ProductDetail+Item", "Items", "ItemID")
                 .WithColumn("Quantity").AsFloat().NotNullable()
                 .WithColumn("ProductQuantity").AsFloat().NotNullable().WithDefaultValue(1.0)
                 .WithColumn("Reduction").AsFloat().NotNullable().WithDefaultValue(1.0)

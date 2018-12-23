@@ -26,3 +26,4 @@ using MyPages = Warehouse.Store.Pages;
 //[assembly: NavigationLink(int.MaxValue, "Store/Item Lang", typeof(MyPages.ItemLangController), icon: null)]
 [assembly: NavigationLink(int.MaxValue, "Store/Item Category", typeof(MyPages.ItemCategoryController), icon: null)]
 //[assembly: NavigationLink(int.MaxValue, "Store/Item Categories Lang", typeof(MyPages.ItemCategoriesLangController), icon: null)]
+[assembly: NavigationLink(int.MaxValue, "Store/Measure", typeof(MyPages.MeasureController), icon: null)]
