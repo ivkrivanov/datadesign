@@ -1159,7 +1159,7 @@ declare namespace Warehouse.Store {
         ItemImage: Serenity.ImageUploadEditor;
         Discontinued: Serenity.BooleanEditor;
         SupplierID: Serenity.LookupEditor;
-        MeasureID: Serenity.IntegerEditor;
+        MeasureID: Serenity.LookupEditor;
         QuantityPerUnit: Serenity.IntegerEditor;
         UnitPrice: Serenity.DecimalEditor;
         AccountID: Serenity.IntegerEditor;
@@ -1245,6 +1245,7 @@ declare namespace Warehouse.Store {
         ItemCategoryName?: string;
         ItemCatDescription?: string;
         ItemCatImage?: string;
+        MeasureName?: string;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -1288,6 +1289,7 @@ declare namespace Warehouse.Store {
             ItemCategoryName = "ItemCategoryName",
             ItemCatDescription = "ItemCatDescription",
             ItemCatImage = "ItemCatImage",
+            MeasureName = "MeasureName",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",
@@ -1319,12 +1321,6 @@ declare namespace Warehouse.Store {
 declare namespace Warehouse.Store {
     interface MeasureForm {
         MeasureName: Serenity.StringEditor;
-        InsertDate: Serenity.DateEditor;
-        InsertUserId: Serenity.IntegerEditor;
-        UpdateDate: Serenity.DateEditor;
-        UpdateUserId: Serenity.IntegerEditor;
-        IsActive: Serenity.IntegerEditor;
-        TenantId: Serenity.IntegerEditor;
     }
     class MeasureForm extends Serenity.PrefixedContext {
         static formKey: string;

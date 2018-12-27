@@ -8,7 +8,7 @@
         ItemImage: Serenity.ImageUploadEditor;
         Discontinued: Serenity.BooleanEditor;
         SupplierID: Serenity.LookupEditor;
-        MeasureID: Serenity.IntegerEditor;
+        MeasureID: Serenity.LookupEditor;
         QuantityPerUnit: Serenity.IntegerEditor;
         UnitPrice: Serenity.DecimalEditor;
         AccountID: Serenity.IntegerEditor;
@@ -41,7 +41,7 @@
                     'ItemImage', w2,
                     'Discontinued', w3,
                     'SupplierID', w0,
-                    'MeasureID', w4,
+                    'MeasureID', w0,
                     'QuantityPerUnit', w4,
                     'UnitPrice', w5,
                     'AccountID', w4

@@ -30,6 +30,7 @@
         ItemCategoryName?: string;
         ItemCatDescription?: string;
         ItemCatImage?: string;
+        MeasureName?: string;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -78,6 +79,7 @@
             ItemCategoryName = "ItemCategoryName",
             ItemCatDescription = "ItemCatDescription",
             ItemCatImage = "ItemCatImage",
+            MeasureName = "MeasureName",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",
