@@ -9,8 +9,8 @@ namespace Warehouse.Store.Entities
 
     [ConnectionKey("Store"), Module("Store"), TableName("[dbo].[ItemCategoriesLang]")]
     [DisplayName("Item Categories Lang"), InstanceName("Item Categories Lang")]
-    [ReadPermission("Administration:General")]
-    [ModifyPermission("Administration:General")]
+    [ReadPermission(PermissionKeys.General)]
+    [ModifyPermission(PermissionKeys.General)]
     public sealed class ItemCategoriesLangRow : Row, IIdRow, INameRow, ILocalizationRow
     {
         [DisplayName("Id"), Column("ID"), Identity]

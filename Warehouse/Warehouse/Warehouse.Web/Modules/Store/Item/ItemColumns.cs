@@ -10,15 +10,15 @@ namespace Warehouse.Store.Columns
     [BasedOnRow(typeof(Entities.ItemRow), CheckNames = true)]
     public class ItemColumns
     {
-        [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
-        public Int32 ItemID { get; set; }
+        //[EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
+        //public Int32 ItemID { get; set; }
         [EditLink, Width(100)]
         public String ItemCode { get; set; }
         [EditLink, Width(100)]
         public String ItemBarcode { get; set; }
-        [EditLink, Width(250)]
+        [EditLink, Width(100)]
         public String ItemLabel { get; set; }
-        [EditLink, Width(250)]
+        [EditLink, Width(100)]
         public String ItemName { get; set; }
         [QuickFilter]
         public Boolean Discontinued { get; set; }
