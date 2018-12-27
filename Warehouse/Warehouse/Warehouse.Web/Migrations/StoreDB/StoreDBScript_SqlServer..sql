@@ -203,7 +203,7 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE TABLE [dbo].[CategoriesLang](
+CREATE TABLE [dbo].[ItemLang](
 	[ID] [int] IDENTITY(1,1) NOT NULL,
 	[ItemID] [int] NOT NULL,
 	[LanguageID] [int] NOT NULL,

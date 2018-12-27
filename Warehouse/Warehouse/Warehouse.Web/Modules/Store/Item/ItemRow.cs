@@ -115,8 +115,7 @@ namespace Warehouse.Store.Entities
             get { return Fields.AccountID[this]; }
             set { Fields.AccountID[this] = value; }
         }
- 
-        //[DisplayName("Supplier Company Name"), Expression("jSupplier.[CompanyName]")]
+        #region Supplier
         [Origin("sup"), DisplayName("Supplier"), LookupInclude]
         public String SupplierCompanyName
         {
@@ -124,7 +123,6 @@ namespace Warehouse.Store.Entities
             set { Fields.SupplierCompanyName[this] = value; }
         }
 
-        //[DisplayName("Supplier Contact Name"), Expression("jSupplier.[ContactName]")]
         [Origin("sup")]
         public String SupplierContactName
         {
@@ -132,7 +130,6 @@ namespace Warehouse.Store.Entities
             set { Fields.SupplierContactName[this] = value; }
         }
 
-        //[DisplayName("Supplier Contact Title"), Expression("jSupplier.[ContactTitle]")]
         [Origin("sup")]
         public String SupplierContactTitle
         {
@@ -140,7 +137,6 @@ namespace Warehouse.Store.Entities
             set { Fields.SupplierContactTitle[this] = value; }
         }
 
-        //[DisplayName("Supplier Address"), Expression("jSupplier.[Address]")]
         [Origin("sup")]
         public String SupplierAddress
         {
@@ -148,7 +144,6 @@ namespace Warehouse.Store.Entities
             set { Fields.SupplierAddress[this] = value; }
         }
 
-        //[DisplayName("Supplier City"), Expression("jSupplier.[City]")]
         [Origin("sup")]
         public String SupplierCity
         {
@@ -156,7 +151,6 @@ namespace Warehouse.Store.Entities
             set { Fields.SupplierCity[this] = value; }
         }
 
-        //[DisplayName("Supplier Region"), Expression("jSupplier.[Region]")]
         [Origin("sup")]
         public String SupplierRegion
         {
@@ -164,7 +158,6 @@ namespace Warehouse.Store.Entities
             set { Fields.SupplierRegion[this] = value; }
         }
 
-        //[DisplayName("Supplier Postal Code"), Expression("jSupplier.[PostalCode]")]
         [Origin("sup")]
         public String SupplierPostalCode
         {
@@ -172,7 +165,6 @@ namespace Warehouse.Store.Entities
             set { Fields.SupplierPostalCode[this] = value; }
         }
 
-        //[DisplayName("Supplier Country"), Expression("jSupplier.[Country]")]
         [Origin("sup")]
         public String SupplierCountry
         {
@@ -180,7 +172,6 @@ namespace Warehouse.Store.Entities
             set { Fields.SupplierCountry[this] = value; }
         }
 
-        //[DisplayName("Supplier Phone"), Expression("jSupplier.[Phone]")]
         [Origin("sup")]
         public String SupplierPhone
         {
@@ -188,7 +179,6 @@ namespace Warehouse.Store.Entities
             set { Fields.SupplierPhone[this] = value; }
         }
 
-        //[DisplayName("Supplier Fax"), Expression("jSupplier.[Fax]")]
         [Origin("sup")]
         public String SupplierFax
         {
@@ -196,7 +186,6 @@ namespace Warehouse.Store.Entities
             set { Fields.SupplierFax[this] = value; }
         }
 
-        //[DisplayName("Supplier Home Page"), Expression("jSupplier.[HomePage]")]
         [Origin("sup")]
         public String SupplierHomePage
         {
@@ -211,6 +200,9 @@ namespace Warehouse.Store.Entities
         //    get { return Fields.SupplierSupplierStat[this]; }
         //    set { Fields.SupplierSupplierStat[this] = value; }
         //}
+        #endregion Supplier
+
+        #region Category
 
         [Origin("cat"), DisplayName("Category Name")]
         public String ItemCategoryName
@@ -239,13 +231,17 @@ namespace Warehouse.Store.Entities
             get { return Fields.ItemCatImage[this]; }
             set { Fields.ItemCatImage[this] = value; }
         }
+        #endregion Category
 
+        #region Measure
         [Origin("meas")]
         public String MeasureName
         {
             get { return Fields.MeasureName[this]; }
             set { Fields.MeasureName[this] = value; }
         }
+
+        #endregion Measure
 
         #region Tenant & Activ
 
@@ -325,7 +321,6 @@ namespace Warehouse.Store.Entities
 
             //public StringField SupplierSupplierStat;
 
-            //public Int32Field ItemCategoryID;
             public StringField ItemCategoryCode;
             public StringField ItemCategoryName;
             public StringField ItemCatDescription;
