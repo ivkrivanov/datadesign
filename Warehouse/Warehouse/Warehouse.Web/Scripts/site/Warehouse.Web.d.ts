@@ -2904,20 +2904,11 @@ declare namespace Warehouse.Store {
     }
 }
 declare namespace Warehouse.Store {
-    class ProductDetailDialog extends Serenity.EntityDialog<ProductDetailRow, any> {
+    class ProductDetailDialog extends Common.GridEditorDialog<ProductDetailRow> {
         protected getFormKey(): string;
         protected getLocalTextPrefix(): string;
         protected form: ProductDetailForm;
         constructor();
-    }
-}
-declare namespace Warehouse.Store {
-    class ProductDetailsEditor extends Common.GridEditorBase<ProductDetailRow> {
-        protected getColumsKey(): string;
-        protected readonly DialogType: typeof ProductDetailDialog;
-        protected getLocalTextPrefix(): string;
-        constructor(container: JQuery);
-        validateEntity(row: any, id: any): boolean;
     }
 }
 declare namespace Warehouse.Store {
@@ -2928,6 +2919,15 @@ declare namespace Warehouse.Store {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+    }
+}
+declare namespace Warehouse.Store {
+    class ProductDetailsEditor extends Common.GridEditorBase<ProductDetailRow> {
+        protected getColumsKey(): string;
+        protected readonly DialogType: typeof ProductDetailDialog;
+        protected getLocalTextPrefix(): string;
+        constructor(container: JQuery);
+        validateEntity(row: any, id: any): boolean;
     }
 }
 declare namespace Warehouse.Store {

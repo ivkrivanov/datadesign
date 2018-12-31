@@ -5396,14 +5396,35 @@ var Warehouse;
                 return _this;
             }
             ProductDetailDialog.prototype.getFormKey = function () { return Store.ProductDetailForm.formKey; };
-            //protected getIdProperty() { return ProductDetailRow.idProperty; }
             ProductDetailDialog.prototype.getLocalTextPrefix = function () { return Store.ProductDetailRow.localTextPrefix; };
             ProductDetailDialog = __decorate([
                 Serenity.Decorators.registerClass()
             ], ProductDetailDialog);
             return ProductDetailDialog;
-        }(Serenity.EntityDialog));
+        }(Warehouse.Common.GridEditorDialog));
         Store.ProductDetailDialog = ProductDetailDialog;
+    })(Store = Warehouse.Store || (Warehouse.Store = {}));
+})(Warehouse || (Warehouse = {}));
+var Warehouse;
+(function (Warehouse) {
+    var Store;
+    (function (Store) {
+        var ProductDetailGrid = /** @class */ (function (_super) {
+            __extends(ProductDetailGrid, _super);
+            function ProductDetailGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            ProductDetailGrid.prototype.getColumnsKey = function () { return 'Store.ProductDetail'; };
+            ProductDetailGrid.prototype.getDialogType = function () { return Store.ProductDetailDialog; };
+            ProductDetailGrid.prototype.getIdProperty = function () { return Store.ProductDetailRow.idProperty; };
+            ProductDetailGrid.prototype.getLocalTextPrefix = function () { return Store.ProductDetailRow.localTextPrefix; };
+            ProductDetailGrid.prototype.getService = function () { return Store.ProductDetailService.baseUrl; };
+            ProductDetailGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], ProductDetailGrid);
+            return ProductDetailGrid;
+        }(Serenity.EntityGrid));
+        Store.ProductDetailGrid = ProductDetailGrid;
     })(Store = Warehouse.Store || (Warehouse.Store = {}));
 })(Warehouse || (Warehouse = {}));
 /// <reference path="../../Common/Helpers/GridEditorBase.ts" />
@@ -5431,7 +5452,7 @@ var Warehouse;
                     return false;
                 }
                 row.ItemName = Store.ItemRow.getLookup().itemById[row.ItemID].ItemName;
-                row.LineTotal = (row.Quantity || 0) * (row.UnitPrice || 0) - (row.Discount || 0);
+                row.PlanPrice = (row.Quantity || 0) * (row.UnitPrice || 0) * (row.Reduction || 0);
                 return true;
             };
             ProductDetailsEditor = __decorate([
@@ -5440,28 +5461,6 @@ var Warehouse;
             return ProductDetailsEditor;
         }(Warehouse.Common.GridEditorBase));
         Store.ProductDetailsEditor = ProductDetailsEditor;
-    })(Store = Warehouse.Store || (Warehouse.Store = {}));
-})(Warehouse || (Warehouse = {}));
-var Warehouse;
-(function (Warehouse) {
-    var Store;
-    (function (Store) {
-        var ProductDetailGrid = /** @class */ (function (_super) {
-            __extends(ProductDetailGrid, _super);
-            function ProductDetailGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            ProductDetailGrid.prototype.getColumnsKey = function () { return 'Store.ProductDetail'; };
-            ProductDetailGrid.prototype.getDialogType = function () { return Store.ProductDetailDialog; };
-            ProductDetailGrid.prototype.getIdProperty = function () { return Store.ProductDetailRow.idProperty; };
-            ProductDetailGrid.prototype.getLocalTextPrefix = function () { return Store.ProductDetailRow.localTextPrefix; };
-            ProductDetailGrid.prototype.getService = function () { return Store.ProductDetailService.baseUrl; };
-            ProductDetailGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], ProductDetailGrid);
-            return ProductDetailGrid;
-        }(Serenity.EntityGrid));
-        Store.ProductDetailGrid = ProductDetailGrid;
     })(Store = Warehouse.Store || (Warehouse.Store = {}));
 })(Warehouse || (Warehouse = {}));
 var Warehouse;

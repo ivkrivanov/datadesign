@@ -15,16 +15,14 @@ namespace Warehouse.Store.Entities
     public sealed class ProductDetailRow : LoggingRow, IIdRow, IIsActiveRow, IMultiTenantRow
     {
         #region Product Detail
-        [DisplayName("Detail Id"), Identity]
+        [DisplayName("ID"), Identity]
         public Int32? DetailID
         {
             get { return Fields.DetailID[this]; }
             set { Fields.DetailID[this] = value; }
         }
 
-        //[DisplayName("Product Id"), Column("ProductID"), NotNull]
-        [DisplayName("Product"), PrimaryKey, ForeignKey(typeof(ProductRow)), LeftJoin("pro"), NotNull]
-        [LookupEditor(typeof(ProductRow))]
+        [DisplayName("Product ID"), PrimaryKey, ForeignKey(typeof(ProductRow)), LeftJoin("pro"), Updatable(false)]
         public Int32? ProductID
         {
             get { return Fields.ProductID[this]; }
@@ -60,7 +58,8 @@ namespace Warehouse.Store.Entities
             set { Fields.Reduction[this] = value; }
         }
 
-        [DisplayName("Plan Price"), Scale(4), NotNull, AlignRight, DisplayFormat("#,##0.00")]
+        [DisplayName("Plan Price"), Scale(4), Expression("(t0.[ItemUnitPrice] * t0.[ProductQuantity])")]
+        [AlignRight, DisplayFormat("#,##0.00"), MinSelectLevel(SelectLevel.List)]
         public Decimal? PlanPrice
         {
             get { return Fields.PlanPrice[this]; }
@@ -109,8 +108,7 @@ namespace Warehouse.Store.Entities
         #endregion
 
         #region Items
-
-
+        
         [Origin("ite")]
         public String ItemItemCode
         {
@@ -123,6 +121,12 @@ namespace Warehouse.Store.Entities
         {
             get { return Fields.ItemItemName[this]; }
             set { Fields.ItemItemName[this] = value; }
+        }
+
+        public decimal? ItemUnitPrice
+        {
+            get { return Fields.ItemUnitPrice[this]; }
+            set { Fields.ItemUnitPrice[this] = value; }
         }
 
         #endregion
@@ -195,6 +199,7 @@ namespace Warehouse.Store.Entities
             //public StringField ItemItemBarcode;
             //public StringField ItemItemLabel;
             public StringField ItemItemName;
+            public DecimalField ItemUnitPrice;
             //public StringField ItemItemImage;
             //public Int32Field ItemItemCategoryID;
             //public Int32Field ItemMeasureID;

@@ -9,13 +9,10 @@ namespace Warehouse.Store.Forms
     [BasedOnRow(typeof(Entities.ProductDetailRow), CheckNames = true)]
     public class ProductDetailColumns
     {
-        //[EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
-        //public Int32 DetailId { get; set; }
-        //public Int32 ProductId { get; set; }
-        //[EditLink, Width(200)]
-        //public String ProductProductName { get; set; }
         [EditLink, Width(200)]
         public String ItemItemName { get; set; }
+        [Width(100)]
+        public Decimal ItemUnitPrice { set; get; }
         [Width(100)]
         public Single Quantity { get; set; }
         [Width(100)]

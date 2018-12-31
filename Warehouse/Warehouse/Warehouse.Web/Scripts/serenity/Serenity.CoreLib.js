@@ -5026,6 +5026,7 @@ var Serenity;
                     return;
                 }
                 _this.set_valueAsDate(new Date());
+                input.triggerHandler('change');
             });
             _this.time.on('change', function (e3) {
                 input.triggerHandler('change');
@@ -7081,6 +7082,7 @@ var Serenity;
         MultipleImageUploadEditor.prototype.updateInterface = function () {
             var addButton = this.toolbar.findButton('add-file-button');
             addButton.toggleClass('disabled', this.get_readOnly());
+            this.fileSymbols.find('a.delete').toggle(!this.get_readOnly());
         };
         MultipleImageUploadEditor.prototype.get_readOnly = function () {
             return this.uploadInput.attr('disabled') != null;
@@ -7429,6 +7431,7 @@ var Serenity;
                 Q.addOption(input, h.toString(), ((h < 10) ? ('0' + h) : h.toString()));
             }
             _this.minutes = $('<select/>').addClass('editor s-TimeEditor minute').insertAfter(input);
+            _this.minutes.change(function () { return _this.element.trigger("change"); });
             for (var m = 0; m <= 59; m += (_this.options.intervalMinutes || 5)) {
                 Q.addOption(_this.minutes, m.toString(), ((m < 10) ? ('0' + m) : m.toString()));
             }
@@ -7468,8 +7471,22 @@ var Serenity;
         TimeEditor.prototype.set_value = function (value) {
             this.value = value;
         };
+        TimeEditor.prototype.get_readOnly = function () {
+            return this.element.hasClass('readonly');
+        };
+        TimeEditor.prototype.set_readOnly = function (value) {
+            if (value !== this.get_readOnly()) {
+                if (value) {
+                    this.element.addClass('readonly').attr('readonly', 'readonly');
+                }
+                else {
+                    this.element.removeClass('readonly').removeAttr('readonly');
+                }
+                Serenity.EditorUtils.setReadonly(this.minutes, value);
+            }
+        };
         TimeEditor = __decorate([
-            Editor('Time', [Serenity.IDoubleValue]),
+            Editor('Time', [Serenity.IDoubleValue, Serenity.IReadOnly]),
             Element("<select />")
         ], TimeEditor);
         return TimeEditor;

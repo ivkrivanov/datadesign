@@ -4399,10 +4399,16 @@ GO
 ALTER TABLE [dbo].[Products] CHECK CONSTRAINT [FK_Products_Categories]
 GO
 /****** Object:  ForeignKey [FK_Items_ItemCategories]    Script Date: 08/12/2011 11:46:03 ******/
-ALTER TABLE [dbo].[tems]  WITH NOCHECK ADD  CONSTRAINT [FK_Items_ItemCategories] FOREIGN KEY([ItemCategoryID])
+ALTER TABLE [dbo].[Items]  WITH NOCHECK ADD  CONSTRAINT [FK_Items_ItemCategories] FOREIGN KEY([ItemCategoryID])
 REFERENCES [dbo].[ItemCategories] ([ItemCategoryID])
 GO
 ALTER TABLE [dbo].[tems] CHECK CONSTRAINT [FK_Items_ItemCategories]
+GO
+/****** Object:  ForeignKey [FK_Order_Details_Products]    Script Date: 08/12/2011 11:46:03 ******/
+ALTER TABLE [dbo].[Product Details]  WITH NOCHECK ADD  CONSTRAINT [FK_Product_Details_Items] FOREIGN KEY([ItemID])
+REFERENCES [dbo].[Items] ([ItemID])
+GO
+ALTER TABLE [dbo].[Product Details] CHECK CONSTRAINT [FK_Product_Details_Items]
 GO
 /****** Object:  ForeignKey [FK_Products_Suppliers]    Script Date: 08/12/2011 11:46:03 ******/
 ALTER TABLE [dbo].[Products]  WITH NOCHECK ADD  CONSTRAINT [FK_Products_Suppliers] FOREIGN KEY([SupplierID])

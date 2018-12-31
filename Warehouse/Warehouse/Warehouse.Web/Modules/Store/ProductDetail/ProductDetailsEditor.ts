@@ -22,7 +22,7 @@ namespace Warehouse.Store {
             }
 
             row.ItemName = ItemRow.getLookup().itemById[row.ItemID].ItemName;
-            row.LineTotal = (row.Quantity || 0) * (row.UnitPrice || 0) - (row.Discount || 0);
+            row.PlanPrice = (row.Quantity || 0) * (row.UnitPrice || 0) * (row.Reduction || 0);
             return true;
         }
     }
