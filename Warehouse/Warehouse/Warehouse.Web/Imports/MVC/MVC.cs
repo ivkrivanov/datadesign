@@ -98,6 +98,11 @@ namespace MVC
 
         public static class Store
         {
+            public static class ___ProductDetail
+            {
+                public const string ProductDetailIndex = "~/Modules/Store/___ProductDetail/ProductDetailIndex.cshtml";
+            }
+
             public static class Categories
             {
                 public const string CategoriesIndex = "~/Modules/Store/Categories/CategoriesIndex.cshtml";

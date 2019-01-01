@@ -275,3 +275,4 @@ Build_Artifacts/Logs/*.*
 /Ledger/Ledger/Ledger.Web/web.config
 /Store/Store/Ledger.Web/web.config
 /Serene1/Serene1/Serene1.Web/web.config
+/Warehouse/Warehouse/Warehouse.Web/web.config

@@ -13,5 +13,9 @@ namespace Warehouse.Store {
 
         protected form = new ProductForm(this.idPrefix);
 
+        constructor() {
+            super();
+        }
+
     }
 }

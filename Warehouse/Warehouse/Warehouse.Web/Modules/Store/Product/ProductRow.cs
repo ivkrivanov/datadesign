@@ -20,7 +20,7 @@ namespace Warehouse.Store.Entities
     [LocalizationRow(typeof(ProductLangRow))]
     public sealed class ProductRow : LoggingRow, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
     {
-        [DisplayName("Product Id"), Identity, LookupInclude]
+        [DisplayName("Product ID"), NotNull, Identity, QuickSearch]
         public Int32? ProductID
         {
             get { return Fields.ProductID[this]; }
@@ -198,7 +198,7 @@ namespace Warehouse.Store.Entities
             set { Fields.CategoryPicture[this] = value; }
         }
 
-        [DisplayName("Details"), MasterDetailRelation(foreignKey:"ProductID"), NotMapped]
+        [DisplayName("Details"), MasterDetailRelation(foreignKey: "ProductID"), NotMapped]
         public List<ProductDetailRow> DetailList
         {
             get { return Fields.DetailList[this]; }

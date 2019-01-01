@@ -1628,7 +1628,7 @@ declare namespace Warehouse.Store {
 }
 declare namespace Warehouse.Store {
     interface ProductDetailForm {
-        ItemID: Serenity.LookupEditor;
+        ItemID: Serenity.IntegerEditor;
         Quantity: Serenity.DecimalEditor;
         ProductQuantity: Serenity.DecimalEditor;
         Reduction: Serenity.DecimalEditor;
@@ -1652,12 +1652,27 @@ declare namespace Warehouse.Store {
         IsActive?: number;
         TenantId?: number;
         ProductProductName?: string;
-        ProductDiscontinued?: boolean;
+        ProductProductImage?: string;
         ProductSupplierID?: number;
+        ProductCategoryID?: number;
         ProductQuantityPerUnit?: string;
         ProductUnitPrice?: number;
+        ProductUnitsInStock?: number;
+        ProductUnitsOnOrder?: number;
+        ProductReorderLevel?: number;
+        ProductDiscontinued?: boolean;
         ItemItemCode?: string;
+        ItemItemBarcode?: string;
+        ItemItemLabel?: string;
         ItemItemName?: string;
+        ItemItemImage?: string;
+        ItemSupplierID?: number;
+        ItemItemCategoryID?: number;
+        ItemMeasureID?: number;
+        ItemQuantityPerUnit?: number;
+        ItemUnitPrice?: number;
+        ItemDiscontinued?: boolean;
+        ItemAccountID?: number;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -1678,12 +1693,27 @@ declare namespace Warehouse.Store {
             IsActive = "IsActive",
             TenantId = "TenantId",
             ProductProductName = "ProductProductName",
-            ProductDiscontinued = "ProductDiscontinued",
+            ProductProductImage = "ProductProductImage",
             ProductSupplierID = "ProductSupplierID",
+            ProductCategoryID = "ProductCategoryID",
             ProductQuantityPerUnit = "ProductQuantityPerUnit",
             ProductUnitPrice = "ProductUnitPrice",
+            ProductUnitsInStock = "ProductUnitsInStock",
+            ProductUnitsOnOrder = "ProductUnitsOnOrder",
+            ProductReorderLevel = "ProductReorderLevel",
+            ProductDiscontinued = "ProductDiscontinued",
             ItemItemCode = "ItemItemCode",
+            ItemItemBarcode = "ItemItemBarcode",
+            ItemItemLabel = "ItemItemLabel",
             ItemItemName = "ItemItemName",
+            ItemItemImage = "ItemItemImage",
+            ItemSupplierID = "ItemSupplierID",
+            ItemItemCategoryID = "ItemItemCategoryID",
+            ItemMeasureID = "ItemMeasureID",
+            ItemQuantityPerUnit = "ItemQuantityPerUnit",
+            ItemUnitPrice = "ItemUnitPrice",
+            ItemDiscontinued = "ItemDiscontinued",
+            ItemAccountID = "ItemAccountID",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",
@@ -2871,6 +2901,7 @@ declare namespace Warehouse.Store {
         protected getService(): string;
         protected getLanguages(): string[][];
         protected form: ProductForm;
+        constructor();
     }
 }
 declare namespace Warehouse.Store {
@@ -2923,8 +2954,8 @@ declare namespace Warehouse.Store {
 }
 declare namespace Warehouse.Store {
     class ProductDetailsEditor extends Common.GridEditorBase<ProductDetailRow> {
-        protected getColumsKey(): string;
-        protected readonly DialogType: typeof ProductDetailDialog;
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof ProductDetailDialog;
         protected getLocalTextPrefix(): string;
         constructor(container: JQuery);
         validateEntity(row: any, id: any): boolean;
@@ -3009,6 +3040,33 @@ declare namespace Warehouse.Store {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+    }
+}
+declare namespace Warehouse.Store {
+    class ProductDetailDialog extends Common.GridEditorDialog<ProductDetailRow> {
+        protected getFormKey(): string;
+        protected getLocalTextPrefix(): string;
+        protected form: ProductDetailForm;
+        constructor();
+    }
+}
+declare namespace Warehouse.Store {
+    class ProductDetailGrid extends Serenity.EntityGrid<ProductDetailRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof ProductDetailDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Warehouse.Store {
+    class ProductDetailsEditor extends Common.GridEditorBase<ProductDetailRow> {
+        protected getColumsKey(): string;
+        protected readonly DialogType: typeof ProductDetailDialog;
+        protected getLocalTextPrefix(): string;
+        constructor(container: JQuery);
+        validateEntity(row: any, id: any): boolean;
     }
 }
 declare namespace Warehouse.Authorization {

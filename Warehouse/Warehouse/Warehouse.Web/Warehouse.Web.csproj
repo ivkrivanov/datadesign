@@ -895,6 +895,13 @@
     <Content Include="Scripts\serenity\texts\serenity.texts.de.json" />
     <Content Include="Scripts\serenity\Serenity.CoreLib.js.map" />
     <None Include="tsconfig.json" />
+    <Content Include="Web.config" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
     <TypeScriptCompile Include="Imports\ServerTypings\Administration.TenantColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
@@ -1765,8 +1772,6 @@
     <TypeScriptCompile Include="Imports\ServerTypings\Store.ProductDetailService.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
-    <Content Include="Modules\Store\ProductDetail\ProductDetailIndex.cshtml" />
-    <TypeScriptCompile Include="Modules\Store\ProductDetail\ProductDetailDialog.ts" />
     <TypeScriptCompile Include="Imports\ServerTypings\Store.ProductDetailForm.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
@@ -1819,12 +1824,11 @@
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Scripts\typings\serenity\Serenity.CoreLib.d.ts" />
+    <Content Include="Modules\Store\ProductDetail\ProductDetailIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Store\ProductDetail\ProductDetailDialog.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -2069,12 +2073,6 @@
     <Compile Include="Modules\Store\Shipper\ShipperPage.cs" />
     <Compile Include="Modules\Store\Shipper\ShipperColumns.cs" />
     <Compile Include="Modules\Store\Shipper\ShipperForm.cs" />
-    <Compile Include="Modules\Store\ProductDetail\ProductDetailRow.cs" />
-    <Compile Include="Modules\Store\ProductDetail\ProductDetailRepository.cs" />
-    <Compile Include="Modules\Store\ProductDetail\ProductDetailEndpoint.cs" />
-    <Compile Include="Modules\Store\ProductDetail\ProductDetailPage.cs" />
-    <Compile Include="Modules\Store\ProductDetail\ProductDetailColumns.cs" />
-    <Compile Include="Modules\Store\ProductDetail\ProductDetailForm.cs" />
     <Compile Include="Modules\Store\Item\ItemRow.cs" />
     <Compile Include="Modules\Store\Item\ItemRepository.cs" />
     <Compile Include="Modules\Store\Item\ItemEndpoint.cs" />
@@ -2099,6 +2097,12 @@
     <Compile Include="Modules\Store\Measure\MeasurePage.cs" />
     <Compile Include="Modules\Store\Measure\MeasureColumns.cs" />
     <Compile Include="Modules\Store\Measure\MeasureForm.cs" />
+    <Compile Include="Modules\Store\ProductDetail\ProductDetailRow.cs" />
+    <Compile Include="Modules\Store\ProductDetail\ProductDetailRepository.cs" />
+    <Compile Include="Modules\Store\ProductDetail\ProductDetailEndpoint.cs" />
+    <Compile Include="Modules\Store\ProductDetail\ProductDetailPage.cs" />
+    <Compile Include="Modules\Store\ProductDetail\ProductDetailColumns.cs" />
+    <Compile Include="Modules\Store\ProductDetail\ProductDetailForm.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

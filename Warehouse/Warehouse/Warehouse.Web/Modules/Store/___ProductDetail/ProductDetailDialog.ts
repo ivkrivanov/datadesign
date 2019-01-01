@@ -7,7 +7,7 @@ namespace Warehouse.Store {
         protected getFormKey() { return ProductDetailForm.formKey; }
         protected getLocalTextPrefix() { return ProductDetailRow.localTextPrefix; }
 
-        protected form : ProductDetailForm;
+        protected form: ProductDetailForm;
 
         constructor() {
             super();
@@ -15,9 +15,9 @@ namespace Warehouse.Store {
             this.form = new ProductDetailForm(this.idPrefix);
 
             this.form.ItemID.changeSelect2(e => {
-                var itemID = Q.toId(this.form.ItemID.value);
-                if (itemID != null) {
-                    this.form.PlanPrice.value = ItemRow.getLookup().itemById[itemID].UnitPrice;
+                var ItemID = Q.toId(this.form.ItemID.value);
+                if (ItemID != null) {
+                    this.form.PlanPrice.value = ProductRow.getLookup().itemById[ItemID].UnitPrice;
                 }
             });
 

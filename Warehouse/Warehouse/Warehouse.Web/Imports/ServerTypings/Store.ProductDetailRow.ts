@@ -10,12 +10,27 @@
         IsActive?: number;
         TenantId?: number;
         ProductProductName?: string;
-        ProductDiscontinued?: boolean;
+        ProductProductImage?: string;
         ProductSupplierID?: number;
+        ProductCategoryID?: number;
         ProductQuantityPerUnit?: string;
         ProductUnitPrice?: number;
+        ProductUnitsInStock?: number;
+        ProductUnitsOnOrder?: number;
+        ProductReorderLevel?: number;
+        ProductDiscontinued?: boolean;
         ItemItemCode?: string;
+        ItemItemBarcode?: string;
+        ItemItemLabel?: string;
         ItemItemName?: string;
+        ItemItemImage?: string;
+        ItemSupplierID?: number;
+        ItemItemCategoryID?: number;
+        ItemMeasureID?: number;
+        ItemQuantityPerUnit?: number;
+        ItemUnitPrice?: number;
+        ItemDiscontinued?: boolean;
+        ItemAccountID?: number;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -38,12 +53,27 @@
             IsActive = "IsActive",
             TenantId = "TenantId",
             ProductProductName = "ProductProductName",
-            ProductDiscontinued = "ProductDiscontinued",
+            ProductProductImage = "ProductProductImage",
             ProductSupplierID = "ProductSupplierID",
+            ProductCategoryID = "ProductCategoryID",
             ProductQuantityPerUnit = "ProductQuantityPerUnit",
             ProductUnitPrice = "ProductUnitPrice",
+            ProductUnitsInStock = "ProductUnitsInStock",
+            ProductUnitsOnOrder = "ProductUnitsOnOrder",
+            ProductReorderLevel = "ProductReorderLevel",
+            ProductDiscontinued = "ProductDiscontinued",
             ItemItemCode = "ItemItemCode",
+            ItemItemBarcode = "ItemItemBarcode",
+            ItemItemLabel = "ItemItemLabel",
             ItemItemName = "ItemItemName",
+            ItemItemImage = "ItemItemImage",
+            ItemSupplierID = "ItemSupplierID",
+            ItemItemCategoryID = "ItemItemCategoryID",
+            ItemMeasureID = "ItemMeasureID",
+            ItemQuantityPerUnit = "ItemQuantityPerUnit",
+            ItemUnitPrice = "ItemUnitPrice",
+            ItemDiscontinued = "ItemDiscontinued",
+            ItemAccountID = "ItemAccountID",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",
