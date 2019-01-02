@@ -7544,3 +7544,9 @@ section.content > .s-DataGrid {
 .s-Store-ItemCategoriesLangDialog .caption {
   width: 150px;
 }
+.s-Store-MeasureDialog > .size {
+  width: 650px;
+}
+.s-Store-MeasureDialog .caption {
+  width: 150px;
+}

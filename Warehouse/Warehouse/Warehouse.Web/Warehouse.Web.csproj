@@ -1872,7 +1872,6 @@
     <Compile Include="Migrations\StoreDB\StoreDB_20181213_150000_Notes.cs" />
     <Compile Include="Migrations\StoreDB\StoreDB_20181213_160000_ProductLog.cs" />
     <Compile Include="Migrations\StoreDB\StoreDB_20181214_100000_CustomerGrossSales.cs" />
-    <Compile Include="Migrations\StoreDB\StoreDB_20181216_14000000_Product_Detail.cs" />
     <Compile Include="Modules\Administration\AdministrationNavigation.cs" />
     <Compile Include="Modules\Administration\Language\LanguageLookup.cs" />
     <Compile Include="Modules\Administration\RolePermission\RolePermissionUpdateRequest.cs" />

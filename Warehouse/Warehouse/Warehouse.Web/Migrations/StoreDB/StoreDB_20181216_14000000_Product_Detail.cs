@@ -22,7 +22,7 @@ namespace Warehouse.Migrations.StoreDB
                 .WithColumn("ProductID").AsInt32().NotNullable()
                     .ForeignKey("FK_ProductDetail_Product","Products","ProductID")
                 .WithColumn("ItemID").AsInt32().NotNullable()
-                    .ForeignKey("FK_ProductDetail+Item", "Items", "ItemID")
+                    .ForeignKey("FK_ProductDetail_Item", "Items", "ItemID")
                 .WithColumn("Quantity").AsFloat().NotNullable()
                 .WithColumn("ProductQuantity").AsFloat().NotNullable().WithDefaultValue(1.0)
                 .WithColumn("Reduction").AsFloat().NotNullable().WithDefaultValue(1.0)
