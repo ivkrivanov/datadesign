@@ -1,6 +1,6 @@
 ﻿namespace Warehouse.Store {
     export interface ProductDetailForm {
-        ItemID: Serenity.IntegerEditor;
+        ItemID: Serenity.LookupEditor;
         Quantity: Serenity.DecimalEditor;
         ProductQuantity: Serenity.DecimalEditor;
         Reduction: Serenity.DecimalEditor;
@@ -18,7 +18,7 @@
                 ProductDetailForm.init = true;
 
                 var s = Serenity;
-                var w0 = s.IntegerEditor;
+                var w0 = s.LookupEditor;
                 var w1 = s.DecimalEditor;
 
                 Q.initFormType(ProductDetailForm, [

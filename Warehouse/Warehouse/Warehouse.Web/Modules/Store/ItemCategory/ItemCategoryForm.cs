@@ -10,7 +10,7 @@ namespace Warehouse.Store.Forms
     {
         public String ItemCategoryCode { get; set; }
         public String ItemCategoryName { get; set; }
-        public String ItemCatImage { get; set; }
-        public String ItemCatDescription { get; set; }
+        public String ItemCategoryImage { get; set; }
+        public String ItemCategoryDescription { get; set; }
     }
 }

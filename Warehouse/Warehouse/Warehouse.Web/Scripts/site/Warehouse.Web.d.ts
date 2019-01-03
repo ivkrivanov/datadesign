@@ -1085,8 +1085,8 @@ declare namespace Warehouse.Store {
     interface ItemCategoryForm {
         ItemCategoryCode: Serenity.StringEditor;
         ItemCategoryName: Serenity.StringEditor;
-        ItemCatImage: Serenity.ImageUploadEditor;
-        ItemCatDescription: Serenity.StringEditor;
+        ItemCategoryImage: Serenity.ImageUploadEditor;
+        ItemCategoryDescription: Serenity.StringEditor;
     }
     class ItemCategoryForm extends Serenity.PrefixedContext {
         static formKey: string;
@@ -1099,8 +1099,8 @@ declare namespace Warehouse.Store {
         ItemCategoryID?: number;
         ItemCategoryCode?: string;
         ItemCategoryName?: string;
-        ItemCatDescription?: string;
-        ItemCatImage?: string;
+        ItemCategoryDescription?: string;
+        ItemCategoryImage?: string;
         IsActive?: number;
         TenantId?: number;
         InsertUserId?: number;
@@ -1119,8 +1119,8 @@ declare namespace Warehouse.Store {
             ItemCategoryID = "ItemCategoryID",
             ItemCategoryCode = "ItemCategoryCode",
             ItemCategoryName = "ItemCategoryName",
-            ItemCatDescription = "ItemCatDescription",
-            ItemCatImage = "ItemCatImage",
+            ItemCategoryDescription = "ItemCategoryDescription",
+            ItemCategoryImage = "ItemCategoryImage",
             IsActive = "IsActive",
             TenantId = "TenantId",
             InsertUserId = "InsertUserId",
@@ -1243,8 +1243,8 @@ declare namespace Warehouse.Store {
         SupplierHomePage?: string;
         ItemCategoryCode?: string;
         ItemCategoryName?: string;
-        ItemCatDescription?: string;
-        ItemCatImage?: string;
+        ItemCategoryDescription?: string;
+        ItemCategoryImage?: string;
         MeasureName?: string;
         InsertUserId?: number;
         InsertDate?: string;
@@ -1287,8 +1287,8 @@ declare namespace Warehouse.Store {
             SupplierHomePage = "SupplierHomePage",
             ItemCategoryCode = "ItemCategoryCode",
             ItemCategoryName = "ItemCategoryName",
-            ItemCatDescription = "ItemCatDescription",
-            ItemCatImage = "ItemCatImage",
+            ItemCategoryDescription = "ItemCategoryDescription",
+            ItemCategoryImage = "ItemCategoryImage",
             MeasureName = "MeasureName",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
@@ -1628,7 +1628,7 @@ declare namespace Warehouse.Store {
 }
 declare namespace Warehouse.Store {
     interface ProductDetailForm {
-        ItemID: Serenity.IntegerEditor;
+        ItemID: Serenity.LookupEditor;
         Quantity: Serenity.DecimalEditor;
         ProductQuantity: Serenity.DecimalEditor;
         Reduction: Serenity.DecimalEditor;
@@ -2907,12 +2907,13 @@ declare namespace Warehouse.Store {
 declare namespace Warehouse.Store {
     class ProductGrid extends Serenity.EntityGrid<ProductRow, any> {
         protected getColumnsKey(): string;
-        protected getDialogType(): typeof ProductDialog;
+        protected getDialogType(): any;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         private pendingChanges;
         constructor(container: JQuery);
+        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
         protected getButtons(): Serenity.ToolButton[];
         protected onViewProcessData(response: any): Serenity.ListResponse<ProductRow>;
         /**
@@ -2931,7 +2932,6 @@ declare namespace Warehouse.Store {
         private inputsChange;
         private setSaveButtonState;
         private saveClick;
-        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
     }
 }
 declare namespace Warehouse.Store {

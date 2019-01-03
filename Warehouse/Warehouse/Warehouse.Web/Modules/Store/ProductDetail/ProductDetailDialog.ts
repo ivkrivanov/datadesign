@@ -16,9 +16,9 @@ namespace Warehouse.Store {
 
             this.form.ItemID.changeSelect2(e => {
                 var itemID = Q.toId(this.form.ItemID.value);
-                if (itemID != null) {
-                    this.form.PlanPrice.value = ItemRow.getLookup().itemById[itemID].UnitPrice;
-                }
+                //if (itemID != null) {
+                //    this.form.PlanPrice.value = ItemRow.getLookup().itemById[itemID].UnitPrice;
+                //}
             });
 
         }

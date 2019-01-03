@@ -40,18 +40,18 @@ namespace Warehouse.Store.Entities
         }
 
         [DisplayName("Item Description"), QuickSearch]
-        public String ItemCatDescription
+        public String ItemCategoryDescription
         {
-            get { return Fields.ItemCatDescription[this]; }
-            set { Fields.ItemCatDescription[this] = value; }
+            get { return Fields.ItemCategoryDescription[this]; }
+            set { Fields.ItemCategoryDescription[this] = value; }
         }
 
         [DisplayName("Category Item Picture"), Size(100)]
         [ImageUploadEditor(FilenameFormat = "ItemCatImage/~", CopyToHistory = true)]
-        public String ItemCatImage
+        public String ItemCategoryImage
         {
-            get { return Fields.ItemCatImage[this]; }
-            set { Fields.ItemCatImage[this] = value; }
+            get { return Fields.ItemCategoryImage[this]; }
+            set { Fields.ItemCategoryImage[this] = value; }
         }
 
         IIdField IIdRow.IdField
@@ -104,8 +104,8 @@ namespace Warehouse.Store.Entities
             public Int32Field ItemCategoryID;
             public StringField ItemCategoryCode;
             public StringField ItemCategoryName;
-            public StringField ItemCatDescription;
-            public StringField ItemCatImage;
+            public StringField ItemCategoryDescription;
+            public StringField ItemCategoryImage;
 
             public Int16Field IsActive;
             public readonly Int32Field TenantId;

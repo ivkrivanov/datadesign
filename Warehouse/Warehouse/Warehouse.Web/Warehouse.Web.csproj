@@ -809,6 +809,7 @@
     <Content Include="Scripts\serenity\Serenity.CoreLib.min.js" />
     <Content Include="Scripts\serenity\Serenity.Script.UI.js" />
     <Content Include="Scripts\serenity\Serenity.Script.UI.min.js" />
+    <Content Include="Scripts\site\Warehouse.Web.js" />
     <Content Include="Scripts\SlickGrid\Controls\slick.columnpicker.js" />
     <Content Include="Scripts\SlickGrid\Controls\slick.pager.js" />
     <Content Include="Scripts\SlickGrid\MIT-LICENSE.txt" />
@@ -1642,7 +1643,6 @@
     <Content Include="Scripts\mousetrap.min.js" />
     <Content Include="Scripts\raphael\raphael-min.js" />
     <Content Include="Scripts\raphael\raphael.js" />
-    <Content Include="Scripts\site\Warehouse.Web.js" />
     <Content Include="Scripts\sparkline\jquery.sparkline.js" />
     <Content Include="Scripts\sparkline\jquery.sparkline.min.js" />
     <Content Include="Scripts\timepicker\bootstrap-timepicker.css" />

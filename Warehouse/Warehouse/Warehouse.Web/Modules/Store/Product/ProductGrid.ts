@@ -1,4 +1,5 @@
-﻿namespace Warehouse.Store {
+﻿
+namespace Warehouse.Store {
 
     import fld = ProductRow.Fields;
 
@@ -6,7 +7,7 @@
     @Serenity.Decorators.filterable()
     export class ProductGrid extends Serenity.EntityGrid<ProductRow, any> {
         protected getColumnsKey() { return 'Store.Product'; }
-        protected getDialogType() { return ProductDialog; }
+        protected getDialogType() { return <any>ProductDialog; }
         protected getIdProperty() { return ProductRow.idProperty; }
         protected getLocalTextPrefix() { return ProductRow.localTextPrefix; }
         protected getService() { return ProductService.baseUrl; }
@@ -17,6 +18,29 @@
             super(container);
 
             this.slickContainer.on('change', '.edit:input', (e) => this.inputsChange(e));
+        }
+
+        protected getQuickFilters() {
+            var flt = super.getQuickFilters();
+
+            var q = Q.parseQueryString();
+            if (q["cat"]) {
+                var category = Q.tryFirst(flt, x => x.field == "CategoryID");
+                category.init = e => {
+                    e.element.getWidget(Serenity.LookupEditor).value = q["cat"];
+                };
+            }
+
+            flt.push({
+                type: Serenity.LookupEditor,
+                options: {
+                    lookupKey: ItemRow.lookupKey
+                },
+                field: 'ItemID',
+                title: 'Contains Item in Details',
+            });
+
+            return flt;
         }
 
         protected getButtons() {
@@ -260,18 +284,6 @@
             })();
         }
 
-        protected getQuickFilters() {
-            var flt = super.getQuickFilters();
 
-            var q = Q.parseQueryString();
-            if (q["cat"]) {
-                var category = Q.tryFirst(flt, x => x.field == "CategoryID");
-                category.init = e => {
-                    e.element.getWidget(Serenity.LookupEditor).value = q["cat"];
-                };
-            }
-
-            return flt;
-        }
     }
 }

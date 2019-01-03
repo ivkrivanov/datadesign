@@ -17,7 +17,7 @@ namespace Warehouse.Store.Columns
         [EditLink, Width(250)]
         public String ItemCategoryName { get; set; }
         [Width(450)]
-        public String ItemCatDescription { get; set; }
+        public String ItemCategoryDescription { get; set; }
         //public Stream ItemPicture { get; set; }
     }
 }

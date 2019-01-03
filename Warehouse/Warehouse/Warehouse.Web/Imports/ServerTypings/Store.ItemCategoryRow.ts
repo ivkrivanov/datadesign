@@ -3,8 +3,8 @@
         ItemCategoryID?: number;
         ItemCategoryCode?: string;
         ItemCategoryName?: string;
-        ItemCatDescription?: string;
-        ItemCatImage?: string;
+        ItemCategoryDescription?: string;
+        ItemCategoryImage?: string;
         IsActive?: number;
         TenantId?: number;
         InsertUserId?: number;
@@ -28,8 +28,8 @@
             ItemCategoryID = "ItemCategoryID",
             ItemCategoryCode = "ItemCategoryCode",
             ItemCategoryName = "ItemCategoryName",
-            ItemCatDescription = "ItemCatDescription",
-            ItemCatImage = "ItemCatImage",
+            ItemCategoryDescription = "ItemCategoryDescription",
+            ItemCategoryImage = "ItemCategoryImage",
             IsActive = "IsActive",
             TenantId = "TenantId",
             InsertUserId = "InsertUserId",

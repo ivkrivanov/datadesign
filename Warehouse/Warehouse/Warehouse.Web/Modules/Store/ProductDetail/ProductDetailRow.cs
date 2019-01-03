@@ -29,6 +29,7 @@ namespace Warehouse.Store.Entities
         }
 
         [DisplayName("Item"), PrimaryKey, ForeignKey(typeof(ItemRow)), LeftJoin("jItem")]
+        [LookupEditor(typeof(ItemRow))]
         public Int32? ItemID
         {
             get { return Fields.ItemID[this]; }

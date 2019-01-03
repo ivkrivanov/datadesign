@@ -79,7 +79,8 @@ namespace Warehouse.Store.Entities
             set { Fields.SupplierID[this] = value; }
         }
 
-        [DisplayName("Category Item ID"), Column("ItemCategoryID"), ForeignKey(typeof(ItemCategoryRow)), LeftJoin("cat"), LookupInclude]
+        //[DisplayName("Category Item ID"), Column("ItemCategoryID"), ForeignKey(typeof(ItemCategoryRow)), LeftJoin("cat"), LookupInclude]
+        [DisplayName("Category Item ID"), ForeignKey(typeof(ItemCategoryRow)), LeftJoin("cat"), LookupInclude]
         [LookupEditor(typeof(ItemCategoryRow), InplaceAdd = true)]
         public Int32? ItemCategoryID
         {
@@ -87,7 +88,8 @@ namespace Warehouse.Store.Entities
             set { Fields.ItemCategoryID[this] = value; }
         }
 
-        [DisplayName("Measure Id"), Column("MeasureID"), ForeignKey(typeof(MeasureRow)), LeftJoin("meas"), LookupInclude]
+        //[DisplayName("Measure Id"), Column("MeasureID"), ForeignKey(typeof(MeasureRow)), LeftJoin("meas"), LookupInclude]
+        [DisplayName("Measure Id"), ForeignKey(typeof(MeasureRow)), LeftJoin("meas"), LookupInclude]
         [LookupEditor(typeof(MeasureRow), InplaceAdd = true)]
         public Int32? MeasureID
         {
@@ -219,17 +221,17 @@ namespace Warehouse.Store.Entities
         }
 
         [Origin("cat")]
-        public String ItemCatDescription
+        public String ItemCategoryDescription
         {
-            get { return Fields.ItemCatDescription[this]; }
-            set { Fields.ItemCatDescription[this] = value; }
+            get { return Fields.ItemCategoryDescription[this]; }
+            set { Fields.ItemCategoryDescription[this] = value; }
         }
 
         [Origin("cat")]
-        public String ItemCatImage
+        public String ItemCategoryImage
         {
-            get { return Fields.ItemCatImage[this]; }
-            set { Fields.ItemCatImage[this] = value; }
+            get { return Fields.ItemCategoryImage[this]; }
+            set { Fields.ItemCategoryImage[this] = value; }
         }
         #endregion Category
 
@@ -323,8 +325,8 @@ namespace Warehouse.Store.Entities
 
             public StringField ItemCategoryCode;
             public StringField ItemCategoryName;
-            public StringField ItemCatDescription;
-            public StringField ItemCatImage;
+            public StringField ItemCategoryDescription;
+            public StringField ItemCategoryImage;
 
             public StringField MeasureName;
         }

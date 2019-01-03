@@ -28,8 +28,8 @@
         SupplierHomePage?: string;
         ItemCategoryCode?: string;
         ItemCategoryName?: string;
-        ItemCatDescription?: string;
-        ItemCatImage?: string;
+        ItemCategoryDescription?: string;
+        ItemCategoryImage?: string;
         MeasureName?: string;
         InsertUserId?: number;
         InsertDate?: string;
@@ -77,8 +77,8 @@
             SupplierHomePage = "SupplierHomePage",
             ItemCategoryCode = "ItemCategoryCode",
             ItemCategoryName = "ItemCategoryName",
-            ItemCatDescription = "ItemCatDescription",
-            ItemCatImage = "ItemCatImage",
+            ItemCategoryDescription = "ItemCategoryDescription",
+            ItemCategoryImage = "ItemCategoryImage",
             MeasureName = "MeasureName",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",

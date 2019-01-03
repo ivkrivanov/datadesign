@@ -2,8 +2,8 @@
     export interface ItemCategoryForm {
         ItemCategoryCode: Serenity.StringEditor;
         ItemCategoryName: Serenity.StringEditor;
-        ItemCatImage: Serenity.ImageUploadEditor;
-        ItemCatDescription: Serenity.StringEditor;
+        ItemCategoryImage: Serenity.ImageUploadEditor;
+        ItemCategoryDescription: Serenity.StringEditor;
     }
 
     export class ItemCategoryForm extends Serenity.PrefixedContext {
@@ -23,8 +23,8 @@
                 Q.initFormType(ItemCategoryForm, [
                     'ItemCategoryCode', w0,
                     'ItemCategoryName', w0,
-                    'ItemCatImage', w1,
-                    'ItemCatDescription', w0
+                    'ItemCategoryImage', w1,
+                    'ItemCategoryDescription', w0
                 ]);
             }
         }
