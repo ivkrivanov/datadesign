@@ -4432,6 +4432,18 @@ REFERENCES [dbo].[ItemCategories] ([ItemCategoryID])
 GO
 ALTER TABLE [dbo].[Items] CHECK CONSTRAINT [FK_Items_ItemCategories]
 GO
+/****** Object:  ForeignKey [FK_Items_Suppliers]    Script Date: 08/12/2011 11:46:03 ******/
+ALTER TABLE [dbo].[Items]  WITH NOCHECK ADD  CONSTRAINT [FK_Items_Suppliers] FOREIGN KEY([SupplierID])
+REFERENCES [dbo].[Suppliers] ([SupplierID])
+GO
+ALTER TABLE [dbo].[Items] CHECK CONSTRAINT [FK_Items_Suppliers]
+GO
+/****** Object:  ForeignKey [FK_Items_Measures]    Script Date: 08/12/2011 11:46:03 ******/
+ALTER TABLE [dbo].[Items]  WITH NOCHECK ADD  CONSTRAINT [FK_Items_Measures] FOREIGN KEY([MeasureID])
+REFERENCES [dbo].[Measures] ([MeasureID])
+GO
+ALTER TABLE [dbo].[Items] CHECK CONSTRAINT [FK_Items_Measures]
+GO
 /****** Object:  ForeignKey [FK_Order_Details_Products]    Script Date: 08/12/2011 11:46:03 ******/
 ALTER TABLE [dbo].[Product Details]  WITH NOCHECK ADD  CONSTRAINT [FK_Product_Details_Items] FOREIGN KEY([ItemID])
 REFERENCES [dbo].[Items] ([ItemID])
@@ -4449,6 +4461,12 @@ ALTER TABLE [dbo].[Territories]  WITH CHECK ADD  CONSTRAINT [FK_Territories_Regi
 REFERENCES [dbo].[Region] ([RegionID])
 GO
 ALTER TABLE [dbo].[Territories] CHECK CONSTRAINT [FK_Territories_Region]
+GO
+/****** Object:  ForeignKey [FK_Product Details_Products]    Script Date: 08/12/2011 11:46:03 ******/
+ALTER TABLE [dbo].[Product Details]  WITH NOCHECK ADD  CONSTRAINT [FK_Product Details_Products] FOREIGN KEY([ProductID])
+REFERENCES [dbo].[Products] ([ProductID])
+GO
+ALTER TABLE [dbo].[Product Details] CHECK CONSTRAINT [FK_Product Details_Products]
 GO
 
 /* ----- Script generated from Sql Server 2005 Database on 12th Auguest 2011 by Binoj Antony ---------------- */
