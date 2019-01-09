@@ -1,14 +1,12 @@
 ﻿
 namespace Warehouse.Store.Entities
 {
-    using Serenity;
     using Serenity.ComponentModel;
     using Serenity.Data;
     using Serenity.Data.Mapping;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
-    using System.IO;
     using Warehouse.Administration.Entities;
 
     [ConnectionKey("Store"), Module("Store"), TableName("[dbo].[Orders]")]
@@ -304,7 +302,6 @@ namespace Warehouse.Store.Entities
 
             public Int32Field ShippingState;
             public RowListField<OrderDetailRow> DetailList;
-
         }
     }
 }
