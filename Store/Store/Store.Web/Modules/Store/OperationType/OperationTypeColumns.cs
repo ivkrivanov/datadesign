@@ -13,11 +13,11 @@ namespace Store.Store.Columns
     [BasedOnRow(typeof(Entities.OperationTypeRow), CheckNames = true)]
     public class OperationTypeColumns
     {
-        [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
-        public Int32 OperationTypeId { get; set; }
-        [Width(250)]
+        //[EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
+        //public Int32 OperationTypeId { get; set; }
+        [Width(250), EditLink]
         public Int16 OpCode { get; set; }
-        [EditLink, Width(250)]
+        [Width(250), EditLink]
         public String Operation { get; set; }
     }
 }

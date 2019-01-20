@@ -113,9 +113,24 @@ namespace MVC
                 public const string CounterpartyIndex = "~/Modules/Store/Counterparty/CounterpartyIndex.cshtml";
             }
 
+            public static class Customer
+            {
+                public const string CustomerIndex = "~/Modules/Store/Customer/CustomerIndex.cshtml";
+            }
+
             public static class Employee
             {
                 public const string EmployeeIndex = "~/Modules/Store/Employee/EmployeeIndex.cshtml";
+            }
+
+            public static class Item
+            {
+                public const string ItemIndex = "~/Modules/Store/Item/ItemIndex.cshtml";
+            }
+
+            public static class ItemCategory
+            {
+                public const string ItemCategoryIndex = "~/Modules/Store/ItemCategory/ItemCategoryIndex.cshtml";
             }
 
             public static class Measure
@@ -176,6 +191,11 @@ namespace MVC
             public static class Wares
             {
                 public const string WaresIndex = "~/Modules/Store/Wares/WaresIndex.cshtml";
+            }
+
+            public static class WaresCategories
+            {
+                public const string WaresCategoriesIndex = "~/Modules/Store/WaresCategories/WaresCategoriesIndex.cshtml";
             }
 
             public static class WaresMovement

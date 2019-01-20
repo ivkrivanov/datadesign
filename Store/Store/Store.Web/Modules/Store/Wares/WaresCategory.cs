@@ -19,8 +19,8 @@ namespace Store.Store.Lookups
         {
             var fld = WaresRow.Fields;
             query.Distinct(true)
-                .Select(fld.CategoryID)
-                .Where(new Criteria(fld.Type) == 100);
+                .Select(fld.Type)
+                .Where(new Criteria(fld.Type) < 400);
 
 
             AddTenantFilter(query);

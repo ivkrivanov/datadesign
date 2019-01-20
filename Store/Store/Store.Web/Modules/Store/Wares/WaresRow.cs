@@ -69,7 +69,7 @@ namespace Store.Store.Entities
             set { Fields.SupplierID[this] = value; }
         }
 
-        [DisplayName("Counterparty ID"), NotNull, ForeignKey(typeof(CounterpartyRow), "CounterpartyID"), LeftJoin("c"), CounterpartyEditor]
+        [DisplayName("Counterparty ID"), NotNull, ForeignKey(typeof(CounterpartyRow)), LeftJoin("c"), CounterpartyEditor]
         public String CounterpartyID
         {
             get { return Fields.CounterpartyID[this]; }

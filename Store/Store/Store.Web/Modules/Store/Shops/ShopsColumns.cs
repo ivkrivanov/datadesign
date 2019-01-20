@@ -21,9 +21,11 @@ namespace Store.Store.Columns
         public String ContactTitle { get; set; }
         [Width(120)]
         public String Phone { get; set; }
-        [LookupEditor(typeof(Lookups.ShopsCountryLookup)), QuickFilter]
+        [Width(100), QuickFilter(CssClass = "hidden-xs")]
+        [LookupEditor(typeof(Lookups.ShopsCountryLookup))]
         public String Country { get; set; }
-        [Width(130)]
+        [Width(130), QuickFilter(CssClass = "hidden-xs")]
+        [LookupEditor(typeof(Lookups.ShopsCityLookup)), QuickFilterOption("CascadeFrom", "Country")]
         public String City { get; set; }
     }
 }

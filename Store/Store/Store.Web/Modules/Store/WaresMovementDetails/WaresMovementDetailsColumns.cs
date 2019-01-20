@@ -10,7 +10,7 @@ namespace Store.Store.Columns
     public class WaresMovementDetailsColumns
     {
         [EditLink, Width(200)]
-        public String WaresWaresName { get; set; }
+        public String WaresID { get; set; }
         [Width(100)]
         public Single Quantity { get; set; }
         [Width(100)]

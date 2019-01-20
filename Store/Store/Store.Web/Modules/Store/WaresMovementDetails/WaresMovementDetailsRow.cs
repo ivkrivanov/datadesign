@@ -168,33 +168,12 @@ namespace Store.Store.Entities
             set { Fields.WaresUnitPrice[this] = value; }
         }
 
-        //[Origin("w")]
-        //public Int32? WaresUnitsInStock
-        //{
-        //    get { return Fields.WaresUnitsInStock[this]; }
-        //    set { Fields.WaresUnitsInStock[this] = value; }
-        //}
-
-        //[Origin("w")]
-        //public Int32? WaresUnitsOnOrder
-        //{
-        //    get { return Fields.WaresUnitsOnOrder[this]; }
-        //    set { Fields.WaresUnitsOnOrder[this] = value; }
-        //}
-
         [Origin("w")]
         public Boolean? WaresDiscontinued
         {
             get { return Fields.WaresDiscontinued[this]; }
             set { Fields.WaresDiscontinued[this] = value; }
         }
-
-        //[Origin("w")]
-        //public Int32? WaresAccountId
-        //{
-        //    get { return Fields.WaresAccountId[this]; }
-        //    set { Fields.WaresAccountId[this] = value; }
-        //}
 
         #endregion Wares
 
@@ -298,21 +277,14 @@ namespace Store.Store.Entities
             public DateTimeField WaresMoveShippedDate;
 
             public StringField WaresWaresCode;
-            //public StringField WaresWaresBarcode;
-            //public StringField WaresWaresLabel;
             public StringField WaresWaresName;
-            //public StringField WaresWaresImage;
             public Int32Field WaresSupplierID;
             public StringField WaresCounterpartyID;
             public Int32Field WaresCategoryID;
             public Int32Field WaresMeasureID;
             public StringField WaresQuantityPerUnit;
             public DecimalField WaresUnitPrice;
-            //public Int32Field WaresUnitsInStock;
-            //public Int32Field WaresUnitsOnOrder;
             public BooleanField WaresDiscontinued;
-            //public Int32Field WaresAccountID;
-
         }
     }
 }

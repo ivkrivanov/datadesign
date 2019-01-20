@@ -80,7 +80,7 @@ namespace Store.Store.Entities
             set { Fields.PostalCode[this] = value; }
         }
 
-        [DisplayName("Country"), Size(15), LookupFiltering("Store.ShopsCountry")]
+        [DisplayName("Country"), Size(15)] //, LookupFiltering("Store.ShopsCountry")]
         public String Country
         {
             get { return Fields.Country[this]; }

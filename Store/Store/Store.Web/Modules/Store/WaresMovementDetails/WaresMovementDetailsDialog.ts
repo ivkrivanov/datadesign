@@ -15,9 +15,9 @@ namespace Store.Store {
             this.form = new WaresMovementDetailsForm(this.idPrefix);
 
             this.form.WaresID.changeSelect2(e => {
-                var waresID = Q.toid(this.form.WaresID.value);
+                var waresID = Q.toId(this.form.WaresID.value);
                 if (waresID != null) {
-                    this.form.SinglePrice.value = WaresRow.getLookup().itemById[WaresID].UnitPrice;
+                    this.form.SinglePrice.value = WaresRow.getLookup().itemById[waresID].UnitPrice;
                 }
             });
 

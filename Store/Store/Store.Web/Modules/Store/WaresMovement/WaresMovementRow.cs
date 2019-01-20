@@ -349,7 +349,6 @@ namespace Store.Store.Entities
             public StringField ShopCountry;
             public StringField ShopPhone;
 
-
             public StringField CounterpartyCompanyName;
             public StringField CounterpartyContactName;
             public StringField CounterpartyContactTitle;

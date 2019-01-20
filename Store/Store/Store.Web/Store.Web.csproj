@@ -1922,6 +1922,9 @@
     <Compile Include="Imports\ClientTypes\Store.CounterpartyEditorAttribute.cs">
       <DependentUpon>ClientTypes.tt</DependentUpon>
     </Compile>
+    <Compile Include="Imports\ClientTypes\Store.CustomerEditorAttribute.cs">
+      <DependentUpon>ClientTypes.tt</DependentUpon>
+    </Compile>
     <Compile Include="Imports\ClientTypes\Store.EmployeeFormatterAttribute.cs">
       <DependentUpon>ClientTypes.tt</DependentUpon>
     </Compile>
@@ -2018,6 +2021,7 @@
     <Compile Include="Modules\Common\Navigation\NavigationModel.cs" />
     <Compile Include="Modules\Common\Reporting\DynamicDataReport.cs" />
     <Compile Include="Modules\Common\Reporting\ExcelReportGenerator.cs" />
+    <Compile Include="Store\Store\Entities\Shopsrow.cs" />
     <Content Include="Modules\Common\Reporting\ReportPage.cshtml" />
     <Compile Include="Modules\Common\Reporting\ReportTree.cs" />
     <Compile Include="Modules\Common\Reporting\ReportController.cs" />
@@ -2053,6 +2057,7 @@
     <Compile Include="Modules\Store\Order\OrderShippingState.cs" />
     <Compile Include="Modules\Store\Product\ProductListRequest.cs" />
     <Compile Include="Modules\Store\Scripts\MultiTenantRowLookupScript.cs" />
+    <Compile Include="Modules\Store\Shops\ShopsCity.cs" />
     <Compile Include="Modules\Store\Shops\ShopsCountryLookup.cs" />
     <Compile Include="Modules\Store\StorePermissionKeys.cs" />
     <Compile Include="Modules\Store\Supplier\SupplierCountryLookup.cs" />

@@ -7144,9 +7144,9 @@ var Store;
                 var _this = _super.call(this) || this;
                 _this.form = new Store.WaresMovementDetailsForm(_this.idPrefix);
                 _this.form.WaresID.changeSelect2(function (e) {
-                    var waresID = Q.toid(_this.form.WaresID.value);
+                    var waresID = Q.toId(_this.form.WaresID.value);
                     if (waresID != null) {
-                        _this.form.SinglePrice.value = Store.WaresRow.getLookup().itemById[WaresID].UnitPrice;
+                        _this.form.SinglePrice.value = Store.WaresRow.getLookup().itemById[waresID].UnitPrice;
                     }
                 });
                 _this.form.Discount.addValidationRule(_this.uniqueName, function (e) {
