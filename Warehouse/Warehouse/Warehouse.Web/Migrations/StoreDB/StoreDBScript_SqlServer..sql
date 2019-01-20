@@ -4468,5 +4468,108 @@ REFERENCES [dbo].[Products] ([ProductID])
 GO
 ALTER TABLE [dbo].[Product Details] CHECK CONSTRAINT [FK_Product Details_Products]
 GO
+/****** Object:  ForeignKey [FK_OrderStock Details_OrderStock]    Script Date: 08/12/2011 11:46:03 ******/
+ALTER TABLE [dbo].[Product Details]  WITH NOCHECK ADD  CONSTRAINT [FK_Product Details_Products] FOREIGN KEY([ProductID])
+REFERENCES [dbo].[Products] ([ProductID])
+GO
+ALTER TABLE [dbo].[Product Details] CHECK CONSTRAINT [FK_Product Details_Products]
+GO
+/****** Object:  ForeignKey [FK_OrderStock_Supplier]  Script Date: 09/01/2019 11:46:03 ******/
+ALTER TABLE [dbo].[OrderStock]  WITH NOCHECK ADD  CONSTRAINT [FK_OrderStock_Supplier] FOREIGN KEY([SupplierID])
+REFERENCES [dbo].[Suppliers] ([SupplierID])
+GO
+ALTER TABLE [dbo].[OrderStock] CHECK CONSTRAINT [FK_OrderStock_Supplier]
+GO
+/****** Object:  ForeignKey [FK_OrderStock_Employees]  Script Date: 09/01/2019 11:46:03 ******/
+ALTER TABLE [dbo].[OrderStock]  WITH NOCHECK ADD  CONSTRAINT [FK_OrderStock_Employees] FOREIGN KEY([EmployeeID])
+REFERENCES [dbo].[Employees] ([EmployeeID])
+GO
+ALTER TABLE [dbo].[OrderStock] CHECK CONSTRAINT [FK_OrderStock_Employees]
+GO
+/****** Object:  ForeignKey [FK_OrderStock_OperationTypes] Script Date: 09/01/2019 11:46:03 ******/
+ALTER TABLE [dbo].[OrderStock]  WITH NOCHECK ADD  CONSTRAINT [FK_OrderStock_OperationTypes] FOREIGN KEY([OperationTypeID])
+REFERENCES [dbo].[OperationType] ([OperationTypeID])
+GO
+ALTER TABLE [dbo].[OrderStock] CHECK CONSTRAINT [FK_OrderStock_OperationTypes]
+GO
+
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Counterparties](
+	[ID] [INT] IDENTITY(1,1) NOT NULL,
+	[CounterpartyID] [nvarchar](14) NOT NULL DEFAULT (0000000000),
+	[CompanyName] [nvarchar](40) NOT NULL,
+	[ContactName] [nvarchar](40) NULL,
+	[ContactTitle] [nvarchar](30) NULL,
+	[Address] [nvarchar](60) NULL,
+	[City] [nvarchar](15) NULL,
+	[Region] [nvarchar](15) NULL,
+	[PostalCode] [nvarchar](10) NULL,
+	[Country] [nvarchar](20) NULL,
+	[Phone] [nvarchar](24) NULL,
+	[Fax] [nvarchar](24) NULL,
+	[Email] [NVARCHAR](255) NULL,
+	[InsertDate] [datetime] NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    [InsertUserId] [int] NOT NULL DEFAULT (1),
+    [UpdateDate] [datetime] NULL,
+    [UpdateUserId] [int] NULL,
+    [IsActive] [int] NOT NULL DEFAULT (1),
+    [TenantId] [int] NOT NULL DEFAULT(1),
+ CONSTRAINT [PK_Counterparties] PRIMARY KEY CLUSTERED 
+(
+	[CounterpartyID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON)
+)
+GO
+CREATE NONCLUSTERED INDEX [City] ON [dbo].[Counterparties] 
+(
+	[City] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON)
+GO
+CREATE NONCLUSTERED INDEX [CompanyName] ON [dbo].[Counterparties] 
+(
+	[CompanyName] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON)
+GO
+CREATE NONCLUSTERED INDEX [PostalCode] ON [dbo].[Counterparties] 
+(
+	[PostalCode] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON)
+GO
+CREATE NONCLUSTERED INDEX [Region] ON [dbo].[Counterparties] 
+(
+	[Region] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON)
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[CounterpartyDetails](
+	[ID] [INT] IDENTITY(1,1) NOT NULL,
+	[LastContactDate] [datetime] NULL,
+	[LastContactedBy] [INT] NULL,
+	[Email] [nvarchar](100) NULL,
+	[SendBulletin] [bit] NOT NULL DEFAULT (1),
+ CONSTRAINT [PK_CounterpartyDetails] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON)
+)
+GO
+
+ALTER TABLE [dbo].[CounterpartyDetails]  WITH NOCHECK ADD  CONSTRAINT [FK_CounterpartyDetails_LastContactedBy] FOREIGN KEY([EmployeeID])
+REFERENCES [dbo].[Employees] ([EmployeeID])
+GO
+ALTER TABLE [dbo].[CounterpartyDetails] CHECK CONSTRAINT [FK_CounterpartyDetails_LastContactedBy]
+GO
+
+
+
+
 
 /* ----- Script generated from Sql Server 2005 Database on 12th Auguest 2011 by Binoj Antony ---------------- */
