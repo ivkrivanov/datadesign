@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Major>19</Major>
+    <Minor>2</Minor>
+    <Build>0</Build>
+    <Revision>0</Revision>
+    <AssemblyCopyright>Copyright Data Design © 2019</AssemblyCopyright>
+    <AssemblyCompany>Data Design</AssemblyCompany>
+  </PropertyGroup>
+  <Target Name="clean_folders">
+    <!-- Remove obj folder -->
+    <RemoveDir Directories=".\bin" />
+    <!-- Remove obj folder -->
+    <RemoveDir Directories="$(BaseIntermediateOutputPath)" />
+    <!-- Remove bin folder -->
+    <RemoveDir Directories="$(BaseOutputPath)" />
+  </Target>
+</Project>

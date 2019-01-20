@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = Serenity.LocalText.Get("Db.Store.Counterparty.EntityPlural");
+}
+
+@section Head {
+    @Html.Script("dynamic://lookup.Store.CounterpartyCountry")
+    @Html.Script("dynamic://lookup.Store.CounterpartyCity")
+    @Html.Script("dynamic://lookup.Store.Employee")
+    <script>var CKEDITOR_BASEPATH = '@ContentHashCache.ResolvePath("~/Scripts/ckeditor/")';</script>
+    @Html.ScriptBundle("CKEditor")
+}
+
+<div id="GridDiv"></div>
+
+<script type="text/javascript">
+    jQuery(function () {
+        new Store.Store.CounterpartyGrid($('#GridDiv'), {}).init();
+
+        Q.initFullHeightGridPage($('#GridDiv'));
+    });
+</script>
