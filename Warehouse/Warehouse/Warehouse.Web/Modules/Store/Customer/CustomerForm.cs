@@ -1,13 +1,10 @@
 ﻿
 namespace Warehouse.Store.Forms
 {
-    using Serenity;
     using Serenity.ComponentModel;
-    using Serenity.Data;
     using System;
-    using System.ComponentModel;
     using System.Collections.Generic;
-    using System.IO;
+    using System.ComponentModel;
 
     [FormScript("Store.Customer")]
     [BasedOnRow(typeof(Entities.CustomerRow), CheckNames = true)]

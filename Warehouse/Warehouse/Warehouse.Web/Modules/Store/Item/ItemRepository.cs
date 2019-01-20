@@ -41,7 +41,6 @@ namespace Warehouse.Store.Repositories
             return new LocalizationRowHandler<MyRow>().Retrieve(connection, request);
         }
 
-
         public ListResponse<MyRow> List(IDbConnection connection, ItemListRequest request)
         {
             return new MyListHandler().Process(connection, request);
@@ -61,8 +60,6 @@ namespace Warehouse.Store.Repositories
                             this.UnitOfWork, pair.Value, Convert.ToInt32(pair.Key));
                     }
             }
-
-
         }
         private class MyDeleteHandler : DeleteRequestHandler<MyRow> { }
         private class MyUndeleteHandler : UndeleteRequestHandler<MyRow> { }
