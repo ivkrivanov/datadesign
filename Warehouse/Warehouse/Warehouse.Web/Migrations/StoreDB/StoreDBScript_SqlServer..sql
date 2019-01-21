@@ -4510,8 +4510,6 @@ CREATE TABLE [dbo].[Counterparties](
 	[PostalCode] [nvarchar](10) NULL,
 	[Country] [nvarchar](20) NULL,
 	[Phone] [nvarchar](24) NULL,
-	[Fax] [nvarchar](24) NULL,
-	[Email] [NVARCHAR](255) NULL,
 	[InsertDate] [datetime] NOT NULL DEFAULT CURRENT_TIMESTAMP,
     [InsertUserId] [int] NOT NULL DEFAULT (1),
     [UpdateDate] [datetime] NULL,
@@ -4555,19 +4553,33 @@ CREATE TABLE [dbo].[CounterpartyDetails](
 	[LastContactedBy] [INT] NULL,
 	[Email] [nvarchar](100) NULL,
 	[SendBulletin] [bit] NOT NULL DEFAULT (1),
- CONSTRAINT [PK_CounterpartyDetails] PRIMARY KEY CLUSTERED 
+CONSTRAINT [PK_CounterpartyDetails] PRIMARY KEY CLUSTERED 
 (
 	[ID] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON)
 )
 GO
 
-ALTER TABLE [dbo].[CounterpartyDetails]  WITH NOCHECK ADD  CONSTRAINT [FK_CounterpartyDetails_LastContactedBy] FOREIGN KEY([EmployeeID])
+ALTER TABLE [dbo].[CounterpartyDetails]  WITH NOCHECK ADD  CONSTRAINT [FK_CounterpartyDetails_LastContactedBy] FOREIGN KEY([LastContactedBy])
 REFERENCES [dbo].[Employees] ([EmployeeID])
 GO
 ALTER TABLE [dbo].[CounterpartyDetails] CHECK CONSTRAINT [FK_CounterpartyDetails_LastContactedBy]
 GO
 
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[CounterpartyRepresentatives](
+	[RepresentativeID] [INT] IDENTITY(1,1) NOT NULL,
+	[CounterpartyID] [INT] NOT NULL,
+	[EmployeeID] [INT] NOT NULL,
+CONSTRAINT [PK_CounterpartyRepresentatives] PRIMARY KEY CLUSTERED 
+(
+	[RepresentativeID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON)
+)
+GO
 
 
 
