@@ -1,11 +1,12 @@
 ﻿namespace Store.Administration
 {
-    using Store.Administration.Entities;
     using Serenity;
     using Serenity.Abstractions;
     using Serenity.Data;
     using System;
     using System.Collections.Generic;
+    using System.Linq;
+    using global::Store.Administration.Entities;
 
     public class PermissionService : IPermissionService
     {
@@ -47,16 +48,25 @@
                             .Where(new Criteria(fld.UserId) == userId))
                         .ForEach(x => result[x.PermissionKey] = x.Granted ?? true);
 
+                    var implicitPermissions = new Repositories.UserPermissionRepository().ImplicitPermissions;
+                    foreach (var pair in result.ToArray())
+                    {
+                        HashSet<string> list;
+                        if (pair.Value && implicitPermissions.TryGetValue(pair.Key, out list))
+                            foreach (var x in list)
+                                result[x] = true;
+                    }
+
                     return result;
                 }
             });
         }
 
-        private HashSet<string> GetRolePermissions(int userId)
+        private HashSet<string> GetRolePermissions(int roleId)
         {
             var fld = RolePermissionRow.Fields;
 
-            return TwoLevelCache.GetLocalStoreOnly("RolePermissions:" + userId, TimeSpan.Zero, fld.GenerationKey, () =>
+            return TwoLevelCache.GetLocalStoreOnly("RolePermissions:" + roleId, TimeSpan.Zero, fld.GenerationKey, () =>
             {
                 using (var connection = SqlConnections.NewByKey("Default"))
                 {
@@ -64,8 +74,17 @@
 
                     connection.List<RolePermissionRow>(q => q
                             .Select(fld.PermissionKey)
-                            .Where(new Criteria(fld.RoleId) == userId))
+                            .Where(new Criteria(fld.RoleId) == roleId))
                         .ForEach(x => result.Add(x.PermissionKey));
+
+                    var implicitPermissions = new Repositories.UserPermissionRepository().ImplicitPermissions;
+                    foreach (var key in result.ToArray())
+                    {
+                        HashSet<string> list;
+                        if (implicitPermissions.TryGetValue(key, out list))
+                            foreach (var x in list)
+                                result.Add(x);
+                    }
 
                     return result;
                 }

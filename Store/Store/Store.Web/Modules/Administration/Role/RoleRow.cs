@@ -7,10 +7,11 @@ namespace Store.Administration.Entities
     using System;
     using System.ComponentModel;
 
-    [ConnectionKey("Default"), DisplayName("Roles"), InstanceName("Role"), TwoLevelCached]
+    [ConnectionKey("Default"), Module("Administration"), TableName("Roles")]
+    [DisplayName("Roles"), InstanceName("Role")]
     [ReadPermission(PermissionKeys.Security)]
     [ModifyPermission(PermissionKeys.Security)]
-    [LookupScript("Administration.Role")]
+    [LookupScript]
     public sealed class RoleRow : Row, IIdRow, INameRow, IMultiTenantRow
     {
         [DisplayName("Role Id"), Identity, ForeignKey("Roles", "RoleId"), LeftJoin("jRole")]
@@ -30,13 +31,8 @@ namespace Store.Administration.Entities
         [Insertable(false), Updatable(false)]
         public Int32? TenantId
         {
-            get { return Fields.TenantId[this];}
+            get { return Fields.TenantId[this]; }
             set { Fields.TenantId[this] = value; }
-        }
-
-        public Int32Field TenantIdField
-        {
-            get { return Fields.TenantId; }
         }
 
         IIdField IIdRow.IdField
@@ -47,6 +43,11 @@ namespace Store.Administration.Entities
         StringField INameRow.NameField
         {
             get { return Fields.RoleName; }
+        }
+
+        public Int32Field TenantIdField
+        {
+            get { return Fields.TenantId; }
         }
 
         public static readonly RowFields Fields = new RowFields().Init();
@@ -60,13 +61,7 @@ namespace Store.Administration.Entities
         {
             public Int32Field RoleId;
             public StringField RoleName;
-            public readonly Int32Field TenantId;
-
-            public RowFields()
-                : base("Roles")
-            {
-                LocalTextPrefix = "Administration.Role";
-            }
+            public Int32Field TenantId;
         }
     }
 }

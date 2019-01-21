@@ -1,13 +1,13 @@
 ﻿
 namespace Store.Navigation
 {
-    using Store.Administration.Entities;
     using Serenity;
     using Serenity.Navigation;
     using System;
     using System.Collections.Generic;
     using System.Web;
     using System.Web.Hosting;
+    using global::Store.Administration.Entities;
 
     public partial class NavigationModel
     {

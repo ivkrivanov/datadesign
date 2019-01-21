@@ -9,9 +9,10 @@ namespace Store.Administration.Entities
     using System.ComponentModel;
     using System.IO;
 
-    [ConnectionKey("Default"), TableName("[dbo].[Tenants]"), DisplayName("Tenant"), InstanceName("Tenant"), TwoLevelCached]
-    [ReadPermission(PermissionKeys.Tenants)]
-    [ModifyPermission(PermissionKeys.Tenants)]
+    [ConnectionKey("Default"), Module("Administration"), TableName("[dbo].[Tenants]")]
+    [DisplayName("Tenants"), InstanceName("Tenant"), TwoLevelCached]
+    [ReadPermission("Administration:Tenants")]
+    [ModifyPermission("Administration:Tenants")]
     [LookupScript("Administration.Tenant")]
     public sealed class TenantRow : Row, IIdRow, INameRow
     {
@@ -50,12 +51,6 @@ namespace Store.Administration.Entities
         {
             public Int32Field TenantId;
             public StringField TenantName;
-
-            public RowFields()
-                : base()
-            {
-                LocalTextPrefix = "Administration.Tenant";
-            }
         }
     }
 }

@@ -12,11 +12,7 @@
 
     public static partial class SiteInitialization
     { 
-        private static string[] databaseKeys = new[] {
-            "Default"
-            , "Northwind"
-            , "Store"
-        };
+        private static string[] databaseKeys = new[] {"Default", "Store"};
 
         /// <summary>
         /// Automatically creates a database for the template if it doesn't already exists.
@@ -156,7 +152,7 @@
             if (!isOracle && cs.ConnectionString.IndexOf(typeof(SiteInitialization).Namespace +
                     @"_" + databaseKey + "_v1", StringComparison.OrdinalIgnoreCase) < 0)
             {
-                SkippedMigrations = true;
+                SkippedMigrations = false;
                 return;
             }
 

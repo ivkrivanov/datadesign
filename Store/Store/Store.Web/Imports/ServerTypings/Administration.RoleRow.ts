@@ -15,13 +15,11 @@
             return Q.getLookup<RoleRow>('Administration.Role');
         }
 
-        export namespace Fields {
-            export declare const RoleId: string;
-            export declare const RoleName: string;
-            export declare const TenantId: string;
+        export declare const enum Fields {
+            RoleId = "RoleId",
+            RoleName = "RoleName",
+            TenantId = "TenantId"
         }
-
-        ['RoleId', 'RoleName', 'TenantId'].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

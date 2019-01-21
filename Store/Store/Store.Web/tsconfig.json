@@ -5,13 +5,17 @@
     "experimentalDecorators": true,
     "declaration": true,
     "emitBOM": true,
+    "noEmitHelpers": true,
     "sourceMap": true,
     "outFile": "Scripts/site/Store.Web.js",
-    "target": "es5"
+    "target": "es5",
+    "typeRoots": [
+      "./node_modules/@types/"
+    ]
   },
   "include": [
-    "Imports/",
-    "Modules/",
-    "Scripts/typings/"
+    "./Imports/",
+    "./Modules/",
+    "./Scripts/typings/"
   ]
 }

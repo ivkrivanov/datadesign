@@ -7,10 +7,11 @@ namespace Store.Administration.Entities
     using System;
     using System.ComponentModel;
 
-    [ConnectionKey("Default"), DisplayName("Users"), InstanceName("User"), TwoLevelCached]
+    [ConnectionKey("Default"), Module("Administration"), TableName("Users")]
+    [DisplayName("Users"), InstanceName("User")]
     [ReadPermission(PermissionKeys.Security)]
     [ModifyPermission(PermissionKeys.Security)]
-    [LookupScript("Administration.User", Permission = PermissionKeys.Security)]
+    [LookupScript(Permission = PermissionKeys.Security)]
     public sealed class UserRow : LoggingRow, IIdRow, INameRow, IIsActiveRow
     {
         [DisplayName("User Id"), Identity]
@@ -97,19 +98,20 @@ namespace Store.Administration.Entities
             get { return Fields.LastDirectoryUpdate[this]; }
             set { Fields.LastDirectoryUpdate[this] = value; }
         }
-
         [DisplayName("Tenant"), ForeignKey("Tenants", "TenantId"), LeftJoin("tnt")]
-        [LookupEditor(typeof(TenantRow))]
         [ReadPermission(PermissionKeys.Tenants)]
+        [LookupEditor(typeof(TenantRow))]
         public Int32? TenantId
         {
             get { return Fields.TenantId[this]; }
             set { Fields.TenantId[this] = value; }
         }
+
         [DisplayName("Tenant"), Expression("tnt.TenantName")]
         public String TenantName
         {
-            get { return Fields.TenantName[this]; }
+            get
+            { return Fields.TenantName[this]; }
             set { Fields.TenantName[this] = value; }
         }
 
@@ -146,18 +148,12 @@ namespace Store.Administration.Entities
             public StringField Email;
             public StringField UserImage;
             public DateTimeField LastDirectoryUpdate;
+            public readonly Int32Field TenantId;
+            public readonly StringField TenantName;
             public Int16Field IsActive;
 
             public StringField Password;
             public StringField PasswordConfirm;
-            public readonly Int32Field TenantId;
-            public readonly StringField TenantName;
-
-            public RowFields()
-                : base("Users")
-            {
-                LocalTextPrefix = "Administration.User";
-            }
         }
     }
 }

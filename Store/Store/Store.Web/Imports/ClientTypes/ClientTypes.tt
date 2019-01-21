@@ -14,24 +14,11 @@
 
     var generator = new ClientTypesGenerator();
     generator.RootNamespaces.Add("Store");
-
-    if (System.IO.File.Exists(solutionDir + @"Store\Store.Script\Store.Script.csproj"))
-    {
-        var ssDir = solutionDir + @"Store\Store.Script\bin\debug\";
-        var ssTypeLister = new SSTypeLister(
-            ssDir + "Serenity.Script.Imports.dll",
-            ssDir + "Serenity.Script.UI.dll",
-            ssDir + "Store.Script.dll");
-        var ssTypes = ssTypeLister.List();
-        foreach (var type in ssTypes)
-            generator.AddSSType(type);
-    }
    
     var tsTypeLister = new TSTypeLister(webDir);
     var tsTypes = tsTypeLister.List();
     foreach (var type in tsTypes)
         generator.AddTSType(type);
-    //throw new Exception(JSON.StringifyIndented(tsTypes));
 
     var codeByFilename = generator.Run();
     var manager = Manager.Create(Host, GenerationEnvironment);
@@ -46,4 +33,3 @@
 
     manager.Process(true);
 #>
-Executed on <#=DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")#>

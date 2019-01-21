@@ -9,11 +9,11 @@
         Email?: string;
         UserImage?: string;
         LastDirectoryUpdate?: string;
+        TenantId?: number;
+        TenantName?: string;
         IsActive?: number;
         Password?: string;
         PasswordConfirm?: string;
-        TenantId?: number;
-        TenantName?: string;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -31,28 +31,26 @@
             return Q.getLookup<UserRow>('Administration.User');
         }
 
-        export namespace Fields {
-            export declare const UserId: string;
-            export declare const Username: string;
-            export declare const Source: string;
-            export declare const PasswordHash: string;
-            export declare const PasswordSalt: string;
-            export declare const DisplayName: string;
-            export declare const Email: string;
-            export declare const UserImage: string;
-            export declare const LastDirectoryUpdate: string;
-            export declare const IsActive: string;
-            export declare const Password: string;
-            export declare const PasswordConfirm: string;
-            export declare const TenantId: string;
-            export declare const TenantName: string;
-            export declare const InsertUserId: string;
-            export declare const InsertDate: string;
-            export declare const UpdateUserId: string;
-            export declare const UpdateDate: string;
+        export declare const enum Fields {
+            UserId = "UserId",
+            Username = "Username",
+            Source = "Source",
+            PasswordHash = "PasswordHash",
+            PasswordSalt = "PasswordSalt",
+            DisplayName = "DisplayName",
+            Email = "Email",
+            UserImage = "UserImage",
+            LastDirectoryUpdate = "LastDirectoryUpdate",
+            TenantId = "TenantId",
+            TenantName = "TenantName",
+            IsActive = "IsActive",
+            Password = "Password",
+            PasswordConfirm = "PasswordConfirm",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate"
         }
-
-        ['UserId', 'Username', 'Source', 'PasswordHash', 'PasswordSalt', 'DisplayName', 'Email', 'UserImage', 'LastDirectoryUpdate', 'IsActive', 'Password', 'PasswordConfirm', 'TenantId', 'TenantName', 'InsertUserId', 'InsertDate', 'UpdateUserId', 'UpdateDate'].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

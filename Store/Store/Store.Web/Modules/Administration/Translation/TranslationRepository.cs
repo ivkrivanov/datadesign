@@ -2,7 +2,6 @@
 namespace Store.Administration.Repositories
 {
     using Newtonsoft.Json.Linq;
-    using Store.Administration.Entities;
     using Serenity;
     using Serenity.Abstractions;
     using Serenity.ComponentModel;
@@ -19,6 +18,7 @@ namespace Store.Administration.Repositories
     using System.Linq;
     using System.Reflection;
     using System.Web.Hosting;
+    using global::Store.Administration.Entities;
 
     public class TranslationRepository
     {

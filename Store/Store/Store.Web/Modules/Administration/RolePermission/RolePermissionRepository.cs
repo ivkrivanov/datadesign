@@ -33,7 +33,7 @@ namespace Store.Administration.Repositories
                 .Entities.ToDictionary(x => x);
             if (newList.Any(x => !allowedKeys.ContainsKey(x)))
                 throw new AccessViolationException();
-
+                       
             if (oldList.SetEquals(newList))
                 return new SaveResponse();
 

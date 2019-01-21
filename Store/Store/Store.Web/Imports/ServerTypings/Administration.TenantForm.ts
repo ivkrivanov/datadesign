@@ -1,13 +1,26 @@
 ﻿namespace Store.Administration {
-    export class TenantForm extends Serenity.PrefixedContext {
-        static formKey = 'Administration.Tenant';
-
-    }
-
     export interface TenantForm {
         TenantName: Serenity.StringEditor;
     }
 
-    [['TenantName', () => Serenity.StringEditor]].forEach(x => Object.defineProperty(TenantForm.prototype, <string>x[0], { get: function () { return this.w(x[0], (x[1] as any)()); }, enumerable: true, configurable: true }));
+    export class TenantForm extends Serenity.PrefixedContext {
+        static formKey = 'Administration.Tenant';
+        private static init: boolean;
+
+        constructor(prefix: string) {
+            super(prefix);
+
+            if (!TenantForm.init)  {
+                TenantForm.init = true;
+
+                var s = Serenity;
+                var w0 = s.StringEditor;
+
+                Q.initFormType(TenantForm, [
+                    'TenantName', w0
+                ]);
+            }
+        }
+    }
 }
 

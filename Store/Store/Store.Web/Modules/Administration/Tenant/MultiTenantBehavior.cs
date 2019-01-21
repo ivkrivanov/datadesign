@@ -1,12 +1,13 @@
-﻿using Store.Administration;
-using Serenity;
-using Serenity.Data;
-using Serenity.Services;
-
+﻿
 namespace Store
 {
-    public class MultiTenantBehavior : IImplicitBehavior,
-        ISaveBehavior, IDeleteBehavior,
+    using Serenity;
+    using Serenity.Data;
+    using Serenity.Services;
+    using global::Store.Administration;
+
+    public class MultiTenantBehavior : IImplicitBehavior, 
+        ISaveBehavior, IDeleteBehavior, 
         IListBehavior, IRetrieveBehavior
     {
         private Int32Field fldTenantId;
@@ -22,15 +23,20 @@ namespace Store
             return true;
         }
 
-        public void OnPrepareQuery(IRetrieveRequestHandler handler, SqlQuery query)
+        public void OnPrepareQuery(IRetrieveRequestHandler handler,
+            SqlQuery query)
         {
             var user = (UserDefinition)Authorization.UserDefinition;
+
             if (!Authorization.HasPermission(PermissionKeys.Tenants))
                 query.Where(fldTenantId == user.TenantId);
         }
-        public void OnPrepareQuery(IListRequestHandler handler, SqlQuery query)
+
+        public void OnPrepareQuery(IListRequestHandler handler, 
+            SqlQuery query)
         {
             var user = (UserDefinition)Authorization.UserDefinition;
+
             if (!Authorization.HasPermission(PermissionKeys.Tenants))
                 query.Where(fldTenantId == user.TenantId); }
 
@@ -39,21 +45,25 @@ namespace Store
             if (handler.IsCreate)
                 fldTenantId[handler.Row] = ((UserDefinition)Authorization.UserDefinition).TenantId;
         }
+
         public void OnValidateRequest(ISaveRequestHandler handler)
         {
             if (handler.IsUpdate)
             {
                 var user = (UserDefinition)Authorization.UserDefinition;
+
                 if (fldTenantId[handler.Old] != fldTenantId[handler.Row])
                     Authorization.ValidatePermission(PermissionKeys.Tenants);
             }
         }
+
         public void OnValidateRequest(IDeleteRequestHandler handler)
         {
             var user = (UserDefinition)Authorization.UserDefinition;
+
             if (fldTenantId[handler.Row] != user.TenantId)
-                Authorization.ValidatePermission(PermissionKeys.Tenants);
-        }
+                Authorization.ValidatePermission(PermissionKeys.Tenants); }
+
         public void OnAfterDelete(IDeleteRequestHandler handler) { }
         public void OnAfterExecuteQuery(IRetrieveRequestHandler handler) { }
         public void OnAfterExecuteQuery(IListRequestHandler handler) { }

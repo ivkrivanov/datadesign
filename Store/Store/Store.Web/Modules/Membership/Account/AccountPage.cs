@@ -24,6 +24,14 @@ namespace Store.Membership.Pages
                 return View(MVC.Views.Membership.Account.AccountLogin);
         }
 
+        [HttpGet]
+        public ActionResult AccessDenied(string returnURL)
+        {
+            ViewData["HideLeftNavigation"] = !Authorization.IsLoggedIn;
+
+            return View(MVC.Views.Errors.AccessDenied, (object)returnURL);
+        }
+
         [HttpPost, JsonFilter]
         public Result<ServiceResponse> Login(LoginRequest request)
         {

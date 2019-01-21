@@ -1,8 +1,9 @@
-﻿namespace Store.Administration
-{
-    using Serenity.Extensibility;
-    using System.ComponentModel;
+﻿
+using Serenity.Extensibility;
+using System.ComponentModel;
 
+namespace Store.Administration
+{
     [NestedPermissionKeys]
     [DisplayName("Administration")]
     public class PermissionKeys

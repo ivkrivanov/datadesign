@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\..\packages\Microsoft.TypeScript.MSBuild.3.1.1\build\Microsoft.TypeScript.MSBuild.props" Condition="Exists('..\..\packages\Microsoft.TypeScript.MSBuild.3.1.1\build\Microsoft.TypeScript.MSBuild.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -21,8 +21,12 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
-    <TypeScriptToolsVersion>2.2</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>2.8</TypeScriptToolsVersion>
     <TypeScriptCompileBlocked>True</TypeScriptCompileBlocked>
+    <Use64BitIISExpress />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup>
     <TypeScriptTarget>ES5</TypeScriptTarget>
@@ -51,58 +55,74 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <MvcBuildViews>true</MvcBuildViews>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CsQuery, Version=1.3.3.249, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\CsQuery.1.3.4\lib\net40\CsQuery.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Dapper.1.50.2\lib\net45\Dapper.dll</HintPath>
+    <Reference Include="Dapper, Version=1.40.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Dapper.1.42\lib\net45\Dapper.dll</HintPath>
     </Reference>
-    <Reference Include="EPPlus, Version=4.1.0.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\EPPlus.4.1.0\lib\net40\EPPlus.dll</HintPath>
+    <Reference Include="EPPlus, Version=4.5.2.1, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EPPlus.4.5.2.1\lib\net40\EPPlus.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="FluentMigrator, Version=1.6.2.0, Culture=neutral, PublicKeyToken=aacfc7de5acabf05, processorArchitecture=MSIL">
       <HintPath>..\..\packages\FluentMigrator.1.6.2\lib\40\FluentMigrator.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="FluentMigrator.Runner, Version=1.6.2.0, Culture=neutral, PublicKeyToken=aacfc7de5acabf05, processorArchitecture=MSIL">
       <HintPath>..\..\packages\FluentMigrator.Runner.1.6.2\lib\40\FluentMigrator.Runner.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="MsieJavaScriptEngine, Version=2.0.2.0, Culture=neutral, PublicKeyToken=a3a2846a37ac0d3e, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\MsieJavaScriptEngine.2.0.2\lib\net40-client\MsieJavaScriptEngine.dll</HintPath>
+    <Reference Include="Mono.Cecil, Version=0.10.0.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e">
+      <HintPath>..\..\packages\Serenity.Web.3.8.1\lib\net45\Mono.Cecil.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="MsieJavaScriptEngine, Version=2.2.9.0, Culture=neutral, PublicKeyToken=a3a2846a37ac0d3e, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MsieJavaScriptEngine.2.2.9\lib\net45\MsieJavaScriptEngine.dll</HintPath>
     </Reference>
-    <Reference Include="NUglify, Version=1.5.4.0, Culture=neutral, PublicKeyToken=15bc7810aec21b5e, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\NUglify.1.5.4\lib\net40\NUglify.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Serenity.Core, Version=2.9.23.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Serenity.Core.2.9.23\lib\net45\Serenity.Core.dll</HintPath>
+    <Reference Include="NUglify, Version=1.5.11.0, Culture=neutral, PublicKeyToken=15bc7810aec21b5e, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NUglify.1.5.11\lib\net40\NUglify.dll</HintPath>
     </Reference>
-    <Reference Include="Serenity.Data, Version=2.9.23.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Serenity.Data.2.9.23\lib\net45\Serenity.Data.dll</HintPath>
+    <Reference Include="PresentationCore" />
+    <Reference Include="Serenity.Core, Version=3.8.1.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\packages\Serenity.Core.3.8.1\lib\net45\Serenity.Core.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Serenity.Data.Entity, Version=2.9.23.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Serenity.Data.Entity.2.9.23\lib\net45\Serenity.Data.Entity.dll</HintPath>
+    <Reference Include="Serenity.Data, Version=3.8.1.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\packages\Serenity.Data.3.8.1\lib\net45\Serenity.Data.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Serenity.Services, Version=2.9.23.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Serenity.Services.2.9.23\lib\net45\Serenity.Services.dll</HintPath>
+    <Reference Include="Serenity.Data.Entity, Version=3.8.1.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\packages\Serenity.Data.Entity.3.8.1\lib\net45\Serenity.Data.Entity.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Serenity.Web, Version=2.9.23.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Serenity.Web.2.9.23\lib\net45\Serenity.Web.dll</HintPath>
+    <Reference Include="Serenity.Services, Version=3.8.1.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\packages\Serenity.Services.3.8.1\lib\net45\Serenity.Services.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="StackExchange.Exceptional, Version=1.0.0.122, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\StackExchange.Exceptional.1.0.122\lib\StackExchange.Exceptional.dll</HintPath>
+    <Reference Include="Serenity.Web, Version=3.8.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Serenity.Web.3.8.1\lib\net45\Serenity.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="StackExchange.Exceptional, Version=1.0.130.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\StackExchange.Exceptional.1.0.130\lib\net40\StackExchange.Exceptional.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.DirectoryServices.AccountManagement" />
     <Reference Include="System.DirectoryServices.Protocols" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -112,22 +132,22 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.Helpers.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    <Reference Include="System.Web.Mvc, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.Mvc.5.2.6\lib\net45\System.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.AspNet.Razor.3.2.6\lib\net45\System.Web.Razor.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.WebPages.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
@@ -136,6 +156,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
   </ItemGroup>
+  <Import Project="..\..\Serenity\tools\Submodule\Serenity.Submodule.Web.targets" Condition=" Exists('..\..\Serenity\Serenity.Core\Serenity.Core.Net45.csproj') " />
   <ItemGroup>
     <Content Include="..\..\packages\wkhtmltopdf-x86-win32.0.12.3.6\tools\wkhtmltopdf\wkhtmltopdf.exe">
       <Link>wkhtmltopdf.exe</Link>
@@ -162,6 +183,7 @@
     <Content Include="Content\css\select2x2.png" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\font-open-sans-base64.css" />
     <Content Include="Content\font-open-sans.css" />
     <Content Include="Content\glyphicons.css" />
     <Content Include="Content\images\collapse.gif" />
@@ -318,6 +340,7 @@
     <Content Include="Content\serenity\images\header-columns-over-bg.gif" />
     <Content Include="Content\serenity\images\home.png" />
     <Content Include="Content\serenity\images\hourglass.png" />
+    <Content Include="Content\serenity\images\icon_sprite.png" />
     <Content Include="Content\serenity\images\inbox-document-text.png" />
     <Content Include="Content\serenity\images\inbox-document.png" />
     <Content Include="Content\serenity\images\inbox.png" />
@@ -490,9 +513,6 @@
     <Content Include="Content\serenity\images\zoom.png" />
     <Content Include="Content\serenity\serenity.css" />
     <Content Include="Content\simple-line-icons.css" />
-    <Content Include="Content\site\images\accordion-arrows.png" />
-    <Content Include="wkhtmltopdf-license.txt" />
-    <EmbeddedResource Include="Migrations\NorthwindDB\NorthwindDBScript_Sqlite.sql" />
     <Content Include="Content\slick-default-theme.css" />
     <Content Include="Content\slick.columnpicker.css" />
     <Content Include="Content\slick.grid.css" />
@@ -544,14 +564,564 @@
     <Content Include="Content\toastr.min.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="fonts\ionicons.svg" />
     <Content Include="fonts\Simple-Line-Icons.svg" />
-    <Content Include="Modules\BasicSamples\Dialogs\OtherFormInTabOneBar\OtherFormOneBarDialog.Template.html" />
-    <Content Include="Modules\Meeting\Meeting\Meeting.MeetingDialog.Template.html" />
+    <Content Include="fonts\Simple-Line-Icons.woff2" />
+    <Content Include="fonts\Simple-Line-Icons.woff" />
+    <Content Include="fonts\Simple-Line-Icons.ttf" />
+    <Content Include="fonts\Simple-Line-Icons.eot" />
+    <Content Include="fonts\OpenSansSemiBold.woff" />
+    <Content Include="fonts\OpenSansLight.woff" />
+    <Content Include="fonts\OpenSansItalic.woff" />
+    <Content Include="fonts\OpenSansBold.woff" />
+    <Content Include="fonts\OpenSans.woff" />
+    <Content Include="fonts\ionicons.woff" />
+    <Content Include="fonts\ionicons.ttf" />
+    <Content Include="fonts\ionicons.eot" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\toastr.scss" />
+    <Content Include="Content\toastr.less" />
+    <Content Include="Migrations\DefaultDB\DefaultDBScript_SQLServer.sql" />
+    <Content Include="Migrations\StoreDB\StoreDBScript_SqlServer..sql" />
+    <Content Include="Modules\Store\Counterparty\Store.CounterpartyDialog.Template.html" />
+    <Content Include="wkhtmltopdf-license.txt" />
+    <Content Include="Modules\Administration\Tenant\TenantIndex.cshtml" />
+    <Content Include="App_Data\texts\user.texts.bg.json" />
+    <Content Include="App_Data\texts\user.texts.invariant.json" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\ckeditor\adapters\jquery.js" />
+    <Content Include="Scripts\ckeditor\build-config.js" />
+    <Content Include="Scripts\ckeditor\ckeditor.js" />
+    <Content Include="Scripts\ckeditor\config.js" />
+    <Content Include="Scripts\ckeditor\contents.css" />
+    <Content Include="Scripts\ckeditor\lang\af.js" />
+    <Content Include="Scripts\ckeditor\lang\ar.js" />
+    <Content Include="Scripts\ckeditor\lang\az.js" />
+    <Content Include="Scripts\ckeditor\lang\bg.js" />
+    <Content Include="Scripts\ckeditor\lang\bn.js" />
+    <Content Include="Scripts\ckeditor\lang\bs.js" />
+    <Content Include="Scripts\ckeditor\lang\ca.js" />
+    <Content Include="Scripts\ckeditor\lang\cs.js" />
+    <Content Include="Scripts\ckeditor\lang\cy.js" />
+    <Content Include="Scripts\ckeditor\lang\da.js" />
+    <Content Include="Scripts\ckeditor\lang\de-ch.js" />
+    <Content Include="Scripts\ckeditor\lang\de.js" />
+    <Content Include="Scripts\ckeditor\lang\el.js" />
+    <Content Include="Scripts\ckeditor\lang\en-au.js" />
+    <Content Include="Scripts\ckeditor\lang\en-ca.js" />
+    <Content Include="Scripts\ckeditor\lang\en-gb.js" />
+    <Content Include="Scripts\ckeditor\lang\en.js" />
+    <Content Include="Scripts\ckeditor\lang\eo.js" />
+    <Content Include="Scripts\ckeditor\lang\es-mx.js" />
+    <Content Include="Scripts\ckeditor\lang\es.js" />
+    <Content Include="Scripts\ckeditor\lang\et.js" />
+    <Content Include="Scripts\ckeditor\lang\eu.js" />
+    <Content Include="Scripts\ckeditor\lang\fa.js" />
+    <Content Include="Scripts\ckeditor\lang\fi.js" />
+    <Content Include="Scripts\ckeditor\lang\fo.js" />
+    <Content Include="Scripts\ckeditor\lang\fr-ca.js" />
+    <Content Include="Scripts\ckeditor\lang\fr.js" />
+    <Content Include="Scripts\ckeditor\lang\gl.js" />
+    <Content Include="Scripts\ckeditor\lang\gu.js" />
+    <Content Include="Scripts\ckeditor\lang\he.js" />
+    <Content Include="Scripts\ckeditor\lang\hi.js" />
+    <Content Include="Scripts\ckeditor\lang\hr.js" />
+    <Content Include="Scripts\ckeditor\lang\hu.js" />
+    <Content Include="Scripts\ckeditor\lang\id.js" />
+    <Content Include="Scripts\ckeditor\lang\is.js" />
+    <Content Include="Scripts\ckeditor\lang\it.js" />
+    <Content Include="Scripts\ckeditor\lang\ja.js" />
+    <Content Include="Scripts\ckeditor\lang\ka.js" />
+    <Content Include="Scripts\ckeditor\lang\km.js" />
+    <Content Include="Scripts\ckeditor\lang\ko.js" />
+    <Content Include="Scripts\ckeditor\lang\ku.js" />
+    <Content Include="Scripts\ckeditor\lang\lt.js" />
+    <Content Include="Scripts\ckeditor\lang\lv.js" />
+    <Content Include="Scripts\ckeditor\lang\mk.js" />
+    <Content Include="Scripts\ckeditor\lang\mn.js" />
+    <Content Include="Scripts\ckeditor\lang\ms.js" />
+    <Content Include="Scripts\ckeditor\lang\nb.js" />
+    <Content Include="Scripts\ckeditor\lang\nl.js" />
+    <Content Include="Scripts\ckeditor\lang\no.js" />
+    <Content Include="Scripts\ckeditor\lang\oc.js" />
+    <Content Include="Scripts\ckeditor\lang\pl.js" />
+    <Content Include="Scripts\ckeditor\lang\pt-br.js" />
+    <Content Include="Scripts\ckeditor\lang\pt.js" />
+    <Content Include="Scripts\ckeditor\lang\ro.js" />
+    <Content Include="Scripts\ckeditor\lang\ru.js" />
+    <Content Include="Scripts\ckeditor\lang\si.js" />
+    <Content Include="Scripts\ckeditor\lang\sk.js" />
+    <Content Include="Scripts\ckeditor\lang\sl.js" />
+    <Content Include="Scripts\ckeditor\lang\sq.js" />
+    <Content Include="Scripts\ckeditor\lang\sr-latn.js" />
+    <Content Include="Scripts\ckeditor\lang\sr.js" />
+    <Content Include="Scripts\ckeditor\lang\sv.js" />
+    <Content Include="Scripts\ckeditor\lang\th.js" />
+    <Content Include="Scripts\ckeditor\lang\tr.js" />
+    <Content Include="Scripts\ckeditor\lang\tt.js" />
+    <Content Include="Scripts\ckeditor\lang\ug.js" />
+    <Content Include="Scripts\ckeditor\lang\uk.js" />
+    <Content Include="Scripts\ckeditor\lang\vi.js" />
+    <Content Include="Scripts\ckeditor\lang\zh-cn.js" />
+    <Content Include="Scripts\ckeditor\lang\zh.js" />
+    <Content Include="Scripts\ckeditor\plugins\clipboard\dialogs\paste.js" />
+    <Content Include="Scripts\ckeditor\plugins\colordialog\dialogs\colordialog.css" />
+    <Content Include="Scripts\ckeditor\plugins\colordialog\dialogs\colordialog.js" />
+    <Content Include="Scripts\ckeditor\plugins\dialog\dialogDefinition.js" />
+    <Content Include="Scripts\ckeditor\plugins\fakeobjects\images\spacer.gif" />
+    <Content Include="Scripts\ckeditor\plugins\icons.png" />
+    <Content Include="Scripts\ckeditor\plugins\icons_hidpi.png" />
+    <Content Include="Scripts\ckeditor\plugins\image2\dialogs\image2.js" />
+    <Content Include="Scripts\ckeditor\plugins\image\dialogs\image.js" />
+    <Content Include="Scripts\ckeditor\plugins\image\images\noimage.png" />
+    <Content Include="Scripts\ckeditor\plugins\link\dialogs\anchor.js" />
+    <Content Include="Scripts\ckeditor\plugins\link\dialogs\link.js" />
+    <Content Include="Scripts\ckeditor\plugins\link\images\anchor.png" />
+    <Content Include="Scripts\ckeditor\plugins\link\images\hidpi\anchor.png" />
+    <Content Include="Scripts\ckeditor\plugins\liststyle\dialogs\liststyle.js" />
+    <Content Include="Scripts\ckeditor\plugins\magicline\images\hidpi\icon-rtl.png" />
+    <Content Include="Scripts\ckeditor\plugins\magicline\images\hidpi\icon.png" />
+    <Content Include="Scripts\ckeditor\plugins\magicline\images\icon-rtl.png" />
+    <Content Include="Scripts\ckeditor\plugins\magicline\images\icon.png" />
+    <Content Include="Scripts\ckeditor\plugins\pastefromword\filter\default.js" />
+    <Content Include="Scripts\ckeditor\plugins\placeholder\dialogs\placeholder.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\af.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\ar.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\az.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\bg.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\ca.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\cs.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\cy.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\da.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\de-ch.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\de.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\el.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\en-au.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\en-ca.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\en-gb.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\en.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\eo.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\es-mx.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\es.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\et.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\eu.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\fa.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\fi.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\fr-ca.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\fr.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\gl.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\he.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\hr.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\hu.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\id.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\it.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\ja.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\km.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\ko.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\ku.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\lt.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\lv.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\nb.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\nl.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\no.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\oc.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\pl.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\pt-br.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\pt.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\ro.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\ru.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\si.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\sk.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\sl.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\sq.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\sv.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\th.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\tr.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\tt.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\ug.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\uk.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\vi.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\zh-cn.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\zh.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\_translationstatus.txt" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\specialchar.js" />
+    <Content Include="Scripts\ckeditor\plugins\tabletools\dialogs\tableCell.js" />
+    <Content Include="Scripts\ckeditor\plugins\table\dialogs\table.js" />
+    <Content Include="Scripts\ckeditor\plugins\widget\images\handle.png" />
+    <Content Include="Scripts\ckeditor\skins\moono\dialog.css" />
+    <Content Include="Scripts\ckeditor\skins\moono\dialog_ie.css" />
+    <Content Include="Scripts\ckeditor\skins\moono\dialog_ie7.css" />
+    <Content Include="Scripts\ckeditor\skins\moono\dialog_ie8.css" />
+    <Content Include="Scripts\ckeditor\skins\moono\dialog_iequirks.css" />
+    <Content Include="Scripts\ckeditor\skins\moono\dialog_opera.css" />
+    <Content Include="Scripts\ckeditor\skins\moono\editor.css" />
+    <Content Include="Scripts\ckeditor\skins\moono\editor_gecko.css" />
+    <Content Include="Scripts\ckeditor\skins\moono\editor_ie.css" />
+    <Content Include="Scripts\ckeditor\skins\moono\editor_ie7.css" />
+    <Content Include="Scripts\ckeditor\skins\moono\editor_ie8.css" />
+    <Content Include="Scripts\ckeditor\skins\moono\editor_iequirks.css" />
+    <Content Include="Scripts\ckeditor\skins\moono\icons.png" />
+    <Content Include="Scripts\ckeditor\skins\moono\icons_hidpi.png" />
+    <Content Include="Scripts\ckeditor\skins\moono\images\anchor.png" />
+    <Content Include="Scripts\ckeditor\skins\moono\images\arrow.png" />
+    <Content Include="Scripts\ckeditor\skins\moono\images\close.png" />
+    <Content Include="Scripts\ckeditor\skins\moono\images\hidpi\anchor.png" />
+    <Content Include="Scripts\ckeditor\skins\moono\images\hidpi\close.png" />
+    <Content Include="Scripts\ckeditor\skins\moono\images\hidpi\lock-open.png" />
+    <Content Include="Scripts\ckeditor\skins\moono\images\hidpi\lock.png" />
+    <Content Include="Scripts\ckeditor\skins\moono\images\hidpi\refresh.png" />
+    <Content Include="Scripts\ckeditor\skins\moono\images\lock-open.png" />
+    <Content Include="Scripts\ckeditor\skins\moono\images\lock.png" />
+    <Content Include="Scripts\ckeditor\skins\moono\images\refresh.png" />
+    <Content Include="Scripts\ckeditor\skins\moono\images\spinner.gif" />
+    <Content Include="Scripts\ckeditor\skins\moono\readme.md" />
+    <Content Include="Scripts\ckeditor\README.md" />
+    <Content Include="Scripts\ckeditor\LICENSE.md" />
+    <Content Include="Scripts\ckeditor\CHANGES.md" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\ckeditor\styles.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+    <Content Include="Scripts\jquery-ui-i18n.js" />
+    <Content Include="Scripts\jquery-ui-i18n.min.js" />
+    <Content Include="Scripts\jquery-ui.js" />
+    <Content Include="Scripts\jquery-ui.min.js" />
+    <Content Include="Scripts\jquery.autoNumeric.js" />
+    <Content Include="Scripts\jquery.autoNumeric.min.js" />
+    <Content Include="Scripts\jquery.blockUI.js" />
+    <Content Include="Scripts\jquery.blockUI.min.js" />
+    <Content Include="Scripts\jquery.colorbox.js" />
+    <Content Include="Scripts\jquery.colorbox.min.js" />
+    <Content Include="Scripts\jquery.cookie.js" />
+    <Content Include="Scripts\jquery.cookie.min.js" />
+    <Content Include="Scripts\jquery.cropzoom.js" />
+    <Content Include="Scripts\jquery.cropzoom.min.js" />
+    <Content Include="Scripts\jquery.dialogextendQ.js" />
+    <Content Include="Scripts\jquery.dialogextendQ.min.js" />
+    <Content Include="Scripts\jquery.event.drag.js" />
+    <Content Include="Scripts\jquery.event.drag.min.js" />
+    <Content Include="Scripts\jquery.fileupload.js" />
+    <Content Include="Scripts\jquery.fileupload.min.js" />
+    <Content Include="Scripts\jquery.iframe-transport.js" />
+    <Content Include="Scripts\jquery.iframe-transport.min.js" />
+    <Content Include="Scripts\jquery.json.js" />
+    <Content Include="Scripts\jquery.json.min.js" />
+    <Content Include="Scripts\jquery.maskedinput.js" />
+    <Content Include="Scripts\jquery.maskedinput.min.js" />
+    <Content Include="Scripts\jquery.scrollintoview.js" />
+    <Content Include="Scripts\jquery.scrollintoview.min.js" />
+    <Content Include="Scripts\jquery.slimscroll.js" />
+    <Content Include="Scripts\jquery.slimscroll.min.js" />
+    <Content Include="Scripts\jspdf.js" />
+    <Content Include="Scripts\jspdf.min.js" />
+    <Content Include="Scripts\jspdf.plugin.autotable.js" />
+    <Content Include="Scripts\jspdf.plugin.autotable.min.js" />
+    <Content Include="Scripts\jsrender.js" />
+    <Content Include="Scripts\jsrender.min.js" />
+    <Content Include="Scripts\pace.js" />
+    <Content Include="Scripts\pace.min.js" />
+    <Content Include="Scripts\react-dom.development.js" />
+    <Content Include="Scripts\react-dom.production.min.js" />
+    <Content Include="Scripts\react.development.js" />
+    <Content Include="Scripts\react.production.min.js" />
+    <Content Include="Scripts\rsvp.js" />
+    <Content Include="Scripts\rsvp.min.js" />
+    <Content Include="Scripts\saltarelle\linq.js" />
+    <Content Include="Scripts\saltarelle\linq.min.js" />
+    <Content Include="Scripts\saltarelle\mscorlib.js" />
+    <Content Include="Scripts\saltarelle\mscorlib.min.js" />
+    <Content Include="Scripts\serenity\Serenity.CoreLib.js" />
+    <Content Include="Scripts\serenity\Serenity.CoreLib.min.js" />
+    <Content Include="Scripts\serenity\Serenity.Script.UI.js" />
+    <Content Include="Scripts\serenity\Serenity.Script.UI.min.js" />
+    <Content Include="Scripts\SlickGrid\Controls\slick.columnpicker.js" />
+    <Content Include="Scripts\SlickGrid\Controls\slick.pager.js" />
+    <Content Include="Scripts\SlickGrid\MIT-LICENSE.txt" />
+    <Content Include="Scripts\SlickGrid\Plugins\slick.autotooltips.js" />
+    <Content Include="Scripts\SlickGrid\Plugins\slick.autotooltips.min.js" />
+    <Content Include="Scripts\SlickGrid\Plugins\slick.cellcopymanager.js" />
+    <Content Include="Scripts\SlickGrid\Plugins\slick.cellrangedecorator.js" />
+    <Content Include="Scripts\SlickGrid\Plugins\slick.cellrangeselector.js" />
+    <Content Include="Scripts\SlickGrid\Plugins\slick.cellselectionmodel.js" />
+    <Content Include="Scripts\SlickGrid\Plugins\slick.checkboxselectcolumn.js" />
+    <Content Include="Scripts\SlickGrid\Plugins\slick.headerbuttons.js" />
+    <Content Include="Scripts\SlickGrid\Plugins\slick.headermenu.js" />
+    <Content Include="Scripts\SlickGrid\Plugins\slick.rowmovemanager.js" />
+    <Content Include="Scripts\SlickGrid\Plugins\slick.rowselectionmodel.js" />
+    <Content Include="Scripts\SlickGrid\README.md" />
+    <Content Include="Scripts\serenity\texts\serenity.texts.zh-CN.json" />
+    <Content Include="Scripts\serenity\texts\serenity.texts.vi-VN.json" />
+    <Content Include="Scripts\serenity\texts\serenity.texts.tr.json" />
+    <Content Include="Scripts\serenity\texts\serenity.texts.ru.json" />
+    <Content Include="Scripts\serenity\texts\serenity.texts.pt.json" />
+    <Content Include="Scripts\serenity\texts\serenity.texts.pt-BR.json" />
+    <Content Include="Scripts\serenity\texts\serenity.texts.it.json" />
+    <Content Include="Scripts\serenity\texts\serenity.texts.fa.json" />
+    <Content Include="Scripts\serenity\texts\serenity.texts.es.json" />
+    <Content Include="Scripts\serenity\texts\serenity.texts.de.json" />
+    <Content Include="Scripts\serenity\texts\serenity.texts.bn.json" />
+    <Content Include="Scripts\serenity\Serenity.CoreLib.js.map" />
+    <Content Include="tools\JsEngine\json2.min.js" />
+    <Content Include="tools\JsEngine\MsieJavaScriptEngine.dll" />
+    <Content Include="tools\JsEngine\typescriptServices.js" />
+    <Content Include="tools\Mono.Cecil\Mono.Cecil.dll" />
+    <Content Include="tools\Mono.Cecil\Mono.Cecil.Mdb.dll" />
+    <Content Include="tools\Mono.Cecil\Mono.Cecil.Pdb.dll" />
+    <Content Include="tools\Mono.Cecil\Mono.Cecil.Rocks.dll" />
+    <Content Include="tools\Node\lessc.cmd" />
+    <Content Include="tools\JsEngine\lib.d.ts_" />
+    <None Include="tsconfig.json" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Administration.TenantColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Administration.TenantForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Administration.TenantRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Administration.TenantService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.CategoryColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.CategoryTypeColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.CounterpartyColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.EmployeeRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.Gender.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.MeasureColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.NoteRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.OperationTypeColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.OrderColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.OrderDetailColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.OrderListRequest.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.OrderProductColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.OrderProductDetailColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.OrderShippingState.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ProductColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ProductDetailColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ProductListRequest.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ShipperColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ShipperForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ShipperRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ShipperService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ShopsColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.SupplierColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.WaresColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.WaresListRequest.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.WaresMovementColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.WaresMovementDetailsColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.WaresMovementListRequest.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Texts.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Administration\Tenant\TenantDialog.ts" />
+    <TypeScriptCompile Include="Modules\Administration\Tenant\TenantGrid.ts" />
+    <TypeScriptCompile Include="Modules\Store\Counterparty\CounterpartyOrderGrid.ts" />
+    <TypeScriptCompile Include="Modules\Store\Counterparty\CounterpartyEditor.ts" />
+    <TypeScriptCompile Include="Modules\Store\Counterparty\CounterpartyOrderDialog.ts" />
+    <TypeScriptCompile Include="Modules\Store\Employee\EmployeeFormatter.ts" />
+    <TypeScriptCompile Include="Modules\Store\Employee\EmployeeListFormatter.ts" />
+    <TypeScriptCompile Include="Modules\Store\Note\NotesEditor.ts" />
+    <TypeScriptCompile Include="Modules\Store\OperationType\OperationTypeEditor.ts" />
+    <TypeScriptCompile Include="Modules\Store\OrderDetail\OrderDetailsEditor.ts" />
+    <TypeScriptCompile Include="Modules\Store\Order\FreightFormatter.ts" />
+    <TypeScriptCompile Include="Modules\Store\ProductDetail\ProductDetailsEditor.ts" />
+    <TypeScriptCompile Include="Modules\Store\Shared\PhoneEditor.ts" />
+    <TypeScriptCompile Include="Modules\Store\Shipper\ShipperFormatter.ts" />
+    <TypeScriptCompile Include="Modules\Store\WaresMovementDetails\WaresMovementDetailsEditor.ts" />
+    <TypeScriptCompile Include="Modules\Store\Wares\WaresEditor.ts" />
+    <TypeScriptCompile Include="node_modules\%40types\jquery\index.d.ts" />
+    <TypeScriptCompile Include="node_modules\%40types\jqueryui\index.d.ts" />
+    <TypeScriptCompile Include="node_modules\%40types\jquery.blockui\index.d.ts" />
+    <TypeScriptCompile Include="node_modules\%40types\jquery.cookie\index.d.ts" />
+    <TypeScriptCompile Include="node_modules\%40types\jquery.validation\index.d.ts" />
+    <TypeScriptCompile Include="node_modules\%40types\jspdf\index.d.ts" />
+    <TypeScriptCompile Include="node_modules\%40types\sortablejs\index.d.ts" />
+    <TypeScriptCompile Include="node_modules\%40types\toastr\index.d.ts" />
+    <Content Include="Content\site\images\accordion-arrows.png" />
     <Content Include="Modules\Membership\Account\SignUp\AccountSignUp.AdminLTE.cshtml" />
     <Content Include="Imports\Web.config" />
     <Content Include="Migrations\Web.config" />
-    <EmbeddedResource Include="Migrations\NorthwindDB\NorthwindDBScript_SqlServer.sql" />
+    <Content Include="Content\site\CssBundles.json" />
+    <Content Include="Readme.CodeGenerator.txt" />
+    <Content Include="Scripts\flot\excanvas.js" />
+    <Content Include="Scripts\flot\excanvas.min.js" />
+    <Content Include="Scripts\flot\jquery.colorhelpers.js" />
+    <Content Include="Scripts\flot\jquery.colorhelpers.min.js" />
+    <Content Include="Scripts\flot\jquery.flot.canvas.js" />
+    <Content Include="Scripts\flot\jquery.flot.canvas.min.js" />
+    <Content Include="Scripts\flot\jquery.flot.categories.js" />
+    <Content Include="Scripts\flot\jquery.flot.categories.min.js" />
+    <Content Include="Scripts\flot\jquery.flot.crosshair.js" />
+    <Content Include="Scripts\flot\jquery.flot.crosshair.min.js" />
+    <Content Include="Scripts\flot\jquery.flot.errorbars.js" />
+    <Content Include="Scripts\flot\jquery.flot.errorbars.min.js" />
+    <Content Include="Scripts\flot\jquery.flot.fillbetween.js" />
+    <Content Include="Scripts\flot\jquery.flot.fillbetween.min.js" />
+    <Content Include="Scripts\flot\jquery.flot.image.js" />
+    <Content Include="Scripts\flot\jquery.flot.image.min.js" />
+    <Content Include="Scripts\flot\jquery.flot.js" />
+    <Content Include="Scripts\flot\jquery.flot.min.js" />
+    <Content Include="Scripts\flot\jquery.flot.navigate.js" />
+    <Content Include="Scripts\flot\jquery.flot.navigate.min.js" />
+    <Content Include="Scripts\flot\jquery.flot.pie.js" />
+    <Content Include="Scripts\flot\jquery.flot.pie.min.js" />
+    <Content Include="Scripts\flot\jquery.flot.resize.js" />
+    <Content Include="Scripts\flot\jquery.flot.resize.min.js" />
+    <Content Include="Scripts\flot\jquery.flot.selection.js" />
+    <Content Include="Scripts\flot\jquery.flot.selection.min.js" />
+    <Content Include="Scripts\flot\jquery.flot.stack.js" />
+    <Content Include="Scripts\flot\jquery.flot.stack.min.js" />
+    <Content Include="Scripts\flot\jquery.flot.symbol.js" />
+    <Content Include="Scripts\flot\jquery.flot.symbol.min.js" />
+    <Content Include="Scripts\flot\jquery.flot.threshold.js" />
+    <Content Include="Scripts\flot\jquery.flot.threshold.min.js" />
+    <Content Include="Scripts\flot\jquery.flot.time.js" />
+    <Content Include="Scripts\flot\jquery.flot.time.min.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_ar.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_az.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_bg.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_ca.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_cs.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_da.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_de.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_el.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_es.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_et.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_eu.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_fa.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_fi.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_fr.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_gl.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_he.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_hr.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_hu.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_id.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_is.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_it.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_ja.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_ka.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_ko.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_lt.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_lv.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_mk.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_ms.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_nl.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_no.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_pl.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_pt-BR.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_pt-PT.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_ro.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_rs.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_ru.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_sk.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_sv.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_th.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_tr.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_ua.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_ug-CN.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_uk.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_vi.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_zh-CN.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_zh-TW.js" />
+    <Content Include="Scripts\select2.js" />
+    <Content Include="Scripts\select2.min.js" />
+    <Content Include="Scripts\SlickGrid\slick.core.js" />
+    <Content Include="Scripts\SlickGrid\slick.core.min.js" />
+    <Content Include="Scripts\SlickGrid\slick.dataview.js" />
+    <Content Include="Scripts\SlickGrid\slick.editors.js" />
+    <Content Include="Scripts\SlickGrid\slick.formatters.js" />
+    <Content Include="Scripts\SlickGrid\slick.grid.js" />
+    <Content Include="Scripts\SlickGrid\slick.grid.min.js" />
+    <Content Include="Scripts\SlickGrid\slick.groupitemmetadataprovider.js" />
+    <Content Include="Scripts\SlickGrid\slick.groupitemmetadataprovider.min.js" />
+    <Content Include="Scripts\SlickGrid\slick.remotemodel-yahoo.js" />
+    <Content Include="Scripts\SlickGrid\slick.remotemodel.js" />
+    <Content Include="Scripts\sortable.js" />
+    <Content Include="Scripts\sortable.min.js" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\toastr.min.js" />
+    <Content Include="Scripts\vue.js" />
+    <Content Include="Scripts\vue.min.js" />
     <Content Include="Content\adminlte\img\avatar.png" />
     <Content Include="Content\adminlte\img\avatar04.png" />
     <Content Include="Content\adminlte\img\avatar2.png" />
@@ -695,7 +1265,6 @@
     <Content Include="Content\site\site.htmlcontent.css" />
     <Content Include="Content\site\site.css" />
     <Content Include="Content\site\site.mixins.less" />
-    <Content Include="Content\site\site.northwind.less" />
     <Content Include="Content\site\site.membership.less" />
     <Content Include="Content\adminlte\.csslintrc" />
     <Content Include="Content\adminlte\404_500_errors.less" />
@@ -783,20 +1352,13 @@
     <Content Include="Content\site\slides\slide1.jpg" />
     <Content Include="Content\site\slides\slide2.jpg" />
     <Content Include="Content\site\slides\slide3.jpg" />
-    <Content Include="Content\site\slides\slide4.jpg" />
-    <Content Include="Content\site\slides\slide5.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Imports\MultipleOutputHelper.ttinclude" />
     <Content Include="Content\site\site.administration.less" />
-    <EmbeddedResource Include="Migrations\NorthwindDB\NorthwindDBScript_Postgres.sql" />
-    <EmbeddedResource Include="Migrations\NorthwindDB\NorthwindDBScript_PostgresData.sql" />
-    <EmbeddedResource Include="Migrations\NorthwindDB\NorthwindDBScript_MySql.sql" />
     <Content Include="Imports\ClientTypes\ClientTypes.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ClientTypes.log</LastGenOutput>
     </Content>
-    <Content Include="Migrations\NorthwindDB\NorthwindDBScript_Oracle.sql" />
-    <Content Include="Readme.CodeGenerator.txt" />
     <Content Include="Scripts\adminlte\app.js" />
     <Content Include="Scripts\adminlte\app.min.js" />
     <Content Include="Scripts\adminlte\demo.js" />
@@ -810,181 +1372,8 @@
     <Content Include="Scripts\bootstrap-wysihtml5\bootstrap3-wysihtml5.all.min.js" />
     <Content Include="Scripts\bootstrap-wysihtml5\bootstrap3-wysihtml5.css" />
     <Content Include="Scripts\bootstrap-wysihtml5\bootstrap3-wysihtml5.min.css" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\chartjs\Chart.js" />
     <Content Include="Scripts\chartjs\Chart.min.js" />
-    <Content Include="Scripts\ckeditor\adapters\jquery.js" />
-    <Content Include="Scripts\ckeditor\build-config.js" />
-    <Content Include="Scripts\ckeditor\ckeditor.js" />
-    <Content Include="Scripts\ckeditor\config.js" />
-    <Content Include="Scripts\ckeditor\contents.css" />
-    <Content Include="Scripts\ckeditor\lang\af.js" />
-    <Content Include="Scripts\ckeditor\lang\ar.js" />
-    <Content Include="Scripts\ckeditor\lang\bg.js" />
-    <Content Include="Scripts\ckeditor\lang\bn.js" />
-    <Content Include="Scripts\ckeditor\lang\bs.js" />
-    <Content Include="Scripts\ckeditor\lang\ca.js" />
-    <Content Include="Scripts\ckeditor\lang\cs.js" />
-    <Content Include="Scripts\ckeditor\lang\cy.js" />
-    <Content Include="Scripts\ckeditor\lang\da.js" />
-    <Content Include="Scripts\ckeditor\lang\de-ch.js" />
-    <Content Include="Scripts\ckeditor\lang\de.js" />
-    <Content Include="Scripts\ckeditor\lang\el.js" />
-    <Content Include="Scripts\ckeditor\lang\en-au.js" />
-    <Content Include="Scripts\ckeditor\lang\en-ca.js" />
-    <Content Include="Scripts\ckeditor\lang\en-gb.js" />
-    <Content Include="Scripts\ckeditor\lang\en.js" />
-    <Content Include="Scripts\ckeditor\lang\eo.js" />
-    <Content Include="Scripts\ckeditor\lang\es.js" />
-    <Content Include="Scripts\ckeditor\lang\et.js" />
-    <Content Include="Scripts\ckeditor\lang\eu.js" />
-    <Content Include="Scripts\ckeditor\lang\fa.js" />
-    <Content Include="Scripts\ckeditor\lang\fi.js" />
-    <Content Include="Scripts\ckeditor\lang\fo.js" />
-    <Content Include="Scripts\ckeditor\lang\fr-ca.js" />
-    <Content Include="Scripts\ckeditor\lang\fr.js" />
-    <Content Include="Scripts\ckeditor\lang\gl.js" />
-    <Content Include="Scripts\ckeditor\lang\gu.js" />
-    <Content Include="Scripts\ckeditor\lang\he.js" />
-    <Content Include="Scripts\ckeditor\lang\hi.js" />
-    <Content Include="Scripts\ckeditor\lang\hr.js" />
-    <Content Include="Scripts\ckeditor\lang\hu.js" />
-    <Content Include="Scripts\ckeditor\lang\id.js" />
-    <Content Include="Scripts\ckeditor\lang\is.js" />
-    <Content Include="Scripts\ckeditor\lang\it.js" />
-    <Content Include="Scripts\ckeditor\lang\ja.js" />
-    <Content Include="Scripts\ckeditor\lang\ka.js" />
-    <Content Include="Scripts\ckeditor\lang\km.js" />
-    <Content Include="Scripts\ckeditor\lang\ko.js" />
-    <Content Include="Scripts\ckeditor\lang\ku.js" />
-    <Content Include="Scripts\ckeditor\lang\lt.js" />
-    <Content Include="Scripts\ckeditor\lang\lv.js" />
-    <Content Include="Scripts\ckeditor\lang\mk.js" />
-    <Content Include="Scripts\ckeditor\lang\mn.js" />
-    <Content Include="Scripts\ckeditor\lang\ms.js" />
-    <Content Include="Scripts\ckeditor\lang\nb.js" />
-    <Content Include="Scripts\ckeditor\lang\nl.js" />
-    <Content Include="Scripts\ckeditor\lang\no.js" />
-    <Content Include="Scripts\ckeditor\lang\pl.js" />
-    <Content Include="Scripts\ckeditor\lang\pt-br.js" />
-    <Content Include="Scripts\ckeditor\lang\pt.js" />
-    <Content Include="Scripts\ckeditor\lang\ro.js" />
-    <Content Include="Scripts\ckeditor\lang\ru.js" />
-    <Content Include="Scripts\ckeditor\lang\si.js" />
-    <Content Include="Scripts\ckeditor\lang\sk.js" />
-    <Content Include="Scripts\ckeditor\lang\sl.js" />
-    <Content Include="Scripts\ckeditor\lang\sq.js" />
-    <Content Include="Scripts\ckeditor\lang\sr-latn.js" />
-    <Content Include="Scripts\ckeditor\lang\sr.js" />
-    <Content Include="Scripts\ckeditor\lang\sv.js" />
-    <Content Include="Scripts\ckeditor\lang\th.js" />
-    <Content Include="Scripts\ckeditor\lang\tr.js" />
-    <Content Include="Scripts\ckeditor\lang\tt.js" />
-    <Content Include="Scripts\ckeditor\lang\ug.js" />
-    <Content Include="Scripts\ckeditor\lang\uk.js" />
-    <Content Include="Scripts\ckeditor\lang\vi.js" />
-    <Content Include="Scripts\ckeditor\lang\zh-cn.js" />
-    <Content Include="Scripts\ckeditor\lang\zh.js" />
-    <Content Include="Scripts\ckeditor\plugins\clipboard\dialogs\paste.js" />
-    <Content Include="Scripts\ckeditor\plugins\colordialog\dialogs\colordialog.js" />
-    <Content Include="Scripts\ckeditor\plugins\dialog\dialogDefinition.js" />
-    <Content Include="Scripts\ckeditor\plugins\icons.png" />
-    <Content Include="Scripts\ckeditor\plugins\icons_hidpi.png" />
-    <Content Include="Scripts\ckeditor\plugins\image\dialogs\image.js" />
-    <Content Include="Scripts\ckeditor\plugins\image\images\noimage.png" />
-    <Content Include="Scripts\ckeditor\plugins\link\dialogs\anchor.js" />
-    <Content Include="Scripts\ckeditor\plugins\link\dialogs\link.js" />
-    <Content Include="Scripts\ckeditor\plugins\link\images\anchor.png" />
-    <Content Include="Scripts\ckeditor\plugins\link\images\hidpi\anchor.png" />
-    <Content Include="Scripts\ckeditor\plugins\liststyle\dialogs\liststyle.js" />
-    <Content Include="Scripts\ckeditor\plugins\magicline\images\hidpi\icon-rtl.png" />
-    <Content Include="Scripts\ckeditor\plugins\magicline\images\hidpi\icon.png" />
-    <Content Include="Scripts\ckeditor\plugins\magicline\images\icon-rtl.png" />
-    <Content Include="Scripts\ckeditor\plugins\magicline\images\icon.png" />
-    <Content Include="Scripts\ckeditor\plugins\pastefromword\filter\default.js" />
-    <Content Include="Scripts\ckeditor\plugins\placeholder\dialogs\placeholder.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\af.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\ar.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\bg.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\ca.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\cs.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\cy.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\da.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\de-ch.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\de.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\el.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\en-gb.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\en.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\eo.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\es.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\et.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\eu.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\fa.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\fi.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\fr-ca.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\fr.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\gl.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\he.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\hr.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\hu.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\id.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\it.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\ja.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\km.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\ko.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\ku.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\lt.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\lv.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\nb.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\nl.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\no.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\pl.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\pt-br.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\pt.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\ru.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\si.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\sk.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\sl.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\sq.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\sv.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\th.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\tr.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\tt.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\ug.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\uk.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\vi.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\zh-cn.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\zh.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\_translationstatus.txt" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\specialchar.js" />
-    <Content Include="Scripts\ckeditor\plugins\tabletools\dialogs\tableCell.js" />
-    <Content Include="Scripts\ckeditor\plugins\table\dialogs\table.js" />
-    <Content Include="Scripts\ckeditor\plugins\widget\images\handle.png" />
-    <Content Include="Scripts\ckeditor\skins\moono\dialog.css" />
-    <Content Include="Scripts\ckeditor\skins\moono\dialog_ie.css" />
-    <Content Include="Scripts\ckeditor\skins\moono\dialog_ie7.css" />
-    <Content Include="Scripts\ckeditor\skins\moono\dialog_ie8.css" />
-    <Content Include="Scripts\ckeditor\skins\moono\dialog_iequirks.css" />
-    <Content Include="Scripts\ckeditor\skins\moono\editor.css" />
-    <Content Include="Scripts\ckeditor\skins\moono\editor_gecko.css" />
-    <Content Include="Scripts\ckeditor\skins\moono\editor_ie.css" />
-    <Content Include="Scripts\ckeditor\skins\moono\editor_ie7.css" />
-    <Content Include="Scripts\ckeditor\skins\moono\editor_ie8.css" />
-    <Content Include="Scripts\ckeditor\skins\moono\editor_iequirks.css" />
-    <Content Include="Scripts\ckeditor\skins\moono\icons.png" />
-    <Content Include="Scripts\ckeditor\skins\moono\icons_hidpi.png" />
-    <Content Include="Scripts\ckeditor\skins\moono\images\arrow.png" />
-    <Content Include="Scripts\ckeditor\skins\moono\images\close.png" />
-    <Content Include="Scripts\ckeditor\skins\moono\images\hidpi\close.png" />
-    <Content Include="Scripts\ckeditor\skins\moono\images\hidpi\lock-open.png" />
-    <Content Include="Scripts\ckeditor\skins\moono\images\hidpi\lock.png" />
-    <Content Include="Scripts\ckeditor\skins\moono\images\hidpi\refresh.png" />
-    <Content Include="Scripts\ckeditor\skins\moono\images\lock-open.png" />
-    <Content Include="Scripts\ckeditor\skins\moono\images\lock.png" />
-    <Content Include="Scripts\ckeditor\skins\moono\images\refresh.png" />
-    <Content Include="Scripts\ckeditor\skins\moono\images\spinner.gif" />
-    <Content Include="Scripts\ckeditor\styles.js" />
     <Content Include="Scripts\colorpicker\bootstrap-colorpicker.css" />
     <Content Include="Scripts\colorpicker\bootstrap-colorpicker.js" />
     <Content Include="Scripts\colorpicker\bootstrap-colorpicker.min.css" />
@@ -1052,40 +1441,6 @@
     <Content Include="Scripts\daterangepicker\moment.js" />
     <Content Include="Scripts\daterangepicker\moment.min.js" />
     <Content Include="Scripts\fastclick\fastclick.js" />
-    <Content Include="Scripts\flot\excanvas.js" />
-    <Content Include="Scripts\flot\excanvas.min.js" />
-    <Content Include="Scripts\flot\jquery.colorhelpers.js" />
-    <Content Include="Scripts\flot\jquery.colorhelpers.min.js" />
-    <Content Include="Scripts\flot\jquery.flot.canvas.js" />
-    <Content Include="Scripts\flot\jquery.flot.canvas.min.js" />
-    <Content Include="Scripts\flot\jquery.flot.categories.js" />
-    <Content Include="Scripts\flot\jquery.flot.categories.min.js" />
-    <Content Include="Scripts\flot\jquery.flot.crosshair.js" />
-    <Content Include="Scripts\flot\jquery.flot.crosshair.min.js" />
-    <Content Include="Scripts\flot\jquery.flot.errorbars.js" />
-    <Content Include="Scripts\flot\jquery.flot.errorbars.min.js" />
-    <Content Include="Scripts\flot\jquery.flot.fillbetween.js" />
-    <Content Include="Scripts\flot\jquery.flot.fillbetween.min.js" />
-    <Content Include="Scripts\flot\jquery.flot.image.js" />
-    <Content Include="Scripts\flot\jquery.flot.image.min.js" />
-    <Content Include="Scripts\flot\jquery.flot.js" />
-    <Content Include="Scripts\flot\jquery.flot.min.js" />
-    <Content Include="Scripts\flot\jquery.flot.navigate.js" />
-    <Content Include="Scripts\flot\jquery.flot.navigate.min.js" />
-    <Content Include="Scripts\flot\jquery.flot.pie.js" />
-    <Content Include="Scripts\flot\jquery.flot.pie.min.js" />
-    <Content Include="Scripts\flot\jquery.flot.resize.js" />
-    <Content Include="Scripts\flot\jquery.flot.resize.min.js" />
-    <Content Include="Scripts\flot\jquery.flot.selection.js" />
-    <Content Include="Scripts\flot\jquery.flot.selection.min.js" />
-    <Content Include="Scripts\flot\jquery.flot.stack.js" />
-    <Content Include="Scripts\flot\jquery.flot.stack.min.js" />
-    <Content Include="Scripts\flot\jquery.flot.symbol.js" />
-    <Content Include="Scripts\flot\jquery.flot.symbol.min.js" />
-    <Content Include="Scripts\flot\jquery.flot.threshold.js" />
-    <Content Include="Scripts\flot\jquery.flot.threshold.min.js" />
-    <Content Include="Scripts\flot\jquery.flot.time.js" />
-    <Content Include="Scripts\flot\jquery.flot.time.min.js" />
     <Content Include="Scripts\fullcalendar\fullcalendar.css" />
     <Content Include="Scripts\fullcalendar\fullcalendar.js" />
     <Content Include="Scripts\fullcalendar\fullcalendar.min.css" />
@@ -1104,47 +1459,13 @@
     <Content Include="Scripts\ionslider\ion.rangeSlider.min.js" />
     <Content Include="Scripts\ionslider\ion.rangeSlider.skinFlat.css" />
     <Content Include="Scripts\ionslider\ion.rangeSlider.skinNice.css" />
-    <Content Include="Modules\BasicSamples\Dialogs\ChartInDialog\Index.cshtml" />
-    <Content Include="Content\site\site.basicsamples.less" />
-    <Content Include="Modules\BasicSamples\Grids\ViewWithoutID\Index.cshtml" />
-    <Content Include="Modules\BasicSamples\Dialogs\ResponsiveDialog\Index.cshtml" />
-    <Content Include="Modules\BasicSamples\Dialogs\MultiColumnResponsiveDialog\Index.cshtml" />
-    <Content Include="Modules\BasicSamples\Dialogs\CloneableEntityDialog\Index.cshtml" />
-    <Content Include="Modules\BasicSamples\Editors\LookupFilterByMultipleValues\Index.cshtml" />
-    <Content Include="Modules\BasicSamples\Grids\GridFilteredByCriteria\Index.cshtml" />
-    <Content Include="Modules\BasicSamples\Dialogs\DefaultValuesInNewDialog\Index.cshtml" />
-    <Content Include="Modules\BasicSamples\Editors\FilteredLookupInDetail\Index.cshtml" />
-    <Content Include="Modules\BasicSamples\Grids\GroupingAndSummariesInGrid\Index.cshtml" />
     <Content Include="Imports\CodeGenerationHelpers.ttinclude" />
     <Content Include="Imports\ClientTypes\ClientTypes.log">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ClientTypes.tt</DependentUpon>
     </Content>
-    <TypeScriptCompile Include="Imports\ServerTypings\Administration.TenantColumns.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Infra.SupportColumns.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Infra.SupportForm.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Infra.SupportRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Infra.SupportService.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Infra.SupportTypeColumns.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Infra.SupportTypeStringColumns.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.CustomerGrossSalesRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Helpers\StaticTextBlock.ts" />
     <TypeScriptCompile Include="Modules\Administration\Language\LanguageDialog.ts" />
     <TypeScriptCompile Include="Modules\Administration\Language\LanguageGrid.ts" />
     <TypeScriptCompile Include="Modules\Administration\RolePermission\RolePermissionDialog.ts" />
@@ -1158,159 +1479,14 @@
     <TypeScriptCompile Include="Modules\Administration\User\Authentication\Authorization.ts" />
     <TypeScriptCompile Include="Modules\Administration\User\UserGrid.ts" />
     <TypeScriptCompile Include="Modules\Administration\User\UserDialog.ts" />
-    <Content Include="Modules\BasicSamples\Grids\CancellableBulkAction\Index.cshtml" />
-    <Content Include="Modules\BasicSamples\Grids\ConditionalFormatting\Index.cshtml" />
-    <Content Include="Modules\BasicSamples\Grids\CustomLinksInGrid\Index.cshtml" />
-    <Content Include="Modules\BasicSamples\Grids\DragDropInTreeGrid\Index.cshtml" />
-    <Content Include="Modules\BasicSamples\Grids\InitialValuesForQuickFilters\Index.cshtml" />
-    <Content Include="Modules\BasicSamples\Grids\InlineImageInGrid\Index.cshtml" />
-    <Content Include="Modules\BasicSamples\Dialogs\GetInsertedRecordId\Index.cshtml" />
-    <Content Include="Modules\BasicSamples\Grids\RemovingAddButton\Index.cshtml" />
-    <Content Include="Modules\BasicSamples\Dialogs\DialogBoxes\Index.cshtml" />
-    <Content Include="Modules\BasicSamples\Dialogs\ReadOnlyDialog\Index.cshtml" />
-    <Content Include="Modules\BasicSamples\Dialogs\SerialAutoNumber\Index.cshtml" />
-    <Content Include="Modules\BasicSamples\Dialogs\PopulateLinkedData\Index.cshtml" />
-    <Content Include="Modules\BasicSamples\Grids\ProductExcelImport\SampleProductList.xlsx" />
-    <Content Include="Modules\BasicSamples\Grids\ProductExcelImport\Index.cshtml" />
-    <Content Include="Modules\BasicSamples\Grids\VSGalleryQA\Index.cshtml" />
-    <Content Include="Modules\BasicSamples\Grids\StoredProcedureGrid\Index.cshtml" />
-    <Content Include="Modules\BasicSamples\Editors\ChangingLookupText\Index.cshtml" />
-    <Content Include="Modules\BasicSamples\Grids\EnablingRowSelection\Index.cshtml" />
-    <Content Include="Modules\BasicSamples\Editors\SelectWithHardcodedValues\Index.cshtml" />
-    <Content Include="Modules\BasicSamples\Editors\StaticTextBlock\Index.cshtml" />
-    <Content Include="Modules\BasicSamples\Dialogs\OtherFormInTab\Index.cshtml" />
-    <Content Include="Modules\BasicSamples\Grids\InlineActionButtons\Index.cshtml" />
-    <Content Include="Modules\BasicSamples\Grids\TreeGrid\Index.cshtml" />
-    <Content Include="Modules\BasicSamples\Dialogs\OtherFormInTabOneBar\Index.cshtml" />
-    <Content Include="Modules\BasicSamples\Grids\QuickFilterCustomization\Index.cshtml" />
-    <Content Include="Modules\BasicSamples\Dialogs\EntityDialogAsPanel\Index.cshtml" />
-    <Content Include="Content\site\site.meeting.less" />
-    <Content Include="Content\site\site.organization.less" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="fonts\Simple-Line-Icons.woff2" />
-    <Content Include="fonts\Simple-Line-Icons.woff" />
-    <Content Include="fonts\Simple-Line-Icons.ttf" />
-    <Content Include="fonts\Simple-Line-Icons.eot" />
-    <Content Include="fonts\OpenSansSemiBold.woff" />
-    <Content Include="fonts\OpenSansLight.woff" />
-    <Content Include="fonts\OpenSansItalic.woff" />
-    <Content Include="fonts\OpenSansBold.woff" />
-    <Content Include="fonts\OpenSans.woff" />
-    <Content Include="fonts\ionicons.woff" />
-    <Content Include="fonts\ionicons.ttf" />
-    <Content Include="fonts\ionicons.eot" />
-    <Content Include="fonts\FontAwesome.otf" />
-    <Content Include="fonts\fontawesome-webfont.woff2" />
-    <Content Include="fonts\fontawesome-webfont.woff" />
-    <Content Include="fonts\fontawesome-webfont.ttf" />
-    <Content Include="fonts\fontawesome-webfont.eot" />
-    <Content Include="Content\toastr.scss" />
-    <Content Include="Content\toastr.less" />
     <None Include="Imports\ServerTypings\ServerTypings.log">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </None>
-    <Content Include="Modules\BasicSamples\Dialogs\OtherFormInTab\OtherFormInTabDialog.Template.html" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Dialogs\EntityDialogAsPanel\EntityDialogAsPanel.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Dialogs\OtherFormInTabOneBar\OtherFormOneBarDialog.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Dialogs\OtherFormInTabOneBar\OtherFormOneBarGrid.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Dialogs\OtherFormInTab\OtherFormInTabGrid.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Dialogs\OtherFormInTab\OtherFormInTabDialog.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Dialogs\DialogBoxes\DialogBoxes.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Dialogs\PopulateLinkedData\PopulateLinkedDataDialog.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Dialogs\PopulateLinkedData\PopulateLinkedDataGrid.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Dialogs\SerialAutoNumber\SerialAutoNumberDialog.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Dialogs\SerialAutoNumber\SerialAutoNumberGrid.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Dialogs\ReadOnlyDialog\ReadOnlyDialog.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Dialogs\ReadOnlyDialog\ReadOnlyGrid.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Editors\StaticTextBlock\StaticTextBlockDialog.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Editors\StaticTextBlock\StaticTextBlock.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Editors\SelectWithHardcodedValues\HardcodedValuesDialog.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Editors\SelectWithHardcodedValues\HardcodedValuesEditor.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Editors\ChangingLookupText\ChangingLookupTextDialog.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Editors\ChangingLookupText\ChangingLookupTextEditor.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Grids\QuickFilterCustomization\QuickFilterCustomization.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Grids\InlineActionButtons\InlineActionGrid.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Grids\ProductExcelImport\ProductExcelImportDialog.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Grids\ProductExcelImport\ProductExcelImportGrid.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Grids\RemovingAddButton\RemovingAddButton.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Dialogs\GetInsertedRecordId\GetInsertedRecordIdDialog.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Dialogs\GetInsertedRecordId\GetInsertedRecordIdGrid.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Grids\InlineImageInGrid\InlineImageFormatter.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Grids\InlineImageInGrid\InlineImageInGrid.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Grids\ConditionalFormatting\ConditionalFormattingGrid.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Grids\InitialValuesForQuickFilters\InitialValuesForQuickFilters.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Grids\CustomLinksInGrid\CustomLinksInGrid.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Grids\EnablingRowSelection\RowSelectionGrid.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Grids\EnablingRowSelection\SelectableEntityGrid.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Grids\StoredProcedureGrid\CustomerGrossSalesGrid.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Grids\TreeGrid\TreeGrid.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Grids\VSGalleryQA\VSGalleryQAGrid.ts" />
     <TypeScriptCompile Include="Modules\Common\Helpers\EnumSelectFormatter.ts" />
     <TypeScriptCompile Include="Modules\Common\Helpers\LanguageList.ts" />
     <TypeScriptCompile Include="Modules\Common\Helpers\DialogUtils.ts" />
-    <TypeScriptCompile Include="Imports\ServerTypings\BasicSamples.ChangingLookupTextForm.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\BasicSamples.CustomerGrossSalesColumns.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\BasicSamples.CustomerGrossSalesListRequest.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\BasicSamples.CustomerGrossSalesService.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\BasicSamples.DragDropSampleColumns.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\BasicSamples.DragDropSampleForm.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\BasicSamples.DragDropSampleRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\BasicSamples.DragDropSampleService.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\BasicSamples.HardcodedValuesForm.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\BasicSamples.InlineImageInGridColumns.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\BasicSamples.PopulateLinkedDataForm.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\BasicSamples.ProductExcelImportForm.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\BasicSamples.ProductExcelImportService.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\BasicSamples.StaticTextBlockForm.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\BasicSamples.VSGalleryQAColumns.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\BasicSamples.VSGalleryQAPost.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\BasicSamples.VSGalleryQAService.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\BasicSamples.VSGalleryQAThread.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\Common.UserPreferenceRetrieveRequest.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
@@ -1338,48 +1514,6 @@
     <TypeScriptCompile Include="Imports\ServerTypings\GetNextNumberResponse.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingAgendaColumns.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingAgendaRelevantColumns.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingAgendaTypeColumns.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingAttendanceStatus.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingAttendeeColumns.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingAttendeeType.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingColumns.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingDecisionColumns.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingDecisionRelevantColumns.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingLocationColumns.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingTypeColumns.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.OrderListRequest.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Organization.BusinessUnitColumns.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Organization.ContactColumns.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Common\Navigation\ThemeSelection.ts" />
     <TypeScriptCompile Include="Modules\Common\Navigation\SidebarSearch.ts" />
     <TypeScriptCompile Include="Modules\Common\Navigation\LanguageSelection.ts" />
@@ -1387,191 +1521,18 @@
     <TypeScriptCompile Include="Modules\Common\Reporting\ReportDialog.ts" />
     <TypeScriptCompile Include="Modules\Common\ScriptInitialization.ts" />
     <TypeScriptCompile Include="Modules\Common\UserPreference\UserPreferenceStorage.ts" />
-    <TypeScriptCompile Include="Modules\Infra\SupportTypeString\SupportTypeStringDialog.ts" />
-    <TypeScriptCompile Include="Modules\Infra\SupportTypeString\SupportTypeStringEditor.ts" />
-    <TypeScriptCompile Include="Modules\Infra\SupportTypeString\SupportTypeStringEditorDialog.ts" />
-    <TypeScriptCompile Include="Modules\Infra\SupportTypeString\SupportTypeStringGrid.ts" />
-    <TypeScriptCompile Include="Modules\Infra\SupportType\SupportTypeDialog.ts" />
-    <TypeScriptCompile Include="Modules\Infra\SupportType\SupportTypeGrid.ts" />
-    <TypeScriptCompile Include="Modules\Infra\Support\SupportDialog.ts" />
-    <TypeScriptCompile Include="Modules\Infra\Support\SupportGrid.ts" />
     <TypeScriptCompile Include="Modules\Membership\Account\ChangePassword\ChangePasswordPanel.ts" />
     <TypeScriptCompile Include="Modules\Membership\Account\ForgotPassword\ForgotPasswordPanel.ts" />
     <TypeScriptCompile Include="Modules\Membership\Account\ResetPassword\ResetPasswordPanel.ts" />
-    <TypeScriptCompile Include="Modules\Membership\Account\LoginPanel.ts" />
     <TypeScriptCompile Include="Modules\Membership\Account\SignUp\SignUpPanel.ts" />
-    <TypeScriptCompile Include="Modules\Northwind\Category\CategoryDialog.ts" />
-    <TypeScriptCompile Include="Modules\Northwind\Category\CategoryGrid.ts" />
-    <TypeScriptCompile Include="Modules\Northwind\Customer\CustomerGrid.ts" />
-    <TypeScriptCompile Include="Modules\Northwind\Customer\EmployeeListFormatter.ts" />
-    <TypeScriptCompile Include="Modules\Northwind\Customer\CustomerOrderDialog.ts" />
-    <TypeScriptCompile Include="Modules\Northwind\Customer\CustomerEditor.ts" />
-    <TypeScriptCompile Include="Modules\Northwind\Customer\CustomerDialog.ts" />
-    <TypeScriptCompile Include="Modules\Northwind\Employee\EmployeeFormatter.ts" />
-    <TypeScriptCompile Include="Modules\Northwind\Note\NoteDialog.ts" />
-    <TypeScriptCompile Include="Modules\Northwind\Order\OrderDialog.ts" />
-    <TypeScriptCompile Include="Modules\Northwind\Order\FreightFormatter.ts" />
-    <TypeScriptCompile Include="Modules\Northwind\Region\RegionDialog.ts" />
-    <TypeScriptCompile Include="Modules\Northwind\Region\RegionGrid.ts" />
-    <TypeScriptCompile Include="Modules\Northwind\Shared\PhoneEditor.ts" />
-    <TypeScriptCompile Include="Modules\Northwind\Shipper\ShipperDialog.ts" />
-    <TypeScriptCompile Include="Modules\Northwind\Shipper\ShipperFormatter.ts" />
-    <TypeScriptCompile Include="Modules\Northwind\Shipper\ShipperGrid.ts" />
-    <TypeScriptCompile Include="Modules\Northwind\Supplier\SupplierGrid.ts" />
-    <TypeScriptCompile Include="Modules\Northwind\Supplier\SupplierDialog.ts" />
-    <TypeScriptCompile Include="Modules\Northwind\Territory\TerritoryDialog.ts" />
-    <TypeScriptCompile Include="Modules\Northwind\Territory\TerritoryGrid.ts" />
     <Content Include="Modules\Common\Reporting\ReportDialog.Template.html" />
     <Content Include="Modules\Membership\Account\ForgotPassword\AccountForgotPassword.AdminLTE.cshtml" />
     <Content Include="Modules\Membership\Account\ResetPassword\AccountResetPassword.AdminLTE.cshtml" />
     <Content Include="Modules\Membership\Account\AccountLogin.AdminLTE.cshtml" />
-    <Content Include="packages.config" />
-    <Content Include="Scripts\ckeditor\skins\moono\readme.md" />
-    <Content Include="Scripts\ckeditor\README.md" />
-    <Content Include="Scripts\ckeditor\LICENSE.md" />
-    <Content Include="Scripts\ckeditor\CHANGES.md" />
-    <Content Include="Modules\Infra\SupportTypeString\SupportTypeStringIndex.cshtml" />
-    <Content Include="Modules\Infra\SupportType\SupportTypeIndex.cshtml" />
-    <Content Include="Modules\Infra\Support\SupportIndex.cshtml" />
-    <None Include="Scripts\jquery-3.1.1.intellisense.js" />
-    <Content Include="Scripts\jquery-3.1.1.js" />
-    <Content Include="Scripts\jquery-3.1.1.min.js" />
-    <Content Include="Scripts\jquery-3.1.1.slim.js" />
-    <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
-    <Content Include="Scripts\jquery-ui-1.12.1.js" />
-    <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
-    <Content Include="Scripts\jquery-ui-i18n.js" />
-    <Content Include="Scripts\jquery-ui-i18n.min.js" />
-    <Content Include="Scripts\jquery.autoNumeric.js" />
-    <Content Include="Scripts\jquery.autoNumeric.min.js" />
-    <Content Include="Scripts\jquery.blockUI.js" />
-    <Content Include="Scripts\jquery.blockUI.min.js" />
-    <Content Include="Scripts\jquery.colorbox.js" />
-    <Content Include="Scripts\jquery.colorbox.min.js" />
-    <Content Include="Scripts\jquery.cookie.js" />
-    <Content Include="Scripts\jquery.cookie.min.js" />
-    <Content Include="Scripts\jquery.cropzoom.js" />
-    <Content Include="Scripts\jquery.cropzoom.min.js" />
-    <Content Include="Scripts\jquery.dialogextendQ.js" />
-    <Content Include="Scripts\jquery.dialogextendQ.min.js" />
-    <Content Include="Scripts\jquery.event.drag.js" />
     <Content Include="Scripts\jquery.event.drag.live.js" />
     <Content Include="Scripts\jquery.event.drag.live.min.js" />
-    <Content Include="Scripts\jquery.event.drag.min.js" />
-    <Content Include="Scripts\jquery.fileupload.js" />
-    <Content Include="Scripts\jquery.fileupload.min.js" />
     <Content Include="Scripts\jquery.icheck.js" />
     <Content Include="Scripts\jquery.icheck.min.js" />
-    <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.1.1.min.map" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.iframe-transport.js" />
-    <Content Include="Scripts\jquery.iframe-transport.min.js" />
-    <Content Include="Scripts\jquery.json.js" />
-    <Content Include="Scripts\jquery.json.min.js" />
-    <Content Include="Scripts\jquery.maskedinput.js" />
-    <Content Include="Scripts\jquery.maskedinput.min.js" />
-    <Content Include="Scripts\jquery.scrollintoview.js" />
-    <Content Include="Scripts\jquery.scrollintoview.min.js" />
-    <Content Include="Scripts\jquery.slimscroll.js" />
-    <Content Include="Scripts\jquery.slimscroll.min.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jspdf.js" />
-    <Content Include="Scripts\jspdf.min.js" />
-    <Content Include="Scripts\jspdf.plugin.autotable.js" />
-    <Content Include="Scripts\jspdf.plugin.autotable.min.js" />
-    <Content Include="Scripts\jsrender.js" />
-    <Content Include="Scripts\jsrender.min.js" />
-    <Content Include="Scripts\pace.js" />
-    <Content Include="Scripts\pace.min.js" />
-    <Content Include="Scripts\rsvp.js" />
-    <Content Include="Scripts\rsvp.min.js" />
-    <Content Include="Scripts\saltarelle\linq.js" />
-    <Content Include="Scripts\saltarelle\linq.min.js" />
-    <Content Include="Scripts\saltarelle\mscorlib.js" />
-    <Content Include="Scripts\saltarelle\mscorlib.min.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_ar.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_az.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_bg.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_ca.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_cs.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_da.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_de.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_el.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_es.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_et.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_eu.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_fa.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_fi.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_fr.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_gl.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_he.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_hr.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_hu.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_id.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_is.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_it.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_ja.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_ka.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_ko.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_lt.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_lv.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_mk.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_ms.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_nl.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_no.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_pl.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_pt-BR.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_pt-PT.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_ro.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_rs.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_ru.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_sk.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_sv.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_th.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_tr.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_ua.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_ug-CN.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_uk.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_vi.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_zh-CN.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_zh-TW.js" />
-    <Content Include="Scripts\select2.js" />
-    <Content Include="Scripts\select2.min.js" />
-    <Content Include="Scripts\serenity\Serenity.CoreLib.js" />
-    <Content Include="Scripts\serenity\Serenity.CoreLib.min.js" />
-    <Content Include="Scripts\serenity\Serenity.Script.UI.js" />
-    <Content Include="Scripts\serenity\Serenity.Script.UI.min.js" />
-    <Content Include="Scripts\SlickGrid\Controls\slick.columnpicker.js" />
-    <Content Include="Scripts\SlickGrid\Controls\slick.pager.js" />
-    <Content Include="Scripts\SlickGrid\MIT-LICENSE.txt" />
-    <Content Include="Scripts\SlickGrid\Plugins\slick.autotooltips.js" />
-    <Content Include="Scripts\SlickGrid\Plugins\slick.autotooltips.min.js" />
-    <Content Include="Scripts\SlickGrid\Plugins\slick.cellcopymanager.js" />
-    <Content Include="Scripts\SlickGrid\Plugins\slick.cellrangedecorator.js" />
-    <Content Include="Scripts\SlickGrid\Plugins\slick.cellrangeselector.js" />
-    <Content Include="Scripts\SlickGrid\Plugins\slick.cellselectionmodel.js" />
-    <Content Include="Scripts\SlickGrid\Plugins\slick.checkboxselectcolumn.js" />
-    <Content Include="Scripts\SlickGrid\Plugins\slick.headerbuttons.js" />
-    <Content Include="Scripts\SlickGrid\Plugins\slick.headermenu.js" />
-    <Content Include="Scripts\SlickGrid\Plugins\slick.rowmovemanager.js" />
-    <Content Include="Scripts\SlickGrid\Plugins\slick.rowselectionmodel.js" />
-    <Content Include="Scripts\SlickGrid\slick.core.js" />
-    <Content Include="Scripts\SlickGrid\slick.core.min.js" />
-    <Content Include="Scripts\SlickGrid\slick.dataview.js" />
-    <Content Include="Scripts\SlickGrid\slick.editors.js" />
-    <Content Include="Scripts\SlickGrid\slick.formatters.js" />
-    <Content Include="Scripts\SlickGrid\slick.grid.js" />
-    <Content Include="Scripts\SlickGrid\slick.grid.min.js" />
-    <Content Include="Scripts\SlickGrid\slick.groupitemmetadataprovider.js" />
-    <Content Include="Scripts\SlickGrid\slick.groupitemmetadataprovider.min.js" />
-    <Content Include="Scripts\SlickGrid\slick.remotemodel-yahoo.js" />
-    <Content Include="Scripts\SlickGrid\slick.remotemodel.js" />
-    <Content Include="Scripts\sortable.js" />
-    <Content Include="Scripts\sortable.min.js" />
-    <Content Include="Scripts\toastr.js" />
-    <Content Include="Scripts\toastr.min.js" />
     <Content Include="Scripts\vegas\overlays\01.png" />
     <Content Include="Scripts\vegas\overlays\02.png" />
     <Content Include="Scripts\vegas\overlays\03.png" />
@@ -1591,24 +1552,7 @@
     <Content Include="Scripts\site\texts\site.texts.zh-CN.json" />
     <Content Include="Scripts\site\texts\site.texts.it.json" />
     <Content Include="Scripts\site\texts\site.texts.pt.json" />
-    <Content Include="Scripts\site\texts\northwind\northwind.invariant.json" />
-    <Content Include="Scripts\site\texts\northwind\northwind.de.json" />
-    <Content Include="Scripts\site\texts\samples\samples.de.json" />
-    <Content Include="Scripts\site\texts\northwind\northwind.es.json" />
-    <Content Include="Scripts\site\texts\samples\samples.es.json" />
-    <Content Include="Scripts\site\texts\northwind\northwind.pt.json" />
-    <Content Include="Scripts\site\texts\samples\samples.pt.json" />
-    <Content Include="Scripts\site\texts\northwind\northwind.tr.json" />
     <Content Include="Scripts\site\texts\site.texts.pt-BR.json" />
-    <Content Include="Scripts\site\texts\northwind\northwind.pt-BR.json" />
-    <Content Include="Scripts\site\texts\samples\samples.pt-BR.json" />
-    <Content Include="tools\JsEngine\json2.min.js" />
-    <Content Include="tools\JsEngine\MsieJavaScriptEngine.dll" />
-    <Content Include="tools\JsEngine\typescriptServices.js" />
-    <Content Include="tools\Mono.Cecil\Mono.Cecil.dll" />
-    <Content Include="tools\Mono.Cecil\Mono.Cecil.Mdb.dll" />
-    <Content Include="tools\Mono.Cecil\Mono.Cecil.Pdb.dll" />
-    <Content Include="tools\Mono.Cecil\Mono.Cecil.Rocks.dll" />
     <Content Include="tools\Node\less\lib\lessc.js" />
     <Content Include="tools\Node\less\lib\less\colors.js" />
     <Content Include="tools\Node\less\lib\less\encoder.js" />
@@ -1660,28 +1604,9 @@
     <Content Include="tslint.json" />
     <Content Include="Scripts\vegas\vegas.min.js.map" />
     <Content Include="Scripts\site\texts\site.texts.fa.json" />
-    <Content Include="Scripts\site\texts\northwind\northwind.fa.json" />
-    <Content Include="Scripts\site\texts\samples\samples.fa.json" />
     <Content Include="Scripts\site\texts\site.texts.vi-VN.json" />
-    <Content Include="Scripts\site\texts\northwind\northwind.vi-VN.json" />
-    <Content Include="Scripts\site\texts\samples\samples.vi-VN.json" />
-    <Content Include="Scripts\site\texts\meeting\meeting.vi-VN.json" />
-    <Content Include="Scripts\site\texts\organization\organization.vi-VN.json" />
     <Content Include="package.json" />
-    <Content Include="Scripts\SlickGrid\README.md" />
-    <Content Include="Scripts\serenity\texts\serenity.texts.zh-CN.json" />
-    <Content Include="Scripts\serenity\texts\serenity.texts.vi-VN.json" />
-    <Content Include="Scripts\serenity\texts\serenity.texts.tr.json" />
-    <Content Include="Scripts\serenity\texts\serenity.texts.ru.json" />
-    <Content Include="Scripts\serenity\texts\serenity.texts.pt.json" />
-    <Content Include="Scripts\serenity\texts\serenity.texts.pt-BR.json" />
-    <Content Include="Scripts\serenity\texts\serenity.texts.it.json" />
-    <Content Include="Scripts\serenity\texts\serenity.texts.fa.json" />
-    <Content Include="Scripts\serenity\texts\serenity.texts.es.json" />
-    <Content Include="Scripts\serenity\texts\serenity.texts.de.json" />
-    <Content Include="tools\Node\lessc.cmd" />
-    <Content Include="tools\JsEngine\lib.d.ts_" />
-    <None Include="tsconfig.json" />
+    <Content Include="Scripts\site\texts\site.texts.ru.json" />
     <Content Include="Scripts\jvectormap\jquery-jvectormap-1.2.2.css" />
     <Content Include="Scripts\jvectormap\jquery-jvectormap-1.2.2.min.js" />
     <Content Include="Scripts\jvectormap\jquery-jvectormap-world-mill-en.js" />
@@ -1693,7 +1618,6 @@
     <Content Include="Scripts\mousetrap.min.js" />
     <Content Include="Scripts\raphael\raphael-min.js" />
     <Content Include="Scripts\raphael\raphael.js" />
-    <Content Include="Scripts\site\Store.Web.js" />
     <Content Include="Scripts\sparkline\jquery.sparkline.js" />
     <Content Include="Scripts\sparkline\jquery.sparkline.min.js" />
     <Content Include="Scripts\timepicker\bootstrap-timepicker.css" />
@@ -1713,39 +1637,10 @@
     <Content Include="Content\site\site.theme.less" />
     <Content Include="Scripts\input-mask\phone-codes\phone-be.json" />
     <Content Include="Scripts\input-mask\phone-codes\phone-codes.json" />
-    <Content Include="Modules\AdminLTE\Widgets.cshtml" />
-    <Content Include="Modules\AdminLTE\Charts\Morris.cshtml" />
-    <Content Include="Modules\AdminLTE\Charts\ChartJS.cshtml" />
-    <Content Include="Modules\AdminLTE\Charts\Flot.cshtml" />
-    <Content Include="Modules\AdminLTE\Charts\InlineCharts.cshtml" />
     <Content Include="Imports\MVC\MVC.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>MVC.cs</LastGenOutput>
     </Content>
-    <Content Include="Modules\AdminLTE\UIElements\Buttons.cshtml" />
-    <Content Include="Modules\AdminLTE\UIElements\General.cshtml" />
-    <Content Include="Modules\AdminLTE\UIElements\Icons.cshtml" />
-    <Content Include="Modules\AdminLTE\UIElements\Modals.cshtml" />
-    <Content Include="Modules\AdminLTE\UIElements\Sliders.cshtml" />
-    <Content Include="Modules\AdminLTE\UIElements\Timeline.cshtml" />
-    <Content Include="Modules\AdminLTE\Forms\AdvancedElements.cshtml" />
-    <Content Include="Modules\AdminLTE\Forms\GeneralElements.cshtml" />
-    <Content Include="Modules\AdminLTE\Forms\TextEditors.cshtml" />
-    <Content Include="Modules\AdminLTE\Tables\SimpleTables.cshtml" />
-    <Content Include="Modules\AdminLTE\Calendar.cshtml" />
-    <Content Include="Modules\AdminLTE\Mailbox\Inbox.cshtml" />
-    <Content Include="Modules\AdminLTE\Mailbox\Compose.cshtml" />
-    <Content Include="Modules\AdminLTE\Mailbox\Read.cshtml" />
-    <Content Include="Modules\AdminLTE\Examples\Invoice.cshtml" />
-    <Content Include="Modules\AdminLTE\Examples\Profile.cshtml" />
-    <Content Include="Modules\AdminLTE\Examples\Login.cshtml" />
-    <Content Include="Modules\AdminLTE\Examples\Register.cshtml" />
-    <Content Include="Modules\AdminLTE\Examples\Lockscreen.cshtml" />
-    <Content Include="Modules\AdminLTE\Examples\Error404.cshtml" />
-    <Content Include="Modules\AdminLTE\Examples\Error500.cshtml" />
-    <Content Include="Modules\AdminLTE\Examples\BlankPage.cshtml" />
-    <Content Include="Modules\AdminLTE\Examples\PacePage.cshtml" />
-    <Content Include="Modules\AdminLTE\Examples\InvoicePrint.cshtml" />
     <Content Include="Content\bootstrap-less\mixins\reset-text.less" />
     <Content Include="Modules\Membership\Account\SignUp\AccountSignUp.cshtml" />
     <Content Include="Modules\Membership\Account\SignUp\AccountActivateEmail.cshtml" />
@@ -1769,6 +1664,9 @@
     <Content Include="Views\Errors\ValidationError.cshtml" />
     <Content Include="Scripts\site\texts\site.texts.de.json" />
     <Content Include="tools\Web.config" />
+    <Content Include="Views\Errors\AccessDenied.cshtml" />
+    <Content Include="Views\Shared\_LayoutSlim.cshtml" />
+    <Content Include="Views\Shared\_LayoutSlimHead.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1776,223 +1674,234 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <Content Include="Modules\Administration\User\UserIndex.cshtml" />
-    <Content Include="Modules\Northwind\Category\CategoryIndex.cshtml" />
-    <Content Include="Modules\Northwind\Customer\CustomerIndex.cshtml" />
-    <Content Include="Modules\Northwind\OrderDetail\OrderDetailIndex.cshtml" />
-    <Content Include="Modules\Northwind\Order\OrderIndex.cshtml" />
-    <Content Include="Modules\Northwind\Product\ProductIndex.cshtml" />
-    <Content Include="Modules\Northwind\Region\RegionIndex.cshtml" />
-    <Content Include="Modules\Northwind\Shipper\ShipperIndex.cshtml" />
-    <Content Include="Modules\Northwind\Supplier\SupplierIndex.cshtml" />
-    <Content Include="Modules\Northwind\Territory\TerritoryIndex.cshtml" />
     <Content Include="Modules\Administration\Language\LanguageIndex.cshtml" />
     <Content Include="Modules\Administration\Translation\TranslationIndex.cshtml" />
     <Content Include="Modules\Administration\Role\RoleIndex.cshtml" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Dialogs\ChartInDialog\ChartInDialog.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Dialogs\CloneableEntityDialog\CloneableEntityDialog.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Dialogs\CloneableEntityDialog\CloneableEntityGrid.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Dialogs\DefaultValuesInNewDialog\DefaultValuesInNewGrid.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Dialogs\MultiColumnResponsiveDialog\MultiColumnResponsiveDialog.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Dialogs\MultiColumnResponsiveDialog\MultiColumnResponsiveGrid.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Dialogs\ResponsiveDialog\ResponsiveDialog.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Dialogs\ResponsiveDialog\ResponsiveGrid.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Editors\FilteredLookupInDetail\FilteredLookupDetailDialog.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Editors\FilteredLookupInDetail\FilteredLookupInDetailDialog.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Editors\FilteredLookupInDetail\FilteredLookupDetailEditor.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Editors\FilteredLookupInDetail\FilteredLookupInDetailGrid.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Editors\LookupFilterByMultipleValues\LookupFilterByMultipleGrid.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Editors\LookupFilterByMultipleValues\LookupFilterByMultipleDialog.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Editors\LookupFilterByMultipleValues\ProduceSeafoodCategoryEditor.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Grids\CancellableBulkAction\CancellableBulkActionGrid.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Grids\GridFilteredByCriteria\GridFilteredByCriteria.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Grids\GroupingAndSummariesInGrid\GroupingAndSummariesInGrid.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Grids\ViewWithoutID\ViewWithoutIDGrid.ts" />
     <TypeScriptCompile Include="Modules\Common\Helpers\GridEditorDialog.ts" />
     <TypeScriptCompile Include="Modules\Common\Reporting\ReportHelper.ts" />
     <TypeScriptCompile Include="Modules\Common\Helpers\GridEditorBase.ts" />
     <TypeScriptCompile Include="Modules\Common\Helpers\ExcelExportHelper.ts" />
     <TypeScriptCompile Include="Modules\Common\Helpers\BasicProgressDialog.ts" />
     <TypeScriptCompile Include="Modules\Common\Helpers\BulkServiceAction.ts" />
-    <TypeScriptCompile Include="Modules\Northwind\Customer\CustomerOrdersGrid.ts" />
-    <TypeScriptCompile Include="Modules\Northwind\Note\NotesEditor.ts" />
-    <TypeScriptCompile Include="Modules\Northwind\OrderDetail\OrderDetailDialog.ts" />
-    <TypeScriptCompile Include="Modules\Northwind\OrderDetail\OrderDetailsEditor.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Grids\CancellableBulkAction\OrderBulkAction.ts" />
-    <TypeScriptCompile Include="Modules\Northwind\Order\OrderGrid.ts" />
-    <TypeScriptCompile Include="Modules\Northwind\Product\ProductDialog.ts" />
-    <TypeScriptCompile Include="Modules\Northwind\Product\ProductGrid.ts" />
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.CustomerDetailsRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Modules\Organization\BusinessUnit\BusinessUnitEditor.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Grids\DragDropInTreeGrid\DragDropSampleGrid.ts" />
-    <TypeScriptCompile Include="Modules\BasicSamples\Grids\DragDropInTreeGrid\DragDropSampleDialog.ts" />
-    <Content Include="Modules\Organization\Contact\ContactIndex.cshtml" />
-    <TypeScriptCompile Include="Imports\ServerTypings\Organization.ContactRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Organization.ContactService.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Organization.ContactForm.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Modules\Organization\Contact\ContactGrid.ts" />
-    <TypeScriptCompile Include="Modules\Organization\Contact\ContactDialog.ts" />
-    <Content Include="Modules\Organization\BusinessUnit\BusinessUnitIndex.cshtml" />
-    <TypeScriptCompile Include="Imports\ServerTypings\Organization.BusinessUnitRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Organization.BusinessUnitService.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Organization.BusinessUnitForm.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Modules\Organization\BusinessUnit\BusinessUnitGrid.ts" />
-    <TypeScriptCompile Include="Modules\Organization\BusinessUnit\BusinessUnitDialog.ts" />
-    <Content Include="Modules\Meeting\MeetingAgendaRelevant\MeetingAgendaRelevantIndex.cshtml" />
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingAgendaRelevantRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingAgendaRelevantService.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingAgendaRelevantForm.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Modules\Meeting\MeetingAgendaRelevant\MeetingAgendaRelevantGrid.ts" />
-    <TypeScriptCompile Include="Modules\Meeting\MeetingAgendaRelevant\MeetingAgendaRelevantDialog.ts" />
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingAgendaRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingAgendaService.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingAgendaForm.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Modules\Meeting\MeetingAgenda\MeetingAgendaGrid.ts" />
-    <TypeScriptCompile Include="Modules\Meeting\MeetingAgenda\MeetingAgendaDialog.ts" />
-    <Content Include="Modules\Meeting\MeetingAgendaType\MeetingAgendaTypeIndex.cshtml" />
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingAgendaTypeRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingAgendaTypeService.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingAgendaTypeForm.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Modules\Meeting\MeetingAgendaType\MeetingAgendaTypeGrid.ts" />
-    <TypeScriptCompile Include="Modules\Meeting\MeetingAgendaType\MeetingAgendaTypeDialog.ts" />
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingAttendeeRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingAttendeeForm.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Modules\Meeting\MeetingAttendee\MeetingAttendeeEditor.ts" />
-    <TypeScriptCompile Include="Modules\Meeting\MeetingAttendee\MeetingAttendeeDialog.ts" />
-    <Content Include="Modules\Meeting\MeetingDecisionRelevant\MeetingDecisionRelevantIndex.cshtml" />
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingDecisionRelevantRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingDecisionRelevantService.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingDecisionRelevantForm.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Modules\Meeting\MeetingDecisionRelevant\MeetingDecisionRelevantGrid.ts" />
-    <TypeScriptCompile Include="Modules\Meeting\MeetingDecisionRelevant\MeetingDecisionRelevantDialog.ts" />
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingDecisionRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingDecisionService.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingDecisionForm.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Modules\Meeting\MeetingDecision\MeetingDecisionGrid.ts" />
-    <TypeScriptCompile Include="Modules\Meeting\MeetingDecision\MeetingDecisionDialog.ts" />
-    <Content Include="Modules\Meeting\MeetingLocation\MeetingLocationIndex.cshtml" />
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingLocationRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingLocationService.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingLocationForm.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Modules\Meeting\MeetingLocation\MeetingLocationGrid.ts" />
-    <TypeScriptCompile Include="Modules\Meeting\MeetingLocation\MeetingLocationDialog.ts" />
-    <Content Include="Modules\Meeting\Meeting\MeetingIndex.cshtml" />
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingService.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingForm.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Modules\Meeting\Meeting\MeetingGrid.ts" />
-    <TypeScriptCompile Include="Modules\Meeting\Meeting\MeetingDialog.ts" />
-    <Content Include="Modules\Meeting\MeetingType\MeetingTypeIndex.cshtml" />
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingTypeRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingTypeService.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingTypeForm.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Modules\Meeting\MeetingType\MeetingTypeGrid.ts" />
-    <TypeScriptCompile Include="Modules\Meeting\MeetingType\MeetingTypeDialog.ts" />
     <TypeScriptCompile Include="Scripts\typings\serenity\Serenity.CoreLib.d.ts" />
-    <Content Include="Modules\Administration\Tenant\TenantIndex.cshtml" />
-    <TypeScriptCompile Include="Imports\ServerTypings\Administration.TenantRow.ts">
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.CategoryRow.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Administration.TenantService.ts">
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.CategoryService.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Administration.TenantForm.ts">
+    <Content Include="Modules\Store\Category\CategoryIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Store\Category\CategoryDialog.ts" />
+    <TypeScriptCompile Include="Modules\Store\Category\CategoryGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.CategoryForm.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="Modules\Administration\Tenant\TenantGrid.ts" />
-    <TypeScriptCompile Include="Modules\Administration\Tenant\TenantDialog.ts" />
-    <TypeScriptCompile Include="Imports\ServerTypings\Infra.SupportTypeRow.ts">
+    <Content Include="Content\site\site.store.less" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.CategoryLangRow.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Infra.SupportTypeService.ts">
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.CategoryLangService.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Infra.SupportTypeForm.ts">
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.MeasureRow.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Infra.SupportTypeStringRow.ts">
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.MeasureService.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Infra.SupportTypeStringService.ts">
+    <Content Include="Modules\Store\Measure\MeasureIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Store\Measure\MeasureDialog.ts" />
+    <TypeScriptCompile Include="Modules\Store\Measure\MeasureGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.MeasureForm.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Infra.SupportTypeStringForm.ts">
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.SupplierRow.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Store.SupportRow.ts" />
-    <TypeScriptCompile Include="Imports\ServerTypings\Store.SupportService.ts" />
-    <TypeScriptCompile Include="Imports\ServerTypings\Store.SupportForm.ts" />
-    <TypeScriptCompile Include="Imports\ServerTypings\Store.SupportTypeRow.ts" />
-    <TypeScriptCompile Include="Imports\ServerTypings\Store.SupportTypeService.ts" />
-    <TypeScriptCompile Include="Imports\ServerTypings\Store.SupportTypeForm.ts" />
-    <TypeScriptCompile Include="Imports\ServerTypings\Store.SupportTypeStringRow.ts" />
-    <TypeScriptCompile Include="Imports\ServerTypings\Store.SupportTypeStringService.ts" />
-    <TypeScriptCompile Include="Imports\ServerTypings\Store.SupportTypeStringForm.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.SupplierService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Modules\Store\Supplier\SupplierIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Store\Supplier\SupplierDialog.ts" />
+    <TypeScriptCompile Include="Modules\Store\Supplier\SupplierGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.SupplierForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ProductDetailRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ProductDetailService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Modules\Store\ProductDetail\ProductDetailIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Store\ProductDetail\ProductDetailDialog.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ProductDetailForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ProductLangRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ProductLangService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ProductRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ProductService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Modules\Store\Product\ProductIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Store\Product\ProductDialog.ts" />
+    <TypeScriptCompile Include="Modules\Store\Product\ProductGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ProductForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.OperationTypeRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.OperationTypeService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Modules\Store\OperationType\OperationTypeIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Store\OperationType\OperationTypeDialog.ts" />
+    <TypeScriptCompile Include="Modules\Store\OperationType\OperationTypeGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.OperationTypeForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ShopsRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ShopsService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Modules\Store\Shops\ShopsIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Store\Shops\ShopsDialog.ts" />
+    <TypeScriptCompile Include="Modules\Store\Shops\ShopsGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ShopsForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Store\Note\NoteDialog.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.OrderDetailRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.OrderDetailService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Modules\Store\OrderDetail\OrderDetailIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Store\OrderDetail\OrderDetailDialog.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.OrderDetailForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.OrderRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.OrderService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Modules\Store\Order\OrderIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Store\Order\OrderDialog.ts" />
+    <TypeScriptCompile Include="Modules\Store\Order\OrderGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.OrderForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Modules\Store\Shipper\ShipperIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Store\Shipper\ShipperDialog.ts" />
+    <TypeScriptCompile Include="Modules\Store\Shipper\ShipperGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.CounterpartyDetailRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.CounterpartyRepresentativeRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.CounterpartyRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.CounterpartyService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Modules\Store\Counterparty\CounterpartyIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Store\Counterparty\CounterpartyDialog.ts" />
+    <TypeScriptCompile Include="Modules\Store\Counterparty\CounterpartyGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.CounterpartyForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.OrderProductDetailRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.OrderProductDetailService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Modules\Store\OrderProductDetail\OrderProductDetailIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Store\OrderProductDetail\OrderProductDetailDialog.ts" />
+    <TypeScriptCompile Include="Modules\Store\OrderProductDetail\OrderProductDetailGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.OrderProductDetailForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.OrderProductRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.OrderProductService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Modules\Store\OrderProduct\OrderProductIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Store\OrderProduct\OrderProductDialog.ts" />
+    <TypeScriptCompile Include="Modules\Store\OrderProduct\OrderProductGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.OrderProductForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.WaresRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.WaresService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Modules\Store\Wares\WaresIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Store\Wares\WaresDialog.ts" />
+    <TypeScriptCompile Include="Modules\Store\Wares\WaresGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.WaresForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.WaresLangRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.WaresLangService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.CategoryTypeRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.CategoryTypeService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Modules\Store\CategoryType\CategoryTypeIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Store\CategoryType\CategoryTypeDialog.ts" />
+    <TypeScriptCompile Include="Modules\Store\CategoryType\CategoryTypeGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.CategoryTypeForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.WaresMovementRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.WaresMovementService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.WaresMovementForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.WaresMovementDetailsRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.WaresMovementDetailsService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.WaresMovementDetailsForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Modules\Store\WaresMovementDetails\WaresMovementDetailsIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Store\WaresMovementDetails\WaresMovementDetailsDialog.ts" />
+    <Content Include="Modules\Store\WaresMovement\WaresMovementIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Store\WaresMovement\WaresMovementDialog.ts" />
+    <TypeScriptCompile Include="Modules\Store\WaresMovement\WaresMovementGrid.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -2010,13 +1919,49 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Imports\ClientTypes\Infra.SuportTypeStringEditorAttribute.cs">
+    <Compile Include="Imports\ClientTypes\Store.CounterpartyEditorAttribute.cs">
       <DependentUpon>ClientTypes.tt</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\DefaultDB\DefaultDB_20170430_134800_MultiTenant.cs" />
-    <Compile Include="Migrations\DefaultDB\DefaultDB_20170703_130000_Support.cs" />
-    <Compile Include="Migrations\NorthwindDB\NorthwindDB_20160110_093500_MultiTenant.cs" />
-    <Compile Include="Migrations\StoreDB\StoreDB_20170703_130000_Support.cs" />
+    <Compile Include="Imports\ClientTypes\Store.CustomerEditorAttribute.cs">
+      <DependentUpon>ClientTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Imports\ClientTypes\Store.EmployeeFormatterAttribute.cs">
+      <DependentUpon>ClientTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Imports\ClientTypes\Store.EmployeeListFormatterAttribute.cs">
+      <DependentUpon>ClientTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Imports\ClientTypes\Store.FreightFormatterAttribute.cs">
+      <DependentUpon>ClientTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Imports\ClientTypes\Store.NotesEditorAttribute.cs">
+      <DependentUpon>ClientTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Imports\ClientTypes\Store.OperationTypeEditorAttribute.cs">
+      <DependentUpon>ClientTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Imports\ClientTypes\Store.OrderDetailsEditorAttribute.cs">
+      <DependentUpon>ClientTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Imports\ClientTypes\Store.PhoneEditorAttribute.cs">
+      <DependentUpon>ClientTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Imports\ClientTypes\Store.ProductDetailsEditorAttribute.cs">
+      <DependentUpon>ClientTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Imports\ClientTypes\Store.ShipperFormatterAttribute.cs">
+      <DependentUpon>ClientTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Imports\ClientTypes\Store.WaresEditorAttribute.cs">
+      <DependentUpon>ClientTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Imports\ClientTypes\Store.WaresMovementDetailsEditorAttribute.cs">
+      <DependentUpon>ClientTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\StoreDB\StoreDB_20181213_140000_CustomerDetails.cs" />
+    <Compile Include="Migrations\StoreDB\StoreDB_20181213_150000_Notes.cs" />
+    <Compile Include="Migrations\StoreDB\StoreDB_20181213_160000_ProductLog.cs" />
+    <Compile Include="Migrations\StoreDB\StoreDB_20181214_100000_CustomerGrossSales.cs" />
     <Compile Include="Modules\Administration\AdministrationNavigation.cs" />
     <Compile Include="Modules\Administration\Language\LanguageLookup.cs" />
     <Compile Include="Modules\Administration\RolePermission\RolePermissionUpdateRequest.cs" />
@@ -2025,81 +1970,25 @@
     <Compile Include="Modules\Administration\AdministrationPermissionKeys.cs" />
     <Compile Include="Modules\Administration\Tenant\IMultiTenantRow.cs" />
     <Compile Include="Modules\Administration\Tenant\MultiTenantBehavior.cs" />
-    <Compile Include="Modules\Administration\Tenant\MultiTenantRowLookupScript.cs" />
+    <Compile Include="Modules\Administration\Tenant\TenantColumns.cs" />
+    <Compile Include="Modules\Administration\Tenant\TenantEndpoint.cs" />
+    <Compile Include="Modules\Administration\Tenant\TenantForm.cs" />
+    <Compile Include="Modules\Administration\Tenant\TenantPage.cs" />
+    <Compile Include="Modules\Administration\Tenant\TenantRepository.cs" />
+    <Compile Include="Modules\Administration\Tenant\TenantRow.cs" />
+    <Compile Include="Modules\Administration\UserPermission\ImplicitPermissionAttribute.cs" />
     <Compile Include="Modules\Administration\UserPermission\UserPermissionListRequest.cs" />
     <Compile Include="Modules\Administration\UserPermission\UserPermissionUpdateRequest.cs" />
     <Compile Include="Modules\Administration\UserRole\UserRoleUpdateRequest.cs" />
     <Compile Include="Modules\Administration\UserRole\UserRoleListResponse.cs" />
     <Compile Include="Modules\Administration\UserRole\UserRoleListRequest.cs" />
     <Compile Include="Modules\Administration\UserRole\UserRoleEndpoint.cs" />
-    <Content Include="Modules\AdminLTE\DashboardV2.cshtml" />
     <Compile Include="Modules\Administration\User\Authentication\DirectoryEntry.cs" />
     <Compile Include="Modules\Administration\User\Authentication\ActiveDirectoryService.cs" />
     <Compile Include="Modules\Administration\User\Authentication\LdapDirectoryService.cs" />
     <Compile Include="Modules\Administration\User\Authentication\IDirectoryService.cs" />
     <Compile Include="Modules\Administration\User\Authentication\ScriptUserDefinition.cs" />
     <Compile Include="Modules\Administration\User\UserColumns.cs" />
-    <Compile Include="Modules\AdminLTE\AdminLTEController.cs" />
-    <Compile Include="Modules\AdminLTE\Charts\ChartsController.cs" />
-    <Compile Include="Modules\AdminLTE\Examples\ExamplesController.cs" />
-    <Compile Include="Modules\AdminLTE\Mailbox\MailboxController.cs" />
-    <Compile Include="Modules\AdminLTE\AdminLTENavigation.cs" />
-    <Compile Include="Modules\AdminLTE\Tables\TablesController.cs" />
-    <Compile Include="Modules\AdminLTE\Forms\FormsController.cs" />
-    <Compile Include="Modules\AdminLTE\UIElements\UIElementsController.cs" />
-    <Compile Include="Modules\BasicSamples\BasicSamplesEndpoint.cs" />
-    <Compile Include="Modules\BasicSamples\BasicSamplesHelper.cs" />
-    <Compile Include="Modules\BasicSamples\BasicSamplesModels.cs" />
-    <Compile Include="Modules\BasicSamples\BasicSamplesPage.cs" />
-    <Compile Include="Modules\BasicSamples\Dialogs\BasicSamplesNavigation.Dialogs.cs" />
-    <Compile Include="Modules\BasicSamples\Dialogs\BasicSamplesPage.Dialogs.cs" />
-    <Compile Include="Modules\BasicSamples\Dialogs\PopulateLinkedData\PopulateLinkedDataForm.cs" />
-    <Compile Include="Modules\BasicSamples\DynamicNavigation\DynamicNavigationSample.cs" />
-    <Compile Include="Modules\BasicSamples\Editors\BasicSamplesNavigation.Editors.cs" />
-    <Compile Include="Modules\BasicSamples\Editors\BasicSamplesPage.Editors.cs" />
-    <Compile Include="Modules\BasicSamples\Editors\StaticTextBlock\StaticTextBlockForm.cs" />
-    <Compile Include="Modules\BasicSamples\Editors\SelectWithHardcodedValues\HardcodedValuesForm.cs" />
-    <Compile Include="Modules\BasicSamples\Editors\ChangingLookupText\ChangingLookupTextForm.cs" />
-    <Compile Include="Modules\BasicSamples\Editors\FilteredLookupInDetail\FilteredLookupInDetailForm.cs" />
-    <Compile Include="Modules\BasicSamples\Editors\LookupFilterByMultipleValues\LookupFilterByMultipleForm.cs" />
-    <Compile Include="Modules\BasicSamples\Grids\BasicSamplesNavigation.Grids.cs" />
-    <Compile Include="Modules\BasicSamples\Grids\BasicSamplesPage.Grids.cs" />
-    <Compile Include="Modules\BasicSamples\Grids\InlineImageInGrid\InlineImageInGridColumns.cs" />
-    <Compile Include="Modules\BasicSamples\Grids\ProductExcelImport\ProductExcelImportForm.cs" />
-    <Compile Include="Modules\BasicSamples\Grids\ProductExcelImport\ProductExcelImportEndpoint.cs" />
-    <Compile Include="Modules\BasicSamples\Grids\StoredProcedureGrid\CustomerGrossSalesColumns.cs" />
-    <Compile Include="Modules\BasicSamples\Grids\StoredProcedureGrid\CustomerGrossSalesListRequest.cs" />
-    <Compile Include="Modules\BasicSamples\Grids\StoredProcedureGrid\CustomerGrossSalesEndpoint.cs" />
-    <Compile Include="Modules\BasicSamples\Grids\StoredProcedureGrid\CustomerGrossSalesRepository.cs" />
-    <Compile Include="Modules\Infra\InfraNavigation.cs" />
-    <Compile Include="Modules\Infra\InfraPermissionKeys.cs" />
-    <Compile Include="Modules\Infra\SupportTypeString\SupportTypeStringColumns.cs" />
-    <Compile Include="Modules\Infra\SupportTypeString\SupportTypeStringEndpoint.cs" />
-    <Compile Include="Modules\Infra\SupportTypeString\SupportTypeStringForm.cs" />
-    <Compile Include="Modules\Infra\SupportTypeString\SupportTypeStringLookup.cs" />
-    <Compile Include="Modules\Infra\SupportTypeString\SupportTypeStringPage.cs" />
-    <Compile Include="Modules\Infra\SupportTypeString\SupportTypeStringRepository.cs" />
-    <Compile Include="Modules\Infra\SupportTypeString\SupportTypeStringRow.cs" />
-    <Compile Include="Modules\Infra\SupportType\SupportTypeColumns.cs" />
-    <Compile Include="Modules\Infra\SupportType\SupportTypeEndpoint.cs" />
-    <Compile Include="Modules\Infra\SupportType\SupportTypeForm.cs" />
-    <Compile Include="Modules\Infra\SupportType\SupportTypePage.cs" />
-    <Compile Include="Modules\Infra\SupportType\SupportTypeRepository.cs" />
-    <Compile Include="Modules\Infra\SupportType\SupportTypeRow.cs" />
-    <Compile Include="Modules\Infra\Support\SupportColumns.cs" />
-    <Compile Include="Modules\Infra\Support\SupportEndpoint.cs" />
-    <Compile Include="Modules\Infra\Support\SupportForm.cs" />
-    <Compile Include="Modules\Infra\Support\SupportPage.cs" />
-    <Compile Include="Modules\Infra\Support\SupportRepository.cs" />
-    <Compile Include="Modules\Infra\Support\SupportRow.cs" />
-    <Compile Include="Modules\Infra\Support\SupportTypeLookup.cs" />
-    <Compile Include="Modules\Northwind\Customer\CustomerGrossSalesRow.cs" />
-    <Compile Include="Modules\BasicSamples\Grids\VSGalleryQA\VSGalleryQAColumns.cs" />
-    <Compile Include="Modules\BasicSamples\Grids\VSGalleryQA\VSGalleryQAParser.cs" />
-    <Compile Include="Modules\BasicSamples\Grids\VSGalleryQA\VSGalleryQAEndpoint.cs" />
-    <Compile Include="Modules\BasicSamples\Grids\VSGalleryQA\VSGalleryQAPost.cs" />
-    <Compile Include="Modules\BasicSamples\Grids\VSGalleryQA\VSGalleryQAThread.cs" />
-    <Compile Include="Modules\BasicSamples\BasicSamplesNavigation.cs" />
     <Compile Include="Modules\Common\Helpers\EmailHelper.cs" />
     <Compile Include="Modules\Common\Helpers\ExcelImportRequest.cs" />
     <Compile Include="Modules\Common\Dashboard\DashboardPageModel.cs" />
@@ -2111,74 +2000,13 @@
     <Compile Include="Imports\ClientTypes\Administration.RoleCheckEditorAttribute.cs">
       <DependentUpon>ClientTypes.tt</DependentUpon>
     </Compile>
-    <Compile Include="Imports\ClientTypes\BasicSamples.ChangingLookupTextEditorAttribute.cs">
-      <DependentUpon>ClientTypes.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Imports\ClientTypes\BasicSamples.FilteredLookupDetailEditorAttribute.cs">
-      <DependentUpon>ClientTypes.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Imports\ClientTypes\BasicSamples.HardcodedValuesEditorAttribute.cs">
-      <DependentUpon>ClientTypes.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Imports\ClientTypes\BasicSamples.InlineImageFormatterAttribute.cs">
-      <DependentUpon>ClientTypes.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Imports\ClientTypes\BasicSamples.ProduceSeafoodCategoryEditorAttribute.cs">
-      <DependentUpon>ClientTypes.tt</DependentUpon>
-    </Compile>
     <Compile Include="Imports\ClientTypes\Common.EnumSelectFormatterAttribute.cs">
-      <DependentUpon>ClientTypes.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Imports\ClientTypes\Meeting.MeetingAttendeeEditorAttribute.cs">
-      <DependentUpon>ClientTypes.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Imports\ClientTypes\Northwind.CustomerEditorAttribute.cs">
-      <DependentUpon>ClientTypes.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Imports\ClientTypes\Northwind.EmployeeFormatterAttribute.cs">
-      <DependentUpon>ClientTypes.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Imports\ClientTypes\Northwind.EmployeeListFormatterAttribute.cs">
-      <DependentUpon>ClientTypes.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Imports\ClientTypes\Northwind.FreightFormatterAttribute.cs">
-      <DependentUpon>ClientTypes.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Imports\ClientTypes\Northwind.NotesEditorAttribute.cs">
-      <DependentUpon>ClientTypes.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Imports\ClientTypes\Northwind.OrderDetailsEditorAttribute.cs">
-      <DependentUpon>ClientTypes.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Imports\ClientTypes\Northwind.PhoneEditorAttribute.cs">
-      <DependentUpon>ClientTypes.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Imports\ClientTypes\Northwind.ShipperFormatterAttribute.cs">
-      <DependentUpon>ClientTypes.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Imports\ClientTypes\Organization.BusinessUnitEditorAttribute.cs">
       <DependentUpon>ClientTypes.tt</DependentUpon>
     </Compile>
     <Compile Include="Imports\ClientTypes\StaticTextBlockAttribute.cs">
       <DependentUpon>ClientTypes.tt</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\DefaultDB\DefaultDB_20160515_072600_UserPreferences.cs" />
-    <Compile Include="Migrations\DefaultDB\DefaultDB_20161126_200000_Organization.cs" />
-    <Compile Include="Migrations\DefaultDB\DefaultDB_20161126_210000_Meeting.cs" />
-    <Compile Include="Migrations\DefaultDB\DefaultDB_20161029_130000_ExceptionLog.cs" />
     <Compile Include="Migrations\MigrationUtils.cs" />
-    <Compile Include="Migrations\NorthwindDB\NorthwindDB_20161126_141700_ForwardDates.cs" />
-    <Compile Include="Migrations\NorthwindDB\NorthwindDB_20161118_195400_DragDropSample.cs" />
-    <Compile Include="Migrations\NorthwindDB\NorthwindDB_20161013_002500_CustomerDetails.cs" />
-    <Compile Include="Migrations\NorthwindDB\NorthwindDB_20160908_180100_CustomerGrossSales.cs" />
-    <Compile Include="Migrations\NorthwindDB\NorthwindDB_20160216_154900_DataLocalization.cs" />
-    <Compile Include="Migrations\NorthwindDB\NorthwindDB_20160121_141200_CustomerRepresentatives.cs" />
-    <Compile Include="Migrations\NorthwindDB\NorthwindDB_20151226_184500_Notes.cs" />
-    <Compile Include="Migrations\NorthwindDB\NorthwindDB_20151202_193700_ProductLog.cs" />
-    <Compile Include="Migrations\NorthwindDB\NorthwindDB_20151014_030700_OrderDetailID.cs" />
-    <Compile Include="Migrations\NorthwindDB\NorthwindDB_20141123_155100_Initial.cs" />
-    <Compile Include="Migrations\DefaultDB\DefaultDB_20141111_113000_Permissions.cs" />
-    <Compile Include="Migrations\DefaultDB\DefaultDB_20141103_140000_Initial.cs" />
     <Compile Include="Modules\Administration\Translation\TranslationUpdateRequest.cs" />
     <Compile Include="Modules\Administration\Translation\TranslationListRequest.cs" />
     <Compile Include="Modules\Administration\Translation\TranslationItem.cs" />
@@ -2191,9 +2019,9 @@
     </Compile>
     <Compile Include="Modules\Common\Navigation\NavigationItems.cs" />
     <Compile Include="Modules\Common\Navigation\NavigationModel.cs" />
-    <Content Include="Modules\Northwind\Customer\Northwind.CustomerDialog.Template.html" />
     <Compile Include="Modules\Common\Reporting\DynamicDataReport.cs" />
     <Compile Include="Modules\Common\Reporting\ExcelReportGenerator.cs" />
+    <Compile Include="Store\Store\Entities\Shopsrow.cs" />
     <Content Include="Modules\Common\Reporting\ReportPage.cshtml" />
     <Compile Include="Modules\Common\Reporting\ReportTree.cs" />
     <Compile Include="Modules\Common\Reporting\ReportController.cs" />
@@ -2201,10 +2029,6 @@
     <Compile Include="Modules\Common\UserPreference\UserPreferenceModels.cs" />
     <Compile Include="Modules\Common\UserPreference\UserPreferenceEndpoint.cs" />
     <Compile Include="Modules\Common\UserPreference\UserPreferenceRepository.cs" />
-    <Compile Include="Modules\Meeting\MeetingAttendee\MeetingAttendanceStatus.cs" />
-    <Compile Include="Modules\Meeting\MeetingAttendee\MeetingAttendeeType.cs" />
-    <Compile Include="Modules\Meeting\MeetingNavigation.cs" />
-    <Compile Include="Modules\Meeting\MeetingPermissionKeys.cs" />
     <Compile Include="Modules\Membership\Account\ChangePassword\AccountPage.ChangePassword.cs" />
     <Compile Include="Modules\Membership\Account\EnvironmentSettings.cs" />
     <Compile Include="Modules\Membership\Account\ForgotPassword\AccountPage.ForgotPassword.cs" />
@@ -2219,43 +2043,27 @@
     <Compile Include="Modules\Membership\Account\SignUp\SignUpForm.cs" />
     <Compile Include="Modules\Membership\Account\SignUp\SignUpRequest.cs" />
     <Compile Include="Modules\Common\UserPreference\UserPreferenceRow.cs" />
-    <Compile Include="Modules\Northwind\CategoryLang\CategoryLangEndpoint.cs" />
-    <Compile Include="Modules\Northwind\CategoryLang\CategoryLangRepository.cs" />
-    <Compile Include="Modules\Northwind\CategoryLang\CategoryLangRow.cs" />
     <Compile Include="Modules\Common\Helpers\GetNextNumberHelper.cs" />
     <Compile Include="Modules\Common\Helpers\GetNextNumberRequest.cs" />
-    <Compile Include="Modules\Northwind\Customer\EmployeeListDecorator.cs" />
-    <Compile Include="Modules\Northwind\Customer\CustomerLookup.cs" />
-    <Compile Include="Modules\Northwind\Customer\CustomerCity.cs" />
-    <Compile Include="Modules\Northwind\Customer\CustomerRepresentativesRow.cs" />
-    <Compile Include="Modules\Northwind\Employee\Gender.cs" />
-    <Compile Include="Modules\Northwind\Category\CategoryColumns.cs" />
-    <Compile Include="Modules\Northwind\Customer\CustomerColumns.cs" />
-    <Compile Include="Modules\Northwind\Customer\CustomerCountryLookup.cs" />
-    <Compile Include="Modules\Northwind\NorthwindNavigation.cs" />
-    <Compile Include="Modules\Northwind\Note\NotesBehavior.cs" />
-    <Compile Include="Modules\Northwind\OrderDetail\OrderDetailColumns.cs" />
-    <Content Include="Modules\Northwind\Order\OrderDetailReport.cshtml" />
-    <Compile Include="Modules\Northwind\Order\OrderDetailReport.cs" />
-    <Compile Include="Modules\Northwind\Order\OrderListRequest.cs" />
-    <Compile Include="Modules\Northwind\Order\OrderShippingState.cs" />
-    <Compile Include="Modules\Northwind\Order\OrderShipCity.cs" />
-    <Compile Include="Modules\Northwind\Order\OrderShipCountry.cs" />
-    <Compile Include="Modules\Northwind\Order\OrderColumns.cs" />
-    <Compile Include="Modules\Northwind\NorthwindPermissionKeys.cs" />
-    <Compile Include="Modules\Northwind\Product\ProductColumns.cs" />
-    <Compile Include="Modules\Northwind\Product\ProductLogRow.cs" />
-    <Compile Include="Modules\Northwind\Region\RegionColumns.cs" />
-    <Compile Include="Modules\Northwind\Reports\ReportsPage.cs" />
-    <Compile Include="Modules\Northwind\Reports\CustomerGrossSalesReport.cs" />
-    <Compile Include="Modules\Northwind\Reports\SalesByCategoryReport.cs" />
-    <Compile Include="Modules\Northwind\Shipper\ShipperColumns.cs" />
-    <Compile Include="Modules\Northwind\Supplier\SupplierColumns.cs" />
-    <Compile Include="Modules\Northwind\Supplier\SupplierCountryLookup.cs" />
-    <Compile Include="Modules\Northwind\Territory\TerritoryColumns.cs" />
-    <Compile Include="Modules\Northwind\NorthwindTexts.cs" />
-    <Compile Include="Modules\Organization\OrganizationPermissionKeys.cs" />
-    <Compile Include="Modules\Organization\OrganizationNavigation.cs" />
+    <Compile Include="Modules\Store\Counterparty\CounterpartyCityLookup.cs" />
+    <Compile Include="Modules\Store\Counterparty\CounterpartyCountryLookup.cs" />
+    <Compile Include="Modules\Store\Counterparty\CounterpartyLookup.cs" />
+    <Compile Include="Modules\Store\Employee\EmployeeListDecorator.cs" />
+    <Compile Include="Modules\Store\Employee\Gender.cs" />
+    <Compile Include="Modules\Store\Note\NotesBehavior.cs" />
+    <Compile Include="Modules\Store\Order\OrderListRequest.cs" />
+    <Compile Include="Modules\Store\Order\OrderShipCity.cs" />
+    <Compile Include="Modules\Store\Order\OrderShipCountry.cs" />
+    <Compile Include="Modules\Store\Order\OrderShippingState.cs" />
+    <Compile Include="Modules\Store\Product\ProductListRequest.cs" />
+    <Compile Include="Modules\Store\Scripts\MultiTenantRowLookupScript.cs" />
+    <Compile Include="Modules\Store\Shops\ShopsCity.cs" />
+    <Compile Include="Modules\Store\Shops\ShopsCountryLookup.cs" />
+    <Compile Include="Modules\Store\StorePermissionKeys.cs" />
+    <Compile Include="Modules\Store\Supplier\SupplierCountryLookup.cs" />
+    <Compile Include="Modules\Store\WaresMovement\WaresMovementListRequest.cs" />
+    <Compile Include="Modules\Store\Wares\WaresCategory.cs" />
+    <Compile Include="Modules\Store\Wares\WaresListRequest.cs" />
     <Compile Include="Modules\Texts.cs" />
     <Compile Include="Modules\Membership\Account\AccountPage.cs" />
     <Compile Include="Modules\Administration\User\Authentication\AuthorizationService.cs" />
@@ -2271,55 +2079,6 @@
     <Compile Include="Modules\Administration\User\UserRepository.cs" />
     <Compile Include="Modules\Administration\User\UserEndpoint.cs" />
     <Compile Include="Modules\Administration\User\UserPage.cs" />
-    <Compile Include="Modules\Northwind\Category\CategoryRow.cs" />
-    <Compile Include="Modules\Northwind\Category\CategoryForm.cs" />
-    <Compile Include="Modules\Northwind\Category\CategoryRepository.cs" />
-    <Compile Include="Modules\Northwind\Category\CategoryEndpoint.cs" />
-    <Compile Include="Modules\Northwind\Category\CategoryPage.cs" />
-    <Compile Include="Modules\Northwind\Customer\CustomerRow.cs" />
-    <Compile Include="Modules\Northwind\Customer\CustomerForm.cs" />
-    <Compile Include="Modules\Northwind\Customer\CustomerRepository.cs" />
-    <Compile Include="Modules\Northwind\Customer\CustomerEndpoint.cs" />
-    <Compile Include="Modules\Northwind\Customer\CustomerPage.cs" />
-    <Compile Include="Modules\Northwind\Employee\EmployeeRow.cs" />
-    <Compile Include="Modules\Northwind\EmployeeTerritory\EmployeeTerritoryRow.cs" />
-    <Compile Include="Modules\Northwind\OrderDetail\OrderDetailRow.cs" />
-    <Compile Include="Modules\Northwind\OrderDetail\OrderDetailForm.cs" />
-    <Compile Include="Modules\Northwind\OrderDetail\OrderDetailRepository.cs" />
-    <Compile Include="Modules\Northwind\OrderDetail\OrderDetailEndpoint.cs" />
-    <Compile Include="Modules\Northwind\OrderDetail\OrderDetailPage.cs" />
-    <Compile Include="Modules\Northwind\Order\OrderRow.cs" />
-    <Compile Include="Modules\Northwind\Order\OrderForm.cs" />
-    <Compile Include="Modules\Northwind\Order\OrderRepository.cs" />
-    <Compile Include="Modules\Northwind\Order\OrderEndpoint.cs" />
-    <Compile Include="Modules\Northwind\Order\OrderPage.cs" />
-    <Compile Include="Modules\Northwind\Product\ProductRow.cs" />
-    <Compile Include="Modules\Northwind\Product\ProductForm.cs" />
-    <Compile Include="Modules\Northwind\Product\ProductRepository.cs" />
-    <Compile Include="Modules\Northwind\Product\ProductEndpoint.cs" />
-    <Compile Include="Modules\Northwind\Product\ProductPage.cs" />
-    <Compile Include="Modules\Northwind\Region\RegionRow.cs" />
-    <Compile Include="Modules\Northwind\Region\RegionForm.cs" />
-    <Compile Include="Modules\Northwind\Region\RegionRepository.cs" />
-    <Compile Include="Modules\Northwind\Region\RegionEndpoint.cs" />
-    <Compile Include="Modules\Northwind\Region\RegionPage.cs" />
-    <Compile Include="Modules\Northwind\Shipper\ShipperRow.cs" />
-    <Compile Include="Modules\Northwind\Shipper\ShipperForm.cs" />
-    <Compile Include="Modules\Northwind\Shipper\ShipperRepository.cs" />
-    <Compile Include="Modules\Northwind\Shipper\ShipperEndpoint.cs" />
-    <Compile Include="Modules\Northwind\Shipper\ShipperPage.cs" />
-    <Compile Include="Modules\Northwind\Supplier\SupplierRow.cs" />
-    <Compile Include="Modules\Northwind\Supplier\SupplierForm.cs" />
-    <Compile Include="Modules\Northwind\Supplier\SupplierRepository.cs" />
-    <Compile Include="Modules\Northwind\Supplier\SupplierEndpoint.cs" />
-    <Compile Include="Modules\Northwind\Supplier\SupplierPage.cs" />
-    <Compile Include="Modules\Northwind\Territory\TerritoryRow.cs" />
-    <Compile Include="Modules\Northwind\Territory\TerritoryForm.cs" />
-    <Compile Include="Modules\Northwind\Territory\TerritoryRepository.cs" />
-    <Compile Include="Modules\Northwind\Territory\TerritoryEndpoint.cs" />
-    <Compile Include="Modules\Northwind\Territory\TerritoryPage.cs" />
-    <Compile Include="Modules\Northwind\CustomerDemographic\CustomerDemographicRow.cs" />
-    <Compile Include="Modules\Northwind\CustomerCustomerDemo\CustomerCustomerDemoRow.cs" />
     <Compile Include="Modules\Administration\Language\LanguageRow.cs" />
     <Compile Include="Modules\Administration\Language\LanguageColumns.cs" />
     <Compile Include="Modules\Administration\Language\LanguageForm.cs" />
@@ -2343,91 +2102,125 @@
     <Compile Include="Modules\Administration\UserPermission\UserPermissionRow.cs" />
     <Compile Include="Modules\Administration\UserPermission\UserPermissionRepository.cs" />
     <Compile Include="Modules\Administration\UserPermission\UserPermissionEndpoint.cs" />
-    <Compile Include="Modules\Northwind\Note\NoteRow.cs" />
-    <Compile Include="Modules\Northwind\Note\NoteRepository.cs" />
-    <Compile Include="Modules\Northwind\ProductLang\ProductLangRow.cs" />
-    <Compile Include="Modules\Northwind\ProductLang\ProductLangRepository.cs" />
-    <Compile Include="Modules\Northwind\ProductLang\ProductLangEndpoint.cs" />
-    <Compile Include="Modules\Northwind\SalesByCategory\SalesByCategoryRow.cs" />
-    <Compile Include="Modules\Northwind\SalesByCategory\SalesByCategoryColumns.cs" />
-    <Compile Include="Modules\Northwind\SalesByCategory\SalesByCategoryRepository.cs" />
-    <Compile Include="Modules\Northwind\SalesByCategory\SalesByCategoryEndpoint.cs" />
-    <Compile Include="Modules\Northwind\CustomerDetails\CustomerDetailsRow.cs" />
-    <Compile Include="Modules\BasicSamples\Grids\DragDropInTreeGrid\DragDropSampleRow.cs" />
-    <Compile Include="Modules\BasicSamples\Grids\DragDropInTreeGrid\DragDropSampleColumns.cs" />
-    <Compile Include="Modules\BasicSamples\Grids\DragDropInTreeGrid\DragDropSampleForm.cs" />
-    <Compile Include="Modules\BasicSamples\Grids\DragDropInTreeGrid\DragDropSampleRepository.cs" />
-    <Compile Include="Modules\BasicSamples\Grids\DragDropInTreeGrid\DragDropSampleEndpoint.cs" />
-    <Compile Include="Modules\Organization\Contact\ContactRow.cs" />
-    <Compile Include="Modules\Organization\Contact\ContactColumns.cs" />
-    <Compile Include="Modules\Organization\Contact\ContactForm.cs" />
-    <Compile Include="Modules\Organization\Contact\ContactRepository.cs" />
-    <Compile Include="Modules\Organization\Contact\ContactEndpoint.cs" />
-    <Compile Include="Modules\Organization\Contact\ContactPage.cs" />
-    <Compile Include="Modules\Organization\BusinessUnit\BusinessUnitRow.cs" />
-    <Compile Include="Modules\Organization\BusinessUnit\BusinessUnitColumns.cs" />
-    <Compile Include="Modules\Organization\BusinessUnit\BusinessUnitForm.cs" />
-    <Compile Include="Modules\Organization\BusinessUnit\BusinessUnitRepository.cs" />
-    <Compile Include="Modules\Organization\BusinessUnit\BusinessUnitEndpoint.cs" />
-    <Compile Include="Modules\Organization\BusinessUnit\BusinessUnitPage.cs" />
-    <Compile Include="Modules\Meeting\MeetingAgendaRelevant\MeetingAgendaRelevantRow.cs" />
-    <Compile Include="Modules\Meeting\MeetingAgendaRelevant\MeetingAgendaRelevantColumns.cs" />
-    <Compile Include="Modules\Meeting\MeetingAgendaRelevant\MeetingAgendaRelevantForm.cs" />
-    <Compile Include="Modules\Meeting\MeetingAgendaRelevant\MeetingAgendaRelevantRepository.cs" />
-    <Compile Include="Modules\Meeting\MeetingAgendaRelevant\MeetingAgendaRelevantEndpoint.cs" />
-    <Compile Include="Modules\Meeting\MeetingAgenda\MeetingAgendaRow.cs" />
-    <Compile Include="Modules\Meeting\MeetingAgenda\MeetingAgendaColumns.cs" />
-    <Compile Include="Modules\Meeting\MeetingAgenda\MeetingAgendaForm.cs" />
-    <Compile Include="Modules\Meeting\MeetingAgenda\MeetingAgendaRepository.cs" />
-    <Compile Include="Modules\Meeting\MeetingAgenda\MeetingAgendaEndpoint.cs" />
-    <Compile Include="Modules\Meeting\MeetingAgendaType\MeetingAgendaTypeRow.cs" />
-    <Compile Include="Modules\Meeting\MeetingAgendaType\MeetingAgendaTypeColumns.cs" />
-    <Compile Include="Modules\Meeting\MeetingAgendaType\MeetingAgendaTypeForm.cs" />
-    <Compile Include="Modules\Meeting\MeetingAgendaType\MeetingAgendaTypeRepository.cs" />
-    <Compile Include="Modules\Meeting\MeetingAgendaType\MeetingAgendaTypeEndpoint.cs" />
-    <Compile Include="Modules\Meeting\MeetingAgendaType\MeetingAgendaTypePage.cs" />
-    <Compile Include="Modules\Meeting\MeetingAttendee\MeetingAttendeeRow.cs" />
-    <Compile Include="Modules\Meeting\MeetingAttendee\MeetingAttendeeColumns.cs" />
-    <Compile Include="Modules\Meeting\MeetingAttendee\MeetingAttendeeForm.cs" />
-    <Compile Include="Modules\Meeting\MeetingAttendee\MeetingAttendeeRepository.cs" />
-    <Compile Include="Modules\Meeting\MeetingDecisionRelevant\MeetingDecisionRelevantRow.cs" />
-    <Compile Include="Modules\Meeting\MeetingDecisionRelevant\MeetingDecisionRelevantColumns.cs" />
-    <Compile Include="Modules\Meeting\MeetingDecisionRelevant\MeetingDecisionRelevantForm.cs" />
-    <Compile Include="Modules\Meeting\MeetingDecisionRelevant\MeetingDecisionRelevantRepository.cs" />
-    <Compile Include="Modules\Meeting\MeetingDecisionRelevant\MeetingDecisionRelevantEndpoint.cs" />
-    <Compile Include="Modules\Meeting\MeetingDecision\MeetingDecisionRow.cs" />
-    <Compile Include="Modules\Meeting\MeetingDecision\MeetingDecisionColumns.cs" />
-    <Compile Include="Modules\Meeting\MeetingDecision\MeetingDecisionForm.cs" />
-    <Compile Include="Modules\Meeting\MeetingDecision\MeetingDecisionRepository.cs" />
-    <Compile Include="Modules\Meeting\MeetingDecision\MeetingDecisionEndpoint.cs" />
-    <Compile Include="Modules\Meeting\MeetingLocation\MeetingLocationRow.cs" />
-    <Compile Include="Modules\Meeting\MeetingLocation\MeetingLocationColumns.cs" />
-    <Compile Include="Modules\Meeting\MeetingLocation\MeetingLocationForm.cs" />
-    <Compile Include="Modules\Meeting\MeetingLocation\MeetingLocationRepository.cs" />
-    <Compile Include="Modules\Meeting\MeetingLocation\MeetingLocationEndpoint.cs" />
-    <Compile Include="Modules\Meeting\MeetingLocation\MeetingLocationPage.cs" />
-    <Compile Include="Modules\Meeting\Meeting\MeetingRow.cs" />
-    <Compile Include="Modules\Meeting\Meeting\MeetingColumns.cs" />
-    <Compile Include="Modules\Meeting\Meeting\MeetingForm.cs" />
-    <Compile Include="Modules\Meeting\Meeting\MeetingRepository.cs" />
-    <Compile Include="Modules\Meeting\Meeting\MeetingEndpoint.cs" />
-    <Compile Include="Modules\Meeting\Meeting\MeetingPage.cs" />
-    <Compile Include="Modules\Meeting\MeetingType\MeetingTypeRow.cs" />
-    <Compile Include="Modules\Meeting\MeetingType\MeetingTypeColumns.cs" />
-    <Compile Include="Modules\Meeting\MeetingType\MeetingTypeForm.cs" />
-    <Compile Include="Modules\Meeting\MeetingType\MeetingTypeRepository.cs" />
-    <Compile Include="Modules\Meeting\MeetingType\MeetingTypeEndpoint.cs" />
-    <Compile Include="Modules\Meeting\MeetingType\MeetingTypePage.cs" />
-    <Compile Include="Modules\Administration\Tenant\TenantRow.cs" />
-    <Compile Include="Modules\Administration\Tenant\TenantColumns.cs" />
-    <Compile Include="Modules\Administration\Tenant\TenantForm.cs" />
-    <Compile Include="Modules\Administration\Tenant\TenantRepository.cs" />
-    <Compile Include="Modules\Administration\Tenant\TenantEndpoint.cs" />
-    <Compile Include="Modules\Administration\Tenant\TenantPage.cs" />
+    <Compile Include="Modules\Store\Category\CategoryRow.cs" />
+    <Compile Include="Modules\Store\Category\CategoryRepository.cs" />
+    <Compile Include="Modules\Store\Category\CategoryEndpoint.cs" />
+    <Compile Include="Modules\Store\Category\CategoryPage.cs" />
+    <Compile Include="Modules\Store\Category\CategoryColumns.cs" />
+    <Compile Include="Modules\Store\Category\CategoryForm.cs" />
+    <Compile Include="Modules\Store\StoreNavigation.cs" />
+    <Compile Include="Modules\Store\CategoryLang\CategoryLangRow.cs" />
+    <Compile Include="Modules\Store\CategoryLang\CategoryLangRepository.cs" />
+    <Compile Include="Modules\Store\CategoryLang\CategoryLangEndpoint.cs" />
+    <Compile Include="Modules\Store\Measure\MeasureRow.cs" />
+    <Compile Include="Modules\Store\Measure\MeasureRepository.cs" />
+    <Compile Include="Modules\Store\Measure\MeasureEndpoint.cs" />
+    <Compile Include="Modules\Store\Measure\MeasurePage.cs" />
+    <Compile Include="Modules\Store\Measure\MeasureColumns.cs" />
+    <Compile Include="Modules\Store\Measure\MeasureForm.cs" />
+    <Compile Include="Modules\Store\Supplier\SupplierRow.cs" />
+    <Compile Include="Modules\Store\Supplier\SupplierRepository.cs" />
+    <Compile Include="Modules\Store\Supplier\SupplierEndpoint.cs" />
+    <Compile Include="Modules\Store\Supplier\SupplierPage.cs" />
+    <Compile Include="Modules\Store\Supplier\SupplierColumns.cs" />
+    <Compile Include="Modules\Store\Supplier\SupplierForm.cs" />
+    <Compile Include="Modules\Store\ProductDetail\ProductDetailRow.cs" />
+    <Compile Include="Modules\Store\ProductDetail\ProductDetailRepository.cs" />
+    <Compile Include="Modules\Store\ProductDetail\ProductDetailEndpoint.cs" />
+    <Compile Include="Modules\Store\ProductDetail\ProductDetailPage.cs" />
+    <Compile Include="Modules\Store\ProductDetail\ProductDetailColumns.cs" />
+    <Compile Include="Modules\Store\ProductDetail\ProductDetailForm.cs" />
+    <Compile Include="Modules\Store\ProductLang\ProductLangRow.cs" />
+    <Compile Include="Modules\Store\ProductLang\ProductLangRepository.cs" />
+    <Compile Include="Modules\Store\ProductLang\ProductLangEndpoint.cs" />
+    <Compile Include="Modules\Store\Product\ProductRow.cs" />
+    <Compile Include="Modules\Store\Product\ProductRepository.cs" />
+    <Compile Include="Modules\Store\Product\ProductEndpoint.cs" />
+    <Compile Include="Modules\Store\Product\ProductPage.cs" />
+    <Compile Include="Modules\Store\Product\ProductColumns.cs" />
+    <Compile Include="Modules\Store\Product\ProductForm.cs" />
+    <Compile Include="Modules\Store\OperationType\OperationTypeRow.cs" />
+    <Compile Include="Modules\Store\OperationType\OperationTypeRepository.cs" />
+    <Compile Include="Modules\Store\OperationType\OperationTypeEndpoint.cs" />
+    <Compile Include="Modules\Store\OperationType\OperationTypePage.cs" />
+    <Compile Include="Modules\Store\OperationType\OperationTypeColumns.cs" />
+    <Compile Include="Modules\Store\OperationType\OperationTypeForm.cs" />
+    <Compile Include="Modules\Store\Shops\ShopsRow.cs" />
+    <Compile Include="Modules\Store\Shops\ShopsRepository.cs" />
+    <Compile Include="Modules\Store\Shops\ShopsEndpoint.cs" />
+    <Compile Include="Modules\Store\Shops\ShopsPage.cs" />
+    <Compile Include="Modules\Store\Shops\ShopsColumns.cs" />
+    <Compile Include="Modules\Store\Shops\ShopsForm.cs" />
+    <Compile Include="Modules\Store\Note\NoteRow.cs" />
+    <Compile Include="Modules\Store\Note\NoteRepository.cs" />
+    <Compile Include="Modules\Store\Employee\EmployeeRow.cs" />
+    <Compile Include="Modules\Store\OrderDetail\OrderDetailRow.cs" />
+    <Compile Include="Modules\Store\OrderDetail\OrderDetailRepository.cs" />
+    <Compile Include="Modules\Store\OrderDetail\OrderDetailEndpoint.cs" />
+    <Compile Include="Modules\Store\OrderDetail\OrderDetailPage.cs" />
+    <Compile Include="Modules\Store\OrderDetail\OrderDetailColumns.cs" />
+    <Compile Include="Modules\Store\OrderDetail\OrderDetailForm.cs" />
+    <Compile Include="Modules\Store\Order\OrderRow.cs" />
+    <Compile Include="Modules\Store\Order\OrderRepository.cs" />
+    <Compile Include="Modules\Store\Order\OrderEndpoint.cs" />
+    <Compile Include="Modules\Store\Order\OrderPage.cs" />
+    <Compile Include="Modules\Store\Order\OrderColumns.cs" />
+    <Compile Include="Modules\Store\Order\OrderForm.cs" />
+    <Compile Include="Modules\Store\Shipper\ShipperRow.cs" />
+    <Compile Include="Modules\Store\Shipper\ShipperRepository.cs" />
+    <Compile Include="Modules\Store\Shipper\ShipperEndpoint.cs" />
+    <Compile Include="Modules\Store\Shipper\ShipperPage.cs" />
+    <Compile Include="Modules\Store\Shipper\ShipperColumns.cs" />
+    <Compile Include="Modules\Store\Shipper\ShipperForm.cs" />
+    <Compile Include="Modules\Store\CounterpartyRepresentative\CounterpartyRepresentativeRow.cs" />
+    <Compile Include="Modules\Store\CounterpartyDetail\CounterpartyDetailRow.cs" />
+    <Compile Include="Modules\Store\Counterparty\CounterpartyRow.cs" />
+    <Compile Include="Modules\Store\Counterparty\CounterpartyRepository.cs" />
+    <Compile Include="Modules\Store\Counterparty\CounterpartyEndpoint.cs" />
+    <Compile Include="Modules\Store\Counterparty\CounterpartyPage.cs" />
+    <Compile Include="Modules\Store\Counterparty\CounterpartyColumns.cs" />
+    <Compile Include="Modules\Store\Counterparty\CounterpartyForm.cs" />
+    <Compile Include="Modules\Store\OrderProductDetail\OrderProductDetailRow.cs" />
+    <Compile Include="Modules\Store\OrderProductDetail\OrderProductDetailRepository.cs" />
+    <Compile Include="Modules\Store\OrderProductDetail\OrderProductDetailEndpoint.cs" />
+    <Compile Include="Modules\Store\OrderProductDetail\OrderProductDetailPage.cs" />
+    <Compile Include="Modules\Store\OrderProductDetail\OrderProductDetailColumns.cs" />
+    <Compile Include="Modules\Store\OrderProductDetail\OrderProductDetailForm.cs" />
+    <Compile Include="Modules\Store\OrderProduct\OrderProductRow.cs" />
+    <Compile Include="Modules\Store\OrderProduct\OrderProductRepository.cs" />
+    <Compile Include="Modules\Store\OrderProduct\OrderProductEndpoint.cs" />
+    <Compile Include="Modules\Store\OrderProduct\OrderProductPage.cs" />
+    <Compile Include="Modules\Store\OrderProduct\OrderProductColumns.cs" />
+    <Compile Include="Modules\Store\OrderProduct\OrderProductForm.cs" />
+    <Compile Include="Modules\Store\Wares\WaresRow.cs" />
+    <Compile Include="Modules\Store\Wares\WaresRepository.cs" />
+    <Compile Include="Modules\Store\Wares\WaresEndpoint.cs" />
+    <Compile Include="Modules\Store\Wares\WaresPage.cs" />
+    <Compile Include="Modules\Store\Wares\WaresColumns.cs" />
+    <Compile Include="Modules\Store\Wares\WaresForm.cs" />
+    <Compile Include="Modules\Store\WaresLang\WaresLangRow.cs" />
+    <Compile Include="Modules\Store\WaresLang\WaresLangRepository.cs" />
+    <Compile Include="Modules\Store\WaresLang\WaresLangEndpoint.cs" />
+    <Compile Include="Modules\Store\CategoryType\CategoryTypeRow.cs" />
+    <Compile Include="Modules\Store\CategoryType\CategoryTypeRepository.cs" />
+    <Compile Include="Modules\Store\CategoryType\CategoryTypeEndpoint.cs" />
+    <Compile Include="Modules\Store\CategoryType\CategoryTypePage.cs" />
+    <Compile Include="Modules\Store\CategoryType\CategoryTypeColumns.cs" />
+    <Compile Include="Modules\Store\CategoryType\CategoryTypeForm.cs" />
+    <Compile Include="Modules\Store\WaresMovement\WaresMovementRow.cs" />
+    <Compile Include="Modules\Store\WaresMovementDetails\WaresMovementDetailsRow.cs" />
+    <Compile Include="Modules\Store\WaresMovementDetails\WaresMovementDetailsRepository.cs" />
+    <Compile Include="Modules\Store\WaresMovementDetails\WaresMovementDetailsEndpoint.cs" />
+    <Compile Include="Modules\Store\WaresMovementDetails\WaresMovementDetailsPage.cs" />
+    <Compile Include="Modules\Store\WaresMovementDetails\WaresMovementDetailsColumns.cs" />
+    <Compile Include="Modules\Store\WaresMovementDetails\WaresMovementDetailsForm.cs" />
+    <Compile Include="Modules\Store\WaresMovement\WaresMovementRepository.cs" />
+    <Compile Include="Modules\Store\WaresMovement\WaresMovementEndpoint.cs" />
+    <Compile Include="Modules\Store\WaresMovement\WaresMovementPage.cs" />
+    <Compile Include="Modules\Store\WaresMovement\WaresMovementColumns.cs" />
+    <Compile Include="Modules\Store\WaresMovement\WaresMovementForm.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -2523,27 +2316,6 @@
     <TypeScriptCompile Include="Imports\ServerTypings\Administration.UserService.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\BasicSamples.BasicSamplesService.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\BasicSamples.FilteredLookupInDetailForm.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\BasicSamples.LookupFilterByMultipleForm.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\BasicSamples.OrderBulkActionRequest.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\BasicSamples.OrdersByShipperRequest.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\BasicSamples.OrdersByShipperResponse.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Common.Pages.UploadResponse.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\Membership.ChangePasswordForm.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
@@ -2574,162 +2346,6 @@
     <TypeScriptCompile Include="Imports\ServerTypings\Membership.SignUpRequest.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.CategoryColumns.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.CategoryForm.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.CategoryLangRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.CategoryLangService.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.CategoryRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.CategoryService.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.CustomerColumns.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.CustomerCustomerDemoRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.CustomerDemographicRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.CustomerForm.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.CustomerRepresentativesRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.CustomerRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.CustomerService.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.EmployeeRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.EmployeeTerritoryRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.Gender.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.NoteRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.OrderColumns.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.OrderDetailColumns.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.OrderDetailForm.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.OrderDetailRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.OrderDetailService.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.OrderForm.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.OrderRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.OrderService.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.OrderShippingState.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.ProductColumns.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.ProductForm.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.ProductLangRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.ProductLangService.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.ProductLogRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.ProductRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.ProductService.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.RegionColumns.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.RegionForm.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.RegionRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.RegionService.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.SalesByCategoryColumns.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.SalesByCategoryRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.SalesByCategoryService.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.ShipperColumns.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.ShipperForm.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.ShipperRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.ShipperService.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.SupplierColumns.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.SupplierForm.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.SupplierRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.SupplierService.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.TerritoryColumns.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.TerritoryForm.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.TerritoryRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Northwind.TerritoryService.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\ScriptUserDefinition.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
@@ -2737,13 +2353,12 @@
     <TypeScriptCompile Include="Scripts\typings\jspdf\jspdf.autotable.d.ts" />
   </ItemGroup>
   <PropertyGroup>
-    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">15.0</VisualStudioVersion>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v15.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ProjectExtensions>
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
@@ -2752,7 +2367,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>0</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:1208/</IISUrl>
+          <IISUrl>http://localhost:57700/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
@@ -2765,13 +2380,37 @@
   <PropertyGroup>
     <NpmPath Condition="'$(NpmCmd)' == '' AND Exists('$(PROGRAMFILES)nodejs\npm.cmd')">$(PROGRAMFILES)nodejs\</NpmPath>
   </PropertyGroup>
-  <!--Target Name="BeforeBuild">
-    <Exec Command="cmd /c &quot;$(NpmPath)npm&quot; install" />
-  </Target>-->
-  <Target Name="CompileSiteLess" AfterTargets="AfterBuild">
-    <Exec Command="&quot;$(ProjectDir)tools\node\lessc.cmd&quot; &quot;$(ProjectDir)Content\site\site.less&quot; &gt; &quot;$(ProjectDir)Content\site\site.css&quot;" />
-    <Exec Command="node_modules/.bin/tsc -p ./tsconfig.json" ContinueOnError="true" />
+  <Target Name="CreateInputsOutputs" BeforeTargets="BeforeBuild">
+    <CreateItem Include="Modules\**\*.ts;Imports\**\*.ts">
+      <Output TaskParameter="Include" ItemName="CompileTSCInputs" />
+    </CreateItem>
+    <CreateItem Include="Content\**\*.less">
+      <Output TaskParameter="Include" ItemName="CompileSiteLessInputs" />
+    </CreateItem>
   </Target>
+  <Target Name="NpmInstall" BeforeTargets="BeforeBuild" Condition="!Exists('node_modules\@types\jquery\index.d.ts')">
+    <Message Text="Installing NPM packages..." Importance="high">
+    </Message>
+    <Exec Command="cmd /c &quot;$(NpmPath)npm&quot; install" />
+  </Target>
+  <Target Name="CompileSiteLess" AfterTargets="AfterBuild" Inputs="@(CompileSiteLessInputs)" Outputs="Content\site\site.css">
+    <Message Text="Compiling site.less..." Importance="high">
+    </Message>
+    <Exec Command="&quot;$(ProjectDir)tools\node\lessc.cmd&quot; &quot;$(ProjectDir)Content\site\site.less&quot; &gt; &quot;$(ProjectDir)Content\site\site.css&quot;" />
+  </Target>
+  <Target Name="CompileTSC" AfterTargets="AfterBuild" Inputs="@(CompileTSCInputs)" Outputs="Scripts\site\Store.Web.js">
+    <Message Text="Executing TypeScript compiler..." Importance="high">
+    </Message>
+    <Exec Command="&quot;$(TscToolPath.Replace('build\\..\tools\', 'tools\'))\tsc&quot; -p ./tsconfig.json" ContinueOnError="true" />
+  </Target>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\Microsoft.TypeScript.MSBuild.3.1.1\build\Microsoft.TypeScript.MSBuild.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.TypeScript.MSBuild.3.1.1\build\Microsoft.TypeScript.MSBuild.props'))" />
+    <Error Condition="!Exists('..\..\packages\Microsoft.TypeScript.MSBuild.3.1.1\build\Microsoft.TypeScript.MSBuild.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.TypeScript.MSBuild.3.1.1\build\Microsoft.TypeScript.MSBuild.targets'))" />
+  </Target>
+  <Import Project="..\..\packages\Microsoft.TypeScript.MSBuild.3.1.1\build\Microsoft.TypeScript.MSBuild.targets" Condition="Exists('..\..\packages\Microsoft.TypeScript.MSBuild.3.1.1\build\Microsoft.TypeScript.MSBuild.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="AfterBuild">

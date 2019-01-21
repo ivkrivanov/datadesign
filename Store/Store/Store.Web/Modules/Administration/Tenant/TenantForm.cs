@@ -10,7 +10,7 @@ namespace Store.Administration.Forms
     using System.IO;
 
     [FormScript("Administration.Tenant")]
-    [BasedOnRow(typeof(Entities.TenantRow))]
+    [BasedOnRow(typeof(Entities.TenantRow), CheckNames = true)]
     public class TenantForm
     {
         public String TenantName { get; set; }

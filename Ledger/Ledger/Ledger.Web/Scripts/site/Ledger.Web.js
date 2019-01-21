@@ -1860,6 +1860,98 @@ var Ledger;
 (function (Ledger) {
     var HR;
     (function (HR) {
+        var EmplAddressTypeDialog = /** @class */ (function (_super) {
+            __extends(EmplAddressTypeDialog, _super);
+            function EmplAddressTypeDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new HR.EmplAddressTypeForm(_this.idPrefix);
+                return _this;
+            }
+            EmplAddressTypeDialog.prototype.getFormKey = function () { return HR.EmplAddressTypeForm.formKey; };
+            EmplAddressTypeDialog.prototype.getIdProperty = function () { return HR.EmplAddressTypeRow.idProperty; };
+            EmplAddressTypeDialog.prototype.getLocalTextPrefix = function () { return HR.EmplAddressTypeRow.localTextPrefix; };
+            EmplAddressTypeDialog.prototype.getNameProperty = function () { return HR.EmplAddressTypeRow.nameProperty; };
+            EmplAddressTypeDialog.prototype.getService = function () { return HR.EmplAddressTypeService.baseUrl; };
+            EmplAddressTypeDialog = __decorate([
+                Serenity.Decorators.registerClass(),
+                Serenity.Decorators.responsive()
+            ], EmplAddressTypeDialog);
+            return EmplAddressTypeDialog;
+        }(Serenity.EntityDialog));
+        HR.EmplAddressTypeDialog = EmplAddressTypeDialog;
+    })(HR = Ledger.HR || (Ledger.HR = {}));
+})(Ledger || (Ledger = {}));
+/// <reference path="../../Common/Helpers/GridEditorBase.ts" />
+var Ledger;
+(function (Ledger) {
+    var HR;
+    (function (HR) {
+        var EmplAddressTypeEditor = /** @class */ (function (_super) {
+            __extends(EmplAddressTypeEditor, _super);
+            function EmplAddressTypeEditor(container) {
+                return _super.call(this, container) || this;
+            }
+            EmplAddressTypeEditor.prototype.getColumnsKey = function () { return 'HR.EmplAddressType'; };
+            EmplAddressTypeEditor.prototype.getDialogType = function () { return HR.EmplAddressTypeEditorDialog; };
+            EmplAddressTypeEditor.prototype.getLocalTextPrefix = function () { return HR.EmplAddressTypeRow.localTextPrefix; };
+            EmplAddressTypeEditor = __decorate([
+                Serenity.Decorators.registerClass()
+            ], EmplAddressTypeEditor);
+            return EmplAddressTypeEditor;
+        }(Ledger.Common.GridEditorBase));
+        HR.EmplAddressTypeEditor = EmplAddressTypeEditor;
+    })(HR = Ledger.HR || (Ledger.HR = {}));
+})(Ledger || (Ledger = {}));
+/// <reference path="../../Common/Helpers/GridEditorDialog.ts" />
+var Ledger;
+(function (Ledger) {
+    var HR;
+    (function (HR) {
+        var EmplAddressTypeEditorDialog = /** @class */ (function (_super) {
+            __extends(EmplAddressTypeEditorDialog, _super);
+            function EmplAddressTypeEditorDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new HR.EmplAddressTypeForm(_this.idPrefix);
+                return _this;
+            }
+            EmplAddressTypeEditorDialog.prototype.getFormKey = function () { return HR.EmplAddressTypeForm.formKey; };
+            EmplAddressTypeEditorDialog.prototype.getLocalTextPrefix = function () { return HR.EmplAddressTypeRow.localTextPrefix; };
+            EmplAddressTypeEditorDialog.prototype.getNameProperty = function () { return HR.EmplAddressTypeRow.nameProperty; };
+            EmplAddressTypeEditorDialog = __decorate([
+                Serenity.Decorators.registerClass(),
+                Serenity.Decorators.responsive()
+            ], EmplAddressTypeEditorDialog);
+            return EmplAddressTypeEditorDialog;
+        }(Ledger.Common.GridEditorDialog));
+        HR.EmplAddressTypeEditorDialog = EmplAddressTypeEditorDialog;
+    })(HR = Ledger.HR || (Ledger.HR = {}));
+})(Ledger || (Ledger = {}));
+var Ledger;
+(function (Ledger) {
+    var HR;
+    (function (HR) {
+        var EmplAddressTypeGrid = /** @class */ (function (_super) {
+            __extends(EmplAddressTypeGrid, _super);
+            function EmplAddressTypeGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            EmplAddressTypeGrid.prototype.getColumnsKey = function () { return 'HR.EmplAddressType'; };
+            EmplAddressTypeGrid.prototype.getDialogType = function () { return HR.EmplAddressTypeDialog; };
+            EmplAddressTypeGrid.prototype.getIdProperty = function () { return HR.EmplAddressTypeRow.idProperty; };
+            EmplAddressTypeGrid.prototype.getLocalTextPrefix = function () { return HR.EmplAddressTypeRow.localTextPrefix; };
+            EmplAddressTypeGrid.prototype.getService = function () { return HR.EmplAddressTypeService.baseUrl; };
+            EmplAddressTypeGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], EmplAddressTypeGrid);
+            return EmplAddressTypeGrid;
+        }(Serenity.EntityGrid));
+        HR.EmplAddressTypeGrid = EmplAddressTypeGrid;
+    })(HR = Ledger.HR || (Ledger.HR = {}));
+})(Ledger || (Ledger = {}));
+var Ledger;
+(function (Ledger) {
+    var HR;
+    (function (HR) {
         var EmployeeDialog = /** @class */ (function (_super) {
             __extends(EmployeeDialog, _super);
             function EmployeeDialog() {
@@ -2058,15 +2150,9 @@ var Ledger;
             function EmployeeAddressEditor(container) {
                 return _super.call(this, container) || this;
             }
-            EmployeeAddressEditor.prototype.getColumnsKey = function () {
-                return 'HR.EmployeeAddress';
-            };
-            EmployeeAddressEditor.prototype.getLocalTextPrefix = function () {
-                return HR.EmployeeAddressRow.localTextPrefix;
-            };
-            EmployeeAddressEditor.prototype.getDialogType = function () {
-                return HR.EmployeeAddressEditorDialog;
-            };
+            EmployeeAddressEditor.prototype.getColumnsKey = function () { return 'HR.EmployeeAddress'; };
+            EmployeeAddressEditor.prototype.getLocalTextPrefix = function () { return HR.EmployeeAddressRow.localTextPrefix; };
+            EmployeeAddressEditor.prototype.getDialogType = function () { return HR.EmployeeAddressEditorDialog; };
             EmployeeAddressEditor.prototype.getAddButtonCaption = function () {
                 return "Add Address";
             };
@@ -2124,21 +2210,11 @@ var Ledger;
             function EmployeeAddressGrid(container) {
                 return _super.call(this, container) || this;
             }
-            EmployeeAddressGrid.prototype.getColumnsKey = function () {
-                return 'HR.EmployeeAddress';
-            };
-            EmployeeAddressGrid.prototype.getDialogType = function () {
-                return HR.EmployeeAddressDialog;
-            };
-            EmployeeAddressGrid.prototype.getIdProperty = function () {
-                return HR.EmployeeAddressRow.idProperty;
-            };
-            EmployeeAddressGrid.prototype.getLocalTextPrefix = function () {
-                return HR.EmployeeAddressRow.localTextPrefix;
-            };
-            EmployeeAddressGrid.prototype.getService = function () {
-                return HR.EmployeeAddressService.baseUrl;
-            };
+            EmployeeAddressGrid.prototype.getColumnsKey = function () { return 'HR.EmployeeAddress'; };
+            EmployeeAddressGrid.prototype.getDialogType = function () { return HR.EmployeeAddressDialog; };
+            EmployeeAddressGrid.prototype.getIdProperty = function () { return HR.EmployeeAddressRow.idProperty; };
+            EmployeeAddressGrid.prototype.getLocalTextPrefix = function () { return HR.EmployeeAddressRow.localTextPrefix; };
+            EmployeeAddressGrid.prototype.getService = function () { return HR.EmployeeAddressService.baseUrl; };
             EmployeeAddressGrid = __decorate([
                 Serenity.Decorators.registerClass()
             ], EmployeeAddressGrid);
@@ -2365,20 +2441,13 @@ var Ledger;
                 _this.form = new Infra.AddressesForm(_this.idPrefix);
                 return _this;
             }
-            AddressesDialog.prototype.getFormKey = function () {
-                return Infra.AddressesForm.formKey;
-            };
-            AddressesDialog.prototype.getIdProperty = function () {
-                return Infra.AddressesRow.idProperty;
-            };
-            AddressesDialog.prototype.getLocalTextPrefix = function () {
-                return Infra.AddressesRow.localTextPrefix;
-            };
-            AddressesDialog.prototype.getNameProperty = function () {
-                return Infra.AddressesRow.nameProperty;
-            };
-            AddressesDialog.prototype.getService = function () {
-                return Infra.AddressesService.baseUrl;
+            AddressesDialog.prototype.getFormKey = function () { return Infra.AddressesForm.formKey; };
+            AddressesDialog.prototype.getIdProperty = function () { return Infra.AddressesRow.idProperty; };
+            AddressesDialog.prototype.getLocalTextPrefix = function () { return Infra.AddressesRow.localTextPrefix; };
+            AddressesDialog.prototype.getNameProperty = function () { return Infra.AddressesRow.nameProperty; };
+            AddressesDialog.prototype.getService = function () { return Infra.AddressesService.baseUrl; };
+            AddressesDialog.prototype.getLanguages = function () {
+                return Ledger.LanguageList.getValue();
             };
             AddressesDialog = __decorate([
                 Serenity.Decorators.registerClass(),
@@ -6368,6 +6437,55 @@ var Ledger;
 })(Ledger || (Ledger = {}));
 var Ledger;
 (function (Ledger) {
+    var Default;
+    (function (Default) {
+        var EmplAddressTypeForm = /** @class */ (function (_super) {
+            __extends(EmplAddressTypeForm, _super);
+            function EmplAddressTypeForm() {
+                return _super !== null && _super.apply(this, arguments) || this;
+            }
+            EmplAddressTypeForm.formKey = 'Default.EmplAddressType';
+            return EmplAddressTypeForm;
+        }(Serenity.PrefixedContext));
+        Default.EmplAddressTypeForm = EmplAddressTypeForm;
+        [['EmplAddressType', function () { return Serenity.StringEditor; }], ['InsertUserId', function () { return Serenity.IntegerEditor; }], ['InsertDate', function () { return Serenity.DateEditor; }], ['UpdateUserId', function () { return Serenity.IntegerEditor; }], ['UpdateDate', function () { return Serenity.DateEditor; }], ['TenantId', function () { return Serenity.IntegerEditor; }], ['IsActive', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(EmplAddressTypeForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
+    })(Default = Ledger.Default || (Ledger.Default = {}));
+})(Ledger || (Ledger = {}));
+var Ledger;
+(function (Ledger) {
+    var Default;
+    (function (Default) {
+        var EmplAddressTypeRow;
+        (function (EmplAddressTypeRow) {
+            EmplAddressTypeRow.idProperty = 'EmplAddressTypeId';
+            EmplAddressTypeRow.nameProperty = 'EmplAddressType';
+            EmplAddressTypeRow.localTextPrefix = 'Default.EmplAddressType';
+            var Fields;
+            (function (Fields) {
+            })(Fields = EmplAddressTypeRow.Fields || (EmplAddressTypeRow.Fields = {}));
+            ['EmplAddressTypeId', 'EmplAddressType', 'InsertUserId', 'InsertDate', 'UpdateUserId', 'UpdateDate', 'TenantId', 'IsActive', 'EmplAddressTypeEmployeeId', 'EmplAddressTypeAddressId', 'EmplAddressTypeAddressType', 'EmplAddressTypeInsertUserId', 'EmplAddressTypeInsertDate', 'EmplAddressTypeUpdateUserId', 'EmplAddressTypeUpdateDate', 'EmplAddressTypeTenantId', 'EmplAddressTypeIsActive', 'EmplAddressTypeAddressTypeId'].forEach(function (x) { return Fields[x] = x; });
+        })(EmplAddressTypeRow = Default.EmplAddressTypeRow || (Default.EmplAddressTypeRow = {}));
+    })(Default = Ledger.Default || (Ledger.Default = {}));
+})(Ledger || (Ledger = {}));
+var Ledger;
+(function (Ledger) {
+    var Default;
+    (function (Default) {
+        var EmplAddressTypeService;
+        (function (EmplAddressTypeService) {
+            EmplAddressTypeService.baseUrl = 'Default/EmplAddressType';
+            var Methods;
+            (function (Methods) {
+            })(Methods = EmplAddressTypeService.Methods || (EmplAddressTypeService.Methods = {}));
+            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
+                EmplAddressTypeService[x] = function (r, s, o) { return Q.serviceRequest(EmplAddressTypeService.baseUrl + '/' + x, r, s, o); };
+                Methods[x] = EmplAddressTypeService.baseUrl + '/' + x;
+            });
+        })(EmplAddressTypeService = Default.EmplAddressTypeService || (Default.EmplAddressTypeService = {}));
+    })(Default = Ledger.Default || (Ledger.Default = {}));
+})(Ledger || (Ledger = {}));
+var Ledger;
+(function (Ledger) {
     var HR;
     (function (HR) {
         var AddressTypeId;
@@ -6383,6 +6501,56 @@ var Ledger;
 (function (Ledger) {
     var HR;
     (function (HR) {
+        var EmplAddressTypeForm = /** @class */ (function (_super) {
+            __extends(EmplAddressTypeForm, _super);
+            function EmplAddressTypeForm() {
+                return _super !== null && _super.apply(this, arguments) || this;
+            }
+            EmplAddressTypeForm.formKey = 'HR.EmplAddressType';
+            return EmplAddressTypeForm;
+        }(Serenity.PrefixedContext));
+        HR.EmplAddressTypeForm = EmplAddressTypeForm;
+        [['EmplAddressType', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(EmplAddressTypeForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
+    })(HR = Ledger.HR || (Ledger.HR = {}));
+})(Ledger || (Ledger = {}));
+var Ledger;
+(function (Ledger) {
+    var HR;
+    (function (HR) {
+        var EmplAddressTypeRow;
+        (function (EmplAddressTypeRow) {
+            EmplAddressTypeRow.idProperty = 'EmplAddressTypeId';
+            EmplAddressTypeRow.isActiveProperty = 'IsActive';
+            EmplAddressTypeRow.nameProperty = 'EmplAddressType';
+            EmplAddressTypeRow.localTextPrefix = 'HR.EmplAddressType';
+            var Fields;
+            (function (Fields) {
+            })(Fields = EmplAddressTypeRow.Fields || (EmplAddressTypeRow.Fields = {}));
+            ['EmplAddressTypeId', 'EmplAddressType', 'TenantId', 'IsActive', 'EmplAddressTypeEmployeeId', 'EmplAddressTypeAddressId', 'EmplAddressTypeAddressType', 'EmplAddressTypeInsertUserId', 'EmplAddressTypeInsertDate', 'EmplAddressTypeUpdateUserId', 'EmplAddressTypeUpdateDate', 'EmplAddressTypeTenantId', 'EmplAddressTypeIsActive', 'EmplAddressTypeAddressTypeId', 'InsertUserId', 'InsertDate', 'UpdateUserId', 'UpdateDate'].forEach(function (x) { return Fields[x] = x; });
+        })(EmplAddressTypeRow = HR.EmplAddressTypeRow || (HR.EmplAddressTypeRow = {}));
+    })(HR = Ledger.HR || (Ledger.HR = {}));
+})(Ledger || (Ledger = {}));
+var Ledger;
+(function (Ledger) {
+    var HR;
+    (function (HR) {
+        var EmplAddressTypeService;
+        (function (EmplAddressTypeService) {
+            EmplAddressTypeService.baseUrl = 'HR/EmplAddressType';
+            var Methods;
+            (function (Methods) {
+            })(Methods = EmplAddressTypeService.Methods || (EmplAddressTypeService.Methods = {}));
+            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
+                EmplAddressTypeService[x] = function (r, s, o) { return Q.serviceRequest(EmplAddressTypeService.baseUrl + '/' + x, r, s, o); };
+                Methods[x] = EmplAddressTypeService.baseUrl + '/' + x;
+            });
+        })(EmplAddressTypeService = HR.EmplAddressTypeService || (HR.EmplAddressTypeService = {}));
+    })(HR = Ledger.HR || (Ledger.HR = {}));
+})(Ledger || (Ledger = {}));
+var Ledger;
+(function (Ledger) {
+    var HR;
+    (function (HR) {
         var EmployeeAddressForm = /** @class */ (function (_super) {
             __extends(EmployeeAddressForm, _super);
             function EmployeeAddressForm() {
@@ -6392,7 +6560,7 @@ var Ledger;
             return EmployeeAddressForm;
         }(Serenity.PrefixedContext));
         HR.EmployeeAddressForm = EmployeeAddressForm;
-        [['AddressId', function () { return Serenity.LookupEditor; }], ['AddressType', function () { return Serenity.StringEditor; }], ['AddressTypeId', function () { return Serenity.EnumEditor; }]].forEach(function (x) { return Object.defineProperty(EmployeeAddressForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
+        [['AddressId', function () { return Serenity.LookupEditor; }], ['AddressTypeId', function () { return Serenity.EnumEditor; }]].forEach(function (x) { return Object.defineProperty(EmployeeAddressForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(HR = Ledger.HR || (Ledger.HR = {}));
 })(Ledger || (Ledger = {}));
 var Ledger;
@@ -6828,12 +6996,13 @@ var Ledger;
         var NoteRow;
         (function (NoteRow) {
             NoteRow.idProperty = 'NoteID';
+            NoteRow.isActiveProperty = 'IsActive';
             NoteRow.nameProperty = 'EntityType';
             NoteRow.localTextPrefix = 'Infra.Note';
             var Fields;
             (function (Fields) {
             })(Fields = NoteRow.Fields || (NoteRow.Fields = {}));
-            ['NoteID', 'EntityType', 'EntityId', 'Text', 'InsertUserId', 'InsertDate', 'InsertUserDisplayName'].forEach(function (x) { return Fields[x] = x; });
+            ['NoteID', 'EntityType', 'EntityId', 'Text', 'InsertUserDisplayName', 'IsActive', 'TenantId', 'InsertUserId', 'InsertDate', 'UpdateUserId', 'UpdateDate'].forEach(function (x) { return Fields[x] = x; });
         })(NoteRow = Infra.NoteRow || (Infra.NoteRow = {}));
     })(Infra = Ledger.Infra || (Ledger.Infra = {}));
 })(Ledger || (Ledger = {}));

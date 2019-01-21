@@ -2,7 +2,6 @@
 namespace Store.Administration {
 
     @Serenity.Decorators.registerClass()
-    @Serenity.Decorators.responsive()
     export class TenantDialog extends Serenity.EntityDialog<TenantRow, any> {
         protected getFormKey() { return TenantForm.formKey; }
         protected getIdProperty() { return TenantRow.idProperty; }

@@ -377,6 +377,42 @@ declare namespace Ledger.Common {
     }
 }
 declare namespace Ledger.HR {
+    class EmplAddressTypeDialog extends Serenity.EntityDialog<EmplAddressTypeRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: EmplAddressTypeForm;
+    }
+}
+declare namespace Ledger.HR {
+    class EmplAddressTypeEditor extends Common.GridEditorBase<EmplAddressTypeRow> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof EmplAddressTypeEditorDialog;
+        protected getLocalTextPrefix(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Ledger.HR {
+    class EmplAddressTypeEditorDialog extends Common.GridEditorDialog<EmplAddressTypeRow> {
+        protected getFormKey(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected form: EmplAddressTypeForm;
+    }
+}
+declare namespace Ledger.HR {
+    class EmplAddressTypeGrid extends Serenity.EntityGrid<EmplAddressTypeRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof EmplAddressTypeDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Ledger.HR {
     class EmployeeDialog extends Serenity.EntityDialog<EmployeeRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
@@ -541,6 +577,7 @@ declare namespace Ledger.Infra {
         protected getNameProperty(): string;
         protected getService(): string;
         protected form: AddressesForm;
+        protected getLanguages(): string[][];
     }
 }
 declare namespace Ledger.Infra {
@@ -2093,6 +2130,84 @@ declare namespace Ledger.Common {
         Value?: string;
     }
 }
+declare namespace Ledger.Default {
+    class EmplAddressTypeForm extends Serenity.PrefixedContext {
+        static formKey: string;
+    }
+    interface EmplAddressTypeForm {
+        EmplAddressType: Serenity.StringEditor;
+        InsertUserId: Serenity.IntegerEditor;
+        InsertDate: Serenity.DateEditor;
+        UpdateUserId: Serenity.IntegerEditor;
+        UpdateDate: Serenity.DateEditor;
+        TenantId: Serenity.IntegerEditor;
+        IsActive: Serenity.IntegerEditor;
+    }
+}
+declare namespace Ledger.Default {
+    interface EmplAddressTypeRow {
+        EmplAddressTypeId?: number;
+        EmplAddressType?: string;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+        TenantId?: number;
+        IsActive?: number;
+        EmplAddressTypeEmployeeId?: number;
+        EmplAddressTypeAddressId?: number;
+        EmplAddressTypeAddressType?: string;
+        EmplAddressTypeInsertUserId?: number;
+        EmplAddressTypeInsertDate?: string;
+        EmplAddressTypeUpdateUserId?: number;
+        EmplAddressTypeUpdateDate?: string;
+        EmplAddressTypeTenantId?: number;
+        EmplAddressTypeIsActive?: number;
+        EmplAddressTypeAddressTypeId?: number;
+    }
+    namespace EmplAddressTypeRow {
+        const idProperty = "EmplAddressTypeId";
+        const nameProperty = "EmplAddressType";
+        const localTextPrefix = "Default.EmplAddressType";
+        namespace Fields {
+            const EmplAddressTypeId: any;
+            const EmplAddressType: any;
+            const InsertUserId: any;
+            const InsertDate: any;
+            const UpdateUserId: any;
+            const UpdateDate: any;
+            const TenantId: any;
+            const IsActive: any;
+            const EmplAddressTypeEmployeeId: string;
+            const EmplAddressTypeAddressId: string;
+            const EmplAddressTypeAddressType: string;
+            const EmplAddressTypeInsertUserId: string;
+            const EmplAddressTypeInsertDate: string;
+            const EmplAddressTypeUpdateUserId: string;
+            const EmplAddressTypeUpdateDate: string;
+            const EmplAddressTypeTenantId: string;
+            const EmplAddressTypeIsActive: string;
+            const EmplAddressTypeAddressTypeId: string;
+        }
+    }
+}
+declare namespace Ledger.Default {
+    namespace EmplAddressTypeService {
+        const baseUrl = "Default/EmplAddressType";
+        function Create(request: Serenity.SaveRequest<EmplAddressTypeRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<EmplAddressTypeRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<EmplAddressTypeRow>) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<EmplAddressTypeRow>) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        namespace Methods {
+            const Create: string;
+            const Update: string;
+            const Delete: string;
+            const Retrieve: string;
+            const List: string;
+        }
+    }
+}
 declare namespace Ledger.HR {
     enum AddressTypeId {
         HomeAddress = 1,
@@ -2103,12 +2218,86 @@ declare namespace Ledger.HR {
 declare namespace Ledger.HR {
 }
 declare namespace Ledger.HR {
+    class EmplAddressTypeForm extends Serenity.PrefixedContext {
+        static formKey: string;
+    }
+    interface EmplAddressTypeForm {
+        EmplAddressType: Serenity.StringEditor;
+    }
+}
+declare namespace Ledger.HR {
+    interface EmplAddressTypeRow {
+        EmplAddressTypeId?: number;
+        EmplAddressType?: string;
+        TenantId?: number;
+        IsActive?: number;
+        EmplAddressTypeEmployeeId?: number;
+        EmplAddressTypeAddressId?: number;
+        EmplAddressTypeAddressType?: string;
+        EmplAddressTypeInsertUserId?: number;
+        EmplAddressTypeInsertDate?: string;
+        EmplAddressTypeUpdateUserId?: number;
+        EmplAddressTypeUpdateDate?: string;
+        EmplAddressTypeTenantId?: number;
+        EmplAddressTypeIsActive?: number;
+        EmplAddressTypeAddressTypeId?: number;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+    }
+    namespace EmplAddressTypeRow {
+        const idProperty = "EmplAddressTypeId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "EmplAddressType";
+        const localTextPrefix = "HR.EmplAddressType";
+        namespace Fields {
+            const EmplAddressTypeId: string;
+            const EmplAddressType: string;
+            const TenantId: string;
+            const IsActive: string;
+            const EmplAddressTypeEmployeeId: string;
+            const EmplAddressTypeAddressId: string;
+            const EmplAddressTypeAddressType: string;
+            const EmplAddressTypeInsertUserId: string;
+            const EmplAddressTypeInsertDate: string;
+            const EmplAddressTypeUpdateUserId: string;
+            const EmplAddressTypeUpdateDate: string;
+            const EmplAddressTypeTenantId: string;
+            const EmplAddressTypeIsActive: string;
+            const EmplAddressTypeAddressTypeId: string;
+            const InsertUserId: string;
+            const InsertDate: string;
+            const UpdateUserId: string;
+            const UpdateDate: string;
+        }
+    }
+}
+declare namespace Ledger.HR {
+    namespace EmplAddressTypeService {
+        const baseUrl = "HR/EmplAddressType";
+        function Create(request: Serenity.SaveRequest<EmplAddressTypeRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<EmplAddressTypeRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<EmplAddressTypeRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<EmplAddressTypeRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        namespace Methods {
+            const Create: string;
+            const Update: string;
+            const Delete: string;
+            const Retrieve: string;
+            const List: string;
+        }
+    }
+}
+declare namespace Ledger.HR {
+}
+declare namespace Ledger.HR {
     class EmployeeAddressForm extends Serenity.PrefixedContext {
         static formKey: string;
     }
     interface EmployeeAddressForm {
         AddressId: Serenity.LookupEditor;
-        AddressType: Serenity.StringEditor;
         AddressTypeId: Serenity.EnumEditor;
     }
 }
@@ -2731,12 +2920,17 @@ declare namespace Ledger.Infra {
         EntityType?: string;
         EntityId?: number;
         Text?: string;
+        InsertUserDisplayName?: string;
+        IsActive?: number;
+        TenantId?: number;
         InsertUserId?: number;
         InsertDate?: string;
-        InsertUserDisplayName?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
     }
     namespace NoteRow {
         const idProperty = "NoteID";
+        const isActiveProperty = "IsActive";
         const nameProperty = "EntityType";
         const localTextPrefix = "Infra.Note";
         namespace Fields {
@@ -2744,9 +2938,13 @@ declare namespace Ledger.Infra {
             const EntityType: string;
             const EntityId: string;
             const Text: string;
+            const InsertUserDisplayName: string;
+            const IsActive: string;
+            const TenantId: string;
             const InsertUserId: string;
             const InsertDate: string;
-            const InsertUserDisplayName: string;
+            const UpdateUserId: string;
+            const UpdateDate: string;
         }
     }
 }

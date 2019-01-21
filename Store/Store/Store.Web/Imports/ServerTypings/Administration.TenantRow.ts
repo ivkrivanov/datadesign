@@ -14,12 +14,10 @@
             return Q.getLookup<TenantRow>('Administration.Tenant');
         }
 
-        export namespace Fields {
-            export declare const TenantId: string;
-            export declare const TenantName: string;
+        export declare const enum Fields {
+            TenantId = "TenantId",
+            TenantName = "TenantName"
         }
-
-        ['TenantId', 'TenantName'].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

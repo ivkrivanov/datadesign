@@ -10,7 +10,7 @@ namespace Store.Administration.Columns
     using System.IO;
 
     [ColumnsScript("Administration.Tenant")]
-    [BasedOnRow(typeof(Entities.TenantRow))]
+    [BasedOnRow(typeof(Entities.TenantRow), CheckNames = true)]
     public class TenantColumns
     {
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]

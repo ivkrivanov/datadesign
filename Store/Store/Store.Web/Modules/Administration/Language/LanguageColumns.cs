@@ -5,7 +5,7 @@ namespace Store.Administration.Forms
     using System;
 
     [ColumnsScript("Administration.Language")]
-    [BasedOnRow(typeof(Entities.LanguageRow))]
+    [BasedOnRow(typeof(Entities.LanguageRow), CheckNames = true)]
     public class LanguageColumns
     {
         [EditLink]

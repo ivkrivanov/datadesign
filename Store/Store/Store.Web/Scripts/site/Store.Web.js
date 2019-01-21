@@ -1,28 +1,26 @@
-﻿var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var Store;
+﻿var Store;
 (function (Store) {
     var Administration;
     (function (Administration) {
-        var LanguageForm = (function (_super) {
+        var LanguageForm = /** @class */ (function (_super) {
             __extends(LanguageForm, _super);
-            function LanguageForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
+            function LanguageForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!LanguageForm.init) {
+                    LanguageForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.StringEditor;
+                    Q.initFormType(LanguageForm, [
+                        'LanguageId', w0,
+                        'LanguageName', w0
+                    ]);
+                }
+                return _this;
             }
+            LanguageForm.formKey = 'Administration.Language';
             return LanguageForm;
         }(Serenity.PrefixedContext));
-        LanguageForm.formKey = 'Administration.Language';
         Administration.LanguageForm = LanguageForm;
-        [['LanguageId', function () { return Serenity.StringEditor; }], ['LanguageName', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(LanguageForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Administration = Store.Administration || (Store.Administration = {}));
 })(Store || (Store = {}));
 var Store;
@@ -39,10 +37,6 @@ var Store;
                 return Q.getLookup('Administration.Language');
             }
             LanguageRow.getLookup = getLookup;
-            var Fields;
-            (function (Fields) {
-            })(Fields = LanguageRow.Fields || (LanguageRow.Fields = {}));
-            ['Id', 'LanguageId', 'LanguageName'].forEach(function (x) { return Fields[x] = x; });
         })(LanguageRow = Administration.LanguageRow || (Administration.LanguageRow = {}));
     })(Administration = Store.Administration || (Store.Administration = {}));
 })(Store || (Store = {}));
@@ -53,12 +47,16 @@ var Store;
         var LanguageService;
         (function (LanguageService) {
             LanguageService.baseUrl = 'Administration/Language';
-            var Methods;
-            (function (Methods) {
-            })(Methods = LanguageService.Methods || (LanguageService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                LanguageService[x] = function (r, s, o) { return Q.serviceRequest(LanguageService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = LanguageService.baseUrl + '/' + x;
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                LanguageService[x] = function (r, s, o) {
+                    return Q.serviceRequest(LanguageService.baseUrl + '/' + x, r, s, o);
+                };
             });
         })(LanguageService = Administration.LanguageService || (Administration.LanguageService = {}));
     })(Administration = Store.Administration || (Store.Administration = {}));
@@ -67,16 +65,24 @@ var Store;
 (function (Store) {
     var Administration;
     (function (Administration) {
-        var RoleForm = (function (_super) {
+        var RoleForm = /** @class */ (function (_super) {
             __extends(RoleForm, _super);
-            function RoleForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
+            function RoleForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!RoleForm.init) {
+                    RoleForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.StringEditor;
+                    Q.initFormType(RoleForm, [
+                        'RoleName', w0
+                    ]);
+                }
+                return _this;
             }
+            RoleForm.formKey = 'Administration.Role';
             return RoleForm;
         }(Serenity.PrefixedContext));
-        RoleForm.formKey = 'Administration.Role';
         Administration.RoleForm = RoleForm;
-        [['RoleName', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(RoleForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Administration = Store.Administration || (Store.Administration = {}));
 })(Store || (Store = {}));
 var Store;
@@ -88,10 +94,6 @@ var Store;
             RolePermissionRow.idProperty = 'RolePermissionId';
             RolePermissionRow.nameProperty = 'PermissionKey';
             RolePermissionRow.localTextPrefix = 'Administration.RolePermission';
-            var Fields;
-            (function (Fields) {
-            })(Fields = RolePermissionRow.Fields || (RolePermissionRow.Fields = {}));
-            ['RolePermissionId', 'RoleId', 'PermissionKey', 'RoleRoleName'].forEach(function (x) { return Fields[x] = x; });
         })(RolePermissionRow = Administration.RolePermissionRow || (Administration.RolePermissionRow = {}));
     })(Administration = Store.Administration || (Store.Administration = {}));
 })(Store || (Store = {}));
@@ -102,12 +104,13 @@ var Store;
         var RolePermissionService;
         (function (RolePermissionService) {
             RolePermissionService.baseUrl = 'Administration/RolePermission';
-            var Methods;
-            (function (Methods) {
-            })(Methods = RolePermissionService.Methods || (RolePermissionService.Methods = {}));
-            ['Update', 'List'].forEach(function (x) {
-                RolePermissionService[x] = function (r, s, o) { return Q.serviceRequest(RolePermissionService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = RolePermissionService.baseUrl + '/' + x;
+            [
+                'Update',
+                'List'
+            ].forEach(function (x) {
+                RolePermissionService[x] = function (r, s, o) {
+                    return Q.serviceRequest(RolePermissionService.baseUrl + '/' + x, r, s, o);
+                };
             });
         })(RolePermissionService = Administration.RolePermissionService || (Administration.RolePermissionService = {}));
     })(Administration = Store.Administration || (Store.Administration = {}));
@@ -126,10 +129,6 @@ var Store;
                 return Q.getLookup('Administration.Role');
             }
             RoleRow.getLookup = getLookup;
-            var Fields;
-            (function (Fields) {
-            })(Fields = RoleRow.Fields || (RoleRow.Fields = {}));
-            ['RoleId', 'RoleName', 'TenantId'].forEach(function (x) { return Fields[x] = x; });
         })(RoleRow = Administration.RoleRow || (Administration.RoleRow = {}));
     })(Administration = Store.Administration || (Store.Administration = {}));
 })(Store || (Store = {}));
@@ -140,12 +139,16 @@ var Store;
         var RoleService;
         (function (RoleService) {
             RoleService.baseUrl = 'Administration/Role';
-            var Methods;
-            (function (Methods) {
-            })(Methods = RoleService.Methods || (RoleService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                RoleService[x] = function (r, s, o) { return Q.serviceRequest(RoleService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = RoleService.baseUrl + '/' + x;
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                RoleService[x] = function (r, s, o) {
+                    return Q.serviceRequest(RoleService.baseUrl + '/' + x, r, s, o);
+                };
             });
         })(RoleService = Administration.RoleService || (Administration.RoleService = {}));
     })(Administration = Store.Administration || (Store.Administration = {}));
@@ -154,16 +157,24 @@ var Store;
 (function (Store) {
     var Administration;
     (function (Administration) {
-        var TenantForm = (function (_super) {
+        var TenantForm = /** @class */ (function (_super) {
             __extends(TenantForm, _super);
-            function TenantForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
+            function TenantForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!TenantForm.init) {
+                    TenantForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.StringEditor;
+                    Q.initFormType(TenantForm, [
+                        'TenantName', w0
+                    ]);
+                }
+                return _this;
             }
+            TenantForm.formKey = 'Administration.Tenant';
             return TenantForm;
         }(Serenity.PrefixedContext));
-        TenantForm.formKey = 'Administration.Tenant';
         Administration.TenantForm = TenantForm;
-        [['TenantName', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(TenantForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Administration = Store.Administration || (Store.Administration = {}));
 })(Store || (Store = {}));
 var Store;
@@ -180,10 +191,6 @@ var Store;
                 return Q.getLookup('Administration.Tenant');
             }
             TenantRow.getLookup = getLookup;
-            var Fields;
-            (function (Fields) {
-            })(Fields = TenantRow.Fields || (TenantRow.Fields = {}));
-            ['TenantId', 'TenantName'].forEach(function (x) { return Fields[x] = x; });
         })(TenantRow = Administration.TenantRow || (Administration.TenantRow = {}));
     })(Administration = Store.Administration || (Store.Administration = {}));
 })(Store || (Store = {}));
@@ -194,12 +201,16 @@ var Store;
         var TenantService;
         (function (TenantService) {
             TenantService.baseUrl = 'Administration/Tenant';
-            var Methods;
-            (function (Methods) {
-            })(Methods = TenantService.Methods || (TenantService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                TenantService[x] = function (r, s, o) { return Q.serviceRequest(TenantService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = TenantService.baseUrl + '/' + x;
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                TenantService[x] = function (r, s, o) {
+                    return Q.serviceRequest(TenantService.baseUrl + '/' + x, r, s, o);
+                };
             });
         })(TenantService = Administration.TenantService || (Administration.TenantService = {}));
     })(Administration = Store.Administration || (Store.Administration = {}));
@@ -211,12 +222,13 @@ var Store;
         var TranslationService;
         (function (TranslationService) {
             TranslationService.baseUrl = 'Administration/Translation';
-            var Methods;
-            (function (Methods) {
-            })(Methods = TranslationService.Methods || (TranslationService.Methods = {}));
-            ['List', 'Update'].forEach(function (x) {
-                TranslationService[x] = function (r, s, o) { return Q.serviceRequest(TranslationService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = TranslationService.baseUrl + '/' + x;
+            [
+                'List',
+                'Update'
+            ].forEach(function (x) {
+                TranslationService[x] = function (r, s, o) {
+                    return Q.serviceRequest(TranslationService.baseUrl + '/' + x, r, s, o);
+                };
             });
         })(TranslationService = Administration.TranslationService || (Administration.TranslationService = {}));
     })(Administration = Store.Administration || (Store.Administration = {}));
@@ -225,16 +237,35 @@ var Store;
 (function (Store) {
     var Administration;
     (function (Administration) {
-        var UserForm = (function (_super) {
+        var UserForm = /** @class */ (function (_super) {
             __extends(UserForm, _super);
-            function UserForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
+            function UserForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!UserForm.init) {
+                    UserForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.StringEditor;
+                    var w1 = s.EmailEditor;
+                    var w2 = s.ImageUploadEditor;
+                    var w3 = s.PasswordEditor;
+                    var w4 = s.LookupEditor;
+                    Q.initFormType(UserForm, [
+                        'Username', w0,
+                        'DisplayName', w0,
+                        'Email', w1,
+                        'UserImage', w2,
+                        'Password', w3,
+                        'PasswordConfirm', w3,
+                        'Source', w0,
+                        'TenantId', w4
+                    ]);
+                }
+                return _this;
             }
+            UserForm.formKey = 'Administration.User';
             return UserForm;
         }(Serenity.PrefixedContext));
-        UserForm.formKey = 'Administration.User';
         Administration.UserForm = UserForm;
-        [['Username', function () { return Serenity.StringEditor; }], ['DisplayName', function () { return Serenity.StringEditor; }], ['Email', function () { return Serenity.EmailEditor; }], ['UserImage', function () { return Serenity.ImageUploadEditor; }], ['Password', function () { return Serenity.PasswordEditor; }], ['PasswordConfirm', function () { return Serenity.PasswordEditor; }], ['Source', function () { return Serenity.StringEditor; }], ['TenantId', function () { return Serenity.LookupEditor; }]].forEach(function (x) { return Object.defineProperty(UserForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Administration = Store.Administration || (Store.Administration = {}));
 })(Store || (Store = {}));
 var Store;
@@ -246,10 +277,6 @@ var Store;
             UserPermissionRow.idProperty = 'UserPermissionId';
             UserPermissionRow.nameProperty = 'PermissionKey';
             UserPermissionRow.localTextPrefix = 'Administration.UserPermission';
-            var Fields;
-            (function (Fields) {
-            })(Fields = UserPermissionRow.Fields || (UserPermissionRow.Fields = {}));
-            ['UserPermissionId', 'UserId', 'PermissionKey', 'Granted', 'Username', 'User'].forEach(function (x) { return Fields[x] = x; });
         })(UserPermissionRow = Administration.UserPermissionRow || (Administration.UserPermissionRow = {}));
     })(Administration = Store.Administration || (Store.Administration = {}));
 })(Store || (Store = {}));
@@ -260,12 +287,15 @@ var Store;
         var UserPermissionService;
         (function (UserPermissionService) {
             UserPermissionService.baseUrl = 'Administration/UserPermission';
-            var Methods;
-            (function (Methods) {
-            })(Methods = UserPermissionService.Methods || (UserPermissionService.Methods = {}));
-            ['Update', 'List', 'ListRolePermissions', 'ListPermissionKeys'].forEach(function (x) {
-                UserPermissionService[x] = function (r, s, o) { return Q.serviceRequest(UserPermissionService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = UserPermissionService.baseUrl + '/' + x;
+            [
+                'Update',
+                'List',
+                'ListRolePermissions',
+                'ListPermissionKeys'
+            ].forEach(function (x) {
+                UserPermissionService[x] = function (r, s, o) {
+                    return Q.serviceRequest(UserPermissionService.baseUrl + '/' + x, r, s, o);
+                };
             });
         })(UserPermissionService = Administration.UserPermissionService || (Administration.UserPermissionService = {}));
     })(Administration = Store.Administration || (Store.Administration = {}));
@@ -278,10 +308,6 @@ var Store;
         (function (UserRoleRow) {
             UserRoleRow.idProperty = 'UserRoleId';
             UserRoleRow.localTextPrefix = 'Administration.UserRole';
-            var Fields;
-            (function (Fields) {
-            })(Fields = UserRoleRow.Fields || (UserRoleRow.Fields = {}));
-            ['UserRoleId', 'UserId', 'RoleId', 'Username', 'User'].forEach(function (x) { return Fields[x] = x; });
         })(UserRoleRow = Administration.UserRoleRow || (Administration.UserRoleRow = {}));
     })(Administration = Store.Administration || (Store.Administration = {}));
 })(Store || (Store = {}));
@@ -292,12 +318,13 @@ var Store;
         var UserRoleService;
         (function (UserRoleService) {
             UserRoleService.baseUrl = 'Administration/UserRole';
-            var Methods;
-            (function (Methods) {
-            })(Methods = UserRoleService.Methods || (UserRoleService.Methods = {}));
-            ['Update', 'List'].forEach(function (x) {
-                UserRoleService[x] = function (r, s, o) { return Q.serviceRequest(UserRoleService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = UserRoleService.baseUrl + '/' + x;
+            [
+                'Update',
+                'List'
+            ].forEach(function (x) {
+                UserRoleService[x] = function (r, s, o) {
+                    return Q.serviceRequest(UserRoleService.baseUrl + '/' + x, r, s, o);
+                };
             });
         })(UserRoleService = Administration.UserRoleService || (Administration.UserRoleService = {}));
     })(Administration = Store.Administration || (Store.Administration = {}));
@@ -317,10 +344,6 @@ var Store;
                 return Q.getLookup('Administration.User');
             }
             UserRow.getLookup = getLookup;
-            var Fields;
-            (function (Fields) {
-            })(Fields = UserRow.Fields || (UserRow.Fields = {}));
-            ['UserId', 'Username', 'Source', 'PasswordHash', 'PasswordSalt', 'DisplayName', 'Email', 'UserImage', 'LastDirectoryUpdate', 'IsActive', 'Password', 'PasswordConfirm', 'TenantId', 'TenantName', 'InsertUserId', 'InsertDate', 'UpdateUserId', 'UpdateDate'].forEach(function (x) { return Fields[x] = x; });
         })(UserRow = Administration.UserRow || (Administration.UserRow = {}));
     })(Administration = Store.Administration || (Store.Administration = {}));
 })(Store || (Store = {}));
@@ -331,244 +354,20 @@ var Store;
         var UserService;
         (function (UserService) {
             UserService.baseUrl = 'Administration/User';
-            var Methods;
-            (function (Methods) {
-            })(Methods = UserService.Methods || (UserService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Undelete', 'Retrieve', 'List'].forEach(function (x) {
-                UserService[x] = function (r, s, o) { return Q.serviceRequest(UserService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = UserService.baseUrl + '/' + x;
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Undelete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                UserService[x] = function (r, s, o) {
+                    return Q.serviceRequest(UserService.baseUrl + '/' + x, r, s, o);
+                };
             });
         })(UserService = Administration.UserService || (Administration.UserService = {}));
     })(Administration = Store.Administration || (Store.Administration = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var BasicSamplesService;
-        (function (BasicSamplesService) {
-            BasicSamplesService.baseUrl = 'BasicSamples/BasicSamples';
-            var Methods;
-            (function (Methods) {
-            })(Methods = BasicSamplesService.Methods || (BasicSamplesService.Methods = {}));
-            ['OrdersByShipper', 'OrderBulkAction'].forEach(function (x) {
-                BasicSamplesService[x] = function (r, s, o) { return Q.serviceRequest(BasicSamplesService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = BasicSamplesService.baseUrl + '/' + x;
-            });
-        })(BasicSamplesService = BasicSamples.BasicSamplesService || (BasicSamples.BasicSamplesService = {}));
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var ChangingLookupTextForm = (function (_super) {
-            __extends(ChangingLookupTextForm, _super);
-            function ChangingLookupTextForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            return ChangingLookupTextForm;
-        }(Serenity.PrefixedContext));
-        ChangingLookupTextForm.formKey = 'BasicSamples.ChangingLookupText';
-        BasicSamples.ChangingLookupTextForm = ChangingLookupTextForm;
-        [['ProductID', function () { return BasicSamples.ChangingLookupTextEditor; }], ['UnitPrice', function () { return Serenity.DecimalEditor; }], ['Quantity', function () { return Serenity.IntegerEditor; }], ['Discount', function () { return Serenity.DecimalEditor; }]].forEach(function (x) { return Object.defineProperty(ChangingLookupTextForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var CustomerGrossSalesService;
-        (function (CustomerGrossSalesService) {
-            CustomerGrossSalesService.baseUrl = 'BasicSamples/CustomerGrossSales';
-            var Methods;
-            (function (Methods) {
-            })(Methods = CustomerGrossSalesService.Methods || (CustomerGrossSalesService.Methods = {}));
-            ['List'].forEach(function (x) {
-                CustomerGrossSalesService[x] = function (r, s, o) { return Q.serviceRequest(CustomerGrossSalesService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = CustomerGrossSalesService.baseUrl + '/' + x;
-            });
-        })(CustomerGrossSalesService = BasicSamples.CustomerGrossSalesService || (BasicSamples.CustomerGrossSalesService = {}));
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var DragDropSampleForm = (function (_super) {
-            __extends(DragDropSampleForm, _super);
-            function DragDropSampleForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            return DragDropSampleForm;
-        }(Serenity.PrefixedContext));
-        DragDropSampleForm.formKey = 'BasicSamples.DragDropSample';
-        BasicSamples.DragDropSampleForm = DragDropSampleForm;
-        [['Title', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(DragDropSampleForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var DragDropSampleRow;
-        (function (DragDropSampleRow) {
-            DragDropSampleRow.idProperty = 'Id';
-            DragDropSampleRow.nameProperty = 'Title';
-            DragDropSampleRow.localTextPrefix = 'BasicSamples.DragDropSample';
-            var Fields;
-            (function (Fields) {
-            })(Fields = DragDropSampleRow.Fields || (DragDropSampleRow.Fields = {}));
-            ['Id', 'ParentId', 'Title'].forEach(function (x) { return Fields[x] = x; });
-        })(DragDropSampleRow = BasicSamples.DragDropSampleRow || (BasicSamples.DragDropSampleRow = {}));
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var DragDropSampleService;
-        (function (DragDropSampleService) {
-            DragDropSampleService.baseUrl = 'BasicSamples/DragDropSample';
-            var Methods;
-            (function (Methods) {
-            })(Methods = DragDropSampleService.Methods || (DragDropSampleService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                DragDropSampleService[x] = function (r, s, o) { return Q.serviceRequest(DragDropSampleService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = DragDropSampleService.baseUrl + '/' + x;
-            });
-        })(DragDropSampleService = BasicSamples.DragDropSampleService || (BasicSamples.DragDropSampleService = {}));
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var FilteredLookupInDetailForm = (function (_super) {
-            __extends(FilteredLookupInDetailForm, _super);
-            function FilteredLookupInDetailForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            return FilteredLookupInDetailForm;
-        }(Serenity.PrefixedContext));
-        FilteredLookupInDetailForm.formKey = 'BasicSamples.FilteredLookupInDetail';
-        BasicSamples.FilteredLookupInDetailForm = FilteredLookupInDetailForm;
-        [['CustomerID', function () { return Store.Northwind.CustomerEditor; }], ['OrderDate', function () { return Serenity.DateEditor; }], ['CategoryID', function () { return Serenity.LookupEditor; }], ['DetailList', function () { return BasicSamples.FilteredLookupDetailEditor; }]].forEach(function (x) { return Object.defineProperty(FilteredLookupInDetailForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var HardcodedValuesForm = (function (_super) {
-            __extends(HardcodedValuesForm, _super);
-            function HardcodedValuesForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            return HardcodedValuesForm;
-        }(Serenity.PrefixedContext));
-        HardcodedValuesForm.formKey = 'BasicSamples.HarcodedValues';
-        BasicSamples.HardcodedValuesForm = HardcodedValuesForm;
-        [['SomeValue', function () { return BasicSamples.HardcodedValuesEditor; }]].forEach(function (x) { return Object.defineProperty(HardcodedValuesForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var LookupFilterByMultipleForm = (function (_super) {
-            __extends(LookupFilterByMultipleForm, _super);
-            function LookupFilterByMultipleForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            return LookupFilterByMultipleForm;
-        }(Serenity.PrefixedContext));
-        LookupFilterByMultipleForm.formKey = 'BasicSamples.LookupFilterByMultiple';
-        BasicSamples.LookupFilterByMultipleForm = LookupFilterByMultipleForm;
-        [['ProductName', function () { return Serenity.StringEditor; }], ['ProductImage', function () { return Serenity.ImageUploadEditor; }], ['Discontinued', function () { return Serenity.BooleanEditor; }], ['SupplierID', function () { return Serenity.LookupEditor; }], ['CategoryID', function () { return BasicSamples.ProduceSeafoodCategoryEditor; }], ['QuantityPerUnit', function () { return Serenity.StringEditor; }], ['UnitPrice', function () { return Serenity.DecimalEditor; }], ['UnitsInStock', function () { return Serenity.IntegerEditor; }], ['UnitsOnOrder', function () { return Serenity.IntegerEditor; }], ['ReorderLevel', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(LookupFilterByMultipleForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var PopulateLinkedDataForm = (function (_super) {
-            __extends(PopulateLinkedDataForm, _super);
-            function PopulateLinkedDataForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            return PopulateLinkedDataForm;
-        }(Serenity.PrefixedContext));
-        PopulateLinkedDataForm.formKey = 'BasicSamples.PopulateLinkedData';
-        BasicSamples.PopulateLinkedDataForm = PopulateLinkedDataForm;
-        [['CustomerID', function () { return Store.Northwind.CustomerEditor; }], ['CustomerContactName', function () { return Serenity.StringEditor; }], ['CustomerContactTitle', function () { return Serenity.StringEditor; }], ['CustomerCity', function () { return Serenity.StringEditor; }], ['CustomerRegion', function () { return Serenity.StringEditor; }], ['CustomerCountry', function () { return Serenity.StringEditor; }], ['CustomerPhone', function () { return Serenity.StringEditor; }], ['CustomerFax', function () { return Serenity.StringEditor; }], ['OrderDate', function () { return Serenity.DateEditor; }], ['RequiredDate', function () { return Serenity.DateEditor; }], ['EmployeeID', function () { return Serenity.LookupEditor; }], ['DetailList', function () { return Store.Northwind.OrderDetailsEditor; }]].forEach(function (x) { return Object.defineProperty(PopulateLinkedDataForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var ProductExcelImportForm = (function (_super) {
-            __extends(ProductExcelImportForm, _super);
-            function ProductExcelImportForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            return ProductExcelImportForm;
-        }(Serenity.PrefixedContext));
-        ProductExcelImportForm.formKey = 'BasicSamples.ProductExcelImport';
-        BasicSamples.ProductExcelImportForm = ProductExcelImportForm;
-        [['FileName', function () { return Serenity.ImageUploadEditor; }]].forEach(function (x) { return Object.defineProperty(ProductExcelImportForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var ProductExcelImportService;
-        (function (ProductExcelImportService) {
-            ProductExcelImportService.baseUrl = 'BasicSamples/ProductExcelImport';
-            var Methods;
-            (function (Methods) {
-            })(Methods = ProductExcelImportService.Methods || (ProductExcelImportService.Methods = {}));
-            ['ExcelImport'].forEach(function (x) {
-                ProductExcelImportService[x] = function (r, s, o) { return Q.serviceRequest(ProductExcelImportService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = ProductExcelImportService.baseUrl + '/' + x;
-            });
-        })(ProductExcelImportService = BasicSamples.ProductExcelImportService || (BasicSamples.ProductExcelImportService = {}));
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var StaticTextBlockForm = (function (_super) {
-            __extends(StaticTextBlockForm, _super);
-            function StaticTextBlockForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            return StaticTextBlockForm;
-        }(Serenity.PrefixedContext));
-        StaticTextBlockForm.formKey = 'BasicSamples.StaticTextBlock';
-        BasicSamples.StaticTextBlockForm = StaticTextBlockForm;
-        [['StaticText', function () { return Store.StaticTextBlock; }], ['SomeInput', function () { return Serenity.StringEditor; }], ['HtmlList', function () { return Store.StaticTextBlock; }], ['FromLocalText', function () { return Store.StaticTextBlock; }], ['DisplayFieldValue', function () { return Store.StaticTextBlock; }]].forEach(function (x) { return Object.defineProperty(StaticTextBlockForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var VSGalleryQAService;
-        (function (VSGalleryQAService) {
-            VSGalleryQAService.baseUrl = 'BasicSamples/VSGalleryQA';
-            var Methods;
-            (function (Methods) {
-            })(Methods = VSGalleryQAService.Methods || (VSGalleryQAService.Methods = {}));
-            ['List'].forEach(function (x) {
-                VSGalleryQAService[x] = function (r, s, o) { return Q.serviceRequest(VSGalleryQAService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = VSGalleryQAService.baseUrl + '/' + x;
-            });
-        })(VSGalleryQAService = BasicSamples.VSGalleryQAService || (BasicSamples.VSGalleryQAService = {}));
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
 })(Store || (Store = {}));
 var Store;
 (function (Store) {
@@ -579,10 +378,6 @@ var Store;
             UserPreferenceRow.idProperty = 'UserPreferenceId';
             UserPreferenceRow.nameProperty = 'Name';
             UserPreferenceRow.localTextPrefix = 'Common.UserPreference';
-            var Fields;
-            (function (Fields) {
-            })(Fields = UserPreferenceRow.Fields || (UserPreferenceRow.Fields = {}));
-            ['UserPreferenceId', 'UserId', 'PreferenceType', 'Name', 'Value'].forEach(function (x) { return Fields[x] = x; });
         })(UserPreferenceRow = Common.UserPreferenceRow || (Common.UserPreferenceRow = {}));
     })(Common = Store.Common || (Store.Common = {}));
 })(Store || (Store = {}));
@@ -593,1828 +388,2001 @@ var Store;
         var UserPreferenceService;
         (function (UserPreferenceService) {
             UserPreferenceService.baseUrl = 'Common/UserPreference';
-            var Methods;
-            (function (Methods) {
-            })(Methods = UserPreferenceService.Methods || (UserPreferenceService.Methods = {}));
-            ['Update', 'Retrieve'].forEach(function (x) {
-                UserPreferenceService[x] = function (r, s, o) { return Q.serviceRequest(UserPreferenceService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = UserPreferenceService.baseUrl + '/' + x;
+            [
+                'Update',
+                'Retrieve'
+            ].forEach(function (x) {
+                UserPreferenceService[x] = function (r, s, o) {
+                    return Q.serviceRequest(UserPreferenceService.baseUrl + '/' + x, r, s, o);
+                };
             });
         })(UserPreferenceService = Common.UserPreferenceService || (Common.UserPreferenceService = {}));
     })(Common = Store.Common || (Store.Common = {}));
 })(Store || (Store = {}));
 var Store;
 (function (Store) {
-    var Default;
-    (function (Default) {
-        var TenantForm = (function (_super) {
-            __extends(TenantForm, _super);
-            function TenantForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            return TenantForm;
-        }(Serenity.PrefixedContext));
-        TenantForm.formKey = 'Default.Tenant';
-        Default.TenantForm = TenantForm;
-        [['TenantName', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(TenantForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(Default = Store.Default || (Store.Default = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Default;
-    (function (Default) {
-        var TenantRow;
-        (function (TenantRow) {
-            TenantRow.idProperty = 'TenantId';
-            TenantRow.nameProperty = 'TenantName';
-            TenantRow.localTextPrefix = 'Default.Tenant';
-            TenantRow.lookupKey = 'Administration:Tenants';
-            function getLookup() {
-                return Q.getLookup('Administration:Tenants');
-            }
-            TenantRow.getLookup = getLookup;
-            var Fields;
-            (function (Fields) {
-            })(Fields = TenantRow.Fields || (TenantRow.Fields = {}));
-            ['TenantId', 'TenantName'].forEach(function (x) { return Fields[x] = x; });
-        })(TenantRow = Default.TenantRow || (Default.TenantRow = {}));
-    })(Default = Store.Default || (Store.Default = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Default;
-    (function (Default) {
-        var TenantService;
-        (function (TenantService) {
-            TenantService.baseUrl = 'Default/Tenant';
-            var Methods;
-            (function (Methods) {
-            })(Methods = TenantService.Methods || (TenantService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                TenantService[x] = function (r, s, o) { return Q.serviceRequest(TenantService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = TenantService.baseUrl + '/' + x;
-            });
-        })(TenantService = Default.TenantService || (Default.TenantService = {}));
-    })(Default = Store.Default || (Store.Default = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Default;
-    (function (Default) {
-        var TenantsForm = (function (_super) {
-            __extends(TenantsForm, _super);
-            function TenantsForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            return TenantsForm;
-        }(Serenity.PrefixedContext));
-        TenantsForm.formKey = 'Default.Tenants';
-        Default.TenantsForm = TenantsForm;
-        [['TenantName', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(TenantsForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(Default = Store.Default || (Store.Default = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Default;
-    (function (Default) {
-        var TenantsRow;
-        (function (TenantsRow) {
-            TenantsRow.idProperty = 'TenantId';
-            TenantsRow.nameProperty = 'TenantName';
-            TenantsRow.localTextPrefix = 'Default.Tenants';
-            var Fields;
-            (function (Fields) {
-            })(Fields = TenantsRow.Fields || (TenantsRow.Fields = {}));
-            ['TenantId', 'TenantName'].forEach(function (x) { return Fields[x] = x; });
-        })(TenantsRow = Default.TenantsRow || (Default.TenantsRow = {}));
-    })(Default = Store.Default || (Store.Default = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Default;
-    (function (Default) {
-        var TenantsService;
-        (function (TenantsService) {
-            TenantsService.baseUrl = 'Default/Tenants';
-            var Methods;
-            (function (Methods) {
-            })(Methods = TenantsService.Methods || (TenantsService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                TenantsService[x] = function (r, s, o) { return Q.serviceRequest(TenantsService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = TenantsService.baseUrl + '/' + x;
-            });
-        })(TenantsService = Default.TenantsService || (Default.TenantsService = {}));
-    })(Default = Store.Default || (Store.Default = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Infra;
-    (function (Infra) {
-        var SupportForm = (function (_super) {
-            __extends(SupportForm, _super);
-            function SupportForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            return SupportForm;
-        }(Serenity.PrefixedContext));
-        SupportForm.formKey = 'Infra.Support';
-        Infra.SupportForm = SupportForm;
-        [['SupportGuid', function () { return Serenity.StringEditor; }], ['SupportTypeId', function () { return Serenity.IntegerEditor; }], ['SupportCode', function () { return Serenity.StringEditor; }], ['SupportName', function () { return Serenity.StringEditor; }], ['SupportDescription', function () { return Serenity.StringEditor; }], ['InsertUserId', function () { return Serenity.IntegerEditor; }], ['InsertDate', function () { return Serenity.DateEditor; }], ['UpdateUserId', function () { return Serenity.IntegerEditor; }], ['UpdateDate', function () { return Serenity.DateEditor; }], ['TenantId', function () { return Serenity.IntegerEditor; }], ['IsActive', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(SupportForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(Infra = Store.Infra || (Store.Infra = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Infra;
-    (function (Infra) {
-        var SupportRow;
-        (function (SupportRow) {
-            SupportRow.idProperty = 'SupportId';
-            SupportRow.nameProperty = 'SupportCode';
-            SupportRow.localTextPrefix = 'Infra.Support';
-            var Fields;
-            (function (Fields) {
-            })(Fields = SupportRow.Fields || (SupportRow.Fields = {}));
-            ['SupportId', 'SupportGuid', 'SupportTypeId', 'SupportCode', 'SupportName', 'SupportDescription', 'InsertUserId', 'InsertDate', 'UpdateUserId', 'UpdateDate', 'TenantId', 'IsActive', 'SupportTypeEnumValue', 'SupportTypeDisplayName', 'SupportTypeLanguageId', 'SupportTypeInsertUserId', 'SupportTypeInsertDate', 'SupportTypeUpdateUserId', 'SupportTypeUpdateDate', 'SupportTypeTenantId', 'SupportTypeIsActive'].forEach(function (x) { return Fields[x] = x; });
-        })(SupportRow = Infra.SupportRow || (Infra.SupportRow = {}));
-    })(Infra = Store.Infra || (Store.Infra = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Infra;
-    (function (Infra) {
-        var SupportService;
-        (function (SupportService) {
-            SupportService.baseUrl = 'Infra/Support';
-            var Methods;
-            (function (Methods) {
-            })(Methods = SupportService.Methods || (SupportService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                SupportService[x] = function (r, s, o) { return Q.serviceRequest(SupportService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = SupportService.baseUrl + '/' + x;
-            });
-        })(SupportService = Infra.SupportService || (Infra.SupportService = {}));
-    })(Infra = Store.Infra || (Store.Infra = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Infra;
-    (function (Infra) {
-        var SupportTypeForm = (function (_super) {
-            __extends(SupportTypeForm, _super);
-            function SupportTypeForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            return SupportTypeForm;
-        }(Serenity.PrefixedContext));
-        SupportTypeForm.formKey = 'Infra.SupportType';
-        Infra.SupportTypeForm = SupportTypeForm;
-        [['EnumValue', function () { return Serenity.StringEditor; }], ['EnumName', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(SupportTypeForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(Infra = Store.Infra || (Store.Infra = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Infra;
-    (function (Infra) {
-        var SupportTypeRow;
-        (function (SupportTypeRow) {
-            SupportTypeRow.idProperty = 'EnumValue';
-            SupportTypeRow.isActiveProperty = 'IsActive';
-            SupportTypeRow.nameProperty = 'EnumName';
-            SupportTypeRow.localTextPrefix = 'Infra.SupportType';
-            SupportTypeRow.lookupKey = 'Infra.SupportType';
-            function getLookup() {
-                return Q.getLookup('Infra.SupportType');
-            }
-            SupportTypeRow.getLookup = getLookup;
-            var Fields;
-            (function (Fields) {
-            })(Fields = SupportTypeRow.Fields || (SupportTypeRow.Fields = {}));
-            ['EnumValue', 'EnumName', 'TenantId', 'IsActive', 'InsertUserId', 'InsertDate', 'UpdateUserId', 'UpdateDate'].forEach(function (x) { return Fields[x] = x; });
-        })(SupportTypeRow = Infra.SupportTypeRow || (Infra.SupportTypeRow = {}));
-    })(Infra = Store.Infra || (Store.Infra = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Infra;
-    (function (Infra) {
-        var SupportTypeService;
-        (function (SupportTypeService) {
-            SupportTypeService.baseUrl = 'Infra/SupportType';
-            var Methods;
-            (function (Methods) {
-            })(Methods = SupportTypeService.Methods || (SupportTypeService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                SupportTypeService[x] = function (r, s, o) { return Q.serviceRequest(SupportTypeService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = SupportTypeService.baseUrl + '/' + x;
-            });
-        })(SupportTypeService = Infra.SupportTypeService || (Infra.SupportTypeService = {}));
-    })(Infra = Store.Infra || (Store.Infra = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Infra;
-    (function (Infra) {
-        var SupportTypeStringForm = (function (_super) {
-            __extends(SupportTypeStringForm, _super);
-            function SupportTypeStringForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            return SupportTypeStringForm;
-        }(Serenity.PrefixedContext));
-        SupportTypeStringForm.formKey = 'Infra.SupportTypeString';
-        Infra.SupportTypeStringForm = SupportTypeStringForm;
-        [['EnumValue', function () { return Serenity.LookupEditor; }], ['DisplayName', function () { return Serenity.StringEditor; }], ['LanguageId', function () { return Serenity.LookupEditor; }]].forEach(function (x) { return Object.defineProperty(SupportTypeStringForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(Infra = Store.Infra || (Store.Infra = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Infra;
-    (function (Infra) {
-        var SupportTypeStringRow;
-        (function (SupportTypeStringRow) {
-            SupportTypeStringRow.idProperty = 'EnumLocaleId';
-            SupportTypeStringRow.isActiveProperty = 'IsActive';
-            SupportTypeStringRow.nameProperty = 'DisplayName';
-            SupportTypeStringRow.localTextPrefix = 'Infra.SupportTypeString';
-            SupportTypeStringRow.lookupKey = 'Infra.SupportTypeString';
-            function getLookup() {
-                return Q.getLookup('Infra.SupportTypeString');
-            }
-            SupportTypeStringRow.getLookup = getLookup;
-            var Fields;
-            (function (Fields) {
-            })(Fields = SupportTypeStringRow.Fields || (SupportTypeStringRow.Fields = {}));
-            ['EnumLocaleId', 'EnumValue', 'DisplayName', 'LanguageId', 'LanguageName', 'TenantId', 'IsActive', 'EnumValueEnumName', 'InsertUserId', 'InsertDate', 'UpdateUserId', 'UpdateDate'].forEach(function (x) { return Fields[x] = x; });
-        })(SupportTypeStringRow = Infra.SupportTypeStringRow || (Infra.SupportTypeStringRow = {}));
-    })(Infra = Store.Infra || (Store.Infra = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Infra;
-    (function (Infra) {
-        var SupportTypeStringService;
-        (function (SupportTypeStringService) {
-            SupportTypeStringService.baseUrl = 'Infra/SupportTypeString';
-            var Methods;
-            (function (Methods) {
-            })(Methods = SupportTypeStringService.Methods || (SupportTypeStringService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                SupportTypeStringService[x] = function (r, s, o) { return Q.serviceRequest(SupportTypeStringService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = SupportTypeStringService.baseUrl + '/' + x;
-            });
-        })(SupportTypeStringService = Infra.SupportTypeStringService || (Infra.SupportTypeStringService = {}));
-    })(Infra = Store.Infra || (Store.Infra = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Meeting;
-    (function (Meeting) {
-        var MeetingAgendaForm = (function (_super) {
-            __extends(MeetingAgendaForm, _super);
-            function MeetingAgendaForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            return MeetingAgendaForm;
-        }(Serenity.PrefixedContext));
-        MeetingAgendaForm.formKey = 'Meeting.MeetingAgenda';
-        Meeting.MeetingAgendaForm = MeetingAgendaForm;
-        [['MeetingId', function () { return Serenity.IntegerEditor; }], ['AgendaNumber', function () { return Serenity.IntegerEditor; }], ['Title', function () { return Serenity.StringEditor; }], ['Description', function () { return Serenity.StringEditor; }], ['AgendaTypeId', function () { return Serenity.IntegerEditor; }], ['RequestedByContactId', function () { return Serenity.IntegerEditor; }], ['Images', function () { return Serenity.MultipleImageUploadEditor; }], ['Attachments', function () { return Serenity.MultipleImageUploadEditor; }]].forEach(function (x) { return Object.defineProperty(MeetingAgendaForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(Meeting = Store.Meeting || (Store.Meeting = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Meeting;
-    (function (Meeting) {
-        var MeetingAgendaRelevantForm = (function (_super) {
-            __extends(MeetingAgendaRelevantForm, _super);
-            function MeetingAgendaRelevantForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            return MeetingAgendaRelevantForm;
-        }(Serenity.PrefixedContext));
-        MeetingAgendaRelevantForm.formKey = 'Meeting.MeetingAgendaRelevant';
-        Meeting.MeetingAgendaRelevantForm = MeetingAgendaRelevantForm;
-        [['AgendaId', function () { return Serenity.IntegerEditor; }], ['ContactId', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(MeetingAgendaRelevantForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(Meeting = Store.Meeting || (Store.Meeting = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Meeting;
-    (function (Meeting) {
-        var MeetingAgendaRelevantRow;
-        (function (MeetingAgendaRelevantRow) {
-            MeetingAgendaRelevantRow.idProperty = 'AgendaRelevantId';
-            MeetingAgendaRelevantRow.localTextPrefix = 'Meeting.MeetingAgendaRelevant';
-            var Fields;
-            (function (Fields) {
-            })(Fields = MeetingAgendaRelevantRow.Fields || (MeetingAgendaRelevantRow.Fields = {}));
-            ['AgendaRelevantId', 'AgendaId', 'ContactId', 'AgendaMeetingId', 'AgendaAgendaNumber', 'AgendaTitle', 'AgendaDescription', 'AgendaAgendaTypeId', 'AgendaRequestedByContactId', 'AgendaImages', 'AgendaAttachments', 'ContactTitle', 'ContactFirstName', 'ContactLastName', 'ContactEmail', 'ContactIdentityNo', 'ContactUserId'].forEach(function (x) { return Fields[x] = x; });
-        })(MeetingAgendaRelevantRow = Meeting.MeetingAgendaRelevantRow || (Meeting.MeetingAgendaRelevantRow = {}));
-    })(Meeting = Store.Meeting || (Store.Meeting = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Meeting;
-    (function (Meeting) {
-        var MeetingAgendaRelevantService;
-        (function (MeetingAgendaRelevantService) {
-            MeetingAgendaRelevantService.baseUrl = 'Meeting/MeetingAgendaRelevant';
-            var Methods;
-            (function (Methods) {
-            })(Methods = MeetingAgendaRelevantService.Methods || (MeetingAgendaRelevantService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                MeetingAgendaRelevantService[x] = function (r, s, o) { return Q.serviceRequest(MeetingAgendaRelevantService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = MeetingAgendaRelevantService.baseUrl + '/' + x;
-            });
-        })(MeetingAgendaRelevantService = Meeting.MeetingAgendaRelevantService || (Meeting.MeetingAgendaRelevantService = {}));
-    })(Meeting = Store.Meeting || (Store.Meeting = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Meeting;
-    (function (Meeting) {
-        var MeetingAgendaRow;
-        (function (MeetingAgendaRow) {
-            MeetingAgendaRow.idProperty = 'AgendaId';
-            MeetingAgendaRow.nameProperty = 'Title';
-            MeetingAgendaRow.localTextPrefix = 'Meeting.MeetingAgenda';
-            var Fields;
-            (function (Fields) {
-            })(Fields = MeetingAgendaRow.Fields || (MeetingAgendaRow.Fields = {}));
-            ['AgendaId', 'MeetingId', 'AgendaNumber', 'Title', 'Description', 'AgendaTypeId', 'RequestedByContactId', 'Images', 'Attachments', 'MeetingMeetingName', 'MeetingMeetingNumber', 'MeetingMeetingGuid', 'MeetingMeetingTypeId', 'MeetingStartDate', 'MeetingEndDate', 'MeetingLocationId', 'MeetingUnitId', 'MeetingOrganizerContactId', 'MeetingReporterContactId', 'MeetingInsertUserId', 'MeetingInsertDate', 'MeetingUpdateUserId', 'MeetingUpdateDate', 'AgendaTypeName', 'RequestedByContactTitle', 'RequestedByContactFirstName', 'RequestedByContactLastName', 'RequestedByContactFullName', 'RequestedByContactEmail', 'RequestedByContactIdentityNo', 'RequestedByContactUserId'].forEach(function (x) { return Fields[x] = x; });
-        })(MeetingAgendaRow = Meeting.MeetingAgendaRow || (Meeting.MeetingAgendaRow = {}));
-    })(Meeting = Store.Meeting || (Store.Meeting = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Meeting;
-    (function (Meeting) {
-        var MeetingAgendaService;
-        (function (MeetingAgendaService) {
-            MeetingAgendaService.baseUrl = 'Meeting/MeetingAgenda';
-            var Methods;
-            (function (Methods) {
-            })(Methods = MeetingAgendaService.Methods || (MeetingAgendaService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                MeetingAgendaService[x] = function (r, s, o) { return Q.serviceRequest(MeetingAgendaService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = MeetingAgendaService.baseUrl + '/' + x;
-            });
-        })(MeetingAgendaService = Meeting.MeetingAgendaService || (Meeting.MeetingAgendaService = {}));
-    })(Meeting = Store.Meeting || (Store.Meeting = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Meeting;
-    (function (Meeting) {
-        var MeetingAgendaTypeForm = (function (_super) {
-            __extends(MeetingAgendaTypeForm, _super);
-            function MeetingAgendaTypeForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            return MeetingAgendaTypeForm;
-        }(Serenity.PrefixedContext));
-        MeetingAgendaTypeForm.formKey = 'Meeting.MeetingAgendaType';
-        Meeting.MeetingAgendaTypeForm = MeetingAgendaTypeForm;
-        [['Name', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(MeetingAgendaTypeForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(Meeting = Store.Meeting || (Store.Meeting = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Meeting;
-    (function (Meeting) {
-        var MeetingAgendaTypeRow;
-        (function (MeetingAgendaTypeRow) {
-            MeetingAgendaTypeRow.idProperty = 'AgendaTypeId';
-            MeetingAgendaTypeRow.nameProperty = 'Name';
-            MeetingAgendaTypeRow.localTextPrefix = 'Meeting.MeetingAgendaType';
-            MeetingAgendaTypeRow.lookupKey = 'Meeting.MeetingAgendaType';
-            function getLookup() {
-                return Q.getLookup('Meeting.MeetingAgendaType');
-            }
-            MeetingAgendaTypeRow.getLookup = getLookup;
-            var Fields;
-            (function (Fields) {
-            })(Fields = MeetingAgendaTypeRow.Fields || (MeetingAgendaTypeRow.Fields = {}));
-            ['AgendaTypeId', 'Name'].forEach(function (x) { return Fields[x] = x; });
-        })(MeetingAgendaTypeRow = Meeting.MeetingAgendaTypeRow || (Meeting.MeetingAgendaTypeRow = {}));
-    })(Meeting = Store.Meeting || (Store.Meeting = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Meeting;
-    (function (Meeting) {
-        var MeetingAgendaTypeService;
-        (function (MeetingAgendaTypeService) {
-            MeetingAgendaTypeService.baseUrl = 'Meeting/MeetingAgendaType';
-            var Methods;
-            (function (Methods) {
-            })(Methods = MeetingAgendaTypeService.Methods || (MeetingAgendaTypeService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                MeetingAgendaTypeService[x] = function (r, s, o) { return Q.serviceRequest(MeetingAgendaTypeService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = MeetingAgendaTypeService.baseUrl + '/' + x;
-            });
-        })(MeetingAgendaTypeService = Meeting.MeetingAgendaTypeService || (Meeting.MeetingAgendaTypeService = {}));
-    })(Meeting = Store.Meeting || (Store.Meeting = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Meeting;
-    (function (Meeting) {
-        var MeetingAttendanceStatus;
-        (function (MeetingAttendanceStatus) {
-            MeetingAttendanceStatus[MeetingAttendanceStatus["NotSet"] = 0] = "NotSet";
-            MeetingAttendanceStatus[MeetingAttendanceStatus["Attended"] = 1] = "Attended";
-            MeetingAttendanceStatus[MeetingAttendanceStatus["Absent"] = 2] = "Absent";
-            MeetingAttendanceStatus[MeetingAttendanceStatus["AbsentWithPermission"] = 3] = "AbsentWithPermission";
-        })(MeetingAttendanceStatus = Meeting.MeetingAttendanceStatus || (Meeting.MeetingAttendanceStatus = {}));
-        Serenity.Decorators.registerEnum(MeetingAttendanceStatus, 'Meeting.MeetingAttendanceStatus');
-    })(Meeting = Store.Meeting || (Store.Meeting = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Meeting;
-    (function (Meeting) {
-        var MeetingAttendeeForm = (function (_super) {
-            __extends(MeetingAttendeeForm, _super);
-            function MeetingAttendeeForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            return MeetingAttendeeForm;
-        }(Serenity.PrefixedContext));
-        MeetingAttendeeForm.formKey = 'Meeting.MeetingAttendee';
-        Meeting.MeetingAttendeeForm = MeetingAttendeeForm;
-        [['MeetingId', function () { return Serenity.IntegerEditor; }], ['ContactId', function () { return Serenity.IntegerEditor; }], ['AttendeeType', function () { return Serenity.EnumEditor; }], ['AttendanceStatus', function () { return Serenity.EnumEditor; }]].forEach(function (x) { return Object.defineProperty(MeetingAttendeeForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(Meeting = Store.Meeting || (Store.Meeting = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Meeting;
-    (function (Meeting) {
-        var MeetingAttendeeRow;
-        (function (MeetingAttendeeRow) {
-            MeetingAttendeeRow.idProperty = 'AttendeeId';
-            MeetingAttendeeRow.localTextPrefix = 'Meeting.MeetingAttendee';
-            var Fields;
-            (function (Fields) {
-            })(Fields = MeetingAttendeeRow.Fields || (MeetingAttendeeRow.Fields = {}));
-            ['AttendeeId', 'MeetingId', 'ContactId', 'AttendeeType', 'AttendanceStatus', 'MeetingMeetingName', 'MeetingMeetingNumber', 'MeetingMeetingGuid', 'MeetingMeetingTypeId', 'MeetingStartDate', 'MeetingEndDate', 'MeetingLocationId', 'MeetingUnitId', 'MeetingOrganizerContactId', 'MeetingReporterContactId', 'MeetingInsertUserId', 'MeetingInsertDate', 'MeetingUpdateUserId', 'MeetingUpdateDate', 'ContactTitle', 'ContactFirstName', 'ContactLastName', 'ContactFullName', 'ContactEmail', 'ContactIdentityNo', 'ContactUserId'].forEach(function (x) { return Fields[x] = x; });
-        })(MeetingAttendeeRow = Meeting.MeetingAttendeeRow || (Meeting.MeetingAttendeeRow = {}));
-    })(Meeting = Store.Meeting || (Store.Meeting = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Meeting;
-    (function (Meeting) {
-        var MeetingAttendeeType;
-        (function (MeetingAttendeeType) {
-            MeetingAttendeeType[MeetingAttendeeType["Attendee"] = 1] = "Attendee";
-            MeetingAttendeeType[MeetingAttendeeType["Guest"] = 2] = "Guest";
-        })(MeetingAttendeeType = Meeting.MeetingAttendeeType || (Meeting.MeetingAttendeeType = {}));
-        Serenity.Decorators.registerEnum(MeetingAttendeeType, 'Meeting.MeetingAttendeeType');
-    })(Meeting = Store.Meeting || (Store.Meeting = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Meeting;
-    (function (Meeting) {
-        var MeetingDecisionForm = (function (_super) {
-            __extends(MeetingDecisionForm, _super);
-            function MeetingDecisionForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            return MeetingDecisionForm;
-        }(Serenity.PrefixedContext));
-        MeetingDecisionForm.formKey = 'Meeting.MeetingDecision';
-        Meeting.MeetingDecisionForm = MeetingDecisionForm;
-        [['MeetingId', function () { return Serenity.IntegerEditor; }], ['AgendaId', function () { return Serenity.IntegerEditor; }], ['Description', function () { return Serenity.StringEditor; }], ['DecisionNumber', function () { return Serenity.IntegerEditor; }], ['ResponsibleContactId', function () { return Serenity.IntegerEditor; }], ['DueDate', function () { return Serenity.DateEditor; }], ['ResolutionStatus', function () { return Serenity.IntegerEditor; }], ['Images', function () { return Serenity.StringEditor; }], ['Attachments', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(MeetingDecisionForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(Meeting = Store.Meeting || (Store.Meeting = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Meeting;
-    (function (Meeting) {
-        var MeetingDecisionRelevantForm = (function (_super) {
-            __extends(MeetingDecisionRelevantForm, _super);
-            function MeetingDecisionRelevantForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            return MeetingDecisionRelevantForm;
-        }(Serenity.PrefixedContext));
-        MeetingDecisionRelevantForm.formKey = 'Meeting.MeetingDecisionRelevant';
-        Meeting.MeetingDecisionRelevantForm = MeetingDecisionRelevantForm;
-        [['DecisionId', function () { return Serenity.IntegerEditor; }], ['ContactId', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(MeetingDecisionRelevantForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(Meeting = Store.Meeting || (Store.Meeting = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Meeting;
-    (function (Meeting) {
-        var MeetingDecisionRelevantRow;
-        (function (MeetingDecisionRelevantRow) {
-            MeetingDecisionRelevantRow.idProperty = 'DecisionRelevantId';
-            MeetingDecisionRelevantRow.localTextPrefix = 'Meeting.MeetingDecisionRelevant';
-            var Fields;
-            (function (Fields) {
-            })(Fields = MeetingDecisionRelevantRow.Fields || (MeetingDecisionRelevantRow.Fields = {}));
-            ['DecisionRelevantId', 'DecisionId', 'ContactId', 'DecisionMeetingId', 'DecisionAgendaId', 'DecisionDescription', 'DecisionDecisionNumber', 'DecisionResponsibleContactId', 'DecisionDueDate', 'DecisionResolutionStatus', 'DecisionImages', 'DecisionAttachments', 'ContactTitle', 'ContactFirstName', 'ContactLastName', 'ContactEmail', 'ContactIdentityNo', 'ContactUserId'].forEach(function (x) { return Fields[x] = x; });
-        })(MeetingDecisionRelevantRow = Meeting.MeetingDecisionRelevantRow || (Meeting.MeetingDecisionRelevantRow = {}));
-    })(Meeting = Store.Meeting || (Store.Meeting = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Meeting;
-    (function (Meeting) {
-        var MeetingDecisionRelevantService;
-        (function (MeetingDecisionRelevantService) {
-            MeetingDecisionRelevantService.baseUrl = 'Meeting/MeetingDecisionRelevant';
-            var Methods;
-            (function (Methods) {
-            })(Methods = MeetingDecisionRelevantService.Methods || (MeetingDecisionRelevantService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                MeetingDecisionRelevantService[x] = function (r, s, o) { return Q.serviceRequest(MeetingDecisionRelevantService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = MeetingDecisionRelevantService.baseUrl + '/' + x;
-            });
-        })(MeetingDecisionRelevantService = Meeting.MeetingDecisionRelevantService || (Meeting.MeetingDecisionRelevantService = {}));
-    })(Meeting = Store.Meeting || (Store.Meeting = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Meeting;
-    (function (Meeting) {
-        var MeetingDecisionRow;
-        (function (MeetingDecisionRow) {
-            MeetingDecisionRow.idProperty = 'DecisionId';
-            MeetingDecisionRow.nameProperty = 'Description';
-            MeetingDecisionRow.localTextPrefix = 'Meeting.MeetingDecision';
-            var Fields;
-            (function (Fields) {
-            })(Fields = MeetingDecisionRow.Fields || (MeetingDecisionRow.Fields = {}));
-            ['DecisionId', 'MeetingId', 'AgendaId', 'Description', 'DecisionNumber', 'ResponsibleContactId', 'DueDate', 'ResolutionStatus', 'Images', 'Attachments', 'MeetingMeetingName', 'MeetingMeetingNumber', 'MeetingMeetingGuid', 'MeetingMeetingTypeId', 'MeetingStartDate', 'MeetingEndDate', 'MeetingLocationId', 'MeetingUnitId', 'MeetingOrganizerContactId', 'MeetingReporterContactId', 'MeetingInsertUserId', 'MeetingInsertDate', 'MeetingUpdateUserId', 'MeetingUpdateDate', 'AgendaMeetingId', 'AgendaNumber', 'AgendaTitle', 'AgendaDescription', 'AgendaAgendaTypeId', 'AgendaRequestedByContactId', 'AgendaImages', 'AgendaAttachments', 'DecisionNumberName', 'ResponsibleContactTitle', 'ResponsibleContactFirstName', 'ResponsibleContactLastName', 'ResponsibleContactFullName', 'ResponsibleContactEmail', 'ResponsibleContactIdentityNo', 'ResponsibleContactUserId'].forEach(function (x) { return Fields[x] = x; });
-        })(MeetingDecisionRow = Meeting.MeetingDecisionRow || (Meeting.MeetingDecisionRow = {}));
-    })(Meeting = Store.Meeting || (Store.Meeting = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Meeting;
-    (function (Meeting) {
-        var MeetingDecisionService;
-        (function (MeetingDecisionService) {
-            MeetingDecisionService.baseUrl = 'Meeting/MeetingDecision';
-            var Methods;
-            (function (Methods) {
-            })(Methods = MeetingDecisionService.Methods || (MeetingDecisionService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                MeetingDecisionService[x] = function (r, s, o) { return Q.serviceRequest(MeetingDecisionService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = MeetingDecisionService.baseUrl + '/' + x;
-            });
-        })(MeetingDecisionService = Meeting.MeetingDecisionService || (Meeting.MeetingDecisionService = {}));
-    })(Meeting = Store.Meeting || (Store.Meeting = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Meeting;
-    (function (Meeting) {
-        var MeetingForm = (function (_super) {
-            __extends(MeetingForm, _super);
-            function MeetingForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            return MeetingForm;
-        }(Serenity.PrefixedContext));
-        MeetingForm.formKey = 'Meeting.Meeting';
-        Meeting.MeetingForm = MeetingForm;
-        [['MeetingName', function () { return Serenity.StringEditor; }], ['MeetingTypeId', function () { return Serenity.LookupEditor; }], ['MeetingNumber', function () { return Serenity.StringEditor; }], ['StartDate', function () { return Serenity.DateTimeEditor; }], ['EndDate', function () { return Serenity.DateTimeEditor; }], ['LocationId', function () { return Serenity.LookupEditor; }], ['UnitId', function () { return Store.Organization.BusinessUnitEditor; }], ['OrganizerContactId', function () { return Serenity.LookupEditor; }], ['ReporterContactId', function () { return Serenity.LookupEditor; }], ['AttendeeList', function () { return Meeting.MeetingAttendeeEditor; }]].forEach(function (x) { return Object.defineProperty(MeetingForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(Meeting = Store.Meeting || (Store.Meeting = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Meeting;
-    (function (Meeting) {
-        var MeetingLocationForm = (function (_super) {
-            __extends(MeetingLocationForm, _super);
-            function MeetingLocationForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            return MeetingLocationForm;
-        }(Serenity.PrefixedContext));
-        MeetingLocationForm.formKey = 'Meeting.MeetingLocation';
-        Meeting.MeetingLocationForm = MeetingLocationForm;
-        [['Name', function () { return Serenity.StringEditor; }], ['Address', function () { return Serenity.StringEditor; }], ['Latitude', function () { return Serenity.DecimalEditor; }], ['Longitude', function () { return Serenity.DecimalEditor; }]].forEach(function (x) { return Object.defineProperty(MeetingLocationForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(Meeting = Store.Meeting || (Store.Meeting = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Meeting;
-    (function (Meeting) {
-        var MeetingLocationRow;
-        (function (MeetingLocationRow) {
-            MeetingLocationRow.idProperty = 'LocationId';
-            MeetingLocationRow.nameProperty = 'Name';
-            MeetingLocationRow.localTextPrefix = 'Meeting.MeetingLocation';
-            MeetingLocationRow.lookupKey = 'Meeting.MeetingLocation';
-            function getLookup() {
-                return Q.getLookup('Meeting.MeetingLocation');
-            }
-            MeetingLocationRow.getLookup = getLookup;
-            var Fields;
-            (function (Fields) {
-            })(Fields = MeetingLocationRow.Fields || (MeetingLocationRow.Fields = {}));
-            ['LocationId', 'Name', 'Address', 'Latitude', 'Longitude'].forEach(function (x) { return Fields[x] = x; });
-        })(MeetingLocationRow = Meeting.MeetingLocationRow || (Meeting.MeetingLocationRow = {}));
-    })(Meeting = Store.Meeting || (Store.Meeting = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Meeting;
-    (function (Meeting) {
-        var MeetingLocationService;
-        (function (MeetingLocationService) {
-            MeetingLocationService.baseUrl = 'Meeting/MeetingLocation';
-            var Methods;
-            (function (Methods) {
-            })(Methods = MeetingLocationService.Methods || (MeetingLocationService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                MeetingLocationService[x] = function (r, s, o) { return Q.serviceRequest(MeetingLocationService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = MeetingLocationService.baseUrl + '/' + x;
-            });
-        })(MeetingLocationService = Meeting.MeetingLocationService || (Meeting.MeetingLocationService = {}));
-    })(Meeting = Store.Meeting || (Store.Meeting = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Meeting;
-    (function (Meeting) {
-        var MeetingRow;
-        (function (MeetingRow) {
-            MeetingRow.idProperty = 'MeetingId';
-            MeetingRow.nameProperty = 'MeetingName';
-            MeetingRow.localTextPrefix = 'Meeting.Meeting';
-            var Fields;
-            (function (Fields) {
-            })(Fields = MeetingRow.Fields || (MeetingRow.Fields = {}));
-            ['MeetingId', 'MeetingName', 'MeetingNumber', 'MeetingGuid', 'MeetingTypeId', 'StartDate', 'EndDate', 'LocationId', 'UnitId', 'OrganizerContactId', 'ReporterContactId', 'MeetingTypeName', 'LocationName', 'UnitName', 'UnitParentUnitId', 'OrganizerContactTitle', 'OrganizerContactFirstName', 'OrganizerContactLastName', 'OrganizerContactFullName', 'OrganizerContactEmail', 'OrganizerContactIdentityNo', 'OrganizerContactUserId', 'ReporterContactTitle', 'ReporterContactFirstName', 'ReporterContactLastName', 'ReporterContactFullName', 'ReporterContactEmail', 'ReporterContactIdentityNo', 'ReporterContactUserId', 'AttendeeList', 'InsertUserId', 'InsertDate', 'UpdateUserId', 'UpdateDate'].forEach(function (x) { return Fields[x] = x; });
-        })(MeetingRow = Meeting.MeetingRow || (Meeting.MeetingRow = {}));
-    })(Meeting = Store.Meeting || (Store.Meeting = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Meeting;
-    (function (Meeting) {
-        var MeetingService;
-        (function (MeetingService) {
-            MeetingService.baseUrl = 'Meeting/Meeting';
-            var Methods;
-            (function (Methods) {
-            })(Methods = MeetingService.Methods || (MeetingService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                MeetingService[x] = function (r, s, o) { return Q.serviceRequest(MeetingService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = MeetingService.baseUrl + '/' + x;
-            });
-        })(MeetingService = Meeting.MeetingService || (Meeting.MeetingService = {}));
-    })(Meeting = Store.Meeting || (Store.Meeting = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Meeting;
-    (function (Meeting) {
-        var MeetingTypeForm = (function (_super) {
-            __extends(MeetingTypeForm, _super);
-            function MeetingTypeForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            return MeetingTypeForm;
-        }(Serenity.PrefixedContext));
-        MeetingTypeForm.formKey = 'Meeting.MeetingType';
-        Meeting.MeetingTypeForm = MeetingTypeForm;
-        [['Name', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(MeetingTypeForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(Meeting = Store.Meeting || (Store.Meeting = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Meeting;
-    (function (Meeting) {
-        var MeetingTypeRow;
-        (function (MeetingTypeRow) {
-            MeetingTypeRow.idProperty = 'MeetingTypeId';
-            MeetingTypeRow.nameProperty = 'Name';
-            MeetingTypeRow.localTextPrefix = 'Meeting.MeetingType';
-            MeetingTypeRow.lookupKey = 'Meeting.MeetingType';
-            function getLookup() {
-                return Q.getLookup('Meeting.MeetingType');
-            }
-            MeetingTypeRow.getLookup = getLookup;
-            var Fields;
-            (function (Fields) {
-            })(Fields = MeetingTypeRow.Fields || (MeetingTypeRow.Fields = {}));
-            ['MeetingTypeId', 'Name'].forEach(function (x) { return Fields[x] = x; });
-        })(MeetingTypeRow = Meeting.MeetingTypeRow || (Meeting.MeetingTypeRow = {}));
-    })(Meeting = Store.Meeting || (Store.Meeting = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Meeting;
-    (function (Meeting) {
-        var MeetingTypeService;
-        (function (MeetingTypeService) {
-            MeetingTypeService.baseUrl = 'Meeting/MeetingType';
-            var Methods;
-            (function (Methods) {
-            })(Methods = MeetingTypeService.Methods || (MeetingTypeService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                MeetingTypeService[x] = function (r, s, o) { return Q.serviceRequest(MeetingTypeService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = MeetingTypeService.baseUrl + '/' + x;
-            });
-        })(MeetingTypeService = Meeting.MeetingTypeService || (Meeting.MeetingTypeService = {}));
-    })(Meeting = Store.Meeting || (Store.Meeting = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
     var Membership;
     (function (Membership) {
-        var ChangePasswordForm = (function (_super) {
+        var ChangePasswordForm = /** @class */ (function (_super) {
             __extends(ChangePasswordForm, _super);
-            function ChangePasswordForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
+            function ChangePasswordForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!ChangePasswordForm.init) {
+                    ChangePasswordForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.PasswordEditor;
+                    Q.initFormType(ChangePasswordForm, [
+                        'OldPassword', w0,
+                        'NewPassword', w0,
+                        'ConfirmPassword', w0
+                    ]);
+                }
+                return _this;
             }
+            ChangePasswordForm.formKey = 'Membership.ChangePassword';
             return ChangePasswordForm;
         }(Serenity.PrefixedContext));
-        ChangePasswordForm.formKey = 'Membership.ChangePassword';
         Membership.ChangePasswordForm = ChangePasswordForm;
-        [['OldPassword', function () { return Serenity.PasswordEditor; }], ['NewPassword', function () { return Serenity.PasswordEditor; }], ['ConfirmPassword', function () { return Serenity.PasswordEditor; }]].forEach(function (x) { return Object.defineProperty(ChangePasswordForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Membership = Store.Membership || (Store.Membership = {}));
 })(Store || (Store = {}));
 var Store;
 (function (Store) {
     var Membership;
     (function (Membership) {
-        var ForgotPasswordForm = (function (_super) {
+        var ForgotPasswordForm = /** @class */ (function (_super) {
             __extends(ForgotPasswordForm, _super);
-            function ForgotPasswordForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
+            function ForgotPasswordForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!ForgotPasswordForm.init) {
+                    ForgotPasswordForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.EmailEditor;
+                    Q.initFormType(ForgotPasswordForm, [
+                        'Email', w0
+                    ]);
+                }
+                return _this;
             }
+            ForgotPasswordForm.formKey = 'Membership.ForgotPassword';
             return ForgotPasswordForm;
         }(Serenity.PrefixedContext));
-        ForgotPasswordForm.formKey = 'Membership.ForgotPassword';
         Membership.ForgotPasswordForm = ForgotPasswordForm;
-        [['Email', function () { return Serenity.EmailEditor; }]].forEach(function (x) { return Object.defineProperty(ForgotPasswordForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Membership = Store.Membership || (Store.Membership = {}));
 })(Store || (Store = {}));
 var Store;
 (function (Store) {
     var Membership;
     (function (Membership) {
-        var LoginForm = (function (_super) {
+        var LoginForm = /** @class */ (function (_super) {
             __extends(LoginForm, _super);
-            function LoginForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
+            function LoginForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!LoginForm.init) {
+                    LoginForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.StringEditor;
+                    var w1 = s.PasswordEditor;
+                    Q.initFormType(LoginForm, [
+                        'Username', w0,
+                        'Password', w1
+                    ]);
+                }
+                return _this;
             }
+            LoginForm.formKey = 'Membership.Login';
             return LoginForm;
         }(Serenity.PrefixedContext));
-        LoginForm.formKey = 'Membership.Login';
         Membership.LoginForm = LoginForm;
-        [['Username', function () { return Serenity.StringEditor; }], ['Password', function () { return Serenity.PasswordEditor; }]].forEach(function (x) { return Object.defineProperty(LoginForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Membership = Store.Membership || (Store.Membership = {}));
 })(Store || (Store = {}));
 var Store;
 (function (Store) {
     var Membership;
     (function (Membership) {
-        var ResetPasswordForm = (function (_super) {
+        var ResetPasswordForm = /** @class */ (function (_super) {
             __extends(ResetPasswordForm, _super);
-            function ResetPasswordForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
+            function ResetPasswordForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!ResetPasswordForm.init) {
+                    ResetPasswordForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.PasswordEditor;
+                    Q.initFormType(ResetPasswordForm, [
+                        'NewPassword', w0,
+                        'ConfirmPassword', w0
+                    ]);
+                }
+                return _this;
             }
+            ResetPasswordForm.formKey = 'Membership.ResetPassword';
             return ResetPasswordForm;
         }(Serenity.PrefixedContext));
-        ResetPasswordForm.formKey = 'Membership.ResetPassword';
         Membership.ResetPasswordForm = ResetPasswordForm;
-        [['NewPassword', function () { return Serenity.PasswordEditor; }], ['ConfirmPassword', function () { return Serenity.PasswordEditor; }]].forEach(function (x) { return Object.defineProperty(ResetPasswordForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Membership = Store.Membership || (Store.Membership = {}));
 })(Store || (Store = {}));
 var Store;
 (function (Store) {
     var Membership;
     (function (Membership) {
-        var SignUpForm = (function (_super) {
+        var SignUpForm = /** @class */ (function (_super) {
             __extends(SignUpForm, _super);
-            function SignUpForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
+            function SignUpForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!SignUpForm.init) {
+                    SignUpForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.StringEditor;
+                    var w1 = s.EmailEditor;
+                    var w2 = s.PasswordEditor;
+                    Q.initFormType(SignUpForm, [
+                        'DisplayName', w0,
+                        'Email', w1,
+                        'ConfirmEmail', w1,
+                        'Password', w2,
+                        'ConfirmPassword', w2
+                    ]);
+                }
+                return _this;
             }
+            SignUpForm.formKey = 'Membership.SignUp';
             return SignUpForm;
         }(Serenity.PrefixedContext));
-        SignUpForm.formKey = 'Membership.SignUp';
         Membership.SignUpForm = SignUpForm;
-        [['DisplayName', function () { return Serenity.StringEditor; }], ['Email', function () { return Serenity.EmailEditor; }], ['ConfirmEmail', function () { return Serenity.EmailEditor; }], ['Password', function () { return Serenity.PasswordEditor; }], ['ConfirmPassword', function () { return Serenity.PasswordEditor; }]].forEach(function (x) { return Object.defineProperty(SignUpForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Membership = Store.Membership || (Store.Membership = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var CategoryForm = (function (_super) {
-            __extends(CategoryForm, _super);
-            function CategoryForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            return CategoryForm;
-        }(Serenity.PrefixedContext));
-        CategoryForm.formKey = 'Northwind.Category';
-        Northwind.CategoryForm = CategoryForm;
-        [['CategoryName', function () { return Serenity.StringEditor; }], ['Description', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(CategoryForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var CategoryLangRow;
-        (function (CategoryLangRow) {
-            CategoryLangRow.idProperty = 'Id';
-            CategoryLangRow.nameProperty = 'CategoryName';
-            CategoryLangRow.localTextPrefix = 'Northwind.CategoryLang';
-            var Fields;
-            (function (Fields) {
-            })(Fields = CategoryLangRow.Fields || (CategoryLangRow.Fields = {}));
-            ['Id', 'CategoryId', 'LanguageId', 'CategoryName', 'Description'].forEach(function (x) { return Fields[x] = x; });
-        })(CategoryLangRow = Northwind.CategoryLangRow || (Northwind.CategoryLangRow = {}));
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var CategoryLangService;
-        (function (CategoryLangService) {
-            CategoryLangService.baseUrl = 'Northwind/CategoryLang';
-            var Methods;
-            (function (Methods) {
-            })(Methods = CategoryLangService.Methods || (CategoryLangService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                CategoryLangService[x] = function (r, s, o) { return Q.serviceRequest(CategoryLangService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = CategoryLangService.baseUrl + '/' + x;
-            });
-        })(CategoryLangService = Northwind.CategoryLangService || (Northwind.CategoryLangService = {}));
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var CategoryRow;
-        (function (CategoryRow) {
-            CategoryRow.idProperty = 'CategoryID';
-            CategoryRow.nameProperty = 'CategoryName';
-            CategoryRow.localTextPrefix = 'Northwind.Category';
-            CategoryRow.lookupKey = 'Northwind.Category';
-            function getLookup() {
-                return Q.getLookup('Northwind.Category');
-            }
-            CategoryRow.getLookup = getLookup;
-            var Fields;
-            (function (Fields) {
-            })(Fields = CategoryRow.Fields || (CategoryRow.Fields = {}));
-            ['CategoryID', 'CategoryName', 'Description', 'Picture'].forEach(function (x) { return Fields[x] = x; });
-        })(CategoryRow = Northwind.CategoryRow || (Northwind.CategoryRow = {}));
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var CategoryService;
-        (function (CategoryService) {
-            CategoryService.baseUrl = 'Northwind/Category';
-            var Methods;
-            (function (Methods) {
-            })(Methods = CategoryService.Methods || (CategoryService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                CategoryService[x] = function (r, s, o) { return Q.serviceRequest(CategoryService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = CategoryService.baseUrl + '/' + x;
-            });
-        })(CategoryService = Northwind.CategoryService || (Northwind.CategoryService = {}));
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var CustomerCustomerDemoRow;
-        (function (CustomerCustomerDemoRow) {
-            CustomerCustomerDemoRow.idProperty = 'ID';
-            CustomerCustomerDemoRow.nameProperty = 'CustomerID';
-            CustomerCustomerDemoRow.localTextPrefix = 'Northwind.CustomerCustomerDemo';
-            var Fields;
-            (function (Fields) {
-            })(Fields = CustomerCustomerDemoRow.Fields || (CustomerCustomerDemoRow.Fields = {}));
-            ['ID', 'CustomerID', 'CustomerTypeID', 'CustomerCompanyName', 'CustomerContactName', 'CustomerContactTitle', 'CustomerAddress', 'CustomerCity', 'CustomerRegion', 'CustomerPostalCode', 'CustomerCountry', 'CustomerPhone', 'CustomerFax', 'CustomerTypeCustomerDesc'].forEach(function (x) { return Fields[x] = x; });
-        })(CustomerCustomerDemoRow = Northwind.CustomerCustomerDemoRow || (Northwind.CustomerCustomerDemoRow = {}));
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var CustomerDemographicRow;
-        (function (CustomerDemographicRow) {
-            CustomerDemographicRow.idProperty = 'ID';
-            CustomerDemographicRow.nameProperty = 'CustomerTypeID';
-            CustomerDemographicRow.localTextPrefix = 'Northwind.CustomerDemographic';
-            var Fields;
-            (function (Fields) {
-            })(Fields = CustomerDemographicRow.Fields || (CustomerDemographicRow.Fields = {}));
-            ['ID', 'CustomerTypeID', 'CustomerDesc'].forEach(function (x) { return Fields[x] = x; });
-        })(CustomerDemographicRow = Northwind.CustomerDemographicRow || (Northwind.CustomerDemographicRow = {}));
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var CustomerDetailsRow;
-        (function (CustomerDetailsRow) {
-            CustomerDetailsRow.idProperty = 'Id';
-            CustomerDetailsRow.nameProperty = 'Email';
-            CustomerDetailsRow.localTextPrefix = 'Northwind.CustomerDetails';
-            var Fields;
-            (function (Fields) {
-            })(Fields = CustomerDetailsRow.Fields || (CustomerDetailsRow.Fields = {}));
-            ['Id', 'LastContactDate', 'LastContactedBy', 'Email', 'SendBulletin', 'LastContactedByLastName', 'LastContactedByFirstName', 'LastContactedByTitle', 'LastContactedByTitleOfCourtesy', 'LastContactedByBirthDate', 'LastContactedByHireDate', 'LastContactedByAddress', 'LastContactedByCity', 'LastContactedByRegion', 'LastContactedByPostalCode', 'LastContactedByCountry', 'LastContactedByHomePhone', 'LastContactedByExtension', 'LastContactedByPhoto', 'LastContactedByNotes', 'LastContactedByReportsTo', 'LastContactedByPhotoPath'].forEach(function (x) { return Fields[x] = x; });
-        })(CustomerDetailsRow = Northwind.CustomerDetailsRow || (Northwind.CustomerDetailsRow = {}));
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var CustomerForm = (function (_super) {
-            __extends(CustomerForm, _super);
-            function CustomerForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            return CustomerForm;
-        }(Serenity.PrefixedContext));
-        CustomerForm.formKey = 'Northwind.Customer';
-        Northwind.CustomerForm = CustomerForm;
-        [['CustomerID', function () { return Serenity.StringEditor; }], ['CompanyName', function () { return Serenity.StringEditor; }], ['ContactName', function () { return Serenity.StringEditor; }], ['ContactTitle', function () { return Serenity.StringEditor; }], ['Representatives', function () { return Serenity.LookupEditor; }], ['Address', function () { return Serenity.StringEditor; }], ['City', function () { return Serenity.StringEditor; }], ['Region', function () { return Serenity.StringEditor; }], ['PostalCode', function () { return Serenity.StringEditor; }], ['Country', function () { return Serenity.StringEditor; }], ['Phone', function () { return Serenity.StringEditor; }], ['Fax', function () { return Serenity.StringEditor; }], ['NoteList', function () { return Northwind.NotesEditor; }], ['LastContactDate', function () { return Serenity.DateEditor; }], ['LastContactedBy', function () { return Serenity.LookupEditor; }], ['Email', function () { return Serenity.EmailEditor; }], ['SendBulletin', function () { return Serenity.BooleanEditor; }]].forEach(function (x) { return Object.defineProperty(CustomerForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var CustomerGrossSalesRow;
-        (function (CustomerGrossSalesRow) {
-            CustomerGrossSalesRow.nameProperty = 'ContactName';
-            CustomerGrossSalesRow.localTextPrefix = 'BasicSamples.GrossSales';
-            var Fields;
-            (function (Fields) {
-            })(Fields = CustomerGrossSalesRow.Fields || (CustomerGrossSalesRow.Fields = {}));
-            ['CustomerId', 'ContactName', 'ProductId', 'ProductName', 'GrossAmount'].forEach(function (x) { return Fields[x] = x; });
-        })(CustomerGrossSalesRow = Northwind.CustomerGrossSalesRow || (Northwind.CustomerGrossSalesRow = {}));
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var CustomerRepresentativesRow;
-        (function (CustomerRepresentativesRow) {
-            CustomerRepresentativesRow.idProperty = 'RepresentativeId';
-            CustomerRepresentativesRow.localTextPrefix = 'CustomerRepresentatives';
-            var Fields;
-            (function (Fields) {
-            })(Fields = CustomerRepresentativesRow.Fields || (CustomerRepresentativesRow.Fields = {}));
-            ['RepresentativeId', 'CustomerId', 'EmployeeId'].forEach(function (x) { return Fields[x] = x; });
-        })(CustomerRepresentativesRow = Northwind.CustomerRepresentativesRow || (Northwind.CustomerRepresentativesRow = {}));
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var CustomerRow;
-        (function (CustomerRow) {
-            CustomerRow.idProperty = 'ID';
-            CustomerRow.nameProperty = 'CompanyName';
-            CustomerRow.localTextPrefix = 'Northwind.Customer';
-            CustomerRow.lookupKey = 'Northwind.Customer';
-            function getLookup() {
-                return Q.getLookup('Northwind.Customer');
-            }
-            CustomerRow.getLookup = getLookup;
-            var Fields;
-            (function (Fields) {
-            })(Fields = CustomerRow.Fields || (CustomerRow.Fields = {}));
-            ['ID', 'CustomerID', 'CompanyName', 'ContactName', 'ContactTitle', 'Address', 'City', 'Region', 'PostalCode', 'Country', 'Phone', 'Fax', 'NoteList', 'Representatives', 'LastContactDate', 'LastContactedBy', 'Email', 'SendBulletin'].forEach(function (x) { return Fields[x] = x; });
-        })(CustomerRow = Northwind.CustomerRow || (Northwind.CustomerRow = {}));
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var CustomerService;
-        (function (CustomerService) {
-            CustomerService.baseUrl = 'Northwind/Customer';
-            var Methods;
-            (function (Methods) {
-            })(Methods = CustomerService.Methods || (CustomerService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'GetNextNumber', 'Retrieve', 'List'].forEach(function (x) {
-                CustomerService[x] = function (r, s, o) { return Q.serviceRequest(CustomerService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = CustomerService.baseUrl + '/' + x;
-            });
-        })(CustomerService = Northwind.CustomerService || (Northwind.CustomerService = {}));
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var EmployeeRow;
-        (function (EmployeeRow) {
-            EmployeeRow.idProperty = 'EmployeeID';
-            EmployeeRow.nameProperty = 'FullName';
-            EmployeeRow.localTextPrefix = 'Northwind.Employee';
-            EmployeeRow.lookupKey = 'Northwind.Employee';
-            function getLookup() {
-                return Q.getLookup('Northwind.Employee');
-            }
-            EmployeeRow.getLookup = getLookup;
-            var Fields;
-            (function (Fields) {
-            })(Fields = EmployeeRow.Fields || (EmployeeRow.Fields = {}));
-            ['EmployeeID', 'LastName', 'FirstName', 'FullName', 'Title', 'TitleOfCourtesy', 'BirthDate', 'HireDate', 'Address', 'City', 'Region', 'PostalCode', 'Country', 'HomePhone', 'Extension', 'Photo', 'Notes', 'ReportsTo', 'PhotoPath', 'ReportsToFullName', 'ReportsToLastName', 'ReportsToFirstName', 'ReportsToTitle', 'ReportsToTitleOfCourtesy', 'ReportsToBirthDate', 'ReportsToHireDate', 'ReportsToAddress', 'ReportsToCity', 'ReportsToRegion', 'ReportsToPostalCode', 'ReportsToCountry', 'ReportsToHomePhone', 'ReportsToExtension', 'ReportsToPhoto', 'ReportsToNotes', 'ReportsToReportsTo', 'ReportsToPhotoPath', 'Gender'].forEach(function (x) { return Fields[x] = x; });
-        })(EmployeeRow = Northwind.EmployeeRow || (Northwind.EmployeeRow = {}));
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var EmployeeTerritoryRow;
-        (function (EmployeeTerritoryRow) {
-            EmployeeTerritoryRow.idProperty = 'EmployeeID';
-            EmployeeTerritoryRow.nameProperty = 'TerritoryID';
-            EmployeeTerritoryRow.localTextPrefix = 'Northwind.EmployeeTerritory';
-            var Fields;
-            (function (Fields) {
-            })(Fields = EmployeeTerritoryRow.Fields || (EmployeeTerritoryRow.Fields = {}));
-            ['EmployeeID', 'TerritoryID', 'EmployeeLastName', 'EmployeeFirstName', 'EmployeeTitle', 'EmployeeTitleOfCourtesy', 'EmployeeBirthDate', 'EmployeeHireDate', 'EmployeeAddress', 'EmployeeCity', 'EmployeeRegion', 'EmployeePostalCode', 'EmployeeCountry', 'EmployeeHomePhone', 'EmployeeExtension', 'EmployeePhoto', 'EmployeeNotes', 'EmployeeReportsTo', 'EmployeePhotoPath', 'TerritoryTerritoryDescription', 'TerritoryRegionID'].forEach(function (x) { return Fields[x] = x; });
-        })(EmployeeTerritoryRow = Northwind.EmployeeTerritoryRow || (Northwind.EmployeeTerritoryRow = {}));
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var Gender;
-        (function (Gender) {
-            Gender[Gender["Male"] = 1] = "Male";
-            Gender[Gender["Female"] = 2] = "Female";
-        })(Gender = Northwind.Gender || (Northwind.Gender = {}));
-        Serenity.Decorators.registerEnum(Gender, 'Store.Northwind.Entities.Gender');
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var NoteRow;
-        (function (NoteRow) {
-            NoteRow.idProperty = 'NoteId';
-            NoteRow.nameProperty = 'EntityType';
-            NoteRow.localTextPrefix = 'Northwind.Note';
-            var Fields;
-            (function (Fields) {
-            })(Fields = NoteRow.Fields || (NoteRow.Fields = {}));
-            ['NoteId', 'EntityType', 'EntityId', 'Text', 'InsertUserId', 'InsertDate', 'InsertUserDisplayName'].forEach(function (x) { return Fields[x] = x; });
-        })(NoteRow = Northwind.NoteRow || (Northwind.NoteRow = {}));
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var OrderDetailForm = (function (_super) {
-            __extends(OrderDetailForm, _super);
-            function OrderDetailForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            return OrderDetailForm;
-        }(Serenity.PrefixedContext));
-        OrderDetailForm.formKey = 'Northwind.OrderDetail';
-        Northwind.OrderDetailForm = OrderDetailForm;
-        [['ProductID', function () { return Serenity.LookupEditor; }], ['UnitPrice', function () { return Serenity.DecimalEditor; }], ['Quantity', function () { return Serenity.IntegerEditor; }], ['Discount', function () { return Serenity.DecimalEditor; }]].forEach(function (x) { return Object.defineProperty(OrderDetailForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var OrderDetailRow;
-        (function (OrderDetailRow) {
-            OrderDetailRow.idProperty = 'DetailID';
-            OrderDetailRow.localTextPrefix = 'Northwind.OrderDetail';
-            var Fields;
-            (function (Fields) {
-            })(Fields = OrderDetailRow.Fields || (OrderDetailRow.Fields = {}));
-            ['DetailID', 'OrderID', 'ProductID', 'UnitPrice', 'Quantity', 'Discount', 'OrderCustomerID', 'OrderEmployeeID', 'OrderDate', 'OrderShippedDate', 'OrderShipVia', 'OrderShipCity', 'OrderShipCountry', 'ProductName', 'ProductDiscontinued', 'ProductSupplierID', 'ProductQuantityPerUnit', 'ProductUnitPrice', 'LineTotal'].forEach(function (x) { return Fields[x] = x; });
-        })(OrderDetailRow = Northwind.OrderDetailRow || (Northwind.OrderDetailRow = {}));
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var OrderDetailService;
-        (function (OrderDetailService) {
-            OrderDetailService.baseUrl = 'Northwind/OrderDetail';
-            var Methods;
-            (function (Methods) {
-            })(Methods = OrderDetailService.Methods || (OrderDetailService.Methods = {}));
-            ['Retrieve', 'List'].forEach(function (x) {
-                OrderDetailService[x] = function (r, s, o) { return Q.serviceRequest(OrderDetailService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = OrderDetailService.baseUrl + '/' + x;
-            });
-        })(OrderDetailService = Northwind.OrderDetailService || (Northwind.OrderDetailService = {}));
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var OrderForm = (function (_super) {
-            __extends(OrderForm, _super);
-            function OrderForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            return OrderForm;
-        }(Serenity.PrefixedContext));
-        OrderForm.formKey = 'Northwind.Order';
-        Northwind.OrderForm = OrderForm;
-        [['CustomerID', function () { return Northwind.CustomerEditor; }], ['OrderDate', function () { return Serenity.DateEditor; }], ['RequiredDate', function () { return Serenity.DateEditor; }], ['EmployeeID', function () { return Serenity.LookupEditor; }], ['DetailList', function () { return Northwind.OrderDetailsEditor; }], ['ShippedDate', function () { return Serenity.DateEditor; }], ['ShipVia', function () { return Serenity.LookupEditor; }], ['Freight', function () { return Serenity.DecimalEditor; }], ['ShipName', function () { return Serenity.StringEditor; }], ['ShipAddress', function () { return Serenity.StringEditor; }], ['ShipCity', function () { return Serenity.StringEditor; }], ['ShipRegion', function () { return Serenity.StringEditor; }], ['ShipPostalCode', function () { return Serenity.StringEditor; }], ['ShipCountry', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(OrderForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var OrderRow;
-        (function (OrderRow) {
-            OrderRow.idProperty = 'OrderID';
-            OrderRow.nameProperty = 'CustomerID';
-            OrderRow.localTextPrefix = 'Northwind.Order';
-            OrderRow.lookupKey = 'Northwind.OrderShipCity';
-            function getLookup() {
-                return Q.getLookup('Northwind.OrderShipCity');
-            }
-            OrderRow.getLookup = getLookup;
-            var Fields;
-            (function (Fields) {
-            })(Fields = OrderRow.Fields || (OrderRow.Fields = {}));
-            ['OrderID', 'CustomerID', 'EmployeeID', 'OrderDate', 'RequiredDate', 'ShippedDate', 'ShipVia', 'Freight', 'ShipName', 'ShipAddress', 'ShipCity', 'ShipRegion', 'ShipPostalCode', 'ShipCountry', 'CustomerCompanyName', 'CustomerContactName', 'CustomerContactTitle', 'CustomerCity', 'CustomerRegion', 'CustomerCountry', 'CustomerPhone', 'CustomerFax', 'EmployeeFullName', 'EmployeeGender', 'EmployeeReportsToFullName', 'ShipViaCompanyName', 'ShipViaPhone', 'ShippingState', 'DetailList'].forEach(function (x) { return Fields[x] = x; });
-        })(OrderRow = Northwind.OrderRow || (Northwind.OrderRow = {}));
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var OrderService;
-        (function (OrderService) {
-            OrderService.baseUrl = 'Northwind/Order';
-            var Methods;
-            (function (Methods) {
-            })(Methods = OrderService.Methods || (OrderService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                OrderService[x] = function (r, s, o) { return Q.serviceRequest(OrderService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = OrderService.baseUrl + '/' + x;
-            });
-        })(OrderService = Northwind.OrderService || (Northwind.OrderService = {}));
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var OrderShippingState;
-        (function (OrderShippingState) {
-            OrderShippingState[OrderShippingState["NotShipped"] = 0] = "NotShipped";
-            OrderShippingState[OrderShippingState["Shipped"] = 1] = "Shipped";
-        })(OrderShippingState = Northwind.OrderShippingState || (Northwind.OrderShippingState = {}));
-        Serenity.Decorators.registerEnum(OrderShippingState, 'Northwind.OrderShippingState');
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var ProductForm = (function (_super) {
-            __extends(ProductForm, _super);
-            function ProductForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            return ProductForm;
-        }(Serenity.PrefixedContext));
-        ProductForm.formKey = 'Northwind.Product';
-        Northwind.ProductForm = ProductForm;
-        [['ProductName', function () { return Serenity.StringEditor; }], ['ProductImage', function () { return Serenity.ImageUploadEditor; }], ['Discontinued', function () { return Serenity.BooleanEditor; }], ['SupplierID', function () { return Serenity.LookupEditor; }], ['CategoryID', function () { return Serenity.LookupEditor; }], ['QuantityPerUnit', function () { return Serenity.StringEditor; }], ['UnitPrice', function () { return Serenity.DecimalEditor; }], ['UnitsInStock', function () { return Serenity.IntegerEditor; }], ['UnitsOnOrder', function () { return Serenity.IntegerEditor; }], ['ReorderLevel', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(ProductForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var ProductLangRow;
-        (function (ProductLangRow) {
-            ProductLangRow.idProperty = 'Id';
-            ProductLangRow.nameProperty = 'ProductName';
-            ProductLangRow.localTextPrefix = 'Northwind.ProductLang';
-            var Fields;
-            (function (Fields) {
-            })(Fields = ProductLangRow.Fields || (ProductLangRow.Fields = {}));
-            ['Id', 'ProductId', 'LanguageId', 'ProductName'].forEach(function (x) { return Fields[x] = x; });
-        })(ProductLangRow = Northwind.ProductLangRow || (Northwind.ProductLangRow = {}));
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var ProductLangService;
-        (function (ProductLangService) {
-            ProductLangService.baseUrl = 'Northwind/ProductLang';
-            var Methods;
-            (function (Methods) {
-            })(Methods = ProductLangService.Methods || (ProductLangService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                ProductLangService[x] = function (r, s, o) { return Q.serviceRequest(ProductLangService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = ProductLangService.baseUrl + '/' + x;
-            });
-        })(ProductLangService = Northwind.ProductLangService || (Northwind.ProductLangService = {}));
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var ProductLogRow;
-        (function (ProductLogRow) {
-            ProductLogRow.idProperty = 'ProductLogID';
-            ProductLogRow.localTextPrefix = 'Northwind.ProductLog';
-            var Fields;
-            (function (Fields) {
-            })(Fields = ProductLogRow.Fields || (ProductLogRow.Fields = {}));
-            ['ProductLogID', 'OperationType', 'ChangingUserId', 'ValidFrom', 'ValidUntil', 'ProductID', 'ProductName', 'ProductImage', 'Discontinued', 'SupplierID', 'CategoryID', 'QuantityPerUnit', 'UnitPrice', 'UnitsInStock', 'UnitsOnOrder', 'ReorderLevel'].forEach(function (x) { return Fields[x] = x; });
-        })(ProductLogRow = Northwind.ProductLogRow || (Northwind.ProductLogRow = {}));
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var ProductRow;
-        (function (ProductRow) {
-            ProductRow.idProperty = 'ProductID';
-            ProductRow.nameProperty = 'ProductName';
-            ProductRow.localTextPrefix = 'Northwind.Product';
-            ProductRow.lookupKey = 'Northwind.Product';
-            function getLookup() {
-                return Q.getLookup('Northwind.Product');
-            }
-            ProductRow.getLookup = getLookup;
-            var Fields;
-            (function (Fields) {
-            })(Fields = ProductRow.Fields || (ProductRow.Fields = {}));
-            ['ProductID', 'ProductName', 'ProductImage', 'Discontinued', 'SupplierID', 'CategoryID', 'QuantityPerUnit', 'UnitPrice', 'UnitsInStock', 'UnitsOnOrder', 'ReorderLevel', 'SupplierCompanyName', 'SupplierContactName', 'SupplierContactTitle', 'SupplierAddress', 'SupplierCity', 'SupplierRegion', 'SupplierPostalCode', 'SupplierCountry', 'SupplierPhone', 'SupplierFax', 'SupplierHomePage', 'CategoryName', 'CategoryDescription', 'CategoryPicture'].forEach(function (x) { return Fields[x] = x; });
-        })(ProductRow = Northwind.ProductRow || (Northwind.ProductRow = {}));
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var ProductService;
-        (function (ProductService) {
-            ProductService.baseUrl = 'Northwind/Product';
-            var Methods;
-            (function (Methods) {
-            })(Methods = ProductService.Methods || (ProductService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                ProductService[x] = function (r, s, o) { return Q.serviceRequest(ProductService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = ProductService.baseUrl + '/' + x;
-            });
-        })(ProductService = Northwind.ProductService || (Northwind.ProductService = {}));
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var RegionForm = (function (_super) {
-            __extends(RegionForm, _super);
-            function RegionForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            return RegionForm;
-        }(Serenity.PrefixedContext));
-        RegionForm.formKey = 'Northwind.Region';
-        Northwind.RegionForm = RegionForm;
-        [['RegionID', function () { return Serenity.IntegerEditor; }], ['RegionDescription', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(RegionForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var RegionRow;
-        (function (RegionRow) {
-            RegionRow.idProperty = 'RegionID';
-            RegionRow.nameProperty = 'RegionDescription';
-            RegionRow.localTextPrefix = 'Northwind.Region';
-            RegionRow.lookupKey = 'Northwind.Region';
-            function getLookup() {
-                return Q.getLookup('Northwind.Region');
-            }
-            RegionRow.getLookup = getLookup;
-            var Fields;
-            (function (Fields) {
-            })(Fields = RegionRow.Fields || (RegionRow.Fields = {}));
-            ['RegionID', 'RegionDescription'].forEach(function (x) { return Fields[x] = x; });
-        })(RegionRow = Northwind.RegionRow || (Northwind.RegionRow = {}));
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var RegionService;
-        (function (RegionService) {
-            RegionService.baseUrl = 'Northwind/Region';
-            var Methods;
-            (function (Methods) {
-            })(Methods = RegionService.Methods || (RegionService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                RegionService[x] = function (r, s, o) { return Q.serviceRequest(RegionService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = RegionService.baseUrl + '/' + x;
-            });
-        })(RegionService = Northwind.RegionService || (Northwind.RegionService = {}));
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var SalesByCategoryRow;
-        (function (SalesByCategoryRow) {
-            SalesByCategoryRow.nameProperty = 'CategoryName';
-            SalesByCategoryRow.localTextPrefix = 'Northwind.SalesByCategory';
-            var Fields;
-            (function (Fields) {
-            })(Fields = SalesByCategoryRow.Fields || (SalesByCategoryRow.Fields = {}));
-            ['CategoryId', 'CategoryName', 'ProductName', 'ProductSales'].forEach(function (x) { return Fields[x] = x; });
-        })(SalesByCategoryRow = Northwind.SalesByCategoryRow || (Northwind.SalesByCategoryRow = {}));
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var SalesByCategoryService;
-        (function (SalesByCategoryService) {
-            SalesByCategoryService.baseUrl = 'Northwind/SalesByCategory';
-            var Methods;
-            (function (Methods) {
-            })(Methods = SalesByCategoryService.Methods || (SalesByCategoryService.Methods = {}));
-            ['List'].forEach(function (x) {
-                SalesByCategoryService[x] = function (r, s, o) { return Q.serviceRequest(SalesByCategoryService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = SalesByCategoryService.baseUrl + '/' + x;
-            });
-        })(SalesByCategoryService = Northwind.SalesByCategoryService || (Northwind.SalesByCategoryService = {}));
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var ShipperForm = (function (_super) {
-            __extends(ShipperForm, _super);
-            function ShipperForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            return ShipperForm;
-        }(Serenity.PrefixedContext));
-        ShipperForm.formKey = 'Northwind.Shipper';
-        Northwind.ShipperForm = ShipperForm;
-        [['CompanyName', function () { return Serenity.StringEditor; }], ['Phone', function () { return Northwind.PhoneEditor; }]].forEach(function (x) { return Object.defineProperty(ShipperForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var ShipperRow;
-        (function (ShipperRow) {
-            ShipperRow.idProperty = 'ShipperID';
-            ShipperRow.nameProperty = 'CompanyName';
-            ShipperRow.localTextPrefix = 'Northwind.Shipper';
-            ShipperRow.lookupKey = 'Northwind.Shipper';
-            function getLookup() {
-                return Q.getLookup('Northwind.Shipper');
-            }
-            ShipperRow.getLookup = getLookup;
-            var Fields;
-            (function (Fields) {
-            })(Fields = ShipperRow.Fields || (ShipperRow.Fields = {}));
-            ['ShipperID', 'CompanyName', 'Phone'].forEach(function (x) { return Fields[x] = x; });
-        })(ShipperRow = Northwind.ShipperRow || (Northwind.ShipperRow = {}));
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var ShipperService;
-        (function (ShipperService) {
-            ShipperService.baseUrl = 'Northwind/Shipper';
-            var Methods;
-            (function (Methods) {
-            })(Methods = ShipperService.Methods || (ShipperService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                ShipperService[x] = function (r, s, o) { return Q.serviceRequest(ShipperService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = ShipperService.baseUrl + '/' + x;
-            });
-        })(ShipperService = Northwind.ShipperService || (Northwind.ShipperService = {}));
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var SupplierForm = (function (_super) {
-            __extends(SupplierForm, _super);
-            function SupplierForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            return SupplierForm;
-        }(Serenity.PrefixedContext));
-        SupplierForm.formKey = 'Northwind.Supplier';
-        Northwind.SupplierForm = SupplierForm;
-        [['CompanyName', function () { return Serenity.StringEditor; }], ['ContactName', function () { return Serenity.StringEditor; }], ['ContactTitle', function () { return Serenity.StringEditor; }], ['Address', function () { return Serenity.StringEditor; }], ['Region', function () { return Serenity.StringEditor; }], ['PostalCode', function () { return Serenity.StringEditor; }], ['Country', function () { return Serenity.StringEditor; }], ['City', function () { return Serenity.StringEditor; }], ['Phone', function () { return Serenity.StringEditor; }], ['Fax', function () { return Serenity.StringEditor; }], ['HomePage', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(SupplierForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var SupplierRow;
-        (function (SupplierRow) {
-            SupplierRow.idProperty = 'SupplierID';
-            SupplierRow.nameProperty = 'CompanyName';
-            SupplierRow.localTextPrefix = 'Northwind.Supplier';
-            SupplierRow.lookupKey = 'Northwind.Supplier';
-            function getLookup() {
-                return Q.getLookup('Northwind.Supplier');
-            }
-            SupplierRow.getLookup = getLookup;
-            var Fields;
-            (function (Fields) {
-            })(Fields = SupplierRow.Fields || (SupplierRow.Fields = {}));
-            ['SupplierID', 'CompanyName', 'ContactName', 'ContactTitle', 'Address', 'City', 'Region', 'PostalCode', 'Country', 'Phone', 'Fax', 'HomePage', 'TenantId'].forEach(function (x) { return Fields[x] = x; });
-        })(SupplierRow = Northwind.SupplierRow || (Northwind.SupplierRow = {}));
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var SupplierService;
-        (function (SupplierService) {
-            SupplierService.baseUrl = 'Northwind/Supplier';
-            var Methods;
-            (function (Methods) {
-            })(Methods = SupplierService.Methods || (SupplierService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                SupplierService[x] = function (r, s, o) { return Q.serviceRequest(SupplierService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = SupplierService.baseUrl + '/' + x;
-            });
-        })(SupplierService = Northwind.SupplierService || (Northwind.SupplierService = {}));
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var TerritoryForm = (function (_super) {
-            __extends(TerritoryForm, _super);
-            function TerritoryForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            return TerritoryForm;
-        }(Serenity.PrefixedContext));
-        TerritoryForm.formKey = 'Northwind.Territory';
-        Northwind.TerritoryForm = TerritoryForm;
-        [['TerritoryID', function () { return Serenity.StringEditor; }], ['TerritoryDescription', function () { return Serenity.StringEditor; }], ['RegionID', function () { return Serenity.LookupEditor; }]].forEach(function (x) { return Object.defineProperty(TerritoryForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var TerritoryRow;
-        (function (TerritoryRow) {
-            TerritoryRow.idProperty = 'ID';
-            TerritoryRow.nameProperty = 'TerritoryID';
-            TerritoryRow.localTextPrefix = 'Northwind.Territory';
-            TerritoryRow.lookupKey = 'Northwind.Territory';
-            function getLookup() {
-                return Q.getLookup('Northwind.Territory');
-            }
-            TerritoryRow.getLookup = getLookup;
-            var Fields;
-            (function (Fields) {
-            })(Fields = TerritoryRow.Fields || (TerritoryRow.Fields = {}));
-            ['ID', 'TerritoryID', 'TerritoryDescription', 'RegionID', 'RegionDescription'].forEach(function (x) { return Fields[x] = x; });
-        })(TerritoryRow = Northwind.TerritoryRow || (Northwind.TerritoryRow = {}));
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var TerritoryService;
-        (function (TerritoryService) {
-            TerritoryService.baseUrl = 'Northwind/Territory';
-            var Methods;
-            (function (Methods) {
-            })(Methods = TerritoryService.Methods || (TerritoryService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                TerritoryService[x] = function (r, s, o) { return Q.serviceRequest(TerritoryService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = TerritoryService.baseUrl + '/' + x;
-            });
-        })(TerritoryService = Northwind.TerritoryService || (Northwind.TerritoryService = {}));
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Organization;
-    (function (Organization) {
-        var BusinessUnitForm = (function (_super) {
-            __extends(BusinessUnitForm, _super);
-            function BusinessUnitForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            return BusinessUnitForm;
-        }(Serenity.PrefixedContext));
-        BusinessUnitForm.formKey = 'Organization.BusinessUnit';
-        Organization.BusinessUnitForm = BusinessUnitForm;
-        [['Name', function () { return Serenity.StringEditor; }], ['ParentUnitId', function () { return Organization.BusinessUnitEditor; }]].forEach(function (x) { return Object.defineProperty(BusinessUnitForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(Organization = Store.Organization || (Store.Organization = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Organization;
-    (function (Organization) {
-        var BusinessUnitRow;
-        (function (BusinessUnitRow) {
-            BusinessUnitRow.idProperty = 'UnitId';
-            BusinessUnitRow.nameProperty = 'Name';
-            BusinessUnitRow.localTextPrefix = 'Organization.BusinessUnit';
-            BusinessUnitRow.lookupKey = 'Organization.BusinessUnit';
-            function getLookup() {
-                return Q.getLookup('Organization.BusinessUnit');
-            }
-            BusinessUnitRow.getLookup = getLookup;
-            var Fields;
-            (function (Fields) {
-            })(Fields = BusinessUnitRow.Fields || (BusinessUnitRow.Fields = {}));
-            ['UnitId', 'Name', 'ParentUnitId', 'ParentUnitName', 'ParentUnitParentUnitId'].forEach(function (x) { return Fields[x] = x; });
-        })(BusinessUnitRow = Organization.BusinessUnitRow || (Organization.BusinessUnitRow = {}));
-    })(Organization = Store.Organization || (Store.Organization = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Organization;
-    (function (Organization) {
-        var BusinessUnitService;
-        (function (BusinessUnitService) {
-            BusinessUnitService.baseUrl = 'Organization/BusinessUnit';
-            var Methods;
-            (function (Methods) {
-            })(Methods = BusinessUnitService.Methods || (BusinessUnitService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                BusinessUnitService[x] = function (r, s, o) { return Q.serviceRequest(BusinessUnitService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = BusinessUnitService.baseUrl + '/' + x;
-            });
-        })(BusinessUnitService = Organization.BusinessUnitService || (Organization.BusinessUnitService = {}));
-    })(Organization = Store.Organization || (Store.Organization = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Organization;
-    (function (Organization) {
-        var ContactForm = (function (_super) {
-            __extends(ContactForm, _super);
-            function ContactForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            return ContactForm;
-        }(Serenity.PrefixedContext));
-        ContactForm.formKey = 'Organization.Contact';
-        Organization.ContactForm = ContactForm;
-        [['Title', function () { return Serenity.StringEditor; }], ['FirstName', function () { return Serenity.StringEditor; }], ['LastName', function () { return Serenity.StringEditor; }], ['Email', function () { return Serenity.EmailEditor; }], ['IdentityNo', function () { return Serenity.StringEditor; }], ['UserId', function () { return Serenity.LookupEditor; }]].forEach(function (x) { return Object.defineProperty(ContactForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(Organization = Store.Organization || (Store.Organization = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Organization;
-    (function (Organization) {
-        var ContactRow;
-        (function (ContactRow) {
-            ContactRow.idProperty = 'ContactId';
-            ContactRow.nameProperty = 'FullName';
-            ContactRow.localTextPrefix = 'Organization.Contact';
-            ContactRow.lookupKey = 'Organization.Contact';
-            function getLookup() {
-                return Q.getLookup('Organization.Contact');
-            }
-            ContactRow.getLookup = getLookup;
-            var Fields;
-            (function (Fields) {
-            })(Fields = ContactRow.Fields || (ContactRow.Fields = {}));
-            ['ContactId', 'Title', 'FirstName', 'LastName', 'FullName', 'Email', 'IdentityNo', 'UserId', 'Username', 'UserDisplayName', 'UserEmail', 'UserSource', 'UserPasswordHash', 'UserPasswordSalt', 'UserLastDirectoryUpdate', 'UserUserImage', 'UserInsertDate', 'UserInsertUserId', 'UserUpdateDate', 'UserUpdateUserId', 'UserIsActive'].forEach(function (x) { return Fields[x] = x; });
-        })(ContactRow = Organization.ContactRow || (Organization.ContactRow = {}));
-    })(Organization = Store.Organization || (Store.Organization = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Organization;
-    (function (Organization) {
-        var ContactService;
-        (function (ContactService) {
-            ContactService.baseUrl = 'Organization/Contact';
-            var Methods;
-            (function (Methods) {
-            })(Methods = ContactService.Methods || (ContactService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                ContactService[x] = function (r, s, o) { return Q.serviceRequest(ContactService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = ContactService.baseUrl + '/' + x;
-            });
-        })(ContactService = Organization.ContactService || (Organization.ContactService = {}));
-    })(Organization = Store.Organization || (Store.Organization = {}));
 })(Store || (Store = {}));
 var Store;
 (function (Store_1) {
     var Store;
     (function (Store) {
-        var SupportForm = (function (_super) {
-            __extends(SupportForm, _super);
-            function SupportForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
+        var CategoryForm = /** @class */ (function (_super) {
+            __extends(CategoryForm, _super);
+            function CategoryForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!CategoryForm.init) {
+                    CategoryForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.LookupEditor;
+                    var w1 = s.StringEditor;
+                    Q.initFormType(CategoryForm, [
+                        'CategoryTypeID', w0,
+                        'CategoryCode', w1,
+                        'CategoryName', w1,
+                        'Description', w1
+                    ]);
+                }
+                return _this;
             }
-            return SupportForm;
+            CategoryForm.formKey = 'Store.Category';
+            return CategoryForm;
         }(Serenity.PrefixedContext));
-        SupportForm.formKey = 'Store.Support';
-        Store.SupportForm = SupportForm;
-        [['SupportGuid', function () { return Serenity.StringEditor; }], ['SupportTypeId', function () { return Serenity.IntegerEditor; }], ['SupportCode', function () { return Serenity.StringEditor; }], ['SupportName', function () { return Serenity.StringEditor; }], ['SupportDescription', function () { return Serenity.StringEditor; }], ['InsertUserId', function () { return Serenity.IntegerEditor; }], ['InsertDate', function () { return Serenity.DateEditor; }], ['UpdateUserId', function () { return Serenity.IntegerEditor; }], ['UpdateDate', function () { return Serenity.DateEditor; }], ['TenantId', function () { return Serenity.IntegerEditor; }], ['IsActive', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(SupportForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
+        Store.CategoryForm = CategoryForm;
     })(Store = Store_1.Store || (Store_1.Store = {}));
 })(Store || (Store = {}));
 var Store;
 (function (Store_2) {
     var Store;
     (function (Store) {
-        var SupportRow;
-        (function (SupportRow) {
-            SupportRow.idProperty = 'SupportId';
-            SupportRow.nameProperty = 'SupportCode';
-            SupportRow.localTextPrefix = 'Store.Support';
-            var Fields;
-            (function (Fields) {
-            })(Fields = SupportRow.Fields || (SupportRow.Fields = {}));
-            ['SupportId', 'SupportGuid', 'SupportTypeId', 'SupportCode', 'SupportName', 'SupportDescription', 'InsertUserId', 'InsertDate', 'UpdateUserId', 'UpdateDate', 'TenantId', 'IsActive', 'SupportTypeEnumValue', 'SupportTypeDisplayName', 'SupportTypeLanguageId', 'SupportTypeInsertUserId', 'SupportTypeInsertDate', 'SupportTypeUpdateUserId', 'SupportTypeUpdateDate', 'SupportTypeTenantId', 'SupportTypeIsActive'].forEach(function (x) { return Fields[x] = x; });
-        })(SupportRow = Store.SupportRow || (Store.SupportRow = {}));
+        var CategoryLangRow;
+        (function (CategoryLangRow) {
+            CategoryLangRow.idProperty = 'ID';
+            CategoryLangRow.nameProperty = 'CategoryName';
+            CategoryLangRow.localTextPrefix = 'Store.CategoryLang';
+        })(CategoryLangRow = Store.CategoryLangRow || (Store.CategoryLangRow = {}));
     })(Store = Store_2.Store || (Store_2.Store = {}));
 })(Store || (Store = {}));
 var Store;
 (function (Store_3) {
     var Store;
     (function (Store) {
-        var SupportService;
-        (function (SupportService) {
-            SupportService.baseUrl = 'Store/Support';
-            var Methods;
-            (function (Methods) {
-            })(Methods = SupportService.Methods || (SupportService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                SupportService[x] = function (r, s, o) { return Q.serviceRequest(SupportService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = SupportService.baseUrl + '/' + x;
+        var CategoryLangService;
+        (function (CategoryLangService) {
+            CategoryLangService.baseUrl = 'Store/CategoryLang';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                CategoryLangService[x] = function (r, s, o) {
+                    return Q.serviceRequest(CategoryLangService.baseUrl + '/' + x, r, s, o);
+                };
             });
-        })(SupportService = Store.SupportService || (Store.SupportService = {}));
+        })(CategoryLangService = Store.CategoryLangService || (Store.CategoryLangService = {}));
     })(Store = Store_3.Store || (Store_3.Store = {}));
 })(Store || (Store = {}));
 var Store;
 (function (Store_4) {
     var Store;
     (function (Store) {
-        var SupportTypeForm = (function (_super) {
-            __extends(SupportTypeForm, _super);
-            function SupportTypeForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
+        var CategoryRow;
+        (function (CategoryRow) {
+            CategoryRow.idProperty = 'CategoryID';
+            CategoryRow.isActiveProperty = 'IsActive';
+            CategoryRow.nameProperty = 'CategoryName';
+            CategoryRow.localTextPrefix = 'Store.Category';
+            CategoryRow.lookupKey = 'Store.Category';
+            function getLookup() {
+                return Q.getLookup('Store.Category');
             }
-            return SupportTypeForm;
-        }(Serenity.PrefixedContext));
-        SupportTypeForm.formKey = 'Store.SupportType';
-        Store.SupportTypeForm = SupportTypeForm;
-        [['EnumName', function () { return Serenity.StringEditor; }], ['InsertUserId', function () { return Serenity.IntegerEditor; }], ['InsertDate', function () { return Serenity.DateEditor; }], ['UpdateUserId', function () { return Serenity.IntegerEditor; }], ['UpdateDate', function () { return Serenity.DateEditor; }], ['TenantId', function () { return Serenity.IntegerEditor; }], ['IsActive', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(SupportTypeForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
+            CategoryRow.getLookup = getLookup;
+        })(CategoryRow = Store.CategoryRow || (Store.CategoryRow = {}));
     })(Store = Store_4.Store || (Store_4.Store = {}));
 })(Store || (Store = {}));
 var Store;
 (function (Store_5) {
     var Store;
     (function (Store) {
-        var SupportTypeRow;
-        (function (SupportTypeRow) {
-            SupportTypeRow.idProperty = 'EnumValue';
-            SupportTypeRow.nameProperty = 'EnumName';
-            SupportTypeRow.localTextPrefix = 'Store.SupportType';
-            var Fields;
-            (function (Fields) {
-            })(Fields = SupportTypeRow.Fields || (SupportTypeRow.Fields = {}));
-            ['EnumValue', 'EnumName', 'InsertUserId', 'InsertDate', 'UpdateUserId', 'UpdateDate', 'TenantId', 'IsActive'].forEach(function (x) { return Fields[x] = x; });
-        })(SupportTypeRow = Store.SupportTypeRow || (Store.SupportTypeRow = {}));
+        var CategoryService;
+        (function (CategoryService) {
+            CategoryService.baseUrl = 'Store/Category';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'RetrieveLocalization',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                CategoryService[x] = function (r, s, o) {
+                    return Q.serviceRequest(CategoryService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(CategoryService = Store.CategoryService || (Store.CategoryService = {}));
     })(Store = Store_5.Store || (Store_5.Store = {}));
 })(Store || (Store = {}));
 var Store;
 (function (Store_6) {
     var Store;
     (function (Store) {
-        var SupportTypeService;
-        (function (SupportTypeService) {
-            SupportTypeService.baseUrl = 'Store/SupportType';
-            var Methods;
-            (function (Methods) {
-            })(Methods = SupportTypeService.Methods || (SupportTypeService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                SupportTypeService[x] = function (r, s, o) { return Q.serviceRequest(SupportTypeService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = SupportTypeService.baseUrl + '/' + x;
-            });
-        })(SupportTypeService = Store.SupportTypeService || (Store.SupportTypeService = {}));
+        var CategoryTypeForm = /** @class */ (function (_super) {
+            __extends(CategoryTypeForm, _super);
+            function CategoryTypeForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!CategoryTypeForm.init) {
+                    CategoryTypeForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.IntegerEditor;
+                    var w1 = s.StringEditor;
+                    Q.initFormType(CategoryTypeForm, [
+                        'Type', w0,
+                        'CategoryType', w1
+                    ]);
+                }
+                return _this;
+            }
+            CategoryTypeForm.formKey = 'Store.CategoryType';
+            return CategoryTypeForm;
+        }(Serenity.PrefixedContext));
+        Store.CategoryTypeForm = CategoryTypeForm;
     })(Store = Store_6.Store || (Store_6.Store = {}));
 })(Store || (Store = {}));
 var Store;
 (function (Store_7) {
     var Store;
     (function (Store) {
-        var SupportTypeStringForm = (function (_super) {
-            __extends(SupportTypeStringForm, _super);
-            function SupportTypeStringForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
+        var CategoryTypeRow;
+        (function (CategoryTypeRow) {
+            CategoryTypeRow.idProperty = 'CategoryTypeID';
+            CategoryTypeRow.isActiveProperty = 'IsActive';
+            CategoryTypeRow.nameProperty = 'CategoryType';
+            CategoryTypeRow.localTextPrefix = 'Store.CategoryType';
+            CategoryTypeRow.lookupKey = 'Store.CategoryType';
+            function getLookup() {
+                return Q.getLookup('Store.CategoryType');
             }
-            return SupportTypeStringForm;
-        }(Serenity.PrefixedContext));
-        SupportTypeStringForm.formKey = 'Store.SupportTypeString';
-        Store.SupportTypeStringForm = SupportTypeStringForm;
-        [['EnumValue', function () { return Serenity.IntegerEditor; }], ['DisplayName', function () { return Serenity.StringEditor; }], ['LanguageId', function () { return Serenity.IntegerEditor; }], ['InsertUserId', function () { return Serenity.IntegerEditor; }], ['InsertDate', function () { return Serenity.DateEditor; }], ['UpdateUserId', function () { return Serenity.IntegerEditor; }], ['UpdateDate', function () { return Serenity.DateEditor; }], ['TenantId', function () { return Serenity.IntegerEditor; }], ['IsActive', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(SupportTypeStringForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
+            CategoryTypeRow.getLookup = getLookup;
+        })(CategoryTypeRow = Store.CategoryTypeRow || (Store.CategoryTypeRow = {}));
     })(Store = Store_7.Store || (Store_7.Store = {}));
 })(Store || (Store = {}));
 var Store;
 (function (Store_8) {
     var Store;
     (function (Store) {
-        var SupportTypeStringRow;
-        (function (SupportTypeStringRow) {
-            SupportTypeStringRow.idProperty = 'EnumLocaleId';
-            SupportTypeStringRow.nameProperty = 'DisplayName';
-            SupportTypeStringRow.localTextPrefix = 'Store.SupportTypeString';
-            var Fields;
-            (function (Fields) {
-            })(Fields = SupportTypeStringRow.Fields || (SupportTypeStringRow.Fields = {}));
-            ['EnumLocaleId', 'EnumValue', 'DisplayName', 'LanguageId', 'InsertUserId', 'InsertDate', 'UpdateUserId', 'UpdateDate', 'TenantId', 'IsActive', 'EnumValueEnumName', 'EnumValueInsertUserId', 'EnumValueInsertDate', 'EnumValueUpdateUserId', 'EnumValueUpdateDate', 'EnumValueTenantId', 'EnumValueIsActive'].forEach(function (x) { return Fields[x] = x; });
-        })(SupportTypeStringRow = Store.SupportTypeStringRow || (Store.SupportTypeStringRow = {}));
+        var CategoryTypeService;
+        (function (CategoryTypeService) {
+            CategoryTypeService.baseUrl = 'Store/CategoryType';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                CategoryTypeService[x] = function (r, s, o) {
+                    return Q.serviceRequest(CategoryTypeService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(CategoryTypeService = Store.CategoryTypeService || (Store.CategoryTypeService = {}));
     })(Store = Store_8.Store || (Store_8.Store = {}));
 })(Store || (Store = {}));
 var Store;
 (function (Store_9) {
     var Store;
     (function (Store) {
-        var SupportTypeStringService;
-        (function (SupportTypeStringService) {
-            SupportTypeStringService.baseUrl = 'Store/SupportTypeString';
-            var Methods;
-            (function (Methods) {
-            })(Methods = SupportTypeStringService.Methods || (SupportTypeStringService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                SupportTypeStringService[x] = function (r, s, o) { return Q.serviceRequest(SupportTypeStringService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = SupportTypeStringService.baseUrl + '/' + x;
-            });
-        })(SupportTypeStringService = Store.SupportTypeStringService || (Store.SupportTypeStringService = {}));
+        var CounterpartyDetailRow;
+        (function (CounterpartyDetailRow) {
+            CounterpartyDetailRow.idProperty = 'ID';
+            CounterpartyDetailRow.nameProperty = 'Email';
+            CounterpartyDetailRow.localTextPrefix = 'Store.CounterpartyDetail';
+        })(CounterpartyDetailRow = Store.CounterpartyDetailRow || (Store.CounterpartyDetailRow = {}));
     })(Store = Store_9.Store || (Store_9.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_10) {
+    var Store;
+    (function (Store) {
+        var CounterpartyForm = /** @class */ (function (_super) {
+            __extends(CounterpartyForm, _super);
+            function CounterpartyForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!CounterpartyForm.init) {
+                    CounterpartyForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.StringEditor;
+                    var w1 = s.LookupEditor;
+                    var w2 = Store.NotesEditor;
+                    var w3 = s.DateEditor;
+                    var w4 = s.EmailEditor;
+                    var w5 = s.BooleanEditor;
+                    Q.initFormType(CounterpartyForm, [
+                        'CounterpartyID', w0,
+                        'CompanyName', w0,
+                        'ContactName', w0,
+                        'ContactTitle', w0,
+                        'Representatives', w1,
+                        'Address', w0,
+                        'City', w1,
+                        'Region', w0,
+                        'PostalCode', w0,
+                        'Country', w1,
+                        'Phone', w0,
+                        'NoteList', w2,
+                        'LastContactDate', w3,
+                        'LastContactedBy', w1,
+                        'Email', w4,
+                        'SendBulletin', w5
+                    ]);
+                }
+                return _this;
+            }
+            CounterpartyForm.formKey = 'Store.Counterparty';
+            return CounterpartyForm;
+        }(Serenity.PrefixedContext));
+        Store.CounterpartyForm = CounterpartyForm;
+    })(Store = Store_10.Store || (Store_10.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_11) {
+    var Store;
+    (function (Store) {
+        var CounterpartyRepresentativeRow;
+        (function (CounterpartyRepresentativeRow) {
+            CounterpartyRepresentativeRow.idProperty = 'RepresentativeID';
+            CounterpartyRepresentativeRow.localTextPrefix = 'Store.CounterpartyRepresentative';
+        })(CounterpartyRepresentativeRow = Store.CounterpartyRepresentativeRow || (Store.CounterpartyRepresentativeRow = {}));
+    })(Store = Store_11.Store || (Store_11.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_12) {
+    var Store;
+    (function (Store) {
+        var CounterpartyRow;
+        (function (CounterpartyRow) {
+            CounterpartyRow.idProperty = 'ID';
+            CounterpartyRow.isActiveProperty = 'IsActive';
+            CounterpartyRow.nameProperty = 'CompanyName';
+            CounterpartyRow.localTextPrefix = 'Store.Counterparty';
+            CounterpartyRow.lookupKey = 'Store.Counterparty';
+            function getLookup() {
+                return Q.getLookup('Store.Counterparty');
+            }
+            CounterpartyRow.getLookup = getLookup;
+        })(CounterpartyRow = Store.CounterpartyRow || (Store.CounterpartyRow = {}));
+    })(Store = Store_12.Store || (Store_12.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_13) {
+    var Store;
+    (function (Store) {
+        var CounterpartyService;
+        (function (CounterpartyService) {
+            CounterpartyService.baseUrl = 'Store/Counterparty';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'GetNextNumber',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                CounterpartyService[x] = function (r, s, o) {
+                    return Q.serviceRequest(CounterpartyService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(CounterpartyService = Store.CounterpartyService || (Store.CounterpartyService = {}));
+    })(Store = Store_13.Store || (Store_13.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_14) {
+    var Store;
+    (function (Store) {
+        var CustomerCustomerDemoRow;
+        (function (CustomerCustomerDemoRow) {
+            CustomerCustomerDemoRow.idProperty = 'Id';
+            CustomerCustomerDemoRow.nameProperty = 'CustomerId';
+            CustomerCustomerDemoRow.localTextPrefix = 'Store.CustomerCustomerDemo';
+        })(CustomerCustomerDemoRow = Store.CustomerCustomerDemoRow || (Store.CustomerCustomerDemoRow = {}));
+    })(Store = Store_14.Store || (Store_14.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_15) {
+    var Store;
+    (function (Store) {
+        var CustomerDemographicRow;
+        (function (CustomerDemographicRow) {
+            CustomerDemographicRow.idProperty = 'Id';
+            CustomerDemographicRow.nameProperty = 'CustomerTypeId';
+            CustomerDemographicRow.localTextPrefix = 'Store.CustomerDemographic';
+        })(CustomerDemographicRow = Store.CustomerDemographicRow || (Store.CustomerDemographicRow = {}));
+    })(Store = Store_15.Store || (Store_15.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_16) {
+    var Store;
+    (function (Store) {
+        var CustomerDetailsRow;
+        (function (CustomerDetailsRow) {
+            CustomerDetailsRow.idProperty = 'Id';
+            CustomerDetailsRow.nameProperty = 'Email';
+            CustomerDetailsRow.localTextPrefix = 'Store.CustomerDetails';
+        })(CustomerDetailsRow = Store.CustomerDetailsRow || (Store.CustomerDetailsRow = {}));
+    })(Store = Store_16.Store || (Store_16.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_17) {
+    var Store;
+    (function (Store) {
+        var CustomerForm = /** @class */ (function (_super) {
+            __extends(CustomerForm, _super);
+            function CustomerForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!CustomerForm.init) {
+                    CustomerForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.StringEditor;
+                    var w1 = s.LookupEditor;
+                    var w2 = Store.NotesEditor;
+                    var w3 = s.DateEditor;
+                    var w4 = s.EmailEditor;
+                    var w5 = s.BooleanEditor;
+                    Q.initFormType(CustomerForm, [
+                        'CustomerID', w0,
+                        'CompanyName', w0,
+                        'ContactName', w0,
+                        'ContactTitle', w0,
+                        'Representatives', w1,
+                        'Address', w0,
+                        'Country', w1,
+                        'City', w1,
+                        'Region', w0,
+                        'PostalCode', w0,
+                        'Phone', w0,
+                        'Fax', w0,
+                        'NoteList', w2,
+                        'LastContactDate', w3,
+                        'LastContactedBy', w1,
+                        'Email', w4,
+                        'SendBulletin', w5
+                    ]);
+                }
+                return _this;
+            }
+            CustomerForm.formKey = 'Store.Customer';
+            return CustomerForm;
+        }(Serenity.PrefixedContext));
+        Store.CustomerForm = CustomerForm;
+    })(Store = Store_17.Store || (Store_17.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_18) {
+    var Store;
+    (function (Store) {
+        var CustomerRepresentativesRow;
+        (function (CustomerRepresentativesRow) {
+            CustomerRepresentativesRow.idProperty = 'RepresentativeID';
+            CustomerRepresentativesRow.localTextPrefix = 'Store.CustomerRepresentatives';
+        })(CustomerRepresentativesRow = Store.CustomerRepresentativesRow || (Store.CustomerRepresentativesRow = {}));
+    })(Store = Store_18.Store || (Store_18.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_19) {
+    var Store;
+    (function (Store) {
+        var CustomerRow;
+        (function (CustomerRow) {
+            CustomerRow.idProperty = 'ID';
+            CustomerRow.isActiveProperty = 'IsActive';
+            CustomerRow.nameProperty = 'CustomerID';
+            CustomerRow.localTextPrefix = 'Store.Customer';
+            CustomerRow.lookupKey = 'Store.Customer';
+            function getLookup() {
+                return Q.getLookup('Store.Customer');
+            }
+            CustomerRow.getLookup = getLookup;
+        })(CustomerRow = Store.CustomerRow || (Store.CustomerRow = {}));
+    })(Store = Store_19.Store || (Store_19.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_20) {
+    var Store;
+    (function (Store) {
+        var CustomerService;
+        (function (CustomerService) {
+            CustomerService.baseUrl = 'Store/Customer';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'GetNextNumber',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                CustomerService[x] = function (r, s, o) {
+                    return Q.serviceRequest(CustomerService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(CustomerService = Store.CustomerService || (Store.CustomerService = {}));
+    })(Store = Store_20.Store || (Store_20.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_21) {
+    var Store;
+    (function (Store) {
+        var EmployeeRow;
+        (function (EmployeeRow) {
+            EmployeeRow.idProperty = 'EmployeeID';
+            EmployeeRow.isActiveProperty = 'IsActive';
+            EmployeeRow.nameProperty = 'LastName';
+            EmployeeRow.localTextPrefix = 'Store.Employee';
+            EmployeeRow.lookupKey = 'Store.Employee';
+            function getLookup() {
+                return Q.getLookup('Store.Employee');
+            }
+            EmployeeRow.getLookup = getLookup;
+        })(EmployeeRow = Store.EmployeeRow || (Store.EmployeeRow = {}));
+    })(Store = Store_21.Store || (Store_21.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_22) {
+    var Store;
+    (function (Store) {
+        var Gender;
+        (function (Gender) {
+            Gender[Gender["Male"] = 1] = "Male";
+            Gender[Gender["Female"] = 2] = "Female";
+        })(Gender = Store.Gender || (Store.Gender = {}));
+        Serenity.Decorators.registerEnumType(Gender, 'Store.Store.Gender', 'Store.Store.Entities.Gender');
+    })(Store = Store_22.Store || (Store_22.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_23) {
+    var Store;
+    (function (Store) {
+        var ItemCategoryForm = /** @class */ (function (_super) {
+            __extends(ItemCategoryForm, _super);
+            function ItemCategoryForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!ItemCategoryForm.init) {
+                    ItemCategoryForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.StringEditor;
+                    var w1 = s.ImageUploadEditor;
+                    Q.initFormType(ItemCategoryForm, [
+                        'ItemCategoryCode', w0,
+                        'ItemCategoryName', w0,
+                        'ItemCategoryDescription', w0,
+                        'ItemCategoryImage', w1
+                    ]);
+                }
+                return _this;
+            }
+            ItemCategoryForm.formKey = 'Store.ItemCategory';
+            return ItemCategoryForm;
+        }(Serenity.PrefixedContext));
+        Store.ItemCategoryForm = ItemCategoryForm;
+    })(Store = Store_23.Store || (Store_23.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_24) {
+    var Store;
+    (function (Store) {
+        var ItemCategoryLangRow;
+        (function (ItemCategoryLangRow) {
+            ItemCategoryLangRow.idProperty = 'ID';
+            ItemCategoryLangRow.nameProperty = 'ItemCategoryName';
+            ItemCategoryLangRow.localTextPrefix = 'Store.ItemCategoryLang';
+        })(ItemCategoryLangRow = Store.ItemCategoryLangRow || (Store.ItemCategoryLangRow = {}));
+    })(Store = Store_24.Store || (Store_24.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_25) {
+    var Store;
+    (function (Store) {
+        var ItemCategoryLangService;
+        (function (ItemCategoryLangService) {
+            ItemCategoryLangService.baseUrl = 'Store/ItemCategoryLang';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                ItemCategoryLangService[x] = function (r, s, o) {
+                    return Q.serviceRequest(ItemCategoryLangService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(ItemCategoryLangService = Store.ItemCategoryLangService || (Store.ItemCategoryLangService = {}));
+    })(Store = Store_25.Store || (Store_25.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_26) {
+    var Store;
+    (function (Store) {
+        var ItemCategoryRow;
+        (function (ItemCategoryRow) {
+            ItemCategoryRow.idProperty = 'ItemCategoryID';
+            ItemCategoryRow.isActiveProperty = 'IsActive';
+            ItemCategoryRow.nameProperty = 'ItemCategoryName';
+            ItemCategoryRow.localTextPrefix = 'Store.ItemCategory';
+            ItemCategoryRow.lookupKey = 'Store.ItemCategory';
+            function getLookup() {
+                return Q.getLookup('Store.ItemCategory');
+            }
+            ItemCategoryRow.getLookup = getLookup;
+        })(ItemCategoryRow = Store.ItemCategoryRow || (Store.ItemCategoryRow = {}));
+    })(Store = Store_26.Store || (Store_26.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_27) {
+    var Store;
+    (function (Store) {
+        var ItemCategoryService;
+        (function (ItemCategoryService) {
+            ItemCategoryService.baseUrl = 'Store/ItemCategory';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                ItemCategoryService[x] = function (r, s, o) {
+                    return Q.serviceRequest(ItemCategoryService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(ItemCategoryService = Store.ItemCategoryService || (Store.ItemCategoryService = {}));
+    })(Store = Store_27.Store || (Store_27.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_28) {
+    var Store;
+    (function (Store) {
+        var ItemForm = /** @class */ (function (_super) {
+            __extends(ItemForm, _super);
+            function ItemForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!ItemForm.init) {
+                    ItemForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.LookupEditor;
+                    var w1 = s.StringEditor;
+                    var w2 = s.ImageUploadEditor;
+                    var w3 = s.IntegerEditor;
+                    var w4 = s.DecimalEditor;
+                    var w5 = s.BooleanEditor;
+                    Q.initFormType(ItemForm, [
+                        'ItemCategoryID', w0,
+                        'ItemCode', w1,
+                        'ItemBarcode', w1,
+                        'ItemLabel', w1,
+                        'ItemName', w1,
+                        'ItemImage', w2,
+                        'SupplierID', w0,
+                        'MeasureID', w0,
+                        'QuantityPerUnit', w3,
+                        'UnitPrice', w4,
+                        'Discontinued', w5,
+                        'AccountID', w3
+                    ]);
+                }
+                return _this;
+            }
+            ItemForm.formKey = 'Store.Item';
+            return ItemForm;
+        }(Serenity.PrefixedContext));
+        Store.ItemForm = ItemForm;
+    })(Store = Store_28.Store || (Store_28.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_29) {
+    var Store;
+    (function (Store) {
+        var ItemLangRow;
+        (function (ItemLangRow) {
+            ItemLangRow.idProperty = 'ID';
+            ItemLangRow.nameProperty = 'ItemName';
+            ItemLangRow.localTextPrefix = 'Store.ItemLang';
+        })(ItemLangRow = Store.ItemLangRow || (Store.ItemLangRow = {}));
+    })(Store = Store_29.Store || (Store_29.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_30) {
+    var Store;
+    (function (Store) {
+        var ItemLangService;
+        (function (ItemLangService) {
+            ItemLangService.baseUrl = 'Store/ItemLang';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                ItemLangService[x] = function (r, s, o) {
+                    return Q.serviceRequest(ItemLangService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(ItemLangService = Store.ItemLangService || (Store.ItemLangService = {}));
+    })(Store = Store_30.Store || (Store_30.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_31) {
+    var Store;
+    (function (Store) {
+        var ItemRow;
+        (function (ItemRow) {
+            ItemRow.idProperty = 'ItemID';
+            ItemRow.isActiveProperty = 'IsActive';
+            ItemRow.nameProperty = 'ItemName';
+            ItemRow.localTextPrefix = 'Store.Item';
+            ItemRow.lookupKey = 'Store.Item';
+            function getLookup() {
+                return Q.getLookup('Store.Item');
+            }
+            ItemRow.getLookup = getLookup;
+        })(ItemRow = Store.ItemRow || (Store.ItemRow = {}));
+    })(Store = Store_31.Store || (Store_31.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_32) {
+    var Store;
+    (function (Store) {
+        var ItemService;
+        (function (ItemService) {
+            ItemService.baseUrl = 'Store/Item';
+            [
+                'Create',
+                'Update',
+                'RetrieveLocalization',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                ItemService[x] = function (r, s, o) {
+                    return Q.serviceRequest(ItemService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(ItemService = Store.ItemService || (Store.ItemService = {}));
+    })(Store = Store_32.Store || (Store_32.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_33) {
+    var Store;
+    (function (Store) {
+        var MeasureForm = /** @class */ (function (_super) {
+            __extends(MeasureForm, _super);
+            function MeasureForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!MeasureForm.init) {
+                    MeasureForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.StringEditor;
+                    Q.initFormType(MeasureForm, [
+                        'MeasureName', w0
+                    ]);
+                }
+                return _this;
+            }
+            MeasureForm.formKey = 'Store.Measure';
+            return MeasureForm;
+        }(Serenity.PrefixedContext));
+        Store.MeasureForm = MeasureForm;
+    })(Store = Store_33.Store || (Store_33.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_34) {
+    var Store;
+    (function (Store) {
+        var MeasureRow;
+        (function (MeasureRow) {
+            MeasureRow.idProperty = 'MeasureID';
+            MeasureRow.isActiveProperty = 'IsActive';
+            MeasureRow.nameProperty = 'MeasureName';
+            MeasureRow.localTextPrefix = 'Store.Measure';
+            MeasureRow.lookupKey = 'Store.Measure';
+            function getLookup() {
+                return Q.getLookup('Store.Measure');
+            }
+            MeasureRow.getLookup = getLookup;
+        })(MeasureRow = Store.MeasureRow || (Store.MeasureRow = {}));
+    })(Store = Store_34.Store || (Store_34.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_35) {
+    var Store;
+    (function (Store) {
+        var MeasureService;
+        (function (MeasureService) {
+            MeasureService.baseUrl = 'Store/Measure';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                MeasureService[x] = function (r, s, o) {
+                    return Q.serviceRequest(MeasureService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(MeasureService = Store.MeasureService || (Store.MeasureService = {}));
+    })(Store = Store_35.Store || (Store_35.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_36) {
+    var Store;
+    (function (Store) {
+        var NoteRow;
+        (function (NoteRow) {
+            NoteRow.idProperty = 'NoteId';
+            NoteRow.nameProperty = 'EntityType';
+            NoteRow.localTextPrefix = 'Store.Note';
+        })(NoteRow = Store.NoteRow || (Store.NoteRow = {}));
+    })(Store = Store_36.Store || (Store_36.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_37) {
+    var Store;
+    (function (Store) {
+        var OperationTypeForm = /** @class */ (function (_super) {
+            __extends(OperationTypeForm, _super);
+            function OperationTypeForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!OperationTypeForm.init) {
+                    OperationTypeForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.IntegerEditor;
+                    var w1 = s.StringEditor;
+                    Q.initFormType(OperationTypeForm, [
+                        'OpCode', w0,
+                        'Operation', w1
+                    ]);
+                }
+                return _this;
+            }
+            OperationTypeForm.formKey = 'Store.OperationType';
+            return OperationTypeForm;
+        }(Serenity.PrefixedContext));
+        Store.OperationTypeForm = OperationTypeForm;
+    })(Store = Store_37.Store || (Store_37.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_38) {
+    var Store;
+    (function (Store) {
+        var OperationTypeRow;
+        (function (OperationTypeRow) {
+            OperationTypeRow.idProperty = 'OperationTypeId';
+            OperationTypeRow.isActiveProperty = 'IsActive';
+            OperationTypeRow.nameProperty = 'Operation';
+            OperationTypeRow.localTextPrefix = 'Store.OperationType';
+            OperationTypeRow.lookupKey = 'Store.OperationType';
+            function getLookup() {
+                return Q.getLookup('Store.OperationType');
+            }
+            OperationTypeRow.getLookup = getLookup;
+        })(OperationTypeRow = Store.OperationTypeRow || (Store.OperationTypeRow = {}));
+    })(Store = Store_38.Store || (Store_38.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_39) {
+    var Store;
+    (function (Store) {
+        var OperationTypeService;
+        (function (OperationTypeService) {
+            OperationTypeService.baseUrl = 'Store/OperationType';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                OperationTypeService[x] = function (r, s, o) {
+                    return Q.serviceRequest(OperationTypeService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(OperationTypeService = Store.OperationTypeService || (Store.OperationTypeService = {}));
+    })(Store = Store_39.Store || (Store_39.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_40) {
+    var Store;
+    (function (Store) {
+        var OrderDetailForm = /** @class */ (function (_super) {
+            __extends(OrderDetailForm, _super);
+            function OrderDetailForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!OrderDetailForm.init) {
+                    OrderDetailForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.LookupEditor;
+                    var w1 = s.DecimalEditor;
+                    var w2 = s.IntegerEditor;
+                    Q.initFormType(OrderDetailForm, [
+                        'ProductID', w0,
+                        'UnitPrice', w1,
+                        'Quantity', w2,
+                        'Discount', w1
+                    ]);
+                }
+                return _this;
+            }
+            OrderDetailForm.formKey = 'Store.OrderDetail';
+            return OrderDetailForm;
+        }(Serenity.PrefixedContext));
+        Store.OrderDetailForm = OrderDetailForm;
+    })(Store = Store_40.Store || (Store_40.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_41) {
+    var Store;
+    (function (Store) {
+        var OrderDetailRow;
+        (function (OrderDetailRow) {
+            OrderDetailRow.idProperty = 'DetailID';
+            OrderDetailRow.isActiveProperty = 'IsActive';
+            OrderDetailRow.localTextPrefix = 'Store.OrderDetail';
+        })(OrderDetailRow = Store.OrderDetailRow || (Store.OrderDetailRow = {}));
+    })(Store = Store_41.Store || (Store_41.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_42) {
+    var Store;
+    (function (Store) {
+        var OrderDetailService;
+        (function (OrderDetailService) {
+            OrderDetailService.baseUrl = 'Store/OrderDetail';
+            [
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                OrderDetailService[x] = function (r, s, o) {
+                    return Q.serviceRequest(OrderDetailService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(OrderDetailService = Store.OrderDetailService || (Store.OrderDetailService = {}));
+    })(Store = Store_42.Store || (Store_42.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_43) {
+    var Store;
+    (function (Store) {
+        var OrderForm = /** @class */ (function (_super) {
+            __extends(OrderForm, _super);
+            function OrderForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!OrderForm.init) {
+                    OrderForm.init = true;
+                    var s = Serenity;
+                    var w0 = Store.CounterpartyEditor;
+                    var w1 = s.DateEditor;
+                    var w2 = s.LookupEditor;
+                    var w3 = Store.OrderDetailsEditor;
+                    var w4 = s.DecimalEditor;
+                    var w5 = s.StringEditor;
+                    Q.initFormType(OrderForm, [
+                        'CounterpartyID', w0,
+                        'OrderDate', w1,
+                        'RequiredDate', w1,
+                        'EmployeeID', w2,
+                        'DetailList', w3,
+                        'ShippedDate', w1,
+                        'ShipVia', w2,
+                        'Freight', w4,
+                        'ShipName', w5,
+                        'ShipAddress', w5,
+                        'ShipCity', w5,
+                        'ShipRegion', w5,
+                        'ShipPostalCode', w5,
+                        'ShipCountry', w5
+                    ]);
+                }
+                return _this;
+            }
+            OrderForm.formKey = 'Store.Order';
+            return OrderForm;
+        }(Serenity.PrefixedContext));
+        Store.OrderForm = OrderForm;
+    })(Store = Store_43.Store || (Store_43.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_44) {
+    var Store;
+    (function (Store) {
+        var OrderProductDetailForm = /** @class */ (function (_super) {
+            __extends(OrderProductDetailForm, _super);
+            function OrderProductDetailForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!OrderProductDetailForm.init) {
+                    OrderProductDetailForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.IntegerEditor;
+                    var w1 = s.DecimalEditor;
+                    var w2 = s.DateEditor;
+                    Q.initFormType(OrderProductDetailForm, [
+                        'OrderProductsId', w0,
+                        'ProductId', w0,
+                        'UnitPrice', w1,
+                        'Quantity', w0,
+                        'Discount', w1,
+                        'InsertDate', w2,
+                        'InsertUserId', w0,
+                        'UpdateDate', w2,
+                        'UpdateUserId', w0,
+                        'IsActive', w0,
+                        'TenantId', w0
+                    ]);
+                }
+                return _this;
+            }
+            OrderProductDetailForm.formKey = 'Store.OrderProductDetail';
+            return OrderProductDetailForm;
+        }(Serenity.PrefixedContext));
+        Store.OrderProductDetailForm = OrderProductDetailForm;
+    })(Store = Store_44.Store || (Store_44.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_45) {
+    var Store;
+    (function (Store) {
+        var OrderProductDetailRow;
+        (function (OrderProductDetailRow) {
+            OrderProductDetailRow.idProperty = 'DetailId';
+            OrderProductDetailRow.localTextPrefix = 'Store.OrderProductDetail';
+        })(OrderProductDetailRow = Store.OrderProductDetailRow || (Store.OrderProductDetailRow = {}));
+    })(Store = Store_45.Store || (Store_45.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_46) {
+    var Store;
+    (function (Store) {
+        var OrderProductDetailService;
+        (function (OrderProductDetailService) {
+            OrderProductDetailService.baseUrl = 'Store/OrderProductDetail';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                OrderProductDetailService[x] = function (r, s, o) {
+                    return Q.serviceRequest(OrderProductDetailService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(OrderProductDetailService = Store.OrderProductDetailService || (Store.OrderProductDetailService = {}));
+    })(Store = Store_46.Store || (Store_46.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_47) {
+    var Store;
+    (function (Store) {
+        var OrderProductForm = /** @class */ (function (_super) {
+            __extends(OrderProductForm, _super);
+            function OrderProductForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!OrderProductForm.init) {
+                    OrderProductForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.IntegerEditor;
+                    var w1 = s.StringEditor;
+                    var w2 = s.DateEditor;
+                    var w3 = s.DecimalEditor;
+                    Q.initFormType(OrderProductForm, [
+                        'OperationTypeId', w0,
+                        'CounterpartyId', w1,
+                        'EmployeeId', w0,
+                        'OrderDate', w2,
+                        'RequiredDate', w2,
+                        'ShippedDate', w2,
+                        'ShipVia', w0,
+                        'Freight', w3,
+                        'ShipName', w1,
+                        'ShipAddress', w1,
+                        'ShipCity', w1,
+                        'ShipRegion', w1,
+                        'ShipPostalCode', w1,
+                        'ShipCountry', w1,
+                        'InsertDate', w2,
+                        'InsertUserId', w0,
+                        'UpdateDate', w2,
+                        'UpdateUserId', w0,
+                        'IsActive', w0,
+                        'TenantId', w0
+                    ]);
+                }
+                return _this;
+            }
+            OrderProductForm.formKey = 'Store.OrderProduct';
+            return OrderProductForm;
+        }(Serenity.PrefixedContext));
+        Store.OrderProductForm = OrderProductForm;
+    })(Store = Store_47.Store || (Store_47.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_48) {
+    var Store;
+    (function (Store) {
+        var OrderProductRow;
+        (function (OrderProductRow) {
+            OrderProductRow.idProperty = 'OrderProductId';
+            OrderProductRow.nameProperty = 'CounterpartyId';
+            OrderProductRow.localTextPrefix = 'Store.OrderProduct';
+        })(OrderProductRow = Store.OrderProductRow || (Store.OrderProductRow = {}));
+    })(Store = Store_48.Store || (Store_48.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_49) {
+    var Store;
+    (function (Store) {
+        var OrderProductService;
+        (function (OrderProductService) {
+            OrderProductService.baseUrl = 'Store/OrderProduct';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                OrderProductService[x] = function (r, s, o) {
+                    return Q.serviceRequest(OrderProductService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(OrderProductService = Store.OrderProductService || (Store.OrderProductService = {}));
+    })(Store = Store_49.Store || (Store_49.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_50) {
+    var Store;
+    (function (Store) {
+        var OrderRow;
+        (function (OrderRow) {
+            OrderRow.idProperty = 'OrderID';
+            OrderRow.isActiveProperty = 'IsActive';
+            OrderRow.nameProperty = 'CounterpartyID';
+            OrderRow.localTextPrefix = 'Store.Order';
+        })(OrderRow = Store.OrderRow || (Store.OrderRow = {}));
+    })(Store = Store_50.Store || (Store_50.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_51) {
+    var Store;
+    (function (Store) {
+        var OrderService;
+        (function (OrderService) {
+            OrderService.baseUrl = 'Store/Order';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                OrderService[x] = function (r, s, o) {
+                    return Q.serviceRequest(OrderService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(OrderService = Store.OrderService || (Store.OrderService = {}));
+    })(Store = Store_51.Store || (Store_51.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_52) {
+    var Store;
+    (function (Store) {
+        var OrderShippingState;
+        (function (OrderShippingState) {
+            OrderShippingState[OrderShippingState["NotShipped"] = 0] = "NotShipped";
+            OrderShippingState[OrderShippingState["Shipped"] = 1] = "Shipped";
+        })(OrderShippingState = Store.OrderShippingState || (Store.OrderShippingState = {}));
+        Serenity.Decorators.registerEnumType(OrderShippingState, 'Store.Store.OrderShippingState', 'Store.OrderShippingState');
+    })(Store = Store_52.Store || (Store_52.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_53) {
+    var Store;
+    (function (Store) {
+        var ProductDetailForm = /** @class */ (function (_super) {
+            __extends(ProductDetailForm, _super);
+            function ProductDetailForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!ProductDetailForm.init) {
+                    ProductDetailForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.LookupEditor;
+                    var w1 = s.DecimalEditor;
+                    Q.initFormType(ProductDetailForm, [
+                        'WaresID', w0,
+                        'Quantity', w1,
+                        'ProductQuantity', w1,
+                        'Discount', w1
+                    ]);
+                }
+                return _this;
+            }
+            ProductDetailForm.formKey = 'Store.ProductDetail';
+            return ProductDetailForm;
+        }(Serenity.PrefixedContext));
+        Store.ProductDetailForm = ProductDetailForm;
+    })(Store = Store_53.Store || (Store_53.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_54) {
+    var Store;
+    (function (Store) {
+        var ProductDetailRow;
+        (function (ProductDetailRow) {
+            ProductDetailRow.idProperty = 'DetailID';
+            ProductDetailRow.isActiveProperty = 'IsActive';
+            ProductDetailRow.localTextPrefix = 'Store.ProductDetail';
+        })(ProductDetailRow = Store.ProductDetailRow || (Store.ProductDetailRow = {}));
+    })(Store = Store_54.Store || (Store_54.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_55) {
+    var Store;
+    (function (Store) {
+        var ProductDetailService;
+        (function (ProductDetailService) {
+            ProductDetailService.baseUrl = 'Store/ProductDetail';
+            [
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                ProductDetailService[x] = function (r, s, o) {
+                    return Q.serviceRequest(ProductDetailService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(ProductDetailService = Store.ProductDetailService || (Store.ProductDetailService = {}));
+    })(Store = Store_55.Store || (Store_55.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_56) {
+    var Store;
+    (function (Store) {
+        var ProductForm = /** @class */ (function (_super) {
+            __extends(ProductForm, _super);
+            function ProductForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!ProductForm.init) {
+                    ProductForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.StringEditor;
+                    var w1 = s.ImageUploadEditor;
+                    var w2 = s.BooleanEditor;
+                    var w3 = s.LookupEditor;
+                    var w4 = Store.ProductDetailsEditor;
+                    var w5 = s.DecimalEditor;
+                    var w6 = s.IntegerEditor;
+                    Q.initFormType(ProductForm, [
+                        'ProductName', w0,
+                        'ProductImage', w1,
+                        'Discontinued', w2,
+                        'SupplierID', w3,
+                        'CategoryID', w3,
+                        'DetailList', w4,
+                        'QuantityPerUnit', w0,
+                        'UnitPrice', w5,
+                        'UnitsInStock', w6,
+                        'UnitsOnOrder', w6,
+                        'ReorderLevel', w6
+                    ]);
+                }
+                return _this;
+            }
+            ProductForm.formKey = 'Store.Product';
+            return ProductForm;
+        }(Serenity.PrefixedContext));
+        Store.ProductForm = ProductForm;
+    })(Store = Store_56.Store || (Store_56.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_57) {
+    var Store;
+    (function (Store) {
+        var ProductLangRow;
+        (function (ProductLangRow) {
+            ProductLangRow.idProperty = 'ID';
+            ProductLangRow.nameProperty = 'ProductName';
+            ProductLangRow.localTextPrefix = 'Store.ProductLang';
+        })(ProductLangRow = Store.ProductLangRow || (Store.ProductLangRow = {}));
+    })(Store = Store_57.Store || (Store_57.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_58) {
+    var Store;
+    (function (Store) {
+        var ProductLangService;
+        (function (ProductLangService) {
+            ProductLangService.baseUrl = 'Store/ProductLang';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                ProductLangService[x] = function (r, s, o) {
+                    return Q.serviceRequest(ProductLangService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(ProductLangService = Store.ProductLangService || (Store.ProductLangService = {}));
+    })(Store = Store_58.Store || (Store_58.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_59) {
+    var Store;
+    (function (Store) {
+        var ProductRow;
+        (function (ProductRow) {
+            ProductRow.idProperty = 'ProductID';
+            ProductRow.isActiveProperty = 'IsActive';
+            ProductRow.nameProperty = 'ProductName';
+            ProductRow.localTextPrefix = 'Store.Product';
+            ProductRow.lookupKey = 'Store.Product';
+            function getLookup() {
+                return Q.getLookup('Store.Product');
+            }
+            ProductRow.getLookup = getLookup;
+        })(ProductRow = Store.ProductRow || (Store.ProductRow = {}));
+    })(Store = Store_59.Store || (Store_59.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_60) {
+    var Store;
+    (function (Store) {
+        var ProductService;
+        (function (ProductService) {
+            ProductService.baseUrl = 'Store/Product';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'RetrieveLocalization',
+                'List'
+            ].forEach(function (x) {
+                ProductService[x] = function (r, s, o) {
+                    return Q.serviceRequest(ProductService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(ProductService = Store.ProductService || (Store.ProductService = {}));
+    })(Store = Store_60.Store || (Store_60.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_61) {
+    var Store;
+    (function (Store) {
+        var ShipperForm = /** @class */ (function (_super) {
+            __extends(ShipperForm, _super);
+            function ShipperForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!ShipperForm.init) {
+                    ShipperForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.StringEditor;
+                    var w1 = Store.PhoneEditor;
+                    Q.initFormType(ShipperForm, [
+                        'CompanyName', w0,
+                        'Phone', w1
+                    ]);
+                }
+                return _this;
+            }
+            ShipperForm.formKey = 'Store.Shipper';
+            return ShipperForm;
+        }(Serenity.PrefixedContext));
+        Store.ShipperForm = ShipperForm;
+    })(Store = Store_61.Store || (Store_61.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_62) {
+    var Store;
+    (function (Store) {
+        var ShipperRow;
+        (function (ShipperRow) {
+            ShipperRow.idProperty = 'ShipperID';
+            ShipperRow.isActiveProperty = 'IsActive';
+            ShipperRow.nameProperty = 'CompanyName';
+            ShipperRow.localTextPrefix = 'Store.Shipper';
+            ShipperRow.lookupKey = 'Store.Shipper';
+            function getLookup() {
+                return Q.getLookup('Store.Shipper');
+            }
+            ShipperRow.getLookup = getLookup;
+        })(ShipperRow = Store.ShipperRow || (Store.ShipperRow = {}));
+    })(Store = Store_62.Store || (Store_62.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_63) {
+    var Store;
+    (function (Store) {
+        var ShipperService;
+        (function (ShipperService) {
+            ShipperService.baseUrl = 'Store/Shipper';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                ShipperService[x] = function (r, s, o) {
+                    return Q.serviceRequest(ShipperService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(ShipperService = Store.ShipperService || (Store.ShipperService = {}));
+    })(Store = Store_63.Store || (Store_63.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_64) {
+    var Store;
+    (function (Store) {
+        var ShopsForm = /** @class */ (function (_super) {
+            __extends(ShopsForm, _super);
+            function ShopsForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!ShopsForm.init) {
+                    ShopsForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.StringEditor;
+                    Q.initFormType(ShopsForm, [
+                        'ShopID', w0,
+                        'ShopName', w0,
+                        'ContactName', w0,
+                        'ContactTitle', w0,
+                        'Address', w0,
+                        'City', w0,
+                        'Region', w0,
+                        'PostalCode', w0,
+                        'Country', w0,
+                        'Phone', w0
+                    ]);
+                }
+                return _this;
+            }
+            ShopsForm.formKey = 'Store.Shops';
+            return ShopsForm;
+        }(Serenity.PrefixedContext));
+        Store.ShopsForm = ShopsForm;
+    })(Store = Store_64.Store || (Store_64.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_65) {
+    var Store;
+    (function (Store) {
+        var ShopsRow;
+        (function (ShopsRow) {
+            ShopsRow.idProperty = 'ShopID';
+            ShopsRow.isActiveProperty = 'IsActive';
+            ShopsRow.nameProperty = 'ShopName';
+            ShopsRow.localTextPrefix = 'Store.Shops';
+            ShopsRow.lookupKey = 'Store.Shops';
+            function getLookup() {
+                return Q.getLookup('Store.Shops');
+            }
+            ShopsRow.getLookup = getLookup;
+        })(ShopsRow = Store.ShopsRow || (Store.ShopsRow = {}));
+    })(Store = Store_65.Store || (Store_65.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_66) {
+    var Store;
+    (function (Store) {
+        var ShopsService;
+        (function (ShopsService) {
+            ShopsService.baseUrl = 'Store/Shops';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                ShopsService[x] = function (r, s, o) {
+                    return Q.serviceRequest(ShopsService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(ShopsService = Store.ShopsService || (Store.ShopsService = {}));
+    })(Store = Store_66.Store || (Store_66.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_67) {
+    var Store;
+    (function (Store) {
+        var SupplierForm = /** @class */ (function (_super) {
+            __extends(SupplierForm, _super);
+            function SupplierForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!SupplierForm.init) {
+                    SupplierForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.StringEditor;
+                    Q.initFormType(SupplierForm, [
+                        'SupplierStat', w0,
+                        'CompanyName', w0,
+                        'ContactName', w0,
+                        'ContactTitle', w0,
+                        'Address', w0,
+                        'City', w0,
+                        'Region', w0,
+                        'PostalCode', w0,
+                        'Country', w0,
+                        'Phone', w0,
+                        'Fax', w0,
+                        'Email', w0,
+                        'HomePage', w0
+                    ]);
+                }
+                return _this;
+            }
+            SupplierForm.formKey = 'Store.Supplier';
+            return SupplierForm;
+        }(Serenity.PrefixedContext));
+        Store.SupplierForm = SupplierForm;
+    })(Store = Store_67.Store || (Store_67.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_68) {
+    var Store;
+    (function (Store) {
+        var SupplierRow;
+        (function (SupplierRow) {
+            SupplierRow.idProperty = 'SupplierID';
+            SupplierRow.isActiveProperty = 'IsActive';
+            SupplierRow.nameProperty = 'CompanyName';
+            SupplierRow.localTextPrefix = 'Store.Supplier';
+            SupplierRow.lookupKey = 'Store.Supplier';
+            function getLookup() {
+                return Q.getLookup('Store.Supplier');
+            }
+            SupplierRow.getLookup = getLookup;
+        })(SupplierRow = Store.SupplierRow || (Store.SupplierRow = {}));
+    })(Store = Store_68.Store || (Store_68.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_69) {
+    var Store;
+    (function (Store) {
+        var SupplierService;
+        (function (SupplierService) {
+            SupplierService.baseUrl = 'Store/Supplier';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                SupplierService[x] = function (r, s, o) {
+                    return Q.serviceRequest(SupplierService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(SupplierService = Store.SupplierService || (Store.SupplierService = {}));
+    })(Store = Store_69.Store || (Store_69.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_70) {
+    var Store;
+    (function (Store) {
+        var WaresCategoriesForm = /** @class */ (function (_super) {
+            __extends(WaresCategoriesForm, _super);
+            function WaresCategoriesForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!WaresCategoriesForm.init) {
+                    WaresCategoriesForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.StringEditor;
+                    var w1 = s.ImageUploadEditor;
+                    Q.initFormType(WaresCategoriesForm, [
+                        'WaresCategoryCode', w0,
+                        'WaresCategoryName', w0,
+                        'WaresCategoryDescription', w0,
+                        'WaresCategoryImage', w1
+                    ]);
+                }
+                return _this;
+            }
+            WaresCategoriesForm.formKey = 'Store.WaresCategories';
+            return WaresCategoriesForm;
+        }(Serenity.PrefixedContext));
+        Store.WaresCategoriesForm = WaresCategoriesForm;
+    })(Store = Store_70.Store || (Store_70.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_71) {
+    var Store;
+    (function (Store) {
+        var WaresCategoriesLangRow;
+        (function (WaresCategoriesLangRow) {
+            WaresCategoriesLangRow.idProperty = 'ID';
+            WaresCategoriesLangRow.nameProperty = 'WaresCategoryName';
+            WaresCategoriesLangRow.localTextPrefix = 'Store.WaresCategoriesLang';
+        })(WaresCategoriesLangRow = Store.WaresCategoriesLangRow || (Store.WaresCategoriesLangRow = {}));
+    })(Store = Store_71.Store || (Store_71.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_72) {
+    var Store;
+    (function (Store) {
+        var WaresCategoriesLangService;
+        (function (WaresCategoriesLangService) {
+            WaresCategoriesLangService.baseUrl = 'Store/WaresCategoriesLang';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                WaresCategoriesLangService[x] = function (r, s, o) {
+                    return Q.serviceRequest(WaresCategoriesLangService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(WaresCategoriesLangService = Store.WaresCategoriesLangService || (Store.WaresCategoriesLangService = {}));
+    })(Store = Store_72.Store || (Store_72.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_73) {
+    var Store;
+    (function (Store) {
+        var WaresCategoriesRow;
+        (function (WaresCategoriesRow) {
+            WaresCategoriesRow.idProperty = 'WaresCategoryID';
+            WaresCategoriesRow.isActiveProperty = 'IsActive';
+            WaresCategoriesRow.nameProperty = 'WaresCategoryName';
+            WaresCategoriesRow.localTextPrefix = 'Store.WaresCategories';
+            WaresCategoriesRow.lookupKey = 'Store.WaresCategories';
+            function getLookup() {
+                return Q.getLookup('Store.WaresCategories');
+            }
+            WaresCategoriesRow.getLookup = getLookup;
+        })(WaresCategoriesRow = Store.WaresCategoriesRow || (Store.WaresCategoriesRow = {}));
+    })(Store = Store_73.Store || (Store_73.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_74) {
+    var Store;
+    (function (Store) {
+        var WaresCategoriesService;
+        (function (WaresCategoriesService) {
+            WaresCategoriesService.baseUrl = 'Store/WaresCategories';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                WaresCategoriesService[x] = function (r, s, o) {
+                    return Q.serviceRequest(WaresCategoriesService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(WaresCategoriesService = Store.WaresCategoriesService || (Store.WaresCategoriesService = {}));
+    })(Store = Store_74.Store || (Store_74.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_75) {
+    var Store;
+    (function (Store) {
+        var WaresForm = /** @class */ (function (_super) {
+            __extends(WaresForm, _super);
+            function WaresForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!WaresForm.init) {
+                    WaresForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.LookupEditor;
+                    var w1 = s.StringEditor;
+                    var w2 = s.ImageUploadEditor;
+                    var w3 = Store.CounterpartyEditor;
+                    var w4 = s.IntegerEditor;
+                    var w5 = s.DecimalEditor;
+                    var w6 = s.BooleanEditor;
+                    Q.initFormType(WaresForm, [
+                        'CategoryID', w0,
+                        'WaresCode', w1,
+                        'WaresBarcode', w1,
+                        'WaresLabel', w1,
+                        'WaresName', w1,
+                        'WaresImage', w2,
+                        'CounterpartyID', w3,
+                        'MeasureID', w0,
+                        'QuantityPerUnit', w4,
+                        'UnitPrice', w5,
+                        'Discontinued', w6,
+                        'AccountID', w4
+                    ]);
+                }
+                return _this;
+            }
+            WaresForm.formKey = 'Store.Wares';
+            return WaresForm;
+        }(Serenity.PrefixedContext));
+        Store.WaresForm = WaresForm;
+    })(Store = Store_75.Store || (Store_75.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_76) {
+    var Store;
+    (function (Store) {
+        var WaresLangRow;
+        (function (WaresLangRow) {
+            WaresLangRow.idProperty = 'ID';
+            WaresLangRow.nameProperty = 'WaresName';
+            WaresLangRow.localTextPrefix = 'Store.WaresLang';
+        })(WaresLangRow = Store.WaresLangRow || (Store.WaresLangRow = {}));
+    })(Store = Store_76.Store || (Store_76.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_77) {
+    var Store;
+    (function (Store) {
+        var WaresLangService;
+        (function (WaresLangService) {
+            WaresLangService.baseUrl = 'Store/WaresLang';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                WaresLangService[x] = function (r, s, o) {
+                    return Q.serviceRequest(WaresLangService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(WaresLangService = Store.WaresLangService || (Store.WaresLangService = {}));
+    })(Store = Store_77.Store || (Store_77.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_78) {
+    var Store;
+    (function (Store) {
+        var WaresMovementDetailsForm = /** @class */ (function (_super) {
+            __extends(WaresMovementDetailsForm, _super);
+            function WaresMovementDetailsForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!WaresMovementDetailsForm.init) {
+                    WaresMovementDetailsForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.LookupEditor;
+                    var w1 = s.DecimalEditor;
+                    Q.initFormType(WaresMovementDetailsForm, [
+                        'WaresID', w0,
+                        'Quantity', w1,
+                        'IncomePrice', w1,
+                        'SalePrice', w1,
+                        'SinglePrice', w1,
+                        'Discount', w1
+                    ]);
+                }
+                return _this;
+            }
+            WaresMovementDetailsForm.formKey = 'Store.WaresMovementDetails';
+            return WaresMovementDetailsForm;
+        }(Serenity.PrefixedContext));
+        Store.WaresMovementDetailsForm = WaresMovementDetailsForm;
+    })(Store = Store_78.Store || (Store_78.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_79) {
+    var Store;
+    (function (Store) {
+        var WaresMovementDetailsRow;
+        (function (WaresMovementDetailsRow) {
+            WaresMovementDetailsRow.idProperty = 'WaresMoveID';
+            WaresMovementDetailsRow.isActiveProperty = 'IsActive';
+            WaresMovementDetailsRow.localTextPrefix = 'Store.WaresMovementDetails';
+        })(WaresMovementDetailsRow = Store.WaresMovementDetailsRow || (Store.WaresMovementDetailsRow = {}));
+    })(Store = Store_79.Store || (Store_79.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_80) {
+    var Store;
+    (function (Store) {
+        var WaresMovementDetailsService;
+        (function (WaresMovementDetailsService) {
+            WaresMovementDetailsService.baseUrl = 'Store/WaresMovementDetails';
+            [
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                WaresMovementDetailsService[x] = function (r, s, o) {
+                    return Q.serviceRequest(WaresMovementDetailsService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(WaresMovementDetailsService = Store.WaresMovementDetailsService || (Store.WaresMovementDetailsService = {}));
+    })(Store = Store_80.Store || (Store_80.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_81) {
+    var Store;
+    (function (Store) {
+        var WaresMovementForm = /** @class */ (function (_super) {
+            __extends(WaresMovementForm, _super);
+            function WaresMovementForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!WaresMovementForm.init) {
+                    WaresMovementForm.init = true;
+                    var s = Serenity;
+                    var w0 = Store.OperationTypeEditor;
+                    var w1 = Store.CounterpartyEditor;
+                    var w2 = s.LookupEditor;
+                    var w3 = s.DateEditor;
+                    var w4 = Store.WaresMovementDetailsEditor;
+                    Q.initFormType(WaresMovementForm, [
+                        'OperationTypeID', w0,
+                        'CounterpartyID', w1,
+                        'ShopID', w2,
+                        'OrderDate', w3,
+                        'RequiredDate', w3,
+                        'EmployeeID', w2,
+                        'DetailList', w4,
+                        'ShipperID', w2,
+                        'ShippedDate', w3
+                    ]);
+                }
+                return _this;
+            }
+            WaresMovementForm.formKey = 'Store.WaresMovement';
+            return WaresMovementForm;
+        }(Serenity.PrefixedContext));
+        Store.WaresMovementForm = WaresMovementForm;
+    })(Store = Store_81.Store || (Store_81.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_82) {
+    var Store;
+    (function (Store) {
+        var WaresMovementRow;
+        (function (WaresMovementRow) {
+            WaresMovementRow.idProperty = 'WaresMoveID';
+            WaresMovementRow.isActiveProperty = 'IsActive';
+            WaresMovementRow.nameProperty = 'CounterpartyID';
+            WaresMovementRow.localTextPrefix = 'Store.WaresMovement';
+        })(WaresMovementRow = Store.WaresMovementRow || (Store.WaresMovementRow = {}));
+    })(Store = Store_82.Store || (Store_82.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_83) {
+    var Store;
+    (function (Store) {
+        var WaresMovementService;
+        (function (WaresMovementService) {
+            WaresMovementService.baseUrl = 'Store/WaresMovement';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                WaresMovementService[x] = function (r, s, o) {
+                    return Q.serviceRequest(WaresMovementService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(WaresMovementService = Store.WaresMovementService || (Store.WaresMovementService = {}));
+    })(Store = Store_83.Store || (Store_83.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_84) {
+    var Store;
+    (function (Store) {
+        var WaresRow;
+        (function (WaresRow) {
+            WaresRow.idProperty = 'WaresID';
+            WaresRow.isActiveProperty = 'IsActive';
+            WaresRow.nameProperty = 'WaresName';
+            WaresRow.localTextPrefix = 'Store.Wares';
+            WaresRow.lookupKey = 'Store.Wares';
+            function getLookup() {
+                return Q.getLookup('Store.Wares');
+            }
+            WaresRow.getLookup = getLookup;
+        })(WaresRow = Store.WaresRow || (Store.WaresRow = {}));
+    })(Store = Store_84.Store || (Store_84.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_85) {
+    var Store;
+    (function (Store) {
+        var WaresService;
+        (function (WaresService) {
+            WaresService.baseUrl = 'Store/Wares';
+            [
+                'Create',
+                'Update',
+                'RetrieveLocalization',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                WaresService[x] = function (r, s, o) {
+                    return Q.serviceRequest(WaresService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(WaresService = Store.WaresService || (Store.WaresService = {}));
+    })(Store = Store_85.Store || (Store_85.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_86) {
+    var Texts;
+    (function (Texts) {
+        Store_86.Store['Texts'] = Q.proxyTexts(Texts, '', { Db: { Administration: { Language: { Id: 1, LanguageId: 1, LanguageName: 1 }, Role: { RoleId: 1, RoleName: 1, TenantId: 1 }, RolePermission: { PermissionKey: 1, RoleId: 1, RolePermissionId: 1, RoleRoleName: 1 }, Tenant: { TenantId: 1, TenantName: 1 }, Translation: { CustomText: 1, EntityPlural: 1, Key: 1, OverrideConfirmation: 1, SaveChangesButton: 1, SourceLanguage: 1, SourceText: 1, TargetLanguage: 1, TargetText: 1 }, User: { DisplayName: 1, Email: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, LastDirectoryUpdate: 1, Password: 1, PasswordConfirm: 1, PasswordHash: 1, PasswordSalt: 1, Source: 1, TenantId: 1, TenantName: 1, UpdateDate: 1, UpdateUserId: 1, UserId: 1, UserImage: 1, Username: 1 }, UserPermission: { Granted: 1, PermissionKey: 1, User: 1, UserId: 1, UserPermissionId: 1, Username: 1 }, UserRole: { RoleId: 1, User: 1, UserId: 1, UserRoleId: 1, Username: 1 } }, Common: { UserPreference: { Name: 1, PreferenceType: 1, UserId: 1, UserPreferenceId: 1, Value: 1 } }, Store: { Category: { CategoryCode: 1, CategoryID: 1, CategoryName: 1, CategoryType: 1, CategoryTypeID: 1, Description: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, Picture: 1, TenantId: 1, Type: 1, UpdateDate: 1, UpdateUserId: 1 }, CategoryLang: { CategoryName: 1, Description: 1, ID: 1, LanguageID: 1 }, CategoryType: { CategoryType: 1, CategoryTypeID: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, TenantId: 1, Type: 1, UpdateDate: 1, UpdateUserId: 1 }, Counterparty: { Address: 1, City: 1, CompanyName: 1, ContactName: 1, ContactTitle: 1, CounterpartyID: 1, Country: 1, Email: 1, ID: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, LastContactDate: 1, LastContactedBy: 1, NoteList: 1, Phone: 1, PostalCode: 1, Region: 1, Representatives: 1, SendBulletin: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, CounterpartyDetail: { Email: 1, ID: 1, LastContactDate: 1, LastContactedBy: 1, LastContactedByAddress: 1, LastContactedByBirthDate: 1, LastContactedByCity: 1, LastContactedByCountry: 1, LastContactedByExtension: 1, LastContactedByFirstName: 1, LastContactedByHireDate: 1, LastContactedByHomePhone: 1, LastContactedByLastName: 1, LastContactedByNotes: 1, LastContactedByPhoto: 1, LastContactedByPhotoPath: 1, LastContactedByPostalCode: 1, LastContactedByRegion: 1, LastContactedByReportsTo: 1, LastContactedByTitle: 1, LastContactedByTitleOfCourtesy: 1, SendBulletin: 1 }, CounterpartyRepresentative: { CounterpartyID: 1, EmployeeID: 1, RepresentativeID: 1 }, Employee: { Address: 1, BirthDate: 1, City: 1, Country: 1, EmployeeID: 1, Extension: 1, FirstName: 1, FullName: 1, Gender: 1, HireDate: 1, HomePhone: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, LastName: 1, Notes: 1, Photo: 1, PhotoPath: 1, PostalCode: 1, Region: 1, ReportsTo: 1, ReportsToAddress: 1, ReportsToBirthDate: 1, ReportsToCity: 1, ReportsToCountry: 1, ReportsToExtension: 1, ReportsToFirstName: 1, ReportsToFullName: 1, ReportsToHireDate: 1, ReportsToHomePhone: 1, ReportsToLastName: 1, ReportsToNotes: 1, ReportsToPhoto: 1, ReportsToPhotoPath: 1, ReportsToPostalCode: 1, ReportsToRegion: 1, ReportsToReportsTo: 1, ReportsToTitle: 1, ReportsToTitleOfCourtesy: 1, TenantId: 1, Title: 1, TitleOfCourtesy: 1, UpdateDate: 1, UpdateUserId: 1 }, Measure: { InsertDate: 1, InsertUserId: 1, IsActive: 1, MeasureID: 1, MeasureName: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, Note: { EntityId: 1, EntityType: 1, InsertDate: 1, InsertUserDisplayName: 1, InsertUserId: 1, NoteId: 1, Text: 1 }, OperationType: { InsertDate: 1, InsertUserId: 1, IsActive: 1, OpCode: 1, Operation: 1, OperationTypeId: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, Order: { CounterpartyCity: 1, CounterpartyCompanyName: 1, CounterpartyContactName: 1, CounterpartyContactTitle: 1, CounterpartyCountry: 1, CounterpartyID: 1, CounterpartyPhone: 1, CounterpartyRegion: 1, DetailList: 1, EmployeeFullName: 1, EmployeeGender: 1, EmployeeID: 1, EmployeeReportsToFullName: 1, Freight: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, OrderDate: 1, OrderID: 1, RequiredDate: 1, ShipAddress: 1, ShipCity: 1, ShipCountry: 1, ShipName: 1, ShipPostalCode: 1, ShipRegion: 1, ShipVia: 1, ShipViaCompanyName: 1, ShipViaPhone: 1, ShippedDate: 1, ShippingState: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, OrderDetail: { DetailID: 1, Discount: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, LineTotal: 1, OrderCounterpartyID: 1, OrderDate: 1, OrderEmployeeID: 1, OrderID: 1, OrderShipCity: 1, OrderShipCountry: 1, OrderShipVia: 1, OrderShippedDate: 1, ProductDiscontinued: 1, ProductID: 1, ProductName: 1, ProductQuantityPerUnit: 1, ProductSupplierID: 1, ProductUnitPrice: 1, Quantity: 1, TenantId: 1, UnitPrice: 1, UpdateDate: 1, UpdateUserId: 1 }, OrderProduct: { CounterpartyAddress: 1, CounterpartyCity: 1, CounterpartyCompanyName: 1, CounterpartyContactName: 1, CounterpartyContactTitle: 1, CounterpartyCountry: 1, CounterpartyId: 1, CounterpartyId1: 1, CounterpartyInsertDate: 1, CounterpartyInsertUserId: 1, CounterpartyIsActive: 1, CounterpartyPhone: 1, CounterpartyPostalCode: 1, CounterpartyRegion: 1, CounterpartyTenantId: 1, CounterpartyUpdateDate: 1, CounterpartyUpdateUserId: 1, EmployeeAddress: 1, EmployeeBirthDate: 1, EmployeeCity: 1, EmployeeCountry: 1, EmployeeExtension: 1, EmployeeFirstName: 1, EmployeeHireDate: 1, EmployeeHomePhone: 1, EmployeeId: 1, EmployeeInsertDate: 1, EmployeeInsertUserId: 1, EmployeeIsActive: 1, EmployeeLastName: 1, EmployeeNotes: 1, EmployeePhoto: 1, EmployeePhotoPath: 1, EmployeePostalCode: 1, EmployeeRegion: 1, EmployeeReportsTo: 1, EmployeeTenantId: 1, EmployeeTitle: 1, EmployeeTitleOfCourtesy: 1, EmployeeUpdateDate: 1, EmployeeUpdateUserId: 1, Freight: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, OperationTypeId: 1, OperationTypeInsertDate: 1, OperationTypeInsertUserId: 1, OperationTypeIsActive: 1, OperationTypeOpCode: 1, OperationTypeOperation: 1, OperationTypeTenantId: 1, OperationTypeUpdateDate: 1, OperationTypeUpdateUserId: 1, OrderDate: 1, OrderProductId: 1, RequiredDate: 1, ShipAddress: 1, ShipCity: 1, ShipCountry: 1, ShipName: 1, ShipPostalCode: 1, ShipRegion: 1, ShipVia: 1, ShipViaCompanyName: 1, ShipViaInsertDate: 1, ShipViaInsertUserId: 1, ShipViaIsActive: 1, ShipViaPhone: 1, ShipViaTenantId: 1, ShipViaUpdateDate: 1, ShipViaUpdateUserId: 1, ShippedDate: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, OrderProductDetail: { DetailId: 1, Discount: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, OrderProductsId: 1, ProductCategoryId: 1, ProductDiscontinued: 1, ProductId: 1, ProductInsertDate: 1, ProductInsertUserId: 1, ProductIsActive: 1, ProductProductImage: 1, ProductProductName: 1, ProductQuantityPerUnit: 1, ProductReorderLevel: 1, ProductSupplierId: 1, ProductTenantId: 1, ProductUnitPrice: 1, ProductUnitsInStock: 1, ProductUnitsOnOrder: 1, ProductUpdateDate: 1, ProductUpdateUserId: 1, Quantity: 1, TenantId: 1, UnitPrice: 1, UpdateDate: 1, UpdateUserId: 1 }, Product: { CategoryCategoryName: 1, CategoryDescription: 1, CategoryID: 1, CategoryPicture: 1, DetailList: 1, Discontinued: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, ProductID: 1, ProductImage: 1, ProductName: 1, QuantityPerUnit: 1, ReorderLevel: 1, SupplierAddress: 1, SupplierCity: 1, SupplierCompanyName: 1, SupplierContactName: 1, SupplierContactTitle: 1, SupplierCountry: 1, SupplierEmail: 1, SupplierFax: 1, SupplierHomePage: 1, SupplierID: 1, SupplierPhone: 1, SupplierPostalCode: 1, SupplierRegion: 1, SupplierSupplierStat: 1, TenantId: 1, UnitPrice: 1, UnitsInStock: 1, UnitsOnOrder: 1, UpdateDate: 1, UpdateUserId: 1 }, ProductDetail: { DetailID: 1, Discount: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, PlanPrice: 1, ProductCategoryID: 1, ProductDiscontinued: 1, ProductID: 1, ProductProductImage: 1, ProductProductName: 1, ProductQuantity: 1, ProductQuantityPerUnit: 1, ProductReorderLevel: 1, ProductSupplierID: 1, ProductUnitPrice: 1, ProductUnitsInStock: 1, ProductUnitsOnOrder: 1, Quantity: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1, WaresAccountID: 1, WaresBarcode: 1, WaresCategoryID: 1, WaresCode: 1, WaresDiscontinued: 1, WaresID: 1, WaresImage: 1, WaresLabel: 1, WaresMeasureID: 1, WaresName: 1, WaresQuantityPerUnit: 1, WaresUnitPrice: 1 }, ProductLang: { ID: 1, LanguageID: 1, ProductID: 1, ProductName: 1 }, Shipper: { CompanyName: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, Phone: 1, ShipperID: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, Shops: { Address: 1, City: 1, ContactName: 1, ContactTitle: 1, Country: 1, ID: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, Phone: 1, PostalCode: 1, Region: 1, ShopID: 1, ShopName: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, Supplier: { Address: 1, City: 1, CompanyName: 1, ContactName: 1, ContactTitle: 1, Country: 1, Email: 1, Fax: 1, HomePage: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, Phone: 1, PostalCode: 1, Region: 1, SupplierID: 1, SupplierStat: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, Wares: { AccountID: 1, CategoryCode: 1, CategoryID: 1, CategoryName: 1, CounterpartyCity: 1, CounterpartyCompanyName: 1, CounterpartyContactName: 1, CounterpartyContactTitle: 1, CounterpartyCountry: 1, CounterpartyID: 1, CounterpartyPhone: 1, CounterpartyRegion: 1, Description: 1, Discontinued: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, MeasureID: 1, MeasureMeasureName: 1, Picture: 1, QuantityPerUnit: 1, SupplierID: 1, TenantId: 1, Type: 1, UnitPrice: 1, UpdateDate: 1, UpdateUserId: 1, WaresBarcode: 1, WaresCode: 1, WaresID: 1, WaresImage: 1, WaresLabel: 1, WaresName: 1 }, WaresLang: { Description: 1, ID: 1, LanguageID: 1, WaresID: 1, WaresName: 1 }, WaresMovement: { CounterpartyCity: 1, CounterpartyCompanyName: 1, CounterpartyContactName: 1, CounterpartyContactTitle: 1, CounterpartyCountry: 1, CounterpartyID: 1, CounterpartyPhone: 1, CounterpartyRegion: 1, DetailList: 1, EmployeeFullName: 1, EmployeeGender: 1, EmployeeID: 1, EmployeeReportsToFullName: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, OperationTypeID: 1, OperationTypeOpCode: 1, OperationTypeOperation: 1, OrderDate: 1, RequiredDate: 1, ShippedDate: 1, ShipperCompanyName: 1, ShipperID: 1, ShipperPhone: 1, ShippingState: 1, ShopAddress: 1, ShopCity: 1, ShopContactName: 1, ShopContactTitle: 1, ShopCountry: 1, ShopID: 1, ShopPhone: 1, ShopPostalCode: 1, ShopRegion: 1, ShopShopName: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1, WaresMoveID: 1 }, WaresMovementDetails: { DetailID: 1, Discount: 1, IncomePrice: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, Quantity: 1, SalePrice: 1, SinglePrice: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1, WaresCategoryID: 1, WaresCounterpartyID: 1, WaresDiscontinued: 1, WaresID: 1, WaresMeasureID: 1, WaresMoveCounterpartyID: 1, WaresMoveEmployeeID: 1, WaresMoveID: 1, WaresMoveOperationTypeID: 1, WaresMoveOrderDate: 1, WaresMoveRequiredDate: 1, WaresMoveShippedDate: 1, WaresMoveShipperID: 1, WaresMoveShopID: 1, WaresQuantityPerUnit: 1, WaresSupplierID: 1, WaresUnitPrice: 1, WaresWaresCode: 1, WaresWaresName: 1 } } }, Forms: { Membership: { ChangePassword: { FormTitle: 1, SubmitButton: 1, Success: 1 }, ForgotPassword: { BackToLogin: 1, FormInfo: 1, FormTitle: 1, SubmitButton: 1, Success: 1 }, Login: { FacebookButton: 1, ForgotPassword: 1, FormTitle: 1, GoogleButton: 1, OR: 1, RememberMe: 1, SignInButton: 1, SignUpButton: 1 }, ResetPassword: { BackToLogin: 1, EmailSubject: 1, FormTitle: 1, SubmitButton: 1, Success: 1 }, SignUp: { AcceptTerms: 1, ActivateEmailSubject: 1, ActivationCompleteMessage: 1, BackToLogin: 1, ConfirmEmail: 1, ConfirmPassword: 1, DisplayName: 1, Email: 1, FormInfo: 1, FormTitle: 1, Password: 1, SubmitButton: 1, Success: 1 } } }, Site: { AccessDenied: { ClickToChangeUser: 1, ClickToLogin: 1, LackPermissions: 1, NotLoggedIn: 1, PageTitle: 1 }, BasicProgressDialog: { CancelTitle: 1, PleaseWait: 1 }, BulkServiceAction: { AllHadErrorsFormat: 1, AllSuccessFormat: 1, ConfirmationFormat: 1, ErrorCount: 1, NothingToProcess: 1, SomeHadErrorsFormat: 1, SuccessCount: 1 }, Dashboard: { ContentDescription: 1 }, Layout: { FooterCopyright: 1, FooterInfo: 1, FooterRights: 1, GeneralSettings: 1, Language: 1, Theme: 1, ThemeBlack: 1, ThemeBlackLight: 1, ThemeBlue: 1, ThemeBlueLight: 1, ThemeGreen: 1, ThemeGreenLight: 1, ThemePurple: 1, ThemePurpleLight: 1, ThemeRed: 1, ThemeRedLight: 1, ThemeYellow: 1, ThemeYellowLight: 1 }, RolePermissionDialog: { DialogTitle: 1, EditButton: 1, SaveSuccess: 1 }, UserDialog: { EditPermissionsButton: 1, EditRolesButton: 1 }, UserPermissionDialog: { DialogTitle: 1, Grant: 1, Permission: 1, Revoke: 1, SaveSuccess: 1 }, UserRoleDialog: { DialogTitle: 1, SaveSuccess: 1 }, ValidationError: { Title: 1 } }, Validation: { AuthenticationError: 1, CantFindUserWithEmail: 1, CurrentPasswordMismatch: 1, DeleteForeignKeyError: 1, EmailConfirm: 1, EmailInUse: 1, InvalidActivateToken: 1, InvalidResetToken: 1, MinRequiredPasswordLength: 1, SavePrimaryKeyError: 1 } });
+    })(Texts = Store_86.Texts || (Store_86.Texts = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store) {
+    var LanguageList;
+    (function (LanguageList) {
+        function getValue() {
+            var result = [];
+            for (var _i = 0, _a = Store.Administration.LanguageRow.getLookup().items; _i < _a.length; _i++) {
+                var k = _a[_i];
+                if (k.LanguageId !== 'en') {
+                    result.push([k.Id.toString(), k.LanguageName]);
+                }
+            }
+            return result;
+        }
+        LanguageList.getValue = getValue;
+    })(LanguageList = Store.LanguageList || (Store.LanguageList = {}));
+})(Store || (Store = {}));
+/// <reference path="../Common/Helpers/LanguageList.ts" />
+var Store;
+(function (Store) {
+    var ScriptInitialization;
+    (function (ScriptInitialization) {
+        Q.Config.responsiveDialogs = true;
+        Q.Config.rootNamespaces.push('Store');
+        Serenity.EntityDialog.defaultLanguageList = Store.LanguageList.getValue;
+        if ($.fn['colorbox']) {
+            $.fn['colorbox'].settings.maxWidth = "95%";
+            $.fn['colorbox'].settings.maxHeight = "95%";
+        }
+        window.onerror = Q.ErrorHandling.runtimeErrorHandler;
+    })(ScriptInitialization = Store.ScriptInitialization || (Store.ScriptInitialization = {}));
 })(Store || (Store = {}));
 var Store;
 (function (Store) {
     var Administration;
     (function (Administration) {
-        var LanguageDialog = (function (_super) {
+        var LanguageDialog = /** @class */ (function (_super) {
             __extends(LanguageDialog, _super);
             function LanguageDialog() {
                 var _this = _super !== null && _super.apply(this, arguments) || this;
@@ -2426,11 +2394,11 @@ var Store;
             LanguageDialog.prototype.getLocalTextPrefix = function () { return Administration.LanguageRow.localTextPrefix; };
             LanguageDialog.prototype.getNameProperty = function () { return Administration.LanguageRow.nameProperty; };
             LanguageDialog.prototype.getService = function () { return Administration.LanguageService.baseUrl; };
+            LanguageDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], LanguageDialog);
             return LanguageDialog;
         }(Serenity.EntityDialog));
-        LanguageDialog = __decorate([
-            Serenity.Decorators.registerClass()
-        ], LanguageDialog);
         Administration.LanguageDialog = LanguageDialog;
     })(Administration = Store.Administration || (Store.Administration = {}));
 })(Store || (Store = {}));
@@ -2438,7 +2406,7 @@ var Store;
 (function (Store) {
     var Administration;
     (function (Administration) {
-        var LanguageGrid = (function (_super) {
+        var LanguageGrid = /** @class */ (function (_super) {
             __extends(LanguageGrid, _super);
             function LanguageGrid(container) {
                 return _super.call(this, container) || this;
@@ -2449,13 +2417,13 @@ var Store;
             LanguageGrid.prototype.getLocalTextPrefix = function () { return Administration.LanguageRow.localTextPrefix; };
             LanguageGrid.prototype.getService = function () { return Administration.LanguageService.baseUrl; };
             LanguageGrid.prototype.getDefaultSortBy = function () {
-                return [Administration.LanguageRow.Fields.LanguageName];
+                return ["LanguageName" /* LanguageName */];
             };
+            LanguageGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], LanguageGrid);
             return LanguageGrid;
         }(Serenity.EntityGrid));
-        LanguageGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], LanguageGrid);
         Administration.LanguageGrid = LanguageGrid;
     })(Administration = Store.Administration || (Store.Administration = {}));
 })(Store || (Store = {}));
@@ -2463,7 +2431,7 @@ var Store;
 (function (Store) {
     var Administration;
     (function (Administration) {
-        var RoleDialog = (function (_super) {
+        var RoleDialog = /** @class */ (function (_super) {
             __extends(RoleDialog, _super);
             function RoleDialog() {
                 var _this = _super !== null && _super.apply(this, arguments) || this;
@@ -2481,7 +2449,7 @@ var Store;
                 buttons.push({
                     title: Q.text('Site.RolePermissionDialog.EditButton'),
                     cssClass: 'edit-permissions-button',
-                    icon: 'icon-lock-open text-green',
+                    icon: 'fa-lock text-green',
                     onClick: function () {
                         new Administration.RolePermissionDialog({
                             roleID: _this.entity.RoleId,
@@ -2495,11 +2463,11 @@ var Store;
                 _super.prototype.updateInterface.call(this);
                 this.toolbar.findButton("edit-permissions-button").toggleClass("disabled", this.isNewOrDeleted());
             };
+            RoleDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], RoleDialog);
             return RoleDialog;
         }(Serenity.EntityDialog));
-        RoleDialog = __decorate([
-            Serenity.Decorators.registerClass()
-        ], RoleDialog);
         Administration.RoleDialog = RoleDialog;
     })(Administration = Store.Administration || (Store.Administration = {}));
 })(Store || (Store = {}));
@@ -2507,7 +2475,7 @@ var Store;
 (function (Store) {
     var Administration;
     (function (Administration) {
-        var RoleGrid = (function (_super) {
+        var RoleGrid = /** @class */ (function (_super) {
             __extends(RoleGrid, _super);
             function RoleGrid(container) {
                 return _super.call(this, container) || this;
@@ -2518,13 +2486,13 @@ var Store;
             RoleGrid.prototype.getLocalTextPrefix = function () { return Administration.RoleRow.localTextPrefix; };
             RoleGrid.prototype.getService = function () { return Administration.RoleService.baseUrl; };
             RoleGrid.prototype.getDefaultSortBy = function () {
-                return [Administration.RoleRow.Fields.RoleName];
+                return ["RoleName" /* RoleName */];
             };
+            RoleGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], RoleGrid);
             return RoleGrid;
         }(Serenity.EntityGrid));
-        RoleGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], RoleGrid);
         Administration.RoleGrid = RoleGrid;
     })(Administration = Store.Administration || (Store.Administration = {}));
 })(Store || (Store = {}));
@@ -2532,7 +2500,7 @@ var Store;
 (function (Store) {
     var Administration;
     (function (Administration) {
-        var RolePermissionDialog = (function (_super) {
+        var RolePermissionDialog = /** @class */ (function (_super) {
             __extends(RolePermissionDialog, _super);
             function RolePermissionDialog(opt) {
                 var _this = _super.call(this, opt) || this;
@@ -2544,8 +2512,9 @@ var Store;
                     Module: null,
                     Submodule: null
                 }, function (response) {
-                    _this.permissions.set_value(response.Entities.map(function (x) { return ({ PermissionKey: x }); }));
+                    _this.permissions.value = response.Entities.map(function (x) { return ({ PermissionKey: x }); });
                 });
+                _this.permissions.implicitPermissions = Q.getRemoteData('Administration.ImplicitPermissions');
                 return _this;
             }
             RolePermissionDialog.prototype.getDialogOptions = function () {
@@ -2557,7 +2526,7 @@ var Store;
                         click: function (e) {
                             Administration.RolePermissionService.Update({
                                 RoleID: _this.options.roleID,
-                                Permissions: _this.permissions.get_value().map(function (x) { return x.PermissionKey; }),
+                                Permissions: _this.permissions.value.map(function (x) { return x.PermissionKey; }),
                                 Module: null,
                                 Submodule: null
                             }, function (response) {
@@ -2576,11 +2545,11 @@ var Store;
             RolePermissionDialog.prototype.getTemplate = function () {
                 return '<div id="~_Permissions"></div>';
             };
+            RolePermissionDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], RolePermissionDialog);
             return RolePermissionDialog;
         }(Serenity.TemplatedDialog));
-        RolePermissionDialog = __decorate([
-            Serenity.Decorators.registerClass()
-        ], RolePermissionDialog);
         Administration.RolePermissionDialog = RolePermissionDialog;
     })(Administration = Store.Administration || (Store.Administration = {}));
 })(Store || (Store = {}));
@@ -2588,7 +2557,7 @@ var Store;
 (function (Store) {
     var Administration;
     (function (Administration) {
-        var TenantDialog = (function (_super) {
+        var TenantDialog = /** @class */ (function (_super) {
             __extends(TenantDialog, _super);
             function TenantDialog() {
                 var _this = _super !== null && _super.apply(this, arguments) || this;
@@ -2600,12 +2569,11 @@ var Store;
             TenantDialog.prototype.getLocalTextPrefix = function () { return Administration.TenantRow.localTextPrefix; };
             TenantDialog.prototype.getNameProperty = function () { return Administration.TenantRow.nameProperty; };
             TenantDialog.prototype.getService = function () { return Administration.TenantService.baseUrl; };
+            TenantDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], TenantDialog);
             return TenantDialog;
         }(Serenity.EntityDialog));
-        TenantDialog = __decorate([
-            Serenity.Decorators.registerClass(),
-            Serenity.Decorators.responsive()
-        ], TenantDialog);
         Administration.TenantDialog = TenantDialog;
     })(Administration = Store.Administration || (Store.Administration = {}));
 })(Store || (Store = {}));
@@ -2613,7 +2581,7 @@ var Store;
 (function (Store) {
     var Administration;
     (function (Administration) {
-        var TenantGrid = (function (_super) {
+        var TenantGrid = /** @class */ (function (_super) {
             __extends(TenantGrid, _super);
             function TenantGrid(container) {
                 return _super.call(this, container) || this;
@@ -2623,11 +2591,11 @@ var Store;
             TenantGrid.prototype.getIdProperty = function () { return Administration.TenantRow.idProperty; };
             TenantGrid.prototype.getLocalTextPrefix = function () { return Administration.TenantRow.localTextPrefix; };
             TenantGrid.prototype.getService = function () { return Administration.TenantService.baseUrl; };
+            TenantGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], TenantGrid);
             return TenantGrid;
         }(Serenity.EntityGrid));
-        TenantGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], TenantGrid);
         Administration.TenantGrid = TenantGrid;
     })(Administration = Store.Administration || (Store.Administration = {}));
 })(Store || (Store = {}));
@@ -2635,7 +2603,7 @@ var Store;
 (function (Store) {
     var Administration;
     (function (Administration) {
-        var TranslationGrid = (function (_super) {
+        var TranslationGrid = /** @class */ (function (_super) {
             __extends(TranslationGrid, _super);
             function TranslationGrid(container) {
                 var _this = _super.call(this, container) || this;
@@ -2766,7 +2734,7 @@ var Store;
                     var item = _a[_i];
                     translations[item.Key] = item.CustomText;
                 }
-                return RSVP.resolve(Administration.TranslationService.Update({
+                return Promise.resolve(Administration.TranslationService.Update({
                     TargetLanguageID: language,
                     Translations: translations
                 })).then(function () {
@@ -2820,35 +2788,19 @@ var Store;
             TranslationGrid.prototype.usePager = function () {
                 return false;
             };
+            TranslationGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], TranslationGrid);
             return TranslationGrid;
         }(Serenity.EntityGrid));
-        TranslationGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], TranslationGrid);
         Administration.TranslationGrid = TranslationGrid;
     })(Administration = Store.Administration || (Store.Administration = {}));
 })(Store || (Store = {}));
 var Store;
 (function (Store) {
-    var Authorization;
-    (function (Authorization) {
-        Object.defineProperty(Authorization, 'userDefinition', {
-            get: function () {
-                return Q.getRemoteData('UserData');
-            }
-        });
-        function hasPermission(permissionKey) {
-            var ud = Authorization.userDefinition;
-            return ud.Username === 'admin' || !!ud.Permissions[permissionKey];
-        }
-        Authorization.hasPermission = hasPermission;
-    })(Authorization = Store.Authorization || (Store.Authorization = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
     var Administration;
     (function (Administration) {
-        var UserDialog = (function (_super) {
+        var UserDialog = /** @class */ (function (_super) {
             __extends(UserDialog, _super);
             function UserDialog() {
                 var _this = _super.call(this) || this;
@@ -2875,7 +2827,7 @@ var Store;
                 buttons.push({
                     title: Q.text('Site.UserDialog.EditRolesButton'),
                     cssClass: 'edit-roles-button',
-                    icon: 'icon-people text-blue',
+                    icon: 'fa-users text-blue',
                     onClick: function () {
                         new Administration.UserRoleDialog({
                             userID: _this.entity.UserId,
@@ -2886,7 +2838,7 @@ var Store;
                 buttons.push({
                     title: Q.text('Site.UserDialog.EditPermissionsButton'),
                     cssClass: 'edit-permissions-button',
-                    icon: 'icon-lock-open text-green',
+                    icon: 'fa-lock text-green',
                     onClick: function () {
                         new Administration.UserPermissionDialog({
                             userID: _this.entity.UserId,
@@ -2912,14 +2864,14 @@ var Store;
             UserDialog.prototype.getPropertyItems = function () {
                 var items = _super.prototype.getPropertyItems.call(this);
                 if (!Q.Authorization.hasPermission("Administration:Tenants"))
-                    items = items.filter(function (x) { return x.name != Administration.UserRow.Fields.TenantId; });
+                    items = items.filter(function (x) { return x.name != "TenantId" /* TenantId */; });
                 return items;
             };
+            UserDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], UserDialog);
             return UserDialog;
         }(Serenity.EntityDialog));
-        UserDialog = __decorate([
-            Serenity.Decorators.registerClass()
-        ], UserDialog);
         Administration.UserDialog = UserDialog;
     })(Administration = Store.Administration || (Store.Administration = {}));
 })(Store || (Store = {}));
@@ -2927,7 +2879,7 @@ var Store;
 (function (Store) {
     var Administration;
     (function (Administration) {
-        var UserGrid = (function (_super) {
+        var UserGrid = /** @class */ (function (_super) {
             __extends(UserGrid, _super);
             function UserGrid(container) {
                 return _super.call(this, container) || this;
@@ -2939,13 +2891,13 @@ var Store;
             UserGrid.prototype.getLocalTextPrefix = function () { return Administration.UserRow.localTextPrefix; };
             UserGrid.prototype.getService = function () { return Administration.UserService.baseUrl; };
             UserGrid.prototype.getDefaultSortBy = function () {
-                return [Administration.UserRow.Fields.Username];
+                return ["Username" /* Username */];
             };
+            UserGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], UserGrid);
             return UserGrid;
         }(Serenity.EntityGrid));
-        UserGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], UserGrid);
         Administration.UserGrid = UserGrid;
     })(Administration = Store.Administration || (Store.Administration = {}));
 })(Store || (Store = {}));
@@ -2953,11 +2905,12 @@ var Store;
 (function (Store) {
     var Administration;
     (function (Administration) {
-        var PermissionCheckEditor = (function (_super) {
+        var PermissionCheckEditor = /** @class */ (function (_super) {
             __extends(PermissionCheckEditor, _super);
             function PermissionCheckEditor(container, opt) {
                 var _this = _super.call(this, container, opt) || this;
-                _this.rolePermissions = {};
+                _this._rolePermissions = {};
+                _this._implicitPermissions = {};
                 var titleByKey = {};
                 var permissionKeys = _this.getSortedGroupAndPermissionKeys(titleByKey);
                 var items = permissionKeys.map(function (key) { return ({
@@ -2986,12 +2939,31 @@ var Store;
                 }
                 return 'checked partial';
             };
+            PermissionCheckEditor.prototype.roleOrImplicit = function (key) {
+                if (this._rolePermissions[key])
+                    return true;
+                for (var _i = 0, _a = Object.keys(this._rolePermissions); _i < _a.length; _i++) {
+                    var k = _a[_i];
+                    var d = this._implicitPermissions[k];
+                    if (d && d[key])
+                        return true;
+                }
+                for (var _b = 0, _c = Object.keys(this._implicitPermissions); _b < _c.length; _b++) {
+                    var i = _c[_b];
+                    var item = this.view.getItemById(i);
+                    if (item && item.GrantRevoke == true) {
+                        var d = this._implicitPermissions[i];
+                        if (d && d[key])
+                            return true;
+                    }
+                }
+            };
             PermissionCheckEditor.prototype.getItemEffectiveClass = function (item) {
                 var _this = this;
                 if (item.IsGroup) {
                     var desc = this.getDescendants(item, true);
                     var grantCount = Q.count(desc, function (x) { return x.GrantRevoke === true ||
-                        (x.GrantRevoke == null && _this.rolePermissions[x.Key]); });
+                        (x.GrantRevoke == null && _this.roleOrImplicit(x.Key)); });
                     if (grantCount === desc.length || desc.length === 0) {
                         return 'allow';
                     }
@@ -3001,7 +2973,7 @@ var Store;
                     return 'partial';
                 }
                 var granted = item.GrantRevoke === true ||
-                    (item.GrantRevoke == null && this.rolePermissions[item.Key]);
+                    (item.GrantRevoke == null && this.roleOrImplicit(item.Key));
                 return (granted ? ' allow' : ' deny');
             };
             PermissionCheckEditor.prototype.getColumns = function () {
@@ -3174,50 +3146,78 @@ var Store;
                 keys = keys.sort(function (x, y) { return Q.turkishLocaleCompare(titleWithGroup[x], titleWithGroup[y]); });
                 return keys;
             };
-            PermissionCheckEditor.prototype.get_value = function () {
-                var result = [];
-                for (var _i = 0, _a = this.view.getItems(); _i < _a.length; _i++) {
-                    var item = _a[_i];
-                    if (item.GrantRevoke != null && item.Key.charAt(item.Key.length - 1) != ':') {
-                        result.push({ PermissionKey: item.Key, Granted: item.GrantRevoke });
-                    }
-                }
-                return result;
-            };
-            PermissionCheckEditor.prototype.set_value = function (value) {
-                for (var _i = 0, _a = this.view.getItems(); _i < _a.length; _i++) {
-                    var item = _a[_i];
-                    item.GrantRevoke = null;
-                }
-                if (value != null) {
-                    for (var _b = 0, value_1 = value; _b < value_1.length; _b++) {
-                        var row = value_1[_b];
-                        var r = this.view.getItemById(row.PermissionKey);
-                        if (r) {
-                            r.GrantRevoke = Q.coalesce(row.Granted, true);
+            Object.defineProperty(PermissionCheckEditor.prototype, "value", {
+                get: function () {
+                    var result = [];
+                    for (var _i = 0, _a = this.view.getItems(); _i < _a.length; _i++) {
+                        var item = _a[_i];
+                        if (item.GrantRevoke != null && item.Key.charAt(item.Key.length - 1) != ':') {
+                            result.push({ PermissionKey: item.Key, Granted: item.GrantRevoke });
                         }
                     }
-                }
-                this.setItems(this.getItems());
-            };
-            PermissionCheckEditor.prototype.get_rolePermissions = function () {
-                return Object.keys(this.rolePermissions);
-            };
-            PermissionCheckEditor.prototype.set_rolePermissions = function (value) {
-                this.rolePermissions = {};
-                if (value) {
-                    for (var _i = 0, value_2 = value; _i < value_2.length; _i++) {
-                        var k = value_2[_i];
-                        this.rolePermissions[k] = true;
+                    return result;
+                },
+                set: function (value) {
+                    for (var _i = 0, _a = this.view.getItems(); _i < _a.length; _i++) {
+                        var item = _a[_i];
+                        item.GrantRevoke = null;
                     }
-                }
-                this.setItems(this.getItems());
-            };
+                    if (value != null) {
+                        for (var _b = 0, value_1 = value; _b < value_1.length; _b++) {
+                            var row = value_1[_b];
+                            var r = this.view.getItemById(row.PermissionKey);
+                            if (r) {
+                                r.GrantRevoke = Q.coalesce(row.Granted, true);
+                            }
+                        }
+                    }
+                    this.setItems(this.getItems());
+                },
+                enumerable: true,
+                configurable: true
+            });
+            Object.defineProperty(PermissionCheckEditor.prototype, "rolePermissions", {
+                get: function () {
+                    return Object.keys(this._rolePermissions);
+                },
+                set: function (value) {
+                    this._rolePermissions = {};
+                    if (value) {
+                        for (var _i = 0, value_2 = value; _i < value_2.length; _i++) {
+                            var k = value_2[_i];
+                            this._rolePermissions[k] = true;
+                        }
+                    }
+                    this.setItems(this.getItems());
+                },
+                enumerable: true,
+                configurable: true
+            });
+            Object.defineProperty(PermissionCheckEditor.prototype, "implicitPermissions", {
+                set: function (value) {
+                    this._implicitPermissions = {};
+                    if (value) {
+                        for (var _i = 0, _a = Object.keys(value); _i < _a.length; _i++) {
+                            var k = _a[_i];
+                            this._implicitPermissions[k] = this._implicitPermissions[k] || {};
+                            var l = value[k];
+                            if (l) {
+                                for (var _b = 0, l_1 = l; _b < l_1.length; _b++) {
+                                    var s = l_1[_b];
+                                    this._implicitPermissions[k][s] = true;
+                                }
+                            }
+                        }
+                    }
+                },
+                enumerable: true,
+                configurable: true
+            });
+            PermissionCheckEditor = __decorate([
+                Serenity.Decorators.registerEditor([Serenity.IGetEditValue, Serenity.ISetEditValue])
+            ], PermissionCheckEditor);
             return PermissionCheckEditor;
         }(Serenity.DataGrid));
-        PermissionCheckEditor = __decorate([
-            Serenity.Decorators.registerEditor([Serenity.IGetEditValue, Serenity.ISetEditValue])
-        ], PermissionCheckEditor);
         Administration.PermissionCheckEditor = PermissionCheckEditor;
     })(Administration = Store.Administration || (Store.Administration = {}));
 })(Store || (Store = {}));
@@ -3225,7 +3225,7 @@ var Store;
 (function (Store) {
     var Administration;
     (function (Administration) {
-        var UserPermissionDialog = (function (_super) {
+        var UserPermissionDialog = /** @class */ (function (_super) {
             __extends(UserPermissionDialog, _super);
             function UserPermissionDialog(opt) {
                 var _this = _super.call(this, opt) || this;
@@ -3237,15 +3237,16 @@ var Store;
                     Module: null,
                     Submodule: null
                 }, function (response) {
-                    _this.permissions.set_value(response.Entities);
+                    _this.permissions.value = response.Entities;
                 });
                 Administration.UserPermissionService.ListRolePermissions({
                     UserID: _this.options.userID,
                     Module: null,
                     Submodule: null,
                 }, function (response) {
-                    _this.permissions.set_rolePermissions(response.Entities);
+                    _this.permissions.rolePermissions = response.Entities;
                 });
+                _this.permissions.implicitPermissions = Q.getRemoteData('Administration.ImplicitPermissions');
                 return _this;
             }
             UserPermissionDialog.prototype.getDialogOptions = function () {
@@ -3257,7 +3258,7 @@ var Store;
                         click: function (e) {
                             Administration.UserPermissionService.Update({
                                 UserID: _this.options.userID,
-                                Permissions: _this.permissions.get_value(),
+                                Permissions: _this.permissions.value,
                                 Module: null,
                                 Submodule: null
                             }, function (response) {
@@ -3276,11 +3277,11 @@ var Store;
             UserPermissionDialog.prototype.getTemplate = function () {
                 return '<div id="~_Permissions"></div>';
             };
+            UserPermissionDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], UserPermissionDialog);
             return UserPermissionDialog;
         }(Serenity.TemplatedDialog));
-        UserPermissionDialog = __decorate([
-            Serenity.Decorators.registerClass()
-        ], UserPermissionDialog);
         Administration.UserPermissionDialog = UserPermissionDialog;
     })(Administration = Store.Administration || (Store.Administration = {}));
 })(Store || (Store = {}));
@@ -3288,7 +3289,7 @@ var Store;
 (function (Store) {
     var Administration;
     (function (Administration) {
-        var RoleCheckEditor = (function (_super) {
+        var RoleCheckEditor = /** @class */ (function (_super) {
             __extends(RoleCheckEditor, _super);
             function RoleCheckEditor(div) {
                 return _super.call(this, div) || this;
@@ -3316,11 +3317,11 @@ var Store;
                         Select2.util.stripDiacritics(item.text || '')
                             .toUpperCase().indexOf(this.searchText) >= 0);
             };
+            RoleCheckEditor = __decorate([
+                Serenity.Decorators.registerEditor()
+            ], RoleCheckEditor);
             return RoleCheckEditor;
         }(Serenity.CheckTreeEditor));
-        RoleCheckEditor = __decorate([
-            Serenity.Decorators.registerEditor()
-        ], RoleCheckEditor);
         Administration.RoleCheckEditor = RoleCheckEditor;
     })(Administration = Store.Administration || (Store.Administration = {}));
 })(Store || (Store = {}));
@@ -3328,7 +3329,7 @@ var Store;
 (function (Store) {
     var Administration;
     (function (Administration) {
-        var UserRoleDialog = (function (_super) {
+        var UserRoleDialog = /** @class */ (function (_super) {
             __extends(UserRoleDialog, _super);
             function UserRoleDialog(opt) {
                 var _this = _super.call(this, opt) || this;
@@ -3364,2297 +3365,99 @@ var Store;
             UserRoleDialog.prototype.getTemplate = function () {
                 return "<div id='~_Roles'></div>";
             };
+            UserRoleDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], UserRoleDialog);
             return UserRoleDialog;
         }(Serenity.TemplatedDialog));
-        UserRoleDialog = __decorate([
-            Serenity.Decorators.registerClass()
-        ], UserRoleDialog);
         Administration.UserRoleDialog = UserRoleDialog;
     })(Administration = Store.Administration || (Store.Administration = {}));
 })(Store || (Store = {}));
 var Store;
 (function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var ChartInDialog = ChartInDialog_1 = (function (_super) {
-            __extends(ChartInDialog, _super);
-            function ChartInDialog() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            ChartInDialog.initializePage = function () {
-                $(function () {
-                    $('#LaunchDialogButton').click(function (e) {
-                        (new ChartInDialog_1()).dialogOpen();
-                    });
-                });
-            };
-            ChartInDialog.prototype.onDialogOpen = function () {
-                var _this = this;
-                _super.prototype.onDialogOpen.call(this);
-                BasicSamples.BasicSamplesService.OrdersByShipper({}, function (response) {
-                    _this.areaChart = new Morris.Area({
-                        element: _this.idPrefix + 'Chart',
-                        resize: true, parseTime: false,
-                        data: response.Values,
-                        xkey: 'Month',
-                        ykeys: response.ShipperKeys, labels: response.ShipperLabels, hideHover: 'auto'
-                    });
-                });
-            };
-            ChartInDialog.prototype.arrange = function () {
-                _super.prototype.arrange.call(this);
-                this.areaChart && this.areaChart.redraw();
-            };
-            ChartInDialog.prototype.getTemplate = function () {
-                // you could also put this in a ChartInDialog.Template.html file. it's here for simplicity.
-                return "<div id='~_Chart'></div>";
-            };
-            ChartInDialog.prototype.getDialogOptions = function () {
-                var opt = _super.prototype.getDialogOptions.call(this);
-                opt.title = 'Orders by Shipper';
-                return opt;
-            };
-            return ChartInDialog;
-        }(Serenity.TemplatedDialog));
-        ChartInDialog = ChartInDialog_1 = __decorate([
-            Serenity.Decorators.registerClass(),
-            Serenity.Decorators.resizable(),
-            Serenity.Decorators.maximizable()
-        ], ChartInDialog);
-        BasicSamples.ChartInDialog = ChartInDialog;
-        var ChartInDialog_1;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var ProductDialog = (function (_super) {
-            __extends(ProductDialog, _super);
-            function ProductDialog() {
-                var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new Northwind.ProductForm(_this.idPrefix);
-                return _this;
-            }
-            ProductDialog.prototype.getFormKey = function () { return Northwind.ProductForm.formKey; };
-            ProductDialog.prototype.getIdProperty = function () { return Northwind.ProductRow.idProperty; };
-            ProductDialog.prototype.getLocalTextPrefix = function () { return Northwind.ProductRow.localTextPrefix; };
-            ProductDialog.prototype.getNameProperty = function () { return Northwind.ProductRow.nameProperty; };
-            ProductDialog.prototype.getService = function () { return Northwind.ProductService.baseUrl; };
-            return ProductDialog;
-        }(Serenity.EntityDialog));
-        ProductDialog = __decorate([
-            Serenity.Decorators.registerClass(),
-            Serenity.Decorators.maximizable()
-        ], ProductDialog);
-        Northwind.ProductDialog = ProductDialog;
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-/// <reference path="../../../Northwind/Product/ProductDialog.ts" />
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var CloneableEntityDialog = (function (_super) {
-            __extends(CloneableEntityDialog, _super);
-            function CloneableEntityDialog() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            CloneableEntityDialog.prototype.updateInterface = function () {
-                // by default cloneButton is hidden in base UpdateInterface method
-                _super.prototype.updateInterface.call(this);
-                // here we show it if it is edit mode (not new)
-                this.cloneButton.toggle(this.isEditMode());
-            };
-            /**
-             * Overriding this method is optional to customize cloned entity
-             */
-            CloneableEntityDialog.prototype.getCloningEntity = function () {
-                var clone = _super.prototype.getCloningEntity.call(this);
-                // add (Clone) suffix if it's not already added
-                var suffix = ' (Clone)';
-                if (!Q.endsWith(clone.ProductName || '', suffix)) {
-                    clone.ProductName = (clone.ProductName || '') + suffix;
+    var BasicProgressDialog = /** @class */ (function (_super) {
+        __extends(BasicProgressDialog, _super);
+        function BasicProgressDialog() {
+            var _this = _super.call(this) || this;
+            _this.byId('ProgressBar').progressbar({
+                max: 100,
+                value: 0,
+                change: function (e, v) {
+                    _this.byId('ProgressLabel').text(_this.value + ' / ' + _this.max);
                 }
-                // it's better to clear image for this sample
-                // otherwise we would have to create a temporary copy of it
-                // and upload
-                clone.ProductImage = null;
-                // let's clear fields not logical to be cloned
-                clone.UnitsInStock = 0;
-                clone.UnitsOnOrder = 0;
-                return clone;
-            };
-            return CloneableEntityDialog;
-        }(Store.Northwind.ProductDialog));
-        CloneableEntityDialog = __decorate([
-            Serenity.Decorators.registerClass(),
-            Serenity.Decorators.maximizable()
-        ], CloneableEntityDialog);
-        BasicSamples.CloneableEntityDialog = CloneableEntityDialog;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var ProductGrid = (function (_super) {
-            __extends(ProductGrid, _super);
-            function ProductGrid(container) {
-                var _this = _super.call(this, container) || this;
-                _this.pendingChanges = {};
-                _this.slickContainer.on('change', '.edit:input', function (e) { return _this.inputsChange(e); });
-                return _this;
-            }
-            ProductGrid.prototype.getColumnsKey = function () { return "Northwind.Product"; };
-            ProductGrid.prototype.getDialogType = function () { return Northwind.ProductDialog; };
-            ProductGrid.prototype.getIdProperty = function () { return Northwind.ProductRow.idProperty; };
-            ProductGrid.prototype.getLocalTextPrefix = function () { return Northwind.ProductRow.localTextPrefix; };
-            ProductGrid.prototype.getService = function () { return Northwind.ProductService.baseUrl; };
-            ProductGrid.prototype.getButtons = function () {
-                var _this = this;
-                var buttons = _super.prototype.getButtons.call(this);
-                buttons.push(Store.Common.ExcelExportHelper.createToolButton({
-                    grid: this,
-                    service: Northwind.ProductService.baseUrl + '/ListExcel',
-                    onViewSubmit: function () { return _this.onViewSubmit(); },
-                    separator: true
-                }));
-                buttons.push(Store.Common.PdfExportHelper.createToolButton({
-                    grid: this,
-                    onViewSubmit: function () { return _this.onViewSubmit(); },
-                    reportTitle: 'Product List',
-                    columnTitles: {
-                        'Discontinued': 'Dis.',
-                    },
-                    tableOptions: {
-                        columnStyles: {
-                            ProductID: {
-                                columnWidth: 25,
-                                halign: 'right'
-                            },
-                            Discountinued: {
-                                columnWidth: 25
-                            }
-                        }
-                    }
-                }));
-                buttons.push({
-                    title: 'Save Changes',
-                    cssClass: 'apply-changes-button disabled',
-                    onClick: function (e) { return _this.saveClick(); },
-                    separator: true
-                });
-                return buttons;
-            };
-            ProductGrid.prototype.onViewProcessData = function (response) {
-                this.pendingChanges = {};
-                this.setSaveButtonState();
-                return _super.prototype.onViewProcessData.call(this, response);
-            };
-            // PLEASE NOTE! Inline editing in grids is not something Serenity supports nor recommends.
-            // SlickGrid has some set of limitations, UI is very hard to use on some devices like mobile, 
-            // custom widgets and validations are not possible, and as a bonus the code can become a mess.
-            // 
-            // This was just a sample how-to after much requests, and is not supported. 
-            // This is all we can offer, please don't ask us to Guide you...
-            /**
-             * It would be nice if we could use autonumeric, Serenity editors etc. here, to control input validation,
-             * but it's not supported by SlickGrid as we are only allowed to return a string, and should attach
-             * no event handlers to rendered cell contents
-             */
-            ProductGrid.prototype.numericInputFormatter = function (ctx) {
-                var klass = 'edit numeric';
-                var item = ctx.item;
-                var pending = this.pendingChanges[item.ProductID];
-                if (pending && pending[ctx.column.field] !== undefined) {
-                    klass += ' dirty';
-                }
-                var value = this.getEffectiveValue(item, ctx.column.field);
-                return "<input type='text' class='" + klass +
-                    "' data-field='" + ctx.column.field +
-                    "' value='" + Q.formatNumber(value, '0.##') + "'/>";
-            };
-            ProductGrid.prototype.stringInputFormatter = function (ctx) {
-                var klass = 'edit string';
-                var item = ctx.item;
-                var pending = this.pendingChanges[item.ProductID];
-                var column = ctx.column;
-                if (pending && pending[column.field] !== undefined) {
-                    klass += ' dirty';
-                }
-                var value = this.getEffectiveValue(item, column.field);
-                return "<input type='text' class='" + klass +
-                    "' data-field='" + column.field +
-                    "' value='" + Q.htmlEncode(value) +
-                    "' maxlength='" + column.sourceItem.maxLength + "'/>";
-            };
-            /**
-             * Sorry but you cannot use LookupEditor, e.g. Select2 here, only possible is a SELECT element
-             */
-            ProductGrid.prototype.selectFormatter = function (ctx, idField, lookup) {
-                var fld = Northwind.ProductRow.Fields;
-                var klass = 'edit';
-                var item = ctx.item;
-                var pending = this.pendingChanges[item.ProductID];
-                var column = ctx.column;
-                if (pending && pending[idField] !== undefined) {
-                    klass += ' dirty';
-                }
-                var value = this.getEffectiveValue(item, idField);
-                var markup = "<select class='" + klass +
-                    "' data-field='" + idField +
-                    "' style='width: 100%; max-width: 100%'>";
-                for (var _i = 0, _a = lookup.items; _i < _a.length; _i++) {
-                    var c = _a[_i];
-                    var id = c[lookup.idField];
-                    markup += "<option value='" + id + "'";
-                    if (id == value) {
-                        markup += " selected";
-                    }
-                    markup += ">" + Q.htmlEncode(c[lookup.textField]) + "</option>";
-                }
-                return markup + "</select>";
-            };
-            ProductGrid.prototype.getEffectiveValue = function (item, field) {
-                var pending = this.pendingChanges[item.ProductID];
-                if (pending && pending[field] !== undefined) {
-                    return pending[field];
-                }
-                return item[field];
-            };
-            ProductGrid.prototype.getColumns = function () {
-                var _this = this;
-                var columns = _super.prototype.getColumns.call(this);
-                var num = function (ctx) { return _this.numericInputFormatter(ctx); };
-                var str = function (ctx) { return _this.stringInputFormatter(ctx); };
-                var fld = Northwind.ProductRow.Fields;
-                Q.first(columns, function (x) { return x.field === 'QuantityPerUnit'; }).format = str;
-                var category = Q.first(columns, function (x) { return x.field === fld.CategoryName; });
-                category.referencedFields = [fld.CategoryID];
-                category.format = function (ctx) { return _this.selectFormatter(ctx, fld.CategoryID, Northwind.CategoryRow.getLookup()); };
-                var supplier = Q.first(columns, function (x) { return x.field === fld.SupplierCompanyName; });
-                supplier.referencedFields = [fld.SupplierID];
-                supplier.format = function (ctx) { return _this.selectFormatter(ctx, fld.SupplierID, Northwind.SupplierRow.getLookup()); };
-                Q.first(columns, function (x) { return x.field === fld.UnitPrice; }).format = num;
-                Q.first(columns, function (x) { return x.field === fld.UnitsInStock; }).format = num;
-                Q.first(columns, function (x) { return x.field === fld.UnitsOnOrder; }).format = num;
-                Q.first(columns, function (x) { return x.field === fld.ReorderLevel; }).format = num;
-                return columns;
-            };
-            ProductGrid.prototype.inputsChange = function (e) {
-                var cell = this.slickGrid.getCellFromEvent(e);
-                var item = this.itemAt(cell.row);
-                var input = $(e.target);
-                var field = input.data('field');
-                var text = Q.coalesce(Q.trimToNull(input.val()), '0');
-                var pending = this.pendingChanges[item.ProductID];
-                var effective = this.getEffectiveValue(item, field);
-                var oldText;
-                if (input.hasClass("numeric"))
-                    oldText = Q.formatNumber(effective, '0.##');
-                else
-                    oldText = effective;
-                var value;
-                if (field === 'UnitPrice') {
-                    value = Q.parseDecimal(text);
-                    if (value == null || isNaN(value)) {
-                        Q.notifyError(Q.text('Validation.Decimal'), '', null);
-                        input.val(oldText);
-                        input.focus();
-                        return;
-                    }
-                }
-                else if (input.hasClass("numeric")) {
-                    var i = Q.parseInteger(text);
-                    if (isNaN(i) || i > 32767 || i < 0) {
-                        Q.notifyError(Q.text('Validation.Integer'), '', null);
-                        input.val(oldText);
-                        input.focus();
-                        return;
-                    }
-                    value = i;
-                }
-                else
-                    value = text;
-                if (!pending) {
-                    this.pendingChanges[item.ProductID] = pending = {};
-                }
-                pending[field] = value;
-                item[field] = value;
-                this.view.refresh();
-                if (input.hasClass("numeric"))
-                    value = Q.formatNumber(value, '0.##');
-                input.val(value).addClass('dirty');
-                this.setSaveButtonState();
-            };
-            ProductGrid.prototype.setSaveButtonState = function () {
-                this.toolbar.findButton('apply-changes-button').toggleClass('disabled', Object.keys(this.pendingChanges).length === 0);
-            };
-            ProductGrid.prototype.saveClick = function () {
-                if (Object.keys(this.pendingChanges).length === 0) {
-                    return;
-                }
-                // this calls save service for all modified rows, one by one
-                // you could write a batch update service
-                var keys = Object.keys(this.pendingChanges);
-                var current = -1;
-                var self = this;
-                (function saveNext() {
-                    if (++current >= keys.length) {
-                        self.refresh();
-                        return;
-                    }
-                    var key = keys[current];
-                    var entity = Q.deepClone(self.pendingChanges[key]);
-                    entity.ProductID = key;
-                    Q.serviceRequest('Northwind/Product/Update', {
-                        EntityId: key,
-                        Entity: entity
-                    }, function (response) {
-                        delete self.pendingChanges[key];
-                        saveNext();
-                    });
-                })();
-            };
-            ProductGrid.prototype.getQuickFilters = function () {
-                var flt = _super.prototype.getQuickFilters.call(this);
-                var q = Q.parseQueryString();
-                if (q["cat"]) {
-                    var category = Q.tryFirst(flt, function (x) { return x.field == "CategoryID"; });
-                    category.init = function (e) {
-                        e.element.getWidget(Serenity.LookupEditor).value = q["cat"];
-                    };
-                }
-                return flt;
-            };
-            return ProductGrid;
-        }(Serenity.EntityGrid));
-        ProductGrid = __decorate([
-            Serenity.Decorators.registerClass(),
-            Serenity.Decorators.filterable()
-        ], ProductGrid);
-        Northwind.ProductGrid = ProductGrid;
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-/// <reference path="../../../Northwind/Product/ProductGrid.ts" />
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        /**
-         * Subclass of ProductGrid to override dialog type to CloneableEntityDialog
-         */
-        var CloneableEntityGrid = (function (_super) {
-            __extends(CloneableEntityGrid, _super);
-            function CloneableEntityGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            CloneableEntityGrid.prototype.getDialogType = function () { return BasicSamples.CloneableEntityDialog; };
-            return CloneableEntityGrid;
-        }(Store.Northwind.ProductGrid));
-        CloneableEntityGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], CloneableEntityGrid);
-        BasicSamples.CloneableEntityGrid = CloneableEntityGrid;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var OrderGrid = (function (_super) {
-            __extends(OrderGrid, _super);
-            function OrderGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            OrderGrid.prototype.getColumnsKey = function () { return "Northwind.Order"; };
-            OrderGrid.prototype.getDialogType = function () { return Northwind.OrderDialog; };
-            OrderGrid.prototype.getIdProperty = function () { return Northwind.OrderRow.idProperty; };
-            OrderGrid.prototype.getLocalTextPrefix = function () { return Northwind.OrderRow.localTextPrefix; };
-            OrderGrid.prototype.getService = function () { return Northwind.OrderService.baseUrl; };
-            OrderGrid.prototype.getQuickFilters = function () {
-                var _this = this;
-                var filters = _super.prototype.getQuickFilters.call(this);
-                filters.push({
-                    type: Serenity.LookupEditor,
-                    options: {
-                        lookupKey: Northwind.ProductRow.lookupKey
-                    },
-                    field: 'ProductID',
-                    title: 'Contains Product in Details',
-                    handler: function (w) {
-                        _this.view.params.ProductID = Q.toId(w.value);
-                    }
-                });
-                return filters;
-            };
-            OrderGrid.prototype.createQuickFilters = function () {
-                _super.prototype.createQuickFilters.call(this);
-                var fld = Northwind.OrderRow.Fields;
-                this.shippingStateFilter = this.findQuickFilter(Serenity.EnumEditor, fld.ShippingState);
-            };
-            OrderGrid.prototype.getButtons = function () {
-                var _this = this;
-                var buttons = _super.prototype.getButtons.call(this);
-                buttons.push(Store.Common.ExcelExportHelper.createToolButton({
-                    grid: this,
-                    service: Northwind.OrderService.baseUrl + '/ListExcel',
-                    onViewSubmit: function () { return _this.onViewSubmit(); },
-                    separator: true
-                }));
-                buttons.push(Store.Common.PdfExportHelper.createToolButton({
-                    grid: this,
-                    onViewSubmit: function () { return _this.onViewSubmit(); }
-                }));
-                return buttons;
-            };
-            OrderGrid.prototype.getColumns = function () {
-                var columns = _super.prototype.getColumns.call(this);
-                columns.splice(1, 0, {
-                    field: 'Print Invoice',
-                    name: '',
-                    format: function (ctx) { return '<a class="inline-action print-invoice" title="invoice">' +
-                        '<i class="fa fa-file-pdf-o text-red"></i></a>'; },
-                    width: 24,
-                    minWidth: 24,
-                    maxWidth: 24
-                });
-                return columns;
-            };
-            OrderGrid.prototype.onClick = function (e, row, cell) {
-                _super.prototype.onClick.call(this, e, row, cell);
-                if (e.isDefaultPrevented())
-                    return;
-                var item = this.itemAt(row);
-                var target = $(e.target);
-                // if user clicks "i" element, e.g. icon
-                if (target.parent().hasClass('inline-action'))
-                    target = target.parent();
-                if (target.hasClass('inline-action')) {
-                    e.preventDefault();
-                    if (target.hasClass('print-invoice')) {
-                        Store.Store.Common.ReportHelper.execute({
-                            reportKey: 'Northwind.OrderDetail',
-                            params: {
-                                OrderID: item.OrderID
-                            }
-                        });
-                    }
-                }
-            };
-            OrderGrid.prototype.set_shippingState = function (value) {
-                this.shippingStateFilter.value = value == null ? '' : value.toString();
-            };
-            return OrderGrid;
-        }(Serenity.EntityGrid));
-        OrderGrid = __decorate([
-            Serenity.Decorators.registerClass(),
-            Serenity.Decorators.filterable()
-        ], OrderGrid);
-        Northwind.OrderGrid = OrderGrid;
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-/// <reference path="../../../Northwind/Order/OrderGrid.ts" />
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var DefaultValuesInNewGrid = (function (_super) {
-            __extends(DefaultValuesInNewGrid, _super);
-            function DefaultValuesInNewGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            /**
-             * This method is called when New Item button is clicked.
-             * By default, it calls EditItem with an empty entity.
-             * This is a good place to fill in default values for New Item button.
-             */
-            DefaultValuesInNewGrid.prototype.addButtonClick = function () {
-                this.editItem({
-                    CustomerID: 'ANTON',
-                    RequiredDate: Q.formatDate(new Date(), 'yyyy-MM-dd'),
-                    EmployeeID: Store.Northwind.EmployeeRow.getLookup().items
-                        .filter(function (x) { return x.FullName === 'Robert King'; })[0].EmployeeID,
-                    ShipVia: Store.Northwind.ShipperRow.getLookup().items
-                        .filter(function (x) { return x.CompanyName === 'Speedy Express'; })[0].ShipperID
-                });
-            };
-            DefaultValuesInNewGrid.prototype.getButtons = function () {
-                var _this = this;
-                // preserving default New Item button
-                var buttons = _super.prototype.getButtons.call(this);
-                buttons.push({
-                    title: 'Add Order from the Queen',
-                    cssClass: 'add-button',
-                    onClick: function () {
-                        // using EditItem method as a shortcut to create a new Order dialog,
-                        // bind to its events, load our order row, and open dialog
-                        _this.editItem({
-                            CustomerID: 'QUEEN',
-                            EmployeeID: Store.Northwind.EmployeeRow.getLookup().items
-                                .filter(function (x) { return x.FullName === 'Nancy Davolio'; })[0].EmployeeID,
-                            ShipVia: Store.Northwind.ShipperRow.getLookup().items
-                                .filter(function (x) { return x.CompanyName === 'United Package'; })[0].ShipperID
-                        });
-                    }
-                });
-                buttons.push({
-                    title: 'Add Order with 5 Chai by Laura', cssClass: 'add-note-button',
-                    onClick: function () {
-                        // we could use EditItem here too, but for demonstration
-                        // purposes we are manually creating dialog this time
-                        var dlg = new Store.Northwind.OrderDialog();
-                        // let grid watch for changes to manually created dialog, 
-                        // so when a new item is saved, grid can refresh itself
-                        _this.initDialog(dlg);
-                        // get a reference to product Chai
-                        var chai = Store.Northwind.ProductRow.getLookup().items
-                            .filter(function (x) { return x.ProductName === 'Chai'; })[0];
-                        // LoadEntityAndOpenDialog, loads an OrderRow 
-                        // to dialog and opens it
-                        var lauraCallahanID = Store.Northwind.EmployeeRow.getLookup().items
-                            .filter(function (x) { return x.FullName === 'Laura Callahan'; })[0].EmployeeID;
-                        dlg.loadEntityAndOpenDialog({
-                            CustomerID: 'GOURL',
-                            EmployeeID: lauraCallahanID,
-                            DetailList: [{
-                                    ProductID: chai.ProductID,
-                                    ProductName: chai.ProductName,
-                                    UnitPrice: chai.UnitPrice,
-                                    Quantity: 5,
-                                    LineTotal: chai.UnitPrice * 5
-                                }]
-                        });
-                    }
-                });
-                return buttons;
-            };
-            return DefaultValuesInNewGrid;
-        }(Store.Northwind.OrderGrid));
-        DefaultValuesInNewGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], DefaultValuesInNewGrid);
-        BasicSamples.DefaultValuesInNewGrid = DefaultValuesInNewGrid;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var DialogBoxes;
-        (function (DialogBoxes) {
-            function initializePage() {
-                confirmDialogButtons();
-                confirmWithCustomTitle();
-                information();
-                warning();
-                alert();
-                alertWithHtmlContent();
-            }
-            DialogBoxes.initializePage = initializePage;
-            function confirmDialogButtons() {
-                // here we demonstrate how you can detect which button user has clicked
-                // second parameter is Yes handler and it is called only when user clicks Yes.
-                // third parameter has some additional options, that you should only use when needed
-                $('#ConfirmDialogButtons').click(function () {
-                    Q.confirm("Click one of buttons, or close dialog with [x] on top right, i'll tell you what you did!", function () {
-                        Q.notifySuccess("You clicked YES. Great!");
-                    }, {
-                        onNo: function () {
-                            Q.notifyInfo("You clicked NO. Why?");
-                        },
-                        onCancel: function () {
-                            Q.notifyError("You clicked X. Operation is cancelled. Will try again?");
-                        }
-                    });
-                });
-            }
-            function confirmWithCustomTitle() {
-                $('#ConfirmWithCustomTitle').click(function () {
-                    Q.confirm("This confirmation has a custom title", function () {
-                        Q.notifySuccess("Allright!");
-                    }, {
-                        title: 'Some Custom Confirmation Title'
-                    });
-                });
-            }
-            function information() {
-                $('#Information').click(function () {
-                    Q.information("What a nice day", function () {
-                        Q.notifySuccess("No problem!");
-                    });
-                });
-            }
-            function warning() {
-                $('#Warning').click(function () {
-                    Q.warning("Hey, be careful!");
-                });
-            }
-            function alert() {
-                $('#Alert').click(function () {
-                    Q.alert("Houston, we got a problem!");
-                });
-            }
-            function alertWithHtmlContent() {
-                $('#AlertWithHtmlContent').click(function () {
-                    Q.alert("<h4>Here is some HTML content!</h4>" +
-                        "<ul><li>Item 1</li><li>Item 2</li >" +
-                        "<li>Visit <a href='http://serenity.is/' target='_blank' style='color: #ddf'>http://serenity.is/</a>!</li></ul>", {
-                        htmlEncode: false
-                    });
-                });
-            }
-        })(DialogBoxes = BasicSamples.DialogBoxes || (BasicSamples.DialogBoxes = {}));
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var OrderDialog = (function (_super) {
-            __extends(OrderDialog, _super);
-            function OrderDialog() {
-                var _this = _super.call(this) || this;
-                _this.form = new Northwind.OrderForm(_this.idPrefix);
-                return _this;
-            }
-            OrderDialog.prototype.getFormKey = function () { return Northwind.OrderForm.formKey; };
-            OrderDialog.prototype.getIdProperty = function () { return Northwind.OrderRow.idProperty; };
-            OrderDialog.prototype.getLocalTextPrefix = function () { return Northwind.OrderRow.localTextPrefix; };
-            OrderDialog.prototype.getNameProperty = function () { return Northwind.OrderRow.nameProperty; };
-            OrderDialog.prototype.getService = function () { return Northwind.OrderService.baseUrl; };
-            OrderDialog.prototype.getToolbarButtons = function () {
-                var _this = this;
-                var buttons = _super.prototype.getToolbarButtons.call(this);
-                buttons.push(Store.Store.Common.ReportHelper.createToolButton({
-                    title: 'Invoice',
-                    cssClass: 'export-pdf-button',
-                    reportKey: 'Northwind.OrderDetail',
-                    getParams: function () { return ({
-                        OrderID: _this.get_entityId()
-                    }); }
-                }));
-                return buttons;
-            };
-            OrderDialog.prototype.updateInterface = function () {
-                _super.prototype.updateInterface.call(this);
-                this.toolbar.findButton('export-pdf-button').toggle(this.isEditMode());
-            };
-            return OrderDialog;
-        }(Serenity.EntityDialog));
-        OrderDialog = __decorate([
-            Serenity.Decorators.registerClass()
-        ], OrderDialog);
-        Northwind.OrderDialog = OrderDialog;
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-/// <reference path="../../../Northwind/Order/OrderDialog.ts" />
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        /**
-         * A version of order dialog converted to a panel by adding Serenity.Decorators.panel decorator.
-         */
-        var EntityDialogAsPanel = (function (_super) {
-            __extends(EntityDialogAsPanel, _super);
-            function EntityDialogAsPanel() {
-                var _this = _super.call(this) || this;
-                _this.element.addClass('flex-layout');
-                return _this;
-            }
-            return EntityDialogAsPanel;
-        }(Store.Northwind.OrderDialog));
-        EntityDialogAsPanel = __decorate([
-            Serenity.Decorators.panel()
-        ], EntityDialogAsPanel);
-        BasicSamples.EntityDialogAsPanel = EntityDialogAsPanel;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var CategoryDialog = (function (_super) {
-            __extends(CategoryDialog, _super);
-            function CategoryDialog() {
-                var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new Northwind.CategoryForm(_this.idPrefix);
-                return _this;
-            }
-            CategoryDialog.prototype.getFormKey = function () { return Northwind.CategoryForm.formKey; };
-            CategoryDialog.prototype.getIdProperty = function () { return Northwind.CategoryRow.idProperty; };
-            CategoryDialog.prototype.getLocalTextPrefix = function () { return Northwind.CategoryRow.localTextPrefix; };
-            CategoryDialog.prototype.getNameProperty = function () { return Northwind.CategoryRow.nameProperty; };
-            CategoryDialog.prototype.getService = function () { return Northwind.CategoryService.baseUrl; };
-            return CategoryDialog;
-        }(Serenity.EntityDialog));
-        CategoryDialog = __decorate([
-            Serenity.Decorators.registerClass()
-        ], CategoryDialog);
-        Northwind.CategoryDialog = CategoryDialog;
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-/// <reference path="../../../Northwind/Category/CategoryDialog.ts" />
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var GetInsertedRecordIdDialog = (function (_super) {
-            __extends(GetInsertedRecordIdDialog, _super);
-            function GetInsertedRecordIdDialog() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            /**
-             * This method is called after the save request to service
-             * is completed succesfully. This can be an insert or update.
-             *
-             * @param response Response that is returned from server
-             */
-            GetInsertedRecordIdDialog.prototype.onSaveSuccess = function (response) {
-                // check that this is an insert
-                if (this.isNew) {
-                    Q.notifySuccess("Just inserted a category with ID: " + response.EntityId);
-                    // you could also open a new dialog
-                    // new Northwind.CategoryDialog().loadByIdAndOpenDialog(response.EntityId);
-                    // but let's better load inserted record using Retrieve service
-                    Store.Northwind.CategoryService.Retrieve({
-                        EntityId: response.EntityId
-                    }, function (resp) {
-                        Q.notifyInfo("Looks like the category you added has name: " + resp.Entity.CategoryName);
-                    });
-                }
-            };
-            return GetInsertedRecordIdDialog;
-        }(Store.Northwind.CategoryDialog));
-        GetInsertedRecordIdDialog = __decorate([
-            Serenity.Decorators.registerClass()
-        ], GetInsertedRecordIdDialog);
-        BasicSamples.GetInsertedRecordIdDialog = GetInsertedRecordIdDialog;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var CategoryGrid = (function (_super) {
-            __extends(CategoryGrid, _super);
-            function CategoryGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            CategoryGrid.prototype.getColumnsKey = function () { return "Northwind.Category"; };
-            CategoryGrid.prototype.getDialogType = function () { return Northwind.CategoryDialog; };
-            CategoryGrid.prototype.getIdProperty = function () { return Northwind.CategoryRow.idProperty; };
-            CategoryGrid.prototype.getLocalTextPrefix = function () { return Northwind.CategoryRow.localTextPrefix; };
-            CategoryGrid.prototype.getService = function () { return Northwind.CategoryService.baseUrl; };
-            return CategoryGrid;
-        }(Serenity.EntityGrid));
-        CategoryGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], CategoryGrid);
-        Northwind.CategoryGrid = CategoryGrid;
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-/// <reference path="../../../Northwind/Category/CategoryGrid.ts" />
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        /**
-         * Subclass of CategoryGrid to override dialog type to GetInsertedRecordIdDialog
-         */
-        var GetInsertedRecordIdGrid = (function (_super) {
-            __extends(GetInsertedRecordIdGrid, _super);
-            function GetInsertedRecordIdGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            GetInsertedRecordIdGrid.prototype.getDialogType = function () { return BasicSamples.GetInsertedRecordIdDialog; };
-            return GetInsertedRecordIdGrid;
-        }(Store.Northwind.CategoryGrid));
-        GetInsertedRecordIdGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], GetInsertedRecordIdGrid);
-        BasicSamples.GetInsertedRecordIdGrid = GetInsertedRecordIdGrid;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-/// <reference path="../../../Northwind/Order/OrderDialog.ts" />
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        /**
-         * Styling for columns is done with CSS in site.basicsamples.less file.
-         * When comparing this to MultiColumnDialog sample, you may notice that
-         * this version requires much less JS and CSS code.
-         */
-        var MultiColumnResponsiveDialog = (function (_super) {
-            __extends(MultiColumnResponsiveDialog, _super);
-            function MultiColumnResponsiveDialog() {
-                return _super.call(this) || this;
-            }
-            return MultiColumnResponsiveDialog;
-        }(Store.Northwind.OrderDialog));
-        MultiColumnResponsiveDialog = __decorate([
-            Serenity.Decorators.registerClass()
-        ], MultiColumnResponsiveDialog);
-        BasicSamples.MultiColumnResponsiveDialog = MultiColumnResponsiveDialog;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-/// <reference path="../../../Northwind/Order/OrderGrid.ts" />
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        /**
-         * Subclass of OrderGrid to override dialog type to MultiColumnResponsiveDialog
-         */
-        var MultiColumnResponsiveGrid = (function (_super) {
-            __extends(MultiColumnResponsiveGrid, _super);
-            function MultiColumnResponsiveGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            MultiColumnResponsiveGrid.prototype.getDialogType = function () { return BasicSamples.MultiColumnResponsiveDialog; };
-            return MultiColumnResponsiveGrid;
-        }(Store.Northwind.OrderGrid));
-        MultiColumnResponsiveGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], MultiColumnResponsiveGrid);
-        BasicSamples.MultiColumnResponsiveGrid = MultiColumnResponsiveGrid;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-/// <reference path="../../../Northwind/Order/OrderDialog.ts" />
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        /**
-         * Our custom order dialog subclass that will have a tab to display and edit selected customer details.
-         */
-        var OtherFormInTabDialog = (function (_super) {
-            __extends(OtherFormInTabDialog, _super);
-            function OtherFormInTabDialog() {
-                var _this = _super.call(this) || this;
-                // entity dialogs by default creates a property grid on element with ID "PropertyGrid".
-                // here we explicitly create another, the customer property grid (vertical form) on element with ID "CustomerPropertyGrid".
-                _this.customerPropertyGrid = new Serenity.PropertyGrid(_this.byId("CustomerPropertyGrid"), {
-                    items: Q.getForm(Store.Northwind.CustomerForm.formKey).filter(function (x) { return x.name != 'CustomerID'; }),
-                    useCategories: true
-                });
-                // this is just a helper to access editors if needed
-                _this.customerForm = new Store.Northwind.CustomerForm(_this.customerPropertyGrid.idPrefix);
-                // initialize validator for customer form
-                _this.customerValidator = _this.byId("CustomerForm").validate(Q.validateOptions({}));
-                var selfChange = 0;
-                // creating another toolbar for customer tab that will only save Customer
-                new Serenity.Toolbar(_this.byId("CustomerToolbar"), {
-                    buttons: [{
-                            cssClass: "apply-changes-button",
-                            title: Q.text("Controls.EntityDialog.SaveButton"),
-                            onClick: function () {
-                                var id = _this.getCustomerID();
-                                if (!id)
-                                    return;
-                                if (!_this.customerValidator.form())
-                                    return;
-                                // prepare an empty entity to serialize customer details into
-                                var c = {};
-                                _this.customerPropertyGrid.save(c);
-                                Store.Northwind.CustomerService.Update({
-                                    EntityId: id,
-                                    Entity: c
-                                }, function (response) {
-                                    // reload customer list just in case
-                                    Q.reloadLookup(Store.Northwind.CustomerRow.lookupKey);
-                                    // set flag that we are triggering customer select change event
-                                    // otherwise active tab will change to first one
-                                    selfChange++;
-                                    try {
-                                        // trigger change so that customer select updates its text
-                                        // in case if Company Name is changed
-                                        _this.form.CustomerID.element.change();
-                                    }
-                                    finally {
-                                        selfChange--;
-                                    }
-                                    Q.notifySuccess("Saved customer details");
-                                });
-                            }
-                        }]
-                });
-                _this.form.CustomerID.change(function (e) {
-                    if (selfChange)
-                        return;
-                    var customerID = _this.getCustomerID();
-                    Serenity.TabsExtensions.setDisabled(_this.tabs, 'Customer', !customerID);
-                    if (!customerID) {
-                        // no customer is selected, just load an empty entity
-                        _this.customerPropertyGrid.load({});
-                        return;
-                    }
-                    // load selected customer into customer form by calling CustomerService
-                    Store.Northwind.CustomerService.Retrieve({
-                        EntityId: customerID
-                    }, function (response) {
-                        _this.customerPropertyGrid.load(response.Entity);
-                    });
-                });
-                return _this;
-            }
-            OtherFormInTabDialog.prototype.getCustomerID = function () {
-                var customerID = this.form.CustomerID.value;
-                if (Q.isEmptyOrNull(customerID))
-                    return null;
-                // unfortunately, CustomerID (a string) used in this form and 
-                // the ID (auto increment ID) are different, so we need to 
-                // find numeric ID from customer lookups. 
-                // you'll probably won't need this step.
-                return Q.first(Store.Northwind.CustomerRow.getLookup().items, function (x) { return x.CustomerID == customerID; }).ID;
-            };
-            OtherFormInTabDialog.prototype.loadEntity = function (entity) {
-                _super.prototype.loadEntity.call(this, entity);
-                Serenity.TabsExtensions.setDisabled(this.tabs, 'Customer', !this.getCustomerID());
-            };
-            return OtherFormInTabDialog;
-        }(Store.Northwind.OrderDialog));
-        OtherFormInTabDialog = __decorate([
-            Serenity.Decorators.registerClass()
-        ], OtherFormInTabDialog);
-        BasicSamples.OtherFormInTabDialog = OtherFormInTabDialog;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-/// <reference path="../../../Northwind/Order/OrderGrid.ts" />
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        /**
-         * Subclass of OrderGrid to override dialog type to OtherFormInTabDialog
-         */
-        var OtherFormInTabGrid = (function (_super) {
-            __extends(OtherFormInTabGrid, _super);
-            function OtherFormInTabGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            OtherFormInTabGrid.prototype.getDialogType = function () { return BasicSamples.OtherFormInTabDialog; };
-            return OtherFormInTabGrid;
-        }(Store.Northwind.OrderGrid));
-        OtherFormInTabGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], OtherFormInTabGrid);
-        BasicSamples.OtherFormInTabGrid = OtherFormInTabGrid;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-/// <reference path="../../../Northwind/Order/OrderDialog.ts" />
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        /**
-         * Our custom order dialog subclass that will have a tab to display and edit selected customer details.
-         * With single toolbar for all forms
-         */
-        var OtherFormOneBarDialog = (function (_super) {
-            __extends(OtherFormOneBarDialog, _super);
-            function OtherFormOneBarDialog() {
-                var _this = _super.call(this) || this;
-                _this.selfChange = 0;
-                // entity dialogs by default creates a property grid on element with ID "PropertyGrid".
-                // here we explicitly create another, the customer property grid (vertical form) on element with ID "CustomerPropertyGrid".
-                _this.customerPropertyGrid = new Serenity.PropertyGrid(_this.byId("CustomerPropertyGrid"), {
-                    items: Q.getForm(Store.Northwind.CustomerForm.formKey).filter(function (x) { return x.name != 'CustomerID'; }),
-                    useCategories: true
-                });
-                // this is just a helper to access editors if needed
-                _this.customerForm = new Store.Northwind.CustomerForm(_this.customerPropertyGrid.idPrefix);
-                // initialize validator for customer form
-                _this.customerValidator = _this.byId("CustomerForm").validate(Q.validateOptions({}));
-                _this.form.CustomerID.change(function (e) {
-                    if (_this.selfChange)
-                        return;
-                    var customerID = _this.getCustomerID();
-                    Serenity.TabsExtensions.setDisabled(_this.tabs, 'Customer', !customerID);
-                    if (!customerID) {
-                        // no customer is selected, just load an empty entity
-                        _this.customerPropertyGrid.load({});
-                        return;
-                    }
-                    // load selected customer into customer form by calling CustomerService
-                    Store.Northwind.CustomerService.Retrieve({
-                        EntityId: customerID
-                    }, function (response) {
-                        _this.customerPropertyGrid.load(response.Entity);
-                    });
-                });
-                return _this;
-            }
-            OtherFormOneBarDialog.prototype.getCustomerID = function () {
-                var customerID = this.form.CustomerID.value;
-                if (Q.isEmptyOrNull(customerID))
-                    return null;
-                // unfortunately, CustomerID (a string) used in this form and 
-                // the ID (auto increment ID) are different, so we need to 
-                // find numeric ID from customer lookups. 
-                // you'll probably won't need this step.
-                return Q.first(Store.Northwind.CustomerRow.getLookup().items, function (x) { return x.CustomerID == customerID; }).ID;
-            };
-            OtherFormOneBarDialog.prototype.loadEntity = function (entity) {
-                _super.prototype.loadEntity.call(this, entity);
-                Serenity.TabsExtensions.setDisabled(this.tabs, 'Customer', !this.getCustomerID());
-            };
-            // Save the customer and the order 
-            OtherFormOneBarDialog.prototype.saveCustomer = function (callback, onSuccess) {
-                var _this = this;
-                var id = this.getCustomerID();
-                if (!id) {
-                    // If id of Customer isn't present, we save only Order entity
-                    onSuccess(null);
-                }
-                else {
-                    // Get current tab
-                    var currTab = Serenity.TabsExtensions.activeTabKey(this.tabs);
-                    // Select the correct tab and validate to see the error message in tab
-                    Serenity.TabsExtensions.selectTab(this.tabs, "Customer");
-                    if (!this.customerValidator.form()) {
-                        return false;
-                    }
-                    // Re-select initial tab
-                    Serenity.TabsExtensions.selectTab(this.tabs, currTab);
-                    // prepare an empty entity to serialize customer details into
-                    var c = {};
-                    this.customerPropertyGrid.save(c);
-                    Store.Northwind.CustomerService.Update({
-                        EntityId: id,
-                        Entity: c
-                    }, function (response) {
-                        // reload customer list just in case
-                        Q.reloadLookup(Store.Northwind.CustomerRow.lookupKey);
-                        // set flag that we are triggering customer select change event
-                        // otherwise active tab will change to first one
-                        _this.selfChange++;
-                        try {
-                            // trigger change so that customer select updates its text
-                            // in case if Company Name is changed
-                            _this.form.CustomerID.element.change();
-                        }
-                        finally {
-                            _this.selfChange--;
-                        }
-                        onSuccess(response);
-                    });
-                }
-                return true;
-            };
-            // Call super.save to save Order entity
-            OtherFormOneBarDialog.prototype.saveOrder = function (callback) {
-                _super.prototype.save.call(this, callback);
-            };
-            OtherFormOneBarDialog.prototype.saveAll = function (callback) {
-                var _this = this;
-                this.saveCustomer(callback, 
-                // If customer successa, save Order entity
-                function (resp) { return _this.saveOrder(callback); });
-            };
-            // This is called when save/update button is pressed
-            OtherFormOneBarDialog.prototype.save = function (callback) {
-                this.saveAll(callback);
-            };
-            return OtherFormOneBarDialog;
-        }(Store.Northwind.OrderDialog));
-        OtherFormOneBarDialog = __decorate([
-            Serenity.Decorators.registerClass()
-        ], OtherFormOneBarDialog);
-        BasicSamples.OtherFormOneBarDialog = OtherFormOneBarDialog;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-/// <reference path="../../../Northwind/Order/OrderGrid.ts" />
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        /**
-         * Subclass of OrderGrid to override dialog type to OtherFormInTabOneBarDialog
-         */
-        var OtherFormInTabOneBarGrid = (function (_super) {
-            __extends(OtherFormInTabOneBarGrid, _super);
-            function OtherFormInTabOneBarGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            OtherFormInTabOneBarGrid.prototype.getDialogType = function () { return BasicSamples.OtherFormOneBarDialog; };
-            return OtherFormInTabOneBarGrid;
-        }(Store.Northwind.OrderGrid));
-        OtherFormInTabOneBarGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], OtherFormInTabOneBarGrid);
-        BasicSamples.OtherFormInTabOneBarGrid = OtherFormInTabOneBarGrid;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var PopulateLinkedDataDialog = (function (_super) {
-            __extends(PopulateLinkedDataDialog, _super);
-            function PopulateLinkedDataDialog() {
-                var _this = _super.call(this) || this;
-                _this.form = new BasicSamples.PopulateLinkedDataForm(_this.idPrefix);
-                // "changeSelect2" is only fired when user changes the selection
-                // but "change" is fired when dialog sets customer on load too
-                // so we prefer "changeSelect2", as initial customer details 
-                // will get populated by initial load, we don't want extra call
-                _this.form.CustomerID.changeSelect2(function (e) {
-                    var customerID = _this.form.CustomerID.value;
-                    if (Q.isEmptyOrNull(customerID)) {
-                        _this.setCustomerDetails({});
-                        return;
-                    }
-                    // in northwind CustomerID is a string like "ALFKI", 
-                    // while its actual integer ID value is 1.
-                    // so we need to convert customer ID to ID.
-                    // you won't have to do this conversion with your tables
-                    var id = Q.first(Store.Northwind.CustomerRow.getLookup().items, function (x) { return x.CustomerID == customerID; }).ID;
-                    Store.Northwind.CustomerService.Retrieve({
-                        EntityId: id
-                    }, function (response) {
-                        _this.setCustomerDetails(response.Entity);
-                    });
-                });
-                return _this;
-            }
-            PopulateLinkedDataDialog.prototype.getFormKey = function () { return BasicSamples.PopulateLinkedDataForm.formKey; };
-            PopulateLinkedDataDialog.prototype.getIdProperty = function () { return Store.Northwind.OrderRow.idProperty; };
-            PopulateLinkedDataDialog.prototype.getLocalTextPrefix = function () { return Store.Northwind.OrderRow.localTextPrefix; };
-            PopulateLinkedDataDialog.prototype.getNameProperty = function () { return Store.Northwind.OrderRow.nameProperty; };
-            PopulateLinkedDataDialog.prototype.getService = function () { return Store.Northwind.OrderService.baseUrl; };
-            PopulateLinkedDataDialog.prototype.setCustomerDetails = function (details) {
-                this.form.CustomerCity.value = details.City;
-                this.form.CustomerContactName.value = details.ContactName;
-                this.form.CustomerContactTitle.value = details.ContactTitle;
-                this.form.CustomerCountry.value = details.Country;
-                this.form.CustomerFax.value = details.Fax;
-                this.form.CustomerPhone.value = details.Phone;
-                this.form.CustomerRegion.value = details.Region;
-            };
-            /**
-             * This dialog will have CSS class "s-PopulateLinkedDataDialog"
-             * We are changing it here to "s-OrderDialog", to make it use default OrderDialog styles
-             * This has no effect other than looks on populate linked data demonstration
-             */
-            PopulateLinkedDataDialog.prototype.getCssClass = function () {
-                return _super.prototype.getCssClass.call(this) + " s-OrderDialog s-Northwind-OrderDialog";
-            };
-            return PopulateLinkedDataDialog;
-        }(Serenity.EntityDialog));
-        PopulateLinkedDataDialog = __decorate([
-            Serenity.Decorators.registerClass()
-        ], PopulateLinkedDataDialog);
-        BasicSamples.PopulateLinkedDataDialog = PopulateLinkedDataDialog;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-/// <reference path="../../../Northwind/Order/OrderGrid.ts" />
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        /**
-         * A subclass of OrderGrid that launches PopulateLinkedDataDialog
-         */
-        var PopulateLinkedDataGrid = (function (_super) {
-            __extends(PopulateLinkedDataGrid, _super);
-            function PopulateLinkedDataGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            PopulateLinkedDataGrid.prototype.getDialogType = function () { return BasicSamples.PopulateLinkedDataDialog; };
-            return PopulateLinkedDataGrid;
-        }(Store.Northwind.OrderGrid));
-        PopulateLinkedDataGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], PopulateLinkedDataGrid);
-        BasicSamples.PopulateLinkedDataGrid = PopulateLinkedDataGrid;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var SupplierDialog = (function (_super) {
-            __extends(SupplierDialog, _super);
-            function SupplierDialog() {
-                var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new Northwind.SupplierForm(_this.idPrefix);
-                return _this;
-            }
-            SupplierDialog.prototype.getFormKey = function () { return Northwind.SupplierForm.formKey; };
-            SupplierDialog.prototype.getIdProperty = function () { return Northwind.SupplierRow.idProperty; };
-            SupplierDialog.prototype.getLocalTextPrefix = function () { return Northwind.SupplierRow.localTextPrefix; };
-            SupplierDialog.prototype.getNameProperty = function () { return Northwind.SupplierRow.nameProperty; };
-            SupplierDialog.prototype.getService = function () { return Northwind.SupplierService.baseUrl; };
-            SupplierDialog.prototype.getLanguages = function () {
-                return Store.LanguageList.getValue();
-            };
-            return SupplierDialog;
-        }(Serenity.EntityDialog));
-        SupplierDialog = __decorate([
-            Serenity.Decorators.registerClass()
-        ], SupplierDialog);
-        Northwind.SupplierDialog = SupplierDialog;
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-/// <reference path="../../../Northwind/Supplier/SupplierDialog.ts" />
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var ReadOnlyDialog = (function (_super) {
-            __extends(ReadOnlyDialog, _super);
-            function ReadOnlyDialog() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            /**
-             * This is the method that gets list of tool
-             * buttons to be created in a dialog.
-             *
-             * Here we'll remove save and close button, and
-             * apply changes buttons.
-             */
-            ReadOnlyDialog.prototype.getToolbarButtons = function () {
-                var buttons = _super.prototype.getToolbarButtons.call(this);
-                buttons.splice(Q.indexOf(buttons, function (x) { return x.cssClass == "save-and-close-button"; }), 1);
-                buttons.splice(Q.indexOf(buttons, function (x) { return x.cssClass == "apply-changes-button"; }), 1);
-                // We could also remove delete button here, but for demonstration 
-                // purposes we'll hide it in another method (updateInterface)
-                // buttons.splice(Q.indexOf(buttons, x => x.cssClass == "delete-button"), 1);
-                return buttons;
-            };
-            /**
-             * This method is a good place to update states of
-             * interface elements. It is called after dialog
-             * is initialized and an entity is loaded into dialog.
-             * This is also called in new item mode.
-             */
-            ReadOnlyDialog.prototype.updateInterface = function () {
-                _super.prototype.updateInterface.call(this);
-                // finding all editor elements and setting their readonly attribute
-                // note that this helper method only works with basic inputs, 
-                // some editors require widget based set readonly overload (setReadOnly)
-                Serenity.EditorUtils.setReadonly(this.element.find('.editor'), true);
-                // remove required asterisk (*)
-                this.element.find('sup').hide();
-                // here is a way to locate a button by its css class
-                // note that this method is not available in 
-                // getToolbarButtons() because buttons are not 
-                // created there yet!
-                // 
-                // this.toolbar.findButton('delete-button').hide();
-                // entity dialog also has reference variables to
-                // its default buttons, lets use them to hide delete button
-                this.deleteButton.hide();
-                // we could also hide save buttons just like delete button,
-                // but they are null now as we removed them in getToolbarButtons()
-                // if we didn't we could write like this:
-                // 
-                // this.applyChangesButton.hide();
-                // this.saveAndCloseButton.hide();
-                // instead of hiding, we could disable a button
-                // 
-                // this.deleteButton.toggleClass('disabled', true);
-            };
-            /**
-             * This method is called when dialog title needs to be updated.
-             * Base class returns something like 'Edit xyz' for edit mode,
-             * and 'New xyz' for new record mode.
-             *
-             * But our dialog is readonly, so we should change it to 'View xyz'
-             */
-            ReadOnlyDialog.prototype.getEntityTitle = function () {
-                if (!this.isEditMode()) {
-                    // we shouldn't hit here, but anyway for demo...
-                    return "How did you manage to open this dialog in new record mode?";
-                }
-                else {
-                    // entitySingular is type of record this dialog edits. something like 'Supplier'.
-                    // you could hardcode it, but this is for demonstration
-                    var entityType = _super.prototype.getEntitySingular.call(this);
-                    // get name field value of record this dialog edits
-                    var name_1 = this.getEntityNameFieldValue() || "";
-                    // you could use Q.format with a local text, but again demo...
-                    return 'View ' + entityType + " (" + name_1 + ")";
-                }
-            };
-            /**
-             * This method is actually the one that calls getEntityTitle()
-             * and updates the dialog title. We could do it here too...
-             */
-            ReadOnlyDialog.prototype.updateTitle = function () {
-                _super.prototype.updateTitle.call(this);
-                // remove super.updateTitle() call above and uncomment 
-                // below line if you'd like to use this version
-                // 
-                // this.dialogTitle = 'View Supplier (' + this.getEntityNameFieldValue() + ')';
-            };
-            return ReadOnlyDialog;
-        }(Store.Northwind.SupplierDialog));
-        ReadOnlyDialog = __decorate([
-            Serenity.Decorators.registerClass()
-        ], ReadOnlyDialog);
-        BasicSamples.ReadOnlyDialog = ReadOnlyDialog;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var SupplierGrid = (function (_super) {
-            __extends(SupplierGrid, _super);
-            function SupplierGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            SupplierGrid.prototype.getColumnsKey = function () { return "Northwind.Supplier"; };
-            SupplierGrid.prototype.getDialogType = function () { return Northwind.SupplierDialog; };
-            SupplierGrid.prototype.getIdProperty = function () { return Northwind.SupplierRow.idProperty; };
-            SupplierGrid.prototype.getLocalTextPrefix = function () { return Northwind.SupplierRow.localTextPrefix; };
-            SupplierGrid.prototype.getService = function () { return Northwind.SupplierService.baseUrl; };
-            return SupplierGrid;
-        }(Serenity.EntityGrid));
-        SupplierGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], SupplierGrid);
-        Northwind.SupplierGrid = SupplierGrid;
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-/// <reference path="../../../Northwind/Supplier/SupplierGrid.ts" />
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        /**
-         * A readonly grid that launches ReadOnlyDialog
-         */
-        var ReadOnlyGrid = (function (_super) {
-            __extends(ReadOnlyGrid, _super);
-            function ReadOnlyGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            ReadOnlyGrid.prototype.getDialogType = function () { return BasicSamples.ReadOnlyDialog; };
-            /**
-             * Removing add button from grid using its css class
-             */
-            ReadOnlyGrid.prototype.getButtons = function () {
-                var buttons = _super.prototype.getButtons.call(this);
-                buttons.splice(Q.indexOf(buttons, function (x) { return x.cssClass == "add-button"; }), 1);
-                return buttons;
-            };
-            return ReadOnlyGrid;
-        }(Store.Northwind.SupplierGrid));
-        ReadOnlyGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], ReadOnlyGrid);
-        BasicSamples.ReadOnlyGrid = ReadOnlyGrid;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        /**
-         * Adding Responsive attribute makes this dialog use full screen in mobile devices.
-         */
-        var ResponsiveDialog = (function (_super) {
-            __extends(ResponsiveDialog, _super);
-            function ResponsiveDialog() {
-                return _super.call(this) || this;
-            }
-            ResponsiveDialog.prototype.getFormKey = function () { return Store.Northwind.OrderForm.formKey; };
-            ResponsiveDialog.prototype.getIdProperty = function () { return Store.Northwind.OrderRow.idProperty; };
-            ResponsiveDialog.prototype.getLocalTextPrefix = function () { return Store.Northwind.OrderRow.localTextPrefix; };
-            ResponsiveDialog.prototype.getNameProperty = function () { return Store.Northwind.OrderRow.nameProperty; };
-            ResponsiveDialog.prototype.getService = function () { return Store.Northwind.OrderService.baseUrl; };
-            return ResponsiveDialog;
-        }(Serenity.EntityDialog));
-        ResponsiveDialog = __decorate([
-            Serenity.Decorators.registerClass(),
-            Serenity.Decorators.responsive(),
-            Serenity.Decorators.maximizable()
-        ], ResponsiveDialog);
-        BasicSamples.ResponsiveDialog = ResponsiveDialog;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-/// <reference path="../../../Northwind/Order/OrderGrid.ts" />
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        /**
-         * Subclass of OrderGrid to override dialog type to ResponsiveDialog
-         */
-        var ResponsiveGrid = (function (_super) {
-            __extends(ResponsiveGrid, _super);
-            function ResponsiveGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            ResponsiveGrid.prototype.getDialogType = function () { return BasicSamples.ResponsiveDialog; };
-            return ResponsiveGrid;
-        }(Store.Northwind.OrderGrid));
-        ResponsiveGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], ResponsiveGrid);
-        BasicSamples.ResponsiveGrid = ResponsiveGrid;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var CustomerDialog = (function (_super) {
-            __extends(CustomerDialog, _super);
-            function CustomerDialog() {
-                var _this = _super.call(this) || this;
-                _this.form = new Northwind.CustomerForm(_this.idPrefix);
-                _this.ordersGrid = new Northwind.CustomerOrdersGrid(_this.byId('OrdersGrid'));
-                _this.ordersGrid.element.flexHeightOnly(1);
-                _this.byId('NoteList').closest('.field').hide().end().appendTo(_this.byId('TabNotes'));
-                Store.DialogUtils.pendingChangesConfirmation(_this.element, function () { return _this.getSaveState() != _this.loadedState; });
-                return _this;
-            }
-            CustomerDialog.prototype.getFormKey = function () { return Northwind.CustomerForm.formKey; };
-            CustomerDialog.prototype.getIdProperty = function () { return Northwind.CustomerRow.idProperty; };
-            CustomerDialog.prototype.getLocalTextPrefix = function () { return Northwind.CustomerRow.localTextPrefix; };
-            CustomerDialog.prototype.getNameProperty = function () { return Northwind.CustomerRow.nameProperty; };
-            CustomerDialog.prototype.getService = function () { return Northwind.CustomerService.baseUrl; };
-            CustomerDialog.prototype.getSaveState = function () {
-                try {
-                    return $.toJSON(this.getSaveEntity());
-                }
-                catch (e) {
-                    return null;
-                }
-            };
-            CustomerDialog.prototype.loadResponse = function (data) {
-                _super.prototype.loadResponse.call(this, data);
-                this.loadedState = this.getSaveState();
-            };
-            CustomerDialog.prototype.loadEntity = function (entity) {
-                _super.prototype.loadEntity.call(this, entity);
-                Serenity.TabsExtensions.setDisabled(this.tabs, 'Orders', this.isNewOrDeleted());
-                this.ordersGrid.customerID = entity.CustomerID;
-            };
-            CustomerDialog.prototype.onSaveSuccess = function (response) {
-                _super.prototype.onSaveSuccess.call(this, response);
-                Q.reloadLookup('Northwind.Customer');
-            };
-            return CustomerDialog;
-        }(Serenity.EntityDialog));
-        CustomerDialog = __decorate([
-            Serenity.Decorators.registerClass()
-        ], CustomerDialog);
-        Northwind.CustomerDialog = CustomerDialog;
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-/// <reference path="../../../Northwind/Customer/CustomerDialog.ts" />
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var SerialAutoNumberDialog = (function (_super) {
-            __extends(SerialAutoNumberDialog, _super);
-            function SerialAutoNumberDialog() {
-                var _this = _super.call(this) || this;
-                _this.form.CustomerID.element.on('keyup', function (e) {
-                    // only auto number when a key between 'A' and 'Z' is pressed
-                    if (e.which >= 65 && e.which <= 90)
-                        _this.getNextNumber();
-                });
-                return _this;
-            }
-            SerialAutoNumberDialog.prototype.afterLoadEntity = function () {
-                _super.prototype.afterLoadEntity.call(this);
-                // fill next number in new record mode
-                if (this.isNew())
-                    this.getNextNumber();
-            };
-            SerialAutoNumberDialog.prototype.getNextNumber = function () {
-                var _this = this;
-                var val = Q.trimToNull(this.form.CustomerID.value);
-                // we will only get next number when customer ID is empty or 1 character in length
-                if (!val || val.length <= 1) {
-                    // if no customer ID yet (new record mode probably) use 'C' as a prefix
-                    var prefix = (val || 'C').toUpperCase();
-                    // call our service, see CustomerEndpoint.cs and CustomerRepository.cs
-                    Store.Store.Northwind.CustomerService.GetNextNumber({
-                        Prefix: prefix,
-                        Length: 5 // we want service to search for and return serials of 5 in length
-                    }, function (response) {
-                        _this.form.CustomerID.value = response.Serial;
-                        // this is to mark numerical part after prefix
-                        _this.form.CustomerID.element[0].setSelectionRange(prefix.length, response.Serial.length);
-                    });
-                }
-            };
-            return SerialAutoNumberDialog;
-        }(Store.Northwind.CustomerDialog));
-        SerialAutoNumberDialog = __decorate([
-            Serenity.Decorators.registerClass()
-        ], SerialAutoNumberDialog);
-        BasicSamples.SerialAutoNumberDialog = SerialAutoNumberDialog;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var CustomerGrid = (function (_super) {
-            __extends(CustomerGrid, _super);
-            function CustomerGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            CustomerGrid.prototype.getColumnsKey = function () { return "Northwind.Customer"; };
-            CustomerGrid.prototype.getDialogType = function () { return Northwind.CustomerDialog; };
-            CustomerGrid.prototype.getIdProperty = function () { return Northwind.CustomerRow.idProperty; };
-            CustomerGrid.prototype.getLocalTextPrefix = function () { return Northwind.CustomerRow.localTextPrefix; };
-            CustomerGrid.prototype.getService = function () { return Northwind.CustomerService.baseUrl; };
-            CustomerGrid.prototype.getButtons = function () {
-                var _this = this;
-                var buttons = _super.prototype.getButtons.call(this);
-                buttons.push(Store.Store.Common.ExcelExportHelper.createToolButton({
-                    grid: this,
-                    onViewSubmit: function () { return _this.onViewSubmit(); },
-                    service: 'Northwind/Customer/ListExcel',
-                    separator: true
-                }));
-                buttons.push(Store.Store.Common.PdfExportHelper.createToolButton({
-                    grid: this,
-                    onViewSubmit: function () { return _this.onViewSubmit(); }
-                }));
-                return buttons;
-            };
-            return CustomerGrid;
-        }(Serenity.EntityGrid));
-        CustomerGrid = __decorate([
-            Serenity.Decorators.registerClass(),
-            Serenity.Decorators.filterable()
-        ], CustomerGrid);
-        Northwind.CustomerGrid = CustomerGrid;
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-/// <reference path="../../../Northwind/Customer/CustomerGrid.ts" />
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        /**
-         * Subclass of CustomerGrid to override dialog type to SerialAutoNumberDialog
-         */
-        var SerialAutoNumberGrid = (function (_super) {
-            __extends(SerialAutoNumberGrid, _super);
-            function SerialAutoNumberGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            SerialAutoNumberGrid.prototype.getDialogType = function () { return BasicSamples.SerialAutoNumberDialog; };
-            return SerialAutoNumberGrid;
-        }(Store.Northwind.CustomerGrid));
-        SerialAutoNumberGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], SerialAutoNumberGrid);
-        BasicSamples.SerialAutoNumberGrid = SerialAutoNumberGrid;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Common;
-    (function (Common) {
-        var GridEditorDialog = (function (_super) {
-            __extends(GridEditorDialog, _super);
-            function GridEditorDialog() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            GridEditorDialog.prototype.getIdProperty = function () { return "__id"; };
-            GridEditorDialog.prototype.destroy = function () {
-                this.onSave = null;
-                this.onDelete = null;
-                _super.prototype.destroy.call(this);
-            };
-            GridEditorDialog.prototype.updateInterface = function () {
-                _super.prototype.updateInterface.call(this);
-                // apply changes button doesn't work properly with in-memory grids yet
-                if (this.applyChangesButton) {
-                    this.applyChangesButton.hide();
-                }
-            };
-            GridEditorDialog.prototype.saveHandler = function (options, callback) {
-                this.onSave && this.onSave(options, callback);
-            };
-            GridEditorDialog.prototype.deleteHandler = function (options, callback) {
-                this.onDelete && this.onDelete(options, callback);
-            };
-            return GridEditorDialog;
-        }(Serenity.EntityDialog));
-        GridEditorDialog = __decorate([
-            Serenity.Decorators.registerClass()
-        ], GridEditorDialog);
-        Common.GridEditorDialog = GridEditorDialog;
-    })(Common = Store.Common || (Store.Common = {}));
-})(Store || (Store = {}));
-/// <reference path="../../../Common/Helpers/GridEditorDialog.ts" />
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var ChangingLookupTextDialog = (function (_super) {
-            __extends(ChangingLookupTextDialog, _super);
-            function ChangingLookupTextDialog() {
-                var _this = _super.call(this) || this;
-                _this.form = new BasicSamples.ChangingLookupTextForm(_this.idPrefix);
-                _this.form.ProductID.changeSelect2(function (e) {
-                    var productID = Q.toId(_this.form.ProductID.value);
-                    if (productID != null) {
-                        _this.form.UnitPrice.value = Store.Northwind.ProductRow.getLookup().itemById[productID].UnitPrice;
-                    }
-                });
-                _this.form.Discount.addValidationRule(_this.uniqueName, function (e) {
-                    var price = _this.form.UnitPrice.value;
-                    var quantity = _this.form.Quantity.value;
-                    var discount = _this.form.Discount.value;
-                    if (price != null && quantity != null && discount != null &&
-                        discount > 0 && discount >= price * quantity) {
-                        return "Discount can't be higher than total price!";
-                    }
-                });
-                return _this;
-            }
-            ChangingLookupTextDialog.prototype.getFormKey = function () { return BasicSamples.ChangingLookupTextForm.formKey; };
-            ChangingLookupTextDialog.prototype.getLocalTextPrefix = function () { return Store.Northwind.OrderDetailRow.localTextPrefix; };
-            ChangingLookupTextDialog.prototype.updateInterface = function () {
-                _super.prototype.updateInterface.call(this);
-                this.toolbar.findButton('apply-changes-button').hide();
-                this.toolbar.findButton('save-and-close-button').hide();
-            };
-            return ChangingLookupTextDialog;
-        }(Store.Common.GridEditorDialog));
-        ChangingLookupTextDialog = __decorate([
-            Serenity.Decorators.registerClass()
-        ], ChangingLookupTextDialog);
-        BasicSamples.ChangingLookupTextDialog = ChangingLookupTextDialog;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        /**
-         * Our custom product editor type
-         */
-        var ChangingLookupTextEditor = (function (_super) {
-            __extends(ChangingLookupTextEditor, _super);
-            function ChangingLookupTextEditor(container, options) {
-                return _super.call(this, container, options) || this;
-            }
-            ChangingLookupTextEditor.prototype.getLookupKey = function () {
-                return Store.Northwind.ProductRow.lookupKey;
-            };
-            ChangingLookupTextEditor.prototype.getItemText = function (item, lookup) {
-                return _super.prototype.getItemText.call(this, item, lookup) +
-                    ' (' +
-                    '$' + Q.formatNumber(item.UnitPrice, '#,##0.00') +
-                    ', ' + (item.UnitsInStock > 0 ? (item.UnitsInStock + ' in stock') : 'out of stock') +
-                    ', ' + (item.SupplierCompanyName || 'Unknown') +
-                    ')';
-            };
-            return ChangingLookupTextEditor;
-        }(Serenity.LookupEditorBase));
-        ChangingLookupTextEditor = __decorate([
-            Serenity.Decorators.registerEditor()
-        ], ChangingLookupTextEditor);
-        BasicSamples.ChangingLookupTextEditor = ChangingLookupTextEditor;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-/// <reference path="../../Common/Helpers/GridEditorDialog.ts" />
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var OrderDetailDialog = (function (_super) {
-            __extends(OrderDetailDialog, _super);
-            function OrderDetailDialog() {
-                var _this = _super.call(this) || this;
-                _this.form = new Northwind.OrderDetailForm(_this.idPrefix);
-                _this.form.ProductID.changeSelect2(function (e) {
-                    var productID = Q.toId(_this.form.ProductID.value);
-                    if (productID != null) {
-                        _this.form.UnitPrice.value = Northwind.ProductRow.getLookup().itemById[productID].UnitPrice;
-                    }
-                });
-                _this.form.Discount.addValidationRule(_this.uniqueName, function (e) {
-                    var price = _this.form.UnitPrice.value;
-                    var quantity = _this.form.Quantity.value;
-                    var discount = _this.form.Discount.value;
-                    if (price != null && quantity != null && discount != null &&
-                        discount > 0 && discount >= price * quantity) {
-                        return "Discount can't be higher than total price!";
-                    }
-                });
-                return _this;
-            }
-            OrderDetailDialog.prototype.getFormKey = function () { return Northwind.OrderDetailForm.formKey; };
-            OrderDetailDialog.prototype.getLocalTextPrefix = function () { return Northwind.OrderDetailRow.localTextPrefix; };
-            return OrderDetailDialog;
-        }(Store.Common.GridEditorDialog));
-        OrderDetailDialog = __decorate([
-            Serenity.Decorators.registerClass()
-        ], OrderDetailDialog);
-        Northwind.OrderDetailDialog = OrderDetailDialog;
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-/// <reference path="../../../Northwind/OrderDetail/OrderDetailDialog.ts" />
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        /**
-         * Our subclass of order detail dialog with a CategoryID property
-         * that will be used to set CascadeValue of product editor
-         */
-        var FilteredLookupOrderDetailDialog = (function (_super) {
-            __extends(FilteredLookupOrderDetailDialog, _super);
-            function FilteredLookupOrderDetailDialog() {
-                var _this = _super.call(this) || this;
-                _this.form = new Store.Northwind.OrderDetailForm(_this.idPrefix);
-                // we can set cascade field in constructor
-                // we could also use FilterField but in this case, when CategoryID is null
-                // lookup editor would show all products in any category
-                _this.form.ProductID.cascadeField = Store.Northwind.ProductRow.Fields.CategoryID;
-                return _this;
-                // but CategoryID value is not yet available here as detail editor will set it 
-                // after calling constructor (creating a detail dialog) so we'll use BeforeLoadEntity
-            }
-            /**
-             * This method is called just before an entity is loaded to dialog
-             * This is also called for new record mode with an empty entity
-             */
-            FilteredLookupOrderDetailDialog.prototype.beforeLoadEntity = function (entity) {
-                _super.prototype.beforeLoadEntity.call(this, entity);
-                // setting cascade value here
-                // make sure you have [LookupInclude] on CategoryID property of ProductRow
-                // otherwise this field won't be available in lookup script (will always be null),
-                // so can't be filtered and you'll end up with an empty product list.
-                this.form.ProductID.cascadeValue = this.categoryID;
-            };
-            return FilteredLookupOrderDetailDialog;
-        }(Store.Northwind.OrderDetailDialog));
-        FilteredLookupOrderDetailDialog = __decorate([
-            Serenity.Decorators.registerClass()
-        ], FilteredLookupOrderDetailDialog);
-        BasicSamples.FilteredLookupOrderDetailDialog = FilteredLookupOrderDetailDialog;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Common;
-    (function (Common) {
-        var GridEditorBase = (function (_super) {
-            __extends(GridEditorBase, _super);
-            function GridEditorBase(container) {
-                var _this = _super.call(this, container) || this;
-                _this.nextId = 1;
-                return _this;
-            }
-            GridEditorBase.prototype.getIdProperty = function () { return "__id"; };
-            GridEditorBase.prototype.id = function (entity) {
-                return entity[this.getIdProperty()];
-            };
-            GridEditorBase.prototype.getNextId = function () {
-                return "`" + this.nextId++;
-            };
-            GridEditorBase.prototype.setNewId = function (entity) {
-                entity[this.getIdProperty()] = this.getNextId();
-            };
-            GridEditorBase.prototype.save = function (opt, callback) {
-                var _this = this;
-                var request = opt.request;
-                var row = Q.deepClone(request.Entity);
-                var id = this.id(row);
-                if (id == null) {
-                    row[this.getIdProperty()] = this.getNextId();
-                }
-                if (!this.validateEntity(row, id)) {
-                    return;
-                }
-                var items = this.view.getItems().slice();
-                if (id == null) {
-                    items.push(row);
-                }
-                else {
-                    var index = Q.indexOf(items, function (x) { return _this.id(x) === id; });
-                    items[index] = Q.deepClone({}, items[index], row);
-                }
-                this.setEntities(items);
-                callback({});
-            };
-            GridEditorBase.prototype.deleteEntity = function (id) {
-                this.view.deleteItem(id);
-                return true;
-            };
-            GridEditorBase.prototype.validateEntity = function (row, id) {
-                return true;
-            };
-            GridEditorBase.prototype.setEntities = function (items) {
-                this.view.setItems(items, true);
-            };
-            GridEditorBase.prototype.getNewEntity = function () {
-                return {};
-            };
-            GridEditorBase.prototype.getButtons = function () {
-                var _this = this;
-                return [{
-                        title: this.getAddButtonCaption(),
-                        cssClass: 'add-button',
-                        onClick: function () {
-                            _this.createEntityDialog(_this.getItemType(), function (dlg) {
-                                var dialog = dlg;
-                                dialog.onSave = function (opt, callback) { return _this.save(opt, callback); };
-                                dialog.loadEntityAndOpenDialog(_this.getNewEntity());
-                            });
-                        }
-                    }];
-            };
-            GridEditorBase.prototype.editItem = function (entityOrId) {
-                var _this = this;
-                var id = entityOrId;
-                var item = this.view.getItemById(id);
-                this.createEntityDialog(this.getItemType(), function (dlg) {
-                    var dialog = dlg;
-                    dialog.onDelete = function (opt, callback) {
-                        if (!_this.deleteEntity(id)) {
-                            return;
-                        }
-                        callback({});
-                    };
-                    dialog.onSave = function (opt, callback) { return _this.save(opt, callback); };
-                    dialog.loadEntityAndOpenDialog(item);
-                });
-                ;
-            };
-            GridEditorBase.prototype.getEditValue = function (property, target) {
-                target[property.name] = this.value;
-            };
-            GridEditorBase.prototype.setEditValue = function (source, property) {
-                this.value = source[property.name];
-            };
-            Object.defineProperty(GridEditorBase.prototype, "value", {
-                get: function () {
-                    var p = this.getIdProperty();
-                    return this.view.getItems().map(function (x) {
-                        var y = Q.deepClone(x);
-                        var id = y[p];
-                        if (id && id.toString().charAt(0) == '`')
-                            delete y[p];
-                        return y;
-                    });
-                },
-                set: function (value) {
-                    var _this = this;
-                    var p = this.getIdProperty();
-                    this.view.setItems((value || []).map(function (x) {
-                        var y = Q.deepClone(x);
-                        if (y[p] == null)
-                            y[p] = "`" + _this.getNextId();
-                        return y;
-                    }), true);
-                },
-                enumerable: true,
-                configurable: true
             });
-            GridEditorBase.prototype.getGridCanLoad = function () {
-                return false;
-            };
-            GridEditorBase.prototype.usePager = function () {
-                return false;
-            };
-            GridEditorBase.prototype.getInitialTitle = function () {
-                return null;
-            };
-            GridEditorBase.prototype.createQuickSearchInput = function () {
-            };
-            return GridEditorBase;
-        }(Serenity.EntityGrid));
-        GridEditorBase = __decorate([
-            Serenity.Decorators.registerClass([Serenity.IGetEditValue, Serenity.ISetEditValue]),
-            Serenity.Decorators.editor(),
-            Serenity.Decorators.element("<div/>")
-        ], GridEditorBase);
-        Common.GridEditorBase = GridEditorBase;
-    })(Common = Store.Common || (Store.Common = {}));
-})(Store || (Store = {}));
-/// <reference path="../../Common/Helpers/GridEditorBase.ts" />
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var OrderDetailsEditor = (function (_super) {
-            __extends(OrderDetailsEditor, _super);
-            function OrderDetailsEditor(container) {
-                return _super.call(this, container) || this;
-            }
-            OrderDetailsEditor.prototype.getColumnsKey = function () { return "Northwind.OrderDetail"; };
-            OrderDetailsEditor.prototype.getDialogType = function () { return Northwind.OrderDetailDialog; };
-            OrderDetailsEditor.prototype.getLocalTextPrefix = function () { return Northwind.OrderDetailRow.localTextPrefix; };
-            OrderDetailsEditor.prototype.validateEntity = function (row, id) {
-                row.ProductID = Q.toId(row.ProductID);
-                var sameProduct = Q.tryFirst(this.view.getItems(), function (x) { return x.ProductID === row.ProductID; });
-                if (sameProduct && this.id(sameProduct) !== id) {
-                    Q.alert('This product is already in order details!');
-                    return false;
-                }
-                row.ProductName = Northwind.ProductRow.getLookup().itemById[row.ProductID].ProductName;
-                row.LineTotal = (row.Quantity || 0) * (row.UnitPrice || 0) - (row.Discount || 0);
-                return true;
-            };
-            return OrderDetailsEditor;
-        }(Store.Common.GridEditorBase));
-        OrderDetailsEditor = __decorate([
-            Serenity.Decorators.registerClass()
-        ], OrderDetailsEditor);
-        Northwind.OrderDetailsEditor = OrderDetailsEditor;
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
-})(Store || (Store = {}));
-/// <reference path="../../../Northwind/OrderDetail/OrderDetailsEditor.ts" />
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        /**
-         * Our subclass of Order Details editor with a CategoryID property
-         */
-        var FilteredLookupDetailEditor = (function (_super) {
-            __extends(FilteredLookupDetailEditor, _super);
-            function FilteredLookupDetailEditor(container) {
-                return _super.call(this, container) || this;
-            }
-            FilteredLookupDetailEditor.prototype.getDialogType = function () { return BasicSamples.FilteredLookupOrderDetailDialog; };
-            /**
-             * This method is called to initialize an edit dialog created by
-             * grid editor when Add button or an edit link is clicked
-             * We have an opportunity here to pass CategoryID to edit dialog
-             */
-            FilteredLookupDetailEditor.prototype.initEntityDialog = function (itemType, dialog) {
-                _super.prototype.initEntityDialog.call(this, itemType, dialog);
-                // passing category ID from grid editor to detail dialog
-                dialog.categoryID = this.categoryID;
-            };
-            return FilteredLookupDetailEditor;
-        }(Store.Northwind.OrderDetailsEditor));
-        FilteredLookupDetailEditor = __decorate([
-            Serenity.Decorators.registerEditor()
-        ], FilteredLookupDetailEditor);
-        BasicSamples.FilteredLookupDetailEditor = FilteredLookupDetailEditor;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        /**
-         * Basic order dialog with a category selection
-         */
-        var FilteredLookupInDetailDialog = (function (_super) {
-            __extends(FilteredLookupInDetailDialog, _super);
-            function FilteredLookupInDetailDialog() {
-                var _this = _super.call(this) || this;
-                _this.form = new BasicSamples.FilteredLookupInDetailForm(_this.idPrefix);
-                _this.form.CategoryID.change(function (e) {
-                    _this.form.DetailList.categoryID = Q.toId(_this.form.CategoryID.value);
-                });
-                return _this;
-            }
-            FilteredLookupInDetailDialog.prototype.getFormKey = function () { return BasicSamples.FilteredLookupInDetailForm.formKey; };
-            FilteredLookupInDetailDialog.prototype.getIdProperty = function () { return Store.Northwind.OrderRow.idProperty; };
-            FilteredLookupInDetailDialog.prototype.getLocalTextPrefix = function () { return Store.Northwind.OrderRow.localTextPrefix; };
-            FilteredLookupInDetailDialog.prototype.getNameProperty = function () { return Store.Northwind.OrderRow.nameProperty; };
-            FilteredLookupInDetailDialog.prototype.getService = function () { return Store.Northwind.OrderService.baseUrl; };
-            return FilteredLookupInDetailDialog;
-        }(Serenity.EntityDialog));
-        FilteredLookupInDetailDialog = __decorate([
-            Serenity.Decorators.registerClass()
-        ], FilteredLookupInDetailDialog);
-        BasicSamples.FilteredLookupInDetailDialog = FilteredLookupInDetailDialog;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-/// <reference path="../../../Northwind/Order/OrderGrid.ts" />
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        /**
-         * Subclass of OrderGrid to override dialog type to FilteredLookupInDetailDialog
-         */
-        var FilteredLookupInDetailGrid = (function (_super) {
-            __extends(FilteredLookupInDetailGrid, _super);
-            function FilteredLookupInDetailGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            FilteredLookupInDetailGrid.prototype.getDialogType = function () { return BasicSamples.FilteredLookupInDetailDialog; };
-            return FilteredLookupInDetailGrid;
-        }(Store.Northwind.OrderGrid));
-        FilteredLookupInDetailGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], FilteredLookupInDetailGrid);
-        BasicSamples.FilteredLookupInDetailGrid = FilteredLookupInDetailGrid;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-/// <reference path="../../../Northwind/Product/ProductDialog.ts" />
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        /**
-         * This is our custom product dialog that uses a different product form
-         * (LookupFilterByMultipleForm) with our special category editor.
-         */
-        var LookupFilterByMultipleDialog = (function (_super) {
-            __extends(LookupFilterByMultipleDialog, _super);
-            function LookupFilterByMultipleDialog() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            LookupFilterByMultipleDialog.prototype.getFormKey = function () { return BasicSamples.LookupFilterByMultipleForm.formKey; };
-            return LookupFilterByMultipleDialog;
-        }(Store.Northwind.ProductDialog));
-        LookupFilterByMultipleDialog = __decorate([
-            Serenity.Decorators.registerClass()
-        ], LookupFilterByMultipleDialog);
-        BasicSamples.LookupFilterByMultipleDialog = LookupFilterByMultipleDialog;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-/// <reference path="../../../Northwind/Product/ProductGrid.ts" />
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        /**
-         * Subclass of ProductGrid to override dialog type to CloneableEntityDialog
-         */
-        var LookupFilterByMultipleGrid = (function (_super) {
-            __extends(LookupFilterByMultipleGrid, _super);
-            function LookupFilterByMultipleGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            LookupFilterByMultipleGrid.prototype.getDialogType = function () { return BasicSamples.LookupFilterByMultipleDialog; };
-            /**
-             * This method is called just before List request is sent to service.
-             * You have an opportunity here to cancel request or modify it.
-             * Here we'll add a custom criteria to list request.
-             */
-            LookupFilterByMultipleGrid.prototype.onViewSubmit = function () {
-                if (!_super.prototype.onViewSubmit.call(this)) {
-                    return false;
-                }
-                // this has no relation to our lookup editor but as we'll allow picking only 
-                // categories of Produce and Seafood in product dialog, it's better to show
-                // only products from these categories in grid too
-                var request = this.view.params;
-                request.Criteria = Serenity.Criteria.and(request.Criteria, [['CategoryName'], 'in', [['Produce', 'Seafood']]]);
-                // brackets used are important above, NOT ['CategoryName', 'in', ['Produce', 'Seafood']]
-                return true;
-            };
-            return LookupFilterByMultipleGrid;
-        }(Store.Northwind.ProductGrid));
-        LookupFilterByMultipleGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], LookupFilterByMultipleGrid);
-        BasicSamples.LookupFilterByMultipleGrid = LookupFilterByMultipleGrid;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        /**
-         * This is our category editor that will show only categories of Produce and
-         * Seafood. We are subclassing LookupEditorBase which also LookupEditor
-         * derives from.
-         *
-         * After compiling and transforming templates, this editor type will be
-         * available in server side to use in our LookupFilterByMultipleForm,
-         * which is a version of ProductForm that uses our custom editor.
-         */
-        var ProduceSeafoodCategoryEditor = (function (_super) {
-            __extends(ProduceSeafoodCategoryEditor, _super);
-            function ProduceSeafoodCategoryEditor(container, opt) {
-                return _super.call(this, container, opt) || this;
-            }
-            /**
-             * Normally LookupEditor requires a lookup key to determine which set of
-             * lookup data to show in editor. As our editor will only show category
-             * data, we lock it to category lookup key.
-             */
-            ProduceSeafoodCategoryEditor.prototype.getLookupKey = function () {
-                return Store.Northwind.CategoryRow.lookupKey;
-            };
-            /**
-             * Here we are filtering by category name but you could filter by any field.
-             * Just make sure the fields you filter on has [LookupInclude] attribute on them,
-             * otherwise their value will be null in client side as they are not sent back
-             * from server in lookup script.
-             */
-            ProduceSeafoodCategoryEditor.prototype.getItems = function (lookup) {
-                return _super.prototype.getItems.call(this, lookup).filter(function (x) {
-                    return x.CategoryName === 'Produce' || x.CategoryName === 'Seafood';
-                });
-            };
-            return ProduceSeafoodCategoryEditor;
-        }(Serenity.LookupEditorBase));
-        ProduceSeafoodCategoryEditor = __decorate([
-            Serenity.Decorators.registerEditor()
-        ], ProduceSeafoodCategoryEditor);
-        BasicSamples.ProduceSeafoodCategoryEditor = ProduceSeafoodCategoryEditor;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var HardcodedValuesDialog = (function (_super) {
-            __extends(HardcodedValuesDialog, _super);
-            function HardcodedValuesDialog() {
-                var _this = _super.call(this) || this;
-                _this.form = new BasicSamples.HardcodedValuesForm(_this.idPrefix);
-                _this.dialogTitle = "Please select some value";
-                _this.form.SomeValue.changeSelect2(function (e) {
-                    Q.notifySuccess("You selected item with key: " + _this.form.SomeValue.value);
-                });
-                return _this;
-            }
-            HardcodedValuesDialog.prototype.getFormKey = function () { return BasicSamples.HardcodedValuesForm.formKey; };
-            return HardcodedValuesDialog;
-        }(Serenity.PropertyDialog));
-        HardcodedValuesDialog = __decorate([
-            Serenity.Decorators.registerClass()
-        ], HardcodedValuesDialog);
-        BasicSamples.HardcodedValuesDialog = HardcodedValuesDialog;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        /**
-         * Our select editor with hardcoded values.
-         *
-         * When you define a new editor type, make sure you build
-         * and transform templates for it to be available
-         * in server side forms, e.g. [HardCodedValuesEditor]
-         */
-        var HardcodedValuesEditor = (function (_super) {
-            __extends(HardcodedValuesEditor, _super);
-            function HardcodedValuesEditor(container) {
-                var _this = _super.call(this, container, null) || this;
-                // add option accepts a key (id) value and display text value
-                _this.addOption("key1", "Text 1");
-                _this.addOption("key2", "Text 2");
-                // you may also use addItem which accepts a Select2Item parameter
-                _this.addItem({
-                    id: "key3",
-                    text: "Text 3"
-                });
-                // don't let selecting this one (disabled)
-                _this.addItem({
-                    id: "key4",
-                    text: "Text 4",
-                    disabled: true
-                });
-                return _this;
-            }
-            return HardcodedValuesEditor;
-        }(Serenity.Select2Editor));
-        HardcodedValuesEditor = __decorate([
-            Serenity.Decorators.registerEditor()
-        ], HardcodedValuesEditor);
-        BasicSamples.HardcodedValuesEditor = HardcodedValuesEditor;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    /**
-     * This is an editor widget but it only displays a text, not edits it.
-     *
-     */
-    var StaticTextBlock = (function (_super) {
-        __extends(StaticTextBlock, _super);
-        function StaticTextBlock(container, options) {
-            var _this = _super.call(this, container, options) || this;
-            // hide the caption label for this editor if in a form. ugly hack
-            if (_this.options.hideLabel)
-                _this.element.closest('.field').find('.caption').hide();
-            _this.updateElementContent();
             return _this;
         }
-        StaticTextBlock.prototype.updateElementContent = function () {
-            var text = Q.coalesce(this.options.text, this.value);
-            // if isLocalText is set, text is actually a local text key
-            if (this.options.isLocalText)
-                text = Q.text(text);
-            // don't html encode if isHtml option is true
-            if (this.options.isHtml)
-                this.element.html(text);
-            else
-                this.element.text(text);
+        Object.defineProperty(BasicProgressDialog.prototype, "max", {
+            get: function () {
+                return this.byId('ProgressBar').progressbar().progressbar('option', 'max');
+            },
+            set: function (value) {
+                this.byId('ProgressBar').progressbar().progressbar('option', 'max', value);
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(BasicProgressDialog.prototype, "value", {
+            get: function () {
+                return this.byId('ProgressBar').progressbar('value');
+            },
+            set: function (value) {
+                this.byId('ProgressBar').progressbar().progressbar('value', value);
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(BasicProgressDialog.prototype, "title", {
+            get: function () {
+                return this.element.dialog().dialog('option', 'title');
+            },
+            set: function (value) {
+                this.element.dialog().dialog('option', 'title', value);
+            },
+            enumerable: true,
+            configurable: true
+        });
+        BasicProgressDialog.prototype.getDialogOptions = function () {
+            var _this = this;
+            var opt = _super.prototype.getDialogOptions.call(this);
+            opt.title = Q.text('Site.BasicProgressDialog.PleaseWait');
+            opt.width = 600;
+            opt.buttons = [{
+                    text: Q.text('Dialogs.CancelButton'),
+                    click: function () {
+                        _this.cancelled = true;
+                        _this.element.closest('.ui-dialog')
+                            .find('.ui-dialog-buttonpane .ui-button')
+                            .attr('disabled', 'disabled')
+                            .css('opacity', '0.5');
+                        _this.element.dialog('option', 'title', Q.trimToNull(_this.cancelTitle) ||
+                            Q.text('Site.BasicProgressDialog.CancelTitle'));
+                    }
+                }];
+            return opt;
         };
-        /**
-         * By implementing ISetEditValue interface, we allow this editor to display its field value.
-         * But only do this when our text content is not explicitly set in options
-         */
-        StaticTextBlock.prototype.setEditValue = function (source, property) {
-            if (this.options.text == null) {
-                this.value = Q.coalesce(this.options.text, source[property.name]);
-                this.updateElementContent();
-            }
+        BasicProgressDialog.prototype.initDialog = function () {
+            _super.prototype.initDialog.call(this);
+            this.element.closest('.ui-dialog').find('.ui-dialog-titlebar-close').hide();
         };
-        return StaticTextBlock;
-    }(Serenity.Widget));
-    StaticTextBlock = __decorate([
-        Serenity.Decorators.element("<div/>"),
-        Serenity.Decorators.registerEditor([Serenity.ISetEditValue])
-    ], StaticTextBlock);
-    Store.StaticTextBlock = StaticTextBlock;
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var StaticTextBlockDialog = (function (_super) {
-            __extends(StaticTextBlockDialog, _super);
-            function StaticTextBlockDialog() {
-                var _this = _super.call(this) || this;
-                _this.form = new BasicSamples.StaticTextBlockForm(_this.idPrefix);
-                _this.dialogTitle = "A form with static text blocks";
-                return _this;
-            }
-            StaticTextBlockDialog.prototype.getFormKey = function () { return BasicSamples.StaticTextBlockForm.formKey; };
-            /**
-             * Here we override loadInitialEntity method to set value for "DisplayFieldValue" field.
-             * If this was an EntityDialog, your field value would be originating from server side entity.
-             */
-            StaticTextBlockDialog.prototype.loadInitialEntity = function () {
-                this.propertyGrid.load({
-                    DisplayFieldValue: 'This content comes from <b>the value</b> of <em>DisplayFieldValue</em> field.'
-                });
-            };
-            StaticTextBlockDialog.prototype.getDialogOptions = function () {
-                var opt = _super.prototype.getDialogOptions.call(this);
-                opt.width = 650;
-                return opt;
-            };
-            return StaticTextBlockDialog;
-        }(Serenity.PropertyDialog));
-        StaticTextBlockDialog = __decorate([
-            Serenity.Decorators.registerClass()
-        ], StaticTextBlockDialog);
-        BasicSamples.StaticTextBlockDialog = StaticTextBlockDialog;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
+        BasicProgressDialog.prototype.getTemplate = function () {
+            return ("<div class='s-DialogContent s-BasicProgressDialogContent'>" +
+                "<div id='~_StatusText' class='status-text' ></div>" +
+                "<div id='~_ProgressBar' class='progress-bar'>" +
+                "<div id='~_ProgressLabel' class='progress-label' ></div>" +
+                "</div>" +
+                "</div>");
+        };
+        return BasicProgressDialog;
+    }(Serenity.TemplatedDialog));
+    Store.BasicProgressDialog = BasicProgressDialog;
 })(Store || (Store = {}));
 var Store;
 (function (Store) {
     var Common;
     (function (Common) {
-        var BulkServiceAction = (function () {
+        var BulkServiceAction = /** @class */ (function () {
             function BulkServiceAction() {
             }
             BulkServiceAction.prototype.createProgressDialog = function () {
@@ -5806,1461 +3609,22 @@ var Store;
         Common.BulkServiceAction = BulkServiceAction;
     })(Common = Store.Common || (Store.Common = {}));
 })(Store || (Store = {}));
-/// <reference path="../../../Common/Helpers/BulkServiceAction.ts" />
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var OrderBulkAction = (function (_super) {
-            __extends(OrderBulkAction, _super);
-            function OrderBulkAction() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            /**
-             * This controls how many service requests will be used in parallel.
-             * Determine this number based on how many requests your server
-             * might be able to handle, and amount of wait on external resources.
-             */
-            OrderBulkAction.prototype.getParallelRequests = function () {
-                return 10;
-            };
-            /**
-             * These number of records IDs will be sent to your service in one
-             * service call. If your service is designed to handle one record only,
-             * set it to 1. But note that, if you have 5000 records, this will
-             * result in 5000 service calls / requests.
-             */
-            OrderBulkAction.prototype.getBatchSize = function () {
-                return 5;
-            };
-            /**
-             * This is where you should call your service.
-             * Batch parameter contains the selected order IDs
-             * that should be processed in this service call.
-             */
-            OrderBulkAction.prototype.executeForBatch = function (batch) {
-                var _this = this;
-                BasicSamples.BasicSamplesService.OrderBulkAction({
-                    OrderIDs: batch.map(function (x) { return Q.parseInteger(x); })
-                }, function (response) { return _this.set_successCount(_this.get_successCount() + batch.length); }, {
-                    blockUI: false,
-                    onError: function (response) { return _this.set_errorCount(_this.get_errorCount() + batch.length); },
-                    onCleanup: function () { return _this.serviceCallCleanup(); }
-                });
-            };
-            return OrderBulkAction;
-        }(Store.Common.BulkServiceAction));
-        BasicSamples.OrderBulkAction = OrderBulkAction;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-/// <reference path="../../../Northwind/Order/OrderGrid.ts" />
-/// <reference path="OrderBulkAction.ts" />
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var CancellableBulkActionGrid = (function (_super) {
-            __extends(CancellableBulkActionGrid, _super);
-            function CancellableBulkActionGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            CancellableBulkActionGrid.prototype.createToolbarExtensions = function () {
-                _super.prototype.createToolbarExtensions.call(this);
-                this.rowSelection = new Serenity.GridRowSelectionMixin(this);
-            };
-            CancellableBulkActionGrid.prototype.getButtons = function () {
-                var _this = this;
-                return [{
-                        title: 'Perform Bulk Action on Selected Orders',
-                        cssClass: 'send-button',
-                        onClick: function () {
-                            if (!_this.onViewSubmit()) {
-                                return;
-                            }
-                            var action = new BasicSamples.OrderBulkAction();
-                            action.done = function () { return _this.rowSelection.resetCheckedAndRefresh(); };
-                            action.execute(_this.rowSelection.getSelectedKeys());
-                        }
-                    }];
-            };
-            CancellableBulkActionGrid.prototype.getColumns = function () {
-                var _this = this;
-                var columns = _super.prototype.getColumns.call(this);
-                columns.splice(0, 0, Serenity.GridRowSelectionMixin.createSelectColumn(function () { return _this.rowSelection; }));
-                return columns;
-            };
-            CancellableBulkActionGrid.prototype.getViewOptions = function () {
-                var opt = _super.prototype.getViewOptions.call(this);
-                opt.rowsPerPage = 2500;
-                return opt;
-            };
-            return CancellableBulkActionGrid;
-        }(Store.Northwind.OrderGrid));
-        CancellableBulkActionGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], CancellableBulkActionGrid);
-        BasicSamples.CancellableBulkActionGrid = CancellableBulkActionGrid;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var ConditionalFormattingGrid = (function (_super) {
-            __extends(ConditionalFormattingGrid, _super);
-            function ConditionalFormattingGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            ConditionalFormattingGrid.prototype.getColumnsKey = function () { return "Northwind.Product"; };
-            ConditionalFormattingGrid.prototype.getDialogType = function () { return Store.Northwind.ProductDialog; };
-            ConditionalFormattingGrid.prototype.getIdProperty = function () { return Store.Northwind.ProductRow.idProperty; };
-            ConditionalFormattingGrid.prototype.getLocalTextPrefix = function () { return Store.Northwind.ProductRow.localTextPrefix; };
-            ConditionalFormattingGrid.prototype.getService = function () { return Store.Northwind.ProductService.baseUrl; };
-            /**
-             * We override getColumns() to be able to add a custom CSS class to UnitPrice
-             * We could also add this class in ProductColumns.cs but didn't want to modify
-             * it solely for this sample.
-             */
-            ConditionalFormattingGrid.prototype.getColumns = function () {
-                var columns = _super.prototype.getColumns.call(this);
-                var fld = Store.Northwind.ProductRow.Fields;
-                // adding a specific css class to UnitPrice column, 
-                // to be able to format cell with a different background
-                Q.first(columns, function (x) { return x.field == fld.UnitPrice; }).cssClass += " col-unit-price";
-                return columns;
-            };
-            /**
-             * This method is called for all rows
-             * @param item Data item for current row
-             * @param index Index of the row in grid
-             */
-            ConditionalFormattingGrid.prototype.getItemCssClass = function (item, index) {
-                var klass = "";
-                if (item.Discontinued == true)
-                    klass += " discontinued";
-                else if (item.UnitsInStock <= 0)
-                    klass += " out-of-stock";
-                else if (item.UnitsInStock < 20)
-                    klass += " critical-stock";
-                else if (item.UnitsInStock > 50)
-                    klass += " needs-reorder";
-                if (item.UnitPrice >= 50)
-                    klass += " high-price";
-                else if (item.UnitPrice >= 20)
-                    klass += " medium-price";
-                else
-                    klass += " low-price";
-                return Q.trimToNull(klass);
-            };
-            return ConditionalFormattingGrid;
-        }(Serenity.EntityGrid));
-        ConditionalFormattingGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], ConditionalFormattingGrid);
-        BasicSamples.ConditionalFormattingGrid = ConditionalFormattingGrid;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-/// <reference path="../../../Northwind/Order/OrderGrid.ts" />
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var CustomLinksInGrid = (function (_super) {
-            __extends(CustomLinksInGrid, _super);
-            function CustomLinksInGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            /**
-             * We override getColumns() to change format functions for some columns.
-             * You could also write them as formatter classes, and use them at server side
-             */
-            CustomLinksInGrid.prototype.getColumns = function () {
-                var columns = _super.prototype.getColumns.call(this);
-                var fld = Store.Northwind.OrderRow.Fields;
-                Q.first(columns, function (x) { return x.field == fld.CustomerCompanyName; }).format =
-                    function (ctx) { return "<a href=\"javascript:;\" class=\"customer-link\">" + Q.htmlEncode(ctx.value) + "</a>"; };
-                Q.first(columns, function (x) { return x.field == fld.OrderDate; }).format =
-                    function (ctx) { return "<a href=\"javascript:;\" class=\"date-link\">" + Q.formatDate(ctx.value) + "</a>"; };
-                Q.first(columns, function (x) { return x.field == fld.EmployeeFullName; }).format =
-                    function (ctx) { return "<a href=\"javascript:;\" class=\"employee-link\">" + Q.htmlEncode(ctx.value) + "</a>"; };
-                Q.first(columns, function (x) { return x.field == fld.ShipCountry; }).format =
-                    function (ctx) { return "<a href=\"javascript:;\" class=\"ship-country-link\">" + Q.htmlEncode(ctx.value) + "</a>"; };
-                return columns;
-            };
-            CustomLinksInGrid.prototype.onClick = function (e, row, cell) {
-                // let base grid handle clicks for its edit links
-                _super.prototype.onClick.call(this, e, row, cell);
-                // if base grid already handled, we shouldn"t handle it again
-                if (e.isDefaultPrevented()) {
-                    return;
-                }
-                // get reference to current item
-                var item = this.itemAt(row);
-                // get reference to clicked element
-                var target = $(e.target);
-                if (target.hasClass("customer-link")) {
-                    e.preventDefault();
-                    var message = Q.format("<p>You have clicked an order from customer: {0}.</p>" +
-                        "<p>If you click Yes, i'll open Customer dialog.</p>" +
-                        "<p>If you click No, i'll open Order dialog.</p>", Q.htmlEncode(item.CustomerCompanyName));
-                    Q.confirm(message, function () {
-                        // CustomerDialog doesn't use CustomerID but ID (identity)
-                        // so need to find customer to get its actual ID
-                        var customer = Q.first(Store.Northwind.CustomerRow.getLookup().items, function (x) { return x.CustomerID == item.CustomerID; });
-                        new Store.Northwind.CustomerDialog().loadByIdAndOpenDialog(customer.ID);
-                    }, {
-                        htmlEncode: false,
-                        onNo: function () {
-                            new Store.Northwind.OrderDialog().loadByIdAndOpenDialog(item.OrderID);
-                        }
-                    });
-                }
-                else if (target.hasClass("date-link")) {
-                    e.preventDefault();
-                    var ordersInSameDate = Q.count(this.view.getItems(), function (x) { return x.OrderDate == item.OrderDate; });
-                    Q.notifyInfo("You clicked an order from date " +
-                        Q.formatDate(item.OrderDate) + ". There are " +
-                        ordersInSameDate + " orders from the same date that is loaded in grid at the moment");
-                }
-                else if (target.hasClass("employee-link")) {
-                    e.preventDefault();
-                    Q.notifySuccess("You clicked an employee name, " +
-                        "so i've opened a new Order Dialog from same customer " +
-                        "with that employee prepopulated!");
-                    new Store.Northwind.OrderDialog().loadEntityAndOpenDialog({
-                        CustomerID: item.CustomerID,
-                        EmployeeID: item.EmployeeID
-                    });
-                }
-                else if (target.hasClass("ship-country-link")) {
-                    e.preventDefault();
-                    Q.notifySuccess("Let's filter the grid to orders from " + item.ShipCountry);
-                    var countryFilter = this.findQuickFilter(Serenity.LookupEditor, Store.Northwind.OrderRow.Fields.ShipCountry);
-                    countryFilter.value = item.ShipCountry;
-                    this.refresh();
-                }
-            };
-            /**
-             * This method is called for columns with [EditLink] attribute,
-             * but only for edit links of this grid's own item type.
-             * It is also called by Add Product button with a NULL entityOrId
-             * parameter so we should check that entityOrId is a string
-             * to be sure it is originating from a link.
-             *
-             * As we changed format for other columns, this will only be called
-             * for links in remaining OrderID column
-             */
-            CustomLinksInGrid.prototype.editItem = function (entityOrId) {
-                // check that this is an edit link click, not add button, ID is always a string
-                if (typeof entityOrId == "string") {
-                    // convert ID to an integer, and find order with that ID
-                    var item = this.view.getItemById(Q.toId(entityOrId));
-                    // date is a ISO string, so need to parse it first
-                    var date = Q.formatDate(item.OrderDate);
-                    // ask for confirmation
-                    Q.confirm(Q.format("You clicked edit link for order with ID: {0} and Date: {1}. Should i open that order?", item.OrderID, date), function () {
-                        new Store.Northwind.OrderDialog().loadByIdAndOpenDialog(item.OrderID);
-                    });
-                }
-                else {
-                    _super.prototype.editItem.call(this, entityOrId);
-                }
-            };
-            return CustomLinksInGrid;
-        }(Store.Northwind.OrderGrid));
-        CustomLinksInGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], CustomLinksInGrid);
-        BasicSamples.CustomLinksInGrid = CustomLinksInGrid;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var DragDropSampleDialog = (function (_super) {
-            __extends(DragDropSampleDialog, _super);
-            function DragDropSampleDialog() {
-                var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new BasicSamples.DragDropSampleForm(_this.idPrefix);
-                return _this;
-            }
-            DragDropSampleDialog.prototype.getFormKey = function () { return BasicSamples.DragDropSampleForm.formKey; };
-            DragDropSampleDialog.prototype.getIdProperty = function () { return BasicSamples.DragDropSampleRow.idProperty; };
-            DragDropSampleDialog.prototype.getLocalTextPrefix = function () { return BasicSamples.DragDropSampleRow.localTextPrefix; };
-            DragDropSampleDialog.prototype.getNameProperty = function () { return BasicSamples.DragDropSampleRow.nameProperty; };
-            DragDropSampleDialog.prototype.getService = function () { return BasicSamples.DragDropSampleService.baseUrl; };
-            return DragDropSampleDialog;
-        }(Serenity.EntityDialog));
-        DragDropSampleDialog = __decorate([
-            Serenity.Decorators.registerClass(),
-            Serenity.Decorators.responsive()
-        ], DragDropSampleDialog);
-        BasicSamples.DragDropSampleDialog = DragDropSampleDialog;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var DragDropSampleGrid = (function (_super) {
-            __extends(DragDropSampleGrid, _super);
-            function DragDropSampleGrid(container) {
-                var _this = _super.call(this, container) || this;
-                new Serenity.TreeGridMixin({
-                    grid: _this,
-                    toggleField: BasicSamples.DragDropSampleRow.Fields.Title,
-                    getParentId: function (x) { return x.ParentId; },
-                    initialCollapse: function () { return false; },
-                });
-                // save prior drag target to restore its color during drag
-                var priorDragTarget;
-                // prevent the grid from cancelling drag'n'drop by default
-                _this.slickGrid.onDragInit.subscribe(function (e, dd) {
-                    e.stopImmediatePropagation();
-                });
-                // this method is called when an item is about to be dragged
-                _this.slickGrid.onDragStart.subscribe(function (e, dd) {
-                    // only allow edit links to be dragged
-                    if (!$(e.target).hasClass('s-EditLink'))
-                        return;
-                    // make sure there is a cell in source location
-                    var cell = _this.slickGrid.getCellFromEvent(e);
-                    if (!cell) {
-                        return;
-                    }
-                    // notify that we'll handle drag
-                    e.stopImmediatePropagation();
-                    // save details about dragged item
-                    dd.row = cell.row;
-                    var item = _this.itemAt(cell.row);
-                    dd.item = item;
-                    // a unique name for our operation
-                    dd.mode = "move";
-                    // create an absolute position helper shown during dragging
-                    var helper = $("<span></span>")
-                        .addClass('drag-helper')
-                        .text("Moving " + item.Title)
-                        .appendTo(document.body);
-                    dd.helper = helper;
-                });
-                // this method is periodically called during drag
-                _this.slickGrid.onDrag.subscribe(function (e, dd) {
-                    // only handle our operation
-                    if (dd.mode != "move") {
-                        return;
-                    }
-                    // if we changed color of some target before, reset it
-                    if (priorDragTarget && priorDragTarget != e.target) {
-                        $(priorDragTarget).css('background-color', '');
-                        priorDragTarget = null;
-                    }
-                    // find target, the source will drag into
-                    var cell = _this.slickGrid.getCellFromEvent(e);
-                    var target = !cell ? null : _this.itemAt(cell.row);
-                    // accept only edit links and valid items as drag target
-                    var reject = !$(e.target).hasClass('s-EditLink') || !_this.canMoveUnder(dd.item, target);
-                    if (reject) {
-                        dd.helper.text("Can't move " + dd.item.Title + " here");
-                    }
-                    else {
-                        dd.helper.text("Move " + dd.item.Title + " under " + $(e.target).text());
-                        // change color of current drag target
-                        $(e.target).css('background-color', '#ddeeee');
-                        priorDragTarget = e.target;
-                    }
-                    // toggle class of helper to show relevant accept / reject icon
-                    dd.helper.toggleClass('reject', reject);
-                    // position helper next to current mouse position
-                    dd.helper.css({ top: e.pageY + 5, left: e.pageX + 4 });
-                });
-                // this is called when drag is completed
-                _this.slickGrid.onDragEnd.subscribe(function (e, dd) {
-                    if (dd.mode != "move") {
-                        return;
-                    }
-                    // prevent browser from changing url
-                    e.preventDefault();
-                    // clear indicator color and drag helper
-                    priorDragTarget && $(priorDragTarget).css('background-color', '');
-                    dd.helper.remove();
-                    // determine target row
-                    var cell = _this.slickGrid.getCellFromEvent(e);
-                    var item = dd.item;
-                    var target = !cell ? null : _this.itemAt(cell.row);
-                    // check again that this is valid drag target
-                    if ($(e.target).hasClass('s-EditLink') && _this.canMoveUnder(item, target)) {
-                        // this will move our primary drag source under new parent
-                        var moveItem = function (onSuccess) {
-                            BasicSamples.DragDropSampleService.Update({
-                                EntityId: item.Id,
-                                Entity: {
-                                    ParentId: target.Id
-                                }
-                            }, onSuccess);
-                        };
-                        // if drag source has some children, need some confirmation
-                        var children = _this.getChildren(dd.item);
-                        if (children.length > 0) {
-                            Q.confirm('Move its children alongside the item?', function () {
-                                // if responded yes, moving item under new parent should be enough
-                                moveItem(function () { return _this.refresh(); });
-                            }, {
-                                onNo: function () {
-                                    // if responded no, children should move under old parent of item
-                                    var oldParentId = item.ParentId == null ? null : item.ParentId;
-                                    var moveNextChild = function (onSuccess) {
-                                        var _this = this;
-                                        if (children.length) {
-                                            var x = children.shift();
-                                            BasicSamples.DragDropSampleService.Update({
-                                                EntityId: x.Id,
-                                                Entity: {
-                                                    ParentId: oldParentId || null
-                                                }
-                                            }, function () { return moveNextChild(onSuccess); }, {
-                                                onError: function () { return _this.refresh(); }
-                                            });
-                                        }
-                                        else
-                                            onSuccess();
-                                    };
-                                    // first move item itself under new parent, 
-                                    // then move its children under old parent one by one
-                                    moveItem(function () { return moveNextChild(function () { return _this.refresh(); }); });
-                                }
-                            });
-                        }
-                        else {
-                            // item has no children, just move it under new parent
-                            moveItem(function () { return _this.refresh(); });
-                        }
-                    }
-                    return false;
-                });
-                return _this;
-            }
-            DragDropSampleGrid.prototype.getColumnsKey = function () { return 'BasicSamples.DragDropSample'; };
-            DragDropSampleGrid.prototype.getDialogType = function () { return BasicSamples.DragDropSampleDialog; };
-            DragDropSampleGrid.prototype.getIdProperty = function () { return BasicSamples.DragDropSampleRow.idProperty; };
-            DragDropSampleGrid.prototype.getLocalTextPrefix = function () { return BasicSamples.DragDropSampleRow.localTextPrefix; };
-            DragDropSampleGrid.prototype.getService = function () { return BasicSamples.DragDropSampleService.baseUrl; };
-            /**
-             * This method will determine if item can be moved under a given target
-             * An item can't be moved under itself, under one of its children
-             */
-            DragDropSampleGrid.prototype.canMoveUnder = function (item, target) {
-                if (!item || !target || item.Id == target.Id || item.ParentId == target.Id)
-                    return false;
-                if (Q.any(this.getParents(target), function (x) { return x.Id == item.Id; }))
-                    return false;
-                return true;
-            };
-            /**
-             * Gets children list of an item
-             */
-            DragDropSampleGrid.prototype.getChildren = function (item) {
-                return this.getItems().filter(function (x) { return x.ParentId == item.Id; });
-            };
-            /**
-             * Gets all parents of an item
-             */
-            DragDropSampleGrid.prototype.getParents = function (item) {
-                // use this to prevent infinite recursion
-                var visited = {};
-                var result = [];
-                // while item has a parent and not visited yet
-                while (item.ParentId && !visited[item.ParentId]) {
-                    // find parent by its ID
-                    item = this.view.getItemById(item.ParentId);
-                    if (!item)
-                        break;
-                    result.push(item);
-                    visited[item.Id] = true;
-                }
-                return result;
-            };
-            DragDropSampleGrid.prototype.getButtons = function () {
-                return [];
-            };
-            DragDropSampleGrid.prototype.usePager = function () {
-                return false;
-            };
-            return DragDropSampleGrid;
-        }(Serenity.EntityGrid));
-        DragDropSampleGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], DragDropSampleGrid);
-        BasicSamples.DragDropSampleGrid = DragDropSampleGrid;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var SelectableEntityGrid = (function (_super) {
-        __extends(SelectableEntityGrid, _super);
-        function SelectableEntityGrid() {
-            return _super !== null && _super.apply(this, arguments) || this;
-        }
-        SelectableEntityGrid.prototype.getSlickOptions = function () {
-            var opt = _super.prototype.getSlickOptions.call(this);
-            opt.enableTextSelectionOnCells = true;
-            opt.selectedCellCssClass = "slick-row-selected";
-            opt.enableCellNavigation = true;
-            return opt;
-        };
-        SelectableEntityGrid.prototype.createSlickGrid = function () {
-            var grid = _super.prototype.createSlickGrid.call(this);
-            grid.setSelectionModel(new Slick.RowSelectionModel());
-            return grid;
-        };
-        return SelectableEntityGrid;
-    }(Serenity.EntityGrid));
-    SelectableEntityGrid = __decorate([
-        Serenity.Decorators.registerClass()
-    ], SelectableEntityGrid);
-    Store.SelectableEntityGrid = SelectableEntityGrid;
-})(Store || (Store = {}));
-/// <reference path="SelectableEntityGrid.ts" />
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var RowSelectionGrid = (function (_super) {
-            __extends(RowSelectionGrid, _super);
-            function RowSelectionGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            RowSelectionGrid.prototype.getColumnsKey = function () { return "Northwind.Supplier"; };
-            RowSelectionGrid.prototype.getDialogType = function () { return Store.Northwind.SupplierDialog; };
-            RowSelectionGrid.prototype.getIdProperty = function () { return Store.Northwind.SupplierRow.idProperty; };
-            RowSelectionGrid.prototype.getLocalTextPrefix = function () { return Store.Northwind.SupplierRow.localTextPrefix; };
-            RowSelectionGrid.prototype.getService = function () { return Store.Northwind.SupplierService.baseUrl; };
-            return RowSelectionGrid;
-        }(Store.SelectableEntityGrid));
-        RowSelectionGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], RowSelectionGrid);
-        BasicSamples.RowSelectionGrid = RowSelectionGrid;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-/// <reference path="../../../Northwind/Product/ProductGrid.ts" />
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var GridFilteredByCriteria = (function (_super) {
-            __extends(GridFilteredByCriteria, _super);
-            function GridFilteredByCriteria(container) {
-                return _super.call(this, container) || this;
-            }
-            GridFilteredByCriteria.prototype.onViewSubmit = function () {
-                // only continue if base class returns true (didn't cancel request)
-                if (!_super.prototype.onViewSubmit.call(this)) {
-                    return false;
-                }
-                // view object is the data source for grid (SlickRemoteView)
-                // this is an EntityGrid so its Params object is a ListRequest
-                var request = this.view.params;
-                // list request has a Criteria parameter
-                // we AND criteria here to existing one because 
-                // otherwise we might clear filter set by 
-                // an edit filter dialog if any.
-                request.Criteria = Serenity.Criteria.and(request.Criteria, [['UnitsInStock'], '>', 10], [['CategoryName'], '!=', 'Condiments'], [['Discontinued'], '=', 0]);
-                // TypeScript doesn't support operator overloading
-                // so we had to use array syntax above to build criteria.
-                // Make sure you write
-                // [['Field'], '>', 10] (which means field A is greater than 10)
-                // not 
-                // ['A', '>', 10] (which means string 'A' is greater than 10
-                return true;
-            };
-            return GridFilteredByCriteria;
-        }(Store.Northwind.ProductGrid));
-        GridFilteredByCriteria = __decorate([
-            Serenity.Decorators.registerClass()
-        ], GridFilteredByCriteria);
-        BasicSamples.GridFilteredByCriteria = GridFilteredByCriteria;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-/// <reference path="../../../Northwind/Product/ProductGrid.ts" />
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var GroupingAndSummariesInGrid = (function (_super) {
-            __extends(GroupingAndSummariesInGrid, _super);
-            function GroupingAndSummariesInGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            GroupingAndSummariesInGrid.prototype.createSlickGrid = function () {
-                var grid = _super.prototype.createSlickGrid.call(this);
-                // need to register this plugin for grouping or you'll have errors
-                grid.registerPlugin(new Slick.Data.GroupItemMetadataProvider());
-                this.view.setSummaryOptions({
-                    aggregators: [
-                        new Slick.Aggregators.Avg('UnitPrice'),
-                        new Slick.Aggregators.Sum('UnitsInStock'),
-                        new Slick.Aggregators.Max('UnitsOnOrder'),
-                        new Slick.Aggregators.Avg('ReorderLevel')
-                    ]
-                });
-                return grid;
-            };
-            GroupingAndSummariesInGrid.prototype.getColumns = function () {
-                var columns = _super.prototype.getColumns.call(this);
-                Q.first(columns, function (x) { return x.field === 'UnitsOnOrder'; })
-                    .groupTotalsFormatter = function (totals, col) {
-                    return (totals.max ? ('max: ' + Q.coalesce(totals.max[col.field], '')) : '');
-                };
-                Q.first(columns, function (x) { return x.field === 'ReorderLevel'; })
-                    .groupTotalsFormatter = function (totals, col) {
-                    return (totals.avg ? ('avg: ' + Q.coalesce(Q.formatNumber(totals.avg[col.field], '0.'), '')) : '');
-                };
-                return columns;
-            };
-            GroupingAndSummariesInGrid.prototype.getSlickOptions = function () {
-                var opt = _super.prototype.getSlickOptions.call(this);
-                opt.showFooterRow = true;
-                return opt;
-            };
-            GroupingAndSummariesInGrid.prototype.usePager = function () {
-                return false;
-            };
-            GroupingAndSummariesInGrid.prototype.getButtons = function () {
-                var _this = this;
-                return [{
-                        title: 'Group By Category',
-                        cssClass: 'expand-all-button',
-                        onClick: function () { return _this.view.setGrouping([{
-                                getter: 'CategoryName'
-                            }]); }
-                    },
-                    {
-                        title: 'Group By Category and Supplier',
-                        cssClass: 'expand-all-button',
-                        onClick: function () { return _this.view.setGrouping([{
-                                formatter: function (x) { return 'Category: ' + x.value + ' (' + x.count + ' items)'; },
-                                getter: 'CategoryName'
-                            }, {
-                                formatter: function (x) { return 'Supplier: ' + x.value + ' (' + x.count + ' items)'; },
-                                getter: 'SupplierCompanyName'
-                            }]); }
-                    }, {
-                        title: 'No Grouping',
-                        cssClass: 'collapse-all-button',
-                        onClick: function () { return _this.view.setGrouping([]); }
-                    }];
-            };
-            return GroupingAndSummariesInGrid;
-        }(Store.Northwind.ProductGrid));
-        GroupingAndSummariesInGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], GroupingAndSummariesInGrid);
-        BasicSamples.GroupingAndSummariesInGrid = GroupingAndSummariesInGrid;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-/// <reference path="../../../Northwind/Order/OrderGrid.ts" />
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var InitialValuesForQuickFilters = (function (_super) {
-            __extends(InitialValuesForQuickFilters, _super);
-            function InitialValuesForQuickFilters(container) {
-                return _super.call(this, container) || this;
-            }
-            /**
-             * This method is called to get list of quick filters to be created for this grid.
-             * By default, it returns quick filter objects corresponding to properties that
-             * have a [QuickFilter] attribute at server side OrderColumns.cs
-             */
-            InitialValuesForQuickFilters.prototype.getQuickFilters = function () {
-                // get quick filter list from base class
-                var filters = _super.prototype.getQuickFilters.call(this);
-                // get a reference to order row field names
-                var fld = Store.Northwind.OrderRow.Fields;
-                // quick filter init method is a good place to set initial
-                // value for a quick filter editor, just after it is created
-                Q.first(filters, function (x) { return x.field == fld.OrderDate; }).init = function (w) {
-                    // w is a reference to the editor for this quick filter widget
-                    // here we cast it to DateEditor, and set its value as date.
-                    // note that in Javascript, months are 0 based, so date below
-                    // is actually 2016-05-01
-                    w.valueAsDate = new Date(2016, 4, 1);
-                    // setting start date was simple. but this quick filter is actually
-                    // a combination of two date editors. to get reference to second one,
-                    // need to find its next sibling element by its class
-                    var endDate = w.element.nextAll(".s-DateEditor").getWidget(Serenity.DateEditor);
-                    endDate.valueAsDate = new Date(2016, 6, 1);
-                };
-                Q.first(filters, function (x) { return x.field == fld.ShippingState; }).init = function (w) {
-                    // enum editor has a string value, so need to call toString()
-                    w.value = Store.Northwind.OrderShippingState.NotShipped.toString();
-                };
-                return filters;
-            };
-            /**
-             * This method is another possible place to modify quick filter widgets.
-             * It is where the quick filter widgets are actually created.
-             *
-             * By default, it calls getQuickFilters() then renders UI for these
-             * quick filters.
-             *
-             * We could use getQuickFilters() method for ShipVia too,
-             * but this is for demonstration purposes
-             */
-            InitialValuesForQuickFilters.prototype.createQuickFilters = function () {
-                // let base class to create quick filters first
-                _super.prototype.createQuickFilters.call(this);
-                // get a reference to order row field names
-                var fld = Store.Northwind.OrderRow.Fields;
-                // find a quick filter widget by its field name
-                this.findQuickFilter(Serenity.LookupEditor, fld.ShipVia).values = ["1", "2"];
-            };
-            return InitialValuesForQuickFilters;
-        }(Store.Northwind.OrderGrid));
-        InitialValuesForQuickFilters = __decorate([
-            Serenity.Decorators.registerClass()
-        ], InitialValuesForQuickFilters);
-        BasicSamples.InitialValuesForQuickFilters = InitialValuesForQuickFilters;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-/// <reference path="../../../Northwind/Customer/CustomerGrid.ts" />
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var InlineActionGrid = (function (_super) {
-            __extends(InlineActionGrid, _super);
-            function InlineActionGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            InlineActionGrid.prototype.getColumns = function () {
-                var columns = _super.prototype.getColumns.call(this);
-                columns.unshift({
-                    field: 'Delete Row',
-                    name: '',
-                    format: function (ctx) { return '<a class="inline-action delete-row" title="delete">' +
-                        '<i class="fa fa-trash-o text-red"></i></a>'; },
-                    width: 24,
-                    minWidth: 24,
-                    maxWidth: 24
-                });
-                columns.splice(1, 0, {
-                    field: 'View Details',
-                    name: '',
-                    format: function (ctx) { return '<a class="inline-action view-details" title="view details"></a>'; },
-                    width: 24,
-                    minWidth: 24,
-                    maxWidth: 24
-                });
-                columns.splice(2, 0, {
-                    field: 'New Order',
-                    name: '',
-                    format: function (ctx) { return '<a class="inline-action new-order" title="new order"></a>'; },
-                    width: 24,
-                    minWidth: 24,
-                    maxWidth: 24
-                });
-                return columns;
-            };
-            InlineActionGrid.prototype.onClick = function (e, row, cell) {
-                var _this = this;
-                _super.prototype.onClick.call(this, e, row, cell);
-                if (e.isDefaultPrevented())
-                    return;
-                var item = this.itemAt(row);
-                var target = $(e.target);
-                // if user clicks "i" element, e.g. icon
-                if (target.parent().hasClass('inline-action'))
-                    target = target.parent();
-                if (target.hasClass('inline-action')) {
-                    e.preventDefault();
-                    if (target.hasClass('delete-row')) {
-                        Q.confirm('Delete record?', function () {
-                            Store.Northwind.CustomerService.Delete({
-                                EntityId: item.ID,
-                            }, function (response) {
-                                _this.refresh();
-                            });
-                        });
-                    }
-                    else if (target.hasClass('view-details')) {
-                        this.editItem(item.ID);
-                    }
-                    else if (target.hasClass('new-order')) {
-                        var dlg = new Store.Northwind.OrderDialog();
-                        this.initDialog(dlg);
-                        dlg.loadEntityAndOpenDialog({
-                            CustomerID: item.CustomerID
-                        });
-                    }
-                }
-            };
-            return InlineActionGrid;
-        }(Store.Northwind.CustomerGrid));
-        InlineActionGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], InlineActionGrid);
-        BasicSamples.InlineActionGrid = InlineActionGrid;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var InlineImageFormatter = (function () {
-            function InlineImageFormatter() {
-            }
-            InlineImageFormatter.prototype.format = function (ctx) {
-                var file = (this.fileProperty ? ctx.item[this.fileProperty] : ctx.value);
-                if (!file || !file.length)
-                    return "";
-                var href = Q.resolveUrl("~/upload/" + file);
-                if (this.thumb) {
-                    var parts = file.split('.');
-                    file = parts.slice(0, parts.length - 1).join('.') + '_t.jpg';
-                }
-                var src = Q.resolveUrl('~/upload/' + file);
-                return "<a class=\"inline-image\" target='_blank' href=\"" + href + "\">" +
-                    ("<img src=\"" + src + "\" style='max-height: 145px; max-width: 100%;' /></a>");
-            };
-            InlineImageFormatter.prototype.initializeColumn = function (column) {
-                if (this.fileProperty) {
-                    column.referencedFields = column.referencedFields || [];
-                    column.referencedFields.push(this.fileProperty);
-                }
-            };
-            return InlineImageFormatter;
-        }());
-        __decorate([
-            Serenity.Decorators.option()
-        ], InlineImageFormatter.prototype, "fileProperty", void 0);
-        __decorate([
-            Serenity.Decorators.option()
-        ], InlineImageFormatter.prototype, "thumb", void 0);
-        InlineImageFormatter = __decorate([
-            Serenity.Decorators.registerFormatter()
-        ], InlineImageFormatter);
-        BasicSamples.InlineImageFormatter = InlineImageFormatter;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-/// <reference path="../../../Northwind/Order/OrderGrid.ts" />
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var InlineImageInGrid = (function (_super) {
-            __extends(InlineImageInGrid, _super);
-            function InlineImageInGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            InlineImageInGrid.prototype.getColumnsKey = function () { return "BasicSamples.InlineImageInGrid"; };
-            InlineImageInGrid.prototype.getDialogType = function () { return Store.Northwind.ProductDialog; };
-            InlineImageInGrid.prototype.getIdProperty = function () { return Store.Northwind.ProductRow.idProperty; };
-            InlineImageInGrid.prototype.getLocalTextPrefix = function () { return Store.Northwind.ProductRow.localTextPrefix; };
-            InlineImageInGrid.prototype.getService = function () { return Store.Northwind.ProductService.baseUrl; };
-            InlineImageInGrid.prototype.getSlickOptions = function () {
-                var opt = _super.prototype.getSlickOptions.call(this);
-                opt.rowHeight = 150;
-                return opt;
-            };
-            return InlineImageInGrid;
-        }(Serenity.EntityGrid));
-        InlineImageInGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], InlineImageInGrid);
-        BasicSamples.InlineImageInGrid = InlineImageInGrid;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var ProductExcelImportDialog = (function (_super) {
-            __extends(ProductExcelImportDialog, _super);
-            function ProductExcelImportDialog() {
-                var _this = _super.call(this) || this;
-                _this.form = new BasicSamples.ProductExcelImportForm(_this.idPrefix);
-                return _this;
-            }
-            ProductExcelImportDialog.prototype.getDialogTitle = function () {
-                return "Excel Import";
-            };
-            ProductExcelImportDialog.prototype.getDialogButtons = function () {
-                var _this = this;
-                return [
-                    {
-                        text: 'Import',
-                        click: function () {
-                            if (!_this.validateBeforeSave())
-                                return;
-                            if (_this.form.FileName.value == null ||
-                                Q.isEmptyOrNull(_this.form.FileName.value.Filename)) {
-                                Q.notifyError("Please select a file!");
-                                return;
-                            }
-                            BasicSamples.ProductExcelImportService.ExcelImport({
-                                FileName: _this.form.FileName.value.Filename
-                            }, function (response) {
-                                Q.notifyInfo('Inserted: ' + (response.Inserted || 0) +
-                                    ', Updated: ' + (response.Updated || 0));
-                                if (response.ErrorList != null && response.ErrorList.length > 0) {
-                                    Q.notifyError(response.ErrorList.join(',\r\n '));
-                                }
-                                _this.dialogClose();
-                            });
-                        },
-                    },
-                    {
-                        text: 'Cancel',
-                        click: function () { return _this.dialogClose(); }
-                    }
-                ];
-            };
-            return ProductExcelImportDialog;
-        }(Serenity.PropertyDialog));
-        ProductExcelImportDialog = __decorate([
-            Serenity.Decorators.registerClass()
-        ], ProductExcelImportDialog);
-        BasicSamples.ProductExcelImportDialog = ProductExcelImportDialog;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-/// <reference path="../../../Northwind/Product/ProductGrid.ts" />
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var ProductExcelImportGrid = (function (_super) {
-            __extends(ProductExcelImportGrid, _super);
-            function ProductExcelImportGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            /**
-             * This method is called to get list of buttons to be created.
-             */
-            ProductExcelImportGrid.prototype.getButtons = function () {
-                var _this = this;
-                // call base method to get list of buttons
-                var buttons = _super.prototype.getButtons.call(this);
-                // add our import button
-                buttons.push({
-                    title: 'Import From Excel',
-                    cssClass: 'export-xlsx-button',
-                    onClick: function () {
-                        // open import dialog, let it handle rest
-                        var dialog = new BasicSamples.ProductExcelImportDialog();
-                        dialog.element.on('dialogclose', function () {
-                            _this.refresh();
-                            dialog = null;
-                        });
-                        dialog.dialogOpen();
-                    }
-                });
-                return buttons;
-            };
-            return ProductExcelImportGrid;
-        }(Store.Northwind.ProductGrid));
-        ProductExcelImportGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], ProductExcelImportGrid);
-        BasicSamples.ProductExcelImportGrid = ProductExcelImportGrid;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-/// <reference path="../../../Northwind/Order/OrderGrid.ts" />
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var QuickFilterCustomization = (function (_super) {
-            __extends(QuickFilterCustomization, _super);
-            function QuickFilterCustomization(container) {
-                return _super.call(this, container) || this;
-            }
-            QuickFilterCustomization.prototype.getColumnsKey = function () { return "Northwind.Order"; };
-            QuickFilterCustomization.prototype.getDialogType = function () { return Store.Northwind.OrderDialog; };
-            QuickFilterCustomization.prototype.getIdProperty = function () { return Store.Northwind.OrderRow.idProperty; };
-            QuickFilterCustomization.prototype.getLocalTextPrefix = function () { return Store.Northwind.OrderRow.localTextPrefix; };
-            QuickFilterCustomization.prototype.getService = function () { return Store.Northwind.OrderService.baseUrl; };
-            /**
-             * This method is called to get list of quick filters to be created for this grid.
-             * By default, it returns quick filter objects corresponding to properties that
-             * have a [QuickFilter] attribute at server side OrderColumns.cs
-             */
-            QuickFilterCustomization.prototype.getQuickFilters = function () {
-                // get quick filter list from base class, e.g. columns
-                var filters = _super.prototype.getQuickFilters.call(this);
-                // get a reference to order row field names
-                var fld = Store.Northwind.OrderRow.Fields;
-                // we start by turning CustomerID filter to a Not Equal one
-                var filter = Q.first(filters, function (x) { return x.field == fld.CustomerID; });
-                filter.title = "Customer Not Equal To";
-                filter.handler = function (h) {
-                    // if filter is active, e.g. editor has some value
-                    if (h.active) {
-                        h.request.Criteria = Serenity.Criteria.and(h.request.Criteria, [[fld.CustomerID], '!=', h.value]);
-                    }
-                };
-                // turn order date filter to exact match, not a range
-                filter = Q.first(filters, function (x) { return x.field == fld.OrderDate; });
-                filter.title = "Order Date Is Exactly";
-                // element method in DataGrid turns this into a range editor, clear it to prevent
-                filter.element = function (e) { };
-                // need to override handler too, otherwise default handler will try to handle a date range
-                filter.handler = function (h) {
-                    if (h.active) {
-                        h.request.EqualityFilter[fld.OrderDate] = h.value;
-                    }
-                    else {
-                        h.request.EqualityFilter[fld.OrderDate] = null;
-                    }
-                };
-                // make employee filter a textbox, instead of lookup, and search by starts with
-                filter = Q.first(filters, function (x) { return x.field == fld.EmployeeID; });
-                filter.title = "Employee Name Starts With";
-                filter.type = Serenity.StringEditor;
-                filter.handler = function (h) {
-                    if (h.active) {
-                        h.request.Criteria = Serenity.Criteria.and(h.request.Criteria, [[fld.EmployeeFullName], 'like', h.value + '%']);
-                    }
-                };
-                // turn shipping state into a boolean filter
-                filter = Q.first(filters, function (x) { return x.field == fld.ShippingState; });
-                filter.title = "Show Only Shipped";
-                filter.type = Serenity.BooleanEditor;
-                filter.handler = function (h) {
-                    h.active = !!h.value;
-                    if (h.active) {
-                        h.request.Criteria = Serenity.Criteria.and(h.request.Criteria, ['is not null', [fld.ShippedDate]]);
-                    }
-                };
-                // ship via filters by NOT IN
-                filter = Q.first(filters, function (x) { return x.field == fld.ShipVia; });
-                filter.title = "Ship Via Not IN";
-                filter.handler = function (h) {
-                    if (h.active) {
-                        h.request.Criteria = Serenity.Criteria.and(h.request.Criteria, [[fld.ShipVia], 'not in', [h.value]]);
-                    }
-                };
-                // ship country filters by NOT contains
-                filter = Q.first(filters, function (x) { return x.field == fld.ShipCountry; });
-                filter.title = "Ship Country NOT Contains";
-                filter.type = Serenity.StringEditor;
-                filter.handler = function (h) {
-                    if (h.active) {
-                        h.request.Criteria = Serenity.Criteria.and(h.request.Criteria, [[fld.ShipCountry], 'not like', '%' + h.value + '%']);
-                    }
-                };
-                // ship city filters by GREATER THAN (>)
-                filter = Q.first(filters, function (x) { return x.field == fld.ShipCity; });
-                filter.title = "Ship City Greater Than";
-                filter.type = Serenity.StringEditor;
-                filter.handler = function (h) {
-                    if (h.active) {
-                        h.request.Criteria = Serenity.Criteria.and(h.request.Criteria, [[fld.ShipCity], '>', h.value]);
-                    }
-                };
-                // create a range editor for freight
-                var endFreight = null;
-                filters.push({
-                    field: fld.Freight,
-                    type: Serenity.DecimalEditor,
-                    title: 'Freight Between',
-                    element: function (e1) {
-                        e1.css("width", "80px");
-                        endFreight = Serenity.Widget.create({
-                            type: Serenity.DecimalEditor,
-                            element: function (e2) { return e2.insertAfter(e1).css("width", "80px"); }
-                        });
-                        endFreight.element.change(function (x) { return e1.triggerHandler("change"); });
-                        $("<span/>").addClass("range-separator").text("-").insertAfter(e1);
-                    },
-                    handler: function (h) {
-                        var active1 = h.value != null && !isNaN(h.value);
-                        var active2 = endFreight.value != null && !isNaN(endFreight.value);
-                        h.active = active1 || active2;
-                        if (active1)
-                            h.request.Criteria = Serenity.Criteria.and(h.request.Criteria, [[fld.Freight], '>=', h.value]);
-                        if (active2)
-                            h.request.Criteria = Serenity.Criteria.and(h.request.Criteria, [[fld.Freight], '<=', endFreight.value]);
-                    }
-                });
-                return filters;
-            };
-            return QuickFilterCustomization;
-        }(Serenity.EntityGrid));
-        QuickFilterCustomization = __decorate([
-            Serenity.Decorators.registerClass()
-        ], QuickFilterCustomization);
-        BasicSamples.QuickFilterCustomization = QuickFilterCustomization;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-/// <reference path="../../../Northwind/Supplier/SupplierGrid.ts" />
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var RemovingAddButton = (function (_super) {
-            __extends(RemovingAddButton, _super);
-            function RemovingAddButton(container) {
-                return _super.call(this, container) || this;
-            }
-            /**
-             * This method is called to get list of buttons to be created.
-             */
-            RemovingAddButton.prototype.getButtons = function () {
-                // call base method to get list of buttons
-                // by default, base entity grid adds a few buttons, 
-                // add, refresh, column selection in order.
-                var buttons = _super.prototype.getButtons.call(this);
-                // here is several methods to remove add button
-                // only one is enabled, others are commented
-                // METHOD 1
-                // we would be able to simply return an empty button list,
-                // but this would also remove all other buttons
-                // return [];
-                // METHOD 2
-                // remove by splicing (something like delete by index)
-                // here we hard code add button index (not nice!)
-                // buttons.splice(0, 1);
-                // METHOD 3 - recommended
-                // remove by splicing, but this time find button index
-                // by its css class. it is the best and safer method
-                buttons.splice(Q.indexOf(buttons, function (x) { return x.cssClass == "add-button"; }), 1);
-                return buttons;
-            };
-            return RemovingAddButton;
-        }(Store.Northwind.SupplierGrid));
-        RemovingAddButton = __decorate([
-            Serenity.Decorators.registerClass()
-        ], RemovingAddButton);
-        BasicSamples.RemovingAddButton = RemovingAddButton;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var CustomerGrossSalesGrid = (function (_super) {
-            __extends(CustomerGrossSalesGrid, _super);
-            function CustomerGrossSalesGrid(container) {
-                var _this = _super.call(this, container) || this;
-                _this.nextId = 1;
-                return _this;
-            }
-            CustomerGrossSalesGrid.prototype.getColumnsKey = function () { return "BasicSamples.CustomerGrossSales"; };
-            CustomerGrossSalesGrid.prototype.getIdProperty = function () { return "__id"; };
-            CustomerGrossSalesGrid.prototype.getNameProperty = function () { return Store.Northwind.CustomerGrossSalesRow.nameProperty; };
-            CustomerGrossSalesGrid.prototype.getLocalTextPrefix = function () { return Store.Northwind.CustomerGrossSalesRow.localTextPrefix; };
-            CustomerGrossSalesGrid.prototype.getService = function () { return BasicSamples.CustomerGrossSalesService.baseUrl; };
-            /**
-             * This method is called to preprocess data returned from the list service
-             */
-            CustomerGrossSalesGrid.prototype.onViewProcessData = function (response) {
-                response = _super.prototype.onViewProcessData.call(this, response);
-                // there is no __id property in CustomerGrossSalesRow but 
-                // this is javascript and we can set any property of an object
-                for (var _i = 0, _a = response.Entities; _i < _a.length; _i++) {
-                    var x = _a[_i];
-                    x.__id = this.nextId++;
-                }
-                return response;
-            };
-            CustomerGrossSalesGrid.prototype.getButtons = function () {
-                var _this = this;
-                var buttons = [];
-                buttons.push(Store.Common.ExcelExportHelper.createToolButton({
-                    grid: this,
-                    service: BasicSamples.CustomerGrossSalesService.baseUrl + '/ListExcel',
-                    onViewSubmit: function () { return _this.onViewSubmit(); },
-                    separator: true
-                }));
-                buttons.push(Store.Common.PdfExportHelper.createToolButton({
-                    grid: this,
-                    onViewSubmit: function () { return _this.onViewSubmit(); }
-                }));
-                return buttons;
-            };
-            CustomerGrossSalesGrid.prototype.createSlickGrid = function () {
-                var grid = _super.prototype.createSlickGrid.call(this);
-                // need to register this plugin for grouping or you'll have errors
-                grid.registerPlugin(new Slick.Data.GroupItemMetadataProvider());
-                this.view.setSummaryOptions({
-                    aggregators: [
-                        new Slick.Aggregators.Sum('GrossAmount')
-                    ]
-                });
-                this.view.setGrouping([{
-                        getter: 'ContactName'
-                    }]);
-                return grid;
-            };
-            CustomerGrossSalesGrid.prototype.getSlickOptions = function () {
-                var opt = _super.prototype.getSlickOptions.call(this);
-                opt.showFooterRow = true;
-                return opt;
-            };
-            CustomerGrossSalesGrid.prototype.usePager = function () {
-                return false;
-            };
-            CustomerGrossSalesGrid.prototype.getQuickFilters = function () {
-                var filters = _super.prototype.getQuickFilters.call(this);
-                // we create a date-range quick filter, which is a composite
-                // filter with two date time editors
-                var orderDate = this.dateRangeQuickFilter('OrderDate', 'Order Date');
-                // need to override its handler, as default date-range filter will set Criteria parameter of list request.
-                // we need to set StartDate and EndDate custom parameters of our CustomerGrossSalesListRequest
-                orderDate.handler = function (args) {
-                    // args.widget here is the start date editor. value of a date editor is a ISO date string
-                    var start = args.widget.value;
-                    // to find end date editor, need to search it by its css class among siblings
-                    var end = args.widget.element.nextAll('.s-DateEditor')
-                        .getWidget(Serenity.DateEditor).value;
-                    args.request.StartDate = start;
-                    args.request.EndDate = end;
-                    // active option controls when a filter editor looks active, e.g. its label is blueish
-                    args.active = !Q.isEmptyOrNull(start) || !Q.isEmptyOrNull(end);
-                };
-                filters.push(orderDate);
-                return filters;
-            };
-            return CustomerGrossSalesGrid;
-        }(Serenity.EntityGrid));
-        CustomerGrossSalesGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], CustomerGrossSalesGrid);
-        BasicSamples.CustomerGrossSalesGrid = CustomerGrossSalesGrid;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-/// <reference path="../../../Northwind/Order/OrderGrid.ts" />
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var TreeGrid = (function (_super) {
-            __extends(TreeGrid, _super);
-            function TreeGrid(container) {
-                var _this = _super.call(this, container) || this;
-                _this.treeMixin = new Serenity.TreeGridMixin({
-                    grid: _this,
-                    // bring tree items initially collapsed
-                    initialCollapse: function () { return true; },
-                    // which column to place tree toggle / expand/collapse button
-                    toggleField: Store.Northwind.OrderRow.Fields.CustomerCompanyName,
-                    getParentId: function (x) {
-                        // as we don't have parentId column here, we are cheating by using modulus 10 and 50
-                        // e.g. order with ID 1605 will have parent 1600, order with ID 1613 will have parent 1610
-                        var parentId = Math.floor(x.OrderID / 10) * 10;
-                        if (parentId == x.OrderID) {
-                            parentId = Math.floor(x.OrderID / 50) * 50;
-                            // orders with ID 16050 and 17000 should have NULL parent
-                            if (parentId == x.OrderID)
-                                return null;
-                        }
-                        // if you had a ParentID column, you'd just return x.ParentID
-                        return parentId;
-                    }
-                });
-                return _this;
-            }
-            TreeGrid.prototype.usePager = function () {
-                return false;
-            };
-            return TreeGrid;
-        }(Store.Northwind.OrderGrid));
-        TreeGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], TreeGrid);
-        BasicSamples.TreeGrid = TreeGrid;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var ViewWithoutIDGrid = (function (_super) {
-            __extends(ViewWithoutIDGrid, _super);
-            function ViewWithoutIDGrid(container) {
-                var _this = _super.call(this, container) || this;
-                // this is our autoincrementing counter
-                _this.nextId = 1;
-                return _this;
-            }
-            ViewWithoutIDGrid.prototype.getColumnsKey = function () { return "Northwind.SalesByCategory"; };
-            ViewWithoutIDGrid.prototype.getIdProperty = function () { return "__id"; };
-            ViewWithoutIDGrid.prototype.getNameProperty = function () { return Store.Northwind.SalesByCategoryRow.nameProperty; };
-            ViewWithoutIDGrid.prototype.getLocalTextPrefix = function () { return Store.Northwind.SalesByCategoryRow.localTextPrefix; };
-            ViewWithoutIDGrid.prototype.getService = function () { return Store.Northwind.SalesByCategoryService.baseUrl; };
-            /**
-             * This method is called to preprocess data returned from the list service
-             */
-            ViewWithoutIDGrid.prototype.onViewProcessData = function (response) {
-                response = _super.prototype.onViewProcessData.call(this, response);
-                // there is no __id property in SalesByCategoryRow but 
-                // this is javascript and we can set any property of an object
-                for (var _i = 0, _a = response.Entities; _i < _a.length; _i++) {
-                    var x = _a[_i];
-                    x.__id = this.nextId++;
-                }
-                return response;
-            };
-            ViewWithoutIDGrid.prototype.getButtons = function () {
-                return [];
-            };
-            return ViewWithoutIDGrid;
-        }(Serenity.EntityGrid));
-        ViewWithoutIDGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], ViewWithoutIDGrid);
-        BasicSamples.ViewWithoutIDGrid = ViewWithoutIDGrid;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var VSGalleryQAGrid = (function (_super) {
-            __extends(VSGalleryQAGrid, _super);
-            function VSGalleryQAGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            VSGalleryQAGrid.prototype.getColumnsKey = function () { return "BasicSamples.VSGalleryQA"; };
-            VSGalleryQAGrid.prototype.getIdProperty = function () { return "ThreadId"; };
-            VSGalleryQAGrid.prototype.getService = function () { return BasicSamples.VSGalleryQAService.baseUrl; };
-            VSGalleryQAGrid.prototype.getButtons = function () {
-                return [];
-            };
-            VSGalleryQAGrid.prototype.getSlickOptions = function () {
-                var opt = _super.prototype.getSlickOptions.call(this);
-                opt.rowHeight = 250;
-                return opt;
-            };
-            VSGalleryQAGrid.prototype.getColumns = function () {
-                var columns = _super.prototype.getColumns.call(this);
-                Q.first(columns, function (x) { return x.field == 'Posts'; }).format = function (ctx) {
-                    var posts = ctx.value;
-                    if (!posts || !posts.length)
-                        return "";
-                    var i = 0;
-                    var text = "<ul class='posts'>";
-                    for (var _i = 0, posts_1 = posts; _i < posts_1.length; _i++) {
-                        var post = posts_1[_i];
-                        text += "<li class='" + (i++ % 2 == 0 ? 'even' : 'odd') + "'><h4>";
-                        text += post.PostedByName + " - ";
-                        text += Q.formatDate(post.PostedOn, 'g');
-                        text += "</h4><pre>";
-                        text += Q.htmlEncode(post.Message);
-                        text += "</pre></li>";
-                    }
-                    text += "</ul>";
-                    return text;
-                };
-                return columns;
-            };
-            VSGalleryQAGrid.prototype.getInitialTitle = function () {
-                return null;
-            };
-            return VSGalleryQAGrid;
-        }(Serenity.EntityGrid));
-        VSGalleryQAGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], VSGalleryQAGrid);
-        BasicSamples.VSGalleryQAGrid = VSGalleryQAGrid;
-    })(BasicSamples = Store.BasicSamples || (Store.BasicSamples = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var BasicProgressDialog = (function (_super) {
-        __extends(BasicProgressDialog, _super);
-        function BasicProgressDialog() {
-            var _this = _super.call(this) || this;
-            _this.byId('ProgressBar').progressbar({
-                max: 100,
-                value: 0,
-                change: function (e, v) {
-                    _this.byId('ProgressLabel').text(_this.value + ' / ' + _this.max);
-                }
-            });
-            return _this;
-        }
-        Object.defineProperty(BasicProgressDialog.prototype, "max", {
-            get: function () {
-                return this.byId('ProgressBar').progressbar().progressbar('option', 'max');
-            },
-            set: function (value) {
-                this.byId('ProgressBar').progressbar().progressbar('option', 'max', value);
-            },
-            enumerable: true,
-            configurable: true
-        });
-        Object.defineProperty(BasicProgressDialog.prototype, "value", {
-            get: function () {
-                return this.byId('ProgressBar').progressbar('value');
-            },
-            set: function (value) {
-                this.byId('ProgressBar').progressbar().progressbar('value', value);
-            },
-            enumerable: true,
-            configurable: true
-        });
-        Object.defineProperty(BasicProgressDialog.prototype, "title", {
-            get: function () {
-                return this.element.dialog().dialog('option', 'title');
-            },
-            set: function (value) {
-                this.element.dialog().dialog('option', 'title', value);
-            },
-            enumerable: true,
-            configurable: true
-        });
-        BasicProgressDialog.prototype.getDialogOptions = function () {
-            var _this = this;
-            var opt = _super.prototype.getDialogOptions.call(this);
-            opt.title = Q.text('Site.BasicProgressDialog.PleaseWait');
-            opt.width = 600;
-            opt.buttons = [{
-                    text: Q.text('Dialogs.CancelButton'),
-                    click: function () {
-                        _this.cancelled = true;
-                        _this.element.closest('.ui-dialog')
-                            .find('.ui-dialog-buttonpane .ui-button')
-                            .attr('disabled', 'disabled')
-                            .css('opacity', '0.5');
-                        _this.element.dialog('option', 'title', Q.trimToNull(_this.cancelTitle) ||
-                            Q.text('Site.BasicProgressDialog.CancelTitle'));
-                    }
-                }];
-            return opt;
-        };
-        BasicProgressDialog.prototype.initDialog = function () {
-            _super.prototype.initDialog.call(this);
-            this.element.closest('.ui-dialog').find('.ui-dialog-titlebar-close').hide();
-        };
-        BasicProgressDialog.prototype.getTemplate = function () {
-            return ("<div class='s-DialogContent s-BasicProgressDialogContent'>" +
-                "<div id='~_StatusText' class='status-text' ></div>" +
-                "<div id='~_ProgressBar' class='progress-bar'>" +
-                "<div id='~_ProgressLabel' class='progress-label' ></div>" +
-                "</div>" +
-                "</div>");
-        };
-        return BasicProgressDialog;
-    }(Serenity.TemplatedDialog));
-    Store.BasicProgressDialog = BasicProgressDialog;
-})(Store || (Store = {}));
 var Store;
 (function (Store) {
     var DialogUtils;
     (function (DialogUtils) {
         function pendingChangesConfirmation(element, hasPendingChanges) {
-            element.bind('dialogbeforeclose', function (e) {
+            element.on('dialogbeforeclose panelbeforeclose', function (e) {
                 if (!Serenity.WX.hasOriginalEvent(e) || !hasPendingChanges()) {
                     return;
                 }
                 e.preventDefault();
                 Q.confirm('You have pending changes. Save them?', function () { return element.find('div.save-and-close-button').click(); }, {
                     onNo: function () {
-                        element.dialog().dialog('close');
+                        if (element.hasClass('ui-dialog-content'))
+                            element.dialog('close');
+                        else if (element.hasClass('s-Panel'))
+                            Serenity.TemplatedDialog.closePanel(element);
                     }
                 });
             });
@@ -7272,7 +3636,7 @@ var Store;
 (function (Store) {
     var Common;
     (function (Common) {
-        var EnumSelectFormatter = (function () {
+        var EnumSelectFormatter = /** @class */ (function () {
             function EnumSelectFormatter() {
                 this.allowClear = true;
             }
@@ -7286,7 +3650,7 @@ var Store;
                 }
                 for (var _i = 0, _a = Object.keys(enumType).filter(function (v) { return !isNaN(parseInt(v, 10)); }); _i < _a.length; _i++) {
                     var x = _a[_i];
-                    sb += '<option value="' + x + '"';
+                    sb += '<option value="' + Q.attrEncode(x) + '"';
                     if (x == ctx.value)
                         sb += " selected";
                     var name = enumType[x];
@@ -7297,20 +3661,20 @@ var Store;
                 sb += "</select>";
                 return sb;
             };
+            __decorate([
+                Serenity.Decorators.option()
+            ], EnumSelectFormatter.prototype, "enumKey", void 0);
+            __decorate([
+                Serenity.Decorators.option()
+            ], EnumSelectFormatter.prototype, "allowClear", void 0);
+            __decorate([
+                Serenity.Decorators.option()
+            ], EnumSelectFormatter.prototype, "emptyItemText", void 0);
+            EnumSelectFormatter = __decorate([
+                Serenity.Decorators.registerFormatter()
+            ], EnumSelectFormatter);
             return EnumSelectFormatter;
         }());
-        __decorate([
-            Serenity.Decorators.option()
-        ], EnumSelectFormatter.prototype, "enumKey", void 0);
-        __decorate([
-            Serenity.Decorators.option()
-        ], EnumSelectFormatter.prototype, "allowClear", void 0);
-        __decorate([
-            Serenity.Decorators.option()
-        ], EnumSelectFormatter.prototype, "emptyItemText", void 0);
-        EnumSelectFormatter = __decorate([
-            Serenity.Decorators.registerFormatter()
-        ], EnumSelectFormatter);
         Common.EnumSelectFormatter = EnumSelectFormatter;
     })(Common = Store.Common || (Store.Common = {}));
 })(Store || (Store = {}));
@@ -7322,8 +3686,8 @@ var Store;
         (function (ExcelExportHelper) {
             function createToolButton(options) {
                 return {
-                    hint: Q.coalesce(options.title, 'Excel'),
-                    title: Q.coalesce(options.hint, ''),
+                    hint: Q.coalesce(options.hint, 'Excel'),
+                    title: Q.coalesce(options.title, ''),
                     cssClass: 'export-xlsx-button',
                     onClick: function () {
                         if (!options.onViewSubmit()) {
@@ -7354,26 +3718,228 @@ var Store;
 })(Store || (Store = {}));
 var Store;
 (function (Store) {
-    var LanguageList;
-    (function (LanguageList) {
-        function getValue() {
-            var result = [];
-            for (var _i = 0, _a = Store.Administration.LanguageRow.getLookup().items; _i < _a.length; _i++) {
-                var k = _a[_i];
-                if (k.LanguageId !== 'en') {
-                    result.push([k.Id.toString(), k.LanguageName]);
-                }
+    var Common;
+    (function (Common) {
+        var GridEditorBase = /** @class */ (function (_super) {
+            __extends(GridEditorBase, _super);
+            function GridEditorBase(container) {
+                var _this = _super.call(this, container) || this;
+                _this.nextId = 1;
+                return _this;
             }
-            return result;
-        }
-        LanguageList.getValue = getValue;
-    })(LanguageList = Store.LanguageList || (Store.LanguageList = {}));
+            GridEditorBase.prototype.getIdProperty = function () { return "__id"; };
+            GridEditorBase.prototype.id = function (entity) {
+                return entity[this.getIdProperty()];
+            };
+            GridEditorBase.prototype.getNextId = function () {
+                return "`" + this.nextId++;
+            };
+            GridEditorBase.prototype.setNewId = function (entity) {
+                entity[this.getIdProperty()] = this.getNextId();
+            };
+            GridEditorBase.prototype.save = function (opt, callback) {
+                var _this = this;
+                var request = opt.request;
+                var row = Q.deepClone(request.Entity);
+                var id = this.id(row);
+                if (id == null) {
+                    row[this.getIdProperty()] = this.getNextId();
+                }
+                if (!this.validateEntity(row, id)) {
+                    return;
+                }
+                var items = this.view.getItems().slice();
+                if (id == null) {
+                    items.push(row);
+                }
+                else {
+                    var index = Q.indexOf(items, function (x) { return _this.id(x) === id; });
+                    items[index] = Q.deepClone({}, items[index], row);
+                }
+                this.setEntities(items);
+                callback({});
+            };
+            GridEditorBase.prototype.deleteEntity = function (id) {
+                this.view.deleteItem(id);
+                return true;
+            };
+            GridEditorBase.prototype.validateEntity = function (row, id) {
+                return true;
+            };
+            GridEditorBase.prototype.setEntities = function (items) {
+                this.view.setItems(items, true);
+            };
+            GridEditorBase.prototype.getNewEntity = function () {
+                return {};
+            };
+            GridEditorBase.prototype.getButtons = function () {
+                var _this = this;
+                return [{
+                        title: this.getAddButtonCaption(),
+                        cssClass: 'add-button',
+                        onClick: function () {
+                            _this.createEntityDialog(_this.getItemType(), function (dlg) {
+                                var dialog = dlg;
+                                dialog.onSave = function (opt, callback) { return _this.save(opt, callback); };
+                                dialog.loadEntityAndOpenDialog(_this.getNewEntity());
+                            });
+                        }
+                    }];
+            };
+            GridEditorBase.prototype.editItem = function (entityOrId) {
+                var _this = this;
+                var id = entityOrId;
+                var item = this.view.getItemById(id);
+                this.createEntityDialog(this.getItemType(), function (dlg) {
+                    var dialog = dlg;
+                    dialog.onDelete = function (opt, callback) {
+                        if (!_this.deleteEntity(id)) {
+                            return;
+                        }
+                        callback({});
+                    };
+                    dialog.onSave = function (opt, callback) { return _this.save(opt, callback); };
+                    dialog.loadEntityAndOpenDialog(item);
+                });
+                ;
+            };
+            GridEditorBase.prototype.getEditValue = function (property, target) {
+                target[property.name] = this.value;
+            };
+            GridEditorBase.prototype.setEditValue = function (source, property) {
+                this.value = source[property.name];
+            };
+            Object.defineProperty(GridEditorBase.prototype, "value", {
+                get: function () {
+                    var p = this.getIdProperty();
+                    return this.view.getItems().map(function (x) {
+                        var y = Q.deepClone(x);
+                        var id = y[p];
+                        if (id && id.toString().charAt(0) == '`')
+                            delete y[p];
+                        return y;
+                    });
+                },
+                set: function (value) {
+                    var _this = this;
+                    var p = this.getIdProperty();
+                    this.view.setItems((value || []).map(function (x) {
+                        var y = Q.deepClone(x);
+                        if (y[p] == null)
+                            y[p] = "`" + _this.getNextId();
+                        return y;
+                    }), true);
+                },
+                enumerable: true,
+                configurable: true
+            });
+            GridEditorBase.prototype.getGridCanLoad = function () {
+                return false;
+            };
+            GridEditorBase.prototype.usePager = function () {
+                return false;
+            };
+            GridEditorBase.prototype.getInitialTitle = function () {
+                return null;
+            };
+            GridEditorBase.prototype.createQuickSearchInput = function () {
+            };
+            GridEditorBase = __decorate([
+                Serenity.Decorators.registerClass([Serenity.IGetEditValue, Serenity.ISetEditValue]),
+                Serenity.Decorators.editor(),
+                Serenity.Decorators.element("<div/>")
+            ], GridEditorBase);
+            return GridEditorBase;
+        }(Serenity.EntityGrid));
+        Common.GridEditorBase = GridEditorBase;
+    })(Common = Store.Common || (Store.Common = {}));
 })(Store || (Store = {}));
 var Store;
 (function (Store) {
     var Common;
     (function (Common) {
-        var LanguageSelection = (function (_super) {
+        var GridEditorDialog = /** @class */ (function (_super) {
+            __extends(GridEditorDialog, _super);
+            function GridEditorDialog() {
+                return _super !== null && _super.apply(this, arguments) || this;
+            }
+            GridEditorDialog.prototype.getIdProperty = function () { return "__id"; };
+            GridEditorDialog.prototype.destroy = function () {
+                this.onSave = null;
+                this.onDelete = null;
+                _super.prototype.destroy.call(this);
+            };
+            GridEditorDialog.prototype.updateInterface = function () {
+                _super.prototype.updateInterface.call(this);
+                // apply changes button doesn't work properly with in-memory grids yet
+                if (this.applyChangesButton) {
+                    this.applyChangesButton.hide();
+                }
+            };
+            GridEditorDialog.prototype.saveHandler = function (options, callback) {
+                this.onSave && this.onSave(options, callback);
+            };
+            GridEditorDialog.prototype.deleteHandler = function (options, callback) {
+                this.onDelete && this.onDelete(options, callback);
+            };
+            GridEditorDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], GridEditorDialog);
+            return GridEditorDialog;
+        }(Serenity.EntityDialog));
+        Common.GridEditorDialog = GridEditorDialog;
+    })(Common = Store.Common || (Store.Common = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store) {
+    /**
+     * This is an editor widget but it only displays a text, not edits it.
+     *
+     */
+    var StaticTextBlock = /** @class */ (function (_super) {
+        __extends(StaticTextBlock, _super);
+        function StaticTextBlock(container, options) {
+            var _this = _super.call(this, container, options) || this;
+            // hide the caption label for this editor if in a form. ugly hack
+            if (_this.options.hideLabel)
+                _this.element.closest('.field').find('.caption').hide();
+            _this.updateElementContent();
+            return _this;
+        }
+        StaticTextBlock.prototype.updateElementContent = function () {
+            var text = Q.coalesce(this.options.text, this.value);
+            // if isLocalText is set, text is actually a local text key
+            if (this.options.isLocalText)
+                text = Q.text(text);
+            // don't html encode if isHtml option is true
+            if (this.options.isHtml)
+                this.element.html(text);
+            else
+                this.element.text(text);
+        };
+        /**
+         * By implementing ISetEditValue interface, we allow this editor to display its field value.
+         * But only do this when our text content is not explicitly set in options
+         */
+        StaticTextBlock.prototype.setEditValue = function (source, property) {
+            if (this.options.text == null) {
+                this.value = Q.coalesce(this.options.text, source[property.name]);
+                this.updateElementContent();
+            }
+        };
+        StaticTextBlock = __decorate([
+            Serenity.Decorators.element("<div/>"),
+            Serenity.Decorators.registerEditor([Serenity.ISetEditValue])
+        ], StaticTextBlock);
+        return StaticTextBlock;
+    }(Serenity.Widget));
+    Store.StaticTextBlock = StaticTextBlock;
+})(Store || (Store = {}));
+var Store;
+(function (Store) {
+    var Common;
+    (function (Common) {
+        var LanguageSelection = /** @class */ (function (_super) {
             __extends(LanguageSelection, _super);
             function LanguageSelection(select, currentLanguage) {
                 var _this = _super.call(this, select) || this;
@@ -7415,7 +3981,7 @@ var Store;
 (function (Store) {
     var Common;
     (function (Common) {
-        var SidebarSearch = (function (_super) {
+        var SidebarSearch = /** @class */ (function (_super) {
             __extends(SidebarSearch, _super);
             function SidebarSearch(input, menuUL) {
                 var _this = _super.call(this, input) || this;
@@ -7468,17 +4034,24 @@ var Store;
 (function (Store) {
     var Common;
     (function (Common) {
-        var ThemeSelection = (function (_super) {
+        var ThemeSelection = /** @class */ (function (_super) {
             __extends(ThemeSelection, _super);
             function ThemeSelection(select) {
                 var _this = _super.call(this, select) || this;
                 _this.change(function (e) {
+                    var path = Q.Config.applicationPath;
+                    if (path && path != '/' && Q.endsWith(path, '/'))
+                        path = path.substr(0, path.length - 1);
                     $.cookie('ThemePreference', select.val(), {
-                        path: Q.Config.applicationPath,
+                        path: path,
                         expires: 365
                     });
+                    var theme = select.val() || '';
+                    var darkSidebar = theme.indexOf('light') < 0;
                     $('body').removeClass('skin-' + _this.getCurrentTheme());
-                    $('body').addClass('skin-' + select.val());
+                    $('body').addClass('skin-' + theme)
+                        .toggleClass('dark-sidebar', darkSidebar)
+                        .toggleClass('light-sidebar', !darkSidebar);
                 });
                 Q.addOption(select, 'blue', Q.text('Site.Layout.ThemeBlue'));
                 Q.addOption(select, 'blue-light', Q.text('Site.Layout.ThemeBlueLight'));
@@ -7630,12 +4203,24 @@ var Store;
                             };
                             autoOptions.afterPageContent = footer;
                         }
+                        // Print header of page
+                        if (options.printDateTimeHeader == null || options.printDateTimeHeader) {
+                            var beforePage = function (data) {
+                                doc.setFontStyle('normal');
+                                doc.setFontSize(8);
+                                // Date and time of the report
+                                doc.autoTableText(Q.formatDate(new Date(), "dd-MM-yyyy HH:mm"), doc.internal.pageSize.width - autoOptions.margin.right, 13, {
+                                    halign: 'right'
+                                });
+                            };
+                            autoOptions.beforePageContent = beforePage;
+                        }
                         doc.autoTable(columns, data, autoOptions);
                         if (typeof doc.putTotalPages === 'function') {
                             doc.putTotalPages(totalPagesExp);
                         }
                         if (!options.output || options.output == "file") {
-                            var fileName = options.reportTitle || "{0}_{1}.pdf";
+                            var fileName = options.fileName || options.reportTitle || "{0}_{1}.pdf";
                             fileName = Q.format(fileName, g.getTitle() || "report", Q.formatDate(new Date(), "yyyyMMdd_HHmm"));
                             doc.save(fileName);
                             return;
@@ -7647,7 +4232,24 @@ var Store;
                             output = 'dataurlnewwindow';
                         else if (output == 'window')
                             output = 'datauri';
-                        doc.output(output);
+                        if (output == 'datauri')
+                            doc.output(output);
+                        else {
+                            var tmpOut = doc.output('datauristring');
+                            if (output == 'dataurlnewwindow') {
+                                var fileTmpName = options.reportTitle || g.getTitle();
+                                var url_with_name = tmpOut.replace("data:application/pdf;", "data:application/pdf;name=" + fileTmpName + ".pdf;");
+                                var html = '<html>' +
+                                    '<style>html, body { padding: 0; margin: 0; } iframe { width: 100%; height: 100%; border: 0;}  </style>' +
+                                    '<body>' +
+                                    '<p></p>' +
+                                    '<iframe type="application/pdf" src="' + url_with_name + '"></iframe>' +
+                                    '</body></html>';
+                                var a = window.open("about:blank", "_blank");
+                                a.document.write(html);
+                                a.document.close();
+                            }
+                        }
                     }
                 });
             }
@@ -7696,7 +4298,7 @@ var Store;
 (function (Store) {
     var Common;
     (function (Common) {
-        var ReportDialog = (function (_super) {
+        var ReportDialog = /** @class */ (function (_super) {
             __extends(ReportDialog, _super);
             function ReportDialog(options) {
                 var _this = _super.call(this, options) || this;
@@ -7816,7 +4418,7 @@ var Store;
 (function (Store) {
     var Common;
     (function (Common) {
-        var ReportPage = (function (_super) {
+        var ReportPage = /** @class */ (function (_super) {
             __extends(ReportPage, _super);
             function ReportPage(element) {
                 var _this = _super.call(this, element) || this;
@@ -7883,21 +4485,11 @@ var Store;
         Common.ReportPage = ReportPage;
     })(Common = Store.Common || (Store.Common = {}));
 })(Store || (Store = {}));
-/// <reference path="../Common/Helpers/LanguageList.ts" />
-var Store;
-(function (Store) {
-    var ScriptInitialization;
-    (function (ScriptInitialization) {
-        Q.Config.responsiveDialogs = true;
-        Q.Config.rootNamespaces.push('Store');
-        Serenity.EntityDialog.defaultLanguageList = Store.LanguageList.getValue;
-    })(ScriptInitialization = Store.ScriptInitialization || (Store.ScriptInitialization = {}));
-})(Store || (Store = {}));
 var Store;
 (function (Store) {
     var Common;
     (function (Common) {
-        var UserPreferenceStorage = (function () {
+        var UserPreferenceStorage = /** @class */ (function () {
             function UserPreferenceStorage() {
             }
             UserPreferenceStorage.prototype.getItem = function (key) {
@@ -7923,1017 +4515,545 @@ var Store;
     })(Common = Store.Common || (Store.Common = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store) {
-    var Infra;
-    (function (Infra) {
-        var SupportDialog = (function (_super) {
-            __extends(SupportDialog, _super);
-            function SupportDialog() {
+(function (Store_87) {
+    var Store;
+    (function (Store) {
+        var CategoryDialog = /** @class */ (function (_super) {
+            __extends(CategoryDialog, _super);
+            function CategoryDialog() {
                 var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new Infra.SupportForm(_this.idPrefix);
+                _this.form = new Store.CategoryForm(_this.idPrefix);
                 return _this;
             }
-            SupportDialog.prototype.getFormKey = function () { return Infra.SupportForm.formKey; };
-            SupportDialog.prototype.getIdProperty = function () { return Infra.SupportRow.idProperty; };
-            SupportDialog.prototype.getLocalTextPrefix = function () { return Infra.SupportRow.localTextPrefix; };
-            SupportDialog.prototype.getNameProperty = function () { return Infra.SupportRow.nameProperty; };
-            SupportDialog.prototype.getService = function () { return Infra.SupportService.baseUrl; };
-            return SupportDialog;
+            CategoryDialog.prototype.getFormKey = function () { return Store.CategoryForm.formKey; };
+            CategoryDialog.prototype.getIdProperty = function () { return Store.CategoryRow.idProperty; };
+            CategoryDialog.prototype.getLocalTextPrefix = function () { return Store.CategoryRow.localTextPrefix; };
+            CategoryDialog.prototype.getNameProperty = function () { return Store.CategoryRow.nameProperty; };
+            CategoryDialog.prototype.getService = function () { return Store.CategoryService.baseUrl; };
+            CategoryDialog.prototype.getLanguages = function () { return Store_87.LanguageList.getValue(); };
+            CategoryDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], CategoryDialog);
+            return CategoryDialog;
         }(Serenity.EntityDialog));
-        SupportDialog = __decorate([
-            Serenity.Decorators.registerClass(),
-            Serenity.Decorators.responsive()
-        ], SupportDialog);
-        Infra.SupportDialog = SupportDialog;
-    })(Infra = Store.Infra || (Store.Infra = {}));
+        Store.CategoryDialog = CategoryDialog;
+    })(Store = Store_87.Store || (Store_87.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store) {
-    var Infra;
-    (function (Infra) {
-        var SupportGrid = (function (_super) {
-            __extends(SupportGrid, _super);
-            function SupportGrid(container) {
+(function (Store_88) {
+    var Store;
+    (function (Store) {
+        var CategoryGrid = /** @class */ (function (_super) {
+            __extends(CategoryGrid, _super);
+            function CategoryGrid(container) {
                 return _super.call(this, container) || this;
             }
-            SupportGrid.prototype.getColumnsKey = function () { return 'Infra.Support'; };
-            SupportGrid.prototype.getDialogType = function () { return Infra.SupportDialog; };
-            SupportGrid.prototype.getIdProperty = function () { return Infra.SupportRow.idProperty; };
-            SupportGrid.prototype.getLocalTextPrefix = function () { return Infra.SupportRow.localTextPrefix; };
-            SupportGrid.prototype.getService = function () { return Infra.SupportService.baseUrl; };
-            return SupportGrid;
+            CategoryGrid.prototype.getColumnsKey = function () { return 'Store.Category'; };
+            CategoryGrid.prototype.getDialogType = function () { return Store.CategoryDialog; };
+            CategoryGrid.prototype.getIdProperty = function () { return Store.CategoryRow.idProperty; };
+            CategoryGrid.prototype.getLocalTextPrefix = function () { return Store.CategoryRow.localTextPrefix; };
+            CategoryGrid.prototype.getService = function () { return Store.CategoryService.baseUrl; };
+            CategoryGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], CategoryGrid);
+            return CategoryGrid;
         }(Serenity.EntityGrid));
-        SupportGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], SupportGrid);
-        Infra.SupportGrid = SupportGrid;
-    })(Infra = Store.Infra || (Store.Infra = {}));
+        Store.CategoryGrid = CategoryGrid;
+    })(Store = Store_88.Store || (Store_88.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store) {
-    var Infra;
-    (function (Infra) {
-        var SupportTypeDialog = (function (_super) {
-            __extends(SupportTypeDialog, _super);
-            function SupportTypeDialog() {
+(function (Store_89) {
+    var Store;
+    (function (Store) {
+        var CategoryTypeDialog = /** @class */ (function (_super) {
+            __extends(CategoryTypeDialog, _super);
+            function CategoryTypeDialog() {
                 var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new Infra.SupportTypeForm(_this.idPrefix);
+                _this.form = new Store.CategoryTypeForm(_this.idPrefix);
                 return _this;
             }
-            SupportTypeDialog.prototype.getFormKey = function () { return Infra.SupportTypeForm.formKey; };
-            SupportTypeDialog.prototype.getIdProperty = function () { return Infra.SupportTypeRow.idProperty; };
-            SupportTypeDialog.prototype.getLocalTextPrefix = function () { return Infra.SupportTypeRow.localTextPrefix; };
-            SupportTypeDialog.prototype.getNameProperty = function () { return Infra.SupportTypeRow.nameProperty; };
-            SupportTypeDialog.prototype.getService = function () { return Infra.SupportTypeService.baseUrl; };
-            return SupportTypeDialog;
+            CategoryTypeDialog.prototype.getFormKey = function () { return Store.CategoryTypeForm.formKey; };
+            CategoryTypeDialog.prototype.getIdProperty = function () { return Store.CategoryTypeRow.idProperty; };
+            CategoryTypeDialog.prototype.getLocalTextPrefix = function () { return Store.CategoryTypeRow.localTextPrefix; };
+            CategoryTypeDialog.prototype.getNameProperty = function () { return Store.CategoryTypeRow.nameProperty; };
+            CategoryTypeDialog.prototype.getService = function () { return Store.CategoryTypeService.baseUrl; };
+            CategoryTypeDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], CategoryTypeDialog);
+            return CategoryTypeDialog;
         }(Serenity.EntityDialog));
-        SupportTypeDialog = __decorate([
-            Serenity.Decorators.registerClass(),
-            Serenity.Decorators.responsive()
-        ], SupportTypeDialog);
-        Infra.SupportTypeDialog = SupportTypeDialog;
-    })(Infra = Store.Infra || (Store.Infra = {}));
+        Store.CategoryTypeDialog = CategoryTypeDialog;
+    })(Store = Store_89.Store || (Store_89.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store) {
-    var Infra;
-    (function (Infra) {
-        var SupportTypeGrid = (function (_super) {
-            __extends(SupportTypeGrid, _super);
-            function SupportTypeGrid(container) {
+(function (Store_90) {
+    var Store;
+    (function (Store) {
+        var CategoryTypeGrid = /** @class */ (function (_super) {
+            __extends(CategoryTypeGrid, _super);
+            function CategoryTypeGrid(container) {
                 return _super.call(this, container) || this;
             }
-            SupportTypeGrid.prototype.getColumnsKey = function () { return 'Infra.SupportType'; };
-            SupportTypeGrid.prototype.getDialogType = function () { return Infra.SupportTypeDialog; };
-            SupportTypeGrid.prototype.getIdProperty = function () { return Infra.SupportTypeRow.idProperty; };
-            SupportTypeGrid.prototype.getLocalTextPrefix = function () { return Infra.SupportTypeRow.localTextPrefix; };
-            SupportTypeGrid.prototype.getService = function () { return Infra.SupportTypeService.baseUrl; };
-            return SupportTypeGrid;
+            CategoryTypeGrid.prototype.getColumnsKey = function () { return 'Store.CategoryType'; };
+            CategoryTypeGrid.prototype.getDialogType = function () { return Store.CategoryTypeDialog; };
+            CategoryTypeGrid.prototype.getIdProperty = function () { return Store.CategoryTypeRow.idProperty; };
+            CategoryTypeGrid.prototype.getLocalTextPrefix = function () { return Store.CategoryTypeRow.localTextPrefix; };
+            CategoryTypeGrid.prototype.getService = function () { return Store.CategoryTypeService.baseUrl; };
+            CategoryTypeGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], CategoryTypeGrid);
+            return CategoryTypeGrid;
         }(Serenity.EntityGrid));
-        SupportTypeGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], SupportTypeGrid);
-        Infra.SupportTypeGrid = SupportTypeGrid;
-    })(Infra = Store.Infra || (Store.Infra = {}));
+        Store.CategoryTypeGrid = CategoryTypeGrid;
+    })(Store = Store_90.Store || (Store_90.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store) {
-    var Infra;
-    (function (Infra) {
-        var SupportTypeStringDialog = (function (_super) {
-            __extends(SupportTypeStringDialog, _super);
-            function SupportTypeStringDialog() {
-                var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new Infra.SupportTypeStringForm(_this.idPrefix);
-                return _this;
-            }
-            SupportTypeStringDialog.prototype.getFormKey = function () { return Infra.SupportTypeStringForm.formKey; };
-            SupportTypeStringDialog.prototype.getIdProperty = function () { return Infra.SupportTypeStringRow.idProperty; };
-            SupportTypeStringDialog.prototype.getLocalTextPrefix = function () { return Infra.SupportTypeStringRow.localTextPrefix; };
-            SupportTypeStringDialog.prototype.getNameProperty = function () { return Infra.SupportTypeStringRow.nameProperty; };
-            SupportTypeStringDialog.prototype.getService = function () { return Infra.SupportTypeStringService.baseUrl; };
-            return SupportTypeStringDialog;
-        }(Serenity.EntityDialog));
-        SupportTypeStringDialog = __decorate([
-            Serenity.Decorators.registerClass(),
-            Serenity.Decorators.responsive()
-        ], SupportTypeStringDialog);
-        Infra.SupportTypeStringDialog = SupportTypeStringDialog;
-    })(Infra = Store.Infra || (Store.Infra = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Infra;
-    (function (Infra) {
-        var SuportTypeStringEditor = (function (_super) {
-            __extends(SuportTypeStringEditor, _super);
-            function SuportTypeStringEditor(container) {
-                return _super.call(this, container) || this;
-            }
-            SuportTypeStringEditor.prototype.getColumnsKey = function () { return 'Infra.SupportTypeString'; };
-            SuportTypeStringEditor.prototype.getDialogType = function () { return Infra.SupportTypeStringEditorDialog; };
-            SuportTypeStringEditor.prototype.getLocalTextPrefix = function () { return Infra.SupportTypeStringRow.localTextPrefix; };
-            return SuportTypeStringEditor;
-        }(Store.Common.GridEditorBase));
-        SuportTypeStringEditor = __decorate([
-            Serenity.Decorators.registerClass()
-        ], SuportTypeStringEditor);
-        Infra.SuportTypeStringEditor = SuportTypeStringEditor;
-    })(Infra = Store.Infra || (Store.Infra = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Infra;
-    (function (Infra) {
-        var SupportTypeStringEditorDialog = (function (_super) {
-            __extends(SupportTypeStringEditorDialog, _super);
-            function SupportTypeStringEditorDialog() {
-                var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new Infra.SupportTypeStringForm(_this.idPrefix);
-                return _this;
-            }
-            SupportTypeStringEditorDialog.prototype.getFormKey = function () { return Infra.SupportTypeStringForm.formKey; };
-            SupportTypeStringEditorDialog.prototype.getLocalTextPrefix = function () { return Infra.SupportTypeStringRow.localTextPrefix; };
-            SupportTypeStringEditorDialog.prototype.getNameProperty = function () { return Infra.SupportTypeStringRow.nameProperty; };
-            return SupportTypeStringEditorDialog;
-        }(Store.Common.GridEditorDialog));
-        SupportTypeStringEditorDialog = __decorate([
-            Serenity.Decorators.registerClass(),
-            Serenity.Decorators.responsive()
-        ], SupportTypeStringEditorDialog);
-        Infra.SupportTypeStringEditorDialog = SupportTypeStringEditorDialog;
-    })(Infra = Store.Infra || (Store.Infra = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Infra;
-    (function (Infra) {
-        var SupportTypeStringGrid = (function (_super) {
-            __extends(SupportTypeStringGrid, _super);
-            function SupportTypeStringGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            SupportTypeStringGrid.prototype.getColumnsKey = function () { return 'Infra.SupportTypeString'; };
-            SupportTypeStringGrid.prototype.getDialogType = function () { return Infra.SupportTypeStringDialog; };
-            SupportTypeStringGrid.prototype.getIdProperty = function () { return Infra.SupportTypeStringRow.idProperty; };
-            SupportTypeStringGrid.prototype.getLocalTextPrefix = function () { return Infra.SupportTypeStringRow.localTextPrefix; };
-            SupportTypeStringGrid.prototype.getService = function () { return Infra.SupportTypeStringService.baseUrl; };
-            return SupportTypeStringGrid;
-        }(Serenity.EntityGrid));
-        SupportTypeStringGrid = __decorate([
-            Serenity.Decorators.registerClass(),
-            Serenity.Decorators.filterable()
-        ], SupportTypeStringGrid);
-        Infra.SupportTypeStringGrid = SupportTypeStringGrid;
-    })(Infra = Store.Infra || (Store.Infra = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Meeting;
-    (function (Meeting) {
-        var MeetingDialog = (function (_super) {
-            __extends(MeetingDialog, _super);
-            function MeetingDialog() {
+(function (Store_91) {
+    var Store;
+    (function (Store) {
+        var CounterpartyDialog = /** @class */ (function (_super) {
+            __extends(CounterpartyDialog, _super);
+            function CounterpartyDialog() {
                 var _this = _super.call(this) || this;
-                _this.form = new Meeting.MeetingForm(_this.idPrefix);
-                _this.agendaGrid = new Meeting.MeetingAgendaGrid(_this.byId('AgendaGrid'));
-                _this.decisionGrid = new Meeting.MeetingDecisionGrid(_this.byId('DecisionGrid'));
-                _this.element.closest('.ui-dialog').find('.ui-dialog-titlebar-maximize').click();
-                _this.form.EndDate.addValidationRule(_this.uniqueName, function (e) {
-                    if (_this.form.EndDate.valueAsDate != null &&
-                        _this.form.StartDate.valueAsDate != null &&
-                        _this.form.StartDate.valueAsDate > _this.form.EndDate.valueAsDate) {
-                        return "End Date can't be earlier than Start Date";
-                    }
+                _this.form = new Store.CounterpartyForm(_this.idPrefix);
+                _this.ordersGrid = new Store.CounterpartyOrderGrid(_this.byId('OrdersGrid'));
+                // force order dialog to open in Dialog mode instead of Panel mode
+                // which is set as default on OrderDialog with @panelAttribute
+                _this.ordersGrid.openDialogsAsPanel = false;
+                _this.byId('NoteList').closest('.field').hide().end().appendTo(_this.byId('TabNotes'));
+                Store_91.DialogUtils.pendingChangesConfirmation(_this.element, function () { return _this.getSaveState() != _this.loadedState; });
+                return _this;
+            }
+            CounterpartyDialog.prototype.getFormKey = function () { return Store.CounterpartyForm.formKey; };
+            CounterpartyDialog.prototype.getIdProperty = function () { return Store.CounterpartyRow.idProperty; };
+            CounterpartyDialog.prototype.getLocalTextPrefix = function () { return Store.CounterpartyRow.localTextPrefix; };
+            CounterpartyDialog.prototype.getNameProperty = function () { return Store.CounterpartyRow.nameProperty; };
+            CounterpartyDialog.prototype.getService = function () { return Store.CounterpartyService.baseUrl; };
+            CounterpartyDialog.prototype.getSaveState = function () {
+                try {
+                    return $.toJSON(this.getSaveEntity());
+                }
+                catch (e) {
                     return null;
-                });
-                return _this;
-            }
-            MeetingDialog.prototype.getFormKey = function () { return Meeting.MeetingForm.formKey; };
-            MeetingDialog.prototype.getIdProperty = function () { return Meeting.MeetingRow.idProperty; };
-            MeetingDialog.prototype.getLocalTextPrefix = function () { return Meeting.MeetingRow.localTextPrefix; };
-            MeetingDialog.prototype.getNameProperty = function () { return Meeting.MeetingRow.nameProperty; };
-            MeetingDialog.prototype.getService = function () { return Meeting.MeetingService.baseUrl; };
-            MeetingDialog.prototype.arrange = function () {
-                _super.prototype.arrange.call(this);
-                var attendeeGrid = this.form.AttendeeList.element.find('.grid-container');
-                attendeeGrid.css('height', Math.max(150, this.element.height() - attendeeGrid.position().top - 15) + 'px')
-                    .triggerHandler('layout');
+                }
             };
-            MeetingDialog.prototype.loadEntity = function (entity) {
+            CounterpartyDialog.prototype.loadResponse = function (data) {
+                _super.prototype.loadResponse.call(this, data);
+                this.loadedState = this.getSaveState();
+            };
+            CounterpartyDialog.prototype.loadEntity = function (entity) {
                 _super.prototype.loadEntity.call(this, entity);
-                Serenity.TabsExtensions.setDisabled(this.tabs, 'Agenda', this.isNewOrDeleted());
-                Serenity.TabsExtensions.setDisabled(this.tabs, 'Decision', this.isNewOrDeleted());
-                //this.agendaGrid.customerID = entity.CustomerID;
+                Serenity.TabsExtensions.setDisabled(this.tabs, 'Orders', this.isNewOrDeleted());
+                this.ordersGrid.counterpartyID = entity.CounterpartyID;
             };
-            return MeetingDialog;
+            CounterpartyDialog.prototype.onSaveSuccess = function (response) {
+                _super.prototype.onSaveSuccess.call(this, response);
+                Q.reloadLookup('Store.Counterparty');
+            };
+            CounterpartyDialog = __decorate([
+                Serenity.Decorators.registerClass(),
+                Serenity.Decorators.panel()
+            ], CounterpartyDialog);
+            return CounterpartyDialog;
         }(Serenity.EntityDialog));
-        MeetingDialog = __decorate([
-            Serenity.Decorators.maximizable(),
-            Serenity.Decorators.registerClass(),
-            Serenity.Decorators.responsive()
-        ], MeetingDialog);
-        Meeting.MeetingDialog = MeetingDialog;
-    })(Meeting = Store.Meeting || (Store.Meeting = {}));
+        Store.CounterpartyDialog = CounterpartyDialog;
+    })(Store = Store_91.Store || (Store_91.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store) {
-    var Meeting;
-    (function (Meeting) {
-        var MeetingGrid = (function (_super) {
-            __extends(MeetingGrid, _super);
-            function MeetingGrid(container) {
+(function (Store_92) {
+    var Store;
+    (function (Store) {
+        var CounterpartyEditor = /** @class */ (function (_super) {
+            __extends(CounterpartyEditor, _super);
+            function CounterpartyEditor(hidden) {
+                return _super.call(this, hidden) || this;
+            }
+            CounterpartyEditor.prototype.getLookupKey = function () {
+                return Store.CounterpartyRow.lookupKey;
+            };
+            CounterpartyEditor.prototype.getItemText = function (item, lookup) {
+                return _super.prototype.getItemText.call(this, item, lookup) + ' [' + item.CounterpartyID + ']';
+            };
+            CounterpartyEditor = __decorate([
+                Serenity.Decorators.registerEditor()
+            ], CounterpartyEditor);
+            return CounterpartyEditor;
+        }(Serenity.LookupEditorBase));
+        Store.CounterpartyEditor = CounterpartyEditor;
+    })(Store = Store_92.Store || (Store_92.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_93) {
+    var Store;
+    (function (Store) {
+        var CounterpartyGrid = /** @class */ (function (_super) {
+            __extends(CounterpartyGrid, _super);
+            function CounterpartyGrid(container) {
                 return _super.call(this, container) || this;
             }
-            MeetingGrid.prototype.getColumnsKey = function () { return 'Meeting.Meeting'; };
-            MeetingGrid.prototype.getDialogType = function () { return Meeting.MeetingDialog; };
-            MeetingGrid.prototype.getIdProperty = function () { return Meeting.MeetingRow.idProperty; };
-            MeetingGrid.prototype.getLocalTextPrefix = function () { return Meeting.MeetingRow.localTextPrefix; };
-            MeetingGrid.prototype.getService = function () { return Meeting.MeetingService.baseUrl; };
-            return MeetingGrid;
-        }(Serenity.EntityGrid));
-        MeetingGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], MeetingGrid);
-        Meeting.MeetingGrid = MeetingGrid;
-    })(Meeting = Store.Meeting || (Store.Meeting = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Meeting;
-    (function (Meeting) {
-        var MeetingAgendaDialog = (function (_super) {
-            __extends(MeetingAgendaDialog, _super);
-            function MeetingAgendaDialog() {
-                var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new Meeting.MeetingAgendaForm(_this.idPrefix);
-                return _this;
-            }
-            MeetingAgendaDialog.prototype.getFormKey = function () { return Meeting.MeetingAgendaForm.formKey; };
-            MeetingAgendaDialog.prototype.getIdProperty = function () { return Meeting.MeetingAgendaRow.idProperty; };
-            MeetingAgendaDialog.prototype.getLocalTextPrefix = function () { return Meeting.MeetingAgendaRow.localTextPrefix; };
-            MeetingAgendaDialog.prototype.getNameProperty = function () { return Meeting.MeetingAgendaRow.nameProperty; };
-            MeetingAgendaDialog.prototype.getService = function () { return Meeting.MeetingAgendaService.baseUrl; };
-            return MeetingAgendaDialog;
-        }(Serenity.EntityDialog));
-        MeetingAgendaDialog = __decorate([
-            Serenity.Decorators.registerClass(),
-            Serenity.Decorators.responsive()
-        ], MeetingAgendaDialog);
-        Meeting.MeetingAgendaDialog = MeetingAgendaDialog;
-    })(Meeting = Store.Meeting || (Store.Meeting = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Meeting;
-    (function (Meeting) {
-        var MeetingAgendaGrid = (function (_super) {
-            __extends(MeetingAgendaGrid, _super);
-            function MeetingAgendaGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            MeetingAgendaGrid.prototype.getColumnsKey = function () { return 'Meeting.MeetingAgenda'; };
-            MeetingAgendaGrid.prototype.getDialogType = function () { return Meeting.MeetingAgendaDialog; };
-            MeetingAgendaGrid.prototype.getIdProperty = function () { return Meeting.MeetingAgendaRow.idProperty; };
-            MeetingAgendaGrid.prototype.getLocalTextPrefix = function () { return Meeting.MeetingAgendaRow.localTextPrefix; };
-            MeetingAgendaGrid.prototype.getService = function () { return Meeting.MeetingAgendaService.baseUrl; };
-            MeetingAgendaGrid.prototype.addButtonClick = function () {
-                this.editItem({ MeetingId: this.meetingId });
-            };
-            MeetingAgendaGrid.prototype.getInitialTitle = function () {
-                return null;
-            };
-            MeetingAgendaGrid.prototype.getGridCanLoad = function () {
-                return _super.prototype.getGridCanLoad.call(this) && !!this.meetingId;
-            };
-            Object.defineProperty(MeetingAgendaGrid.prototype, "meetingId", {
-                get: function () {
-                    return this._meetingId;
-                },
-                set: function (value) {
-                    if (this._meetingId !== value) {
-                        this._meetingId = value;
-                        this.setEquality('MeetingId', value);
-                        this.refresh();
-                    }
-                },
-                enumerable: true,
-                configurable: true
-            });
-            return MeetingAgendaGrid;
-        }(Serenity.EntityGrid));
-        MeetingAgendaGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], MeetingAgendaGrid);
-        Meeting.MeetingAgendaGrid = MeetingAgendaGrid;
-    })(Meeting = Store.Meeting || (Store.Meeting = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Meeting;
-    (function (Meeting) {
-        var MeetingAgendaRelevantDialog = (function (_super) {
-            __extends(MeetingAgendaRelevantDialog, _super);
-            function MeetingAgendaRelevantDialog() {
-                var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new Meeting.MeetingAgendaRelevantForm(_this.idPrefix);
-                return _this;
-            }
-            MeetingAgendaRelevantDialog.prototype.getFormKey = function () { return Meeting.MeetingAgendaRelevantForm.formKey; };
-            MeetingAgendaRelevantDialog.prototype.getIdProperty = function () { return Meeting.MeetingAgendaRelevantRow.idProperty; };
-            MeetingAgendaRelevantDialog.prototype.getLocalTextPrefix = function () { return Meeting.MeetingAgendaRelevantRow.localTextPrefix; };
-            MeetingAgendaRelevantDialog.prototype.getService = function () { return Meeting.MeetingAgendaRelevantService.baseUrl; };
-            return MeetingAgendaRelevantDialog;
-        }(Serenity.EntityDialog));
-        MeetingAgendaRelevantDialog = __decorate([
-            Serenity.Decorators.registerClass(),
-            Serenity.Decorators.responsive()
-        ], MeetingAgendaRelevantDialog);
-        Meeting.MeetingAgendaRelevantDialog = MeetingAgendaRelevantDialog;
-    })(Meeting = Store.Meeting || (Store.Meeting = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Meeting;
-    (function (Meeting) {
-        var MeetingAgendaRelevantGrid = (function (_super) {
-            __extends(MeetingAgendaRelevantGrid, _super);
-            function MeetingAgendaRelevantGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            MeetingAgendaRelevantGrid.prototype.getColumnsKey = function () { return 'Meeting.MeetingAgendaRelevant'; };
-            MeetingAgendaRelevantGrid.prototype.getDialogType = function () { return Meeting.MeetingAgendaRelevantDialog; };
-            MeetingAgendaRelevantGrid.prototype.getIdProperty = function () { return Meeting.MeetingAgendaRelevantRow.idProperty; };
-            MeetingAgendaRelevantGrid.prototype.getLocalTextPrefix = function () { return Meeting.MeetingAgendaRelevantRow.localTextPrefix; };
-            MeetingAgendaRelevantGrid.prototype.getService = function () { return Meeting.MeetingAgendaRelevantService.baseUrl; };
-            return MeetingAgendaRelevantGrid;
-        }(Serenity.EntityGrid));
-        MeetingAgendaRelevantGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], MeetingAgendaRelevantGrid);
-        Meeting.MeetingAgendaRelevantGrid = MeetingAgendaRelevantGrid;
-    })(Meeting = Store.Meeting || (Store.Meeting = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Meeting;
-    (function (Meeting) {
-        var MeetingAgendaTypeDialog = (function (_super) {
-            __extends(MeetingAgendaTypeDialog, _super);
-            function MeetingAgendaTypeDialog() {
-                var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new Meeting.MeetingAgendaTypeForm(_this.idPrefix);
-                return _this;
-            }
-            MeetingAgendaTypeDialog.prototype.getFormKey = function () { return Meeting.MeetingAgendaTypeForm.formKey; };
-            MeetingAgendaTypeDialog.prototype.getIdProperty = function () { return Meeting.MeetingAgendaTypeRow.idProperty; };
-            MeetingAgendaTypeDialog.prototype.getLocalTextPrefix = function () { return Meeting.MeetingAgendaTypeRow.localTextPrefix; };
-            MeetingAgendaTypeDialog.prototype.getNameProperty = function () { return Meeting.MeetingAgendaTypeRow.nameProperty; };
-            MeetingAgendaTypeDialog.prototype.getService = function () { return Meeting.MeetingAgendaTypeService.baseUrl; };
-            return MeetingAgendaTypeDialog;
-        }(Serenity.EntityDialog));
-        MeetingAgendaTypeDialog = __decorate([
-            Serenity.Decorators.registerClass(),
-            Serenity.Decorators.responsive()
-        ], MeetingAgendaTypeDialog);
-        Meeting.MeetingAgendaTypeDialog = MeetingAgendaTypeDialog;
-    })(Meeting = Store.Meeting || (Store.Meeting = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Meeting;
-    (function (Meeting) {
-        var MeetingAgendaTypeGrid = (function (_super) {
-            __extends(MeetingAgendaTypeGrid, _super);
-            function MeetingAgendaTypeGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            MeetingAgendaTypeGrid.prototype.getColumnsKey = function () { return 'Meeting.MeetingAgendaType'; };
-            MeetingAgendaTypeGrid.prototype.getDialogType = function () { return Meeting.MeetingAgendaTypeDialog; };
-            MeetingAgendaTypeGrid.prototype.getIdProperty = function () { return Meeting.MeetingAgendaTypeRow.idProperty; };
-            MeetingAgendaTypeGrid.prototype.getLocalTextPrefix = function () { return Meeting.MeetingAgendaTypeRow.localTextPrefix; };
-            MeetingAgendaTypeGrid.prototype.getService = function () { return Meeting.MeetingAgendaTypeService.baseUrl; };
-            return MeetingAgendaTypeGrid;
-        }(Serenity.EntityGrid));
-        MeetingAgendaTypeGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], MeetingAgendaTypeGrid);
-        Meeting.MeetingAgendaTypeGrid = MeetingAgendaTypeGrid;
-    })(Meeting = Store.Meeting || (Store.Meeting = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Meeting;
-    (function (Meeting) {
-        var MeetingAttendeeDialog = (function (_super) {
-            __extends(MeetingAttendeeDialog, _super);
-            function MeetingAttendeeDialog() {
-                var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new Meeting.MeetingAttendeeForm(_this.idPrefix);
-                return _this;
-            }
-            MeetingAttendeeDialog.prototype.getFormKey = function () { return Meeting.MeetingAttendeeForm.formKey; };
-            MeetingAttendeeDialog.prototype.getIdProperty = function () { return Meeting.MeetingAttendeeRow.idProperty; };
-            MeetingAttendeeDialog.prototype.getLocalTextPrefix = function () { return Meeting.MeetingAttendeeRow.localTextPrefix; };
-            return MeetingAttendeeDialog;
-        }(Store.Common.GridEditorDialog));
-        MeetingAttendeeDialog = __decorate([
-            Serenity.Decorators.registerClass(),
-            Serenity.Decorators.responsive()
-        ], MeetingAttendeeDialog);
-        Meeting.MeetingAttendeeDialog = MeetingAttendeeDialog;
-    })(Meeting = Store.Meeting || (Store.Meeting = {}));
-})(Store || (Store = {}));
-/// <reference path="../../common/helpers/grideditorbase.ts" />
-var Store;
-(function (Store) {
-    var Meeting;
-    (function (Meeting) {
-        var MeetingAttendeeEditor = (function (_super) {
-            __extends(MeetingAttendeeEditor, _super);
-            function MeetingAttendeeEditor(container) {
-                var _this = _super.call(this, container) || this;
-                _this.slickContainer.on('change', 'select', function (e) {
-                    var cell = _this.slickGrid.getCellFromEvent(e);
-                    if (!cell)
-                        return;
-                    var item = _this.itemAt(cell.row);
-                    var field = _this.slickGrid.getColumns()[cell.cell].field;
-                    item[field] = Q.toId($(e.target).val());
-                    _this.view.updateItem(_this.id(item), item);
-                });
-                return _this;
-            }
-            MeetingAttendeeEditor.prototype.getColumnsKey = function () { return 'Meeting.MeetingAttendee'; };
-            MeetingAttendeeEditor.prototype.getDialogType = function () { return Meeting.MeetingAttendeeDialog; };
-            MeetingAttendeeEditor.prototype.getLocalTextPrefix = function () { return Meeting.MeetingAttendeeRow.localTextPrefix; };
-            MeetingAttendeeEditor.prototype.getButtons = function () {
-                return [];
-            };
-            MeetingAttendeeEditor.prototype.createToolbarExtensions = function () {
+            CounterpartyGrid.prototype.getColumnsKey = function () { return 'Store.Counterparty'; };
+            CounterpartyGrid.prototype.getDialogType = function () { return Store.CounterpartyDialog; };
+            CounterpartyGrid.prototype.getIdProperty = function () { return Store.CounterpartyRow.idProperty; };
+            CounterpartyGrid.prototype.getLocalTextPrefix = function () { return Store.CounterpartyRow.localTextPrefix; };
+            CounterpartyGrid.prototype.getService = function () { return Store.CounterpartyService.baseUrl; };
+            CounterpartyGrid.prototype.getButtons = function () {
                 var _this = this;
-                _super.prototype.createToolbarExtensions.call(this);
-                Serenity.Widget.create({
+                var buttons = _super.prototype.getButtons.call(this);
+                buttons.push(Store_93.Common.ExcelExportHelper.createToolButton({
+                    grid: this,
+                    onViewSubmit: function () { return _this.onViewSubmit(); },
+                    service: 'Store/Counterparty/ListExcel',
+                    separator: true
+                }));
+                buttons.push(Store_93.Common.PdfExportHelper.createToolButton({
+                    grid: this,
+                    onViewSubmit: function () { return _this.onViewSubmit(); }
+                }));
+                return buttons;
+            };
+            CounterpartyGrid = __decorate([
+                Serenity.Decorators.registerClass(),
+                Serenity.Decorators.filterable()
+            ], CounterpartyGrid);
+            return CounterpartyGrid;
+        }(Serenity.EntityGrid));
+        Store.CounterpartyGrid = CounterpartyGrid;
+    })(Store = Store_93.Store || (Store_93.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_94) {
+    var Store;
+    (function (Store) {
+        var OrderDialog = /** @class */ (function (_super) {
+            __extends(OrderDialog, _super);
+            function OrderDialog() {
+                var _this = _super.call(this) || this;
+                _this.form = new Store.OrderForm(_this.idPrefix);
+                return _this;
+            }
+            OrderDialog.prototype.getFormKey = function () { return Store.OrderForm.formKey; };
+            OrderDialog.prototype.getIdProperty = function () { return Store.OrderRow.idProperty; };
+            OrderDialog.prototype.getLocalTextPrefix = function () { return Store.OrderRow.localTextPrefix; };
+            OrderDialog.prototype.getNameProperty = function () { return Store.OrderRow.nameProperty; };
+            OrderDialog.prototype.getService = function () { return Store.OrderService.baseUrl; };
+            OrderDialog.prototype.getToolbarButtons = function () {
+                var _this = this;
+                var buttons = _super.prototype.getToolbarButtons.call(this);
+                buttons.push(Store_94.Common.ReportHelper.createToolButton({
+                    title: 'Invoice',
+                    cssClass: 'export-pdf-button',
+                    reportKey: 'Store.OrderDetail',
+                    getParams: function () { return ({
+                        OrderID: _this.get_entityId()
+                    }); }
+                }));
+                return buttons;
+            };
+            OrderDialog.prototype.updateInterface = function () {
+                _super.prototype.updateInterface.call(this);
+                this.toolbar.findButton('export-pdf-button').toggle(this.isEditMode());
+            };
+            OrderDialog = __decorate([
+                Serenity.Decorators.registerClass(),
+                Serenity.Decorators.panel()
+            ], OrderDialog);
+            return OrderDialog;
+        }(Serenity.EntityDialog));
+        Store.OrderDialog = OrderDialog;
+    })(Store = Store_94.Store || (Store_94.Store = {}));
+})(Store || (Store = {}));
+/// <reference path="../Order/OrderDialog.ts" />
+var Store;
+(function (Store_95) {
+    var Store;
+    (function (Store) {
+        var CounterpartyOrderDialog = /** @class */ (function (_super) {
+            __extends(CounterpartyOrderDialog, _super);
+            function CounterpartyOrderDialog() {
+                return _super.call(this) || this;
+            }
+            CounterpartyOrderDialog.prototype.UpdateInterface = function () {
+                _super.prototype.updateInterface.call(this);
+                Serenity.EditorUtils.setReadOnly(this.form.CounterpartyID, true);
+            };
+            CounterpartyOrderDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], CounterpartyOrderDialog);
+            return CounterpartyOrderDialog;
+        }(Store.OrderDialog));
+        Store.CounterpartyOrderDialog = CounterpartyOrderDialog;
+    })(Store = Store_95.Store || (Store_95.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_96) {
+    var Store;
+    (function (Store) {
+        var OrderGrid = /** @class */ (function (_super) {
+            __extends(OrderGrid, _super);
+            function OrderGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            OrderGrid.prototype.getColumnsKey = function () { return 'Store.Order'; };
+            OrderGrid.prototype.getDialogType = function () { return Store.OrderDialog; };
+            OrderGrid.prototype.getIdProperty = function () { return Store.OrderRow.idProperty; };
+            OrderGrid.prototype.getLocalTextPrefix = function () { return Store.OrderRow.localTextPrefix; };
+            OrderGrid.prototype.getService = function () { return Store.OrderService.baseUrl; };
+            OrderGrid.prototype.getQuickFilters = function () {
+                var _this = this;
+                var filters = _super.prototype.getQuickFilters.call(this);
+                filters.push({
                     type: Serenity.LookupEditor,
                     options: {
-                        lookupKey: Store.Organization.ContactRow.lookupKey
+                        lookupKey: Store.ProductRow.lookupKey
                     },
-                    element: function (e) { return e.attr('placeholder', '--select contact to add--').appendTo(_this.toolbar.element); },
-                    init: function (w) { return w.changeSelect2(function (x) {
-                        if (Q.isEmptyOrNull(w.value))
-                            return;
-                        var contact = Store.Organization.ContactRow.getLookup().itemById[Q.toId(w.value)];
-                        w.value = null;
-                        if (!contact)
-                            return;
-                        if (Q.any(_this.getItems(), function (i) { return i.ContactId == contact.ContactId; })) {
-                            Q.notifyWarning("Contact is already in attendee list!");
-                            return;
-                        }
-                        var item = {
-                            ContactId: contact.ContactId,
-                            ContactFullName: contact.FullName,
-                            AttendeeType: Meeting.MeetingAttendeeType.Attendee,
-                            AttendanceStatus: Meeting.MeetingAttendanceStatus.NotSet
-                        };
-                        _this.setNewId(item);
-                        var items = _this.getItems().slice();
-                        items.push(item);
-                        items.sort(function (a, b) { return Q.turkishLocaleCompare(a.ContactFullName, b.ContactFullName); });
-                        _this.setItems(items);
-                    }); }
+                    field: 'ProductID',
+                    title: 'Contains Product in Details',
+                    handler: function (w) {
+                        _this.view.params.ProductID = Q.toId(w.value);
+                    },
+                    cssClass: 'hidden-xs'
                 });
+                return filters;
             };
-            MeetingAttendeeEditor.prototype.getColumns = function () {
+            OrderGrid.prototype.createQuickFilters = function () {
+                _super.prototype.createQuickFilters.call(this);
+                this.shippingStateFilter = this.findQuickFilter(Serenity.EnumEditor, "ShippingState" /* ShippingState */);
+            };
+            OrderGrid.prototype.getButtons = function () {
+                var _this = this;
+                var buttons = _super.prototype.getButtons.call(this);
+                buttons.push(Store_96.Common.ExcelExportHelper.createToolButton({
+                    grid: this,
+                    service: Store.OrderService.baseUrl + '/ListExcel',
+                    onViewSubmit: function () { return _this.onViewSubmit(); },
+                    separator: true
+                }));
+                buttons.push(Store_96.Common.PdfExportHelper.createToolButton({
+                    grid: this,
+                    onViewSubmit: function () { return _this.onViewSubmit(); }
+                }));
+                return buttons;
+            };
+            OrderGrid.prototype.getColumns = function () {
                 var columns = _super.prototype.getColumns.call(this);
-                columns.unshift({
-                    field: 'Remove Attendee',
+                columns.splice(1, 0, {
+                    field: 'Print Invoice',
                     name: '',
-                    format: function (ctx) { return '<a class="inline-action delete-row" title="delete">' +
-                        '<i class="fa fa-times text-red"></i></a>'; },
+                    format: function (ctx) { return '<a class="inline-action print-invoice" title="invoice">' +
+                        '<i class="fa fa-file-pdf-o text-red"></i></a>'; },
                     width: 24,
                     minWidth: 24,
                     maxWidth: 24
                 });
                 return columns;
             };
-            MeetingAttendeeEditor.prototype.onClick = function (e, row, cell) {
+            OrderGrid.prototype.onClick = function (e, row, cell) {
                 _super.prototype.onClick.call(this, e, row, cell);
                 if (e.isDefaultPrevented())
                     return;
                 var item = this.itemAt(row);
                 var target = $(e.target);
+                // if user clicks "i" element, e.g. icon
                 if (target.parent().hasClass('inline-action'))
                     target = target.parent();
                 if (target.hasClass('inline-action')) {
                     e.preventDefault();
-                    if (target.hasClass('delete-row')) {
-                        var items = this.getItems();
-                        items.splice(row, 1);
-                        this.setItems(items);
+                    if (target.hasClass('print-invoice')) {
+                        Store_96.Common.ReportHelper.execute({
+                            reportKey: 'Store.OrderDetail',
+                            params: {
+                                OrderID: item.OrderID
+                            }
+                        });
                     }
                 }
             };
-            return MeetingAttendeeEditor;
-        }(Store.Common.GridEditorBase));
-        MeetingAttendeeEditor = __decorate([
-            Serenity.Decorators.registerClass()
-        ], MeetingAttendeeEditor);
-        Meeting.MeetingAttendeeEditor = MeetingAttendeeEditor;
-    })(Meeting = Store.Meeting || (Store.Meeting = {}));
+            OrderGrid.prototype.set_shippingState = function (value) {
+                this.shippingStateFilter.value = value == null ? '' : value.toString();
+            };
+            OrderGrid.prototype.addButtonClick = function () {
+                var eq = this.view.params.EqualityFilter;
+                this.editItem({
+                    CounterpartyID: eq ? eq.CounterpartyID : null
+                });
+            };
+            OrderGrid = __decorate([
+                Serenity.Decorators.registerClass(),
+                Serenity.Decorators.filterable()
+            ], OrderGrid);
+            return OrderGrid;
+        }(Serenity.EntityGrid));
+        Store.OrderGrid = OrderGrid;
+    })(Store = Store_96.Store || (Store_96.Store = {}));
 })(Store || (Store = {}));
+/// <reference path="../Order/OrderGrid.ts" />
 var Store;
-(function (Store) {
-    var Meeting;
-    (function (Meeting) {
-        var MeetingDecisionDialog = (function (_super) {
-            __extends(MeetingDecisionDialog, _super);
-            function MeetingDecisionDialog() {
-                var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new Meeting.MeetingDecisionForm(_this.idPrefix);
-                return _this;
-            }
-            MeetingDecisionDialog.prototype.getFormKey = function () { return Meeting.MeetingDecisionForm.formKey; };
-            MeetingDecisionDialog.prototype.getIdProperty = function () { return Meeting.MeetingDecisionRow.idProperty; };
-            MeetingDecisionDialog.prototype.getLocalTextPrefix = function () { return Meeting.MeetingDecisionRow.localTextPrefix; };
-            MeetingDecisionDialog.prototype.getNameProperty = function () { return Meeting.MeetingDecisionRow.nameProperty; };
-            MeetingDecisionDialog.prototype.getService = function () { return Meeting.MeetingDecisionService.baseUrl; };
-            return MeetingDecisionDialog;
-        }(Serenity.EntityDialog));
-        MeetingDecisionDialog = __decorate([
-            Serenity.Decorators.registerClass(),
-            Serenity.Decorators.responsive()
-        ], MeetingDecisionDialog);
-        Meeting.MeetingDecisionDialog = MeetingDecisionDialog;
-    })(Meeting = Store.Meeting || (Store.Meeting = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Meeting;
-    (function (Meeting) {
-        var MeetingDecisionGrid = (function (_super) {
-            __extends(MeetingDecisionGrid, _super);
-            function MeetingDecisionGrid(container) {
+(function (Store_97) {
+    var Store;
+    (function (Store) {
+        var CounterpartyOrderGrid = /** @class */ (function (_super) {
+            __extends(CounterpartyOrderGrid, _super);
+            function CounterpartyOrderGrid(container) {
                 return _super.call(this, container) || this;
             }
-            MeetingDecisionGrid.prototype.getColumnsKey = function () { return 'Meeting.MeetingDecision'; };
-            MeetingDecisionGrid.prototype.getDialogType = function () { return Meeting.MeetingDecisionDialog; };
-            MeetingDecisionGrid.prototype.getIdProperty = function () { return Meeting.MeetingDecisionRow.idProperty; };
-            MeetingDecisionGrid.prototype.getLocalTextPrefix = function () { return Meeting.MeetingDecisionRow.localTextPrefix; };
-            MeetingDecisionGrid.prototype.getService = function () { return Meeting.MeetingDecisionService.baseUrl; };
-            MeetingDecisionGrid.prototype.addButtonClick = function () {
-                this.editItem({ MeetingId: this.meetingId });
+            CounterpartyOrderGrid.prototype.getDialogType = function () { return Store.CounterpartyOrderDialog; };
+            CounterpartyOrderGrid.prototype.getColumns = function () {
+                return _super.prototype.getColumns.call(this).filter(function (x) { return x.field !== "CounterpartyCompanyName" /* CounterpartyCompanyName */; });
             };
-            MeetingDecisionGrid.prototype.getInitialTitle = function () {
+            CounterpartyOrderGrid.prototype.initEntityDialog = function (itemType, dialog) {
+                _super.prototype.initEntityDialog.call(this, itemType, dialog);
+                Serenity.SubDialogHelper.cascade(dialog, this.element.closest('.ui-dialog'));
+            };
+            CounterpartyOrderGrid.prototype.AddButtonClick = function () {
+                this.editItem({ CounterpartyID: this.counterpartyID });
+            };
+            CounterpartyOrderGrid.prototype.getInitialTitle = function () {
                 return null;
             };
-            MeetingDecisionGrid.prototype.getGridCanLoad = function () {
-                return _super.prototype.getGridCanLoad.call(this) && !!this.meetingId;
+            CounterpartyOrderGrid.prototype.getGridCanLoad = function () {
+                return _super.prototype.getGridCanLoad.call(this) && !!this.counterpartyID;
             };
-            Object.defineProperty(MeetingDecisionGrid.prototype, "meetingId", {
+            Object.defineProperty(CounterpartyOrderGrid.prototype, "counterpartyID", {
                 get: function () {
-                    return this._meetingId;
+                    return this._counterpartyID;
                 },
                 set: function (value) {
-                    if (this._meetingId !== value) {
-                        this._meetingId = value;
-                        this.setEquality('MeetingId', value);
+                    if (this._counterpartyID !== value) {
+                        this._counterpartyID = value;
+                        this.setEquality('CounterpartyID', value);
                         this.refresh();
                     }
                 },
                 enumerable: true,
                 configurable: true
             });
-            return MeetingDecisionGrid;
-        }(Serenity.EntityGrid));
-        MeetingDecisionGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], MeetingDecisionGrid);
-        Meeting.MeetingDecisionGrid = MeetingDecisionGrid;
-    })(Meeting = Store.Meeting || (Store.Meeting = {}));
+            CounterpartyOrderGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], CounterpartyOrderGrid);
+            return CounterpartyOrderGrid;
+        }(Store.OrderGrid));
+        Store.CounterpartyOrderGrid = CounterpartyOrderGrid;
+    })(Store = Store_97.Store || (Store_97.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store) {
-    var Meeting;
-    (function (Meeting) {
-        var MeetingDecisionRelevantDialog = (function (_super) {
-            __extends(MeetingDecisionRelevantDialog, _super);
-            function MeetingDecisionRelevantDialog() {
-                var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new Meeting.MeetingDecisionRelevantForm(_this.idPrefix);
+(function (Store_98) {
+    var Store;
+    (function (Store) {
+        var CustomerDialog = /** @class */ (function (_super) {
+            __extends(CustomerDialog, _super);
+            function CustomerDialog() {
+                var _this = _super.call(this) || this;
+                _this.form = new Store.CustomerForm(_this.idPrefix);
+                _this.ordersGrid = new Store.CustomerOrdersGrid(_this.byId('OrdersGrid'));
+                // force order dialog to open in Dialog mode instead of Panel mode
+                // which is set as default on OrderDialog with @panelAttribute
+                _this.ordersGrid.openDialogsAsPanel = false;
+                _this.byId('NoteList').closest('.field').hide().end().appendTo(_this.byId('TabNotes'));
+                Store_98.DialogUtils.pendingChangesConfirmation(_this.element, function () { return _this.getSaveState() != _this.loadedState; });
                 return _this;
             }
-            MeetingDecisionRelevantDialog.prototype.getFormKey = function () { return Meeting.MeetingDecisionRelevantForm.formKey; };
-            MeetingDecisionRelevantDialog.prototype.getIdProperty = function () { return Meeting.MeetingDecisionRelevantRow.idProperty; };
-            MeetingDecisionRelevantDialog.prototype.getLocalTextPrefix = function () { return Meeting.MeetingDecisionRelevantRow.localTextPrefix; };
-            MeetingDecisionRelevantDialog.prototype.getService = function () { return Meeting.MeetingDecisionRelevantService.baseUrl; };
-            return MeetingDecisionRelevantDialog;
+            CustomerDialog.prototype.getFormKey = function () { return Store.CustomerForm.formKey; };
+            CustomerDialog.prototype.getIdProperty = function () { return Store.CustomerRow.idProperty; };
+            CustomerDialog.prototype.getLocalTextPrefix = function () { return Store.CustomerRow.localTextPrefix; };
+            CustomerDialog.prototype.getNameProperty = function () { return Store.CustomerRow.nameProperty; };
+            CustomerDialog.prototype.getService = function () { return Store.CustomerService.baseUrl; };
+            CustomerDialog.prototype.getSaveState = function () {
+                try {
+                    return $.toJSON(this.getSaveEntity());
+                }
+                catch (e) {
+                    return null;
+                }
+            };
+            CustomerDialog.prototype.loadResponse = function (data) {
+                _super.prototype.loadResponse.call(this, data);
+                this.loadedState = this.getSaveState();
+            };
+            CustomerDialog.prototype.loadEntity = function (entity) {
+                _super.prototype.loadEntity.call(this, entity);
+                Serenity.TabsExtensions.setDisabled(this.tabs, 'Orders', this.isNewOrDeleted());
+                this.ordersGrid.customerID = entity.CustomerID;
+            };
+            CustomerDialog.prototype.onSaveSuccess = function (response) {
+                _super.prototype.onSaveSuccess.call(this, response);
+                Q.reloadLookup('Store.Customer');
+            };
+            CustomerDialog = __decorate([
+                Serenity.Decorators.registerClass(),
+                Serenity.Decorators.panel()
+            ], CustomerDialog);
+            return CustomerDialog;
         }(Serenity.EntityDialog));
-        MeetingDecisionRelevantDialog = __decorate([
-            Serenity.Decorators.registerClass(),
-            Serenity.Decorators.responsive()
-        ], MeetingDecisionRelevantDialog);
-        Meeting.MeetingDecisionRelevantDialog = MeetingDecisionRelevantDialog;
-    })(Meeting = Store.Meeting || (Store.Meeting = {}));
+        Store.CustomerDialog = CustomerDialog;
+    })(Store = Store_98.Store || (Store_98.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store) {
-    var Meeting;
-    (function (Meeting) {
-        var MeetingDecisionRelevantGrid = (function (_super) {
-            __extends(MeetingDecisionRelevantGrid, _super);
-            function MeetingDecisionRelevantGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            MeetingDecisionRelevantGrid.prototype.getColumnsKey = function () { return 'Meeting.MeetingDecisionRelevant'; };
-            MeetingDecisionRelevantGrid.prototype.getDialogType = function () { return Meeting.MeetingDecisionRelevantDialog; };
-            MeetingDecisionRelevantGrid.prototype.getIdProperty = function () { return Meeting.MeetingDecisionRelevantRow.idProperty; };
-            MeetingDecisionRelevantGrid.prototype.getLocalTextPrefix = function () { return Meeting.MeetingDecisionRelevantRow.localTextPrefix; };
-            MeetingDecisionRelevantGrid.prototype.getService = function () { return Meeting.MeetingDecisionRelevantService.baseUrl; };
-            return MeetingDecisionRelevantGrid;
-        }(Serenity.EntityGrid));
-        MeetingDecisionRelevantGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], MeetingDecisionRelevantGrid);
-        Meeting.MeetingDecisionRelevantGrid = MeetingDecisionRelevantGrid;
-    })(Meeting = Store.Meeting || (Store.Meeting = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Meeting;
-    (function (Meeting) {
-        var MeetingLocationDialog = (function (_super) {
-            __extends(MeetingLocationDialog, _super);
-            function MeetingLocationDialog() {
-                var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new Meeting.MeetingLocationForm(_this.idPrefix);
-                return _this;
-            }
-            MeetingLocationDialog.prototype.getFormKey = function () { return Meeting.MeetingLocationForm.formKey; };
-            MeetingLocationDialog.prototype.getIdProperty = function () { return Meeting.MeetingLocationRow.idProperty; };
-            MeetingLocationDialog.prototype.getLocalTextPrefix = function () { return Meeting.MeetingLocationRow.localTextPrefix; };
-            MeetingLocationDialog.prototype.getNameProperty = function () { return Meeting.MeetingLocationRow.nameProperty; };
-            MeetingLocationDialog.prototype.getService = function () { return Meeting.MeetingLocationService.baseUrl; };
-            return MeetingLocationDialog;
-        }(Serenity.EntityDialog));
-        MeetingLocationDialog = __decorate([
-            Serenity.Decorators.registerClass(),
-            Serenity.Decorators.responsive()
-        ], MeetingLocationDialog);
-        Meeting.MeetingLocationDialog = MeetingLocationDialog;
-    })(Meeting = Store.Meeting || (Store.Meeting = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Meeting;
-    (function (Meeting) {
-        var MeetingLocationGrid = (function (_super) {
-            __extends(MeetingLocationGrid, _super);
-            function MeetingLocationGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            MeetingLocationGrid.prototype.getColumnsKey = function () { return 'Meeting.MeetingLocation'; };
-            MeetingLocationGrid.prototype.getDialogType = function () { return Meeting.MeetingLocationDialog; };
-            MeetingLocationGrid.prototype.getIdProperty = function () { return Meeting.MeetingLocationRow.idProperty; };
-            MeetingLocationGrid.prototype.getLocalTextPrefix = function () { return Meeting.MeetingLocationRow.localTextPrefix; };
-            MeetingLocationGrid.prototype.getService = function () { return Meeting.MeetingLocationService.baseUrl; };
-            return MeetingLocationGrid;
-        }(Serenity.EntityGrid));
-        MeetingLocationGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], MeetingLocationGrid);
-        Meeting.MeetingLocationGrid = MeetingLocationGrid;
-    })(Meeting = Store.Meeting || (Store.Meeting = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Meeting;
-    (function (Meeting) {
-        var MeetingTypeDialog = (function (_super) {
-            __extends(MeetingTypeDialog, _super);
-            function MeetingTypeDialog() {
-                var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new Meeting.MeetingTypeForm(_this.idPrefix);
-                return _this;
-            }
-            MeetingTypeDialog.prototype.getFormKey = function () { return Meeting.MeetingTypeForm.formKey; };
-            MeetingTypeDialog.prototype.getIdProperty = function () { return Meeting.MeetingTypeRow.idProperty; };
-            MeetingTypeDialog.prototype.getLocalTextPrefix = function () { return Meeting.MeetingTypeRow.localTextPrefix; };
-            MeetingTypeDialog.prototype.getNameProperty = function () { return Meeting.MeetingTypeRow.nameProperty; };
-            MeetingTypeDialog.prototype.getService = function () { return Meeting.MeetingTypeService.baseUrl; };
-            return MeetingTypeDialog;
-        }(Serenity.EntityDialog));
-        MeetingTypeDialog = __decorate([
-            Serenity.Decorators.registerClass(),
-            Serenity.Decorators.responsive()
-        ], MeetingTypeDialog);
-        Meeting.MeetingTypeDialog = MeetingTypeDialog;
-    })(Meeting = Store.Meeting || (Store.Meeting = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Meeting;
-    (function (Meeting) {
-        var MeetingTypeGrid = (function (_super) {
-            __extends(MeetingTypeGrid, _super);
-            function MeetingTypeGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            MeetingTypeGrid.prototype.getColumnsKey = function () { return 'Meeting.MeetingType'; };
-            MeetingTypeGrid.prototype.getDialogType = function () { return Meeting.MeetingTypeDialog; };
-            MeetingTypeGrid.prototype.getIdProperty = function () { return Meeting.MeetingTypeRow.idProperty; };
-            MeetingTypeGrid.prototype.getLocalTextPrefix = function () { return Meeting.MeetingTypeRow.localTextPrefix; };
-            MeetingTypeGrid.prototype.getService = function () { return Meeting.MeetingTypeService.baseUrl; };
-            return MeetingTypeGrid;
-        }(Serenity.EntityGrid));
-        MeetingTypeGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], MeetingTypeGrid);
-        Meeting.MeetingTypeGrid = MeetingTypeGrid;
-    })(Meeting = Store.Meeting || (Store.Meeting = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Membership;
-    (function (Membership) {
-        var ChangePasswordPanel = (function (_super) {
-            __extends(ChangePasswordPanel, _super);
-            function ChangePasswordPanel(container) {
-                var _this = _super.call(this, container) || this;
-                _this.form = new Membership.ChangePasswordForm(_this.idPrefix);
-                _this.form.NewPassword.addValidationRule(_this.uniqueName, function (e) {
-                    if (_this.form.w('ConfirmPassword', Serenity.PasswordEditor).value.length < 7) {
-                        return Q.format(Q.text('Validation.MinRequiredPasswordLength'), 7);
-                    }
-                });
-                _this.form.ConfirmPassword.addValidationRule(_this.uniqueName, function (e) {
-                    if (_this.form.ConfirmPassword.value !== _this.form.NewPassword.value) {
-                        return Q.text('Validation.PasswordConfirm');
-                    }
-                });
-                _this.byId('SubmitButton').click(function (e) {
-                    e.preventDefault();
-                    if (!_this.validateForm()) {
-                        return;
-                    }
-                    var request = _this.getSaveEntity();
-                    Q.serviceCall({
-                        url: Q.resolveUrl('~/Account/ChangePassword'),
-                        request: request,
-                        onSuccess: function (response) {
-                            Q.information(Q.text('Forms.Membership.ChangePassword.Success'), function () {
-                                window.location.href = Q.resolveUrl('~/');
-                            });
-                        }
-                    });
-                });
-                return _this;
-            }
-            ChangePasswordPanel.prototype.getFormKey = function () { return Membership.ChangePasswordForm.formKey; };
-            return ChangePasswordPanel;
-        }(Serenity.PropertyPanel));
-        ChangePasswordPanel = __decorate([
-            Serenity.Decorators.registerClass()
-        ], ChangePasswordPanel);
-        Membership.ChangePasswordPanel = ChangePasswordPanel;
-    })(Membership = Store.Membership || (Store.Membership = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Membership;
-    (function (Membership) {
-        var ForgotPasswordPanel = (function (_super) {
-            __extends(ForgotPasswordPanel, _super);
-            function ForgotPasswordPanel(container) {
-                var _this = _super.call(this, container) || this;
-                _this.form = new Membership.ForgotPasswordForm(_this.idPrefix);
-                _this.byId('SubmitButton').click(function (e) {
-                    e.preventDefault();
-                    if (!_this.validateForm()) {
-                        return;
-                    }
-                    var request = _this.getSaveEntity();
-                    Q.serviceCall({
-                        url: Q.resolveUrl('~/Account/ForgotPassword'),
-                        request: request,
-                        onSuccess: function (response) {
-                            Q.information(Q.text('Forms.Membership.ForgotPassword.Success'), function () {
-                                window.location.href = Q.resolveUrl('~/');
-                            });
-                        }
-                    });
-                });
-                return _this;
-            }
-            ForgotPasswordPanel.prototype.getFormKey = function () { return Membership.ForgotPasswordForm.formKey; };
-            return ForgotPasswordPanel;
-        }(Serenity.PropertyPanel));
-        ForgotPasswordPanel = __decorate([
-            Serenity.Decorators.registerClass()
-        ], ForgotPasswordPanel);
-        Membership.ForgotPasswordPanel = ForgotPasswordPanel;
-    })(Membership = Store.Membership || (Store.Membership = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Membership;
-    (function (Membership) {
-        var LoginPanel = (function (_super) {
-            __extends(LoginPanel, _super);
-            function LoginPanel(container) {
-                var _this = _super.call(this, container) || this;
-                $(function () {
-                    $('body').vegas({
-                        delay: 10000,
-                        cover: true,
-                        overlay: Q.resolveUrl("~/Scripts/vegas/overlays/01.png"),
-                        slides: [
-                            { src: Q.resolveUrl('~/Content/site/slides/slide1.jpg'), transition: 'fade' },
-                            { src: Q.resolveUrl('~/Content/site/slides/slide2.jpg'), transition: 'fade' },
-                            { src: Q.resolveUrl('~/Content/site/slides/slide3.jpg'), transition: 'zoomOut' },
-                            { src: Q.resolveUrl('~/Content/site/slides/slide4.jpg'), transition: 'blur' },
-                            { src: Q.resolveUrl('~/Content/site/slides/slide5.jpg'), transition: 'swirlLeft' }
-                        ]
-                    });
-                });
-                _this.form = new Membership.LoginForm(_this.idPrefix);
-                _this.byId('LoginButton').click(function (e) {
-                    e.preventDefault();
-                    if (!_this.validateForm()) {
-                        return;
-                    }
-                    var request = _this.getSaveEntity();
-                    Q.serviceCall({
-                        url: Q.resolveUrl('~/Account/Login'),
-                        request: request,
-                        onSuccess: function (response) {
-                            var q = Q.parseQueryString();
-                            var returnUrl = q['returnUrl'] || q['ReturnUrl'];
-                            if (returnUrl) {
-                                window.location.href = returnUrl;
-                            }
-                            else {
-                                window.location.href = Q.resolveUrl('~/');
-                            }
-                        }
-                    });
-                });
-                return _this;
-            }
-            LoginPanel.prototype.getFormKey = function () { return Membership.LoginForm.formKey; };
-            return LoginPanel;
-        }(Serenity.PropertyPanel));
-        LoginPanel = __decorate([
-            Serenity.Decorators.registerClass()
-        ], LoginPanel);
-        Membership.LoginPanel = LoginPanel;
-    })(Membership = Store.Membership || (Store.Membership = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Membership;
-    (function (Membership) {
-        var ResetPasswordPanel = (function (_super) {
-            __extends(ResetPasswordPanel, _super);
-            function ResetPasswordPanel(container) {
-                var _this = _super.call(this, container) || this;
-                _this.form = new Membership.ResetPasswordForm(_this.idPrefix);
-                _this.form.NewPassword.addValidationRule(_this.uniqueName, function (e) {
-                    if (_this.form.ConfirmPassword.value.length < 7) {
-                        return Q.format(Q.text('Validation.MinRequiredPasswordLength'), 7);
-                    }
-                });
-                _this.form.ConfirmPassword.addValidationRule(_this.uniqueName, function (e) {
-                    if (_this.form.ConfirmPassword.value !== _this.form.NewPassword.value) {
-                        return Q.text('Validation.PasswordConfirm');
-                    }
-                });
-                _this.byId('SubmitButton').click(function (e) {
-                    e.preventDefault();
-                    if (!_this.validateForm()) {
-                        return;
-                    }
-                    var request = _this.getSaveEntity();
-                    request.Token = _this.byId('Token').val();
-                    Q.serviceCall({
-                        url: Q.resolveUrl('~/Account/ResetPassword'),
-                        request: request,
-                        onSuccess: function (response) {
-                            Q.information(Q.text('Forms.Membership.ResetPassword.Success'), function () {
-                                window.location.href = Q.resolveUrl('~/Account/Login');
-                            });
-                        }
-                    });
-                });
-                return _this;
-            }
-            ResetPasswordPanel.prototype.getFormKey = function () { return Membership.ResetPasswordForm.formKey; };
-            return ResetPasswordPanel;
-        }(Serenity.PropertyPanel));
-        ResetPasswordPanel = __decorate([
-            Serenity.Decorators.registerClass()
-        ], ResetPasswordPanel);
-        Membership.ResetPasswordPanel = ResetPasswordPanel;
-    })(Membership = Store.Membership || (Store.Membership = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Membership;
-    (function (Membership) {
-        var SignUpPanel = (function (_super) {
-            __extends(SignUpPanel, _super);
-            function SignUpPanel(container) {
-                var _this = _super.call(this, container) || this;
-                _this.form = new Membership.SignUpForm(_this.idPrefix);
-                _this.form.ConfirmEmail.addValidationRule(_this.uniqueName, function (e) {
-                    if (_this.form.ConfirmEmail.value !== _this.form.Email.value) {
-                        return Q.text('Validation.EmailConfirm');
-                    }
-                });
-                _this.form.ConfirmPassword.addValidationRule(_this.uniqueName, function (e) {
-                    if (_this.form.ConfirmPassword.value !== _this.form.Password.value) {
-                        return Q.text('Validation.PasswordConfirm');
-                    }
-                });
-                _this.byId('SubmitButton').click(function (e) {
-                    e.preventDefault();
-                    if (!_this.validateForm()) {
-                        return;
-                    }
-                    Q.serviceCall({
-                        url: Q.resolveUrl('~/Account/SignUp'),
-                        request: {
-                            DisplayName: _this.form.DisplayName.value,
-                            Email: _this.form.Email.value,
-                            Password: _this.form.Password.value
-                        },
-                        onSuccess: function (response) {
-                            Q.information(Q.text('Forms.Membership.SignUp.Success'), function () {
-                                window.location.href = Q.resolveUrl('~/');
-                            });
-                        }
-                    });
-                });
-                return _this;
-            }
-            SignUpPanel.prototype.getFormKey = function () { return Membership.SignUpForm.formKey; };
-            return SignUpPanel;
-        }(Serenity.PropertyPanel));
-        SignUpPanel = __decorate([
-            Serenity.Decorators.registerClass()
-        ], SignUpPanel);
-        Membership.SignUpPanel = SignUpPanel;
-    })(Membership = Store.Membership || (Store.Membership = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var CustomerEditor = (function (_super) {
+(function (Store_99) {
+    var Store;
+    (function (Store) {
+        var CustomerEditor = /** @class */ (function (_super) {
             __extends(CustomerEditor, _super);
             function CustomerEditor(hidden) {
                 return _super.call(this, hidden) || this;
             }
             CustomerEditor.prototype.getLookupKey = function () {
-                return 'Northwind.Customer';
+                return Store.CustomerRow.lookupKey;
             };
             CustomerEditor.prototype.getItemText = function (item, lookup) {
                 return _super.prototype.getItemText.call(this, item, lookup) + ' [' + item.CustomerID + ']';
             };
+            CustomerEditor = __decorate([
+                Serenity.Decorators.registerEditor()
+            ], CustomerEditor);
             return CustomerEditor;
         }(Serenity.LookupEditorBase));
-        CustomerEditor = __decorate([
-            Serenity.Decorators.registerEditor()
-        ], CustomerEditor);
-        Northwind.CustomerEditor = CustomerEditor;
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
+        Store.CustomerEditor = CustomerEditor;
+    })(Store = Store_99.Store || (Store_99.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_100) {
+    var Store;
+    (function (Store) {
+        var CustomerGrid = /** @class */ (function (_super) {
+            __extends(CustomerGrid, _super);
+            function CustomerGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            CustomerGrid.prototype.getColumnsKey = function () { return 'Store.Customer'; };
+            CustomerGrid.prototype.getDialogType = function () { return Store.CustomerDialog; };
+            CustomerGrid.prototype.getIdProperty = function () { return Store.CustomerRow.idProperty; };
+            CustomerGrid.prototype.getLocalTextPrefix = function () { return Store.CustomerRow.localTextPrefix; };
+            CustomerGrid.prototype.getService = function () { return Store.CustomerService.baseUrl; };
+            CustomerGrid.prototype.getButtons = function () {
+                var _this = this;
+                var buttons = _super.prototype.getButtons.call(this);
+                buttons.push(Store_100.Common.ExcelExportHelper.createToolButton({
+                    grid: this,
+                    onViewSubmit: function () { return _this.onViewSubmit(); },
+                    service: 'Store/Customer/ListExcel',
+                    separator: true
+                }));
+                buttons.push(Store_100.Common.PdfExportHelper.createToolButton({
+                    grid: this,
+                    onViewSubmit: function () { return _this.onViewSubmit(); }
+                }));
+                return buttons;
+            };
+            CustomerGrid = __decorate([
+                Serenity.Decorators.registerClass(),
+                Serenity.Decorators.filterable()
+            ], CustomerGrid);
+            return CustomerGrid;
+        }(Serenity.EntityGrid));
+        Store.CustomerGrid = CustomerGrid;
+    })(Store = Store_100.Store || (Store_100.Store = {}));
 })(Store || (Store = {}));
 /// <reference path="../Order/OrderDialog.ts" />
 var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var CustomerOrderDialog = (function (_super) {
+(function (Store_101) {
+    var Store;
+    (function (Store) {
+        var CustomerOrderDialog = /** @class */ (function (_super) {
             __extends(CustomerOrderDialog, _super);
             function CustomerOrderDialog() {
                 return _super.call(this) || this;
@@ -8942,27 +5062,26 @@ var Store;
                 _super.prototype.updateInterface.call(this);
                 Serenity.EditorUtils.setReadOnly(this.form.CustomerID, true);
             };
+            CustomerOrderDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], CustomerOrderDialog);
             return CustomerOrderDialog;
-        }(Northwind.OrderDialog));
-        CustomerOrderDialog = __decorate([
-            Serenity.Decorators.registerClass()
-        ], CustomerOrderDialog);
-        Northwind.CustomerOrderDialog = CustomerOrderDialog;
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
+        }(Store.OrderDialog));
+        Store.CustomerOrderDialog = CustomerOrderDialog;
+    })(Store = Store_101.Store || (Store_101.Store = {}));
 })(Store || (Store = {}));
 /// <reference path="../Order/OrderGrid.ts" />
 var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var CustomerOrdersGrid = (function (_super) {
+(function (Store_102) {
+    var Store;
+    (function (Store) {
+        var CustomerOrdersGrid = /** @class */ (function (_super) {
             __extends(CustomerOrdersGrid, _super);
             function CustomerOrdersGrid(container) {
                 return _super.call(this, container) || this;
             }
-            CustomerOrdersGrid.prototype.getDialogType = function () { return Northwind.CustomerOrderDialog; };
+            CustomerOrdersGrid.prototype.getDialogType = function () { return Store.CustomerOrderDialog; };
             CustomerOrdersGrid.prototype.getColumns = function () {
-                var fld = Northwind.OrderRow.Fields;
                 return _super.prototype.getColumns.call(this).filter(function (x) { return x.field !== fld.CustomerCompanyName; });
             };
             CustomerOrdersGrid.prototype.initEntityDialog = function (itemType, dialog) {
@@ -8992,42 +5111,43 @@ var Store;
                 enumerable: true,
                 configurable: true
             });
+            CustomerOrdersGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], CustomerOrdersGrid);
             return CustomerOrdersGrid;
-        }(Northwind.OrderGrid));
-        CustomerOrdersGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], CustomerOrdersGrid);
-        Northwind.CustomerOrdersGrid = CustomerOrdersGrid;
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
+        }(Store.OrderGrid));
+        Store.CustomerOrdersGrid = CustomerOrdersGrid;
+    })(Store = Store_102.Store || (Store_102.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var EmployeeListFormatter = (function () {
-            function EmployeeListFormatter() {
+(function (Store_103) {
+    var Store;
+    (function (Store) {
+        var EmployeeDialog = /** @class */ (function (_super) {
+            __extends(EmployeeDialog, _super);
+            function EmployeeDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new EmployeeForm(_this.idPrefix);
+                return _this;
             }
-            EmployeeListFormatter.prototype.format = function (ctx) {
-                var idList = ctx.value;
-                if (!idList || !idList.length)
-                    return "";
-                var byId = Northwind.EmployeeRow.getLookup().itemById;
-                var z;
-                return idList.map(function (x) { return ((z = byId[x]) ? z.FullName : x); }).join(", ");
-            };
-            return EmployeeListFormatter;
-        }());
-        EmployeeListFormatter = __decorate([
-            Serenity.Decorators.registerFormatter()
-        ], EmployeeListFormatter);
-        Northwind.EmployeeListFormatter = EmployeeListFormatter;
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
+            EmployeeDialog.prototype.getFormKey = function () { return EmployeeForm.formKey; };
+            EmployeeDialog.prototype.getIdProperty = function () { return Store.EmployeeRow.idProperty; };
+            EmployeeDialog.prototype.getLocalTextPrefix = function () { return Store.EmployeeRow.localTextPrefix; };
+            EmployeeDialog.prototype.getNameProperty = function () { return Store.EmployeeRow.nameProperty; };
+            EmployeeDialog.prototype.getService = function () { return EmployeeService.baseUrl; };
+            EmployeeDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], EmployeeDialog);
+            return EmployeeDialog;
+        }(Serenity.EntityDialog));
+        Store.EmployeeDialog = EmployeeDialog;
+    })(Store = Store_103.Store || (Store_103.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var EmployeeFormatter = (function () {
+(function (Store_104) {
+    var Store;
+    (function (Store) {
+        var EmployeeFormatter = /** @class */ (function () {
             function EmployeeFormatter() {
             }
             EmployeeFormatter.prototype.format = function (ctx) {
@@ -9036,7 +5156,7 @@ var Store;
                     return text;
                 }
                 var gender = ctx.item[this.genderProperty];
-                return "<span class='" + ((gender === Northwind.Gender.Female) ?
+                return "<span class='" + ((gender === Store.Gender.Female) ?
                     'employee-symbol female' : 'employee-symbol male') +
                     "'>" + text + '</span>';
             };
@@ -9045,22 +5165,414 @@ var Store;
                 if (this.genderProperty)
                     column.referencedFields.push(this.genderProperty);
             };
+            __decorate([
+                Serenity.Decorators.option()
+            ], EmployeeFormatter.prototype, "genderProperty", void 0);
+            EmployeeFormatter = __decorate([
+                Serenity.Decorators.registerFormatter([Serenity.ISlickFormatter, Serenity.IInitializeColumn])
+            ], EmployeeFormatter);
             return EmployeeFormatter;
         }());
-        __decorate([
-            Serenity.Decorators.option()
-        ], EmployeeFormatter.prototype, "genderProperty", void 0);
-        EmployeeFormatter = __decorate([
-            Serenity.Decorators.registerFormatter([Serenity.ISlickFormatter, Serenity.IInitializeColumn])
-        ], EmployeeFormatter);
-        Northwind.EmployeeFormatter = EmployeeFormatter;
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
+        Store.EmployeeFormatter = EmployeeFormatter;
+    })(Store = Store_104.Store || (Store_104.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var NoteDialog = (function (_super) {
+(function (Store_105) {
+    var Store;
+    (function (Store) {
+        var EmployeeGrid = /** @class */ (function (_super) {
+            __extends(EmployeeGrid, _super);
+            function EmployeeGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            EmployeeGrid.prototype.getColumnsKey = function () { return 'Store.Employee'; };
+            EmployeeGrid.prototype.getDialogType = function () { return Store.EmployeeDialog; };
+            EmployeeGrid.prototype.getIdProperty = function () { return Store.EmployeeRow.idProperty; };
+            EmployeeGrid.prototype.getLocalTextPrefix = function () { return Store.EmployeeRow.localTextPrefix; };
+            EmployeeGrid.prototype.getService = function () { return EmployeeService.baseUrl; };
+            EmployeeGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], EmployeeGrid);
+            return EmployeeGrid;
+        }(Serenity.EntityGrid));
+        Store.EmployeeGrid = EmployeeGrid;
+    })(Store = Store_105.Store || (Store_105.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_106) {
+    var Store;
+    (function (Store) {
+        var EmployeeListFormatter = /** @class */ (function () {
+            function EmployeeListFormatter() {
+            }
+            EmployeeListFormatter.prototype.format = function (ctx) {
+                var idList = ctx.value;
+                if (!idList || !idList.length)
+                    return "";
+                var byId = Store.EmployeeRow.getLookup().itemById;
+                var z;
+                return idList.map(function (x) { return ((z = byId[x]) ? z.FullName : x); }).join(", ");
+            };
+            EmployeeListFormatter = __decorate([
+                Serenity.Decorators.registerFormatter()
+            ], EmployeeListFormatter);
+            return EmployeeListFormatter;
+        }());
+        Store.EmployeeListFormatter = EmployeeListFormatter;
+    })(Store = Store_106.Store || (Store_106.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_107) {
+    var Store;
+    (function (Store) {
+        var ItemDialog = /** @class */ (function (_super) {
+            __extends(ItemDialog, _super);
+            function ItemDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Store.ItemForm(_this.idPrefix);
+                return _this;
+            }
+            ItemDialog.prototype.getFormKey = function () { return Store.ItemForm.formKey; };
+            ItemDialog.prototype.getIdProperty = function () { return Store.ItemRow.idProperty; };
+            ItemDialog.prototype.getLocalTextPrefix = function () { return Store.ItemRow.localTextPrefix; };
+            ItemDialog.prototype.getNameProperty = function () { return Store.ItemRow.nameProperty; };
+            ItemDialog.prototype.getService = function () { return Store.ItemService.baseUrl; };
+            ItemDialog.prototype.getLanguages = function () { return Store_107.LanguageList.getValue(); };
+            ItemDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], ItemDialog);
+            return ItemDialog;
+        }(Serenity.EntityDialog));
+        Store.ItemDialog = ItemDialog;
+    })(Store = Store_107.Store || (Store_107.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_108) {
+    var Store;
+    (function (Store) {
+        var ItemGrid = /** @class */ (function (_super) {
+            __extends(ItemGrid, _super);
+            function ItemGrid(container) {
+                var _this = _super.call(this, container) || this;
+                _this.pendingChanges = {};
+                _this.slickContainer.on('change', '.edit:input', function (e) { return _this.inputsChange(e); });
+                return _this;
+            }
+            ItemGrid.prototype.getColumnsKey = function () { return 'Store.Item'; };
+            ItemGrid.prototype.getDialogType = function () { return Store.ItemDialog; };
+            ItemGrid.prototype.getIdProperty = function () { return Store.ItemRow.idProperty; };
+            ItemGrid.prototype.getLocalTextPrefix = function () { return Store.ItemRow.localTextPrefix; };
+            ItemGrid.prototype.getService = function () { return Store.ItemService.baseUrl; };
+            ItemGrid.prototype.getButtons = function () {
+                var _this = this;
+                var buttons = _super.prototype.getButtons.call(this);
+                buttons.push(Store_108.Common.ExcelExportHelper.createToolButton({
+                    grid: this,
+                    service: Store.ItemService.baseUrl + '/ListExcel',
+                    onViewSubmit: function () { return _this.onViewSubmit(); },
+                    separator: true
+                }));
+                buttons.push(Store_108.Common.PdfExportHelper.createToolButton({
+                    grid: this,
+                    onViewSubmit: function () { return _this.onViewSubmit(); },
+                    reportTitle: 'Item List',
+                    columnTitles: {
+                        'Discontinued': 'Dis.',
+                    },
+                    tableOptions: {
+                        columnStyles: {
+                            ItemID: {
+                                columnWidth: 25,
+                                halign: 'right'
+                            },
+                            Discountinued: {
+                                columnWidth: 25
+                            }
+                        }
+                    }
+                }));
+                buttons.push({
+                    title: 'Save Changes',
+                    cssClass: 'apply-changes-button disabled',
+                    onClick: function (e) { return _this.saveClick(); },
+                    separator: true
+                });
+                return buttons;
+            };
+            ItemGrid.prototype.onViewProcessData = function (response) {
+                this.pendingChanges = {};
+                this.setSaveButtonState();
+                return _super.prototype.onViewProcessData.call(this, response);
+            };
+            ItemGrid.prototype.numericInputFormatter = function (ctx) {
+                var klass = 'edit numeric';
+                var item = ctx.item;
+                var pending = this.pendingChanges[item.ItemID];
+                if (pending && pending[ctx.column.field] !== undefined) {
+                    klass += ' dirty';
+                }
+                var value = this.getEffectiveValue(item, ctx.column.field);
+                return "<input type='text' class='" + klass +
+                    "' data-field='" + ctx.column.field +
+                    "' value='" + Q.formatNumber(value, '0.##') + "'/>";
+            };
+            ItemGrid.prototype.stringInputFormatter = function (ctx) {
+                var klass = 'edit string';
+                var item = ctx.item;
+                var pending = this.pendingChanges[item.ItemID];
+                var column = ctx.column;
+                if (pending && pending[column.field] !== undefined) {
+                    klass += ' dirty';
+                }
+                var value = this.getEffectiveValue(item, column.field);
+                return "<input type='text' class='" + klass +
+                    "' data-field='" + column.field +
+                    "' value='" + Q.attrEncode(value) +
+                    "' maxlength='" + column.sourceItem.maxLength + "'/>";
+            };
+            ItemGrid.prototype.selectFormatter = function (ctx, idField, lookup) {
+                var klass = 'edit';
+                var item = ctx.item;
+                var pending = this.pendingChanges[item.ItemID];
+                var column = ctx.column;
+                if (pending && pending[idField] !== undefined) {
+                    klass += ' dirty';
+                }
+                var value = this.getEffectiveValue(item, idField);
+                var markup = "<select class='" + klass +
+                    "' data-field='" + idField +
+                    "' style='width: 100%; max-width: 100%'>";
+                for (var _i = 0, _a = lookup.items; _i < _a.length; _i++) {
+                    var c = _a[_i];
+                    var id = c[lookup.idField];
+                    markup += "<option value='" + Q.attrEncode(id) + "'";
+                    if (id == value) {
+                        markup += " selected";
+                    }
+                    markup += ">" + Q.htmlEncode(c[lookup.textField]) + "</option>";
+                }
+                return markup + "</select>";
+            };
+            ItemGrid.prototype.getEffectiveValue = function (item, field) {
+                var pending = this.pendingChanges[item.ItemID];
+                if (pending && pending[field] !== undefined) {
+                    return pending[field];
+                }
+                return item[field];
+            };
+            ItemGrid.prototype.getColumns = function () {
+                var _this = this;
+                var columns = _super.prototype.getColumns.call(this);
+                var num = function (ctx) { return _this.numericInputFormatter(ctx); };
+                var str = function (ctx) { return _this.stringInputFormatter(ctx); };
+                Q.first(columns, function (x) { return x.field === 'QuantityPerUnit'; }).format = str;
+                var itemcategory = Q.first(columns, function (x) { return x.field === "ItemCategoryItemCategoryName" /* ItemCategoryItemCategoryName */; });
+                itemcategory.referencedFields = ["ItemCategoryID" /* ItemCategoryID */];
+                itemcategory.format = function (ctx) { return _this.selectFormatter(ctx, "ItemCategoryID" /* ItemCategoryID */, Store.ItemCategoryRow.getLookup()); };
+                //var supplier = Q.first(columns, x => x.field === fld.SupplierCompanyName);
+                //supplier.referencedFields = [fld.SupplierID];
+                //supplier.format = ctx => this.selectFormatter(ctx, fld.SupplierID, SupplierRow.getLookup());
+                Q.first(columns, function (x) { return x.field === "UnitPrice" /* UnitPrice */; }).format = num;
+                Q.first(columns, function (x) { return x.field === "QuantityPerUnit" /* QuantityPerUnit */; }).format = num;
+                Q.first(columns, function (x) { return x.field === "MeasureMeasureName" /* MeasureMeasureName */; }).format = str;
+                //    //Q.first(columns, x => x.field === fld.ReorderLevel).format = num;
+                return columns;
+            };
+            ItemGrid.prototype.inputsChange = function (e) {
+                var cell = this.slickGrid.getCellFromEvent(e);
+                var item = this.itemAt(cell.row);
+                var input = $(e.target);
+                var field = input.data('field');
+                var text = Q.coalesce(Q.trimToNull(input.val()), '0');
+                var pending = this.pendingChanges[item.ItemID];
+                var effective = this.getEffectiveValue(item, field);
+                var oldText;
+                if (input.hasClass("numeric"))
+                    oldText = Q.formatNumber(effective, '0.##');
+                else
+                    oldText = effective;
+                var value;
+                if (field === 'UnitPrice') {
+                    value = Q.parseDecimal(text);
+                    if (value == null || isNaN(value)) {
+                        Q.notifyError(Q.text('Validation.Decimal'), '', null);
+                        input.val(oldText);
+                        input.focus();
+                        return;
+                    }
+                }
+                else if (input.hasClass("numeric")) {
+                    var i = Q.parseInteger(text);
+                    if (isNaN(i) || i > 32767 || i < 0) {
+                        Q.notifyError(Q.text('Validation.Integer'), '', null);
+                        input.val(oldText);
+                        input.focus();
+                        return;
+                    }
+                    value = i;
+                }
+                else
+                    value = text;
+                if (!pending) {
+                    this.pendingChanges[item.ItemID] = pending = {};
+                }
+                pending[field] = value;
+                item[field] = value;
+                this.view.refresh();
+                if (input.hasClass("numeric"))
+                    value = Q.formatNumber(value, '0.##');
+                input.val(value).addClass('dirty');
+                this.setSaveButtonState();
+            };
+            ItemGrid.prototype.setSaveButtonState = function () {
+                this.toolbar.findButton('apply-changes-button').toggleClass('disabled', Object.keys(this.pendingChanges).length === 0);
+            };
+            ItemGrid.prototype.saveClick = function () {
+                if (Object.keys(this.pendingChanges).length === 0) {
+                    return;
+                }
+                // this calls save service for all modified rows, one by one
+                // you could write a batch update service
+                var keys = Object.keys(this.pendingChanges);
+                var current = -1;
+                var self = this;
+                (function saveNext() {
+                    if (++current >= keys.length) {
+                        self.refresh();
+                        return;
+                    }
+                    var key = keys[current];
+                    var entity = Q.deepClone(self.pendingChanges[key]);
+                    entity.ItemID = key;
+                    Q.serviceRequest('Store/Item/Update', {
+                        EntityId: key,
+                        Entity: entity
+                    }, function (response) {
+                        delete self.pendingChanges[key];
+                        saveNext();
+                    });
+                })();
+            };
+            ItemGrid.prototype.getQuickFilters = function () {
+                var flt = _super.prototype.getQuickFilters.call(this);
+                var q = Q.parseQueryString();
+                if (q["cat"]) {
+                    var category = Q.tryFirst(flt, function (x) { return x.field == "ItemCategoryID"; });
+                    category.init = function (e) {
+                        e.element.getWidget(Serenity.LookupEditor).value = q["cat"];
+                    };
+                }
+                return flt;
+            };
+            ItemGrid = __decorate([
+                Serenity.Decorators.registerClass(),
+                Serenity.Decorators.filterable()
+            ], ItemGrid);
+            return ItemGrid;
+        }(Serenity.EntityGrid));
+        Store.ItemGrid = ItemGrid;
+    })(Store = Store_108.Store || (Store_108.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_109) {
+    var Store;
+    (function (Store) {
+        var ItemCategoryDialog = /** @class */ (function (_super) {
+            __extends(ItemCategoryDialog, _super);
+            function ItemCategoryDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Store.ItemCategoryForm(_this.idPrefix);
+                return _this;
+            }
+            ItemCategoryDialog.prototype.getFormKey = function () { return Store.ItemCategoryForm.formKey; };
+            ItemCategoryDialog.prototype.getIdProperty = function () { return Store.ItemCategoryRow.idProperty; };
+            ItemCategoryDialog.prototype.getLocalTextPrefix = function () { return Store.ItemCategoryRow.localTextPrefix; };
+            ItemCategoryDialog.prototype.getNameProperty = function () { return Store.ItemCategoryRow.nameProperty; };
+            ItemCategoryDialog.prototype.getService = function () { return Store.ItemCategoryService.baseUrl; };
+            ItemCategoryDialog.prototype.getLanguages = function () {
+                return Store_109.LanguageList.getValue();
+            };
+            ItemCategoryDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], ItemCategoryDialog);
+            return ItemCategoryDialog;
+        }(Serenity.EntityDialog));
+        Store.ItemCategoryDialog = ItemCategoryDialog;
+    })(Store = Store_109.Store || (Store_109.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_110) {
+    var Store;
+    (function (Store) {
+        var ItemCategoryGrid = /** @class */ (function (_super) {
+            __extends(ItemCategoryGrid, _super);
+            function ItemCategoryGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            ItemCategoryGrid.prototype.getColumnsKey = function () { return 'Store.ItemCategory'; };
+            ItemCategoryGrid.prototype.getDialogType = function () { return Store.ItemCategoryDialog; };
+            ItemCategoryGrid.prototype.getIdProperty = function () { return Store.ItemCategoryRow.idProperty; };
+            ItemCategoryGrid.prototype.getLocalTextPrefix = function () { return Store.ItemCategoryRow.localTextPrefix; };
+            ItemCategoryGrid.prototype.getService = function () { return Store.ItemCategoryService.baseUrl; };
+            ItemCategoryGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], ItemCategoryGrid);
+            return ItemCategoryGrid;
+        }(Serenity.EntityGrid));
+        Store.ItemCategoryGrid = ItemCategoryGrid;
+    })(Store = Store_110.Store || (Store_110.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_111) {
+    var Store;
+    (function (Store) {
+        var MeasureDialog = /** @class */ (function (_super) {
+            __extends(MeasureDialog, _super);
+            function MeasureDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Store.MeasureForm(_this.idPrefix);
+                return _this;
+            }
+            MeasureDialog.prototype.getFormKey = function () { return Store.MeasureForm.formKey; };
+            MeasureDialog.prototype.getIdProperty = function () { return Store.MeasureRow.idProperty; };
+            MeasureDialog.prototype.getLocalTextPrefix = function () { return Store.MeasureRow.localTextPrefix; };
+            MeasureDialog.prototype.getNameProperty = function () { return Store.MeasureRow.nameProperty; };
+            MeasureDialog.prototype.getService = function () { return Store.MeasureService.baseUrl; };
+            MeasureDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], MeasureDialog);
+            return MeasureDialog;
+        }(Serenity.EntityDialog));
+        Store.MeasureDialog = MeasureDialog;
+    })(Store = Store_111.Store || (Store_111.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_112) {
+    var Store;
+    (function (Store) {
+        var MeasureGrid = /** @class */ (function (_super) {
+            __extends(MeasureGrid, _super);
+            function MeasureGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            MeasureGrid.prototype.getColumnsKey = function () { return 'Store.Measure'; };
+            MeasureGrid.prototype.getDialogType = function () { return Store.MeasureDialog; };
+            MeasureGrid.prototype.getIdProperty = function () { return Store.MeasureRow.idProperty; };
+            MeasureGrid.prototype.getLocalTextPrefix = function () { return Store.MeasureRow.localTextPrefix; };
+            MeasureGrid.prototype.getService = function () { return Store.MeasureService.baseUrl; };
+            MeasureGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], MeasureGrid);
+            return MeasureGrid;
+        }(Serenity.EntityGrid));
+        Store.MeasureGrid = MeasureGrid;
+    })(Store = Store_112.Store || (Store_112.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_113) {
+    var Store;
+    (function (Store) {
+        var NoteDialog = /** @class */ (function (_super) {
             __extends(NoteDialog, _super);
             function NoteDialog() {
                 var _this = _super.call(this) || this;
@@ -9100,19 +5612,19 @@ var Store;
                 enumerable: true,
                 configurable: true
             });
+            NoteDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], NoteDialog);
             return NoteDialog;
-        }(Serenity.TemplatedDialog));
-        NoteDialog = __decorate([
-            Serenity.Decorators.registerClass()
-        ], NoteDialog);
-        Northwind.NoteDialog = NoteDialog;
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
+        }(Serenity.EntityDialog));
+        Store.NoteDialog = NoteDialog;
+    })(Store = Store_113.Store || (Store_113.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var NotesEditor = (function (_super) {
+(function (Store_114) {
+    var Store;
+    (function (Store) {
+        var NotesEditor = /** @class */ (function (_super) {
             __extends(NotesEditor, _super);
             function NotesEditor(div) {
                 var _this = _super.call(this, div) || this;
@@ -9155,7 +5667,7 @@ var Store;
             };
             NotesEditor.prototype.addClick = function () {
                 var _this = this;
-                var dlg = new Northwind.NoteDialog();
+                var dlg = new Store.NoteDialog();
                 dlg.dialogTitle = 'Add Note';
                 dlg.okClick = function () {
                     var text = Q.trimToNull(dlg.text);
@@ -9165,7 +5677,7 @@ var Store;
                     _this.items = _this.items || [];
                     Q.insert(_this.items, 0, {
                         Text: text,
-                        InsertUserDisplayName: Store.Authorization.userDefinition.DisplayName,
+                        InsertUserDisplayName: Store_114.Authorization.userDefinition.DisplayName,
                         InsertDate: Q.formatISODateTimeUTC(new Date())
                     });
                     _this.updateContent();
@@ -9180,7 +5692,7 @@ var Store;
                 e.preventDefault();
                 var index = $(e.target).data('index');
                 var old = this.items[index];
-                var dlg = new Northwind.NoteDialog();
+                var dlg = new Store.NoteDialog();
                 dlg.dialogTitle = 'Edit Note';
                 dlg.text = old.Text;
                 dlg.okClick = function () {
@@ -9231,87 +5743,647 @@ var Store;
             NotesEditor.prototype.set_isDirty = function (value) {
                 this.isDirty = value;
             };
+            NotesEditor = __decorate([
+                Serenity.Decorators.registerEditor([Serenity.IGetEditValue, Serenity.ISetEditValue]),
+                Serenity.Decorators.element("<div/>")
+            ], NotesEditor);
             return NotesEditor;
         }(Serenity.TemplatedWidget));
-        NotesEditor = __decorate([
-            Serenity.Decorators.registerEditor([Serenity.IGetEditValue, Serenity.ISetEditValue]),
-            Serenity.Decorators.element("<div/>")
-        ], NotesEditor);
-        Northwind.NotesEditor = NotesEditor;
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
+        Store.NotesEditor = NotesEditor;
+    })(Store = Store_114.Store || (Store_114.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var FreightFormatter = (function () {
+(function (Store_115) {
+    var Store;
+    (function (Store) {
+        var OperationTypeDialog = /** @class */ (function (_super) {
+            __extends(OperationTypeDialog, _super);
+            function OperationTypeDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Store.OperationTypeForm(_this.idPrefix);
+                return _this;
+            }
+            OperationTypeDialog.prototype.getFormKey = function () { return Store.OperationTypeForm.formKey; };
+            OperationTypeDialog.prototype.getIdProperty = function () { return Store.OperationTypeRow.idProperty; };
+            OperationTypeDialog.prototype.getLocalTextPrefix = function () { return Store.OperationTypeRow.localTextPrefix; };
+            OperationTypeDialog.prototype.getNameProperty = function () { return Store.OperationTypeRow.nameProperty; };
+            OperationTypeDialog.prototype.getService = function () { return Store.OperationTypeService.baseUrl; };
+            OperationTypeDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], OperationTypeDialog);
+            return OperationTypeDialog;
+        }(Serenity.EntityDialog));
+        Store.OperationTypeDialog = OperationTypeDialog;
+    })(Store = Store_115.Store || (Store_115.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_116) {
+    var Store;
+    (function (Store) {
+        var OperationTypeEditor = /** @class */ (function (_super) {
+            __extends(OperationTypeEditor, _super);
+            function OperationTypeEditor(hidden) {
+                return _super.call(this, hidden) || this;
+            }
+            OperationTypeEditor.prototype.getLookupKey = function () {
+                return Store.OperationTypeRow.lookupKey;
+            };
+            OperationTypeEditor.prototype.getItemText = function (item, lookup) {
+                return '[' + item.OpCode + ']' + _super.prototype.getItemText.call(this, item, lookup);
+            };
+            OperationTypeEditor = __decorate([
+                Serenity.Decorators.registerEditor()
+            ], OperationTypeEditor);
+            return OperationTypeEditor;
+        }(Serenity.LookupEditorBase));
+        Store.OperationTypeEditor = OperationTypeEditor;
+    })(Store = Store_116.Store || (Store_116.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_117) {
+    var Store;
+    (function (Store) {
+        var OperationTypeGrid = /** @class */ (function (_super) {
+            __extends(OperationTypeGrid, _super);
+            function OperationTypeGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            OperationTypeGrid.prototype.getColumnsKey = function () { return 'Store.OperationType'; };
+            OperationTypeGrid.prototype.getDialogType = function () { return Store.OperationTypeDialog; };
+            OperationTypeGrid.prototype.getIdProperty = function () { return Store.OperationTypeRow.idProperty; };
+            OperationTypeGrid.prototype.getLocalTextPrefix = function () { return Store.OperationTypeRow.localTextPrefix; };
+            OperationTypeGrid.prototype.getService = function () { return Store.OperationTypeService.baseUrl; };
+            OperationTypeGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], OperationTypeGrid);
+            return OperationTypeGrid;
+        }(Serenity.EntityGrid));
+        Store.OperationTypeGrid = OperationTypeGrid;
+    })(Store = Store_117.Store || (Store_117.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_118) {
+    var Store;
+    (function (Store) {
+        var FreightFormatter = /** @class */ (function () {
             function FreightFormatter() {
             }
             FreightFormatter.prototype.format = function (ctx) {
                 return "<span class='freight-symbol'>" + Q.htmlEncode(ctx.value) + '</span>';
             };
+            FreightFormatter = __decorate([
+                Serenity.Decorators.registerFormatter()
+            ], FreightFormatter);
             return FreightFormatter;
         }());
-        FreightFormatter = __decorate([
-            Serenity.Decorators.registerFormatter()
-        ], FreightFormatter);
-        Northwind.FreightFormatter = FreightFormatter;
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
+        Store.FreightFormatter = FreightFormatter;
+    })(Store = Store_118.Store || (Store_118.Store = {}));
 })(Store || (Store = {}));
+/// <reference path="../../Common/Helpers/GridEditorDialog.ts" />
 var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var RegionDialog = (function (_super) {
-            __extends(RegionDialog, _super);
-            function RegionDialog() {
-                var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new Northwind.RegionForm(_this.idPrefix);
+(function (Store_119) {
+    var Store;
+    (function (Store) {
+        var OrderDetailDialog = /** @class */ (function (_super) {
+            __extends(OrderDetailDialog, _super);
+            function OrderDetailDialog() {
+                var _this = _super.call(this) || this;
+                _this.form = new Store.OrderDetailForm(_this.idPrefix);
+                _this.form.ProductID.changeSelect2(function (e) {
+                    var productID = Q.toId(_this.form.ProductID.value);
+                    if (productID != null) {
+                        _this.form.UnitPrice.value = Store.ProductRow.getLookup().itemById[productID].UnitPrice;
+                    }
+                });
+                _this.form.Discount.addValidationRule(_this.uniqueName, function (e) {
+                    var price = _this.form.UnitPrice.value;
+                    var quantity = _this.form.Quantity.value;
+                    var discount = _this.form.Discount.value;
+                    if (price != null && quantity != null && discount != null &&
+                        discount > 0 && discount >= price * quantity) {
+                        return "Discount can't be higher than total price!";
+                    }
+                });
                 return _this;
             }
-            RegionDialog.prototype.getFormKey = function () { return Northwind.RegionForm.formKey; };
-            RegionDialog.prototype.getIdProperty = function () { return Northwind.RegionRow.idProperty; };
-            RegionDialog.prototype.getLocalTextPrefix = function () { return Northwind.RegionRow.localTextPrefix; };
-            RegionDialog.prototype.getNameProperty = function () { return Northwind.RegionRow.nameProperty; };
-            RegionDialog.prototype.getService = function () { return Northwind.RegionService.baseUrl; };
-            RegionDialog.prototype.getLanguages = function () {
-                return Store.LanguageList.getValue();
-            };
-            return RegionDialog;
-        }(Serenity.EntityDialog));
-        RegionDialog = __decorate([
-            Serenity.Decorators.registerClass()
-        ], RegionDialog);
-        Northwind.RegionDialog = RegionDialog;
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
+            OrderDetailDialog.prototype.getFormKey = function () { return Store.OrderDetailForm.formKey; };
+            OrderDetailDialog.prototype.getLocalTextPrefix = function () { return Store.OrderDetailRow.localTextPrefix; };
+            OrderDetailDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], OrderDetailDialog);
+            return OrderDetailDialog;
+        }(Store_119.Common.GridEditorDialog));
+        Store.OrderDetailDialog = OrderDetailDialog;
+    })(Store = Store_119.Store || (Store_119.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var RegionGrid = (function (_super) {
-            __extends(RegionGrid, _super);
-            function RegionGrid(container) {
+(function (Store_120) {
+    var Store;
+    (function (Store) {
+        var OrderDetailGrid = /** @class */ (function (_super) {
+            __extends(OrderDetailGrid, _super);
+            function OrderDetailGrid(container) {
                 return _super.call(this, container) || this;
             }
-            RegionGrid.prototype.getColumnsKey = function () { return "Northwind.Region"; };
-            RegionGrid.prototype.getDialogType = function () { return Northwind.RegionDialog; };
-            RegionGrid.prototype.getIdProperty = function () { return Northwind.RegionRow.idProperty; };
-            RegionGrid.prototype.getLocalTextPrefix = function () { return Northwind.RegionRow.localTextPrefix; };
-            RegionGrid.prototype.getService = function () { return Northwind.RegionService.baseUrl; };
-            return RegionGrid;
+            OrderDetailGrid.prototype.getColumnsKey = function () { return 'Store.OrderDetail'; };
+            OrderDetailGrid.prototype.getDialogType = function () { return Store.OrderDetailDialog; };
+            OrderDetailGrid.prototype.getIdProperty = function () { return Store.OrderDetailRow.idProperty; };
+            OrderDetailGrid.prototype.getLocalTextPrefix = function () { return Store.OrderDetailRow.localTextPrefix; };
+            OrderDetailGrid.prototype.getService = function () { return Store.OrderDetailService.baseUrl; };
+            OrderDetailGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], OrderDetailGrid);
+            return OrderDetailGrid;
         }(Serenity.EntityGrid));
-        RegionGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], RegionGrid);
-        Northwind.RegionGrid = RegionGrid;
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
+        Store.OrderDetailGrid = OrderDetailGrid;
+    })(Store = Store_120.Store || (Store_120.Store = {}));
+})(Store || (Store = {}));
+/// <reference path="../../Common/Helpers/GridEditorBase.ts" />
+var Store;
+(function (Store_121) {
+    var Store;
+    (function (Store) {
+        var OrderDetailsEditor = /** @class */ (function (_super) {
+            __extends(OrderDetailsEditor, _super);
+            function OrderDetailsEditor(container) {
+                return _super.call(this, container) || this;
+            }
+            OrderDetailsEditor.prototype.getColumnsKey = function () { return "Store.OrderDetail"; };
+            OrderDetailsEditor.prototype.getDialogType = function () { return Store.OrderDetailDialog; };
+            OrderDetailsEditor.prototype.getLocalTextPrefix = function () { return Store.OrderDetailRow.localTextPrefix; };
+            OrderDetailsEditor.prototype.validateEntity = function (row, id) {
+                row.ProductID = Q.toId(row.ProductID);
+                var sameProduct = Q.tryFirst(this.view.getItems(), function (x) { return x.ProductID === row.ProductID; });
+                if (sameProduct && this.id(sameProduct) !== id) {
+                    Q.alert('This product is already in order details!');
+                    return false;
+                }
+                row.ProductName = Store.ProductRow.getLookup().itemById[row.ProductID].ProductName;
+                row.LineTotal = (row.Quantity || 0) * (row.UnitPrice || 0) - (row.Discount || 0);
+                return true;
+            };
+            OrderDetailsEditor = __decorate([
+                Serenity.Decorators.registerClass()
+            ], OrderDetailsEditor);
+            return OrderDetailsEditor;
+        }(Store_121.Common.GridEditorBase));
+        Store.OrderDetailsEditor = OrderDetailsEditor;
+    })(Store = Store_121.Store || (Store_121.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var PhoneEditor = PhoneEditor_1 = (function (_super) {
+(function (Store_122) {
+    var Store;
+    (function (Store) {
+        var OrderProductDialog = /** @class */ (function (_super) {
+            __extends(OrderProductDialog, _super);
+            function OrderProductDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Store.OrderProductForm(_this.idPrefix);
+                return _this;
+            }
+            OrderProductDialog.prototype.getFormKey = function () { return Store.OrderProductForm.formKey; };
+            OrderProductDialog.prototype.getIdProperty = function () { return Store.OrderProductRow.idProperty; };
+            OrderProductDialog.prototype.getLocalTextPrefix = function () { return Store.OrderProductRow.localTextPrefix; };
+            OrderProductDialog.prototype.getNameProperty = function () { return Store.OrderProductRow.nameProperty; };
+            OrderProductDialog.prototype.getService = function () { return Store.OrderProductService.baseUrl; };
+            OrderProductDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], OrderProductDialog);
+            return OrderProductDialog;
+        }(Serenity.EntityDialog));
+        Store.OrderProductDialog = OrderProductDialog;
+    })(Store = Store_122.Store || (Store_122.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_123) {
+    var Store;
+    (function (Store) {
+        var OrderProductGrid = /** @class */ (function (_super) {
+            __extends(OrderProductGrid, _super);
+            function OrderProductGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            OrderProductGrid.prototype.getColumnsKey = function () { return 'Store.OrderProduct'; };
+            OrderProductGrid.prototype.getDialogType = function () { return Store.OrderProductDialog; };
+            OrderProductGrid.prototype.getIdProperty = function () { return Store.OrderProductRow.idProperty; };
+            OrderProductGrid.prototype.getLocalTextPrefix = function () { return Store.OrderProductRow.localTextPrefix; };
+            OrderProductGrid.prototype.getService = function () { return Store.OrderProductService.baseUrl; };
+            OrderProductGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], OrderProductGrid);
+            return OrderProductGrid;
+        }(Serenity.EntityGrid));
+        Store.OrderProductGrid = OrderProductGrid;
+    })(Store = Store_123.Store || (Store_123.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_124) {
+    var Store;
+    (function (Store) {
+        var OrderProductDetailDialog = /** @class */ (function (_super) {
+            __extends(OrderProductDetailDialog, _super);
+            function OrderProductDetailDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Store.OrderProductDetailForm(_this.idPrefix);
+                return _this;
+            }
+            OrderProductDetailDialog.prototype.getFormKey = function () { return Store.OrderProductDetailForm.formKey; };
+            OrderProductDetailDialog.prototype.getIdProperty = function () { return Store.OrderProductDetailRow.idProperty; };
+            OrderProductDetailDialog.prototype.getLocalTextPrefix = function () { return Store.OrderProductDetailRow.localTextPrefix; };
+            OrderProductDetailDialog.prototype.getService = function () { return Store.OrderProductDetailService.baseUrl; };
+            OrderProductDetailDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], OrderProductDetailDialog);
+            return OrderProductDetailDialog;
+        }(Serenity.EntityDialog));
+        Store.OrderProductDetailDialog = OrderProductDetailDialog;
+    })(Store = Store_124.Store || (Store_124.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_125) {
+    var Store;
+    (function (Store) {
+        var OrderProductDetailGrid = /** @class */ (function (_super) {
+            __extends(OrderProductDetailGrid, _super);
+            function OrderProductDetailGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            OrderProductDetailGrid.prototype.getColumnsKey = function () { return 'Store.OrderProductDetail'; };
+            OrderProductDetailGrid.prototype.getDialogType = function () { return Store.OrderProductDetailDialog; };
+            OrderProductDetailGrid.prototype.getIdProperty = function () { return Store.OrderProductDetailRow.idProperty; };
+            OrderProductDetailGrid.prototype.getLocalTextPrefix = function () { return Store.OrderProductDetailRow.localTextPrefix; };
+            OrderProductDetailGrid.prototype.getService = function () { return Store.OrderProductDetailService.baseUrl; };
+            OrderProductDetailGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], OrderProductDetailGrid);
+            return OrderProductDetailGrid;
+        }(Serenity.EntityGrid));
+        Store.OrderProductDetailGrid = OrderProductDetailGrid;
+    })(Store = Store_125.Store || (Store_125.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_126) {
+    var Store;
+    (function (Store) {
+        var ProductDialog = /** @class */ (function (_super) {
+            __extends(ProductDialog, _super);
+            function ProductDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Store.ProductForm(_this.idPrefix);
+                return _this;
+            }
+            ProductDialog.prototype.getFormKey = function () { return Store.ProductForm.formKey; };
+            ProductDialog.prototype.getIdProperty = function () { return Store.ProductRow.idProperty; };
+            ProductDialog.prototype.getLocalTextPrefix = function () { return Store.ProductRow.localTextPrefix; };
+            ProductDialog.prototype.getNameProperty = function () { return Store.ProductRow.nameProperty; };
+            ProductDialog.prototype.getService = function () { return Store.ProductService.baseUrl; };
+            ProductDialog.prototype.getLanguages = function () { return Store_126.LanguageList.getValue(); };
+            ProductDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], ProductDialog);
+            return ProductDialog;
+        }(Serenity.EntityDialog));
+        Store.ProductDialog = ProductDialog;
+    })(Store = Store_126.Store || (Store_126.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_127) {
+    var Store;
+    (function (Store) {
+        var ProductGrid = /** @class */ (function (_super) {
+            __extends(ProductGrid, _super);
+            function ProductGrid(container) {
+                var _this = _super.call(this, container) || this;
+                _this.pendingChanges = {};
+                _this.slickContainer.on('change', '.edit:input', function (e) { return _this.inputsChange(e); });
+                return _this;
+            }
+            ProductGrid.prototype.getColumnsKey = function () { return 'Store.Product'; };
+            ProductGrid.prototype.getDialogType = function () { return Store.ProductDialog; };
+            ProductGrid.prototype.getIdProperty = function () { return Store.ProductRow.idProperty; };
+            ProductGrid.prototype.getLocalTextPrefix = function () { return Store.ProductRow.localTextPrefix; };
+            ProductGrid.prototype.getService = function () { return Store.ProductService.baseUrl; };
+            ProductGrid.prototype.getQuickFilters = function () {
+                var _this = this;
+                var flt = _super.prototype.getQuickFilters.call(this);
+                var q = Q.parseQueryString();
+                if (q["cat"]) {
+                    var category = Q.tryFirst(flt, function (x) { return x.field == "CategoryID"; });
+                    category.init = function (e) {
+                        e.element.getWidget(Serenity.LookupEditor).value = q["cat"];
+                    };
+                }
+                flt.push({
+                    type: Serenity.LookupEditor,
+                    options: {
+                        lookupKey: Store.WaresRow.lookupKey
+                    },
+                    field: 'WaresID',
+                    title: 'Contains Wares in Details',
+                    handler: function (w) {
+                        _this.view.params.WaresID = Q.toId(w.value);
+                    },
+                    cssClass: 'hidden-xs'
+                });
+                return flt;
+            };
+            ProductGrid.prototype.getButtons = function () {
+                var _this = this;
+                var buttons = _super.prototype.getButtons.call(this);
+                buttons.push(Store_127.Common.ExcelExportHelper.createToolButton({
+                    grid: this,
+                    service: Store.ProductService.baseUrl + '/ListExcel',
+                    onViewSubmit: function () { return _this.onViewSubmit(); },
+                    separator: true
+                }));
+                buttons.push(Store_127.Common.PdfExportHelper.createToolButton({
+                    grid: this,
+                    onViewSubmit: function () { return _this.onViewSubmit(); },
+                    reportTitle: 'Product List',
+                    columnTitles: {
+                        'Discontinued': 'Dis.',
+                    },
+                    tableOptions: {
+                        columnStyles: {
+                            ProductID: {
+                                columnWidth: 25,
+                                halign: 'right'
+                            },
+                            Discountinued: {
+                                columnWidth: 25
+                            }
+                        }
+                    }
+                }));
+                buttons.push({
+                    title: 'Save Changes',
+                    cssClass: 'apply-changes-button disabled',
+                    onClick: function (e) { return _this.saveClick(); },
+                    separator: true
+                });
+                return buttons;
+            };
+            ProductGrid.prototype.onViewProcessData = function (response) {
+                this.pendingChanges = {};
+                this.setSaveButtonState();
+                return _super.prototype.onViewProcessData.call(this, response);
+            };
+            // PLEASE NOTE! Inline editing in grids is not something Serenity supports nor recommends.
+            // SlickGrid has some set of limitations, UI is very hard to use on some devices like mobile, 
+            // custom widgets and validations are not possible, and as a bonus the code can become a mess.
+            // 
+            // This was just a sample how-to after much requests, and is not supported. 
+            // This is all we can offer, please don't ask us to Guide you...
+            /**
+             * It would be nice if we could use autonumeric, Serenity editors etc. here, to control input validation,
+             * but it's not supported by SlickGrid as we are only allowed to return a string, and should attach
+             * no event handlers to rendered cell contents
+             */
+            ProductGrid.prototype.numericInputFormatter = function (ctx) {
+                var klass = 'edit numeric';
+                var item = ctx.item;
+                var pending = this.pendingChanges[item.ProductID];
+                if (pending && pending[ctx.column.field] !== undefined) {
+                    klass += ' dirty';
+                }
+                var value = this.getEffectiveValue(item, ctx.column.field);
+                return "<input type='text' class='" + klass +
+                    "' data-field='" + ctx.column.field +
+                    "' value='" + Q.formatNumber(value, '0.##') + "'/>";
+            };
+            ProductGrid.prototype.stringInputFormatter = function (ctx) {
+                var klass = 'edit string';
+                var item = ctx.item;
+                var pending = this.pendingChanges[item.ProductID];
+                var column = ctx.column;
+                if (pending && pending[column.field] !== undefined) {
+                    klass += ' dirty';
+                }
+                var value = this.getEffectiveValue(item, column.field);
+                return "<input type='text' class='" + klass +
+                    "' data-field='" + column.field +
+                    "' value='" + Q.attrEncode(value) +
+                    "' maxlength='" + column.sourceItem.maxLength + "'/>";
+            };
+            /**
+             * Sorry but you cannot use LookupEditor, e.g. Select2 here, only possible is a SELECT element
+             */
+            ProductGrid.prototype.selectFormatter = function (ctx, idField, lookup) {
+                var klass = 'edit';
+                var item = ctx.item;
+                var pending = this.pendingChanges[item.ProductID];
+                var column = ctx.column;
+                if (pending && pending[idField] !== undefined) {
+                    klass += ' dirty';
+                }
+                var value = this.getEffectiveValue(item, idField);
+                var markup = "<select class='" + klass +
+                    "' data-field='" + idField +
+                    "' style='width: 100%; max-width: 100%'>";
+                for (var _i = 0, _a = lookup.items; _i < _a.length; _i++) {
+                    var c = _a[_i];
+                    var id = c[lookup.idField];
+                    markup += "<option value='" + Q.attrEncode(id) + "'";
+                    if (id == value) {
+                        markup += " selected";
+                    }
+                    markup += ">" + Q.htmlEncode(c[lookup.textField]) + "</option>";
+                }
+                return markup + "</select>";
+            };
+            ProductGrid.prototype.getEffectiveValue = function (item, field) {
+                var pending = this.pendingChanges[item.ProductID];
+                if (pending && pending[field] !== undefined) {
+                    return pending[field];
+                }
+                return item[field];
+            };
+            ProductGrid.prototype.getColumns = function () {
+                var _this = this;
+                var columns = _super.prototype.getColumns.call(this);
+                var num = function (ctx) { return _this.numericInputFormatter(ctx); };
+                var str = function (ctx) { return _this.stringInputFormatter(ctx); };
+                Q.first(columns, function (x) { return x.field === 'QuantityPerUnit'; }).format = str;
+                var category = Q.first(columns, function (x) { return x.field === "CategoryCategoryName" /* CategoryCategoryName */; });
+                category.referencedFields = ["CategoryID" /* CategoryID */];
+                category.format = function (ctx) { return _this.selectFormatter(ctx, "CategoryID" /* CategoryID */, Store.CategoryRow.getLookup()); };
+                var supplier = Q.first(columns, function (x) { return x.field === "SupplierCompanyName" /* SupplierCompanyName */; });
+                supplier.referencedFields = ["SupplierID" /* SupplierID */];
+                supplier.format = function (ctx) { return _this.selectFormatter(ctx, "SupplierID" /* SupplierID */, Store.SupplierRow.getLookup()); };
+                Q.first(columns, function (x) { return x.field === "UnitPrice" /* UnitPrice */; }).format = num;
+                Q.first(columns, function (x) { return x.field === "UnitsInStock" /* UnitsInStock */; }).format = num;
+                Q.first(columns, function (x) { return x.field === "UnitsOnOrder" /* UnitsOnOrder */; }).format = num;
+                Q.first(columns, function (x) { return x.field === "ReorderLevel" /* ReorderLevel */; }).format = num;
+                return columns;
+            };
+            ProductGrid.prototype.inputsChange = function (e) {
+                var cell = this.slickGrid.getCellFromEvent(e);
+                var item = this.itemAt(cell.row);
+                var input = $(e.target);
+                var field = input.data('field');
+                var text = Q.coalesce(Q.trimToNull(input.val()), '0');
+                var pending = this.pendingChanges[item.ProductID];
+                var effective = this.getEffectiveValue(item, field);
+                var oldText;
+                if (input.hasClass("numeric"))
+                    oldText = Q.formatNumber(effective, '0.##');
+                else
+                    oldText = effective;
+                var value;
+                if (field === 'UnitPrice') {
+                    value = Q.parseDecimal(text);
+                    if (value == null || isNaN(value)) {
+                        Q.notifyError(Q.text('Validation.Decimal'), '', null);
+                        input.val(oldText);
+                        input.focus();
+                        return;
+                    }
+                }
+                else if (input.hasClass("numeric")) {
+                    var i = Q.parseInteger(text);
+                    if (isNaN(i) || i > 32767 || i < 0) {
+                        Q.notifyError(Q.text('Validation.Integer'), '', null);
+                        input.val(oldText);
+                        input.focus();
+                        return;
+                    }
+                    value = i;
+                }
+                else
+                    value = text;
+                if (!pending) {
+                    this.pendingChanges[item.ProductID] = pending = {};
+                }
+                pending[field] = value;
+                item[field] = value;
+                this.view.refresh();
+                if (input.hasClass("numeric"))
+                    value = Q.formatNumber(value, '0.##');
+                input.val(value).addClass('dirty');
+                this.setSaveButtonState();
+            };
+            ProductGrid.prototype.setSaveButtonState = function () {
+                this.toolbar.findButton('apply-changes-button').toggleClass('disabled', Object.keys(this.pendingChanges).length === 0);
+            };
+            ProductGrid.prototype.saveClick = function () {
+                if (Object.keys(this.pendingChanges).length === 0) {
+                    return;
+                }
+                // this calls save service for all modified rows, one by one
+                // you could write a batch update service
+                var keys = Object.keys(this.pendingChanges);
+                var current = -1;
+                var self = this;
+                (function saveNext() {
+                    if (++current >= keys.length) {
+                        self.refresh();
+                        return;
+                    }
+                    var key = keys[current];
+                    var entity = Q.deepClone(self.pendingChanges[key]);
+                    entity.ProductID = key;
+                    Q.serviceRequest('Store/Product/Update', {
+                        EntityId: key,
+                        Entity: entity
+                    }, function (response) {
+                        delete self.pendingChanges[key];
+                        saveNext();
+                    });
+                })();
+            };
+            ProductGrid = __decorate([
+                Serenity.Decorators.registerClass(),
+                Serenity.Decorators.filterable()
+            ], ProductGrid);
+            return ProductGrid;
+        }(Serenity.EntityGrid));
+        Store.ProductGrid = ProductGrid;
+    })(Store = Store_127.Store || (Store_127.Store = {}));
+})(Store || (Store = {}));
+/// <reference path="../../Common/Helpers/GridEditorDialog.ts" />
+var Store;
+(function (Store_128) {
+    var Store;
+    (function (Store) {
+        var ProductDetailDialog = /** @class */ (function (_super) {
+            __extends(ProductDetailDialog, _super);
+            function ProductDetailDialog() {
+                var _this = _super.call(this) || this;
+                _this.form = new Store.ProductDetailForm(_this.idPrefix);
+                _this.form.WaresID.changeSelect2(function (e) {
+                    var itemID = Q.toId(_this.form.WaresID.value);
+                });
+                return _this;
+            }
+            ProductDetailDialog.prototype.getFormKey = function () { return Store.ProductDetailForm.formKey; };
+            ProductDetailDialog.prototype.getLocalTextPrefix = function () { return Store.ProductDetailRow.localTextPrefix; };
+            ProductDetailDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], ProductDetailDialog);
+            return ProductDetailDialog;
+        }(Store_128.Common.GridEditorDialog));
+        Store.ProductDetailDialog = ProductDetailDialog;
+    })(Store = Store_128.Store || (Store_128.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_129) {
+    var Store;
+    (function (Store) {
+        var ProductDetailGrid = /** @class */ (function (_super) {
+            __extends(ProductDetailGrid, _super);
+            function ProductDetailGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            ProductDetailGrid.prototype.getColumnsKey = function () { return 'Store.ProductDetail'; };
+            ProductDetailGrid.prototype.getDialogType = function () { return Store.ProductDetailDialog; };
+            ProductDetailGrid.prototype.getIdProperty = function () { return Store.ProductDetailRow.idProperty; };
+            ProductDetailGrid.prototype.getLocalTextPrefix = function () { return Store.ProductDetailRow.localTextPrefix; };
+            ProductDetailGrid.prototype.getService = function () { return Store.ProductDetailService.baseUrl; };
+            ProductDetailGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], ProductDetailGrid);
+            return ProductDetailGrid;
+        }(Serenity.EntityGrid));
+        Store.ProductDetailGrid = ProductDetailGrid;
+    })(Store = Store_129.Store || (Store_129.Store = {}));
+})(Store || (Store = {}));
+/// <reference path="../../Common/Helpers/GridEditorBase.ts" />
+var Store;
+(function (Store_130) {
+    var Store;
+    (function (Store) {
+        var ProductDetailsEditor = /** @class */ (function (_super) {
+            __extends(ProductDetailsEditor, _super);
+            function ProductDetailsEditor(container) {
+                return _super.call(this, container) || this;
+            }
+            ProductDetailsEditor.prototype.getColumnsKey = function () { return "Store.ProductDetail"; };
+            ProductDetailsEditor.prototype.getDialogType = function () { return Store.ProductDetailDialog; };
+            ProductDetailsEditor.prototype.getLocalTextPrefix = function () { return Store.ProductDetailRow.localTextPrefix; };
+            ProductDetailsEditor.prototype.validateEntity = function (row, id) {
+                row.WaresID = Q.toId(row.WaresID);
+                var sameItem = Q.tryFirst(this.view.getItems(), function (x) { return x.WaresID === row.WaresID; });
+                if (sameItem && this.id(sameItem) != id) {
+                    Q.alert('This article is already in order details!');
+                    return false;
+                }
+                row.WaresName = Store.WaresRow.getLookup().itemById[row.WaresID].WaresName;
+                row.LineTotal = (row.Quantity || 0) * (row.UnitPrice || 0);
+                return true;
+            };
+            ProductDetailsEditor = __decorate([
+                Serenity.Decorators.registerClass()
+            ], ProductDetailsEditor);
+            return ProductDetailsEditor;
+        }(Store_130.Common.GridEditorBase));
+        Store.ProductDetailsEditor = ProductDetailsEditor;
+    })(Store = Store_130.Store || (Store_130.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_131) {
+    var Store;
+    (function (Store) {
+        var PhoneEditor = /** @class */ (function (_super) {
             __extends(PhoneEditor, _super);
             function PhoneEditor(input) {
                 var _this = _super.call(this, input) || this;
@@ -9335,6 +6407,7 @@ var Store;
                 });
                 return _this;
             }
+            PhoneEditor_1 = PhoneEditor;
             PhoneEditor.prototype.formatValue = function () {
                 this.element.val(this.getFormattedValue());
             };
@@ -9356,7 +6429,7 @@ var Store;
                 if (valid) {
                     return null;
                 }
-                return Q.text((isMultiple ? 'Validation.NorthwindPhoneMultiple' : 'Validation.NorthwindPhone'));
+                return Q.text((isMultiple ? 'Validation.StorePhoneMultiple' : 'Validation.StorePhone'));
             };
             PhoneEditor.isValidPhone = function (phone) {
                 if (Q.isEmptyOrNull(phone)) {
@@ -9435,50 +6508,47 @@ var Store;
                 }
                 return true;
             };
+            var PhoneEditor_1;
+            __decorate([
+                Serenity.Decorators.option()
+            ], PhoneEditor.prototype, "multiple", void 0);
+            PhoneEditor = PhoneEditor_1 = __decorate([
+                Serenity.Decorators.registerEditor()
+            ], PhoneEditor);
             return PhoneEditor;
         }(Serenity.StringEditor));
-        __decorate([
-            Serenity.Decorators.option()
-        ], PhoneEditor.prototype, "multiple", void 0);
-        PhoneEditor = PhoneEditor_1 = __decorate([
-            Serenity.Decorators.registerEditor()
-        ], PhoneEditor);
-        Northwind.PhoneEditor = PhoneEditor;
-        var PhoneEditor_1;
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
+        Store.PhoneEditor = PhoneEditor;
+    })(Store = Store_131.Store || (Store_131.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var ShipperDialog = (function (_super) {
+(function (Store_132) {
+    var Store;
+    (function (Store) {
+        var ShipperDialog = /** @class */ (function (_super) {
             __extends(ShipperDialog, _super);
             function ShipperDialog() {
                 var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new Northwind.ShipperForm(_this.idPrefix);
+                _this.form = new Store.ShipperForm(_this.idPrefix);
                 return _this;
             }
-            ShipperDialog.prototype.getFormKey = function () { return Northwind.ShipperForm.formKey; };
-            ShipperDialog.prototype.getIdProperty = function () { return Northwind.ShipperRow.idProperty; };
-            ShipperDialog.prototype.getLocalTextPrefix = function () { return Northwind.ShipperRow.localTextPrefix; };
-            ShipperDialog.prototype.getNameProperty = function () { return Northwind.ShipperRow.nameProperty; };
-            ShipperDialog.prototype.getService = function () { return Northwind.ShipperService.baseUrl; };
-            ShipperDialog.prototype.getLanguages = function () {
-                return Store.LanguageList.getValue();
-            };
+            ShipperDialog.prototype.getFormKey = function () { return Store.ShipperForm.formKey; };
+            ShipperDialog.prototype.getIdProperty = function () { return Store.ShipperRow.idProperty; };
+            ShipperDialog.prototype.getLocalTextPrefix = function () { return Store.ShipperRow.localTextPrefix; };
+            ShipperDialog.prototype.getNameProperty = function () { return Store.ShipperRow.nameProperty; };
+            ShipperDialog.prototype.getService = function () { return Store.ShipperService.baseUrl; };
+            ShipperDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], ShipperDialog);
             return ShipperDialog;
         }(Serenity.EntityDialog));
-        ShipperDialog = __decorate([
-            Serenity.Decorators.registerClass()
-        ], ShipperDialog);
-        Northwind.ShipperDialog = ShipperDialog;
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
+        Store.ShipperDialog = ShipperDialog;
+    })(Store = Store_132.Store || (Store_132.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var ShipperFormatter = (function () {
+(function (Store_133) {
+    var Store;
+    (function (Store) {
+        var ShipperFormatter = /** @class */ (function () {
             function ShipperFormatter() {
             }
             ShipperFormatter.prototype.format = function (ctx) {
@@ -9486,254 +6556,865 @@ var Store;
                     Q.replaceAll((ctx.value || '').toString(), ' ', '') +
                     "'>" + Q.htmlEncode(ctx.value) + '</span>';
             };
+            ShipperFormatter = __decorate([
+                Serenity.Decorators.registerFormatter()
+            ], ShipperFormatter);
             return ShipperFormatter;
         }());
-        ShipperFormatter = __decorate([
-            Serenity.Decorators.registerFormatter()
-        ], ShipperFormatter);
-        Northwind.ShipperFormatter = ShipperFormatter;
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
+        Store.ShipperFormatter = ShipperFormatter;
+    })(Store = Store_133.Store || (Store_133.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var ShipperGrid = (function (_super) {
+(function (Store_134) {
+    var Store;
+    (function (Store) {
+        var ShipperGrid = /** @class */ (function (_super) {
             __extends(ShipperGrid, _super);
             function ShipperGrid(container) {
                 return _super.call(this, container) || this;
             }
-            ShipperGrid.prototype.getColumnsKey = function () { return "Northwind.Shipper"; };
-            ShipperGrid.prototype.getDialogType = function () { return Northwind.ShipperDialog; };
-            ShipperGrid.prototype.getIdProperty = function () { return Northwind.ShipperRow.idProperty; };
-            ShipperGrid.prototype.getLocalTextPrefix = function () { return Northwind.ShipperRow.localTextPrefix; };
-            ShipperGrid.prototype.getService = function () { return Northwind.ShipperService.baseUrl; };
+            ShipperGrid.prototype.getColumnsKey = function () { return 'Store.Shipper'; };
+            ShipperGrid.prototype.getDialogType = function () { return Store.ShipperDialog; };
+            ShipperGrid.prototype.getIdProperty = function () { return Store.ShipperRow.idProperty; };
+            ShipperGrid.prototype.getLocalTextPrefix = function () { return Store.ShipperRow.localTextPrefix; };
+            ShipperGrid.prototype.getService = function () { return Store.ShipperService.baseUrl; };
+            ShipperGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], ShipperGrid);
             return ShipperGrid;
         }(Serenity.EntityGrid));
-        ShipperGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], ShipperGrid);
-        Northwind.ShipperGrid = ShipperGrid;
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
+        Store.ShipperGrid = ShipperGrid;
+    })(Store = Store_134.Store || (Store_134.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var TerritoryDialog = (function (_super) {
-            __extends(TerritoryDialog, _super);
-            function TerritoryDialog() {
+(function (Store_135) {
+    var Store;
+    (function (Store) {
+        var ShopsDialog = /** @class */ (function (_super) {
+            __extends(ShopsDialog, _super);
+            function ShopsDialog() {
                 var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new Northwind.TerritoryForm(_this.idPrefix);
+                _this.form = new Store.ShopsForm(_this.idPrefix);
                 return _this;
             }
-            TerritoryDialog.prototype.getFormKey = function () { return Northwind.TerritoryForm.formKey; };
-            TerritoryDialog.prototype.getIdProperty = function () { return Northwind.TerritoryRow.idProperty; };
-            TerritoryDialog.prototype.getLocalTextPrefix = function () { return Northwind.TerritoryRow.localTextPrefix; };
-            TerritoryDialog.prototype.getNameProperty = function () { return Northwind.TerritoryRow.nameProperty; };
-            TerritoryDialog.prototype.getService = function () { return Northwind.TerritoryService.baseUrl; };
-            TerritoryDialog.prototype.getLanguages = function () {
-                return Store.LanguageList.getValue();
-            };
-            return TerritoryDialog;
+            ShopsDialog.prototype.getFormKey = function () { return Store.ShopsForm.formKey; };
+            ShopsDialog.prototype.getIdProperty = function () { return Store.ShopsRow.idProperty; };
+            ShopsDialog.prototype.getLocalTextPrefix = function () { return Store.ShopsRow.localTextPrefix; };
+            ShopsDialog.prototype.getNameProperty = function () { return Store.ShopsRow.nameProperty; };
+            ShopsDialog.prototype.getService = function () { return Store.ShopsService.baseUrl; };
+            ShopsDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], ShopsDialog);
+            return ShopsDialog;
         }(Serenity.EntityDialog));
-        TerritoryDialog = __decorate([
-            Serenity.Decorators.registerClass()
-        ], TerritoryDialog);
-        Northwind.TerritoryDialog = TerritoryDialog;
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
+        Store.ShopsDialog = ShopsDialog;
+    })(Store = Store_135.Store || (Store_135.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store) {
-    var Northwind;
-    (function (Northwind) {
-        var TerritoryGrid = (function (_super) {
-            __extends(TerritoryGrid, _super);
-            function TerritoryGrid(container) {
+(function (Store_136) {
+    var Store;
+    (function (Store) {
+        var ShopsGrid = /** @class */ (function (_super) {
+            __extends(ShopsGrid, _super);
+            function ShopsGrid(container) {
                 return _super.call(this, container) || this;
             }
-            TerritoryGrid.prototype.getColumnsKey = function () { return "Northwind.Territory"; };
-            TerritoryGrid.prototype.getDialogType = function () { return Northwind.TerritoryDialog; };
-            TerritoryGrid.prototype.getIdProperty = function () { return Northwind.TerritoryRow.idProperty; };
-            TerritoryGrid.prototype.getLocalTextPrefix = function () { return Northwind.TerritoryRow.localTextPrefix; };
-            TerritoryGrid.prototype.getService = function () { return Northwind.TerritoryService.baseUrl; };
-            return TerritoryGrid;
+            ShopsGrid.prototype.getColumnsKey = function () { return 'Store.Shops'; };
+            ShopsGrid.prototype.getDialogType = function () { return Store.ShopsDialog; };
+            ShopsGrid.prototype.getIdProperty = function () { return Store.ShopsRow.idProperty; };
+            ShopsGrid.prototype.getLocalTextPrefix = function () { return Store.ShopsRow.localTextPrefix; };
+            ShopsGrid.prototype.getService = function () { return Store.ShopsService.baseUrl; };
+            ShopsGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], ShopsGrid);
+            return ShopsGrid;
         }(Serenity.EntityGrid));
-        TerritoryGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], TerritoryGrid);
-        Northwind.TerritoryGrid = TerritoryGrid;
-    })(Northwind = Store.Northwind || (Store.Northwind = {}));
+        Store.ShopsGrid = ShopsGrid;
+    })(Store = Store_136.Store || (Store_136.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store) {
-    var Organization;
-    (function (Organization) {
-        var BusinessUnitDialog = (function (_super) {
-            __extends(BusinessUnitDialog, _super);
-            function BusinessUnitDialog() {
+(function (Store_137) {
+    var Store;
+    (function (Store) {
+        var SupplierDialog = /** @class */ (function (_super) {
+            __extends(SupplierDialog, _super);
+            function SupplierDialog() {
                 var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new Organization.BusinessUnitForm(_this.idPrefix);
+                _this.form = new Store.SupplierForm(_this.idPrefix);
                 return _this;
             }
-            BusinessUnitDialog.prototype.getFormKey = function () { return Organization.BusinessUnitForm.formKey; };
-            BusinessUnitDialog.prototype.getIdProperty = function () { return Organization.BusinessUnitRow.idProperty; };
-            BusinessUnitDialog.prototype.getLocalTextPrefix = function () { return Organization.BusinessUnitRow.localTextPrefix; };
-            BusinessUnitDialog.prototype.getNameProperty = function () { return Organization.BusinessUnitRow.nameProperty; };
-            BusinessUnitDialog.prototype.getService = function () { return Organization.BusinessUnitService.baseUrl; };
-            return BusinessUnitDialog;
+            SupplierDialog.prototype.getFormKey = function () { return Store.SupplierForm.formKey; };
+            SupplierDialog.prototype.getIdProperty = function () { return Store.SupplierRow.idProperty; };
+            SupplierDialog.prototype.getLocalTextPrefix = function () { return Store.SupplierRow.localTextPrefix; };
+            SupplierDialog.prototype.getNameProperty = function () { return Store.SupplierRow.nameProperty; };
+            SupplierDialog.prototype.getService = function () { return Store.SupplierService.baseUrl; };
+            SupplierDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], SupplierDialog);
+            return SupplierDialog;
         }(Serenity.EntityDialog));
-        BusinessUnitDialog = __decorate([
-            Serenity.Decorators.registerClass(),
-            Serenity.Decorators.responsive()
-        ], BusinessUnitDialog);
-        Organization.BusinessUnitDialog = BusinessUnitDialog;
-    })(Organization = Store.Organization || (Store.Organization = {}));
+        Store.SupplierDialog = SupplierDialog;
+    })(Store = Store_137.Store || (Store_137.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store) {
-    var Organization;
-    (function (Organization) {
-        var BusinessUnitEditor = (function (_super) {
-            __extends(BusinessUnitEditor, _super);
-            function BusinessUnitEditor(hidden) {
+(function (Store_138) {
+    var Store;
+    (function (Store) {
+        var SupplierGrid = /** @class */ (function (_super) {
+            __extends(SupplierGrid, _super);
+            function SupplierGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            SupplierGrid.prototype.getColumnsKey = function () { return 'Store.Supplier'; };
+            SupplierGrid.prototype.getDialogType = function () { return Store.SupplierDialog; };
+            SupplierGrid.prototype.getIdProperty = function () { return Store.SupplierRow.idProperty; };
+            SupplierGrid.prototype.getLocalTextPrefix = function () { return Store.SupplierRow.localTextPrefix; };
+            SupplierGrid.prototype.getService = function () { return Store.SupplierService.baseUrl; };
+            SupplierGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], SupplierGrid);
+            return SupplierGrid;
+        }(Serenity.EntityGrid));
+        Store.SupplierGrid = SupplierGrid;
+    })(Store = Store_138.Store || (Store_138.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_139) {
+    var Store;
+    (function (Store) {
+        var WaresDialog = /** @class */ (function (_super) {
+            __extends(WaresDialog, _super);
+            function WaresDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Store.WaresForm(_this.idPrefix);
+                return _this;
+            }
+            WaresDialog.prototype.getFormKey = function () { return Store.WaresForm.formKey; };
+            WaresDialog.prototype.getIdProperty = function () { return Store.WaresRow.idProperty; };
+            WaresDialog.prototype.getLocalTextPrefix = function () { return Store.WaresRow.localTextPrefix; };
+            WaresDialog.prototype.getNameProperty = function () { return Store.WaresRow.nameProperty; };
+            WaresDialog.prototype.getService = function () { return Store.WaresService.baseUrl; };
+            WaresDialog.prototype.getLanguages = function () { return Store_139.LanguageList.getValue(); };
+            WaresDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], WaresDialog);
+            return WaresDialog;
+        }(Serenity.EntityDialog));
+        Store.WaresDialog = WaresDialog;
+    })(Store = Store_139.Store || (Store_139.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_140) {
+    var Store;
+    (function (Store) {
+        var WaresEditor = /** @class */ (function (_super) {
+            __extends(WaresEditor, _super);
+            //constructor(container: JQuery, opt: Serenity.LookupEditorOptions) {
+            //    super(container, opt);
+            //}
+            function WaresEditor(hidden) {
                 return _super.call(this, hidden) || this;
             }
-            BusinessUnitEditor.prototype.getLookupKey = function () {
-                return Organization.BusinessUnitRow.lookupKey;
+            WaresEditor.prototype.getLookupKey = function () {
+                return Store.CategoryRow.lookupKey;
             };
-            BusinessUnitEditor.prototype.getItemText = function (item, lookup) {
-                var visited = {};
-                var text = item.Name;
-                while (item.ParentUnitId != null && !visited[item.ParentUnitId]) {
-                    item = lookup.itemById[item.ParentUnitId];
-                    if (!item)
-                        break;
-                    visited[item.UnitId] = true;
-                    text = item.Name + " >> " + text;
-                }
-                return text;
+            WaresEditor.prototype.getItems = function (lookup) {
+                return _super.prototype.getItems.call(this, lookup).filter(function (x) {
+                    return x.Type === 100;
+                });
             };
-            return BusinessUnitEditor;
+            WaresEditor = __decorate([
+                Serenity.Decorators.registerEditor()
+            ], WaresEditor);
+            return WaresEditor;
         }(Serenity.LookupEditorBase));
-        BusinessUnitEditor = __decorate([
-            Serenity.Decorators.registerEditor()
-        ], BusinessUnitEditor);
-        Organization.BusinessUnitEditor = BusinessUnitEditor;
-    })(Organization = Store.Organization || (Store.Organization = {}));
+        Store.WaresEditor = WaresEditor;
+    })(Store = Store_140.Store || (Store_140.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store) {
-    var Organization;
-    (function (Organization) {
-        var BusinessUnitGrid = (function (_super) {
-            __extends(BusinessUnitGrid, _super);
-            function BusinessUnitGrid(container) {
+(function (Store_141) {
+    var Store;
+    (function (Store) {
+        var WaresGrid = /** @class */ (function (_super) {
+            __extends(WaresGrid, _super);
+            function WaresGrid(container) {
                 var _this = _super.call(this, container) || this;
-                new Serenity.TreeGridMixin({
-                    grid: _this,
-                    getParentId: function (x) { return x.ParentUnitId; },
-                    toggleField: Organization.BusinessUnitRow.Fields.Name,
-                    initialCollapse: function () { return false; }
-                });
+                _this.pendingChanges = {};
+                _this.slickContainer.on('change', '.edit:input', function (e) { return _this.inputsChange(e); });
                 return _this;
             }
-            BusinessUnitGrid.prototype.getColumnsKey = function () { return 'Organization.BusinessUnit'; };
-            BusinessUnitGrid.prototype.getDialogType = function () { return Organization.BusinessUnitDialog; };
-            BusinessUnitGrid.prototype.getIdProperty = function () { return Organization.BusinessUnitRow.idProperty; };
-            BusinessUnitGrid.prototype.getLocalTextPrefix = function () { return Organization.BusinessUnitRow.localTextPrefix; };
-            BusinessUnitGrid.prototype.getService = function () { return Organization.BusinessUnitService.baseUrl; };
-            BusinessUnitGrid.prototype.subDialogDataChange = function () {
-                _super.prototype.subDialogDataChange.call(this);
-                Q.reloadLookup(Organization.BusinessUnitRow.lookupKey);
+            WaresGrid.prototype.getColumnsKey = function () { return 'Store.Wares'; };
+            WaresGrid.prototype.getDialogType = function () { return Store.WaresDialog; };
+            WaresGrid.prototype.getIdProperty = function () { return Store.WaresRow.idProperty; };
+            WaresGrid.prototype.getLocalTextPrefix = function () { return Store.WaresRow.localTextPrefix; };
+            WaresGrid.prototype.getService = function () { return Store.WaresService.baseUrl; };
+            WaresGrid.prototype.getQuickFilters = function () {
+                var flt = _super.prototype.getQuickFilters.call(this);
+                var q = Q.parseQueryString();
+                if (q["cat"]) {
+                    var category = Q.tryFirst(flt, function (x) { return x.field == "CategoryID"; });
+                    category.init = function (e) {
+                        e.element.getWidget(Serenity.LookupEditor).value = q["cat"];
+                    };
+                }
+                return flt;
             };
-            BusinessUnitGrid.prototype.usePager = function () {
-                return false;
+            WaresGrid.prototype.getButtons = function () {
+                var _this = this;
+                var buttons = _super.prototype.getButtons.call(this);
+                buttons.push(Store_141.Common.ExcelExportHelper.createToolButton({
+                    grid: this,
+                    service: Store.WaresService.baseUrl + '/ListExcel',
+                    onViewSubmit: function () { return _this.onViewSubmit(); },
+                    separator: true
+                }));
+                buttons.push(Store_141.Common.PdfExportHelper.createToolButton({
+                    grid: this,
+                    onViewSubmit: function () { return _this.onViewSubmit(); },
+                    reportTitle: 'Wares List',
+                    columnTitles: {
+                        'Discontinued': 'Dis.',
+                    },
+                    tableOptions: {
+                        columnStyles: {
+                            WaresID: {
+                                columnWidth: 25,
+                                halign: 'right'
+                            },
+                            Discountinued: {
+                                columnWidth: 25
+                            }
+                        }
+                    }
+                }));
+                buttons.push({
+                    title: 'Save Changes',
+                    cssClass: 'apply-changes-button disabled',
+                    onClick: function (e) { return _this.saveClick(); },
+                    separator: true
+                });
+                return buttons;
             };
-            BusinessUnitGrid.prototype.getColumns = function () {
+            WaresGrid.prototype.onViewProcessData = function (response) {
+                this.pendingChanges = {};
+                this.setSaveButtonState();
+                return _super.prototype.onViewProcessData.call(this, response);
+            };
+            WaresGrid.prototype.numericInputFormatter = function (ctx) {
+                var klass = 'edit numeric';
+                var item = ctx.item;
+                var pending = this.pendingChanges[item.WaresID];
+                if (pending && pending[ctx.column.field] !== undefined) {
+                    klass += ' dirty';
+                }
+                var value = this.getEffectiveValue(item, ctx.column.field);
+                return "<input type='text' class='" + klass +
+                    "' data-field='" + ctx.column.field +
+                    "' value='" + Q.formatNumber(value, '0.##') + "'/>";
+            };
+            WaresGrid.prototype.stringInputFormatter = function (ctx) {
+                var klass = 'edit string';
+                var item = ctx.item;
+                var pending = this.pendingChanges[item.WaresID];
+                var column = ctx.column;
+                if (pending && pending[column.field] !== undefined) {
+                    klass += ' dirty';
+                }
+                var value = this.getEffectiveValue(item, column.field);
+                return "<input type='text' class='" + klass +
+                    "' data-field='" + column.field +
+                    "' value='" + Q.attrEncode(value) +
+                    "' maxlength='" + column.sourceItem.maxLength + "'/>";
+            };
+            WaresGrid.prototype.selectFormatter = function (ctx, idField, lookup) {
+                var klass = 'edit';
+                var item = ctx.item;
+                var pending = this.pendingChanges[item.WaresID];
+                var column = ctx.column;
+                if (pending && pending[idField] !== undefined) {
+                    klass += ' dirty';
+                }
+                var value = this.getEffectiveValue(item, idField);
+                var markup = "<select class='" + klass +
+                    "' data-field='" + idField +
+                    "' style='width: 100%; max-width: 100%'>";
+                for (var _i = 0, _a = lookup.items; _i < _a.length; _i++) {
+                    var c = _a[_i];
+                    var id = c[lookup.idField];
+                    markup += "<option value='" + Q.attrEncode(id) + "'";
+                    if (id == value) {
+                        markup += " selected";
+                    }
+                    markup += ">" + Q.htmlEncode(c[lookup.textField]) + "</option>";
+                }
+                return markup + "</select>";
+            };
+            WaresGrid.prototype.getEffectiveValue = function (item, field) {
+                var pending = this.pendingChanges[item.WaresID];
+                if (pending && pending[field] !== undefined) {
+                    return pending[field];
+                }
+                return item[field];
+            };
+            WaresGrid.prototype.getColumns = function () {
+                var _this = this;
                 var columns = _super.prototype.getColumns.call(this);
-                columns.splice(Q.indexOf(columns, function (x) { return x.name == Organization.BusinessUnitRow.Fields.Name; }) + 1, 0, {
-                    field: 'Add Child Unit',
+                var num = function (ctx) { return _this.numericInputFormatter(ctx); };
+                var str = function (ctx) { return _this.stringInputFormatter(ctx); };
+                Q.first(columns, function (x) { return x.field === 'QuantityPerUnit'; }).format = str;
+                var warescategory = Q.first(columns, function (x) { return x.field === "CategoryName" /* CategoryName */; });
+                warescategory.referencedFields = ["CategoryID" /* CategoryID */];
+                warescategory.format = function (ctx) { return _this.selectFormatter(ctx, "CategoryID" /* CategoryID */, Store.CategoryRow.getLookup()); };
+                //var supplier = Q.first(columns, x => x.field === fld.SupplierCompanyName);
+                //supplier.referencedFields = [fld.SupplierID];
+                //supplier.format = ctx => this.selectFormatter(ctx, fld.SupplierID, SupplierRow.getLookup());
+                Q.first(columns, function (x) { return x.field === "UnitPrice" /* UnitPrice */; }).format = num;
+                Q.first(columns, function (x) { return x.field === "QuantityPerUnit" /* QuantityPerUnit */; }).format = num;
+                Q.first(columns, function (x) { return x.field === "MeasureMeasureName" /* MeasureMeasureName */; }).format = str;
+                //    //Q.first(columns, x => x.field === fld.ReorderLevel).format = num;
+                return columns;
+            };
+            WaresGrid.prototype.inputsChange = function (e) {
+                var cell = this.slickGrid.getCellFromEvent(e);
+                var item = this.itemAt(cell.row);
+                var input = $(e.target);
+                var field = input.data('field');
+                var text = Q.coalesce(Q.trimToNull(input.val()), '0');
+                var pending = this.pendingChanges[item.WaresID];
+                var effective = this.getEffectiveValue(item, field);
+                var oldText;
+                if (input.hasClass("numeric"))
+                    oldText = Q.formatNumber(effective, '0.##');
+                else
+                    oldText = effective;
+                var value;
+                if (field === 'UnitPrice') {
+                    value = Q.parseDecimal(text);
+                    if (value == null || isNaN(value)) {
+                        Q.notifyError(Q.text('Validation.Decimal'), '', null);
+                        input.val(oldText);
+                        input.focus();
+                        return;
+                    }
+                }
+                else if (input.hasClass("numeric")) {
+                    var i = Q.parseInteger(text);
+                    if (isNaN(i) || i > 32767 || i < 0) {
+                        Q.notifyError(Q.text('Validation.Integer'), '', null);
+                        input.val(oldText);
+                        input.focus();
+                        return;
+                    }
+                    value = i;
+                }
+                else
+                    value = text;
+                if (!pending) {
+                    this.pendingChanges[item.WaresID] = pending = {};
+                }
+                pending[field] = value;
+                item[field] = value;
+                this.view.refresh();
+                if (input.hasClass("numeric"))
+                    value = Q.formatNumber(value, '0.##');
+                input.val(value).addClass('dirty');
+                this.setSaveButtonState();
+            };
+            WaresGrid.prototype.setSaveButtonState = function () {
+                this.toolbar.findButton('apply-changes-button').toggleClass('disabled', Object.keys(this.pendingChanges).length === 0);
+            };
+            WaresGrid.prototype.saveClick = function () {
+                if (Object.keys(this.pendingChanges).length === 0) {
+                    return;
+                }
+                // this calls save service for all modified rows, one by one
+                // you could write a batch update service
+                var keys = Object.keys(this.pendingChanges);
+                var current = -1;
+                var self = this;
+                (function saveNext() {
+                    if (++current >= keys.length) {
+                        self.refresh();
+                        return;
+                    }
+                    var key = keys[current];
+                    var entity = Q.deepClone(self.pendingChanges[key]);
+                    entity.WaresID = key;
+                    Q.serviceRequest('Store/Wares/Update', {
+                        EntityId: key,
+                        Entity: entity
+                    }, function (response) {
+                        delete self.pendingChanges[key];
+                        saveNext();
+                    });
+                })();
+            };
+            WaresGrid = __decorate([
+                Serenity.Decorators.registerClass(),
+                Serenity.Decorators.filterable()
+            ], WaresGrid);
+            return WaresGrid;
+        }(Serenity.EntityGrid));
+        Store.WaresGrid = WaresGrid;
+    })(Store = Store_141.Store || (Store_141.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_142) {
+    var Store;
+    (function (Store) {
+        var WaresCategoriesDialog = /** @class */ (function (_super) {
+            __extends(WaresCategoriesDialog, _super);
+            function WaresCategoriesDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Store.WaresCategoriesForm(_this.idPrefix);
+                return _this;
+            }
+            WaresCategoriesDialog.prototype.getFormKey = function () { return Store.WaresCategoriesForm.formKey; };
+            WaresCategoriesDialog.prototype.getIdProperty = function () { return Store.WaresCategoriesRow.idProperty; };
+            WaresCategoriesDialog.prototype.getLocalTextPrefix = function () { return Store.WaresCategoriesRow.localTextPrefix; };
+            WaresCategoriesDialog.prototype.getNameProperty = function () { return Store.WaresCategoriesRow.nameProperty; };
+            WaresCategoriesDialog.prototype.getService = function () { return Store.WaresCategoriesService.baseUrl; };
+            WaresCategoriesDialog.prototype.getLanguages = function () {
+                return Store_142.LanguageList.getValue();
+            };
+            WaresCategoriesDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], WaresCategoriesDialog);
+            return WaresCategoriesDialog;
+        }(Serenity.EntityDialog));
+        Store.WaresCategoriesDialog = WaresCategoriesDialog;
+    })(Store = Store_142.Store || (Store_142.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_143) {
+    var Store;
+    (function (Store) {
+        var WaresCategoriesGrid = /** @class */ (function (_super) {
+            __extends(WaresCategoriesGrid, _super);
+            function WaresCategoriesGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            WaresCategoriesGrid.prototype.getColumnsKey = function () { return 'Store.WaresCategories'; };
+            WaresCategoriesGrid.prototype.getDialogType = function () { return Store.WaresCategoriesDialog; };
+            WaresCategoriesGrid.prototype.getIdProperty = function () { return Store.WaresCategoriesRow.idProperty; };
+            WaresCategoriesGrid.prototype.getLocalTextPrefix = function () { return Store.WaresCategoriesRow.localTextPrefix; };
+            WaresCategoriesGrid.prototype.getService = function () { return Store.WaresCategoriesService.baseUrl; };
+            WaresCategoriesGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], WaresCategoriesGrid);
+            return WaresCategoriesGrid;
+        }(Serenity.EntityGrid));
+        Store.WaresCategoriesGrid = WaresCategoriesGrid;
+    })(Store = Store_143.Store || (Store_143.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_144) {
+    var Store;
+    (function (Store) {
+        var WaresMovementDialog = /** @class */ (function (_super) {
+            __extends(WaresMovementDialog, _super);
+            function WaresMovementDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Store.WaresMovementForm(_this.idPrefix);
+                return _this;
+            }
+            WaresMovementDialog.prototype.getFormKey = function () { return Store.WaresMovementForm.formKey; };
+            WaresMovementDialog.prototype.getIdProperty = function () { return Store.WaresMovementRow.idProperty; };
+            WaresMovementDialog.prototype.getLocalTextPrefix = function () { return Store.WaresMovementRow.localTextPrefix; };
+            WaresMovementDialog.prototype.getNameProperty = function () { return Store.WaresMovementRow.nameProperty; };
+            WaresMovementDialog.prototype.getService = function () { return Store.WaresMovementService.baseUrl; };
+            WaresMovementDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], WaresMovementDialog);
+            return WaresMovementDialog;
+        }(Serenity.EntityDialog));
+        Store.WaresMovementDialog = WaresMovementDialog;
+    })(Store = Store_144.Store || (Store_144.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_145) {
+    var Store;
+    (function (Store) {
+        var WaresMovementGrid = /** @class */ (function (_super) {
+            __extends(WaresMovementGrid, _super);
+            function WaresMovementGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            WaresMovementGrid.prototype.getColumnsKey = function () { return 'Store.WaresMovement'; };
+            WaresMovementGrid.prototype.getDialogType = function () { return Store.WaresMovementDialog; };
+            WaresMovementGrid.prototype.getIdProperty = function () { return Store.WaresMovementRow.idProperty; };
+            WaresMovementGrid.prototype.getLocalTextPrefix = function () { return Store.WaresMovementRow.localTextPrefix; };
+            WaresMovementGrid.prototype.getService = function () { return Store.WaresMovementService.baseUrl; };
+            WaresMovementGrid.prototype.getQuickFilters = function () {
+                var _this = this;
+                var filters = _super.prototype.getQuickFilters.call(this);
+                filters.push({
+                    type: Serenity.LookupEditor,
+                    options: {
+                        lookupKey: Store.WaresRow.lookupKey
+                    },
+                    field: 'WaresID',
+                    title: 'Contains Wares in Details',
+                    handler: function (w) {
+                        _this.view.params.WaresID = Q.toId(w.value);
+                    },
+                    cssClass: 'hidden-xs'
+                });
+                return filters;
+            };
+            WaresMovementGrid.prototype.createQuickFilters = function () {
+                _super.prototype.createQuickFilters.call(this);
+                this.shippingStateFilter = this.findQuickFilter(Serenity.EnumEditor, "ShippingState" /* ShippingState */);
+            };
+            WaresMovementGrid.prototype.getButtons = function () {
+                var _this = this;
+                var buttons = _super.prototype.getButtons.call(this);
+                buttons.push(Store_145.Common.ExcelExportHelper.createToolButton({
+                    grid: this,
+                    service: Store.WaresMovementService.baseUrl + '/ListExcel',
+                    onViewSubmit: function () { return _this.onViewSubmit(); },
+                    separator: true
+                }));
+                buttons.push(Store_145.Common.PdfExportHelper.createToolButton({
+                    grid: this,
+                    onViewSubmit: function () { return _this.onViewSubmit(); }
+                }));
+                return buttons;
+            };
+            WaresMovementGrid.prototype.getColumns = function () {
+                var columns = _super.prototype.getColumns.call(this);
+                columns.splice(1, 0, {
+                    field: 'Print Invoice',
                     name: '',
-                    format: function (ctx) { return '<a class="inline-action add-child-unit" title="add child unit"></a>'; },
+                    format: function (ctx) { return '<a class="inline-action print-invoice" title="invoice">' +
+                        '<i class="fa fa-file-pdf-o text-red"></i></a>'; },
                     width: 24,
                     minWidth: 24,
                     maxWidth: 24
                 });
                 return columns;
             };
-            BusinessUnitGrid.prototype.onClick = function (e, row, cell) {
+            WaresMovementGrid.prototype.onClick = function (e, row, cell) {
                 _super.prototype.onClick.call(this, e, row, cell);
                 if (e.isDefaultPrevented())
                     return;
                 var item = this.itemAt(row);
                 var target = $(e.target);
+                // if user clicks "i" element, e.g. icon
                 if (target.parent().hasClass('inline-action'))
                     target = target.parent();
                 if (target.hasClass('inline-action')) {
                     e.preventDefault();
-                    if (target.hasClass('add-child-unit')) {
-                        var dlg = new Organization.BusinessUnitDialog();
-                        this.initDialog(dlg);
-                        dlg.loadEntityAndOpenDialog({
-                            ParentUnitId: item.UnitId
+                    if (target.hasClass('print-invoice')) {
+                        Store_145.Common.ReportHelper.execute({
+                            reportKey: 'Store.WaresMovementDetails',
+                            params: {
+                                WatesMoveID: item.WatesMoveID
+                            }
                         });
                     }
                 }
             };
-            return BusinessUnitGrid;
+            WaresMovementGrid.prototype.set_shippingState = function (value) {
+                this.shippingStateFilter.value = value == null ? '' : value.toString();
+            };
+            WaresMovementGrid.prototype.addButtonClick = function () {
+                var eq = this.view.params.EqualityFilter;
+                this.editItem({
+                    CounterpartyID: eq ? eq.CounterpartyID : null
+                });
+            };
+            WaresMovementGrid = __decorate([
+                Serenity.Decorators.registerClass(),
+                Serenity.Decorators.filterable()
+            ], WaresMovementGrid);
+            return WaresMovementGrid;
         }(Serenity.EntityGrid));
-        BusinessUnitGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], BusinessUnitGrid);
-        Organization.BusinessUnitGrid = BusinessUnitGrid;
-    })(Organization = Store.Organization || (Store.Organization = {}));
+        Store.WaresMovementGrid = WaresMovementGrid;
+    })(Store = Store_145.Store || (Store_145.Store = {}));
 })(Store || (Store = {}));
+/// <reference path="../../Common/Helpers/GridEditorDialog.ts" />
 var Store;
-(function (Store) {
-    var Organization;
-    (function (Organization) {
-        var ContactDialog = (function (_super) {
-            __extends(ContactDialog, _super);
-            function ContactDialog() {
-                var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new Organization.ContactForm(_this.idPrefix);
+(function (Store_146) {
+    var Store;
+    (function (Store) {
+        var WaresMovementDetailsDialog = /** @class */ (function (_super) {
+            __extends(WaresMovementDetailsDialog, _super);
+            function WaresMovementDetailsDialog() {
+                var _this = _super.call(this) || this;
+                _this.form = new Store.WaresMovementDetailsForm(_this.idPrefix);
+                _this.form.WaresID.changeSelect2(function (e) {
+                    var waresID = Q.toId(_this.form.WaresID.value);
+                    if (waresID != null) {
+                        _this.form.SinglePrice.value = Store.WaresRow.getLookup().itemById[waresID].UnitPrice;
+                    }
+                });
+                _this.form.Discount.addValidationRule(_this.uniqueName, function (e) {
+                    var price = _this.form.SinglePrice.value;
+                    var quantity = _this.form.Quantity.value;
+                    var discount = _this.form.Discount.value;
+                    if (price != null && quantity != null && discount != null &&
+                        discount > 0 && discount >= price * quantity) {
+                        return "Discount can't be higher than total price!";
+                    }
+                });
                 return _this;
             }
-            ContactDialog.prototype.getFormKey = function () { return Organization.ContactForm.formKey; };
-            ContactDialog.prototype.getIdProperty = function () { return Organization.ContactRow.idProperty; };
-            ContactDialog.prototype.getLocalTextPrefix = function () { return Organization.ContactRow.localTextPrefix; };
-            ContactDialog.prototype.getNameProperty = function () { return Organization.ContactRow.nameProperty; };
-            ContactDialog.prototype.getService = function () { return Organization.ContactService.baseUrl; };
-            return ContactDialog;
-        }(Serenity.EntityDialog));
-        ContactDialog = __decorate([
-            Serenity.Decorators.registerClass(),
-            Serenity.Decorators.responsive()
-        ], ContactDialog);
-        Organization.ContactDialog = ContactDialog;
-    })(Organization = Store.Organization || (Store.Organization = {}));
+            WaresMovementDetailsDialog.prototype.getFormKey = function () { return Store.WaresMovementDetailsForm.formKey; };
+            WaresMovementDetailsDialog.prototype.getLocalTextPrefix = function () { return Store.WaresMovementDetailsRow.localTextPrefix; };
+            WaresMovementDetailsDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], WaresMovementDetailsDialog);
+            return WaresMovementDetailsDialog;
+        }(Store_146.Common.GridEditorDialog));
+        Store.WaresMovementDetailsDialog = WaresMovementDetailsDialog;
+    })(Store = Store_146.Store || (Store_146.Store = {}));
+})(Store || (Store = {}));
+/// <reference path="../../Common/Helpers/GridEditorBase.ts" />
+var Store;
+(function (Store_147) {
+    var Store;
+    (function (Store) {
+        var WaresMovementDetailsEditor = /** @class */ (function (_super) {
+            __extends(WaresMovementDetailsEditor, _super);
+            function WaresMovementDetailsEditor(container) {
+                return _super.call(this, container) || this;
+            }
+            WaresMovementDetailsEditor.prototype.getColumnsKey = function () { return "Store.WaresMovementDetails"; };
+            WaresMovementDetailsEditor.prototype.getDialogType = function () { return Store.WaresMovementDetailsDialog; };
+            WaresMovementDetailsEditor.prototype.getLocalTextPrefix = function () { return Store.WaresMovementDetailsRow.localTextPrefix; };
+            WaresMovementDetailsEditor.prototype.validateEntity = function (row, id) {
+                row.WaresID = Q.toId(row.WaresID);
+                var sameWares = Q.tryFirst(this.view.getItems(), function (x) { return x.WaresID === row.WaresID; });
+                if (sameWares && this.id(sameWares) !== id) {
+                    Q.alert('This ware is already in order details!');
+                    return false;
+                }
+                row.WaresName = Store.WaresRow.getLookup().itemById[row.WaresID].WaresName;
+                return true;
+            };
+            WaresMovementDetailsEditor = __decorate([
+                Serenity.Decorators.registerClass()
+            ], WaresMovementDetailsEditor);
+            return WaresMovementDetailsEditor;
+        }(Store_147.Common.GridEditorBase));
+        Store.WaresMovementDetailsEditor = WaresMovementDetailsEditor;
+    })(Store = Store_147.Store || (Store_147.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_148) {
+    var Store;
+    (function (Store) {
+        var WaresMovementDetailsGrid = /** @class */ (function (_super) {
+            __extends(WaresMovementDetailsGrid, _super);
+            function WaresMovementDetailsGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            WaresMovementDetailsGrid.prototype.getColumnsKey = function () { return 'Store.WaresMovementDetails'; };
+            WaresMovementDetailsGrid.prototype.getDialogType = function () { return Store.WaresMovementDetailsDialog; };
+            WaresMovementDetailsGrid.prototype.getIdProperty = function () { return Store.WaresMovementDetailsRow.idProperty; };
+            WaresMovementDetailsGrid.prototype.getLocalTextPrefix = function () { return Store.WaresMovementDetailsRow.localTextPrefix; };
+            WaresMovementDetailsGrid.prototype.getService = function () { return Store.WaresMovementDetailsService.baseUrl; };
+            WaresMovementDetailsGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], WaresMovementDetailsGrid);
+            return WaresMovementDetailsGrid;
+        }(Serenity.EntityGrid));
+        Store.WaresMovementDetailsGrid = WaresMovementDetailsGrid;
+    })(Store = Store_148.Store || (Store_148.Store = {}));
 })(Store || (Store = {}));
 var Store;
 (function (Store) {
-    var Organization;
-    (function (Organization) {
-        var ContactGrid = (function (_super) {
-            __extends(ContactGrid, _super);
-            function ContactGrid(container) {
-                return _super.call(this, container) || this;
+    var Authorization;
+    (function (Authorization) {
+        Object.defineProperty(Authorization, 'userDefinition', {
+            get: function () {
+                return Q.getRemoteData('UserData');
             }
-            ContactGrid.prototype.getColumnsKey = function () { return 'Organization.Contact'; };
-            ContactGrid.prototype.getDialogType = function () { return Organization.ContactDialog; };
-            ContactGrid.prototype.getIdProperty = function () { return Organization.ContactRow.idProperty; };
-            ContactGrid.prototype.getLocalTextPrefix = function () { return Organization.ContactRow.localTextPrefix; };
-            ContactGrid.prototype.getService = function () { return Organization.ContactService.baseUrl; };
-            return ContactGrid;
-        }(Serenity.EntityGrid));
-        ContactGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], ContactGrid);
-        Organization.ContactGrid = ContactGrid;
-    })(Organization = Store.Organization || (Store.Organization = {}));
+        });
+        function hasPermission(permissionKey) {
+            var ud = Authorization.userDefinition;
+            return ud.Username === 'admin' || !!ud.Permissions[permissionKey];
+        }
+        Authorization.hasPermission = hasPermission;
+    })(Authorization = Store.Authorization || (Store.Authorization = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store) {
+    var Membership;
+    (function (Membership) {
+        var ChangePasswordPanel = /** @class */ (function (_super) {
+            __extends(ChangePasswordPanel, _super);
+            function ChangePasswordPanel(container) {
+                var _this = _super.call(this, container) || this;
+                _this.form = new Membership.ChangePasswordForm(_this.idPrefix);
+                _this.form.NewPassword.addValidationRule(_this.uniqueName, function (e) {
+                    if (_this.form.w('ConfirmPassword', Serenity.PasswordEditor).value.length < 7) {
+                        return Q.format(Q.text('Validation.MinRequiredPasswordLength'), 7);
+                    }
+                });
+                _this.form.ConfirmPassword.addValidationRule(_this.uniqueName, function (e) {
+                    if (_this.form.ConfirmPassword.value !== _this.form.NewPassword.value) {
+                        return Q.text('Validation.PasswordConfirm');
+                    }
+                });
+                _this.byId('SubmitButton').click(function (e) {
+                    e.preventDefault();
+                    if (!_this.validateForm()) {
+                        return;
+                    }
+                    var request = _this.getSaveEntity();
+                    Q.serviceCall({
+                        url: Q.resolveUrl('~/Account/ChangePassword'),
+                        request: request,
+                        onSuccess: function (response) {
+                            Q.information(Q.text('Forms.Membership.ChangePassword.Success'), function () {
+                                window.location.href = Q.resolveUrl('~/');
+                            });
+                        }
+                    });
+                });
+                return _this;
+            }
+            ChangePasswordPanel.prototype.getFormKey = function () { return Membership.ChangePasswordForm.formKey; };
+            ChangePasswordPanel = __decorate([
+                Serenity.Decorators.registerClass()
+            ], ChangePasswordPanel);
+            return ChangePasswordPanel;
+        }(Serenity.PropertyPanel));
+        Membership.ChangePasswordPanel = ChangePasswordPanel;
+    })(Membership = Store.Membership || (Store.Membership = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store) {
+    var Membership;
+    (function (Membership) {
+        var ForgotPasswordPanel = /** @class */ (function (_super) {
+            __extends(ForgotPasswordPanel, _super);
+            function ForgotPasswordPanel(container) {
+                var _this = _super.call(this, container) || this;
+                _this.form = new Membership.ForgotPasswordForm(_this.idPrefix);
+                _this.byId('SubmitButton').click(function (e) {
+                    e.preventDefault();
+                    if (!_this.validateForm()) {
+                        return;
+                    }
+                    var request = _this.getSaveEntity();
+                    Q.serviceCall({
+                        url: Q.resolveUrl('~/Account/ForgotPassword'),
+                        request: request,
+                        onSuccess: function (response) {
+                            Q.information(Q.text('Forms.Membership.ForgotPassword.Success'), function () {
+                                window.location.href = Q.resolveUrl('~/');
+                            });
+                        }
+                    });
+                });
+                return _this;
+            }
+            ForgotPasswordPanel.prototype.getFormKey = function () { return Membership.ForgotPasswordForm.formKey; };
+            ForgotPasswordPanel = __decorate([
+                Serenity.Decorators.registerClass()
+            ], ForgotPasswordPanel);
+            return ForgotPasswordPanel;
+        }(Serenity.PropertyPanel));
+        Membership.ForgotPasswordPanel = ForgotPasswordPanel;
+    })(Membership = Store.Membership || (Store.Membership = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store) {
+    var Membership;
+    (function (Membership) {
+        var ResetPasswordPanel = /** @class */ (function (_super) {
+            __extends(ResetPasswordPanel, _super);
+            function ResetPasswordPanel(container) {
+                var _this = _super.call(this, container) || this;
+                _this.form = new Membership.ResetPasswordForm(_this.idPrefix);
+                _this.form.NewPassword.addValidationRule(_this.uniqueName, function (e) {
+                    if (_this.form.ConfirmPassword.value.length < 7) {
+                        return Q.format(Q.text('Validation.MinRequiredPasswordLength'), 7);
+                    }
+                });
+                _this.form.ConfirmPassword.addValidationRule(_this.uniqueName, function (e) {
+                    if (_this.form.ConfirmPassword.value !== _this.form.NewPassword.value) {
+                        return Q.text('Validation.PasswordConfirm');
+                    }
+                });
+                _this.byId('SubmitButton').click(function (e) {
+                    e.preventDefault();
+                    if (!_this.validateForm()) {
+                        return;
+                    }
+                    var request = _this.getSaveEntity();
+                    request.Token = _this.byId('Token').val();
+                    Q.serviceCall({
+                        url: Q.resolveUrl('~/Account/ResetPassword'),
+                        request: request,
+                        onSuccess: function (response) {
+                            Q.information(Q.text('Forms.Membership.ResetPassword.Success'), function () {
+                                window.location.href = Q.resolveUrl('~/Account/Login');
+                            });
+                        }
+                    });
+                });
+                return _this;
+            }
+            ResetPasswordPanel.prototype.getFormKey = function () { return Membership.ResetPasswordForm.formKey; };
+            ResetPasswordPanel = __decorate([
+                Serenity.Decorators.registerClass()
+            ], ResetPasswordPanel);
+            return ResetPasswordPanel;
+        }(Serenity.PropertyPanel));
+        Membership.ResetPasswordPanel = ResetPasswordPanel;
+    })(Membership = Store.Membership || (Store.Membership = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store) {
+    var Membership;
+    (function (Membership) {
+        var SignUpPanel = /** @class */ (function (_super) {
+            __extends(SignUpPanel, _super);
+            function SignUpPanel(container) {
+                var _this = _super.call(this, container) || this;
+                _this.form = new Membership.SignUpForm(_this.idPrefix);
+                _this.form.ConfirmEmail.addValidationRule(_this.uniqueName, function (e) {
+                    if (_this.form.ConfirmEmail.value !== _this.form.Email.value) {
+                        return Q.text('Validation.EmailConfirm');
+                    }
+                });
+                _this.form.ConfirmPassword.addValidationRule(_this.uniqueName, function (e) {
+                    if (_this.form.ConfirmPassword.value !== _this.form.Password.value) {
+                        return Q.text('Validation.PasswordConfirm');
+                    }
+                });
+                _this.byId('SubmitButton').click(function (e) {
+                    e.preventDefault();
+                    if (!_this.validateForm()) {
+                        return;
+                    }
+                    Q.serviceCall({
+                        url: Q.resolveUrl('~/Account/SignUp'),
+                        request: {
+                            DisplayName: _this.form.DisplayName.value,
+                            Email: _this.form.Email.value,
+                            Password: _this.form.Password.value
+                        },
+                        onSuccess: function (response) {
+                            Q.information(Q.text('Forms.Membership.SignUp.Success'), function () {
+                                window.location.href = Q.resolveUrl('~/');
+                            });
+                        }
+                    });
+                });
+                return _this;
+            }
+            SignUpPanel.prototype.getFormKey = function () { return Membership.SignUpForm.formKey; };
+            SignUpPanel = __decorate([
+                Serenity.Decorators.registerClass()
+            ], SignUpPanel);
+            return SignUpPanel;
+        }(Serenity.PropertyPanel));
+        Membership.SignUpPanel = SignUpPanel;
+    })(Membership = Store.Membership || (Store.Membership = {}));
 })(Store || (Store = {}));
 //# sourceMappingURL=Store.Web.js.map

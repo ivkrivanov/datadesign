@@ -127,10 +127,93 @@ Function jsMinifiyng {
 
 Function DisplayErrors {
     $data = Get-Content "$baseDirectory\Build_Artifacts\Logs\Errors.log"
-    write-host $data.count total lines read from file
+    write-host $data.count total errors lines read from file
     foreach ($line in $data) {
         write-host $line
     }
+}
+
+Function ErrorsCount($errdir) {
+    $data = Get-Content "$errdir\Build_Artifacts\Logs\Errors.log"
+
+	return $data.count
+}
+
+function StartIIS($serverName){
+    Try{
+        Write-Host " ";
+        Write-Host "-----------------------------------------------------";
+        Write-Host "-----------------------------------------------------";
+        Write-Host "Attempting to start IIS";
+        Write-Host "-----------------------------------------------------";
+     
+        $start=Get-Date;
+        $cred = GetCredentials;
+         
+        Invoke-Command –ComputerName $serverName –ScriptBlock { iisreset /start } -Authentication Default -Credential $cred
+ 
+        $elapsedTime = new-timespan $start $(get-date);
+        Write-Host "Sucessfully completed script.";
+        Write-Host "Time taken to run script: " $elapsedTime;
+    }
+    Catch{
+       Write-Host "There was an error running this powershell script";
+       Write-Host $_.Exception.Message;
+       return 0;
+    }
+    Finally{
+        Write-Host "-----------------------------------------------------";
+    }
+}
+
+function StopIIS($serverName){
+    Try{
+        Write-Host " ";
+        Write-Host "-----------------------------------------------------";
+        Write-Host "-----------------------------------------------------";
+        Write-Host "Attempting to stop IIS";
+        Write-Host "-----------------------------------------------------";
+     
+        $start=Get-Date;
+        $cred = GetCredentials;
+         
+        Invoke-Command –ComputerName $serverName –ScriptBlock { iisreset /stop } -Authentication Default -Credential $cred
+ 
+        $elapsedTime = new-timespan $start $(get-date);
+        Write-Host "Sucessfully completed script.";
+        Write-Host "Time taken to run script: " $elapsedTime;
+    }
+    Catch{
+       Write-Host "There was an error running this powershell script";
+       Write-Host $_.Exception.Message;
+       return 0;
+    }
+    Finally{
+        Write-Host "-----------------------------------------------------";
+    }
+}
+
+function GetCredentials(){
+    $username = "DATADESIGN\IIvanov"
+    $password = "02121999"
+    $secstr = New-Object -TypeName System.Security.SecureString
+    $password.ToCharArray() | ForEach-Object {$secstr.AppendChar($_)}
+    $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $secstr;
+
+    return $cred;
+}
+
+Function CopyToServer {
+    $DESTAPP = $Args[0]
+    $DESTWEB = $Args[1]
+    $SERVER = $Args[2]
+    if ($SERVER -eq "DATADESIGN") {
+        robocopy /NFL $BUILDPATH\_PublishedWebsites\Store.Web $DESTWEB\Warehouse.Web *.* /S /XF *.pdb *.cs *.dll.config  *.mdf *.sln *.csproj *.csproj.user *.vspscc  /XD obj .svn /Purge /MT:32
+    }
+
+
+
+
 }
 ##########################################
 ############ end functions ###############
@@ -139,28 +222,26 @@ Function DisplayErrors {
 
 #script starts from here
 Clear-Host
+#set dev as the default environment for the build
+if ($Args[0] -eq $null) {
+    $nameEnv = "dev"
+    $isLocal = $true
+}
+else {
+    $nameEnv = $Args[0]
+    $isLocal = $false
+}
 
-if (($Args[0] -eq $null) -or ([string]::IsNullOrEmpty($Args[0]))) {
+if (($Args[1] -eq $null) -or ([string]::IsNullOrEmpty($Args[1]))) {
     #we get the current location of the script as the default starting point
     $baseDirectory = split-path -parent $MyInvocation.MyCommand.Definition
     $baseDirectory = Join-Path -Path $PSScriptRoot -ChildPath ..\ -Resolve
 }
 else {
-    $baseDirectory = $Args[0]
+    $baseDirectory = $Args[1]
 }
 
 println1($baseDirectory)
-
-#set dev as the default environment for the build
-if ($Args[1] -eq $null) {
-    $nameEnv = "dev"
-    $isLocal = $true
-}
-else {
-    $nameEnv = $Args[1]
-    $isLocal = $false
-}
-
 #set out location to the target location
 Set-Location $baseDirectory
 
@@ -174,10 +255,12 @@ Import-Module .\build_tools\Invoke-MsBuild.psm1
 ############ end imports #################
 ##########################################
 
-if(! (Test-Path ".\Build_Artifacts")) {
+if(!(Test-Path ".\Build_Artifacts")) {
     new-item .\Build_Artifacts -ItemType directory
     new-item .\Build_Artifacts\Logs -ItemType directory
 }
+
+
 
 #set up the location for the different targets and tools
 #$binaryDirectory = "$baseDirectory\..\Binaries"
@@ -188,7 +271,7 @@ $errorlogfilepath = "$baseDirectory\Build_Artifacts\Logs\errors.log"
 
 $solutionFilesPath = "$baseDirectory\SolutionsConfig.txt"
 
-$cttPath = "$baseDirectory\Build_Tools\"
+$cttPath = "$baseDirectory\build_tools\"
 #we get the manually compiled list of solutions
 $projectFiles = Get-Content $solutionFilesPath
 
@@ -212,12 +295,14 @@ foreach ($item in $solutionsList) {
     & $nuget restore -ConfigFile nuget.config $filedir\$filename
 } 
 
-<#
-#next we restore the legacy libs manually
+
+<#next we restore the legacy libs manually
 Write-Host "NuGet Restore" 
     & $nuget restore -ConfigFile nuget.config "$baseDirectory\packages.config" -PackagesDirectory .\packages
+#>
 
 #we restore the libs into their legacy location if they don't already exist
+<#
 if(! (Test-Path ".\lib")) {
 	Move-Item packages\LegacyLib.1.0.0\ .\lib -Force
 }
@@ -226,6 +311,7 @@ if(! (Test-Path "..\EntLib41Src")) {
 	Move-Item packages\EntLib41Src.1.0.0\ ..\EntLib41Src -Force
 }
 #>
+
 #we remove old log files if they exist
 if (Test-Path $logfilepath) {
     Remove-Item $logfilepath
@@ -235,12 +321,11 @@ if (Test-Path $errorlogfilepath) {
     Remove-Item $errorlogfilepath
 }
 
-<#we perform widgets.min.js
-jsMinifiyng
+#we perform widgets.min.js
+#jsMinifiyng
 #we perform the needed transformation on the config files 
 AppConfig $baseDirectory $cttPath
 WebConfig $baseDirectory $cttPath
-#>
 
 foreach ($projectFile in $projectFiles) {
 	if($projectFile.EndsWith(".sln")) { 
@@ -256,13 +341,18 @@ foreach ($projectFile in $projectFiles) {
                
 				if ($Args[0] -eq $null) {   
 					Write-Host "Building $projectFileAbsPath"
+					<#$collectionofArgs = @($projectFileAbsPath, "/target:Clean", "/target:clean_folders", "/target:Build", "/p:Configuration=Debug", "/fl1", "/fl2", "/flp1:Verbosity=normal;LogFile=$logfilepath;Append=true", "/flp2:Verbosity=normal;LogFile=$errorlogfilepath;Append=true;errorsonly")
+					& $msbuild $collectionofArgs#>
 					$collectionofArgs = @($projectFileAbsPath, "/target:Clean", "/target:Build", "/p:Configuration=Debug", "/fl1", "/fl2", "/flp1:Verbosity=normal;LogFile=$logfilepath;Append=true", "/flp2:Verbosity=normal;LogFile=$errorlogfilepath;Append=true;errorsonly")
 					& $msbuild $collectionofArgs
+
 				}
 				else {
 					Write-Host "Building $projectFileAbsPath"
-					$collectionofArgs = @($projectFileAbsPath, "/target:Rebuild", "/p:Configuration=Release", "/property:outdir=$binaryDirectory", "/fl1", "/fl2", "/flp1:Verbosity=normal;LogFile=$logfilepath;Append=true", "/flp2:Verbosity=detailed;LogFile=$errorlogfilepath;Append=true;errorsonly")
-					& $msbuild $collectionofArgs
+					$collectionofArgs = @($projectFileAbsPath, "/target:Clean", "/target:Build", "/p:Configuration=Release", "/property:outdir=$binaryDirectory", "/fl1", "/fl2", "/flp1:Verbosity=normal;LogFile=$logfilepath;Append=true", "/flp2:Verbosity=detailed;LogFile=$errorlogfilepath;Append=true;errorsonly")
+					& $msbuild $collectionofArgs 
+					<#$collectionofArgs = @($projectFileAbsPath,  "/target:Build", "/p:Configuration=Release", "/property:outdir=$binaryDirectory", "/fl1", "/fl2", "/flp1:Verbosity=normal;LogFile=$logfilepath;Append=true", "/flp2:Verbosity=detailed;LogFile=$errorlogfilepath;Append=true;errorsonly")
+					& $msbuild $collectionofArgs#>
 				}
 
 				if ($LASTEXITCODE -eq 0) {
@@ -304,5 +394,37 @@ foreach ($projectFile in $projectFiles) {
 		}
 	}
 }
-
+#we display errors.log
+println1("Display errors...")
 DisplayErrors
+
+$BUILDPATH="$baseDirectory\Build_Artifacts\Binaries"
+$ScriptPath = "C:\Processes\Batch\Scripts"
+$err = ErrorsCount($baseDirectory)
+
+if ($err -eq 0) {
+    switch ($nameEnv) {
+	    "dev" {
+            #StopIIS("DATADESIGN")
+		    #Run-BatchFile "devserver" "KillServices.bat" 90
+            #Start-Sleep -s 5
+            CopyToServer "\\DATADESIGN\Processes\Batch" "\\datadesign\c$\inetpub\wwwroot" "DATADESIGN"
+            #Run-BatchFile "DATADESIGN" "StartServices.bat" 120
+            #StartIIS("DATADESIGN")
+            Break;
+	    }
+        "qa" {
+            StopIIS("calypso")
+            #Run-BatchFile "calypso" "KillServices.bat" 90
+            Start-Sleep -s 5
+            CopyToServer "\\calypso\Processes\Batch" "\\calypso\wwwroot" "calypso"
+            #Run-BatchFile "calypso" "StartServices.bat" 120
+            StartIIS("calypso")
+            Break;
+        }
+    }
+}
+else {
+    write-host $err total errors.
+    println1("Too many errors. Deploy not completed.")
+}

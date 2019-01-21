@@ -1,5 +1,4 @@
 ﻿
-
 namespace Store.Administration.Repositories
 {
     using Serenity;

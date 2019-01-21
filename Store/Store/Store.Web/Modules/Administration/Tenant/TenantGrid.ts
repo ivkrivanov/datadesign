@@ -1,6 +1,6 @@
 ﻿
 namespace Store.Administration {
-    
+
     @Serenity.Decorators.registerClass()
     export class TenantGrid extends Serenity.EntityGrid<TenantRow, any> {
         protected getColumnsKey() { return 'Administration.Tenant'; }

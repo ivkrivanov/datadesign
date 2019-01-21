@@ -13,8 +13,8 @@ namespace Ledger.HR.Columns
         [EditLink, DisplayName("Address"), Width(220)]
         public string StreetAddress { get; set; }
 
-        [EditLink, Width(150)]
-        public String AddressType { get; set; }
+        //[EditLink, Width(150)]
+        //public String AddressType { get; set; }
 
         [Width(150)]
         public Int16 AddressTypeId { get; set; }

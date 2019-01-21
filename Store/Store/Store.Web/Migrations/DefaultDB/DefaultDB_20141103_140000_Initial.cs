@@ -48,6 +48,12 @@ namespace Store.Migrations.DefaultDB
 
             Insert.IntoTable("Languages").Row(new
             {
+                LanguageId = "bg",
+                LanguageName = "Bulgarian"
+            });
+
+            Insert.IntoTable("Languages").Row(new
+            {
                 LanguageId = "ru",
                 LanguageName = "Russian"
             });

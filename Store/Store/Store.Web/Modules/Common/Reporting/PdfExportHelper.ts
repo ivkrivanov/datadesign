@@ -16,6 +16,7 @@ namespace Store.Common {
         tableOptions?: jsPDF.AutoTableOptions;
         output?: string;
         autoPrint?: boolean;
+        printDateTimeHeader?: boolean;
     }
 
     export namespace PdfExportHelper {
@@ -158,6 +159,22 @@ namespace Store.Common {
                         };
                         autoOptions.afterPageContent = footer;
                     }
+                    
+                    // Print header of page
+                    if (options.printDateTimeHeader == null || options.printDateTimeHeader) {
+                        var beforePage = function (data) {
+                            doc.setFontStyle('normal');
+                            doc.setFontSize(8);
+
+                            // Date and time of the report
+                            doc.autoTableText(Q.formatDate(new Date(), "dd-MM-yyyy HH:mm"), 
+                                doc.internal.pageSize.width - autoOptions.margin.right, 13, 
+                                {
+                                    halign: 'right'
+                                });
+                        };
+                        autoOptions.beforePageContent = beforePage;
+                    }
 
                     doc.autoTable(columns, data, autoOptions);
 
@@ -167,7 +184,7 @@ namespace Store.Common {
 
 
                     if (!options.output || options.output == "file") {
-                        var fileName = options.reportTitle || "{0}_{1}.pdf";
+                        var fileName = options.fileName || options.reportTitle || "{0}_{1}.pdf";
                         fileName = Q.format(fileName, g.getTitle() || "report",
                             Q.formatDate(new Date(), "yyyyMMdd_HHmm"));
                         doc.save(fileName);
@@ -183,7 +200,26 @@ namespace Store.Common {
                     else if (output == 'window')
                         output = 'datauri';
 
-                    doc.output(output);
+                    if (output == 'datauri')
+                        doc.output(output);
+                    else {
+                        var tmpOut = doc.output('datauristring');
+
+                        if (output == 'dataurlnewwindow') {
+                            var fileTmpName = options.reportTitle || g.getTitle();
+                            
+                            var url_with_name = tmpOut.replace("data:application/pdf;", "data:application/pdf;name=" + fileTmpName + ".pdf;");
+                            var html = '<html>' +
+                                '<style>html, body { padding: 0; margin: 0; } iframe { width: 100%; height: 100%; border: 0;}  </style>' +
+                                '<body>' +
+                                '<p></p>' +
+                                '<iframe type="application/pdf" src="' + url_with_name + '"></iframe>' +
+                                '</body></html>';
+                            var a = window.open("about:blank", "_blank");
+                            a.document.write(html);
+                            a.document.close();
+                        }
+                    }
                 }
             }); 
         }

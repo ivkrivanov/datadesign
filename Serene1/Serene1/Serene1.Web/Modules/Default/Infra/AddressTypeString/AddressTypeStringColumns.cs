@@ -15,9 +15,14 @@ namespace Serene1.Default.Infra.Columns
     {
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         public Int32 EnumLocaleId { get; set; }
-        public String EnumValueEnumName { get; set; }
+
+        public Int32 EnumValue { get; set; }
+
         [EditLink]
         public String DisplayName { get; set; }
+
+        [EditLink(ItemType = "Default.Administration.Language", IdField = "Id"), Width(150)]
+        [LookupEditor(typeof(Administration.Entities.LanguageRow)), QuickFilter]
         public Int32 Language { get; set; }
     }
 }
