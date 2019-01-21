@@ -10,7 +10,7 @@
         Region: Serenity.StringEditor;
         PostalCode: Serenity.StringEditor;
         Country: Serenity.LookupEditor;
-        Phone: Serenity.StringEditor;
+        Phone: PhoneEditor;
         NoteList: NotesEditor;
         LastContactDate: Serenity.DateEditor;
         LastContactedBy: Serenity.LookupEditor;
@@ -31,10 +31,11 @@
                 var s = Serenity;
                 var w0 = s.StringEditor;
                 var w1 = s.LookupEditor;
-                var w2 = NotesEditor;
-                var w3 = s.DateEditor;
-                var w4 = s.EmailEditor;
-                var w5 = s.BooleanEditor;
+                var w2 = PhoneEditor;
+                var w3 = NotesEditor;
+                var w4 = s.DateEditor;
+                var w5 = s.EmailEditor;
+                var w6 = s.BooleanEditor;
 
                 Q.initFormType(CounterpartyForm, [
                     'CounterpartyID', w0,
@@ -47,12 +48,12 @@
                     'Region', w0,
                     'PostalCode', w0,
                     'Country', w1,
-                    'Phone', w0,
-                    'NoteList', w2,
-                    'LastContactDate', w3,
+                    'Phone', w2,
+                    'NoteList', w3,
+                    'LastContactDate', w4,
                     'LastContactedBy', w1,
-                    'Email', w4,
-                    'SendBulletin', w5
+                    'Email', w5,
+                    'SendBulletin', w6
                 ]);
             }
         }

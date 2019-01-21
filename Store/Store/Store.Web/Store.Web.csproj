@@ -1002,6 +1002,7 @@
     <TypeScriptCompile Include="Modules\Store\ProductDetail\ProductDetailsEditor.ts" />
     <TypeScriptCompile Include="Modules\Store\Shared\PhoneEditor.ts" />
     <TypeScriptCompile Include="Modules\Store\Shipper\ShipperFormatter.ts" />
+    <TypeScriptCompile Include="Modules\Store\Shops\ShopsEditor.ts" />
     <TypeScriptCompile Include="Modules\Store\WaresMovementDetails\WaresMovementDetailsEditor.ts" />
     <TypeScriptCompile Include="Modules\Store\Wares\WaresEditor.ts" />
     <TypeScriptCompile Include="node_modules\%40types\jquery\index.d.ts" />
@@ -1952,6 +1953,9 @@
     <Compile Include="Imports\ClientTypes\Store.ShipperFormatterAttribute.cs">
       <DependentUpon>ClientTypes.tt</DependentUpon>
     </Compile>
+    <Compile Include="Imports\ClientTypes\Store.ShopsEditorAttribute.cs">
+      <DependentUpon>ClientTypes.tt</DependentUpon>
+    </Compile>
     <Compile Include="Imports\ClientTypes\Store.WaresEditorAttribute.cs">
       <DependentUpon>ClientTypes.tt</DependentUpon>
     </Compile>
@@ -2021,6 +2025,7 @@
     <Compile Include="Modules\Common\Navigation\NavigationModel.cs" />
     <Compile Include="Modules\Common\Reporting\DynamicDataReport.cs" />
     <Compile Include="Modules\Common\Reporting\ExcelReportGenerator.cs" />
+    <Compile Include="Modules\Store\Shops\ShopLookup.cs" />
     <Compile Include="Store\Store\Entities\Shopsrow.cs" />
     <Content Include="Modules\Common\Reporting\ReportPage.cshtml" />
     <Compile Include="Modules\Common\Reporting\ReportTree.cs" />

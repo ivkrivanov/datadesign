@@ -18,8 +18,8 @@
         WaresMoveOrderDate?: string;
         WaresMoveRequiredDate?: string;
         WaresMoveShippedDate?: string;
-        WaresWaresCode?: string;
-        WaresWaresName?: string;
+        WaresCode?: string;
+        WaresName?: string;
         WaresSupplierID?: number;
         WaresCounterpartyID?: string;
         WaresCategoryID?: number;
@@ -34,7 +34,7 @@
     }
 
     export namespace WaresMovementDetailsRow {
-        export const idProperty = 'WaresMoveID';
+        export const idProperty = 'DetailID';
         export const isActiveProperty = 'IsActive';
         export const localTextPrefix = 'Store.WaresMovementDetails';
 
@@ -57,8 +57,8 @@
             WaresMoveOrderDate = "WaresMoveOrderDate",
             WaresMoveRequiredDate = "WaresMoveRequiredDate",
             WaresMoveShippedDate = "WaresMoveShippedDate",
-            WaresWaresCode = "WaresWaresCode",
-            WaresWaresName = "WaresWaresName",
+            WaresCode = "WaresCode",
+            WaresName = "WaresName",
             WaresSupplierID = "WaresSupplierID",
             WaresCounterpartyID = "WaresCounterpartyID",
             WaresCategoryID = "WaresCategoryID",

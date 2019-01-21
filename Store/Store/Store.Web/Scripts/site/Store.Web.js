@@ -721,10 +721,11 @@ var Store;
                     var s = Serenity;
                     var w0 = s.StringEditor;
                     var w1 = s.LookupEditor;
-                    var w2 = Store.NotesEditor;
-                    var w3 = s.DateEditor;
-                    var w4 = s.EmailEditor;
-                    var w5 = s.BooleanEditor;
+                    var w2 = Store.PhoneEditor;
+                    var w3 = Store.NotesEditor;
+                    var w4 = s.DateEditor;
+                    var w5 = s.EmailEditor;
+                    var w6 = s.BooleanEditor;
                     Q.initFormType(CounterpartyForm, [
                         'CounterpartyID', w0,
                         'CompanyName', w0,
@@ -736,12 +737,12 @@ var Store;
                         'Region', w0,
                         'PostalCode', w0,
                         'Country', w1,
-                        'Phone', w0,
-                        'NoteList', w2,
-                        'LastContactDate', w3,
+                        'Phone', w2,
+                        'NoteList', w3,
+                        'LastContactDate', w4,
                         'LastContactedBy', w1,
-                        'Email', w4,
-                        'SendBulletin', w5
+                        'Email', w5,
+                        'SendBulletin', w6
                     ]);
                 }
                 return _this;
@@ -1860,17 +1861,18 @@ var Store;
                     ShopsForm.init = true;
                     var s = Serenity;
                     var w0 = s.StringEditor;
+                    var w1 = Store.PhoneEditor;
                     Q.initFormType(ShopsForm, [
                         'ShopID', w0,
                         'ShopName', w0,
                         'ContactName', w0,
                         'ContactTitle', w0,
                         'Address', w0,
+                        'Country', w0,
                         'City', w0,
                         'Region', w0,
                         'PostalCode', w0,
-                        'Country', w0,
-                        'Phone', w0
+                        'Phone', w1
                     ]);
                 }
                 return _this;
@@ -2205,7 +2207,7 @@ var Store;
     (function (Store) {
         var WaresMovementDetailsRow;
         (function (WaresMovementDetailsRow) {
-            WaresMovementDetailsRow.idProperty = 'WaresMoveID';
+            WaresMovementDetailsRow.idProperty = 'DetailID';
             WaresMovementDetailsRow.isActiveProperty = 'IsActive';
             WaresMovementDetailsRow.localTextPrefix = 'Store.WaresMovementDetails';
         })(WaresMovementDetailsRow = Store.WaresMovementDetailsRow || (Store.WaresMovementDetailsRow = {}));
@@ -2242,18 +2244,19 @@ var Store;
                     var s = Serenity;
                     var w0 = Store.OperationTypeEditor;
                     var w1 = Store.CounterpartyEditor;
-                    var w2 = s.LookupEditor;
+                    var w2 = Store.ShopsEditor;
                     var w3 = s.DateEditor;
-                    var w4 = Store.WaresMovementDetailsEditor;
+                    var w4 = s.LookupEditor;
+                    var w5 = Store.WaresMovementDetailsEditor;
                     Q.initFormType(WaresMovementForm, [
                         'OperationTypeID', w0,
                         'CounterpartyID', w1,
                         'ShopID', w2,
                         'OrderDate', w3,
                         'RequiredDate', w3,
-                        'EmployeeID', w2,
-                        'DetailList', w4,
-                        'ShipperID', w2,
+                        'EmployeeID', w4,
+                        'DetailList', w5,
+                        'ShipperID', w4,
                         'ShippedDate', w3
                     ]);
                 }
@@ -2343,7 +2346,7 @@ var Store;
 (function (Store_86) {
     var Texts;
     (function (Texts) {
-        Store_86.Store['Texts'] = Q.proxyTexts(Texts, '', { Db: { Administration: { Language: { Id: 1, LanguageId: 1, LanguageName: 1 }, Role: { RoleId: 1, RoleName: 1, TenantId: 1 }, RolePermission: { PermissionKey: 1, RoleId: 1, RolePermissionId: 1, RoleRoleName: 1 }, Tenant: { TenantId: 1, TenantName: 1 }, Translation: { CustomText: 1, EntityPlural: 1, Key: 1, OverrideConfirmation: 1, SaveChangesButton: 1, SourceLanguage: 1, SourceText: 1, TargetLanguage: 1, TargetText: 1 }, User: { DisplayName: 1, Email: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, LastDirectoryUpdate: 1, Password: 1, PasswordConfirm: 1, PasswordHash: 1, PasswordSalt: 1, Source: 1, TenantId: 1, TenantName: 1, UpdateDate: 1, UpdateUserId: 1, UserId: 1, UserImage: 1, Username: 1 }, UserPermission: { Granted: 1, PermissionKey: 1, User: 1, UserId: 1, UserPermissionId: 1, Username: 1 }, UserRole: { RoleId: 1, User: 1, UserId: 1, UserRoleId: 1, Username: 1 } }, Common: { UserPreference: { Name: 1, PreferenceType: 1, UserId: 1, UserPreferenceId: 1, Value: 1 } }, Store: { Category: { CategoryCode: 1, CategoryID: 1, CategoryName: 1, CategoryType: 1, CategoryTypeID: 1, Description: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, Picture: 1, TenantId: 1, Type: 1, UpdateDate: 1, UpdateUserId: 1 }, CategoryLang: { CategoryName: 1, Description: 1, ID: 1, LanguageID: 1 }, CategoryType: { CategoryType: 1, CategoryTypeID: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, TenantId: 1, Type: 1, UpdateDate: 1, UpdateUserId: 1 }, Counterparty: { Address: 1, City: 1, CompanyName: 1, ContactName: 1, ContactTitle: 1, CounterpartyID: 1, Country: 1, Email: 1, ID: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, LastContactDate: 1, LastContactedBy: 1, NoteList: 1, Phone: 1, PostalCode: 1, Region: 1, Representatives: 1, SendBulletin: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, CounterpartyDetail: { Email: 1, ID: 1, LastContactDate: 1, LastContactedBy: 1, LastContactedByAddress: 1, LastContactedByBirthDate: 1, LastContactedByCity: 1, LastContactedByCountry: 1, LastContactedByExtension: 1, LastContactedByFirstName: 1, LastContactedByHireDate: 1, LastContactedByHomePhone: 1, LastContactedByLastName: 1, LastContactedByNotes: 1, LastContactedByPhoto: 1, LastContactedByPhotoPath: 1, LastContactedByPostalCode: 1, LastContactedByRegion: 1, LastContactedByReportsTo: 1, LastContactedByTitle: 1, LastContactedByTitleOfCourtesy: 1, SendBulletin: 1 }, CounterpartyRepresentative: { CounterpartyID: 1, EmployeeID: 1, RepresentativeID: 1 }, Employee: { Address: 1, BirthDate: 1, City: 1, Country: 1, EmployeeID: 1, Extension: 1, FirstName: 1, FullName: 1, Gender: 1, HireDate: 1, HomePhone: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, LastName: 1, Notes: 1, Photo: 1, PhotoPath: 1, PostalCode: 1, Region: 1, ReportsTo: 1, ReportsToAddress: 1, ReportsToBirthDate: 1, ReportsToCity: 1, ReportsToCountry: 1, ReportsToExtension: 1, ReportsToFirstName: 1, ReportsToFullName: 1, ReportsToHireDate: 1, ReportsToHomePhone: 1, ReportsToLastName: 1, ReportsToNotes: 1, ReportsToPhoto: 1, ReportsToPhotoPath: 1, ReportsToPostalCode: 1, ReportsToRegion: 1, ReportsToReportsTo: 1, ReportsToTitle: 1, ReportsToTitleOfCourtesy: 1, TenantId: 1, Title: 1, TitleOfCourtesy: 1, UpdateDate: 1, UpdateUserId: 1 }, Measure: { InsertDate: 1, InsertUserId: 1, IsActive: 1, MeasureID: 1, MeasureName: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, Note: { EntityId: 1, EntityType: 1, InsertDate: 1, InsertUserDisplayName: 1, InsertUserId: 1, NoteId: 1, Text: 1 }, OperationType: { InsertDate: 1, InsertUserId: 1, IsActive: 1, OpCode: 1, Operation: 1, OperationTypeId: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, Order: { CounterpartyCity: 1, CounterpartyCompanyName: 1, CounterpartyContactName: 1, CounterpartyContactTitle: 1, CounterpartyCountry: 1, CounterpartyID: 1, CounterpartyPhone: 1, CounterpartyRegion: 1, DetailList: 1, EmployeeFullName: 1, EmployeeGender: 1, EmployeeID: 1, EmployeeReportsToFullName: 1, Freight: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, OrderDate: 1, OrderID: 1, RequiredDate: 1, ShipAddress: 1, ShipCity: 1, ShipCountry: 1, ShipName: 1, ShipPostalCode: 1, ShipRegion: 1, ShipVia: 1, ShipViaCompanyName: 1, ShipViaPhone: 1, ShippedDate: 1, ShippingState: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, OrderDetail: { DetailID: 1, Discount: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, LineTotal: 1, OrderCounterpartyID: 1, OrderDate: 1, OrderEmployeeID: 1, OrderID: 1, OrderShipCity: 1, OrderShipCountry: 1, OrderShipVia: 1, OrderShippedDate: 1, ProductDiscontinued: 1, ProductID: 1, ProductName: 1, ProductQuantityPerUnit: 1, ProductSupplierID: 1, ProductUnitPrice: 1, Quantity: 1, TenantId: 1, UnitPrice: 1, UpdateDate: 1, UpdateUserId: 1 }, OrderProduct: { CounterpartyAddress: 1, CounterpartyCity: 1, CounterpartyCompanyName: 1, CounterpartyContactName: 1, CounterpartyContactTitle: 1, CounterpartyCountry: 1, CounterpartyId: 1, CounterpartyId1: 1, CounterpartyInsertDate: 1, CounterpartyInsertUserId: 1, CounterpartyIsActive: 1, CounterpartyPhone: 1, CounterpartyPostalCode: 1, CounterpartyRegion: 1, CounterpartyTenantId: 1, CounterpartyUpdateDate: 1, CounterpartyUpdateUserId: 1, EmployeeAddress: 1, EmployeeBirthDate: 1, EmployeeCity: 1, EmployeeCountry: 1, EmployeeExtension: 1, EmployeeFirstName: 1, EmployeeHireDate: 1, EmployeeHomePhone: 1, EmployeeId: 1, EmployeeInsertDate: 1, EmployeeInsertUserId: 1, EmployeeIsActive: 1, EmployeeLastName: 1, EmployeeNotes: 1, EmployeePhoto: 1, EmployeePhotoPath: 1, EmployeePostalCode: 1, EmployeeRegion: 1, EmployeeReportsTo: 1, EmployeeTenantId: 1, EmployeeTitle: 1, EmployeeTitleOfCourtesy: 1, EmployeeUpdateDate: 1, EmployeeUpdateUserId: 1, Freight: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, OperationTypeId: 1, OperationTypeInsertDate: 1, OperationTypeInsertUserId: 1, OperationTypeIsActive: 1, OperationTypeOpCode: 1, OperationTypeOperation: 1, OperationTypeTenantId: 1, OperationTypeUpdateDate: 1, OperationTypeUpdateUserId: 1, OrderDate: 1, OrderProductId: 1, RequiredDate: 1, ShipAddress: 1, ShipCity: 1, ShipCountry: 1, ShipName: 1, ShipPostalCode: 1, ShipRegion: 1, ShipVia: 1, ShipViaCompanyName: 1, ShipViaInsertDate: 1, ShipViaInsertUserId: 1, ShipViaIsActive: 1, ShipViaPhone: 1, ShipViaTenantId: 1, ShipViaUpdateDate: 1, ShipViaUpdateUserId: 1, ShippedDate: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, OrderProductDetail: { DetailId: 1, Discount: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, OrderProductsId: 1, ProductCategoryId: 1, ProductDiscontinued: 1, ProductId: 1, ProductInsertDate: 1, ProductInsertUserId: 1, ProductIsActive: 1, ProductProductImage: 1, ProductProductName: 1, ProductQuantityPerUnit: 1, ProductReorderLevel: 1, ProductSupplierId: 1, ProductTenantId: 1, ProductUnitPrice: 1, ProductUnitsInStock: 1, ProductUnitsOnOrder: 1, ProductUpdateDate: 1, ProductUpdateUserId: 1, Quantity: 1, TenantId: 1, UnitPrice: 1, UpdateDate: 1, UpdateUserId: 1 }, Product: { CategoryCategoryName: 1, CategoryDescription: 1, CategoryID: 1, CategoryPicture: 1, DetailList: 1, Discontinued: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, ProductID: 1, ProductImage: 1, ProductName: 1, QuantityPerUnit: 1, ReorderLevel: 1, SupplierAddress: 1, SupplierCity: 1, SupplierCompanyName: 1, SupplierContactName: 1, SupplierContactTitle: 1, SupplierCountry: 1, SupplierEmail: 1, SupplierFax: 1, SupplierHomePage: 1, SupplierID: 1, SupplierPhone: 1, SupplierPostalCode: 1, SupplierRegion: 1, SupplierSupplierStat: 1, TenantId: 1, UnitPrice: 1, UnitsInStock: 1, UnitsOnOrder: 1, UpdateDate: 1, UpdateUserId: 1 }, ProductDetail: { DetailID: 1, Discount: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, PlanPrice: 1, ProductCategoryID: 1, ProductDiscontinued: 1, ProductID: 1, ProductProductImage: 1, ProductProductName: 1, ProductQuantity: 1, ProductQuantityPerUnit: 1, ProductReorderLevel: 1, ProductSupplierID: 1, ProductUnitPrice: 1, ProductUnitsInStock: 1, ProductUnitsOnOrder: 1, Quantity: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1, WaresAccountID: 1, WaresBarcode: 1, WaresCategoryID: 1, WaresCode: 1, WaresDiscontinued: 1, WaresID: 1, WaresImage: 1, WaresLabel: 1, WaresMeasureID: 1, WaresName: 1, WaresQuantityPerUnit: 1, WaresUnitPrice: 1 }, ProductLang: { ID: 1, LanguageID: 1, ProductID: 1, ProductName: 1 }, Shipper: { CompanyName: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, Phone: 1, ShipperID: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, Shops: { Address: 1, City: 1, ContactName: 1, ContactTitle: 1, Country: 1, ID: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, Phone: 1, PostalCode: 1, Region: 1, ShopID: 1, ShopName: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, Supplier: { Address: 1, City: 1, CompanyName: 1, ContactName: 1, ContactTitle: 1, Country: 1, Email: 1, Fax: 1, HomePage: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, Phone: 1, PostalCode: 1, Region: 1, SupplierID: 1, SupplierStat: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, Wares: { AccountID: 1, CategoryCode: 1, CategoryID: 1, CategoryName: 1, CounterpartyCity: 1, CounterpartyCompanyName: 1, CounterpartyContactName: 1, CounterpartyContactTitle: 1, CounterpartyCountry: 1, CounterpartyID: 1, CounterpartyPhone: 1, CounterpartyRegion: 1, Description: 1, Discontinued: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, MeasureID: 1, MeasureMeasureName: 1, Picture: 1, QuantityPerUnit: 1, SupplierID: 1, TenantId: 1, Type: 1, UnitPrice: 1, UpdateDate: 1, UpdateUserId: 1, WaresBarcode: 1, WaresCode: 1, WaresID: 1, WaresImage: 1, WaresLabel: 1, WaresName: 1 }, WaresLang: { Description: 1, ID: 1, LanguageID: 1, WaresID: 1, WaresName: 1 }, WaresMovement: { CounterpartyCity: 1, CounterpartyCompanyName: 1, CounterpartyContactName: 1, CounterpartyContactTitle: 1, CounterpartyCountry: 1, CounterpartyID: 1, CounterpartyPhone: 1, CounterpartyRegion: 1, DetailList: 1, EmployeeFullName: 1, EmployeeGender: 1, EmployeeID: 1, EmployeeReportsToFullName: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, OperationTypeID: 1, OperationTypeOpCode: 1, OperationTypeOperation: 1, OrderDate: 1, RequiredDate: 1, ShippedDate: 1, ShipperCompanyName: 1, ShipperID: 1, ShipperPhone: 1, ShippingState: 1, ShopAddress: 1, ShopCity: 1, ShopContactName: 1, ShopContactTitle: 1, ShopCountry: 1, ShopID: 1, ShopPhone: 1, ShopPostalCode: 1, ShopRegion: 1, ShopShopName: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1, WaresMoveID: 1 }, WaresMovementDetails: { DetailID: 1, Discount: 1, IncomePrice: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, Quantity: 1, SalePrice: 1, SinglePrice: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1, WaresCategoryID: 1, WaresCounterpartyID: 1, WaresDiscontinued: 1, WaresID: 1, WaresMeasureID: 1, WaresMoveCounterpartyID: 1, WaresMoveEmployeeID: 1, WaresMoveID: 1, WaresMoveOperationTypeID: 1, WaresMoveOrderDate: 1, WaresMoveRequiredDate: 1, WaresMoveShippedDate: 1, WaresMoveShipperID: 1, WaresMoveShopID: 1, WaresQuantityPerUnit: 1, WaresSupplierID: 1, WaresUnitPrice: 1, WaresWaresCode: 1, WaresWaresName: 1 } } }, Forms: { Membership: { ChangePassword: { FormTitle: 1, SubmitButton: 1, Success: 1 }, ForgotPassword: { BackToLogin: 1, FormInfo: 1, FormTitle: 1, SubmitButton: 1, Success: 1 }, Login: { FacebookButton: 1, ForgotPassword: 1, FormTitle: 1, GoogleButton: 1, OR: 1, RememberMe: 1, SignInButton: 1, SignUpButton: 1 }, ResetPassword: { BackToLogin: 1, EmailSubject: 1, FormTitle: 1, SubmitButton: 1, Success: 1 }, SignUp: { AcceptTerms: 1, ActivateEmailSubject: 1, ActivationCompleteMessage: 1, BackToLogin: 1, ConfirmEmail: 1, ConfirmPassword: 1, DisplayName: 1, Email: 1, FormInfo: 1, FormTitle: 1, Password: 1, SubmitButton: 1, Success: 1 } } }, Site: { AccessDenied: { ClickToChangeUser: 1, ClickToLogin: 1, LackPermissions: 1, NotLoggedIn: 1, PageTitle: 1 }, BasicProgressDialog: { CancelTitle: 1, PleaseWait: 1 }, BulkServiceAction: { AllHadErrorsFormat: 1, AllSuccessFormat: 1, ConfirmationFormat: 1, ErrorCount: 1, NothingToProcess: 1, SomeHadErrorsFormat: 1, SuccessCount: 1 }, Dashboard: { ContentDescription: 1 }, Layout: { FooterCopyright: 1, FooterInfo: 1, FooterRights: 1, GeneralSettings: 1, Language: 1, Theme: 1, ThemeBlack: 1, ThemeBlackLight: 1, ThemeBlue: 1, ThemeBlueLight: 1, ThemeGreen: 1, ThemeGreenLight: 1, ThemePurple: 1, ThemePurpleLight: 1, ThemeRed: 1, ThemeRedLight: 1, ThemeYellow: 1, ThemeYellowLight: 1 }, RolePermissionDialog: { DialogTitle: 1, EditButton: 1, SaveSuccess: 1 }, UserDialog: { EditPermissionsButton: 1, EditRolesButton: 1 }, UserPermissionDialog: { DialogTitle: 1, Grant: 1, Permission: 1, Revoke: 1, SaveSuccess: 1 }, UserRoleDialog: { DialogTitle: 1, SaveSuccess: 1 }, ValidationError: { Title: 1 } }, Validation: { AuthenticationError: 1, CantFindUserWithEmail: 1, CurrentPasswordMismatch: 1, DeleteForeignKeyError: 1, EmailConfirm: 1, EmailInUse: 1, InvalidActivateToken: 1, InvalidResetToken: 1, MinRequiredPasswordLength: 1, SavePrimaryKeyError: 1 } });
+        Store_86.Store['Texts'] = Q.proxyTexts(Texts, '', { Db: { Administration: { Language: { Id: 1, LanguageId: 1, LanguageName: 1 }, Role: { RoleId: 1, RoleName: 1, TenantId: 1 }, RolePermission: { PermissionKey: 1, RoleId: 1, RolePermissionId: 1, RoleRoleName: 1 }, Tenant: { TenantId: 1, TenantName: 1 }, Translation: { CustomText: 1, EntityPlural: 1, Key: 1, OverrideConfirmation: 1, SaveChangesButton: 1, SourceLanguage: 1, SourceText: 1, TargetLanguage: 1, TargetText: 1 }, User: { DisplayName: 1, Email: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, LastDirectoryUpdate: 1, Password: 1, PasswordConfirm: 1, PasswordHash: 1, PasswordSalt: 1, Source: 1, TenantId: 1, TenantName: 1, UpdateDate: 1, UpdateUserId: 1, UserId: 1, UserImage: 1, Username: 1 }, UserPermission: { Granted: 1, PermissionKey: 1, User: 1, UserId: 1, UserPermissionId: 1, Username: 1 }, UserRole: { RoleId: 1, User: 1, UserId: 1, UserRoleId: 1, Username: 1 } }, Common: { UserPreference: { Name: 1, PreferenceType: 1, UserId: 1, UserPreferenceId: 1, Value: 1 } }, Store: { Category: { CategoryCode: 1, CategoryID: 1, CategoryName: 1, CategoryType: 1, CategoryTypeID: 1, Description: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, Picture: 1, TenantId: 1, Type: 1, UpdateDate: 1, UpdateUserId: 1 }, CategoryLang: { CategoryName: 1, Description: 1, ID: 1, LanguageID: 1 }, CategoryType: { CategoryType: 1, CategoryTypeID: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, TenantId: 1, Type: 1, UpdateDate: 1, UpdateUserId: 1 }, Counterparty: { Address: 1, City: 1, CompanyName: 1, ContactName: 1, ContactTitle: 1, CounterpartyID: 1, Country: 1, Email: 1, ID: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, LastContactDate: 1, LastContactedBy: 1, NoteList: 1, Phone: 1, PostalCode: 1, Region: 1, Representatives: 1, SendBulletin: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, CounterpartyDetail: { Email: 1, ID: 1, LastContactDate: 1, LastContactedBy: 1, LastContactedByAddress: 1, LastContactedByBirthDate: 1, LastContactedByCity: 1, LastContactedByCountry: 1, LastContactedByExtension: 1, LastContactedByFirstName: 1, LastContactedByHireDate: 1, LastContactedByHomePhone: 1, LastContactedByLastName: 1, LastContactedByNotes: 1, LastContactedByPhoto: 1, LastContactedByPhotoPath: 1, LastContactedByPostalCode: 1, LastContactedByRegion: 1, LastContactedByReportsTo: 1, LastContactedByTitle: 1, LastContactedByTitleOfCourtesy: 1, SendBulletin: 1 }, CounterpartyRepresentative: { CounterpartyID: 1, EmployeeID: 1, RepresentativeID: 1 }, Employee: { Address: 1, BirthDate: 1, City: 1, Country: 1, EmployeeID: 1, Extension: 1, FirstName: 1, FullName: 1, Gender: 1, HireDate: 1, HomePhone: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, LastName: 1, Notes: 1, Photo: 1, PhotoPath: 1, PostalCode: 1, Region: 1, ReportsTo: 1, ReportsToAddress: 1, ReportsToBirthDate: 1, ReportsToCity: 1, ReportsToCountry: 1, ReportsToExtension: 1, ReportsToFirstName: 1, ReportsToFullName: 1, ReportsToHireDate: 1, ReportsToHomePhone: 1, ReportsToLastName: 1, ReportsToNotes: 1, ReportsToPhoto: 1, ReportsToPhotoPath: 1, ReportsToPostalCode: 1, ReportsToRegion: 1, ReportsToReportsTo: 1, ReportsToTitle: 1, ReportsToTitleOfCourtesy: 1, TenantId: 1, Title: 1, TitleOfCourtesy: 1, UpdateDate: 1, UpdateUserId: 1 }, Measure: { InsertDate: 1, InsertUserId: 1, IsActive: 1, MeasureID: 1, MeasureName: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, Note: { EntityId: 1, EntityType: 1, InsertDate: 1, InsertUserDisplayName: 1, InsertUserId: 1, NoteId: 1, Text: 1 }, OperationType: { InsertDate: 1, InsertUserId: 1, IsActive: 1, OpCode: 1, Operation: 1, OperationTypeId: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, Order: { CounterpartyCity: 1, CounterpartyCompanyName: 1, CounterpartyContactName: 1, CounterpartyContactTitle: 1, CounterpartyCountry: 1, CounterpartyID: 1, CounterpartyPhone: 1, CounterpartyRegion: 1, DetailList: 1, EmployeeFullName: 1, EmployeeGender: 1, EmployeeID: 1, EmployeeReportsToFullName: 1, Freight: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, OrderDate: 1, OrderID: 1, RequiredDate: 1, ShipAddress: 1, ShipCity: 1, ShipCountry: 1, ShipName: 1, ShipPostalCode: 1, ShipRegion: 1, ShipVia: 1, ShipViaCompanyName: 1, ShipViaPhone: 1, ShippedDate: 1, ShippingState: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, OrderDetail: { DetailID: 1, Discount: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, LineTotal: 1, OrderCounterpartyID: 1, OrderDate: 1, OrderEmployeeID: 1, OrderID: 1, OrderShipCity: 1, OrderShipCountry: 1, OrderShipVia: 1, OrderShippedDate: 1, ProductDiscontinued: 1, ProductID: 1, ProductName: 1, ProductQuantityPerUnit: 1, ProductSupplierID: 1, ProductUnitPrice: 1, Quantity: 1, TenantId: 1, UnitPrice: 1, UpdateDate: 1, UpdateUserId: 1 }, OrderProduct: { CounterpartyAddress: 1, CounterpartyCity: 1, CounterpartyCompanyName: 1, CounterpartyContactName: 1, CounterpartyContactTitle: 1, CounterpartyCountry: 1, CounterpartyId: 1, CounterpartyId1: 1, CounterpartyInsertDate: 1, CounterpartyInsertUserId: 1, CounterpartyIsActive: 1, CounterpartyPhone: 1, CounterpartyPostalCode: 1, CounterpartyRegion: 1, CounterpartyTenantId: 1, CounterpartyUpdateDate: 1, CounterpartyUpdateUserId: 1, EmployeeAddress: 1, EmployeeBirthDate: 1, EmployeeCity: 1, EmployeeCountry: 1, EmployeeExtension: 1, EmployeeFirstName: 1, EmployeeHireDate: 1, EmployeeHomePhone: 1, EmployeeId: 1, EmployeeInsertDate: 1, EmployeeInsertUserId: 1, EmployeeIsActive: 1, EmployeeLastName: 1, EmployeeNotes: 1, EmployeePhoto: 1, EmployeePhotoPath: 1, EmployeePostalCode: 1, EmployeeRegion: 1, EmployeeReportsTo: 1, EmployeeTenantId: 1, EmployeeTitle: 1, EmployeeTitleOfCourtesy: 1, EmployeeUpdateDate: 1, EmployeeUpdateUserId: 1, Freight: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, OperationTypeId: 1, OperationTypeInsertDate: 1, OperationTypeInsertUserId: 1, OperationTypeIsActive: 1, OperationTypeOpCode: 1, OperationTypeOperation: 1, OperationTypeTenantId: 1, OperationTypeUpdateDate: 1, OperationTypeUpdateUserId: 1, OrderDate: 1, OrderProductId: 1, RequiredDate: 1, ShipAddress: 1, ShipCity: 1, ShipCountry: 1, ShipName: 1, ShipPostalCode: 1, ShipRegion: 1, ShipVia: 1, ShipViaCompanyName: 1, ShipViaInsertDate: 1, ShipViaInsertUserId: 1, ShipViaIsActive: 1, ShipViaPhone: 1, ShipViaTenantId: 1, ShipViaUpdateDate: 1, ShipViaUpdateUserId: 1, ShippedDate: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, OrderProductDetail: { DetailId: 1, Discount: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, OrderProductsId: 1, ProductCategoryId: 1, ProductDiscontinued: 1, ProductId: 1, ProductInsertDate: 1, ProductInsertUserId: 1, ProductIsActive: 1, ProductProductImage: 1, ProductProductName: 1, ProductQuantityPerUnit: 1, ProductReorderLevel: 1, ProductSupplierId: 1, ProductTenantId: 1, ProductUnitPrice: 1, ProductUnitsInStock: 1, ProductUnitsOnOrder: 1, ProductUpdateDate: 1, ProductUpdateUserId: 1, Quantity: 1, TenantId: 1, UnitPrice: 1, UpdateDate: 1, UpdateUserId: 1 }, Product: { CategoryCategoryName: 1, CategoryDescription: 1, CategoryID: 1, CategoryPicture: 1, DetailList: 1, Discontinued: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, ProductID: 1, ProductImage: 1, ProductName: 1, QuantityPerUnit: 1, ReorderLevel: 1, SupplierAddress: 1, SupplierCity: 1, SupplierCompanyName: 1, SupplierContactName: 1, SupplierContactTitle: 1, SupplierCountry: 1, SupplierEmail: 1, SupplierFax: 1, SupplierHomePage: 1, SupplierID: 1, SupplierPhone: 1, SupplierPostalCode: 1, SupplierRegion: 1, SupplierSupplierStat: 1, TenantId: 1, UnitPrice: 1, UnitsInStock: 1, UnitsOnOrder: 1, UpdateDate: 1, UpdateUserId: 1 }, ProductDetail: { DetailID: 1, Discount: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, PlanPrice: 1, ProductCategoryID: 1, ProductDiscontinued: 1, ProductID: 1, ProductProductImage: 1, ProductProductName: 1, ProductQuantity: 1, ProductQuantityPerUnit: 1, ProductReorderLevel: 1, ProductSupplierID: 1, ProductUnitPrice: 1, ProductUnitsInStock: 1, ProductUnitsOnOrder: 1, Quantity: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1, WaresAccountID: 1, WaresBarcode: 1, WaresCategoryID: 1, WaresCode: 1, WaresDiscontinued: 1, WaresID: 1, WaresImage: 1, WaresLabel: 1, WaresMeasureID: 1, WaresName: 1, WaresQuantityPerUnit: 1, WaresUnitPrice: 1 }, ProductLang: { ID: 1, LanguageID: 1, ProductID: 1, ProductName: 1 }, Shipper: { CompanyName: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, Phone: 1, ShipperID: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, Shops: { Address: 1, City: 1, ContactName: 1, ContactTitle: 1, Country: 1, ID: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, Phone: 1, PostalCode: 1, Region: 1, ShopID: 1, ShopName: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, Supplier: { Address: 1, City: 1, CompanyName: 1, ContactName: 1, ContactTitle: 1, Country: 1, Email: 1, Fax: 1, HomePage: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, Phone: 1, PostalCode: 1, Region: 1, SupplierID: 1, SupplierStat: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, Wares: { AccountID: 1, CategoryCode: 1, CategoryID: 1, CategoryName: 1, CounterpartyCity: 1, CounterpartyCompanyName: 1, CounterpartyContactName: 1, CounterpartyContactTitle: 1, CounterpartyCountry: 1, CounterpartyID: 1, CounterpartyPhone: 1, CounterpartyRegion: 1, Description: 1, Discontinued: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, MeasureID: 1, MeasureMeasureName: 1, Picture: 1, QuantityPerUnit: 1, SupplierID: 1, TenantId: 1, Type: 1, UnitPrice: 1, UpdateDate: 1, UpdateUserId: 1, WaresBarcode: 1, WaresCode: 1, WaresID: 1, WaresImage: 1, WaresLabel: 1, WaresName: 1 }, WaresLang: { Description: 1, ID: 1, LanguageID: 1, WaresID: 1, WaresName: 1 }, WaresMovement: { CounterpartyCity: 1, CounterpartyCompanyName: 1, CounterpartyContactName: 1, CounterpartyContactTitle: 1, CounterpartyCountry: 1, CounterpartyID: 1, CounterpartyPhone: 1, CounterpartyRegion: 1, DetailList: 1, EmployeeFullName: 1, EmployeeGender: 1, EmployeeID: 1, EmployeeReportsToFullName: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, OperationTypeID: 1, OperationTypeOpCode: 1, OperationTypeOperation: 1, OrderDate: 1, RequiredDate: 1, ShippedDate: 1, ShipperCompanyName: 1, ShipperID: 1, ShipperPhone: 1, ShippingState: 1, ShopAddress: 1, ShopCity: 1, ShopContactName: 1, ShopContactTitle: 1, ShopCountry: 1, ShopID: 1, ShopPhone: 1, ShopPostalCode: 1, ShopRegion: 1, ShopShopName: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1, WaresMoveID: 1 }, WaresMovementDetails: { DetailID: 1, Discount: 1, IncomePrice: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, Quantity: 1, SalePrice: 1, SinglePrice: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1, WaresCategoryID: 1, WaresCode: 1, WaresCounterpartyID: 1, WaresDiscontinued: 1, WaresID: 1, WaresMeasureID: 1, WaresMoveCounterpartyID: 1, WaresMoveEmployeeID: 1, WaresMoveID: 1, WaresMoveOperationTypeID: 1, WaresMoveOrderDate: 1, WaresMoveRequiredDate: 1, WaresMoveShippedDate: 1, WaresMoveShipperID: 1, WaresMoveShopID: 1, WaresName: 1, WaresQuantityPerUnit: 1, WaresSupplierID: 1, WaresUnitPrice: 1 } } }, Forms: { Membership: { ChangePassword: { FormTitle: 1, SubmitButton: 1, Success: 1 }, ForgotPassword: { BackToLogin: 1, FormInfo: 1, FormTitle: 1, SubmitButton: 1, Success: 1 }, Login: { FacebookButton: 1, ForgotPassword: 1, FormTitle: 1, GoogleButton: 1, OR: 1, RememberMe: 1, SignInButton: 1, SignUpButton: 1 }, ResetPassword: { BackToLogin: 1, EmailSubject: 1, FormTitle: 1, SubmitButton: 1, Success: 1 }, SignUp: { AcceptTerms: 1, ActivateEmailSubject: 1, ActivationCompleteMessage: 1, BackToLogin: 1, ConfirmEmail: 1, ConfirmPassword: 1, DisplayName: 1, Email: 1, FormInfo: 1, FormTitle: 1, Password: 1, SubmitButton: 1, Success: 1 } } }, Site: { AccessDenied: { ClickToChangeUser: 1, ClickToLogin: 1, LackPermissions: 1, NotLoggedIn: 1, PageTitle: 1 }, BasicProgressDialog: { CancelTitle: 1, PleaseWait: 1 }, BulkServiceAction: { AllHadErrorsFormat: 1, AllSuccessFormat: 1, ConfirmationFormat: 1, ErrorCount: 1, NothingToProcess: 1, SomeHadErrorsFormat: 1, SuccessCount: 1 }, Dashboard: { ContentDescription: 1 }, Layout: { FooterCopyright: 1, FooterInfo: 1, FooterRights: 1, GeneralSettings: 1, Language: 1, Theme: 1, ThemeBlack: 1, ThemeBlackLight: 1, ThemeBlue: 1, ThemeBlueLight: 1, ThemeGreen: 1, ThemeGreenLight: 1, ThemePurple: 1, ThemePurpleLight: 1, ThemeRed: 1, ThemeRedLight: 1, ThemeYellow: 1, ThemeYellowLight: 1 }, RolePermissionDialog: { DialogTitle: 1, EditButton: 1, SaveSuccess: 1 }, UserDialog: { EditPermissionsButton: 1, EditRolesButton: 1 }, UserPermissionDialog: { DialogTitle: 1, Grant: 1, Permission: 1, Revoke: 1, SaveSuccess: 1 }, UserRoleDialog: { DialogTitle: 1, SaveSuccess: 1 }, ValidationError: { Title: 1 } }, Validation: { AuthenticationError: 1, CantFindUserWithEmail: 1, CurrentPasswordMismatch: 1, DeleteForeignKeyError: 1, EmailConfirm: 1, EmailInUse: 1, InvalidActivateToken: 1, InvalidResetToken: 1, MinRequiredPasswordLength: 1, SavePrimaryKeyError: 1 } });
     })(Texts = Store_86.Texts || (Store_86.Texts = {}));
 })(Store || (Store = {}));
 var Store;
@@ -6445,7 +6448,7 @@ var Store;
                 if (Q.startsWith(phone, '(') && phone.charAt(4) === ')') {
                     phone = phone.substr(1, 3) + phone.substring(5);
                 }
-                if (phone.length !== 10) {
+                if (phone.length !== 12) {
                     return false;
                 }
                 if (Q.startsWith(phone, '0')) {
@@ -6467,7 +6470,7 @@ var Store;
                 if (Q.startsWith(phone, '0')) {
                     phone = phone.substring(1);
                 }
-                phone = '(' + phone.substr(0, 3) + ') ' + phone.substr(3, 3) + '-' + phone.substr(6, 2) + phone.substr(8, 2);
+                phone = '(' + phone.substr(0, 3) + ') ' + phone.substr(3, 3) + '-' + phone.substr(6, 2) + phone.substr(8, 2) + phone.substr(10, 2);
                 return phone;
             };
             PhoneEditor.formatMulti = function (phone, format) {
@@ -6614,6 +6617,29 @@ var Store;
 (function (Store_136) {
     var Store;
     (function (Store) {
+        var ShopsEditor = /** @class */ (function (_super) {
+            __extends(ShopsEditor, _super);
+            function ShopsEditor(hidden) {
+                return _super.call(this, hidden) || this;
+            }
+            ShopsEditor.prototype.getLookupKey = function () {
+                return Store.ShopsRow.lookupKey;
+            };
+            ShopsEditor.prototype.getItemText = function (item, lookup) {
+                return _super.prototype.getItemText.call(this, item, lookup);
+            };
+            ShopsEditor = __decorate([
+                Serenity.Decorators.registerEditor()
+            ], ShopsEditor);
+            return ShopsEditor;
+        }(Serenity.LookupEditorBase));
+        Store.ShopsEditor = ShopsEditor;
+    })(Store = Store_136.Store || (Store_136.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_137) {
+    var Store;
+    (function (Store) {
         var ShopsGrid = /** @class */ (function (_super) {
             __extends(ShopsGrid, _super);
             function ShopsGrid(container) {
@@ -6630,10 +6656,10 @@ var Store;
             return ShopsGrid;
         }(Serenity.EntityGrid));
         Store.ShopsGrid = ShopsGrid;
-    })(Store = Store_136.Store || (Store_136.Store = {}));
+    })(Store = Store_137.Store || (Store_137.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_137) {
+(function (Store_138) {
     var Store;
     (function (Store) {
         var SupplierDialog = /** @class */ (function (_super) {
@@ -6654,10 +6680,10 @@ var Store;
             return SupplierDialog;
         }(Serenity.EntityDialog));
         Store.SupplierDialog = SupplierDialog;
-    })(Store = Store_137.Store || (Store_137.Store = {}));
+    })(Store = Store_138.Store || (Store_138.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_138) {
+(function (Store_139) {
     var Store;
     (function (Store) {
         var SupplierGrid = /** @class */ (function (_super) {
@@ -6676,10 +6702,10 @@ var Store;
             return SupplierGrid;
         }(Serenity.EntityGrid));
         Store.SupplierGrid = SupplierGrid;
-    })(Store = Store_138.Store || (Store_138.Store = {}));
+    })(Store = Store_139.Store || (Store_139.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_139) {
+(function (Store_140) {
     var Store;
     (function (Store) {
         var WaresDialog = /** @class */ (function (_super) {
@@ -6694,17 +6720,17 @@ var Store;
             WaresDialog.prototype.getLocalTextPrefix = function () { return Store.WaresRow.localTextPrefix; };
             WaresDialog.prototype.getNameProperty = function () { return Store.WaresRow.nameProperty; };
             WaresDialog.prototype.getService = function () { return Store.WaresService.baseUrl; };
-            WaresDialog.prototype.getLanguages = function () { return Store_139.LanguageList.getValue(); };
+            WaresDialog.prototype.getLanguages = function () { return Store_140.LanguageList.getValue(); };
             WaresDialog = __decorate([
                 Serenity.Decorators.registerClass()
             ], WaresDialog);
             return WaresDialog;
         }(Serenity.EntityDialog));
         Store.WaresDialog = WaresDialog;
-    })(Store = Store_139.Store || (Store_139.Store = {}));
+    })(Store = Store_140.Store || (Store_140.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_140) {
+(function (Store_141) {
     var Store;
     (function (Store) {
         var WaresEditor = /** @class */ (function (_super) {
@@ -6729,10 +6755,10 @@ var Store;
             return WaresEditor;
         }(Serenity.LookupEditorBase));
         Store.WaresEditor = WaresEditor;
-    })(Store = Store_140.Store || (Store_140.Store = {}));
+    })(Store = Store_141.Store || (Store_141.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_141) {
+(function (Store_142) {
     var Store;
     (function (Store) {
         var WaresGrid = /** @class */ (function (_super) {
@@ -6762,13 +6788,13 @@ var Store;
             WaresGrid.prototype.getButtons = function () {
                 var _this = this;
                 var buttons = _super.prototype.getButtons.call(this);
-                buttons.push(Store_141.Common.ExcelExportHelper.createToolButton({
+                buttons.push(Store_142.Common.ExcelExportHelper.createToolButton({
                     grid: this,
                     service: Store.WaresService.baseUrl + '/ListExcel',
                     onViewSubmit: function () { return _this.onViewSubmit(); },
                     separator: true
                 }));
-                buttons.push(Store_141.Common.PdfExportHelper.createToolButton({
+                buttons.push(Store_142.Common.PdfExportHelper.createToolButton({
                     grid: this,
                     onViewSubmit: function () { return _this.onViewSubmit(); },
                     reportTitle: 'Wares List',
@@ -6956,10 +6982,10 @@ var Store;
             return WaresGrid;
         }(Serenity.EntityGrid));
         Store.WaresGrid = WaresGrid;
-    })(Store = Store_141.Store || (Store_141.Store = {}));
+    })(Store = Store_142.Store || (Store_142.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_142) {
+(function (Store_143) {
     var Store;
     (function (Store) {
         var WaresCategoriesDialog = /** @class */ (function (_super) {
@@ -6975,7 +7001,7 @@ var Store;
             WaresCategoriesDialog.prototype.getNameProperty = function () { return Store.WaresCategoriesRow.nameProperty; };
             WaresCategoriesDialog.prototype.getService = function () { return Store.WaresCategoriesService.baseUrl; };
             WaresCategoriesDialog.prototype.getLanguages = function () {
-                return Store_142.LanguageList.getValue();
+                return Store_143.LanguageList.getValue();
             };
             WaresCategoriesDialog = __decorate([
                 Serenity.Decorators.registerClass()
@@ -6983,10 +7009,10 @@ var Store;
             return WaresCategoriesDialog;
         }(Serenity.EntityDialog));
         Store.WaresCategoriesDialog = WaresCategoriesDialog;
-    })(Store = Store_142.Store || (Store_142.Store = {}));
+    })(Store = Store_143.Store || (Store_143.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_143) {
+(function (Store_144) {
     var Store;
     (function (Store) {
         var WaresCategoriesGrid = /** @class */ (function (_super) {
@@ -7005,16 +7031,16 @@ var Store;
             return WaresCategoriesGrid;
         }(Serenity.EntityGrid));
         Store.WaresCategoriesGrid = WaresCategoriesGrid;
-    })(Store = Store_143.Store || (Store_143.Store = {}));
+    })(Store = Store_144.Store || (Store_144.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_144) {
+(function (Store_145) {
     var Store;
     (function (Store) {
         var WaresMovementDialog = /** @class */ (function (_super) {
             __extends(WaresMovementDialog, _super);
             function WaresMovementDialog() {
-                var _this = _super !== null && _super.apply(this, arguments) || this;
+                var _this = _super.call(this) || this;
                 _this.form = new Store.WaresMovementForm(_this.idPrefix);
                 return _this;
             }
@@ -7023,16 +7049,34 @@ var Store;
             WaresMovementDialog.prototype.getLocalTextPrefix = function () { return Store.WaresMovementRow.localTextPrefix; };
             WaresMovementDialog.prototype.getNameProperty = function () { return Store.WaresMovementRow.nameProperty; };
             WaresMovementDialog.prototype.getService = function () { return Store.WaresMovementService.baseUrl; };
+            WaresMovementDialog.prototype.getToolbarButtons = function () {
+                var _this = this;
+                var buttons = _super.prototype.getToolbarButtons.call(this);
+                buttons.push(Store_145.Common.ReportHelper.createToolButton({
+                    title: 'Invoice',
+                    cssClass: 'export-pdf-button',
+                    reportKey: 'Store.StoremovementDetails',
+                    getParams: function () { return ({
+                        StoreMovementID: _this.get_entityId()
+                    }); }
+                }));
+                return buttons;
+            };
+            WaresMovementDialog.prototype.updateInterface = function () {
+                _super.prototype.updateInterface.call(this);
+                this.toolbar.findButton('export-pdf-button').toggle(this.isEditMode());
+            };
             WaresMovementDialog = __decorate([
-                Serenity.Decorators.registerClass()
+                Serenity.Decorators.registerClass(),
+                Serenity.Decorators.panel()
             ], WaresMovementDialog);
             return WaresMovementDialog;
         }(Serenity.EntityDialog));
         Store.WaresMovementDialog = WaresMovementDialog;
-    })(Store = Store_144.Store || (Store_144.Store = {}));
+    })(Store = Store_145.Store || (Store_145.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_145) {
+(function (Store_146) {
     var Store;
     (function (Store) {
         var WaresMovementGrid = /** @class */ (function (_super) {
@@ -7069,13 +7113,13 @@ var Store;
             WaresMovementGrid.prototype.getButtons = function () {
                 var _this = this;
                 var buttons = _super.prototype.getButtons.call(this);
-                buttons.push(Store_145.Common.ExcelExportHelper.createToolButton({
+                buttons.push(Store_146.Common.ExcelExportHelper.createToolButton({
                     grid: this,
                     service: Store.WaresMovementService.baseUrl + '/ListExcel',
                     onViewSubmit: function () { return _this.onViewSubmit(); },
                     separator: true
                 }));
-                buttons.push(Store_145.Common.PdfExportHelper.createToolButton({
+                buttons.push(Store_146.Common.PdfExportHelper.createToolButton({
                     grid: this,
                     onViewSubmit: function () { return _this.onViewSubmit(); }
                 }));
@@ -7106,7 +7150,7 @@ var Store;
                 if (target.hasClass('inline-action')) {
                     e.preventDefault();
                     if (target.hasClass('print-invoice')) {
-                        Store_145.Common.ReportHelper.execute({
+                        Store_146.Common.ReportHelper.execute({
                             reportKey: 'Store.WaresMovementDetails',
                             params: {
                                 WatesMoveID: item.WatesMoveID
@@ -7131,11 +7175,11 @@ var Store;
             return WaresMovementGrid;
         }(Serenity.EntityGrid));
         Store.WaresMovementGrid = WaresMovementGrid;
-    })(Store = Store_145.Store || (Store_145.Store = {}));
+    })(Store = Store_146.Store || (Store_146.Store = {}));
 })(Store || (Store = {}));
 /// <reference path="../../Common/Helpers/GridEditorDialog.ts" />
 var Store;
-(function (Store_146) {
+(function (Store_147) {
     var Store;
     (function (Store) {
         var WaresMovementDetailsDialog = /** @class */ (function (_super) {
@@ -7166,13 +7210,13 @@ var Store;
                 Serenity.Decorators.registerClass()
             ], WaresMovementDetailsDialog);
             return WaresMovementDetailsDialog;
-        }(Store_146.Common.GridEditorDialog));
+        }(Store_147.Common.GridEditorDialog));
         Store.WaresMovementDetailsDialog = WaresMovementDetailsDialog;
-    })(Store = Store_146.Store || (Store_146.Store = {}));
+    })(Store = Store_147.Store || (Store_147.Store = {}));
 })(Store || (Store = {}));
 /// <reference path="../../Common/Helpers/GridEditorBase.ts" />
 var Store;
-(function (Store_147) {
+(function (Store_148) {
     var Store;
     (function (Store) {
         var WaresMovementDetailsEditor = /** @class */ (function (_super) {
@@ -7197,12 +7241,12 @@ var Store;
                 Serenity.Decorators.registerClass()
             ], WaresMovementDetailsEditor);
             return WaresMovementDetailsEditor;
-        }(Store_147.Common.GridEditorBase));
+        }(Store_148.Common.GridEditorBase));
         Store.WaresMovementDetailsEditor = WaresMovementDetailsEditor;
-    })(Store = Store_147.Store || (Store_147.Store = {}));
+    })(Store = Store_148.Store || (Store_148.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_148) {
+(function (Store_149) {
     var Store;
     (function (Store) {
         var WaresMovementDetailsGrid = /** @class */ (function (_super) {
@@ -7221,7 +7265,7 @@ var Store;
             return WaresMovementDetailsGrid;
         }(Serenity.EntityGrid));
         Store.WaresMovementDetailsGrid = WaresMovementDetailsGrid;
-    })(Store = Store_148.Store || (Store_148.Store = {}));
+    })(Store = Store_149.Store || (Store_149.Store = {}));
 })(Store || (Store = {}));
 var Store;
 (function (Store) {

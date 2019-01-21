@@ -23,84 +23,9 @@ namespace Store.Store.Entities
             set { Fields.WaresMoveID[this] = value; }
         }
 
-        #region Shops
-
-        [DisplayName("Shop"), Column("ShopID"), Size(14), NotNull, ForeignKey(typeof(ShopsRow)), LeftJoin("shop")]
-        [QuickSearch, TextualField("ShopShopName"), LookupEditor(typeof(ShopsRow))]
-        public String ShopID
-        {
-            get { return Fields.ShopID[this]; }
-            set { Fields.ShopID[this] = value; }
-        }
-
-        [Origin("shop")]
-        public String ShopShopName
-        {
-            get { return Fields.ShopShopName[this]; }
-            set { Fields.ShopShopName[this] = value; }
-        }
-
-        [Origin("shop")]
-        public String ShopContactName
-        {
-            get { return Fields.ShopContactName[this]; }
-            set { Fields.ShopContactName[this] = value; }
-        }
-
-        [Origin("shop")]
-        public String ShopContactTitle
-        {
-            get { return Fields.ShopContactTitle[this]; }
-            set { Fields.ShopContactTitle[this] = value; }
-        }
-
-        [Origin("shop")]
-        public String ShopAddress
-        {
-            get { return Fields.ShopAddress[this]; }
-            set { Fields.ShopAddress[this] = value; }
-        }
-
-        [Origin("shop")]
-        public String ShopCity
-        {
-            get { return Fields.ShopCity[this]; }
-            set { Fields.ShopCity[this] = value; }
-        }
-
-        [Origin("shop")]
-        public String ShopRegion
-        {
-            get { return Fields.ShopRegion[this]; }
-            set { Fields.ShopRegion[this] = value; }
-        }
-
-        [Origin("shop")]
-        public String ShopPostalCode
-        {
-            get { return Fields.ShopPostalCode[this]; }
-            set { Fields.ShopPostalCode[this] = value; }
-        }
-
-        [Origin("shop")]
-        public String ShopCountry
-        {
-            get { return Fields.ShopCountry[this]; }
-            set { Fields.ShopCountry[this] = value; }
-        }
-
-        [Origin("shop")]
-        public String ShopPhone
-        {
-            get { return Fields.ShopPhone[this]; }
-            set { Fields.ShopPhone[this] = value; }
-        }
-
-        #endregion Shops
-
         #region Counterparty
 
-        [DisplayName("Counterparty"), Size(14), NotNull, ForeignKey(typeof(CounterpartyRow)), LeftJoin("c")]
+        [DisplayName("Counterparty"), Size(14), NotNull, ForeignKey(typeof(CounterpartyRow), "CounterpartyID"), LeftJoin("c")]
         [QuickSearch, CounterpartyEditor]
         public String CounterpartyID
         {
@@ -191,6 +116,84 @@ namespace Store.Store.Entities
         }
 
         #endregion Employee
+
+        #region Shops
+        //[DisplayName("Counterparty"), Size(14), NotNull, ForeignKey(typeof(CounterpartyRow), "CounterpartyID"), LeftJoin("c")]
+        //[QuickSearch, CounterpartyEditor]
+
+
+        [DisplayName("Shop"), Size(14), NotNull, ForeignKey(typeof(ShopsRow), "ShopID"), LeftJoin("shop")]
+        [QuickSearch, ShopsEditor] // LookupEditor(typeof(ShopsRow))]
+        public String ShopID
+        {
+            get { return Fields.ShopID[this]; }
+            set { Fields.ShopID[this] = value; }
+        }
+
+        [Origin("shop")]
+        public String ShopShopName
+        {
+            get { return Fields.ShopShopName[this]; }
+            set { Fields.ShopShopName[this] = value; }
+        }
+
+        [Origin("shop")]
+        public String ShopContactName
+        {
+            get { return Fields.ShopContactName[this]; }
+            set { Fields.ShopContactName[this] = value; }
+        }
+
+        [Origin("shop")]
+        public String ShopContactTitle
+        {
+            get { return Fields.ShopContactTitle[this]; }
+            set { Fields.ShopContactTitle[this] = value; }
+        }
+
+        [Origin("shop")]
+        public String ShopAddress
+        {
+            get { return Fields.ShopAddress[this]; }
+            set { Fields.ShopAddress[this] = value; }
+        }
+
+        [Origin("shop")]
+        public String ShopCity
+        {
+            get { return Fields.ShopCity[this]; }
+            set { Fields.ShopCity[this] = value; }
+        }
+
+        [Origin("shop")]
+        public String ShopRegion
+        {
+            get { return Fields.ShopRegion[this]; }
+            set { Fields.ShopRegion[this] = value; }
+        }
+
+        [Origin("shop")]
+        public String ShopPostalCode
+        {
+            get { return Fields.ShopPostalCode[this]; }
+            set { Fields.ShopPostalCode[this] = value; }
+        }
+
+        [Origin("shop")]
+        public String ShopCountry
+        {
+            get { return Fields.ShopCountry[this]; }
+            set { Fields.ShopCountry[this] = value; }
+        }
+
+        [Origin("shop")]
+        public String ShopPhone
+        {
+            get { return Fields.ShopPhone[this]; }
+            set { Fields.ShopPhone[this] = value; }
+        }
+
+        #endregion Shops
 
         #region Shipper
 

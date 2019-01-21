@@ -834,7 +834,7 @@ declare namespace Store.Store {
         Region: Serenity.StringEditor;
         PostalCode: Serenity.StringEditor;
         Country: Serenity.LookupEditor;
-        Phone: Serenity.StringEditor;
+        Phone: PhoneEditor;
         NoteList: NotesEditor;
         LastContactDate: Serenity.DateEditor;
         LastContactedBy: Serenity.LookupEditor;
@@ -2598,11 +2598,11 @@ declare namespace Store.Store {
         ContactName: Serenity.StringEditor;
         ContactTitle: Serenity.StringEditor;
         Address: Serenity.StringEditor;
+        Country: Serenity.StringEditor;
         City: Serenity.StringEditor;
         Region: Serenity.StringEditor;
         PostalCode: Serenity.StringEditor;
-        Country: Serenity.StringEditor;
-        Phone: Serenity.StringEditor;
+        Phone: PhoneEditor;
     }
     class ShopsForm extends Serenity.PrefixedContext {
         static formKey: string;
@@ -2981,8 +2981,8 @@ declare namespace Store.Store {
         WaresMoveOrderDate?: string;
         WaresMoveRequiredDate?: string;
         WaresMoveShippedDate?: string;
-        WaresWaresCode?: string;
-        WaresWaresName?: string;
+        WaresCode?: string;
+        WaresName?: string;
         WaresSupplierID?: number;
         WaresCounterpartyID?: string;
         WaresCategoryID?: number;
@@ -2996,7 +2996,7 @@ declare namespace Store.Store {
         UpdateDate?: string;
     }
     namespace WaresMovementDetailsRow {
-        const idProperty = "WaresMoveID";
+        const idProperty = "DetailID";
         const isActiveProperty = "IsActive";
         const localTextPrefix = "Store.WaresMovementDetails";
         const enum Fields {
@@ -3018,8 +3018,8 @@ declare namespace Store.Store {
             WaresMoveOrderDate = "WaresMoveOrderDate",
             WaresMoveRequiredDate = "WaresMoveRequiredDate",
             WaresMoveShippedDate = "WaresMoveShippedDate",
-            WaresWaresCode = "WaresWaresCode",
-            WaresWaresName = "WaresWaresName",
+            WaresCode = "WaresCode",
+            WaresName = "WaresName",
             WaresSupplierID = "WaresSupplierID",
             WaresCounterpartyID = "WaresCounterpartyID",
             WaresCategoryID = "WaresCategoryID",
@@ -3049,7 +3049,7 @@ declare namespace Store.Store {
     interface WaresMovementForm {
         OperationTypeID: OperationTypeEditor;
         CounterpartyID: CounterpartyEditor;
-        ShopID: Serenity.LookupEditor;
+        ShopID: ShopsEditor;
         OrderDate: Serenity.DateEditor;
         RequiredDate: Serenity.DateEditor;
         EmployeeID: Serenity.LookupEditor;
@@ -4248,6 +4248,13 @@ declare namespace Store.Store {
     }
 }
 declare namespace Store.Store {
+    class ShopsEditor extends Serenity.LookupEditorBase<Serenity.LookupEditorOptions, ShopsRow> {
+        constructor(hidden: JQuery);
+        protected getLookupKey(): string;
+        protected getItemText(item: any, lookup: any): any;
+    }
+}
+declare namespace Store.Store {
     class ShopsGrid extends Serenity.EntityGrid<ShopsRow, any> {
         protected getColumnsKey(): string;
         protected getDialogType(): typeof ShopsDialog;
@@ -4346,6 +4353,9 @@ declare namespace Store.Store {
         protected getNameProperty(): string;
         protected getService(): string;
         protected form: WaresMovementForm;
+        constructor();
+        getToolbarButtons(): Serenity.ToolButton[];
+        protected updateInterface(): void;
     }
 }
 declare namespace Store.Store {

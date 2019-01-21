@@ -19,9 +19,12 @@ namespace Store.Store.Columns
 
         [Width(140), EmployeeFormatter(GenderProperty = "EmployeeGender"), QuickFilter(CssClass = "hidden-xs")]
         public String EmployeeFullName { get; set; }
+
         public DateTime? RequiredDate { get; set; }
+
         [FilterOnly, QuickFilter]
         public OrderShippingState ShippingState { get; set; }
+
         public DateTime ShippedDate { get; set; }
 
         [Width(140), ShipperFormatter, QuickFilter(CssClass = "hidden-xs"), QuickFilterOption("multiple", true)]

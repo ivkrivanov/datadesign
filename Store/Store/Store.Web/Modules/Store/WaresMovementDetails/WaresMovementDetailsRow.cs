@@ -99,10 +99,10 @@ namespace Store.Store.Entities
         }
 
         [Origin("w")]
-        public String WaresWaresCode
+        public String WaresCode
         {
-            get { return Fields.WaresWaresCode[this]; }
-            set { Fields.WaresWaresCode[this] = value; }
+            get { return Fields.WaresCode[this]; }
+            set { Fields.WaresCode[this] = value; }
         }
 
         //[DisplayName("Wares Wares Barcode"), Expression("jWares.[WaresBarcode]")]
@@ -120,10 +120,10 @@ namespace Store.Store.Entities
         //}
 
         [Origin("w"), MinSelectLevel(SelectLevel.List)]
-        public String WaresWaresName
+        public String WaresName
         {
-            get { return Fields.WaresWaresName[this]; }
-            set { Fields.WaresWaresName[this] = value; }
+            get { return Fields.WaresName[this]; }
+            set { Fields.WaresName[this] = value; }
         }
 
         [Origin("w")]
@@ -206,7 +206,7 @@ namespace Store.Store.Entities
             set { Fields.SinglePrice[this] = value; }
         }
 
-        [DisplayName("Discount"), NotNull]
+        [DisplayName("Discount"), NotNull, DefaultValue(0)]
         public Single? Discount
         {
             get { return Fields.Discount[this]; }
@@ -243,7 +243,7 @@ namespace Store.Store.Entities
 
         IIdField IIdRow.IdField
         {
-            get { return Fields.WaresMoveID; }
+            get { return Fields.DetailID; }
         }
 
         public static readonly RowFields Fields = new RowFields().Init();
@@ -276,8 +276,8 @@ namespace Store.Store.Entities
             public DateTimeField WaresMoveRequiredDate;
             public DateTimeField WaresMoveShippedDate;
 
-            public StringField WaresWaresCode;
-            public StringField WaresWaresName;
+            public StringField WaresCode;
+            public StringField WaresName;
             public Int32Field WaresSupplierID;
             public StringField WaresCounterpartyID;
             public Int32Field WaresCategoryID;

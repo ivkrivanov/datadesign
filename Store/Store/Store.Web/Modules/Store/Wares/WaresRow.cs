@@ -120,7 +120,6 @@ namespace Store.Store.Entities
             set { Fields.AccountID[this] = value; }
         }
 
-
         #region Counterparty
 
         [Origin("c")]
@@ -173,7 +172,6 @@ namespace Store.Store.Entities
         }
 
         #endregion Counterparty
-
 
         //#region Supplier
 

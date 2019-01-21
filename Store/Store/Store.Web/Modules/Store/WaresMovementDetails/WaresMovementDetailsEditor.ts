@@ -1,6 +1,7 @@
 ﻿/// <reference path="../../Common/Helpers/GridEditorBase.ts" />
 
 namespace Store.Store {
+
     @Serenity.Decorators.registerClass()
     export class WaresMovementDetailsEditor extends Common.GridEditorBase<WaresMovementDetailsRow> {
         protected getColumnsKey() { return "Store.WaresMovementDetails"; }

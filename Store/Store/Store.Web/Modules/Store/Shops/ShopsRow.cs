@@ -14,7 +14,8 @@ namespace Store.Store.Entities
     [DisplayName("Shops"), InstanceName("Shops")]
     [ReadPermission(PermissionKeys.Supplier.View)]
     [ModifyPermission(PermissionKeys.Supplier.Modify)]
-    [LookupScript("Store.Shops", LookupType = typeof(Scripts.MultiTenantRowLookupScript<>))]
+    //[LookupScript("Store.Shops", LookupType = typeof(Scripts.MultiTenantRowLookupScript<>))]
+    [LookupScript(typeof(Lookups.ShopsLookup))]
     public sealed class ShopsRow : LoggingRow, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
     {
         [DisplayName("ID"), Column("ID"), Identity]
@@ -87,7 +88,7 @@ namespace Store.Store.Entities
             set { Fields.Country[this] = value; }
         }
 
-        [DisplayName("Phone"), Size(24)]
+        [DisplayName("Phone"), Size(24), PhoneEditor]
         public String Phone
         {
             get { return Fields.Phone[this]; }

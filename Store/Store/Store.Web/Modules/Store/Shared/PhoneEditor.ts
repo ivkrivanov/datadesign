@@ -1,4 +1,5 @@
-﻿namespace Store.Store {
+﻿
+namespace Store.Store {
     @Serenity.Decorators.registerEditor()
     export class PhoneEditor extends Serenity.StringEditor {
         constructor(input: JQuery) {
@@ -74,7 +75,7 @@
                 phone = phone.substr(1, 3) + phone.substring(5);
             }
 
-            if (phone.length !== 10) {
+            if (phone.length !== 12) {
                 return false;
             }
 
@@ -100,7 +101,7 @@
             if (Q.startsWith(phone, '0')) {
                 phone = phone.substring(1);
             }
-            phone = '(' + phone.substr(0, 3) + ') ' + phone.substr(3, 3) + '-' + phone.substr(6, 2) + phone.substr(8, 2);
+            phone = '(' + phone.substr(0, 3) + ') ' + phone.substr(3, 3) + '-' + phone.substr(6, 2) + phone.substr(8, 2) + phone.substr(10, 2);
             return phone;
         }
 

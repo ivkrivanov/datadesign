@@ -1,5 +1,5 @@
 ﻿
-namespace Store.Store.Columns
+namespace Store.Store.Forms
 {
     using Serenity.ComponentModel;
     using System;
@@ -10,7 +10,7 @@ namespace Store.Store.Columns
     public class WaresMovementDetailsColumns
     {
         [EditLink, Width(200)]
-        public String WaresID { get; set; }
+        public String WaresName { get; set; }
         [Width(100)]
         public Single Quantity { get; set; }
         [Width(100)]
