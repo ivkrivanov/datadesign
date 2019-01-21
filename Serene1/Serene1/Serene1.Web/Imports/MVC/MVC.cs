@@ -70,6 +70,11 @@ namespace MVC
                     public const string AddressTypeIndex = "~/Modules/Default/Infra/AddressType/AddressTypeIndex.cshtml";
                 }
 
+                public static class AddressTypeLang
+                {
+                    public const string AddressTypeLangIndex = "~/Modules/Default/Infra/AddressTypeLang/AddressTypeLangIndex.cshtml";
+                }
+
                 public static class AddressTypeString
                 {
                     public const string AddressTypeStringIndex = "~/Modules/Default/Infra/AddressTypeString/AddressTypeStringIndex.cshtml";
