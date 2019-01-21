@@ -1,27 +1,32 @@
 ﻿
 namespace Store.Store.Forms
 {
-    using Serenity;
     using Serenity.ComponentModel;
-    using Serenity.Data;
     using System;
     using System.ComponentModel;
-    using System.Collections.Generic;
-    using System.IO;
 
     [FormScript("Store.Shops")]
     [BasedOnRow(typeof(Entities.ShopsRow), CheckNames = true)]
     public class ShopsForm
     {
+        [Category("General")]
         public String ShopID { get; set; }
         public String ShopName { get; set; }
+        [Category("Contact")]
         public String ContactName { get; set; }
         public String ContactTitle { get; set; }
+
+        [Category("Address")]
         public String Address { get; set; }
-        public String City { get; set; }
-        public String Region { get; set; }
-        public String PostalCode { get; set; }
+        [HalfWidth]
         public String Country { get; set; }
+        [HalfWidth]
+        public String City { get; set; }
+        [HalfWidth]
+        public String Region { get; set; }
+        [HalfWidth]
+        public String PostalCode { get; set; }
+        [HalfWidth, PhoneEditor]
         public String Phone { get; set; }
     }
 }

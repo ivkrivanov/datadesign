@@ -13,7 +13,7 @@ namespace Store.Store.Columns
     [BasedOnRow(typeof(Entities.CategoryTypeRow), CheckNames = true)]
     public class CategoryTypeColumns
     {
-        [Width(100)]
+        [EditLink, Width(100)]
         public Int16 Type { get; set; }
         [EditLink, Width(250)]
         public String CategoryType { get; set; }
