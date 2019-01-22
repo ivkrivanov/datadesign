@@ -208,7 +208,7 @@ Function CopyToServer {
     $DESTWEB = $Args[1]
     $SERVER = $Args[2]
     if ($SERVER -eq "DATADESIGN") {
-        robocopy /NFL $BUILDPATH\_PublishedWebsites\Store.Web $DESTWEB\Warehouse.Web *.* /S /XF *.pdb *.cs *.dll.config  *.mdf *.sln *.csproj *.csproj.user *.vspscc  /XD obj .svn /Purge /MT:32
+        robocopy /NFL $BUILDPATH\_PublishedWebsites\Store.Web $DESTWEB\Store.Web *.* /S /XF *.pdb *.cs *.dll.config  *.mdf *.sln *.csproj *.csproj.user *.vspscc  /XD obj .svn /Purge /MT:32
     }
 
 
