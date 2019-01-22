@@ -1,5 +1,4 @@
 ﻿
-
 namespace Store.Store.Lookups
 {
     using global::Store.Store.Entities;

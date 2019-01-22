@@ -9,8 +9,8 @@ namespace Store.Store.Columns
     [BasedOnRow(typeof(Entities.ShopsRow), CheckNames = true)]
     public class ShopsColumns
     {
-        [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
-        public Int32 ID { get; set; }
+        //[EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
+        //public Int32 ID { get; set; }
         [EditLink]
         public String ShopID { get; set; }
         [EditLink, Width(250)]

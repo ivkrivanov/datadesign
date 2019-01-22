@@ -2,7 +2,7 @@
     export interface WaresMovementForm {
         OperationTypeID: OperationTypeEditor;
         CounterpartyID: CounterpartyEditor;
-        ShopID: Serenity.LookupEditor;
+        ShopID: ShopsEditor;
         OrderDate: Serenity.DateEditor;
         RequiredDate: Serenity.DateEditor;
         EmployeeID: Serenity.LookupEditor;
@@ -24,9 +24,10 @@
                 var s = Serenity;
                 var w0 = OperationTypeEditor;
                 var w1 = CounterpartyEditor;
-                var w2 = s.LookupEditor;
+                var w2 = ShopsEditor;
                 var w3 = s.DateEditor;
-                var w4 = WaresMovementDetailsEditor;
+                var w4 = s.LookupEditor;
+                var w5 = WaresMovementDetailsEditor;
 
                 Q.initFormType(WaresMovementForm, [
                     'OperationTypeID', w0,
@@ -34,9 +35,9 @@
                     'ShopID', w2,
                     'OrderDate', w3,
                     'RequiredDate', w3,
-                    'EmployeeID', w2,
-                    'DetailList', w4,
-                    'ShipperID', w2,
+                    'EmployeeID', w4,
+                    'DetailList', w5,
+                    'ShipperID', w4,
                     'ShippedDate', w3
                 ]);
             }

@@ -15,11 +15,12 @@
         WaresMoveEmployeeID?: number;
         WaresMoveShipperID?: number;
         WaresMoveOperationTypeID?: number;
+        WaresMoveOperationTypeOpCode?: number;
         WaresMoveOrderDate?: string;
         WaresMoveRequiredDate?: string;
         WaresMoveShippedDate?: string;
-        WaresWaresCode?: string;
-        WaresWaresName?: string;
+        WaresCode?: string;
+        WaresName?: string;
         WaresSupplierID?: number;
         WaresCounterpartyID?: string;
         WaresCategoryID?: number;
@@ -27,6 +28,7 @@
         WaresQuantityPerUnit?: string;
         WaresUnitPrice?: number;
         WaresDiscontinued?: boolean;
+        LineTotal?: number;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -34,7 +36,7 @@
     }
 
     export namespace WaresMovementDetailsRow {
-        export const idProperty = 'WaresMoveID';
+        export const idProperty = 'DetailID';
         export const isActiveProperty = 'IsActive';
         export const localTextPrefix = 'Store.WaresMovementDetails';
 
@@ -54,11 +56,12 @@
             WaresMoveEmployeeID = "WaresMoveEmployeeID",
             WaresMoveShipperID = "WaresMoveShipperID",
             WaresMoveOperationTypeID = "WaresMoveOperationTypeID",
+            WaresMoveOperationTypeOpCode = "WaresMoveOperationTypeOpCode",
             WaresMoveOrderDate = "WaresMoveOrderDate",
             WaresMoveRequiredDate = "WaresMoveRequiredDate",
             WaresMoveShippedDate = "WaresMoveShippedDate",
-            WaresWaresCode = "WaresWaresCode",
-            WaresWaresName = "WaresWaresName",
+            WaresCode = "WaresCode",
+            WaresName = "WaresName",
             WaresSupplierID = "WaresSupplierID",
             WaresCounterpartyID = "WaresCounterpartyID",
             WaresCategoryID = "WaresCategoryID",
@@ -66,6 +69,7 @@
             WaresQuantityPerUnit = "WaresQuantityPerUnit",
             WaresUnitPrice = "WaresUnitPrice",
             WaresDiscontinued = "WaresDiscontinued",
+            LineTotal = "LineTotal",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",

@@ -11,7 +11,7 @@ namespace Store.Store.Columns
     {
         [EditLink, Width(100), AlignCenter]
         public Int16 Type { get; set; }
-        [EditLink, Width(100), AlignCenter]
+        [EditLink, Width(100), AlignCenter, SortOrder(1, descending: true)]
         public String CategoryType { get; set; }
         [EditLink, Width(100), AlignCenter]
         public String CategoryCode { get; set; }

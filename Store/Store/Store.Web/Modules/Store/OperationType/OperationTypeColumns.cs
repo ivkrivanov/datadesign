@@ -15,7 +15,7 @@ namespace Store.Store.Columns
     {
         //[EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         //public Int32 OperationTypeId { get; set; }
-        [Width(250), EditLink]
+        [Width(100), EditLink, SortOrder(1)]
         public Int16 OpCode { get; set; }
         [Width(250), EditLink]
         public String Operation { get; set; }

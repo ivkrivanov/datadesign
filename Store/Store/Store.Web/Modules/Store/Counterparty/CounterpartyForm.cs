@@ -28,7 +28,7 @@ namespace Store.Store.Forms
         public String PostalCode { get; set; }
         [HalfWidth]
         public String Country { get; set; }
-        [HalfWidth]
+        [HalfWidth, PhoneEditor]
         public String Phone { get; set; }
         public List<object> NoteList { get; set; }
 

@@ -200,6 +200,7 @@ namespace Store.Store {
 
             return columns;
         }
+
         private inputsChange(e: JQueryEventObject) {
             var cell = this.slickGrid.getCellFromEvent(e);
             var item = this.itemAt(cell.row);
