@@ -1,10 +1,10 @@
 ﻿namespace Store.Store {
     export interface WaresMovementDetailsForm {
         WaresID: Serenity.LookupEditor;
-        Quantity: Serenity.DecimalEditor;
         IncomePrice: Serenity.DecimalEditor;
         SalePrice: Serenity.DecimalEditor;
         SinglePrice: Serenity.DecimalEditor;
+        Quantity: Serenity.DecimalEditor;
         Discount: Serenity.DecimalEditor;
     }
 
@@ -24,10 +24,10 @@
 
                 Q.initFormType(WaresMovementDetailsForm, [
                     'WaresID', w0,
-                    'Quantity', w1,
                     'IncomePrice', w1,
                     'SalePrice', w1,
                     'SinglePrice', w1,
+                    'Quantity', w1,
                     'Discount', w1
                 ]);
             }

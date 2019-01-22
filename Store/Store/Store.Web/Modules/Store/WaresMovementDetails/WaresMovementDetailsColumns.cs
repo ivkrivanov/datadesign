@@ -21,6 +21,8 @@ namespace Store.Store.Forms
         public Decimal SinglePrice { get; set; }
         [Width(100)]
         public Single Discount { get; set; }
+        [Width(100)]
+        public Decimal LineTotal { get; set; }
 
     }
 }

@@ -2949,10 +2949,10 @@ declare namespace Store.Store {
 declare namespace Store.Store {
     interface WaresMovementDetailsForm {
         WaresID: Serenity.LookupEditor;
-        Quantity: Serenity.DecimalEditor;
         IncomePrice: Serenity.DecimalEditor;
         SalePrice: Serenity.DecimalEditor;
         SinglePrice: Serenity.DecimalEditor;
+        Quantity: Serenity.DecimalEditor;
         Discount: Serenity.DecimalEditor;
     }
     class WaresMovementDetailsForm extends Serenity.PrefixedContext {
@@ -2978,6 +2978,7 @@ declare namespace Store.Store {
         WaresMoveEmployeeID?: number;
         WaresMoveShipperID?: number;
         WaresMoveOperationTypeID?: number;
+        WaresMoveOperationTypeOpCode?: number;
         WaresMoveOrderDate?: string;
         WaresMoveRequiredDate?: string;
         WaresMoveShippedDate?: string;
@@ -2990,6 +2991,7 @@ declare namespace Store.Store {
         WaresQuantityPerUnit?: string;
         WaresUnitPrice?: number;
         WaresDiscontinued?: boolean;
+        LineTotal?: number;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -3015,6 +3017,7 @@ declare namespace Store.Store {
             WaresMoveEmployeeID = "WaresMoveEmployeeID",
             WaresMoveShipperID = "WaresMoveShipperID",
             WaresMoveOperationTypeID = "WaresMoveOperationTypeID",
+            WaresMoveOperationTypeOpCode = "WaresMoveOperationTypeOpCode",
             WaresMoveOrderDate = "WaresMoveOrderDate",
             WaresMoveRequiredDate = "WaresMoveRequiredDate",
             WaresMoveShippedDate = "WaresMoveShippedDate",
@@ -3027,6 +3030,7 @@ declare namespace Store.Store {
             WaresQuantityPerUnit = "WaresQuantityPerUnit",
             WaresUnitPrice = "WaresUnitPrice",
             WaresDiscontinued = "WaresDiscontinued",
+            LineTotal = "LineTotal",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",
@@ -4401,6 +4405,10 @@ declare namespace Store.Store {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        protected createSlickGrid(): Slick.Grid;
+        protected getColumns(): Slick.Column[];
+        protected getSlickOptions(): Slick.GridOptions;
+        protected usePager(): boolean;
     }
 }
 declare namespace Store.Authorization {

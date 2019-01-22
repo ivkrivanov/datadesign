@@ -408,18 +408,18 @@ if ($err -eq 0) {
             #StopIIS("DATADESIGN")
 		    #Run-BatchFile "devserver" "KillServices.bat" 90
             #Start-Sleep -s 5
-            CopyToServer "\\DATADESIGN\Processes\Batch" "\\datadesign\c$\inetpub\wwwroot" "DATADESIGN"
+            CopyToServer "\\DATADESIGN\Processes\Batch" "\\DATADESIGN\c$\inetpub\wwwroot" "DATADESIGN"
             #Run-BatchFile "DATADESIGN" "StartServices.bat" 120
             #StartIIS("DATADESIGN")
             Break;
 	    }
         "qa" {
-            StopIIS("calypso")
+            #StopIIS("calypso")
             #Run-BatchFile "calypso" "KillServices.bat" 90
-            Start-Sleep -s 5
-            CopyToServer "\\calypso\Processes\Batch" "\\calypso\wwwroot" "calypso"
+            #Start-Sleep -s 5
+            CopyToServer "\\IIvanov-PC\Processes\Batch" "\\IIvanov-PC\c$\inetpub\wwwroot" "IIvanov-PC"
             #Run-BatchFile "calypso" "StartServices.bat" 120
-            StartIIS("calypso")
+            #StartIIS("calypso")
             Break;
         }
     }

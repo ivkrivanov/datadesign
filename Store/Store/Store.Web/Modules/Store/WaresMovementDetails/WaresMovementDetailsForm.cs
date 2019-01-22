@@ -10,14 +10,15 @@ namespace Store.Store.Forms
     {
         [EditLink, Width(200)]
         public Int32 WaresID { get; set; }
-        [Width(100)]
-        public Single Quantity { get; set; }
+ 
         [Width(100)]
         public Decimal IncomePrice { get; set; }
         [Width(100)]
         public Decimal SalePrice { get; set; }
         [Width(100)]
         public Decimal SinglePrice { get; set; }
+        [Width(100)]
+        public Single Quantity { get; set; }
         [Width(100)]
         public Single Discount { get; set; }
     }

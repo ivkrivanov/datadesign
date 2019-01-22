@@ -15,6 +15,7 @@
         WaresMoveEmployeeID?: number;
         WaresMoveShipperID?: number;
         WaresMoveOperationTypeID?: number;
+        WaresMoveOperationTypeOpCode?: number;
         WaresMoveOrderDate?: string;
         WaresMoveRequiredDate?: string;
         WaresMoveShippedDate?: string;
@@ -27,6 +28,7 @@
         WaresQuantityPerUnit?: string;
         WaresUnitPrice?: number;
         WaresDiscontinued?: boolean;
+        LineTotal?: number;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -54,6 +56,7 @@
             WaresMoveEmployeeID = "WaresMoveEmployeeID",
             WaresMoveShipperID = "WaresMoveShipperID",
             WaresMoveOperationTypeID = "WaresMoveOperationTypeID",
+            WaresMoveOperationTypeOpCode = "WaresMoveOperationTypeOpCode",
             WaresMoveOrderDate = "WaresMoveOrderDate",
             WaresMoveRequiredDate = "WaresMoveRequiredDate",
             WaresMoveShippedDate = "WaresMoveShippedDate",
@@ -66,6 +69,7 @@
             WaresQuantityPerUnit = "WaresQuantityPerUnit",
             WaresUnitPrice = "WaresUnitPrice",
             WaresDiscontinued = "WaresDiscontinued",
+            LineTotal = "LineTotal",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",

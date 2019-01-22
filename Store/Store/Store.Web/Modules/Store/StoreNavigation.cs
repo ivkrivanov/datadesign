@@ -1,7 +1,7 @@
 ﻿using Serenity.Navigation;
 using MyPages = Store.Store.Pages;
 
-
+[assembly: NavigationMenu(2000, "Warehouse", icon: "fa-desktop")]
 [assembly: NavigationLink(2000, "Store/Category Type", typeof(MyPages.CategoryTypeController), icon: null)]
 [assembly: NavigationLink(2100, "Store/Category", typeof(MyPages.CategoryController), icon: "fa-folder-o")]
 [assembly: NavigationLink(2200, "Store/Wares", typeof(MyPages.WaresController), icon: null)]
@@ -31,4 +31,4 @@ using MyPages = Store.Store.Pages;
 //[assembly: NavigationLink(int.MaxValue, "Store/Employee", typeof(MyPages.EmployeeController), icon: null)]
 //[assembly: NavigationLink(int.MaxValue, "Store/Order Detail", typeof(MyPages.OrderDetailController), icon: null)]
 
-//[assembly: NavigationLink(int.MaxValue, "Store/Wares Movement Details", typeof(MyPages.WaresMovementDetailsController), icon: null)]
+[assembly: NavigationLink(int.MaxValue, "Store/Wares Movement Details", typeof(MyPages.WaresMovementDetailsController), icon: null)]

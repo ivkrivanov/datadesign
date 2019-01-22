@@ -66,6 +66,13 @@ namespace Store.Store.Entities
         }
 
         [Origin("wm")]
+        public Int16? WaresMoveOperationTypeOpCode
+        {
+            get { return Fields.WaresMoveOperationTypeOpCode[this]; }
+            set { Fields.WaresMoveOperationTypeOpCode[this] = value; }
+        }
+
+        [Origin("wm")]
         public DateTime? WaresMoveOrderDate
         {
             get { return Fields.WaresMoveOrderDate[this]; }
@@ -178,39 +185,47 @@ namespace Store.Store.Entities
         #endregion Wares
 
 
-        [DisplayName("Quantity"), NotNull]
+        [DisplayName("Quantity"), NotNull, DefaultValue(1), AlignRight]
         public Single? Quantity
         {
             get { return Fields.Quantity[this]; }
             set { Fields.Quantity[this] = value; }
         }
 
-        [DisplayName("Income Price"), Size(19), Scale(4), NotNull]
+        [DisplayName("Income Price"), Scale(4), NotNull, AlignRight, DisplayFormat("#,##0.00")]
         public Decimal? IncomePrice
         {
             get { return Fields.IncomePrice[this]; }
             set { Fields.IncomePrice[this] = value; }
         }
 
-        [DisplayName("Sale Price"), Size(19), Scale(4), NotNull]
+        [DisplayName("Sale Price"), Scale(4), NotNull, AlignRight, DisplayFormat("#,##0.00")]
         public Decimal? SalePrice
         {
             get { return Fields.SalePrice[this]; }
             set { Fields.SalePrice[this] = value; }
         }
 
-        [DisplayName("Single Price"), Size(19), Scale(4), NotNull]
+        [DisplayName("Single Price"), Scale(4), NotNull, AlignRight, DisplayFormat("#,##0.00")]
         public Decimal? SinglePrice
         {
             get { return Fields.SinglePrice[this]; }
             set { Fields.SinglePrice[this] = value; }
         }
 
-        [DisplayName("Discount"), NotNull, DefaultValue(0)]
+        [DisplayName("Discount"), NotNull, DefaultValue(0), AlignRight, DisplayFormat("#,##0.00")]
         public Single? Discount
         {
             get { return Fields.Discount[this]; }
             set { Fields.Discount[this] = value; }
+        }
+
+        [DisplayName("Line Total"), Expression("(t0.[IncomePrice] * t0.[Quantity] - t0.[Discount])")]
+        [AlignRight, DisplayFormat("#,##0.00"), MinSelectLevel(SelectLevel.List)]
+        public Decimal? LineTotal
+        {
+            get { return Fields.LineTotal[this]; }
+            set { Fields.LineTotal[this] = value; }
         }
 
         #region Tenant & Activ
@@ -272,6 +287,7 @@ namespace Store.Store.Entities
             public Int32Field WaresMoveEmployeeID;
             public Int32Field WaresMoveShipperID;
             public Int32Field WaresMoveOperationTypeID;
+            public Int16Field WaresMoveOperationTypeOpCode;
             public DateTimeField WaresMoveOrderDate;
             public DateTimeField WaresMoveRequiredDate;
             public DateTimeField WaresMoveShippedDate;
@@ -285,6 +301,8 @@ namespace Store.Store.Entities
             public StringField WaresQuantityPerUnit;
             public DecimalField WaresUnitPrice;
             public BooleanField WaresDiscontinued;
+
+            public DecimalField LineTotal;
         }
     }
 }

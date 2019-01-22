@@ -1,9 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Ledger",
-    "\\MovieTutorial-master"
+    "\\MovieTutorial-master",
+    "\\MovieTutorial-master\\MovieTutorial-master"
   ],
-  "SelectedNode": "\\Ledger\\build.bat",
+  "SelectedNode": "\\MovieTutorial-master\\MovieTutorial-master\\MovieTutorial.sln",
   "PreviewInSolutionExplorer": false
 }
