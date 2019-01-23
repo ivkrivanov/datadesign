@@ -3,6 +3,7 @@
 namespace Store.Store {
 
     @Serenity.Decorators.registerClass()
+    @Serenity.Decorators.panel()
     export class WaresMovementDetailsDialog extends Common.GridEditorDialog<WaresMovementDetailsRow> {
         protected getFormKey() { return WaresMovementDetailsForm.formKey; }
         protected getLocalTextPrefix() { return WaresMovementDetailsRow.localTextPrefix; }

@@ -5792,7 +5792,7 @@ var Store;
                 return Store.OperationTypeRow.lookupKey;
             };
             OperationTypeEditor.prototype.getItemText = function (item, lookup) {
-                return '[' + item.OpCode + ']' + _super.prototype.getItemText.call(this, item, lookup);
+                return '[' + item.OpCode + '] ' + _super.prototype.getItemText.call(this, item, lookup);
             };
             OperationTypeEditor = __decorate([
                 Serenity.Decorators.registerEditor()
@@ -7081,6 +7081,7 @@ var Store;
     (function (Store) {
         var WaresMovementGrid = /** @class */ (function (_super) {
             __extends(WaresMovementGrid, _super);
+            //protected OpCodeQuickFilter: Serenity.LookupEditor;
             function WaresMovementGrid(container) {
                 return _super.call(this, container) || this;
             }
@@ -7108,6 +7109,7 @@ var Store;
             };
             WaresMovementGrid.prototype.createQuickFilters = function () {
                 _super.prototype.createQuickFilters.call(this);
+                //this.findQuickFilter(Serenity.LookupEditor, fld.OperationTypeOperation).values = ["[102]Доставка на стоки"];
                 this.shippingStateFilter = this.findQuickFilter(Serenity.EnumEditor, "ShippingState" /* ShippingState */);
             };
             WaresMovementGrid.prototype.getButtons = function () {
@@ -7162,6 +7164,8 @@ var Store;
             WaresMovementGrid.prototype.set_shippingState = function (value) {
                 this.shippingStateFilter.value = value == null ? '' : value.toString();
             };
+            //public set_OpCode(value: any): void {
+            //    this.OpCodeQuickFilter.value = value == ["[102]Доставка на стоки"].toString();
             WaresMovementGrid.prototype.addButtonClick = function () {
                 var eq = this.view.params.EqualityFilter;
                 this.editItem({
@@ -7207,7 +7211,8 @@ var Store;
             WaresMovementDetailsDialog.prototype.getFormKey = function () { return Store.WaresMovementDetailsForm.formKey; };
             WaresMovementDetailsDialog.prototype.getLocalTextPrefix = function () { return Store.WaresMovementDetailsRow.localTextPrefix; };
             WaresMovementDetailsDialog = __decorate([
-                Serenity.Decorators.registerClass()
+                Serenity.Decorators.registerClass(),
+                Serenity.Decorators.panel()
             ], WaresMovementDetailsDialog);
             return WaresMovementDetailsDialog;
         }(Store_147.Common.GridEditorDialog));
@@ -7296,7 +7301,7 @@ var Store;
                 return opt;
             };
             WaresMovementDetailsGrid.prototype.usePager = function () {
-                return true;
+                return false;
             };
             WaresMovementDetailsGrid = __decorate([
                 Serenity.Decorators.registerClass()

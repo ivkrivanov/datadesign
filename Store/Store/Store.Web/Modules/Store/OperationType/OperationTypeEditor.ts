@@ -13,7 +13,7 @@ namespace Store.Store {
         }
 
         protected getItemText(item, lookup) {
-            return '[' + item.OpCode + ']' + super.getItemText(item, lookup) 
+            return '[' + item.OpCode + '] ' + super.getItemText(item, lookup) 
         }
     }
 }

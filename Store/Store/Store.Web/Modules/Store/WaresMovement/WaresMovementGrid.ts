@@ -13,12 +13,14 @@ namespace Store.Store {
         protected getService() { return WaresMovementService.baseUrl; }
 
         protected shippingStateFilter: Serenity.EnumEditor;
+        //protected OpCodeQuickFilter: Serenity.LookupEditor;
 
         constructor(container: JQuery) {
             super(container);
         }
 
-        protected getQuickFilters() {
+        protected getQuickFilters() { //: Serenity.QuickFilter<Serenity.Widget<any>, any > []  {
+
             var filters = super.getQuickFilters();
 
             filters.push({
@@ -38,8 +40,13 @@ namespace Store.Store {
 
         }
 
-        protected createQuickFilters() {
+        protected createQuickFilters(): void {
+
             super.createQuickFilters();
+
+            //this.findQuickFilter(Serenity.LookupEditor, fld.OperationTypeOperation).values = ["[102]Доставка на стоки"];
+
+
 
             this.shippingStateFilter = this.findQuickFilter(Serenity.EnumEditor, fld.ShippingState);
         }
@@ -108,6 +115,9 @@ namespace Store.Store {
         public set_shippingState(value: number): void {
             this.shippingStateFilter.value = value == null ? '' : value.toString();
         }
+
+        //public set_OpCode(value: any): void {
+        //    this.OpCodeQuickFilter.value = value == ["[102]Доставка на стоки"].toString();
 
         protected addButtonClick() {
             var eq = this.view.params.EqualityFilter;
