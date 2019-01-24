@@ -1,4 +1,5 @@
-﻿namespace Store.Store {
+﻿
+namespace Store.Store {
 
     @Serenity.Decorators.registerFormatter()
     export class ShipperFormatter implements Slick.Formatter {

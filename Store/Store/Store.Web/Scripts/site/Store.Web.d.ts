@@ -2367,11 +2367,11 @@ declare namespace Store.Store {
 }
 declare namespace Store.Store {
     interface ProductForm {
+        CategoryID: Serenity.LookupEditor;
         ProductName: Serenity.StringEditor;
         ProductImage: Serenity.ImageUploadEditor;
         Discontinued: Serenity.BooleanEditor;
         SupplierID: Serenity.LookupEditor;
-        CategoryID: Serenity.LookupEditor;
         DetailList: ProductDetailsEditor;
         QuantityPerUnit: Serenity.StringEditor;
         UnitPrice: Serenity.DecimalEditor;
@@ -2587,6 +2587,12 @@ declare namespace Store.Store {
             Retrieve = "Store/Shipper/Retrieve",
             List = "Store/Shipper/List"
         }
+    }
+}
+declare namespace Store.Store {
+    enum ShippingState {
+        NotShipped = 0,
+        Shipped = 1
     }
 }
 declare namespace Store.Store {
@@ -2885,12 +2891,12 @@ declare namespace Store.Store {
         WaresBarcode: Serenity.StringEditor;
         WaresLabel: Serenity.StringEditor;
         WaresName: Serenity.StringEditor;
-        WaresImage: Serenity.ImageUploadEditor;
-        CounterpartyID: CounterpartyEditor;
         MeasureID: Serenity.LookupEditor;
+        WaresImage: Serenity.ImageUploadEditor;
+        Discontinued: Serenity.BooleanEditor;
+        CounterpartyID: CounterpartyEditor;
         QuantityPerUnit: Serenity.IntegerEditor;
         UnitPrice: Serenity.DecimalEditor;
-        Discontinued: Serenity.BooleanEditor;
         AccountID: Serenity.IntegerEditor;
     }
     class WaresForm extends Serenity.PrefixedContext {
@@ -3056,10 +3062,10 @@ declare namespace Store.Store {
         ShopID: ShopsEditor;
         OrderDate: Serenity.DateEditor;
         RequiredDate: Serenity.DateEditor;
-        EmployeeID: Serenity.LookupEditor;
-        DetailList: WaresMovementDetailsEditor;
-        ShipperID: Serenity.LookupEditor;
         ShippedDate: Serenity.DateEditor;
+        EmployeeID: Serenity.LookupEditor;
+        ShipperID: Serenity.LookupEditor;
+        DetailList: WaresMovementDetailsEditor;
     }
     class WaresMovementForm extends Serenity.PrefixedContext {
         static formKey: string;
@@ -3070,6 +3076,21 @@ declare namespace Store.Store {
 declare namespace Store.Store {
     interface WaresMovementListRequest extends Serenity.ListRequest {
         WaresID?: number;
+    }
+}
+declare namespace Store.Store {
+    enum WaresMovementOperations {
+        IncomeItems = 100,
+        InitialBalance = 101,
+        StockDelivery = 102,
+        SurplusGoods = 103,
+        ExchangeRevenue = 105,
+        UnsubscriptionOfGoods = 109,
+        SaleOfArticles = 201,
+        LackOfItems = 202,
+        ScrappingЬrticles = 203,
+        ExchangeExpense = 205,
+        Inventory = 500
     }
 }
 declare namespace Store.Store {
@@ -3106,8 +3127,8 @@ declare namespace Store.Store {
         EmployeeReportsToFullName?: string;
         ShipperCompanyName?: string;
         ShipperPhone?: string;
-        ShippingState?: OrderShippingState;
-        OperationTypeOpCode?: number;
+        ShippingState?: ShippingState;
+        OperationTypeOpCode?: WaresMovementOperations;
         OperationTypeOperation?: string;
         DetailList?: WaresMovementDetailsRow[];
         InsertUserId?: number;
@@ -3207,10 +3228,8 @@ declare namespace Store.Store {
         CounterpartyCountry?: string;
         CounterpartyPhone?: string;
         Type?: number;
-        CategoryCode?: string;
-        CategoryName?: string;
-        Description?: string;
-        Picture?: string;
+        CategoryCategoryName?: string;
+        CategoryDescription?: string;
         MeasureMeasureName?: string;
         InsertUserId?: number;
         InsertDate?: string;
@@ -3249,10 +3268,8 @@ declare namespace Store.Store {
             CounterpartyCountry = "CounterpartyCountry",
             CounterpartyPhone = "CounterpartyPhone",
             Type = "Type",
-            CategoryCode = "CategoryCode",
-            CategoryName = "CategoryName",
-            Description = "Description",
-            Picture = "Picture",
+            CategoryCategoryName = "CategoryCategoryName",
+            CategoryDescription = "CategoryDescription",
             MeasureMeasureName = "MeasureMeasureName",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
@@ -4326,27 +4343,6 @@ declare namespace Store.Store {
         private inputsChange;
         private setSaveButtonState;
         private saveClick;
-    }
-}
-declare namespace Store.Store {
-    class WaresCategoriesDialog extends Serenity.EntityDialog<WaresCategoriesRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: WaresCategoriesForm;
-        protected getLanguages(): string[][];
-    }
-}
-declare namespace Store.Store {
-    class WaresCategoriesGrid extends Serenity.EntityGrid<WaresCategoriesRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof WaresCategoriesDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
     }
 }
 declare namespace Store.Store {

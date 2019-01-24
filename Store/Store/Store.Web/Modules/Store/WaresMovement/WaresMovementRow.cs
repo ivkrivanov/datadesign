@@ -224,7 +224,7 @@ namespace Store.Store.Entities
 
         [DisplayName("Operation Type"), NotNull, ForeignKey(typeof(OperationTypeRow)), LeftJoin("o")]
         [QuickSearch, OperationTypeEditor]
-        [LookupEditor(typeof(OperationTypeRow), FilterField = "OpCode", FilterValue = 101)]
+        [LookupEditor(typeof(OperationTypeRow), FilterField = "OperationTypeOpCode", FilterValue = 102)]
         public Int32? OperationTypeID
         {
             get { return Fields.OperationTypeID[this]; }
@@ -232,10 +232,10 @@ namespace Store.Store.Entities
         }
 
         [Origin("o")]
-        public Int16? OperationTypeOpCode
+        public WaresMovementOperations? OperationTypeOpCode
         {
-            get { return Fields.OperationTypeOpCode[this]; }
-            set { Fields.OperationTypeOpCode[this] = value; }
+            get { return (WaresMovementOperations)Fields.OperationTypeOpCode[this]; }
+            set { Fields.OperationTypeOpCode[this] = (Int16?)value; }
         }
 
         [Origin("o")]
@@ -269,9 +269,9 @@ namespace Store.Store.Entities
         }
 
         [DisplayName("Shipping State"), Expression("(CASE WHEN T0.[ShippedDate] IS NULL THEN 0 ELSE 1 END)")]
-        public OrderShippingState? ShippingState
+        public ShippingState? ShippingState
         {
-            get { return (OrderShippingState?)Fields.ShippingState[this]; }
+            get { return (ShippingState?)Fields.ShippingState[this]; }
             set { Fields.ShippingState[this] = (Int32?)value; }
         }
 

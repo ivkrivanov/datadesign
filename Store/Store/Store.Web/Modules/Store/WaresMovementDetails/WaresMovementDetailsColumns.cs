@@ -11,7 +11,7 @@ namespace Store.Store.Forms
     {
         [EditLink, Width(200)]
         public String WaresName { get; set; }
-        [Width(60)]
+        [Width(100)]
         public Single Quantity { get; set; }
         [Width(80)]
         public Decimal IncomePrice { get; set; }
@@ -21,7 +21,7 @@ namespace Store.Store.Forms
         public Decimal SinglePrice { get; set; }
         [Width(80)]
         public Single Discount { get; set; }
-        [Width(80)]
+        [Width(100)]
         public Decimal LineTotal { get; set; }
 
     }

@@ -210,10 +210,9 @@ Function CopyToServer {
     if ($SERVER -eq "DATADESIGN") {
         robocopy /NFL $BUILDPATH\_PublishedWebsites\Store.Web $DESTWEB\Store.Web *.* /S /XF *.pdb *.cs *.dll.config  *.mdf *.sln *.csproj *.csproj.user *.vspscc  /XD obj .svn /Purge /MT:32
     }
-
-
-
-
+    if ($SERVER -eq "IIVANOV-PC") {
+        robocopy /NFL $BUILDPATH\_PublishedWebsites\Store.Web $DESTWEB\Store.Web *.* /S /XF *.pdb *.cs *.dll.config  *.mdf *.sln *.csproj *.csproj.user *.vspscc  /XD obj .svn /Purge /MT:32
+    }
 }
 ##########################################
 ############ end functions ###############
