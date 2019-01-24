@@ -232,10 +232,10 @@ namespace Store.Store.Entities
         }
 
         [Origin("o")]
-        public Int16? OperationTypeOpCode
+        public WaresMovementOperations? OperationTypeOpCode
         {
-            get { return Fields.OperationTypeOpCode[this]; }
-            set { Fields.OperationTypeOpCode[this] = value; }
+            get { return (WaresMovementOperations)Fields.OperationTypeOpCode[this]; }
+            set { Fields.OperationTypeOpCode[this] = (Int16?)value; }
         }
 
         [Origin("o")]

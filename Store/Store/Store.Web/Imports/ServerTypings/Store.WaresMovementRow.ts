@@ -32,8 +32,8 @@
         EmployeeReportsToFullName?: string;
         ShipperCompanyName?: string;
         ShipperPhone?: string;
-        ShippingState?: OrderShippingState;
-        OperationTypeOpCode?: number;
+        ShippingState?: ShippingState;
+        OperationTypeOpCode?: WaresMovementOperations;
         OperationTypeOperation?: string;
         DetailList?: WaresMovementDetailsRow[];
         InsertUserId?: number;

@@ -193,11 +193,6 @@ namespace MVC
                 public const string WaresIndex = "~/Modules/Store/Wares/WaresIndex.cshtml";
             }
 
-            public static class WaresCategories
-            {
-                public const string WaresCategoriesIndex = "~/Modules/Store/WaresCategories/WaresCategoriesIndex.cshtml";
-            }
-
             public static class WaresMovement
             {
                 public const string WaresMovementIndex = "~/Modules/Store/WaresMovement/WaresMovementIndex.cshtml";

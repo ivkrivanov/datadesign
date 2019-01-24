@@ -974,6 +974,9 @@
     <TypeScriptCompile Include="Imports\ServerTypings\Store.ShipperService.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ShippingState.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\Store.ShopsColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
@@ -993,6 +996,9 @@
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\Store.WaresMovementListRequest.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.WaresMovementOperations.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\Texts.ts">
@@ -2018,6 +2024,7 @@
     <Compile Include="Modules\Common\Reporting\ExcelReportGenerator.cs" />
     <Compile Include="Modules\Store\Shipper\ShippingState.cs" />
     <Compile Include="Modules\Store\Shops\ShopLookup.cs" />
+    <Compile Include="Modules\Store\WaresMovement\WaresMovementOperations.cs" />
     <Compile Include="Store\Store\Entities\Shopsrow.cs" />
     <Content Include="Modules\Common\Reporting\ReportPage.cshtml" />
     <Compile Include="Modules\Common\Reporting\ReportTree.cs" />

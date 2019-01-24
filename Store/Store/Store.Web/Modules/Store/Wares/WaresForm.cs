@@ -15,15 +15,17 @@ namespace Store.Store.Forms
         public String WaresBarcode { get; set; }
         public String WaresLabel { get; set; }
         public String WaresName { get; set; }
+        public Int32 MeasureID { get; set; }
         public String WaresImage { get; set; }
+        public Boolean Discontinued { get; set; }
         public String CounterpartyID { get; set; }
         //public Int32 SupplierID { get; set; }
-        public Int32 MeasureID { get; set; }
+
 
         [Category("Pricing")]
         public Int32 QuantityPerUnit { get; set; }
         public Decimal UnitPrice { get; set; }
-        public Boolean Discontinued { get; set; }
+
         public Int32 AccountID { get; set; }
     }
 }

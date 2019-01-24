@@ -5,12 +5,12 @@
         WaresBarcode: Serenity.StringEditor;
         WaresLabel: Serenity.StringEditor;
         WaresName: Serenity.StringEditor;
-        WaresImage: Serenity.ImageUploadEditor;
-        CounterpartyID: CounterpartyEditor;
         MeasureID: Serenity.LookupEditor;
+        WaresImage: Serenity.ImageUploadEditor;
+        Discontinued: Serenity.BooleanEditor;
+        CounterpartyID: CounterpartyEditor;
         QuantityPerUnit: Serenity.IntegerEditor;
         UnitPrice: Serenity.DecimalEditor;
-        Discontinued: Serenity.BooleanEditor;
         AccountID: Serenity.IntegerEditor;
     }
 
@@ -28,10 +28,10 @@
                 var w0 = s.LookupEditor;
                 var w1 = s.StringEditor;
                 var w2 = s.ImageUploadEditor;
-                var w3 = CounterpartyEditor;
-                var w4 = s.IntegerEditor;
-                var w5 = s.DecimalEditor;
-                var w6 = s.BooleanEditor;
+                var w3 = s.BooleanEditor;
+                var w4 = CounterpartyEditor;
+                var w5 = s.IntegerEditor;
+                var w6 = s.DecimalEditor;
 
                 Q.initFormType(WaresForm, [
                     'CategoryID', w0,
@@ -39,13 +39,13 @@
                     'WaresBarcode', w1,
                     'WaresLabel', w1,
                     'WaresName', w1,
-                    'WaresImage', w2,
-                    'CounterpartyID', w3,
                     'MeasureID', w0,
-                    'QuantityPerUnit', w4,
-                    'UnitPrice', w5,
-                    'Discontinued', w6,
-                    'AccountID', w4
+                    'WaresImage', w2,
+                    'Discontinued', w3,
+                    'CounterpartyID', w4,
+                    'QuantityPerUnit', w5,
+                    'UnitPrice', w6,
+                    'AccountID', w5
                 ]);
             }
         }

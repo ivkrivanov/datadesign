@@ -17,6 +17,7 @@ namespace Store.Store.Columns
         public Boolean Discontinued { get; set; }
         [EditLink(ItemType = "Store.Supplier"), QuickFilter]
         public String SupplierCompanyName { get; set; }
+
         [EditLink(ItemType = "Store.Category"), Width(150), QuickFilter, QuickFilterOption("multiple", true)]
         public String CategoryCategoryName { get; set; }
         [Width(80), AlignRight]

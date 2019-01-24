@@ -155,7 +155,7 @@ namespace Store.Store {
 
             Q.first(columns, x => x.field === 'QuantityPerUnit').format = str;
 
-            var warescategory = Q.first(columns, x => x.field === fld.CategoryName);
+            var warescategory = Q.first(columns, x => x.field === fld.CategoryCategoryName);
             warescategory.referencedFields = [fld.CategoryID];
             warescategory.format = ctx => this.selectFormatter(ctx, fld.CategoryID, CategoryRow.getLookup());
 

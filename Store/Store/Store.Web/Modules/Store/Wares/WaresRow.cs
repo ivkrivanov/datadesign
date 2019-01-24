@@ -270,12 +270,12 @@ namespace Store.Store.Entities
 
         #region Category
 
-        [Origin("cat"), DisplayName("Category Code")]
-        public String CategoryCode
-        {
-            get { return Fields.CategoryCode[this]; }
-            set { Fields.CategoryCode[this] = value; }
-        }
+        //[Origin("cat"), DisplayName("Category Code")]
+        //public String CategoryCode
+        //{
+        //    get { return Fields.CategoryCode[this]; }
+        //    set { Fields.CategoryCode[this] = value; }
+        //}
 
         [Origin("cat"), DisplayName("Type"), LookupFiltering("Store.WaresCategory")]
         public Int16? Type
@@ -285,25 +285,25 @@ namespace Store.Store.Entities
         }
 
         [Origin("cat"), DisplayName("Category Name")]
-        public String CategoryName
+        public String CategoryCategoryName
         {
-            get { return Fields.CategoryName[this]; }
-            set { Fields.CategoryName[this] = value; }
+            get { return Fields.CategoryCategoryName[this]; }
+            set { Fields.CategoryCategoryName[this] = value; }
         }
 
         [Origin("cat")]
-        public String Description
+        public String CategoryDescription
         {
-            get { return Fields.Description[this]; }
-            set { Fields.Description[this] = value; }
+            get { return Fields.CategoryDescription[this]; }
+            set { Fields.CategoryDescription[this] = value; }
         }
 
-        [Origin("cat")]
-        public String Picture
-        {
-            get { return Fields.Picture[this]; }
-            set { Fields.Picture[this] = value; }
-        }
+        //[Origin("cat")]
+        //public String CategoryPicture
+        //{
+        //    get { return Fields.CategoryPicture[this]; }
+        //    set { Fields.CategoryPicture[this] = value; }
+        //}
 
         #endregion Category
 
@@ -406,10 +406,14 @@ namespace Store.Store.Entities
             public StringField CounterpartyPhone;
 
             public Int16Field Type;
-            public StringField CategoryCode;
-            public StringField CategoryName;
-            public StringField Description;
-            public StringField Picture;
+            //public StringField CategoryCode;
+            //public StringField CategoryName;
+            //public StringField Description;
+            //public StringField Picture;
+
+            public StringField CategoryCategoryName;
+            public StringField CategoryDescription;
+            //public StreamField CategoryPicture;
 
             public StringField MeasureMeasureName;
         }

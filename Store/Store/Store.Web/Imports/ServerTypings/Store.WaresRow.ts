@@ -24,10 +24,8 @@
         CounterpartyCountry?: string;
         CounterpartyPhone?: string;
         Type?: number;
-        CategoryCode?: string;
-        CategoryName?: string;
-        Description?: string;
-        Picture?: string;
+        CategoryCategoryName?: string;
+        CategoryDescription?: string;
         MeasureMeasureName?: string;
         InsertUserId?: number;
         InsertDate?: string;
@@ -71,10 +69,8 @@
             CounterpartyCountry = "CounterpartyCountry",
             CounterpartyPhone = "CounterpartyPhone",
             Type = "Type",
-            CategoryCode = "CategoryCode",
-            CategoryName = "CategoryName",
-            Description = "Description",
-            Picture = "Picture",
+            CategoryCategoryName = "CategoryCategoryName",
+            CategoryDescription = "CategoryDescription",
             MeasureMeasureName = "MeasureMeasureName",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",

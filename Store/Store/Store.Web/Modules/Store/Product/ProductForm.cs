@@ -11,11 +11,12 @@ namespace Store.Store.Forms
     public class ProductForm
     {
         [Category("General")]
+        public Int32 CategoryID { get; set; }
         public String ProductName { get; set; }
         public String ProductImage { get; set; }
         public Boolean Discontinued { get; set; }
         public Int32 SupplierID { get; set; }
-        public Int32 CategoryID { get; set; }
+
 
         [Category("Product Details")]
         [ProductDetailsEditor]

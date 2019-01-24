@@ -9,11 +9,11 @@ namespace Store.Store.Columns
     [BasedOnRow(typeof(Entities.WaresMovementRow), CheckNames = true)]
     public class WaresMovementColumns
     {
-        [SortOrder(1)]
+        [EditLink, QuickFilter(CssClass = "hidden-xs"), SortOrder(1), Width(200)]
         public String OperationTypeOpCode { get; set; }
 
-        [EditLink, QuickFilter(CssClass = "hidden-xs"), SortOrder(1), Width(200)]
-        public String OperationTypeOperation { get; set; }
+        //[EditLink, QuickFilter(CssClass = "hidden-xs"), SortOrder(1), Width(200)]
+        //public String OperationTypeOperation { get; set; }
 
         [EditLink, AlignRight, SortOrder(1, descending: true), Width(70)]
         public Int32 WaresMoveID { get; set; }
@@ -40,12 +40,5 @@ namespace Store.Store.Columns
 
         [Width(200), ShipperFormatter, QuickFilter(CssClass = "hidden-xs"), QuickFilterOption("multiple", true)]
         public String ShipperCompanyName { get; set; }
-
-
-
-
-
-
-
     }
 }
