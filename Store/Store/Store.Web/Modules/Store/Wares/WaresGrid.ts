@@ -91,7 +91,7 @@ namespace Store.Store {
 
             var value = this.getEffectiveValue(item, ctx.column.field) as number;
 
-            return "<input type='text' class='" + klass +
+            return "<input type='text' style='text - align:right' class='" + klass +
                 "' data-field='" + ctx.column.field +
                 "' value='" + Q.formatNumber(value, '0.##') + "'/>";
         }

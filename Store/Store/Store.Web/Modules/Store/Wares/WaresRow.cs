@@ -129,7 +129,7 @@ namespace Store.Store.Entities
             set { Fields.CounterpartyContactName[this] = value; }
         }
 
-        [Origin("c")]
+        [Origin("c"), DisplayName("Counterparty"), LookupInclude]
         public String CounterpartyCompanyName
         {
             get { return Fields.CounterpartyCompanyName[this]; }
