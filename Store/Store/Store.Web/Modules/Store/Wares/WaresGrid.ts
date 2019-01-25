@@ -127,7 +127,7 @@ namespace Store.Store {
             var value = this.getEffectiveValue(item, idField);
             var markup = "<select class='" + klass +
                 "' data-field='" + idField +
-                "' style='width: 100%; max-width: 100%'>";
+                "' style='width: 100%; max-width: 100%; text-align:right'>";
             for (var c of lookup.items) {
                 let id = c[lookup.idField];
                 markup += "<option value='" + Q.attrEncode(id) + "'"
@@ -153,7 +153,7 @@ namespace Store.Store {
             var num = ctx => this.numericInputFormatter(ctx);
             var str = ctx => this.stringInputFormatter(ctx);
 
-            Q.first(columns, x => x.field === 'QuantityPerUnit').format = str;
+            //Q.first(columns, x => x.field === 'QuantityPerUnit').format = str;
 
             var warescategory = Q.first(columns, x => x.field === fld.CategoryCategoryName);
             warescategory.referencedFields = [fld.CategoryID];
@@ -166,7 +166,7 @@ namespace Store.Store {
             Q.first(columns, x => x.field === fld.UnitPrice).format = num;
             Q.first(columns, x => x.field === fld.QuantityPerUnit).format = num;
             Q.first(columns, x => x.field === fld.MeasureMeasureName).format = str;
-            //    //Q.first(columns, x => x.field === fld.ReorderLevel).format = num;
+            //Q.first(columns, x => x.field === fld.ReorderLevel).format = num;
 
             return columns;
         }

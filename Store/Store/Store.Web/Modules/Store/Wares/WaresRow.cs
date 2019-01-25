@@ -99,7 +99,7 @@ namespace Store.Store.Entities
             set { Fields.QuantityPerUnit[this] = value; }
         }
 
-        [DisplayName("Unit Price"), Size(19), Scale(4), LookupInclude]
+        [DisplayName("Unit Price"), Scale(4), LookupInclude]
         public Decimal? UnitPrice
         {
             get { return Fields.UnitPrice[this]; }
