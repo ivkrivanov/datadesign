@@ -99,7 +99,7 @@ namespace Store.Store.Entities
             set { Fields.QuantityPerUnit[this] = value; }
         }
 
-        [DisplayName("Unit Price"), Size(19), Scale(4), LookupInclude]
+        [DisplayName("Unit Price"), Scale(4), LookupInclude]
         public Decimal? UnitPrice
         {
             get { return Fields.UnitPrice[this]; }
@@ -129,7 +129,7 @@ namespace Store.Store.Entities
             set { Fields.CounterpartyContactName[this] = value; }
         }
 
-        [Origin("c")]
+        [Origin("c"), DisplayName("Counterparty"), LookupInclude]
         public String CounterpartyCompanyName
         {
             get { return Fields.CounterpartyCompanyName[this]; }

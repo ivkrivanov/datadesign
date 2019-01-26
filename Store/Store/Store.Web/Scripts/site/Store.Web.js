@@ -6867,7 +6867,7 @@ var Store;
                     klass += ' dirty';
                 }
                 var value = this.getEffectiveValue(item, ctx.column.field);
-                return "<input type='text' class='" + klass +
+                return "<input type='text' style='text - align:right' class='" + klass +
                     "' data-field='" + ctx.column.field +
                     "' value='" + Q.formatNumber(value, '0.##') + "'/>";
             };
@@ -6896,7 +6896,7 @@ var Store;
                 var value = this.getEffectiveValue(item, idField);
                 var markup = "<select class='" + klass +
                     "' data-field='" + idField +
-                    "' style='width: 100%; max-width: 100%'>";
+                    "' style='width: 100%; max-width: 100%; text-align:right'>";
                 for (var _i = 0, _a = lookup.items; _i < _a.length; _i++) {
                     var c = _a[_i];
                     var id = c[lookup.idField];
@@ -6920,7 +6920,7 @@ var Store;
                 var columns = _super.prototype.getColumns.call(this);
                 var num = function (ctx) { return _this.numericInputFormatter(ctx); };
                 var str = function (ctx) { return _this.stringInputFormatter(ctx); };
-                Q.first(columns, function (x) { return x.field === 'QuantityPerUnit'; }).format = str;
+                //Q.first(columns, x => x.field === 'QuantityPerUnit').format = str;
                 var warescategory = Q.first(columns, function (x) { return x.field === "CategoryCategoryName" /* CategoryCategoryName */; });
                 warescategory.referencedFields = ["CategoryID" /* CategoryID */];
                 warescategory.format = function (ctx) { return _this.selectFormatter(ctx, "CategoryID" /* CategoryID */, Store.CategoryRow.getLookup()); };
@@ -6930,7 +6930,7 @@ var Store;
                 Q.first(columns, function (x) { return x.field === "UnitPrice" /* UnitPrice */; }).format = num;
                 Q.first(columns, function (x) { return x.field === "QuantityPerUnit" /* QuantityPerUnit */; }).format = num;
                 Q.first(columns, function (x) { return x.field === "MeasureMeasureName" /* MeasureMeasureName */; }).format = str;
-                //    //Q.first(columns, x => x.field === fld.ReorderLevel).format = num;
+                //Q.first(columns, x => x.field === fld.ReorderLevel).format = num;
                 return columns;
             };
             WaresGrid.prototype.inputsChange = function (e) {
