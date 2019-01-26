@@ -6673,29 +6673,6 @@ var Store;
 (function (Store_139) {
     var Store;
     (function (Store) {
-        var ShopsEditor = /** @class */ (function (_super) {
-            __extends(ShopsEditor, _super);
-            function ShopsEditor(hidden) {
-                return _super.call(this, hidden) || this;
-            }
-            ShopsEditor.prototype.getLookupKey = function () {
-                return Store.ShopsRow.lookupKey;
-            };
-            ShopsEditor.prototype.getItemText = function (item, lookup) {
-                return _super.prototype.getItemText.call(this, item, lookup);
-            };
-            ShopsEditor = __decorate([
-                Serenity.Decorators.registerEditor()
-            ], ShopsEditor);
-            return ShopsEditor;
-        }(Serenity.LookupEditorBase));
-        Store.ShopsEditor = ShopsEditor;
-    })(Store = Store_136.Store || (Store_136.Store = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store_137) {
-    var Store;
-    (function (Store) {
         var ShopsGrid = /** @class */ (function (_super) {
             __extends(ShopsGrid, _super);
             function ShopsGrid(container) {
