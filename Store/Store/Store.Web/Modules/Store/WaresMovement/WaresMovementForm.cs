@@ -12,23 +12,23 @@ namespace Store.Store.Forms
     {
         [Tab("General")]
         [Category("Order")]
-        [OneThirdWidth]
+        [HalfWidth]
         public String OperationTypeID { get; set; }
-        [OneThirdWidth]
+        [HalfWidth]
         public String CounterpartyID { get; set; }
-        [OneThirdWidth]
+        [HalfWidth]
         public String ShopID { get; set; }
 
         [DefaultValue("now")]
-        [OneThirdWidth]
+        [HalfWidth]
         public DateTime OrderDate { get; set; }
-        [OneThirdWidth]
+        [HalfWidth]
         public DateTime RequiredDate { get; set; }
-        [OneThirdWidth]
+        [HalfWidth]
         public DateTime ShippedDate { get; set; }
-        [OneThirdWidth]
+        [HalfWidth]
         public Int32 EmployeeID { get; set; }
-        [OneThirdWidth]
+        [HalfWidth]
         public Int32 ShipperID { get; set; }
 
         [Category("WaresMovementDetailsRow")]
