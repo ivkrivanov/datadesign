@@ -1,12 +1,14 @@
 ﻿
 namespace Store.Store.Repositories
 {
+    using Serenity;
     using Serenity.Data;
     using Serenity.Services;
+    using System;
     using System.Data;
-    using MyRow = Entities.WaresMovementRow;
+    using MyRow = Entities.ProductMovementRow;
 
-    public class WaresMovementRepository
+    public class ProductMovementRepository
     {
         private static MyRow.RowFields fld { get { return MyRow.Fields; } }
 
@@ -35,7 +37,7 @@ namespace Store.Store.Repositories
             return new MyRetrieveHandler().Process(connection, request);
         }
 
-        public ListResponse<MyRow> List(IDbConnection connection, WaresMovementListRequest request)
+        public ListResponse<MyRow> List(IDbConnection connection, ProductMovementListRequest request)
         {
             return new MyListHandler().Process(connection, request);
         }
@@ -44,23 +46,23 @@ namespace Store.Store.Repositories
         private class MyDeleteHandler : DeleteRequestHandler<MyRow> { }
         private class MyUndeleteHandler : UndeleteRequestHandler<MyRow> { }
         private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> { }
-        private class MyListHandler : ListRequestHandler<MyRow, WaresMovementListRequest>
+        private class MyListHandler : ListRequestHandler<MyRow, ProductMovementListRequest>
         {
             protected override void ApplyFilters(SqlQuery query)
             {
                 base.ApplyFilters(query);
 
-                if (Request.WaresID != null)
+                if(Request.ProductID != null)
                 {
-                    var wm = Entities.WaresMovementDetailsRow.Fields.As("wm");
+                    var pm = Entities.ProductMovementDetailsRow.Fields.As("pm");
 
                     query.Where(Criteria.Exists(
                         query.SubQuery()
                         .Select("1")
-                        .From(wm)
+                        .From(pm)
                         .Where(
-                            wm.WaresMoveID == fld.WaresMoveID &
-                            wm.WaresID == Request.WaresID.Value).ToString()));
+                            pm.ProductMoveID == fld.ProductMoveID &
+                            pm.ProductID == Request.ProductID.Value).ToString()));
                 }
             }
         }

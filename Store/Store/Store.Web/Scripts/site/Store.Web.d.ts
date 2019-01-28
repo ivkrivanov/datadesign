@@ -2427,6 +2427,257 @@ declare namespace Store.Store {
     }
 }
 declare namespace Store.Store {
+}
+declare namespace Store.Store {
+}
+declare namespace Store.Store {
+    interface ProductMovementDetailsForm {
+        ProductID: Serenity.LookupEditor;
+        Quantity: Serenity.DecimalEditor;
+        SalePrice: Serenity.DecimalEditor;
+        Discount: Serenity.DecimalEditor;
+        DetailID: Serenity.IntegerEditor;
+    }
+    class ProductMovementDetailsForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace Store.Store {
+    interface ProductMovementDetailsRow {
+        ProductMoveID?: number;
+        ProductID?: number;
+        Quantity?: number;
+        SalePrice?: number;
+        Discount?: number;
+        DetailID?: number;
+        IsActive?: number;
+        TenantId?: number;
+        ProductMoveShopID?: string;
+        ProductMoveCounterpartyID?: string;
+        ProductMoveEmployeeID?: number;
+        ProductMoveShipperID?: number;
+        ProductMoveOperationTypeID?: number;
+        ProductMoveOperationTypeOpCode?: number;
+        ProductMoveOrderDate?: string;
+        ProductMoveRequiredDate?: string;
+        ProductMoveShippedDate?: string;
+        ProductProductName?: string;
+        ProductProductImage?: string;
+        ProductSupplierID?: number;
+        ProductCategoryID?: number;
+        ProductQuantityPerUnit?: string;
+        ProductUnitPrice?: number;
+        ProductUnitsInStock?: number;
+        ProductUnitsOnOrder?: number;
+        ProductReorderLevel?: number;
+        ProductDiscontinued?: boolean;
+        LineTotal?: number;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+    }
+    namespace ProductMovementDetailsRow {
+        const idProperty = "DetailID";
+        const isActiveProperty = "IsActive";
+        const localTextPrefix = "Store.ProductMovementDetails";
+        const enum Fields {
+            ProductMoveID = "ProductMoveID",
+            ProductID = "ProductID",
+            Quantity = "Quantity",
+            SalePrice = "SalePrice",
+            Discount = "Discount",
+            DetailID = "DetailID",
+            IsActive = "IsActive",
+            TenantId = "TenantId",
+            ProductMoveShopID = "ProductMoveShopID",
+            ProductMoveCounterpartyID = "ProductMoveCounterpartyID",
+            ProductMoveEmployeeID = "ProductMoveEmployeeID",
+            ProductMoveShipperID = "ProductMoveShipperID",
+            ProductMoveOperationTypeID = "ProductMoveOperationTypeID",
+            ProductMoveOperationTypeOpCode = "ProductMoveOperationTypeOpCode",
+            ProductMoveOrderDate = "ProductMoveOrderDate",
+            ProductMoveRequiredDate = "ProductMoveRequiredDate",
+            ProductMoveShippedDate = "ProductMoveShippedDate",
+            ProductProductName = "ProductProductName",
+            ProductProductImage = "ProductProductImage",
+            ProductSupplierID = "ProductSupplierID",
+            ProductCategoryID = "ProductCategoryID",
+            ProductQuantityPerUnit = "ProductQuantityPerUnit",
+            ProductUnitPrice = "ProductUnitPrice",
+            ProductUnitsInStock = "ProductUnitsInStock",
+            ProductUnitsOnOrder = "ProductUnitsOnOrder",
+            ProductReorderLevel = "ProductReorderLevel",
+            ProductDiscontinued = "ProductDiscontinued",
+            LineTotal = "LineTotal",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate"
+        }
+    }
+}
+declare namespace Store.Store {
+    namespace ProductMovementDetailsService {
+        const baseUrl = "Store/ProductMovementDetails";
+        function Create(request: Serenity.SaveRequest<ProductMovementDetailsRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<ProductMovementDetailsRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<ProductMovementDetailsRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<ProductMovementDetailsRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Store/ProductMovementDetails/Create",
+            Update = "Store/ProductMovementDetails/Update",
+            Delete = "Store/ProductMovementDetails/Delete",
+            Retrieve = "Store/ProductMovementDetails/Retrieve",
+            List = "Store/ProductMovementDetails/List"
+        }
+    }
+}
+declare namespace Store.Store {
+    interface ProductMovementForm {
+        ShopID: ShopsEditor;
+        CounterpartyID: CounterpartyEditor;
+        EmployeeID: Serenity.LookupEditor;
+        ShipperID: Serenity.LookupEditor;
+        OperationTypeID: OperationTypeEditor;
+        OrderDate: Serenity.DateEditor;
+        RequiredDate: Serenity.DateEditor;
+        ShippedDate: Serenity.DateEditor;
+    }
+    class ProductMovementForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace Store.Store {
+    interface ProductMovementListRequest extends Serenity.ListRequest {
+        ProductID?: number;
+    }
+}
+declare namespace Store.Store {
+    enum ProductMovementOperations {
+        IncomeItems = 300,
+        StockDelivery = 302,
+        SurplusGoods = 303,
+        SaleOfArticles = 401,
+        LackOfItems = 402,
+        ScrappingЬrticles = 403
+    }
+}
+declare namespace Store.Store {
+    interface ProductMovementRow {
+        ProductMoveID?: number;
+        ShopID?: string;
+        CounterpartyID?: string;
+        EmployeeID?: number;
+        ShipperID?: number;
+        OperationTypeID?: number;
+        OrderDate?: string;
+        RequiredDate?: string;
+        ShippedDate?: string;
+        IsActive?: number;
+        TenantId?: number;
+        ShopShopName?: string;
+        ShopContactName?: string;
+        ShopContactTitle?: string;
+        ShopAddress?: string;
+        ShopCity?: string;
+        ShopRegion?: string;
+        ShopPostalCode?: string;
+        ShopCountry?: string;
+        ShopPhone?: string;
+        CounterpartyCompanyName?: string;
+        CounterpartyContactName?: string;
+        CounterpartyContactTitle?: string;
+        CounterpartyCity?: string;
+        CounterpartyRegion?: string;
+        CounterpartyCountry?: string;
+        CounterpartyPhone?: string;
+        EmployeeFullName?: string;
+        EmployeeGender?: Gender;
+        EmployeeReportsToFullName?: string;
+        ShipperCompanyName?: string;
+        ShipperPhone?: string;
+        ShippingState?: ShippingState;
+        OperationTypeOpCode?: ProductMovementOperations;
+        OperationTypeOperation?: string;
+        DetailList?: ProductMovementDetailsRow[];
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+    }
+    namespace ProductMovementRow {
+        const idProperty = "ProductMoveID";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "CounterpartyID";
+        const localTextPrefix = "Store.ProductMovement";
+        const enum Fields {
+            ProductMoveID = "ProductMoveID",
+            ShopID = "ShopID",
+            CounterpartyID = "CounterpartyID",
+            EmployeeID = "EmployeeID",
+            ShipperID = "ShipperID",
+            OperationTypeID = "OperationTypeID",
+            OrderDate = "OrderDate",
+            RequiredDate = "RequiredDate",
+            ShippedDate = "ShippedDate",
+            IsActive = "IsActive",
+            TenantId = "TenantId",
+            ShopShopName = "ShopShopName",
+            ShopContactName = "ShopContactName",
+            ShopContactTitle = "ShopContactTitle",
+            ShopAddress = "ShopAddress",
+            ShopCity = "ShopCity",
+            ShopRegion = "ShopRegion",
+            ShopPostalCode = "ShopPostalCode",
+            ShopCountry = "ShopCountry",
+            ShopPhone = "ShopPhone",
+            CounterpartyCompanyName = "CounterpartyCompanyName",
+            CounterpartyContactName = "CounterpartyContactName",
+            CounterpartyContactTitle = "CounterpartyContactTitle",
+            CounterpartyCity = "CounterpartyCity",
+            CounterpartyRegion = "CounterpartyRegion",
+            CounterpartyCountry = "CounterpartyCountry",
+            CounterpartyPhone = "CounterpartyPhone",
+            EmployeeFullName = "EmployeeFullName",
+            EmployeeGender = "EmployeeGender",
+            EmployeeReportsToFullName = "EmployeeReportsToFullName",
+            ShipperCompanyName = "ShipperCompanyName",
+            ShipperPhone = "ShipperPhone",
+            ShippingState = "ShippingState",
+            OperationTypeOpCode = "OperationTypeOpCode",
+            OperationTypeOperation = "OperationTypeOperation",
+            DetailList = "DetailList",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate"
+        }
+    }
+}
+declare namespace Store.Store {
+    namespace ProductMovementService {
+        const baseUrl = "Store/ProductMovement";
+        function Create(request: Serenity.SaveRequest<ProductMovementRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<ProductMovementRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<ProductMovementRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: ProductMovementListRequest, onSuccess?: (response: Serenity.ListResponse<ProductMovementRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Store/ProductMovement/Create",
+            Update = "Store/ProductMovement/Update",
+            Delete = "Store/ProductMovement/Delete",
+            Retrieve = "Store/ProductMovement/Retrieve",
+            List = "Store/ProductMovement/List"
+        }
+    }
+}
+declare namespace Store.Store {
     interface ProductRow {
         ProductID?: number;
         ProductName?: string;
@@ -4216,6 +4467,45 @@ declare namespace Store.Store {
         protected getLocalTextPrefix(): string;
         constructor(container: JQuery);
         validateEntity(row: any, id: any): boolean;
+    }
+}
+declare namespace Store.Store {
+    class ProductMovementDialog extends Serenity.EntityDialog<ProductMovementRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: ProductMovementForm;
+    }
+}
+declare namespace Store.Store {
+    class ProductMovementGrid extends Serenity.EntityGrid<ProductMovementRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof ProductMovementDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Store.Store {
+    class ProductMovementDetailsDialog extends Serenity.EntityDialog<ProductMovementDetailsRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        protected form: ProductMovementDetailsForm;
+    }
+}
+declare namespace Store.Store {
+    class ProductMovementDetailsGrid extends Serenity.EntityGrid<ProductMovementDetailsRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof ProductMovementDetailsDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
     }
 }
 declare namespace Store.Store {

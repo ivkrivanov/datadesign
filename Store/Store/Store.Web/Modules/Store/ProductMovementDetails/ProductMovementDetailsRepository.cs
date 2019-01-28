@@ -1,12 +1,14 @@
 ﻿
 namespace Store.Store.Repositories
 {
+    using Serenity;
     using Serenity.Data;
     using Serenity.Services;
+    using System;
     using System.Data;
-    using MyRow = Entities.WaresMovementRow;
+    using MyRow = Entities.ProductMovementDetailsRow;
 
-    public class WaresMovementRepository
+    public class ProductMovementDetailsRepository
     {
         private static MyRow.RowFields fld { get { return MyRow.Fields; } }
 
@@ -25,44 +27,19 @@ namespace Store.Store.Repositories
             return new MyDeleteHandler().Process(uow, request);
         }
 
-        public UndeleteResponse Undelete(IUnitOfWork uow, UndeleteRequest request)
-        {
-            return new MyUndeleteHandler().Process(uow, request);
-        }
-
         public RetrieveResponse<MyRow> Retrieve(IDbConnection connection, RetrieveRequest request)
         {
             return new MyRetrieveHandler().Process(connection, request);
         }
 
-        public ListResponse<MyRow> List(IDbConnection connection, WaresMovementListRequest request)
+        public ListResponse<MyRow> List(IDbConnection connection, ListRequest request)
         {
             return new MyListHandler().Process(connection, request);
         }
 
         private class MySaveHandler : SaveRequestHandler<MyRow> { }
         private class MyDeleteHandler : DeleteRequestHandler<MyRow> { }
-        private class MyUndeleteHandler : UndeleteRequestHandler<MyRow> { }
         private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> { }
-        private class MyListHandler : ListRequestHandler<MyRow, WaresMovementListRequest>
-        {
-            protected override void ApplyFilters(SqlQuery query)
-            {
-                base.ApplyFilters(query);
-
-                if (Request.WaresID != null)
-                {
-                    var wm = Entities.WaresMovementDetailsRow.Fields.As("wm");
-
-                    query.Where(Criteria.Exists(
-                        query.SubQuery()
-                        .Select("1")
-                        .From(wm)
-                        .Where(
-                            wm.WaresMoveID == fld.WaresMoveID &
-                            wm.WaresID == Request.WaresID.Value).ToString()));
-                }
-            }
-        }
+        private class MyListHandler : ListRequestHandler<MyRow> { }
     }
 }

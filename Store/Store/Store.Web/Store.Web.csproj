@@ -964,6 +964,18 @@
     <TypeScriptCompile Include="Imports\ServerTypings\Store.ProductListRequest.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ProductMovementColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ProductMovementDetailsColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ProductMovementListRequest.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ProductMovementOperations.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\Store.ShipperColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
@@ -1903,6 +1915,30 @@
     <TypeScriptCompile Include="Modules\Store\WaresMovement\WaresMovementGrid.ts" />
     <TypeScriptCompile Include="Scripts\site\Store.Web.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\serenity\Serenity.CoreLib.d.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ProductMovementRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ProductMovementService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Modules\Store\ProductMovement\ProductMovementIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Store\ProductMovement\ProductMovementDialog.ts" />
+    <TypeScriptCompile Include="Modules\Store\ProductMovement\ProductMovementGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ProductMovementForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ProductMovementDetailsRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ProductMovementDetailsService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Modules\Store\ProductMovementDetails\ProductMovementDetailsIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Store\ProductMovementDetails\ProductMovementDetailsDialog.ts" />
+    <TypeScriptCompile Include="Modules\Store\ProductMovementDetails\ProductMovementDetailsGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ProductMovementDetailsForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -2025,6 +2061,8 @@
     <Compile Include="Modules\Common\Navigation\NavigationModel.cs" />
     <Compile Include="Modules\Common\Reporting\DynamicDataReport.cs" />
     <Compile Include="Modules\Common\Reporting\ExcelReportGenerator.cs" />
+    <Compile Include="Modules\Store\ProductMovement\ProductMovementListRequest.cs" />
+    <Compile Include="Modules\Store\ProductMovement\ProductMovementOperations.cs" />
     <Compile Include="Modules\Store\Shipper\ShippingState.cs" />
     <Compile Include="Modules\Store\Shops\ShopLookup.cs" />
     <Compile Include="Modules\Store\WaresMovement\WaresMovementOperations.cs" />
@@ -2226,6 +2264,18 @@
     <Compile Include="Modules\Store\WaresMovement\WaresMovementPage.cs" />
     <Compile Include="Modules\Store\WaresMovement\WaresMovementColumns.cs" />
     <Compile Include="Modules\Store\WaresMovement\WaresMovementForm.cs" />
+    <Compile Include="Modules\Store\ProductMovement\ProductMovementRow.cs" />
+    <Compile Include="Modules\Store\ProductMovement\ProductMovementRepository.cs" />
+    <Compile Include="Modules\Store\ProductMovement\ProductMovementEndpoint.cs" />
+    <Compile Include="Modules\Store\ProductMovement\ProductMovementPage.cs" />
+    <Compile Include="Modules\Store\ProductMovement\ProductMovementColumns.cs" />
+    <Compile Include="Modules\Store\ProductMovement\ProductMovementForm.cs" />
+    <Compile Include="Modules\Store\ProductMovementDetails\ProductMovementDetailsRow.cs" />
+    <Compile Include="Modules\Store\ProductMovementDetails\ProductMovementDetailsRepository.cs" />
+    <Compile Include="Modules\Store\ProductMovementDetails\ProductMovementDetailsEndpoint.cs" />
+    <Compile Include="Modules\Store\ProductMovementDetails\ProductMovementDetailsPage.cs" />
+    <Compile Include="Modules\Store\ProductMovementDetails\ProductMovementDetailsColumns.cs" />
+    <Compile Include="Modules\Store\ProductMovementDetails\ProductMovementDetailsForm.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

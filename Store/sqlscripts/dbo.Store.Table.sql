@@ -18,7 +18,7 @@ CREATE TABLE [dbo].[Store](
 	[IncomeValue] [Decimal](15,4) NULL,
 	[AIncomeSinglePrice] [Decimal](15,4) NULL,
 	[AIncomeValue] [Decimal](15,4) NULL,
-	[ExpenceQuantiry] [Decimal](15,4) NULL,
+	[ExpenceQuantity] [Decimal](15,4) NULL,
 	[ExpenceSinglePrice] [Decimal](15,4) NULL,
 	[ExpenceValue] [Decimal](15,4) NULL,
 	[AExpenceSinglePrice] [Decimal](15,4) NULL, 

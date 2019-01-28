@@ -9,17 +9,17 @@ namespace Store.Store.Entities
     using System.Collections.Generic;
     using System.ComponentModel;
 
-    [ConnectionKey("Store"), Module("Store"), TableName("[dbo].[WaresMovement]")]
-    [DisplayName("Wares Movement"), InstanceName("Wares Movement")]
-    [ReadPermission(PermissionKeys.General)]
-    [ModifyPermission(PermissionKeys.General)]
-    public sealed class WaresMovementRow : LoggingRow, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
+    [ConnectionKey("Store"), Module("Store"), TableName("[dbo].[ProductMovement]")]
+    [DisplayName("Product Movement"), InstanceName("Product Movement")]
+    [ReadPermission("Store:General")]
+    [ModifyPermission("Store:General")]
+    public sealed class ProductMovementRow : LoggingRow, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
     {
         [DisplayName("Move Id"), NotNull, Identity, QuickSearch]
-        public Int32? WaresMoveID
+        public Int32? ProductMoveID
         {
-            get { return Fields.WaresMoveID[this]; }
-            set { Fields.WaresMoveID[this] = value; }
+            get { return Fields.ProductMoveID[this]; }
+            set { Fields.ProductMoveID[this] = value; }
         }
 
         #region Counterparty
@@ -119,7 +119,7 @@ namespace Store.Store.Entities
         #region Shops
 
         [DisplayName("Shop"), Size(14), NotNull, ForeignKey(typeof(ShopsRow), "ShopID"), LeftJoin("shop")]
-        [QuickSearch, ShopsEditor] // LookupEditor(typeof(ShopsRow))]
+        [QuickSearch, ShopsEditor]
         public String ShopID
         {
             get { return Fields.ShopID[this]; }
@@ -228,9 +228,9 @@ namespace Store.Store.Entities
         }
 
         [Origin("o")]
-        public WaresMovementOperations? OperationTypeOpCode
+        public ProductMovementOperations? OperationTypeOpCode
         {
-            get { return (WaresMovementOperations)Fields.OperationTypeOpCode[this]; }
+            get { return (ProductMovementOperations)Fields.OperationTypeOpCode[this]; }
             set { Fields.OperationTypeOpCode[this] = (Int16?)value; }
         }
 
@@ -271,8 +271,8 @@ namespace Store.Store.Entities
             set { Fields.ShippingState[this] = (Int32?)value; }
         }
 
-        [DisplayName("Details"), MasterDetailRelation(foreignKey: "WaresMoveID"), NotMapped]
-        public List<WaresMovementDetailsRow> DetailList
+        [DisplayName("Details"), MasterDetailRelation(foreignKey: "ProductMoveID"), NotMapped]
+        public List<ProductMovementDetailsRow> DetailList
         {
             get { return Fields.DetailList[this]; }
             set { Fields.DetailList[this] = value; }
@@ -308,7 +308,7 @@ namespace Store.Store.Entities
 
         IIdField IIdRow.IdField
         {
-            get { return Fields.WaresMoveID; }
+            get { return Fields.ProductMoveID; }
         }
 
         StringField INameRow.NameField
@@ -318,14 +318,14 @@ namespace Store.Store.Entities
 
         public static readonly RowFields Fields = new RowFields().Init();
 
-        public WaresMovementRow()
+        public ProductMovementRow()
             : base(Fields)
         {
         }
 
         public class RowFields : LoggingRowFields
         {
-            public Int32Field WaresMoveID;
+            public Int32Field ProductMoveID;
             public StringField ShopID;
             public StringField CounterpartyID;
             public Int32Field EmployeeID;
@@ -367,7 +367,7 @@ namespace Store.Store.Entities
             public Int16Field OperationTypeOpCode;
             public StringField OperationTypeOperation;
 
-            public RowListField<WaresMovementDetailsRow> DetailList;
+            public RowListField<ProductMovementDetailsRow> DetailList;
         }
     }
 }

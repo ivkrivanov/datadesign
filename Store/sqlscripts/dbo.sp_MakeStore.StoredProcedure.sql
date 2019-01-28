@@ -37,7 +37,7 @@ BEGIN
            ([Position],[WaresMode],[MoveID],[ShopID],[WaresID],[Key],[Date],[OperationID],
 		   [IncomeQuantity],[IncomeSinglePrice],[IncomeValue],
 		   --[AIncomeSinglePrice],[AIncomeValue],
-           [ExpenceQuantiry], [ExpenceSinglePrice], [ExpenceValue], 
+           [ExpenceQuantity], [ExpenceSinglePrice], [ExpenceValue], 
 		   --[AExpenceSinglePrice], [AExpenceValue],
            [RestQuantity], [RestSinglePrice], [RestValue],
 		   --[ARestQuantity], [ARestSinglePrice], [ARestValue],
@@ -49,14 +49,14 @@ BEGIN
 
 	SELECT TOP (100) PERCENT
 		0 AS Position, 0 AS WaresMode, wm.WaresMoveID,
-		wm.ShopID, wmd.WaresID, w.WaresCode AS [Key], wm.OrderDate AS Date, op.OperationTypeID AS OperationID, --wm.IsActive,  
+		wm.ShopID, wmd.WaresID, w.WaresCode AS [Key], wm.OrderDate AS Date, op.OpCode AS OperationID, --wm.IsActive,  
 		(IIF (op.OpCode > 101 AND op.OpCode < 200, wmd.Quantity*(IIF (op.OpCode = 109, -1, 1)) ,0)) AS IncomeQuantity,
 		(IIF (op.OpCode > 101 AND op.OpCode < 200, IIF (wmd.Quantity <> 0, wmd.SinglePrice ,0), 0)) AS IncomeSinglePrice,
 		((IIF (op.OpCode > 101 AND op.OpCode < 200, wmd.Quantity*(IIF (op.OpCode = 109, -1, 1)) ,0)) * (IIF (op.OpCode > 101 AND op.OpCode < 200, IIF (wmd.Quantity <> 0, wmd.SinglePrice ,0), 0))) AS IncomeValue,
 		--(IIF (wm.IsActiv = 1 AND (wm.OperationTypeID > 101 AND wm.OperationTypeID < 200), wmd.SinglePrice, 0)) AS AIncomeSinglePrice,
 		--((IIF (wm.OperationTypeID > 101 AND wm.OperationTypeID < 200, wmd.Quantity*(IIF (wm.OperationTypeID = 109, -1, 1)) ,0)) * (IIF (wm.IsActiv = 1 AND (wm.OperationTypeID > 101 AND wm.OperationTypeID < 200), wmd.SinglePrice, 0))) AS AIncomeValue,
 
-		(IIF (op.OpCode BETWEEN 200 AND 215, wmd.Quantity, 0)) AS ExpenceQuantiry,
+		(IIF (op.OpCode BETWEEN 200 AND 215, wmd.Quantity, 0)) AS ExpenceQuantity,
 		0 AS ExpenceSinglePrice,
 		0 AS ExpenceValue,
 		--0 AS AExpenceSinglePrice,
