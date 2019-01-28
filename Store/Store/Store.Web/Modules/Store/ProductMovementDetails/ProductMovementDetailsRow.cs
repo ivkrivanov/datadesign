@@ -14,7 +14,6 @@ namespace Store.Store.Entities
     [ModifyPermission("Store:General")]
     public sealed class ProductMovementDetailsRow : LoggingRow, IIdRow, IIsActiveRow, IMultiTenantRow
     {
-
         [DisplayName("ID"), Identity]
         public Int32? DetailID
         {
@@ -58,7 +57,6 @@ namespace Store.Store.Entities
             get { return Fields.ProductMoveShipperID[this]; }
             set { Fields.ProductMoveShipperID[this] = value; }
         }
-
 
         [Origin("pm")]
         public Int32? ProductMoveOperationTypeID
@@ -108,17 +106,10 @@ namespace Store.Store.Entities
         }
 
         [Origin("p"), MinSelectLevel(SelectLevel.List)]
-        public String ProductProductName
+        public String ProductName
         {
-            get { return Fields.ProductProductName[this]; }
-            set { Fields.ProductProductName[this] = value; }
-        }
-
-        [DisplayName("Product Product Image"), Expression("jProduct.[ProductImage]")]
-        public String ProductProductImage
-        {
-            get { return Fields.ProductProductImage[this]; }
-            set { Fields.ProductProductImage[this] = value; }
+            get { return Fields.ProductName[this]; }
+            set { Fields.ProductName[this] = value; }
         }
 
         [Origin("p")]
@@ -186,14 +177,14 @@ namespace Store.Store.Entities
             set { Fields.Quantity[this] = value; }
         }
 
-        [DisplayName("Sale Price"), Size(19), Scale(4), NotNull]
+        [DisplayName("Sale Price"), Scale(4), NotNull, AlignRight, DisplayFormat("#,##0.00")]
         public Decimal? SalePrice
         {
             get { return Fields.SalePrice[this]; }
             set { Fields.SalePrice[this] = value; }
         }
 
-        [DisplayName("Discount"), NotNull]
+        [DisplayName("Discount"), NotNull, DefaultValue(0), AlignRight, DisplayFormat("#,##0.00")]
         public Single? Discount
         {
             get { return Fields.Discount[this]; }
@@ -270,8 +261,7 @@ namespace Store.Store.Entities
             public DateTimeField ProductMoveRequiredDate;
             public DateTimeField ProductMoveShippedDate;
 
-            public StringField ProductProductName;
-            public StringField ProductProductImage;
+            public StringField ProductName;
             public Int32Field ProductSupplierID;
             public Int32Field ProductCategoryID;
             public StringField ProductQuantityPerUnit;

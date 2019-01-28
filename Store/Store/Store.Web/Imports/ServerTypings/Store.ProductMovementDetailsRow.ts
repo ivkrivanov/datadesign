@@ -17,8 +17,7 @@
         ProductMoveOrderDate?: string;
         ProductMoveRequiredDate?: string;
         ProductMoveShippedDate?: string;
-        ProductProductName?: string;
-        ProductProductImage?: string;
+        ProductName?: string;
         ProductSupplierID?: number;
         ProductCategoryID?: number;
         ProductQuantityPerUnit?: string;
@@ -57,8 +56,7 @@
             ProductMoveOrderDate = "ProductMoveOrderDate",
             ProductMoveRequiredDate = "ProductMoveRequiredDate",
             ProductMoveShippedDate = "ProductMoveShippedDate",
-            ProductProductName = "ProductProductName",
-            ProductProductImage = "ProductProductImage",
+            ProductName = "ProductName",
             ProductSupplierID = "ProductSupplierID",
             ProductCategoryID = "ProductCategoryID",
             ProductQuantityPerUnit = "ProductQuantityPerUnit",

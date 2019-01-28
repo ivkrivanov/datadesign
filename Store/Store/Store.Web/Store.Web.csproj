@@ -1030,6 +1030,7 @@
     <TypeScriptCompile Include="Modules\Store\OrderDetail\OrderDetailsEditor.ts" />
     <TypeScriptCompile Include="Modules\Store\Order\FreightFormatter.ts" />
     <TypeScriptCompile Include="Modules\Store\ProductDetail\ProductDetailsEditor.ts" />
+    <TypeScriptCompile Include="Modules\Store\ProductMovementDetails\ProductMovementDetailsEditor.ts" />
     <TypeScriptCompile Include="Modules\Store\Shared\PhoneEditor.ts" />
     <TypeScriptCompile Include="Modules\Store\Shipper\ShipperFormatter.ts" />
     <TypeScriptCompile Include="Modules\Store\Shops\ShopsEditor.ts" />
@@ -1984,6 +1985,9 @@
       <DependentUpon>ClientTypes.tt</DependentUpon>
     </Compile>
     <Compile Include="Imports\ClientTypes\Store.ProductDetailsEditorAttribute.cs">
+      <DependentUpon>ClientTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Imports\ClientTypes\Store.ProductMovementDetailsEditorAttribute.cs">
       <DependentUpon>ClientTypes.tt</DependentUpon>
     </Compile>
     <Compile Include="Imports\ClientTypes\Store.ShipperFormatterAttribute.cs">

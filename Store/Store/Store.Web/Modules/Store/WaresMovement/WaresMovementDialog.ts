@@ -22,9 +22,9 @@ namespace Store.Store {
             buttons.push(Common.ReportHelper.createToolButton({
                 title: 'Invoice',
                 cssClass: 'export-pdf-button',
-                reportKey: 'Store.StoremovementDetails',
+                reportKey: 'Store.WaresMovementDetails',
                 getParams: () => ({
-                    StoreMovementID: this.get_entityId()
+                    WaresMoveID: this.get_entityId()
                 })
             }));
 

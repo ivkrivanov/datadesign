@@ -4,7 +4,6 @@
         Quantity: Serenity.DecimalEditor;
         SalePrice: Serenity.DecimalEditor;
         Discount: Serenity.DecimalEditor;
-        DetailID: Serenity.IntegerEditor;
     }
 
     export class ProductMovementDetailsForm extends Serenity.PrefixedContext {
@@ -20,14 +19,12 @@
                 var s = Serenity;
                 var w0 = s.LookupEditor;
                 var w1 = s.DecimalEditor;
-                var w2 = s.IntegerEditor;
 
                 Q.initFormType(ProductMovementDetailsForm, [
                     'ProductID', w0,
                     'Quantity', w1,
                     'SalePrice', w1,
-                    'Discount', w1,
-                    'DetailID', w2
+                    'Discount', w1
                 ]);
             }
         }

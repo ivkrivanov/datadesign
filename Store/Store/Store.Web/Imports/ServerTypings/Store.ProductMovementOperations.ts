@@ -7,6 +7,6 @@
         LackOfItems = 402,
         ScrappingЬrticles = 403
     }
-    Serenity.Decorators.registerEnumType(ProductMovementOperations, 'Store.Store.ProductMovementOperations', 'Store.WaresMovementOperations');
+    Serenity.Decorators.registerEnumType(ProductMovementOperations, 'Store.Store.ProductMovementOperations', 'Store.ProductMovementOperations');
 }
 

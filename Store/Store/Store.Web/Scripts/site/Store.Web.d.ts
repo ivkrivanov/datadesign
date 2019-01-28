@@ -2436,7 +2436,6 @@ declare namespace Store.Store {
         Quantity: Serenity.DecimalEditor;
         SalePrice: Serenity.DecimalEditor;
         Discount: Serenity.DecimalEditor;
-        DetailID: Serenity.IntegerEditor;
     }
     class ProductMovementDetailsForm extends Serenity.PrefixedContext {
         static formKey: string;
@@ -2463,8 +2462,7 @@ declare namespace Store.Store {
         ProductMoveOrderDate?: string;
         ProductMoveRequiredDate?: string;
         ProductMoveShippedDate?: string;
-        ProductProductName?: string;
-        ProductProductImage?: string;
+        ProductName?: string;
         ProductSupplierID?: number;
         ProductCategoryID?: number;
         ProductQuantityPerUnit?: string;
@@ -2501,8 +2499,7 @@ declare namespace Store.Store {
             ProductMoveOrderDate = "ProductMoveOrderDate",
             ProductMoveRequiredDate = "ProductMoveRequiredDate",
             ProductMoveShippedDate = "ProductMoveShippedDate",
-            ProductProductName = "ProductProductName",
-            ProductProductImage = "ProductProductImage",
+            ProductName = "ProductName",
             ProductSupplierID = "ProductSupplierID",
             ProductCategoryID = "ProductCategoryID",
             ProductQuantityPerUnit = "ProductQuantityPerUnit",
@@ -2522,15 +2519,9 @@ declare namespace Store.Store {
 declare namespace Store.Store {
     namespace ProductMovementDetailsService {
         const baseUrl = "Store/ProductMovementDetails";
-        function Create(request: Serenity.SaveRequest<ProductMovementDetailsRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Update(request: Serenity.SaveRequest<ProductMovementDetailsRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<ProductMovementDetailsRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<ProductMovementDetailsRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         const enum Methods {
-            Create = "Store/ProductMovementDetails/Create",
-            Update = "Store/ProductMovementDetails/Update",
-            Delete = "Store/ProductMovementDetails/Delete",
             Retrieve = "Store/ProductMovementDetails/Retrieve",
             List = "Store/ProductMovementDetails/List"
         }
@@ -2538,14 +2529,15 @@ declare namespace Store.Store {
 }
 declare namespace Store.Store {
     interface ProductMovementForm {
-        ShopID: ShopsEditor;
-        CounterpartyID: CounterpartyEditor;
-        EmployeeID: Serenity.LookupEditor;
-        ShipperID: Serenity.LookupEditor;
         OperationTypeID: OperationTypeEditor;
+        CounterpartyID: CounterpartyEditor;
+        ShopID: ShopsEditor;
         OrderDate: Serenity.DateEditor;
         RequiredDate: Serenity.DateEditor;
         ShippedDate: Serenity.DateEditor;
+        EmployeeID: Serenity.LookupEditor;
+        ShipperID: Serenity.LookupEditor;
+        DetailList: ProductMovementDetailsEditor;
     }
     class ProductMovementForm extends Serenity.PrefixedContext {
         static formKey: string;
@@ -4477,6 +4469,9 @@ declare namespace Store.Store {
         protected getNameProperty(): string;
         protected getService(): string;
         protected form: ProductMovementForm;
+        constructor();
+        getToolbarButtons(): Serenity.ToolButton[];
+        protected updateInterface(): void;
     }
 }
 declare namespace Store.Store {
@@ -4486,16 +4481,32 @@ declare namespace Store.Store {
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;
+        protected shippingStateFilter: Serenity.EnumEditor;
         constructor(container: JQuery);
+        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
+        protected createQuickFilters(): void;
+        protected getButtons(): Serenity.ToolButton[];
+        protected getColumns(): Slick.Column[];
+        protected onClick(e: JQueryEventObject, row: number, cell: number): void;
+        set_shippingState(value: number): void;
+        protected addButtonClick(): void;
     }
 }
 declare namespace Store.Store {
-    class ProductMovementDetailsDialog extends Serenity.EntityDialog<ProductMovementDetailsRow, any> {
+    class ProductMovementDetailsDialog extends Common.GridEditorDialog<ProductMovementDetailsRow> {
         protected getFormKey(): string;
-        protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
-        protected getService(): string;
         protected form: ProductMovementDetailsForm;
+        constructor();
+    }
+}
+declare namespace Store.Store {
+    class ProductMovementDetailsEditor extends Common.GridEditorBase<ProductMovementDetailsRow> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof ProductMovementDetailsDialog;
+        protected getLocalTextPrefix(): string;
+        constructor(container: JQuery);
+        validateEntity(row: any, id: any): boolean;
     }
 }
 declare namespace Store.Store {

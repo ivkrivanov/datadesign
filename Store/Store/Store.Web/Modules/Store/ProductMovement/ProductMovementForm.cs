@@ -13,14 +13,31 @@ namespace Store.Store.Forms
     [BasedOnRow(typeof(Entities.ProductMovementRow), CheckNames = true)]
     public class ProductMovementForm
     {
-        public String ShopID { get; set; }
-        public String CounterpartyID { get; set; }
-        public Int32 EmployeeID { get; set; }
-        public Int32 ShipperID { get; set; }
+        [Tab("General")]
+        [Category("Order")]
+        [HalfWidth]
         public Int32 OperationTypeID { get; set; }
+        [HalfWidth]
+        public String CounterpartyID { get; set; }
+        [HalfWidth]
+        public String ShopID { get; set; }
+
+        [DefaultValue("now")]
+        [HalfWidth]
         public DateTime OrderDate { get; set; }
+        [HalfWidth]
         public DateTime RequiredDate { get; set; }
+        [HalfWidth]
         public DateTime ShippedDate { get; set; }
+
+        [HalfWidth]
+        public Int32 EmployeeID { get; set; }
+        [HalfWidth]
+        public Int32 ShipperID { get; set; }
+
+        [Category("WaresMovementDetailsRow")]
+        [ProductMovementDetailsEditor]
+        public List<Entities.ProductMovementRow> DetailList { get; set; }
 
     }
 }
