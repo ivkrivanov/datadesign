@@ -16,7 +16,14 @@ namespace Store.Store {
 
             this.form.WaresID.changeSelect2(e => {
                 var itemID = Q.toId(this.form.WaresID.value);
+                if (itemID != null) {
+                    this.form.PlanPrice.value = WaresRow.getLookup().itemById[itemID].UnitPrice;
+                }
             });
+
+
+
+
         }
     }
 }

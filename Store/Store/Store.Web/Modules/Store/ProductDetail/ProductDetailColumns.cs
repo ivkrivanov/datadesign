@@ -21,7 +21,7 @@ namespace Store.Store.Columns
         public Double ProductQuantity { get; set; }
         [Width(100)]
         public Double Discount { get; set; }
-        //[Width(100)]
-        //public Decimal LineTotal { get; set; }
+        [Width(100)]
+        public Decimal LineTotal { get; set; }
     }
 }

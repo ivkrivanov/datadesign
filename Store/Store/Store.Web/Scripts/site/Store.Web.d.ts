@@ -2267,6 +2267,7 @@ declare namespace Store.Store {
         WaresID: Serenity.LookupEditor;
         Quantity: Serenity.DecimalEditor;
         ProductQuantity: Serenity.DecimalEditor;
+        PlanPrice: Serenity.DecimalEditor;
         Discount: Serenity.DecimalEditor;
     }
     class ProductDetailForm extends Serenity.PrefixedContext {
@@ -2286,8 +2287,7 @@ declare namespace Store.Store {
         Discount?: number;
         IsActive?: number;
         TenantId?: number;
-        ProductProductName?: string;
-        ProductProductImage?: string;
+        ProductName?: string;
         ProductSupplierID?: number;
         ProductCategoryID?: number;
         ProductQuantityPerUnit?: string;
@@ -2307,6 +2307,7 @@ declare namespace Store.Store {
         WaresUnitPrice?: number;
         WaresDiscontinued?: boolean;
         WaresAccountID?: number;
+        LineTotal?: number;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -2326,8 +2327,7 @@ declare namespace Store.Store {
             Discount = "Discount",
             IsActive = "IsActive",
             TenantId = "TenantId",
-            ProductProductName = "ProductProductName",
-            ProductProductImage = "ProductProductImage",
+            ProductName = "ProductName",
             ProductSupplierID = "ProductSupplierID",
             ProductCategoryID = "ProductCategoryID",
             ProductQuantityPerUnit = "ProductQuantityPerUnit",
@@ -2347,6 +2347,7 @@ declare namespace Store.Store {
             WaresUnitPrice = "WaresUnitPrice",
             WaresDiscontinued = "WaresDiscontinued",
             WaresAccountID = "WaresAccountID",
+            LineTotal = "LineTotal",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",
@@ -2529,7 +2530,7 @@ declare namespace Store.Store {
 }
 declare namespace Store.Store {
     interface ProductMovementForm {
-        OperationTypeID: OperationTypeEditor;
+        OperationTypeOpCode: Serenity.EnumEditor;
         CounterpartyID: CounterpartyEditor;
         ShopID: ShopsEditor;
         OrderDate: Serenity.DateEditor;

@@ -3,6 +3,7 @@
         WaresID: Serenity.LookupEditor;
         Quantity: Serenity.DecimalEditor;
         ProductQuantity: Serenity.DecimalEditor;
+        PlanPrice: Serenity.DecimalEditor;
         Discount: Serenity.DecimalEditor;
     }
 
@@ -24,6 +25,7 @@
                     'WaresID', w0,
                     'Quantity', w1,
                     'ProductQuantity', w1,
+                    'PlanPrice', w1,
                     'Discount', w1
                 ]);
             }

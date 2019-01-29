@@ -16,7 +16,7 @@ namespace Store.Store.Forms
         [Tab("General")]
         [Category("Order")]
         [HalfWidth]
-        public Int32 OperationTypeID { get; set; }
+        public ProductMovementOperations? OperationTypeOpCode { get; set; }
         [HalfWidth]
         public String CounterpartyID { get; set; }
         [HalfWidth]
