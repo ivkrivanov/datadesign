@@ -810,7 +810,6 @@
     <Content Include="Scripts\serenity\Serenity.CoreLib.min.js" />
     <Content Include="Scripts\serenity\Serenity.Script.UI.js" />
     <Content Include="Scripts\serenity\Serenity.Script.UI.min.js" />
-    <Content Include="Scripts\site\Store.Web.js" />
     <Content Include="Scripts\SlickGrid\Controls\slick.columnpicker.js" />
     <Content Include="Scripts\SlickGrid\Controls\slick.pager.js" />
     <Content Include="Scripts\SlickGrid\MIT-LICENSE.txt" />
@@ -899,7 +898,7 @@
     <Content Include="Scripts\serenity\texts\serenity.texts.de.json" />
     <Content Include="Scripts\serenity\texts\serenity.texts.bn.json" />
     <Content Include="Scripts\serenity\Serenity.CoreLib.js.map" />
-    <Content Include="Scripts\site\Store.Web.js.map" />
+    <Content Include="Scripts\site\ScriptBundles.json" />
     <None Include="tsconfig.json" />
     <TypeScriptCompile Include="Imports\ServerTypings\Administration.TenantColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
@@ -935,24 +934,6 @@
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\Store.OperationTypeColumns.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Store.OrderColumns.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Store.OrderDetailColumns.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Store.OrderListRequest.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Store.OrderProductColumns.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Store.OrderProductDetailColumns.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Store.OrderShippingState.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\Store.ProductColumns.ts">
@@ -1020,15 +1001,14 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Administration\Tenant\TenantDialog.ts" />
     <TypeScriptCompile Include="Modules\Administration\Tenant\TenantGrid.ts" />
-    <TypeScriptCompile Include="Modules\Store\Counterparty\CounterpartyOrderGrid.ts" />
+    <TypeScriptCompile Include="Modules\Store\Counterparty\CounterpartyProductMovementGrid.ts" />
     <TypeScriptCompile Include="Modules\Store\Counterparty\CounterpartyEditor.ts" />
-    <TypeScriptCompile Include="Modules\Store\Counterparty\CounterpartyOrderDialog.ts" />
+    <TypeScriptCompile Include="Modules\Store\Counterparty\CounterpartyProductMovementDialog.ts" />
     <TypeScriptCompile Include="Modules\Store\Employee\EmployeeFormatter.ts" />
     <TypeScriptCompile Include="Modules\Store\Employee\EmployeeListFormatter.ts" />
     <TypeScriptCompile Include="Modules\Store\Note\NotesEditor.ts" />
     <TypeScriptCompile Include="Modules\Store\OperationType\OperationTypeEditor.ts" />
-    <TypeScriptCompile Include="Modules\Store\OrderDetail\OrderDetailsEditor.ts" />
-    <TypeScriptCompile Include="Modules\Store\Order\FreightFormatter.ts" />
+    <TypeScriptCompile Include="Modules\Store\ProductDetail\ProductDetailEditor.ts" />
     <TypeScriptCompile Include="Modules\Store\ProductDetail\ProductDetailsEditor.ts" />
     <TypeScriptCompile Include="Modules\Store\ProductMovementDetails\ProductMovementDetailsEditor.ts" />
     <TypeScriptCompile Include="Modules\Store\Shared\PhoneEditor.ts" />
@@ -1567,7 +1547,6 @@
     <Content Include="Scripts\vegas\vegas.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Scripts\jquery.icheck.min.js.map" />
-    <Content Include="Scripts\site\ScriptBundles.json" />
     <Content Include="Scripts\site\texts\site.texts.zh-CN.json" />
     <Content Include="Scripts\site\texts\site.texts.it.json" />
     <Content Include="Scripts\site\texts\site.texts.pt.json" />
@@ -1793,29 +1772,6 @@
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Store\Note\NoteDialog.ts" />
-    <TypeScriptCompile Include="Imports\ServerTypings\Store.OrderDetailRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Store.OrderDetailService.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <Content Include="Modules\Store\OrderDetail\OrderDetailIndex.cshtml" />
-    <TypeScriptCompile Include="Modules\Store\OrderDetail\OrderDetailDialog.ts" />
-    <TypeScriptCompile Include="Imports\ServerTypings\Store.OrderDetailForm.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Store.OrderRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Store.OrderService.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <Content Include="Modules\Store\Order\OrderIndex.cshtml" />
-    <TypeScriptCompile Include="Modules\Store\Order\OrderDialog.ts" />
-    <TypeScriptCompile Include="Modules\Store\Order\OrderGrid.ts" />
-    <TypeScriptCompile Include="Imports\ServerTypings\Store.OrderForm.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
     <Content Include="Modules\Store\Shipper\ShipperIndex.cshtml" />
     <TypeScriptCompile Include="Modules\Store\Shipper\ShipperDialog.ts" />
     <TypeScriptCompile Include="Modules\Store\Shipper\ShipperGrid.ts" />
@@ -1835,30 +1791,6 @@
     <TypeScriptCompile Include="Modules\Store\Counterparty\CounterpartyDialog.ts" />
     <TypeScriptCompile Include="Modules\Store\Counterparty\CounterpartyGrid.ts" />
     <TypeScriptCompile Include="Imports\ServerTypings\Store.CounterpartyForm.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Store.OrderProductDetailRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Store.OrderProductDetailService.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <Content Include="Modules\Store\OrderProductDetail\OrderProductDetailIndex.cshtml" />
-    <TypeScriptCompile Include="Modules\Store\OrderProductDetail\OrderProductDetailDialog.ts" />
-    <TypeScriptCompile Include="Modules\Store\OrderProductDetail\OrderProductDetailGrid.ts" />
-    <TypeScriptCompile Include="Imports\ServerTypings\Store.OrderProductDetailForm.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Store.OrderProductRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Store.OrderProductService.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <Content Include="Modules\Store\OrderProduct\OrderProductIndex.cshtml" />
-    <TypeScriptCompile Include="Modules\Store\OrderProduct\OrderProductDialog.ts" />
-    <TypeScriptCompile Include="Modules\Store\OrderProduct\OrderProductGrid.ts" />
-    <TypeScriptCompile Include="Imports\ServerTypings\Store.OrderProductForm.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\Store.WaresRow.ts">
@@ -1914,7 +1846,6 @@
     <Content Include="Modules\Store\WaresMovement\WaresMovementIndex.cshtml" />
     <TypeScriptCompile Include="Modules\Store\WaresMovement\WaresMovementDialog.ts" />
     <TypeScriptCompile Include="Modules\Store\WaresMovement\WaresMovementGrid.ts" />
-    <TypeScriptCompile Include="Scripts\site\Store.Web.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\serenity\Serenity.CoreLib.d.ts" />
     <TypeScriptCompile Include="Imports\ServerTypings\Store.ProductMovementRow.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
@@ -1960,16 +1891,10 @@
     <Compile Include="Imports\ClientTypes\Store.CounterpartyEditorAttribute.cs">
       <DependentUpon>ClientTypes.tt</DependentUpon>
     </Compile>
-    <Compile Include="Imports\ClientTypes\Store.CustomerEditorAttribute.cs">
-      <DependentUpon>ClientTypes.tt</DependentUpon>
-    </Compile>
     <Compile Include="Imports\ClientTypes\Store.EmployeeFormatterAttribute.cs">
       <DependentUpon>ClientTypes.tt</DependentUpon>
     </Compile>
     <Compile Include="Imports\ClientTypes\Store.EmployeeListFormatterAttribute.cs">
-      <DependentUpon>ClientTypes.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Imports\ClientTypes\Store.FreightFormatterAttribute.cs">
       <DependentUpon>ClientTypes.tt</DependentUpon>
     </Compile>
     <Compile Include="Imports\ClientTypes\Store.NotesEditorAttribute.cs">
@@ -1978,10 +1903,10 @@
     <Compile Include="Imports\ClientTypes\Store.OperationTypeEditorAttribute.cs">
       <DependentUpon>ClientTypes.tt</DependentUpon>
     </Compile>
-    <Compile Include="Imports\ClientTypes\Store.OrderDetailsEditorAttribute.cs">
+    <Compile Include="Imports\ClientTypes\Store.PhoneEditorAttribute.cs">
       <DependentUpon>ClientTypes.tt</DependentUpon>
     </Compile>
-    <Compile Include="Imports\ClientTypes\Store.PhoneEditorAttribute.cs">
+    <Compile Include="Imports\ClientTypes\Store.ProductDetailEditorAttribute.cs">
       <DependentUpon>ClientTypes.tt</DependentUpon>
     </Compile>
     <Compile Include="Imports\ClientTypes\Store.ProductDetailsEditorAttribute.cs">
@@ -2100,10 +2025,6 @@
     <Compile Include="Modules\Store\Employee\EmployeeListDecorator.cs" />
     <Compile Include="Modules\Store\Employee\Gender.cs" />
     <Compile Include="Modules\Store\Note\NotesBehavior.cs" />
-    <Compile Include="Modules\Store\Order\OrderListRequest.cs" />
-    <Compile Include="Modules\Store\Order\OrderShipCity.cs" />
-    <Compile Include="Modules\Store\Order\OrderShipCountry.cs" />
-    <Compile Include="Modules\Store\Order\OrderShippingState.cs" />
     <Compile Include="Modules\Store\Product\ProductListRequest.cs" />
     <Compile Include="Modules\Store\Scripts\MultiTenantRowLookupScript.cs" />
     <Compile Include="Modules\Store\Shops\ShopsCity.cs" />
@@ -2203,18 +2124,6 @@
     <Compile Include="Modules\Store\Note\NoteRow.cs" />
     <Compile Include="Modules\Store\Note\NoteRepository.cs" />
     <Compile Include="Modules\Store\Employee\EmployeeRow.cs" />
-    <Compile Include="Modules\Store\OrderDetail\OrderDetailRow.cs" />
-    <Compile Include="Modules\Store\OrderDetail\OrderDetailRepository.cs" />
-    <Compile Include="Modules\Store\OrderDetail\OrderDetailEndpoint.cs" />
-    <Compile Include="Modules\Store\OrderDetail\OrderDetailPage.cs" />
-    <Compile Include="Modules\Store\OrderDetail\OrderDetailColumns.cs" />
-    <Compile Include="Modules\Store\OrderDetail\OrderDetailForm.cs" />
-    <Compile Include="Modules\Store\Order\OrderRow.cs" />
-    <Compile Include="Modules\Store\Order\OrderRepository.cs" />
-    <Compile Include="Modules\Store\Order\OrderEndpoint.cs" />
-    <Compile Include="Modules\Store\Order\OrderPage.cs" />
-    <Compile Include="Modules\Store\Order\OrderColumns.cs" />
-    <Compile Include="Modules\Store\Order\OrderForm.cs" />
     <Compile Include="Modules\Store\Shipper\ShipperRow.cs" />
     <Compile Include="Modules\Store\Shipper\ShipperRepository.cs" />
     <Compile Include="Modules\Store\Shipper\ShipperEndpoint.cs" />
@@ -2229,18 +2138,6 @@
     <Compile Include="Modules\Store\Counterparty\CounterpartyPage.cs" />
     <Compile Include="Modules\Store\Counterparty\CounterpartyColumns.cs" />
     <Compile Include="Modules\Store\Counterparty\CounterpartyForm.cs" />
-    <Compile Include="Modules\Store\OrderProductDetail\OrderProductDetailRow.cs" />
-    <Compile Include="Modules\Store\OrderProductDetail\OrderProductDetailRepository.cs" />
-    <Compile Include="Modules\Store\OrderProductDetail\OrderProductDetailEndpoint.cs" />
-    <Compile Include="Modules\Store\OrderProductDetail\OrderProductDetailPage.cs" />
-    <Compile Include="Modules\Store\OrderProductDetail\OrderProductDetailColumns.cs" />
-    <Compile Include="Modules\Store\OrderProductDetail\OrderProductDetailForm.cs" />
-    <Compile Include="Modules\Store\OrderProduct\OrderProductRow.cs" />
-    <Compile Include="Modules\Store\OrderProduct\OrderProductRepository.cs" />
-    <Compile Include="Modules\Store\OrderProduct\OrderProductEndpoint.cs" />
-    <Compile Include="Modules\Store\OrderProduct\OrderProductPage.cs" />
-    <Compile Include="Modules\Store\OrderProduct\OrderProductColumns.cs" />
-    <Compile Include="Modules\Store\OrderProduct\OrderProductForm.cs" />
     <Compile Include="Modules\Store\Wares\WaresRow.cs" />
     <Compile Include="Modules\Store\Wares\WaresRepository.cs" />
     <Compile Include="Modules\Store\Wares\WaresEndpoint.cs" />
@@ -2428,7 +2325,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>0</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:57700/</IISUrl>
+          <IISUrl>http://localhost:57800/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

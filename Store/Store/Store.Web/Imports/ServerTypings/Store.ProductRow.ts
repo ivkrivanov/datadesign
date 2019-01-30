@@ -1,10 +1,15 @@
 ﻿namespace Store.Store {
     export interface ProductRow {
         ProductID?: number;
+        ProductCode?: string;
+        ProductBarcode?: string;
+        ProductLabel?: string;
         ProductName?: string;
         ProductImage?: string;
+        CounterpartyID?: string;
         SupplierID?: number;
         CategoryID?: number;
+        MeasureID?: number;
         QuantityPerUnit?: string;
         UnitPrice?: number;
         UnitsInStock?: number;
@@ -26,10 +31,17 @@
         SupplierFax?: string;
         SupplierEmail?: string;
         SupplierHomePage?: string;
+        CounterpartyCompanyName?: string;
+        CounterpartyContactName?: string;
+        CounterpartyContactTitle?: string;
+        CounterpartyCity?: string;
+        CounterpartyRegion?: string;
+        CounterpartyCountry?: string;
+        CounterpartyPhone?: string;
         CategoryCategoryName?: string;
         CategoryDescription?: string;
-        CategoryPicture?: number[];
         DetailList?: ProductDetailRow[];
+        MeasureMeasureName?: string;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -49,10 +61,15 @@
 
         export declare const enum Fields {
             ProductID = "ProductID",
+            ProductCode = "ProductCode",
+            ProductBarcode = "ProductBarcode",
+            ProductLabel = "ProductLabel",
             ProductName = "ProductName",
             ProductImage = "ProductImage",
+            CounterpartyID = "CounterpartyID",
             SupplierID = "SupplierID",
             CategoryID = "CategoryID",
+            MeasureID = "MeasureID",
             QuantityPerUnit = "QuantityPerUnit",
             UnitPrice = "UnitPrice",
             UnitsInStock = "UnitsInStock",
@@ -74,10 +91,17 @@
             SupplierFax = "SupplierFax",
             SupplierEmail = "SupplierEmail",
             SupplierHomePage = "SupplierHomePage",
+            CounterpartyCompanyName = "CounterpartyCompanyName",
+            CounterpartyContactName = "CounterpartyContactName",
+            CounterpartyContactTitle = "CounterpartyContactTitle",
+            CounterpartyCity = "CounterpartyCity",
+            CounterpartyRegion = "CounterpartyRegion",
+            CounterpartyCountry = "CounterpartyCountry",
+            CounterpartyPhone = "CounterpartyPhone",
             CategoryCategoryName = "CategoryCategoryName",
             CategoryDescription = "CategoryDescription",
-            CategoryPicture = "CategoryPicture",
             DetailList = "DetailList",
+            MeasureMeasureName = "MeasureMeasureName",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",

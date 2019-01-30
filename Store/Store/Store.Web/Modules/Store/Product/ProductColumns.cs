@@ -9,14 +9,22 @@ namespace Store.Store.Columns
     [BasedOnRow(typeof(Entities.ProductRow), CheckNames = true)]
     public class ProductColumns
     {
-        [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
-        public Int32 ProductID { get; set; }
+        //[EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
+        //public Int32 ProductID { get; set; }
+
+
+        [EditLink, Width(60), SortOrder(4), AlignCenter]
+        public String ProductCode { get; set; }
+        [EditLink, Width(100), AlignCenter]
+        public String ProductLabel { get; set; }
         [EditLink, Width(250)]
         public String ProductName { get; set; }
+
         [QuickFilter]
         public Boolean Discontinued { get; set; }
-        [EditLink(ItemType = "Store.Supplier"), QuickFilter]
-        public String SupplierCompanyName { get; set; }
+
+        //[EditLink(ItemType = "Store.Supplier"), QuickFilter]
+        //public String SupplierCompanyName { get; set; }
 
         [EditLink(ItemType = "Store.Category"), Width(150), QuickFilter, QuickFilterOption("multiple", true)]
         public String CategoryCategoryName { get; set; }

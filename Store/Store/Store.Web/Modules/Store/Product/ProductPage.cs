@@ -10,7 +10,8 @@ namespace Store.Store.Pages
     {
         public ActionResult Index()
         {
-            return View("~/Modules/Store/Product/ProductIndex.cshtml");
+            //return View("~/Modules/Store/Product/ProductIndex.cshtml");
+            return View(MVC.Views.Store.Product.ProductIndex);
         }
     }
 }

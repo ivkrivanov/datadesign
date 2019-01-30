@@ -113,24 +113,9 @@ namespace MVC
                 public const string CounterpartyIndex = "~/Modules/Store/Counterparty/CounterpartyIndex.cshtml";
             }
 
-            public static class Customer
-            {
-                public const string CustomerIndex = "~/Modules/Store/Customer/CustomerIndex.cshtml";
-            }
-
             public static class Employee
             {
                 public const string EmployeeIndex = "~/Modules/Store/Employee/EmployeeIndex.cshtml";
-            }
-
-            public static class Item
-            {
-                public const string ItemIndex = "~/Modules/Store/Item/ItemIndex.cshtml";
-            }
-
-            public static class ItemCategory
-            {
-                public const string ItemCategoryIndex = "~/Modules/Store/ItemCategory/ItemCategoryIndex.cshtml";
             }
 
             public static class Measure
@@ -141,26 +126,6 @@ namespace MVC
             public static class OperationType
             {
                 public const string OperationTypeIndex = "~/Modules/Store/OperationType/OperationTypeIndex.cshtml";
-            }
-
-            public static class Order
-            {
-                public const string OrderIndex = "~/Modules/Store/Order/OrderIndex.cshtml";
-            }
-
-            public static class OrderDetail
-            {
-                public const string OrderDetailIndex = "~/Modules/Store/OrderDetail/OrderDetailIndex.cshtml";
-            }
-
-            public static class OrderProduct
-            {
-                public const string OrderProductIndex = "~/Modules/Store/OrderProduct/OrderProductIndex.cshtml";
-            }
-
-            public static class OrderProductDetail
-            {
-                public const string OrderProductDetailIndex = "~/Modules/Store/OrderProductDetail/OrderProductDetailIndex.cshtml";
             }
 
             public static class Product

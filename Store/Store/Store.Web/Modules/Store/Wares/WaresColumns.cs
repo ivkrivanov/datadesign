@@ -17,6 +17,7 @@ namespace Store.Store.Columns
         public String WaresLabel { get; set; }
         [EditLink, Width(200)]
         public String WaresName { get; set; }
+
         [QuickFilter]
         public Boolean Discontinued { get; set; }
 

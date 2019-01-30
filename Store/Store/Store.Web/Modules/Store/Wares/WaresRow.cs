@@ -69,29 +69,6 @@ namespace Store.Store.Entities
             set { Fields.SupplierID[this] = value; }
         }
 
-        [DisplayName("Counterparty ID"), NotNull, ForeignKey(typeof(CounterpartyRow)), LeftJoin("c"), CounterpartyEditor]
-        public String CounterpartyID
-        {
-            get { return Fields.CounterpartyID[this]; }
-            set { Fields.CounterpartyID[this] = value; }
-        }
-
-        [DisplayName("Category ID"), ForeignKey(typeof(CategoryRow)), LeftJoin("cat"), LookupInclude] 
-        [LookupEditor(typeof(CategoryRow), FilterField = "Type", FilterValue = 100, InplaceAdd = true)]
-        public Int32? CategoryID
-        {
-            get { return Fields.CategoryID[this]; }
-            set { Fields.CategoryID[this] = value; }
-        }
-
-        [DisplayName("Measure Id"), ForeignKey(typeof(MeasureRow)), LeftJoin("meas"), LookupInclude]
-        [LookupEditor(typeof(MeasureRow), InplaceAdd = true)]
-        public Int32? MeasureID
-        {
-            get { return Fields.MeasureID[this]; }
-            set { Fields.MeasureID[this] = value; }
-        }
-
         [DisplayName("Quantity Per Unit")]
         public Int32? QuantityPerUnit
         {
@@ -121,6 +98,13 @@ namespace Store.Store.Entities
         }
 
         #region Counterparty
+
+        [DisplayName("Counterparty ID"), NotNull, ForeignKey(typeof(CounterpartyRow)), LeftJoin("c"), CounterpartyEditor]
+        public String CounterpartyID
+        {
+            get { return Fields.CounterpartyID[this]; }
+            set { Fields.CounterpartyID[this] = value; }
+        }
 
         [Origin("c")]
         public String CounterpartyContactName
@@ -277,6 +261,14 @@ namespace Store.Store.Entities
         //    set { Fields.CategoryCode[this] = value; }
         //}
 
+        [DisplayName("Category ID"), ForeignKey(typeof(CategoryRow)), LeftJoin("cat"), LookupInclude]
+        [LookupEditor(typeof(CategoryRow), FilterField = "Type", FilterValue = 100, InplaceAdd = true)]
+        public Int32? CategoryID
+        {
+            get { return Fields.CategoryID[this]; }
+            set { Fields.CategoryID[this] = value; }
+        }
+
         [Origin("cat"), DisplayName("Type"), LookupFiltering("Store.WaresCategory")]
         public Int16? Type
         {
@@ -308,6 +300,14 @@ namespace Store.Store.Entities
         #endregion Category
 
         #region Measure
+
+        [DisplayName("Measure Id"), ForeignKey(typeof(MeasureRow)), LeftJoin("meas"), LookupInclude]
+        [LookupEditor(typeof(MeasureRow), InplaceAdd = true)]
+        public Int32? MeasureID
+        {
+            get { return Fields.MeasureID[this]; }
+            set { Fields.MeasureID[this] = value; }
+        }
 
         [Origin("meas")]
         public String MeasureMeasureName

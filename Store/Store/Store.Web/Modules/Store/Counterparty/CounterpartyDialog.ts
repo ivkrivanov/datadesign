@@ -12,13 +12,13 @@ namespace Store.Store {
 
         protected form = new CounterpartyForm(this.idPrefix);
 
-        private ordersGrid: CounterpartyOrderGrid;
+        private ordersGrid: CounterpartyProductMovementGrid;
         private loadedState: string;
 
         constructor() {
             super();
 
-            this.ordersGrid = new CounterpartyOrderGrid(this.byId('OrdersGrid'));
+            this.ordersGrid = new CounterpartyProductMovementGrid(this.byId('ProductMovementGrid'));
             // force order dialog to open in Dialog mode instead of Panel mode
             // which is set as default on OrderDialog with @panelAttribute
             this.ordersGrid.openDialogsAsPanel = false;

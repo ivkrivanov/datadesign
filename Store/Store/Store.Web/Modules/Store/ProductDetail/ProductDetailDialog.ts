@@ -21,9 +21,20 @@ namespace Store.Store {
                 }
             });
 
-
-
-
+            this.form.Discount.addValidationRule(this.uniqueName, e => {
+                var price = this.form.PlanPrice.value;
+                var quantity = this.form.Quantity.value;
+                var discount = this.form.Discount.value;
+                if (price != null && quantity != null && discount != null &&
+                    discount > 0 && discount >= price * quantity) {
+                    return "Discount can't be higher than total price!";
+                }
+            });
+        }
+        protected updateInterface() {
+            super.updateInterface();
+                //this.toolbar.findButton('apply-changes-button').hide();
+                //this.toolbar.findButton('save-and-close-button').hide();
         }
     }
 }

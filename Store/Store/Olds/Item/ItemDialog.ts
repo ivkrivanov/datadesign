@@ -10,14 +10,7 @@ namespace Store.Store {
         protected getService() { return ItemService.baseUrl; }
         protected getLanguages(): string[][] { return LanguageList.getValue(); }
 
-        protected form: ItemForm;
+        protected form = new ItemForm(this.idPrefix);
 
-        constructor() {
-            super();
-
-            this.form = new ItemForm(this.idPrefix);
-
-
-        }
     }
 }

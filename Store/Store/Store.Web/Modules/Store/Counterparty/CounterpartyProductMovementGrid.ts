@@ -1,12 +1,12 @@
-﻿/// <reference path="../Order/OrderGrid.ts" />
+﻿/// <reference path="../ProductMovement/ProductMovementGrid.ts" />
 
 namespace Store.Store {
 
-    import fld = OrderRow.Fields;
+    import fld = ProductMovementRow.Fields;
 
     @Serenity.Decorators.registerClass()
-    export class CounterpartyOrderGrid extends OrderGrid {
-        protected getDialogType() { return CounterpartyOrderDialog; }
+    export class CounterpartyProductMovementGrid extends ProductMovementGrid {
+        protected getDialogType() { return CounterpartyProductMovementDialog; }
 
         constructor(container: JQuery) {
             super(container);

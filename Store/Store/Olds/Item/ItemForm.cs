@@ -10,7 +10,7 @@ namespace Store.Store.Forms
     public class ItemForm
     {
         [Category("General")]
-        public Int32 CategoryID { get; set; }
+        public Int32 ItemCategoryID { get; set; }
         public String ItemCode { get; set; }
         public String ItemBarcode { get; set; }
         public String ItemLabel { get; set; }

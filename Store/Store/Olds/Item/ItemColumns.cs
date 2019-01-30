@@ -21,12 +21,10 @@ namespace Store.Store.Columns
         public String ItemName { get; set; }
         [QuickFilter]
         public Boolean Discontinued { get; set; }
-
-        public String CategoryType { get; set; }
         //public String ItemImage { get; set; }
         //public String SupplierCompanyName { get; set; }
-        [EditLink(ItemType = "Store.Category"), Width(150), QuickFilter, QuickFilterOption("multiple", true)]
-        public String CategoryID { get; set; }
+        [EditLink(ItemType = "Store.ItemCategory"), Width(150), QuickFilter, QuickFilterOption("multiple", true)]
+        public String ItemCategoryItemCategoryName { get; set; }
         [Width(60)]
         public String MeasureMeasureName { get; set; }
         [Width(80), AlignRight]

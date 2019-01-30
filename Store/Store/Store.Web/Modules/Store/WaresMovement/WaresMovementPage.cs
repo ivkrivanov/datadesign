@@ -11,7 +11,8 @@ namespace Store.Store.Pages
     {
         public ActionResult Index()
         {
-            return View("~/Modules/Store/WaresMovement/WaresMovementIndex.cshtml");
+            //return View("~/Modules/Store/WaresMovement/WaresMovementIndex.cshtml");
+            return View(MVC.Views.Store.WaresMovement.WaresMovementIndex);
         }
     }
 }

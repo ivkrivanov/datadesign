@@ -1727,542 +1727,6 @@ declare namespace Store.Store {
 declare namespace Store.Store {
 }
 declare namespace Store.Store {
-    interface OrderDetailForm {
-        ProductID: Serenity.LookupEditor;
-        UnitPrice: Serenity.DecimalEditor;
-        Quantity: Serenity.IntegerEditor;
-        Discount: Serenity.DecimalEditor;
-    }
-    class OrderDetailForm extends Serenity.PrefixedContext {
-        static formKey: string;
-        private static init;
-        constructor(prefix: string);
-    }
-}
-declare namespace Store.Store {
-    interface OrderDetailRow {
-        DetailID?: number;
-        OrderID?: number;
-        ProductID?: number;
-        UnitPrice?: number;
-        Quantity?: number;
-        Discount?: number;
-        IsActive?: number;
-        TenantId?: number;
-        OrderCounterpartyID?: string;
-        OrderEmployeeID?: number;
-        OrderDate?: string;
-        OrderShippedDate?: string;
-        OrderShipVia?: number;
-        OrderShipCity?: string;
-        OrderShipCountry?: string;
-        ProductName?: string;
-        ProductDiscontinued?: boolean;
-        ProductSupplierID?: number;
-        ProductQuantityPerUnit?: string;
-        ProductUnitPrice?: number;
-        LineTotal?: number;
-        InsertUserId?: number;
-        InsertDate?: string;
-        UpdateUserId?: number;
-        UpdateDate?: string;
-    }
-    namespace OrderDetailRow {
-        const idProperty = "DetailID";
-        const isActiveProperty = "IsActive";
-        const localTextPrefix = "Store.OrderDetail";
-        const enum Fields {
-            DetailID = "DetailID",
-            OrderID = "OrderID",
-            ProductID = "ProductID",
-            UnitPrice = "UnitPrice",
-            Quantity = "Quantity",
-            Discount = "Discount",
-            IsActive = "IsActive",
-            TenantId = "TenantId",
-            OrderCounterpartyID = "OrderCounterpartyID",
-            OrderEmployeeID = "OrderEmployeeID",
-            OrderDate = "OrderDate",
-            OrderShippedDate = "OrderShippedDate",
-            OrderShipVia = "OrderShipVia",
-            OrderShipCity = "OrderShipCity",
-            OrderShipCountry = "OrderShipCountry",
-            ProductName = "ProductName",
-            ProductDiscontinued = "ProductDiscontinued",
-            ProductSupplierID = "ProductSupplierID",
-            ProductQuantityPerUnit = "ProductQuantityPerUnit",
-            ProductUnitPrice = "ProductUnitPrice",
-            LineTotal = "LineTotal",
-            InsertUserId = "InsertUserId",
-            InsertDate = "InsertDate",
-            UpdateUserId = "UpdateUserId",
-            UpdateDate = "UpdateDate"
-        }
-    }
-}
-declare namespace Store.Store {
-    namespace OrderDetailService {
-        const baseUrl = "Store/OrderDetail";
-        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<OrderDetailRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<OrderDetailRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        const enum Methods {
-            Retrieve = "Store/OrderDetail/Retrieve",
-            List = "Store/OrderDetail/List"
-        }
-    }
-}
-declare namespace Store.Store {
-    interface OrderForm {
-        CounterpartyID: CounterpartyEditor;
-        OrderDate: Serenity.DateEditor;
-        RequiredDate: Serenity.DateEditor;
-        EmployeeID: Serenity.LookupEditor;
-        DetailList: OrderDetailsEditor;
-        ShippedDate: Serenity.DateEditor;
-        ShipVia: Serenity.LookupEditor;
-        Freight: Serenity.DecimalEditor;
-        ShipName: Serenity.StringEditor;
-        ShipAddress: Serenity.StringEditor;
-        ShipCity: Serenity.StringEditor;
-        ShipRegion: Serenity.StringEditor;
-        ShipPostalCode: Serenity.StringEditor;
-        ShipCountry: Serenity.StringEditor;
-    }
-    class OrderForm extends Serenity.PrefixedContext {
-        static formKey: string;
-        private static init;
-        constructor(prefix: string);
-    }
-}
-declare namespace Store.Store {
-    interface OrderListRequest extends Serenity.ListRequest {
-        ProductID?: number;
-    }
-}
-declare namespace Store.Store {
-}
-declare namespace Store.Store {
-}
-declare namespace Store.Store {
-    interface OrderProductDetailForm {
-        OrderProductsId: Serenity.IntegerEditor;
-        ProductId: Serenity.IntegerEditor;
-        UnitPrice: Serenity.DecimalEditor;
-        Quantity: Serenity.IntegerEditor;
-        Discount: Serenity.DecimalEditor;
-        InsertDate: Serenity.DateEditor;
-        InsertUserId: Serenity.IntegerEditor;
-        UpdateDate: Serenity.DateEditor;
-        UpdateUserId: Serenity.IntegerEditor;
-        IsActive: Serenity.IntegerEditor;
-        TenantId: Serenity.IntegerEditor;
-    }
-    class OrderProductDetailForm extends Serenity.PrefixedContext {
-        static formKey: string;
-        private static init;
-        constructor(prefix: string);
-    }
-}
-declare namespace Store.Store {
-    interface OrderProductDetailRow {
-        DetailId?: number;
-        OrderProductsId?: number;
-        ProductId?: number;
-        UnitPrice?: number;
-        Quantity?: number;
-        Discount?: number;
-        InsertDate?: string;
-        InsertUserId?: number;
-        UpdateDate?: string;
-        UpdateUserId?: number;
-        IsActive?: number;
-        TenantId?: number;
-        ProductProductName?: string;
-        ProductProductImage?: string;
-        ProductSupplierId?: number;
-        ProductCategoryId?: number;
-        ProductQuantityPerUnit?: string;
-        ProductUnitPrice?: number;
-        ProductUnitsInStock?: number;
-        ProductUnitsOnOrder?: number;
-        ProductReorderLevel?: number;
-        ProductDiscontinued?: boolean;
-        ProductInsertDate?: string;
-        ProductInsertUserId?: number;
-        ProductUpdateDate?: string;
-        ProductUpdateUserId?: number;
-        ProductIsActive?: number;
-        ProductTenantId?: number;
-    }
-    namespace OrderProductDetailRow {
-        const idProperty = "DetailId";
-        const localTextPrefix = "Store.OrderProductDetail";
-        const enum Fields {
-            DetailId = "DetailId",
-            OrderProductsId = "OrderProductsId",
-            ProductId = "ProductId",
-            UnitPrice = "UnitPrice",
-            Quantity = "Quantity",
-            Discount = "Discount",
-            InsertDate = "InsertDate",
-            InsertUserId = "InsertUserId",
-            UpdateDate = "UpdateDate",
-            UpdateUserId = "UpdateUserId",
-            IsActive = "IsActive",
-            TenantId = "TenantId",
-            ProductProductName = "ProductProductName",
-            ProductProductImage = "ProductProductImage",
-            ProductSupplierId = "ProductSupplierId",
-            ProductCategoryId = "ProductCategoryId",
-            ProductQuantityPerUnit = "ProductQuantityPerUnit",
-            ProductUnitPrice = "ProductUnitPrice",
-            ProductUnitsInStock = "ProductUnitsInStock",
-            ProductUnitsOnOrder = "ProductUnitsOnOrder",
-            ProductReorderLevel = "ProductReorderLevel",
-            ProductDiscontinued = "ProductDiscontinued",
-            ProductInsertDate = "ProductInsertDate",
-            ProductInsertUserId = "ProductInsertUserId",
-            ProductUpdateDate = "ProductUpdateDate",
-            ProductUpdateUserId = "ProductUpdateUserId",
-            ProductIsActive = "ProductIsActive",
-            ProductTenantId = "ProductTenantId"
-        }
-    }
-}
-declare namespace Store.Store {
-    namespace OrderProductDetailService {
-        const baseUrl = "Store/OrderProductDetail";
-        function Create(request: Serenity.SaveRequest<OrderProductDetailRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Update(request: Serenity.SaveRequest<OrderProductDetailRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<OrderProductDetailRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<OrderProductDetailRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        const enum Methods {
-            Create = "Store/OrderProductDetail/Create",
-            Update = "Store/OrderProductDetail/Update",
-            Delete = "Store/OrderProductDetail/Delete",
-            Retrieve = "Store/OrderProductDetail/Retrieve",
-            List = "Store/OrderProductDetail/List"
-        }
-    }
-}
-declare namespace Store.Store {
-    interface OrderProductForm {
-        OperationTypeId: Serenity.IntegerEditor;
-        CounterpartyId: Serenity.StringEditor;
-        EmployeeId: Serenity.IntegerEditor;
-        OrderDate: Serenity.DateEditor;
-        RequiredDate: Serenity.DateEditor;
-        ShippedDate: Serenity.DateEditor;
-        ShipVia: Serenity.IntegerEditor;
-        Freight: Serenity.DecimalEditor;
-        ShipName: Serenity.StringEditor;
-        ShipAddress: Serenity.StringEditor;
-        ShipCity: Serenity.StringEditor;
-        ShipRegion: Serenity.StringEditor;
-        ShipPostalCode: Serenity.StringEditor;
-        ShipCountry: Serenity.StringEditor;
-        InsertDate: Serenity.DateEditor;
-        InsertUserId: Serenity.IntegerEditor;
-        UpdateDate: Serenity.DateEditor;
-        UpdateUserId: Serenity.IntegerEditor;
-        IsActive: Serenity.IntegerEditor;
-        TenantId: Serenity.IntegerEditor;
-    }
-    class OrderProductForm extends Serenity.PrefixedContext {
-        static formKey: string;
-        private static init;
-        constructor(prefix: string);
-    }
-}
-declare namespace Store.Store {
-    interface OrderProductRow {
-        OrderProductId?: number;
-        OperationTypeId?: number;
-        CounterpartyId?: string;
-        EmployeeId?: number;
-        OrderDate?: string;
-        RequiredDate?: string;
-        ShippedDate?: string;
-        ShipVia?: number;
-        Freight?: number;
-        ShipName?: string;
-        ShipAddress?: string;
-        ShipCity?: string;
-        ShipRegion?: string;
-        ShipPostalCode?: string;
-        ShipCountry?: string;
-        InsertDate?: string;
-        InsertUserId?: number;
-        UpdateDate?: string;
-        UpdateUserId?: number;
-        IsActive?: number;
-        TenantId?: number;
-        OperationTypeOpCode?: number;
-        OperationTypeOperation?: string;
-        OperationTypeInsertDate?: string;
-        OperationTypeInsertUserId?: number;
-        OperationTypeUpdateDate?: string;
-        OperationTypeUpdateUserId?: number;
-        OperationTypeIsActive?: number;
-        OperationTypeTenantId?: number;
-        CounterpartyId1?: number;
-        CounterpartyCompanyName?: string;
-        CounterpartyContactName?: string;
-        CounterpartyContactTitle?: string;
-        CounterpartyAddress?: string;
-        CounterpartyCity?: string;
-        CounterpartyRegion?: string;
-        CounterpartyPostalCode?: string;
-        CounterpartyCountry?: string;
-        CounterpartyPhone?: string;
-        CounterpartyInsertDate?: string;
-        CounterpartyInsertUserId?: number;
-        CounterpartyUpdateDate?: string;
-        CounterpartyUpdateUserId?: number;
-        CounterpartyIsActive?: number;
-        CounterpartyTenantId?: number;
-        EmployeeLastName?: string;
-        EmployeeFirstName?: string;
-        EmployeeTitle?: string;
-        EmployeeTitleOfCourtesy?: string;
-        EmployeeBirthDate?: string;
-        EmployeeHireDate?: string;
-        EmployeeAddress?: string;
-        EmployeeCity?: string;
-        EmployeeRegion?: string;
-        EmployeePostalCode?: string;
-        EmployeeCountry?: string;
-        EmployeeHomePhone?: string;
-        EmployeeExtension?: string;
-        EmployeePhoto?: number[];
-        EmployeeNotes?: string;
-        EmployeeReportsTo?: number;
-        EmployeePhotoPath?: string;
-        EmployeeInsertDate?: string;
-        EmployeeInsertUserId?: number;
-        EmployeeUpdateDate?: string;
-        EmployeeUpdateUserId?: number;
-        EmployeeIsActive?: number;
-        EmployeeTenantId?: number;
-        ShipViaCompanyName?: string;
-        ShipViaPhone?: string;
-        ShipViaInsertDate?: string;
-        ShipViaInsertUserId?: number;
-        ShipViaUpdateDate?: string;
-        ShipViaUpdateUserId?: number;
-        ShipViaIsActive?: number;
-        ShipViaTenantId?: number;
-    }
-    namespace OrderProductRow {
-        const idProperty = "OrderProductId";
-        const nameProperty = "CounterpartyId";
-        const localTextPrefix = "Store.OrderProduct";
-        const enum Fields {
-            OrderProductId = "OrderProductId",
-            OperationTypeId = "OperationTypeId",
-            CounterpartyId = "CounterpartyId",
-            EmployeeId = "EmployeeId",
-            OrderDate = "OrderDate",
-            RequiredDate = "RequiredDate",
-            ShippedDate = "ShippedDate",
-            ShipVia = "ShipVia",
-            Freight = "Freight",
-            ShipName = "ShipName",
-            ShipAddress = "ShipAddress",
-            ShipCity = "ShipCity",
-            ShipRegion = "ShipRegion",
-            ShipPostalCode = "ShipPostalCode",
-            ShipCountry = "ShipCountry",
-            InsertDate = "InsertDate",
-            InsertUserId = "InsertUserId",
-            UpdateDate = "UpdateDate",
-            UpdateUserId = "UpdateUserId",
-            IsActive = "IsActive",
-            TenantId = "TenantId",
-            OperationTypeOpCode = "OperationTypeOpCode",
-            OperationTypeOperation = "OperationTypeOperation",
-            OperationTypeInsertDate = "OperationTypeInsertDate",
-            OperationTypeInsertUserId = "OperationTypeInsertUserId",
-            OperationTypeUpdateDate = "OperationTypeUpdateDate",
-            OperationTypeUpdateUserId = "OperationTypeUpdateUserId",
-            OperationTypeIsActive = "OperationTypeIsActive",
-            OperationTypeTenantId = "OperationTypeTenantId",
-            CounterpartyId1 = "CounterpartyId1",
-            CounterpartyCompanyName = "CounterpartyCompanyName",
-            CounterpartyContactName = "CounterpartyContactName",
-            CounterpartyContactTitle = "CounterpartyContactTitle",
-            CounterpartyAddress = "CounterpartyAddress",
-            CounterpartyCity = "CounterpartyCity",
-            CounterpartyRegion = "CounterpartyRegion",
-            CounterpartyPostalCode = "CounterpartyPostalCode",
-            CounterpartyCountry = "CounterpartyCountry",
-            CounterpartyPhone = "CounterpartyPhone",
-            CounterpartyInsertDate = "CounterpartyInsertDate",
-            CounterpartyInsertUserId = "CounterpartyInsertUserId",
-            CounterpartyUpdateDate = "CounterpartyUpdateDate",
-            CounterpartyUpdateUserId = "CounterpartyUpdateUserId",
-            CounterpartyIsActive = "CounterpartyIsActive",
-            CounterpartyTenantId = "CounterpartyTenantId",
-            EmployeeLastName = "EmployeeLastName",
-            EmployeeFirstName = "EmployeeFirstName",
-            EmployeeTitle = "EmployeeTitle",
-            EmployeeTitleOfCourtesy = "EmployeeTitleOfCourtesy",
-            EmployeeBirthDate = "EmployeeBirthDate",
-            EmployeeHireDate = "EmployeeHireDate",
-            EmployeeAddress = "EmployeeAddress",
-            EmployeeCity = "EmployeeCity",
-            EmployeeRegion = "EmployeeRegion",
-            EmployeePostalCode = "EmployeePostalCode",
-            EmployeeCountry = "EmployeeCountry",
-            EmployeeHomePhone = "EmployeeHomePhone",
-            EmployeeExtension = "EmployeeExtension",
-            EmployeePhoto = "EmployeePhoto",
-            EmployeeNotes = "EmployeeNotes",
-            EmployeeReportsTo = "EmployeeReportsTo",
-            EmployeePhotoPath = "EmployeePhotoPath",
-            EmployeeInsertDate = "EmployeeInsertDate",
-            EmployeeInsertUserId = "EmployeeInsertUserId",
-            EmployeeUpdateDate = "EmployeeUpdateDate",
-            EmployeeUpdateUserId = "EmployeeUpdateUserId",
-            EmployeeIsActive = "EmployeeIsActive",
-            EmployeeTenantId = "EmployeeTenantId",
-            ShipViaCompanyName = "ShipViaCompanyName",
-            ShipViaPhone = "ShipViaPhone",
-            ShipViaInsertDate = "ShipViaInsertDate",
-            ShipViaInsertUserId = "ShipViaInsertUserId",
-            ShipViaUpdateDate = "ShipViaUpdateDate",
-            ShipViaUpdateUserId = "ShipViaUpdateUserId",
-            ShipViaIsActive = "ShipViaIsActive",
-            ShipViaTenantId = "ShipViaTenantId"
-        }
-    }
-}
-declare namespace Store.Store {
-    namespace OrderProductService {
-        const baseUrl = "Store/OrderProduct";
-        function Create(request: Serenity.SaveRequest<OrderProductRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Update(request: Serenity.SaveRequest<OrderProductRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<OrderProductRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<OrderProductRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        const enum Methods {
-            Create = "Store/OrderProduct/Create",
-            Update = "Store/OrderProduct/Update",
-            Delete = "Store/OrderProduct/Delete",
-            Retrieve = "Store/OrderProduct/Retrieve",
-            List = "Store/OrderProduct/List"
-        }
-    }
-}
-declare namespace Store.Store {
-    interface OrderRow {
-        OrderID?: number;
-        CounterpartyID?: string;
-        EmployeeID?: number;
-        OrderDate?: string;
-        RequiredDate?: string;
-        ShippedDate?: string;
-        ShipVia?: number;
-        Freight?: number;
-        ShipName?: string;
-        ShipAddress?: string;
-        ShipCity?: string;
-        ShipRegion?: string;
-        ShipPostalCode?: string;
-        ShipCountry?: string;
-        IsActive?: number;
-        TenantId?: number;
-        CounterpartyCompanyName?: string;
-        CounterpartyContactName?: string;
-        CounterpartyContactTitle?: string;
-        CounterpartyCity?: string;
-        CounterpartyRegion?: string;
-        CounterpartyCountry?: string;
-        CounterpartyPhone?: string;
-        EmployeeFullName?: string;
-        EmployeeGender?: Gender;
-        EmployeeReportsToFullName?: string;
-        ShipViaCompanyName?: string;
-        ShipViaPhone?: string;
-        ShippingState?: OrderShippingState;
-        DetailList?: OrderDetailRow[];
-        InsertUserId?: number;
-        InsertDate?: string;
-        UpdateUserId?: number;
-        UpdateDate?: string;
-    }
-    namespace OrderRow {
-        const idProperty = "OrderID";
-        const isActiveProperty = "IsActive";
-        const nameProperty = "CounterpartyID";
-        const localTextPrefix = "Store.Order";
-        const enum Fields {
-            OrderID = "OrderID",
-            CounterpartyID = "CounterpartyID",
-            EmployeeID = "EmployeeID",
-            OrderDate = "OrderDate",
-            RequiredDate = "RequiredDate",
-            ShippedDate = "ShippedDate",
-            ShipVia = "ShipVia",
-            Freight = "Freight",
-            ShipName = "ShipName",
-            ShipAddress = "ShipAddress",
-            ShipCity = "ShipCity",
-            ShipRegion = "ShipRegion",
-            ShipPostalCode = "ShipPostalCode",
-            ShipCountry = "ShipCountry",
-            IsActive = "IsActive",
-            TenantId = "TenantId",
-            CounterpartyCompanyName = "CounterpartyCompanyName",
-            CounterpartyContactName = "CounterpartyContactName",
-            CounterpartyContactTitle = "CounterpartyContactTitle",
-            CounterpartyCity = "CounterpartyCity",
-            CounterpartyRegion = "CounterpartyRegion",
-            CounterpartyCountry = "CounterpartyCountry",
-            CounterpartyPhone = "CounterpartyPhone",
-            EmployeeFullName = "EmployeeFullName",
-            EmployeeGender = "EmployeeGender",
-            EmployeeReportsToFullName = "EmployeeReportsToFullName",
-            ShipViaCompanyName = "ShipViaCompanyName",
-            ShipViaPhone = "ShipViaPhone",
-            ShippingState = "ShippingState",
-            DetailList = "DetailList",
-            InsertUserId = "InsertUserId",
-            InsertDate = "InsertDate",
-            UpdateUserId = "UpdateUserId",
-            UpdateDate = "UpdateDate"
-        }
-    }
-}
-declare namespace Store.Store {
-    namespace OrderService {
-        const baseUrl = "Store/Order";
-        function Create(request: Serenity.SaveRequest<OrderRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Update(request: Serenity.SaveRequest<OrderRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<OrderRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function List(request: OrderListRequest, onSuccess?: (response: Serenity.ListResponse<OrderRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        const enum Methods {
-            Create = "Store/Order/Create",
-            Update = "Store/Order/Update",
-            Delete = "Store/Order/Delete",
-            Retrieve = "Store/Order/Retrieve",
-            List = "Store/Order/List"
-        }
-    }
-}
-declare namespace Store.Store {
-    enum OrderShippingState {
-        NotShipped = 0,
-        Shipped = 1
-    }
-}
-declare namespace Store.Store {
-}
-declare namespace Store.Store {
-}
-declare namespace Store.Store {
     interface ProductDetailForm {
         WaresID: Serenity.LookupEditor;
         Quantity: Serenity.DecimalEditor;
@@ -2673,10 +2137,15 @@ declare namespace Store.Store {
 declare namespace Store.Store {
     interface ProductRow {
         ProductID?: number;
+        ProductCode?: string;
+        ProductBarcode?: string;
+        ProductLabel?: string;
         ProductName?: string;
         ProductImage?: string;
+        CounterpartyID?: string;
         SupplierID?: number;
         CategoryID?: number;
+        MeasureID?: number;
         QuantityPerUnit?: string;
         UnitPrice?: number;
         UnitsInStock?: number;
@@ -2698,10 +2167,17 @@ declare namespace Store.Store {
         SupplierFax?: string;
         SupplierEmail?: string;
         SupplierHomePage?: string;
+        CounterpartyCompanyName?: string;
+        CounterpartyContactName?: string;
+        CounterpartyContactTitle?: string;
+        CounterpartyCity?: string;
+        CounterpartyRegion?: string;
+        CounterpartyCountry?: string;
+        CounterpartyPhone?: string;
         CategoryCategoryName?: string;
         CategoryDescription?: string;
-        CategoryPicture?: number[];
         DetailList?: ProductDetailRow[];
+        MeasureMeasureName?: string;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -2716,10 +2192,15 @@ declare namespace Store.Store {
         function getLookup(): Q.Lookup<ProductRow>;
         const enum Fields {
             ProductID = "ProductID",
+            ProductCode = "ProductCode",
+            ProductBarcode = "ProductBarcode",
+            ProductLabel = "ProductLabel",
             ProductName = "ProductName",
             ProductImage = "ProductImage",
+            CounterpartyID = "CounterpartyID",
             SupplierID = "SupplierID",
             CategoryID = "CategoryID",
+            MeasureID = "MeasureID",
             QuantityPerUnit = "QuantityPerUnit",
             UnitPrice = "UnitPrice",
             UnitsInStock = "UnitsInStock",
@@ -2741,10 +2222,17 @@ declare namespace Store.Store {
             SupplierFax = "SupplierFax",
             SupplierEmail = "SupplierEmail",
             SupplierHomePage = "SupplierHomePage",
+            CounterpartyCompanyName = "CounterpartyCompanyName",
+            CounterpartyContactName = "CounterpartyContactName",
+            CounterpartyContactTitle = "CounterpartyContactTitle",
+            CounterpartyCity = "CounterpartyCity",
+            CounterpartyRegion = "CounterpartyRegion",
+            CounterpartyCountry = "CounterpartyCountry",
+            CounterpartyPhone = "CounterpartyPhone",
             CategoryCategoryName = "CategoryCategoryName",
             CategoryDescription = "CategoryDescription",
-            CategoryPicture = "CategoryPicture",
             DetailList = "DetailList",
+            MeasureMeasureName = "MeasureMeasureName",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",
@@ -4059,28 +3547,28 @@ declare namespace Store.Store {
     }
 }
 declare namespace Store.Store {
-    class OrderDialog extends Serenity.EntityDialog<OrderRow, any> {
+    class ProductMovementDialog extends Serenity.EntityDialog<ProductMovementRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getNameProperty(): string;
         protected getService(): string;
-        protected form: OrderForm;
+        protected form: ProductMovementForm;
         constructor();
         getToolbarButtons(): Serenity.ToolButton[];
         protected updateInterface(): void;
     }
 }
 declare namespace Store.Store {
-    class CounterpartyOrderDialog extends OrderDialog {
+    class CounterpartyProductMovementDialog extends ProductMovementDialog {
         constructor();
         UpdateInterface(): void;
     }
 }
 declare namespace Store.Store {
-    class OrderGrid extends Serenity.EntityGrid<OrderRow, any> {
+    class ProductMovementGrid extends Serenity.EntityGrid<ProductMovementRow, any> {
         protected getColumnsKey(): string;
-        protected getDialogType(): typeof OrderDialog;
+        protected getDialogType(): typeof ProductMovementDialog;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;
@@ -4096,8 +3584,8 @@ declare namespace Store.Store {
     }
 }
 declare namespace Store.Store {
-    class CounterpartyOrderGrid extends OrderGrid {
-        protected getDialogType(): typeof CounterpartyOrderDialog;
+    class CounterpartyProductMovementGrid extends ProductMovementGrid {
+        protected getDialogType(): typeof CounterpartyProductMovementDialog;
         constructor(container: JQuery);
         protected getColumns(): Slick.Column[];
         protected initEntityDialog(itemType: any, dialog: any): void;
@@ -4106,60 +3594,6 @@ declare namespace Store.Store {
         protected getGridCanLoad(): boolean;
         private _counterpartyID;
         counterpartyID: string;
-    }
-}
-declare namespace Store.Store {
-    class CustomerDialog extends Serenity.EntityDialog<CustomerRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: CustomerForm;
-        private ordersGrid;
-        private loadedState;
-        constructor();
-        getSaveState(): string;
-        loadResponse(data: any): void;
-        loadEntity(entity: CustomerRow): void;
-        onSaveSuccess(response: any): void;
-    }
-}
-declare namespace Store.Store {
-    class CustomerEditor extends Serenity.LookupEditorBase<Serenity.LookupEditorOptions, CustomerRow> {
-        constructor(hidden: JQuery);
-        protected getLookupKey(): string;
-        protected getItemText(item: any, lookup: any): string;
-    }
-}
-declare namespace Store.Store {
-    class CustomerGrid extends Serenity.EntityGrid<CustomerRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof CustomerDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-        getButtons(): Serenity.ToolButton[];
-    }
-}
-declare namespace Store.Store {
-    class CustomerOrderDialog extends OrderDialog {
-        constructor();
-        updateInterface(): void;
-    }
-}
-declare namespace Store.Store {
-    class CustomerOrdersGrid extends OrderGrid {
-        protected getDialogType(): typeof CustomerOrderDialog;
-        constructor(container: JQuery);
-        protected getColumns(): Slick.Column[];
-        protected initEntityDialog(itemType: any, dialog: any): void;
-        protected addButtonClick(): void;
-        protected getInitialTitle(): any;
-        protected getGridCanLoad(): boolean;
-        private _customerID;
-        customerID: string;
     }
 }
 declare namespace Store.Store {
@@ -4192,60 +3626,6 @@ declare namespace Store.Store {
 declare namespace Store.Store {
     class EmployeeListFormatter implements Slick.Formatter {
         format(ctx: Slick.FormatterContext): string;
-    }
-}
-declare namespace Store.Store {
-    class ItemDialog extends Serenity.EntityDialog<ItemRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected getLanguages(): string[][];
-        protected form: ItemForm;
-    }
-}
-declare namespace Store.Store {
-    class ItemGrid extends Serenity.EntityGrid<ItemRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof ItemDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        private pendingChanges;
-        constructor(container: JQuery);
-        protected getButtons(): Serenity.ToolButton[];
-        protected onViewProcessData(response: any): Serenity.ListResponse<ItemRow>;
-        private numericInputFormatter;
-        private stringInputFormatter;
-        private selectFormatter;
-        private getEffectiveValue;
-        protected getColumns(): Slick.Column[];
-        private inputsChange;
-        private setSaveButtonState;
-        private saveClick;
-        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
-    }
-}
-declare namespace Store.Store {
-    class ItemCategoryDialog extends Serenity.EntityDialog<ItemCategoryRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: ItemCategoryForm;
-        protected getLanguages(): string[][];
-    }
-}
-declare namespace Store.Store {
-    class ItemCategoryGrid extends Serenity.EntityGrid<ItemCategoryRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof ItemCategoryDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
     }
 }
 declare namespace Store.Store {
@@ -4324,77 +3704,6 @@ declare namespace Store.Store {
     }
 }
 declare namespace Store.Store {
-    class FreightFormatter implements Slick.Formatter {
-        format(ctx: Slick.FormatterContext): string;
-    }
-}
-declare namespace Store.Store {
-    class OrderDetailDialog extends Common.GridEditorDialog<OrderDetailRow> {
-        protected getFormKey(): string;
-        protected getLocalTextPrefix(): string;
-        protected form: OrderDetailForm;
-        constructor();
-    }
-}
-declare namespace Store.Store {
-    class OrderDetailGrid extends Serenity.EntityGrid<OrderDetailRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof OrderDetailDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Store.Store {
-    class OrderDetailsEditor extends Common.GridEditorBase<OrderDetailRow> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof OrderDetailDialog;
-        protected getLocalTextPrefix(): string;
-        constructor(container: JQuery);
-        validateEntity(row: any, id: any): boolean;
-    }
-}
-declare namespace Store.Store {
-    class OrderProductDialog extends Serenity.EntityDialog<OrderProductRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: OrderProductForm;
-    }
-}
-declare namespace Store.Store {
-    class OrderProductGrid extends Serenity.EntityGrid<OrderProductRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof OrderProductDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Store.Store {
-    class OrderProductDetailDialog extends Serenity.EntityDialog<OrderProductDetailRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        protected form: OrderProductDetailForm;
-    }
-}
-declare namespace Store.Store {
-    class OrderProductDetailGrid extends Serenity.EntityGrid<OrderProductDetailRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof OrderProductDetailDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Store.Store {
     class ProductDialog extends Serenity.EntityDialog<ProductRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
@@ -4441,6 +3750,14 @@ declare namespace Store.Store {
         protected getLocalTextPrefix(): string;
         protected form: ProductDetailForm;
         constructor();
+        protected updateInterface(): void;
+    }
+}
+declare namespace Store.Store {
+    class ProductDetailEditor extends Serenity.LookupEditorBase<Serenity.LookupEditorOptions, Store.WaresRow> {
+        constructor(container: JQuery, options: Serenity.LookupEditorOptions);
+        protected getLookupKey(): string;
+        protected getItemText(item: Store.WaresRow, lookup: Q.Lookup<WaresRow>): string;
     }
 }
 declare namespace Store.Store {
@@ -4460,37 +3777,6 @@ declare namespace Store.Store {
         protected getLocalTextPrefix(): string;
         constructor(container: JQuery);
         validateEntity(row: any, id: any): boolean;
-    }
-}
-declare namespace Store.Store {
-    class ProductMovementDialog extends Serenity.EntityDialog<ProductMovementRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: ProductMovementForm;
-        constructor();
-        getToolbarButtons(): Serenity.ToolButton[];
-        protected updateInterface(): void;
-    }
-}
-declare namespace Store.Store {
-    class ProductMovementGrid extends Serenity.EntityGrid<ProductMovementRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof ProductMovementDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        protected shippingStateFilter: Serenity.EnumEditor;
-        constructor(container: JQuery);
-        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
-        protected createQuickFilters(): void;
-        protected getButtons(): Serenity.ToolButton[];
-        protected getColumns(): Slick.Column[];
-        protected onClick(e: JQueryEventObject, row: number, cell: number): void;
-        set_shippingState(value: number): void;
-        protected addButtonClick(): void;
     }
 }
 declare namespace Store.Store {

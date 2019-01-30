@@ -11,7 +11,8 @@ namespace Store.Store.Pages
     {
         public ActionResult Index()
         {
-            return View("~/Modules/Store/OperationType/OperationTypeIndex.cshtml");
+            //return View("~/Modules/Store/OperationType/OperationTypeIndex.cshtml");
+            return View(MVC.Views.Store.OperationType.OperationTypeIndex);
         }
     }
 }

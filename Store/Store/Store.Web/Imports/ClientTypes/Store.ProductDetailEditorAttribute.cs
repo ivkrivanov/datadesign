@@ -7,11 +7,11 @@ using System.ComponentModel;
 
 namespace Store.Store
 {
-    public partial class OrderDetailsEditorAttribute : CustomEditorAttribute
+    public partial class ProductDetailEditorAttribute : LookupEditorBaseAttribute
     {
-        public const string Key = "Store.Store.OrderDetailsEditor";
+        public const string Key = "Store.Store.ProductDetailEditor";
 
-        public OrderDetailsEditorAttribute()
+        public ProductDetailEditorAttribute()
             : base(Key)
         {
         }

@@ -69,12 +69,12 @@ namespace Store.Store.Entities
             set { Fields.SupplierID[this] = value; }
         }
 
-        [DisplayName("Category Item ID"), ForeignKey(typeof(CategoryRow)), LeftJoin("cat"), LookupInclude, TextualField("CategoryName")]
-        [LookupEditor(typeof(CategoryRow), InplaceAdd = true)]
-        public Int32? CategoryID
+        [DisplayName("Category Item ID"), ForeignKey(typeof(ItemCategoryRow)), LeftJoin("cat"), LookupInclude, TextualField("ItemCategoryName")]
+        [LookupEditor(typeof(ItemCategoryRow), InplaceAdd = true)]
+        public Int32? ItemCategoryID
         {
-            get { return Fields.CategoryID[this]; }
-            set { Fields.CategoryID[this] = value; }
+            get { return Fields.ItemCategoryID[this]; }
+            set { Fields.ItemCategoryID[this] = value; }
         }
 
         [DisplayName("Measure Id"), ForeignKey(typeof(MeasureRow)), LeftJoin("meas"), LookupInclude]
@@ -210,39 +210,32 @@ namespace Store.Store.Entities
 
         #region Category
 
-        [Origin("cat"), DisplayName("Category Type")]
-        public string CategoryType
-        {
-            get { return Fields.CategoryType[this]; }
-            set { Fields.CategoryType[this] = value; }
-        }
-
         [Origin("cat"), DisplayName("Category Code")]
-        public String CategoryCode
+        public String ItemCategoryItemCategoryCode
         {
-            get { return Fields.CategoryCode[this]; }
-            set { Fields.CategoryCode[this] = value; }
+            get { return Fields.ItemCategoryItemCategoryCode[this]; }
+            set { Fields.ItemCategoryItemCategoryCode[this] = value; }
         }
 
         [Origin("cat"), DisplayName("Category Name")]
-        public String CategoryName
+        public String ItemCategoryItemCategoryName
         {
-            get { return Fields.CategoryName[this]; }
-            set { Fields.CategoryName[this] = value; }
+            get { return Fields.ItemCategoryItemCategoryName[this]; }
+            set { Fields.ItemCategoryItemCategoryName[this] = value; }
         }
 
         [Origin("cat")]
-        public String CategoryDescription
+        public String ItemCategoryItemCategoryDescription
         {
-            get { return Fields.CategoryDescription[this]; }
-            set { Fields.CategoryDescription[this] = value; }
+            get { return Fields.ItemCategoryItemCategoryDescription[this]; }
+            set { Fields.ItemCategoryItemCategoryDescription[this] = value; }
         }
 
         [Origin("cat")]
-        public String CategoryPicture
+        public String ItemCategoryItemCategoryImage
         {
-            get { return Fields.CategoryPicture[this]; }
-            set { Fields.CategoryPicture[this] = value; }
+            get { return Fields.ItemCategoryItemCategoryImage[this]; }
+            set { Fields.ItemCategoryItemCategoryImage[this] = value; }
         }
 
         #endregion Category
@@ -313,7 +306,7 @@ namespace Store.Store.Entities
             public StringField ItemName;
             public StringField ItemImage;
             public Int32Field SupplierID;
-            public Int32Field CategoryID;
+            public Int32Field ItemCategoryID;
             public Int32Field MeasureID;
             public Int32Field QuantityPerUnit;
             public DecimalField UnitPrice;
@@ -337,11 +330,10 @@ namespace Store.Store.Entities
             public StringField SupplierEmail;
             public StringField SupplierHomePage;
 
-            public StringField CategoryType;
-            public StringField CategoryCode; 
-            public StringField CategoryName;
-            public StringField CategoryDescription;
-            public StringField CategoryPicture;
+            public StringField ItemCategoryItemCategoryCode;
+            public StringField ItemCategoryItemCategoryName;
+            public StringField ItemCategoryItemCategoryDescription;
+            public StringField ItemCategoryItemCategoryImage;
 
             public StringField MeasureMeasureName;
 

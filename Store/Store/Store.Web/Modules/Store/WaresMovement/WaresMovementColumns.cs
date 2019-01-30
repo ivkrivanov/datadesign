@@ -36,7 +36,7 @@ namespace Store.Store.Columns
         public String EmployeeFullName { get; set; }
 
         [FilterOnly, QuickFilter]
-        public OrderShippingState ShippingState { get; set; }
+        public ShippingState ShippingState { get; set; }
 
         [Width(200), ShipperFormatter, QuickFilter(CssClass = "hidden-xs"), QuickFilterOption("multiple", true)]
         public String ShipperCompanyName { get; set; }

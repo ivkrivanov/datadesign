@@ -21,7 +21,7 @@
 
         var q = Q.parseQueryString();
         if (q.shippingState != null && q.shippingState.length) {
-            orderGrid.set_shippingState(parseInt(q.shippingState, 10));
+            ProductMovementGrid.set_shippingState(parseInt(q.shippingState, 10));
         }
 
         Q.initFullHeightGridPage($('#GridDiv'));

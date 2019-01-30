@@ -141,9 +141,9 @@ namespace Store.Store {
 
             Q.first(columns, x => x.field === 'QuantityPerUnit').format = str;
 
-            var itemcategory = Q.first(columns, x => x.field === fld.CategoryName);
-            itemcategory.referencedFields = [fld.CategoryID];
-            itemcategory.format = ctx => this.selectFormatter(ctx, fld.CategoryID, ItemCategoryRow.getLookup());
+            var itemcategory = Q.first(columns, x => x.field === fld.ItemCategoryItemCategoryName);
+            itemcategory.referencedFields = [fld.ItemCategoryID];
+            itemcategory.format = ctx => this.selectFormatter(ctx, fld.ItemCategoryID, ItemCategoryRow.getLookup());
 
             //var supplier = Q.first(columns, x => x.field === fld.SupplierCompanyName);
             //supplier.referencedFields = [fld.SupplierID];
@@ -251,7 +251,7 @@ namespace Store.Store {
 
             var q = Q.parseQueryString();
             if (q["cat"]) {
-                var category = Q.tryFirst(flt, x => x.field == "CategoryID");
+                var category = Q.tryFirst(flt, x => x.field == "ItemCategoryID");
                 category.init = e => {
                     e.element.getWidget(Serenity.LookupEditor).value = q["cat"];
                 };

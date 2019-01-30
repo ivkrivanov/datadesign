@@ -1,9 +1,9 @@
-﻿/// <reference path="../Order/OrderDialog.ts" />
+﻿/// <reference path="../ProductMovement/ProductMovementDialog.ts" />
 
 namespace Store.Store {
 
     @Serenity.Decorators.registerClass()
-    export class CounterpartyOrderDialog extends OrderDialog {
+    export class CounterpartyProductMovementDialog extends ProductMovementDialog {
 
         constructor() {
             super();
