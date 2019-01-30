@@ -42,6 +42,7 @@ ALTER TABLE [dbo].[WaresMovement Details] ADD  CONSTRAINT [DF_WaresMovement Deta
 GO
 
 ALTER TABLE [dbo].[WaresMovement Details] ADD  CONSTRAINT [DF_WaresMovement Detail_Discount]  DEFAULT ((0)) FOR [Discount]
+GO
 
 ALTER TABLE [dbo].[WaresMovement Details] ADD  DEFAULT (getdate()) FOR [InsertDate]
 GO

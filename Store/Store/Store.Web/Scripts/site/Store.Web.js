@@ -6760,7 +6760,7 @@ var Store;
                     Q.alert('This product is already in order details!');
                     return false;
                 }
-                row.ProductName = Store.ProductRow.getLookup().itemById[row.ProducttID].ProductName;
+                row.ProductName = Store.ProductRow.getLookup().itemById[row.ProductID].ProductName;
                 switch (row.ProductMoveOperationTypeOpCode) {
                     case 302: {
                         row.LineTotal = (row.Quantity || 0) * (row.IncomePrice || 0) - (row.Discount || 0);
