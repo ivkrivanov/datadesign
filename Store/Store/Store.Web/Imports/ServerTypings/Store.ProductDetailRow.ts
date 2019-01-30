@@ -9,8 +9,7 @@
         Discount?: number;
         IsActive?: number;
         TenantId?: number;
-        ProductProductName?: string;
-        ProductProductImage?: string;
+        ProductName?: string;
         ProductSupplierID?: number;
         ProductCategoryID?: number;
         ProductQuantityPerUnit?: string;
@@ -30,6 +29,7 @@
         WaresUnitPrice?: number;
         WaresDiscontinued?: boolean;
         WaresAccountID?: number;
+        LineTotal?: number;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -51,8 +51,7 @@
             Discount = "Discount",
             IsActive = "IsActive",
             TenantId = "TenantId",
-            ProductProductName = "ProductProductName",
-            ProductProductImage = "ProductProductImage",
+            ProductName = "ProductName",
             ProductSupplierID = "ProductSupplierID",
             ProductCategoryID = "ProductCategoryID",
             ProductQuantityPerUnit = "ProductQuantityPerUnit",
@@ -72,6 +71,7 @@
             WaresUnitPrice = "WaresUnitPrice",
             WaresDiscontinued = "WaresDiscontinued",
             WaresAccountID = "WaresAccountID",
+            LineTotal = "LineTotal",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",

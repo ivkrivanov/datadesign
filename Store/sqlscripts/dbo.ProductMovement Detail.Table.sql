@@ -12,7 +12,7 @@ CREATE TABLE [dbo].[ProductMovement Details](
 	[SalePrice] [money] NOT NULL,
 	--[SinglePrice] [money] NOT NULL,
 	[Discount] [real] NOT NULL,
-	[DetailID] [int] NOT NULL,
+	[DetailID] [int] IDENTITY(1,1) NOT NULL,
 	[InsertDate] [datetime] NOT NULL,
 	[InsertUserId] [int] NOT NULL,
 	[UpdateDate] [datetime] NULL,

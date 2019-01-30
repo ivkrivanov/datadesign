@@ -15,9 +15,8 @@ namespace Store.Store.Forms
         [Width(100)]
         public Double ProductQuantity { get; set; }
         [Width(100)]
+        public decimal PlanPrice { get; set; }
+        [Width(100)]
         public Double Discount { get; set; }
-        //[Width(100)]
-        //public Decimal PlanPrice { get; set; }
-
     }
 }
