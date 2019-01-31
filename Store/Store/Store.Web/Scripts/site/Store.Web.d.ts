@@ -830,10 +830,10 @@ declare namespace Store.Store {
         ContactTitle: Serenity.StringEditor;
         Representatives: Serenity.LookupEditor;
         Address: Serenity.StringEditor;
+        Country: Serenity.LookupEditor;
         City: Serenity.LookupEditor;
         Region: Serenity.StringEditor;
         PostalCode: Serenity.StringEditor;
-        Country: Serenity.LookupEditor;
         Phone: PhoneEditor;
         NoteList: NotesEditor;
         LastContactDate: Serenity.DateEditor;
@@ -1833,11 +1833,15 @@ declare namespace Store.Store {
 declare namespace Store.Store {
     interface ProductForm {
         CategoryID: Serenity.LookupEditor;
+        ProductCode: Serenity.StringEditor;
+        ProductBarcode: Serenity.StringEditor;
+        ProductLabel: Serenity.StringEditor;
         ProductName: Serenity.StringEditor;
         ProductImage: Serenity.ImageUploadEditor;
         Discontinued: Serenity.BooleanEditor;
-        SupplierID: Serenity.LookupEditor;
+        CounterpartyID: CounterpartyEditor;
         DetailList: ProductDetailsEditor;
+        MeasureID: Serenity.LookupEditor;
         QuantityPerUnit: Serenity.StringEditor;
         UnitPrice: Serenity.DecimalEditor;
         UnitsInStock: Serenity.IntegerEditor;
@@ -3762,6 +3766,8 @@ declare namespace Store.Store {
         protected getService(): string;
         protected getLanguages(): string[][];
         protected form: ProductForm;
+        constructor();
+        protected UpdateInterface(): void;
     }
 }
 declare namespace Store.Store {
