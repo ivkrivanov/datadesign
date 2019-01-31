@@ -4826,6 +4826,225 @@ var Store;
 (function (Store_94) {
     var Store;
     (function (Store) {
+        var WaresMovementDialog = /** @class */ (function (_super) {
+            __extends(WaresMovementDialog, _super);
+            function WaresMovementDialog() {
+                var _this = _super.call(this) || this;
+                _this.form = new Store.WaresMovementForm(_this.idPrefix);
+                return _this;
+            }
+            WaresMovementDialog.prototype.getFormKey = function () { return Store.WaresMovementForm.formKey; };
+            WaresMovementDialog.prototype.getIdProperty = function () { return Store.WaresMovementRow.idProperty; };
+            WaresMovementDialog.prototype.getLocalTextPrefix = function () { return Store.WaresMovementRow.localTextPrefix; };
+            WaresMovementDialog.prototype.getNameProperty = function () { return Store.WaresMovementRow.nameProperty; };
+            WaresMovementDialog.prototype.getService = function () { return Store.WaresMovementService.baseUrl; };
+            WaresMovementDialog.prototype.getToolbarButtons = function () {
+                var _this = this;
+                var buttons = _super.prototype.getToolbarButtons.call(this);
+                buttons.push(Store_94.Common.ReportHelper.createToolButton({
+                    title: 'Invoice',
+                    cssClass: 'export-pdf-button',
+                    reportKey: 'Store.WaresMovementDetails',
+                    getParams: function () { return ({
+                        WaresMoveID: _this.get_entityId()
+                    }); }
+                }));
+                return buttons;
+            };
+            WaresMovementDialog.prototype.updateInterface = function () {
+                _super.prototype.updateInterface.call(this);
+                this.toolbar.findButton('export-pdf-button').toggle(this.isEditMode());
+            };
+            WaresMovementDialog = __decorate([
+                Serenity.Decorators.registerClass(),
+                Serenity.Decorators.panel()
+            ], WaresMovementDialog);
+            return WaresMovementDialog;
+        }(Serenity.EntityDialog));
+        Store.WaresMovementDialog = WaresMovementDialog;
+    })(Store = Store_94.Store || (Store_94.Store = {}));
+})(Store || (Store = {}));
+/// <reference path="../WaresMovement/WaresMovementDialog.ts" />
+var Store;
+(function (Store_95) {
+    var Store;
+    (function (Store) {
+        var CounterpartyWaresMovementDialog = /** @class */ (function (_super) {
+            __extends(CounterpartyWaresMovementDialog, _super);
+            function CounterpartyWaresMovementDialog() {
+                return _super.call(this) || this;
+            }
+            CounterpartyWaresMovementDialog.prototype.updateInterface = function () {
+                _super.prototype.updateInterface.call(this);
+                Serenity.EditorUtils.setReadOnly(this.form.CounterpartyID, true);
+            };
+            CounterpartyWaresMovementDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], CounterpartyWaresMovementDialog);
+            return CounterpartyWaresMovementDialog;
+        }(Store.WaresMovementDialog));
+        Store.CounterpartyWaresMovementDialog = CounterpartyWaresMovementDialog;
+    })(Store = Store_95.Store || (Store_95.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_96) {
+    var Store;
+    (function (Store) {
+        var WaresMovementGrid = /** @class */ (function (_super) {
+            __extends(WaresMovementGrid, _super);
+            //protected OpCodeQuickFilter: Serenity.LookupEditor;
+            function WaresMovementGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            WaresMovementGrid.prototype.getColumnsKey = function () { return 'Store.WaresMovement'; };
+            WaresMovementGrid.prototype.getDialogType = function () { return Store.WaresMovementDialog; };
+            WaresMovementGrid.prototype.getIdProperty = function () { return Store.WaresMovementRow.idProperty; };
+            WaresMovementGrid.prototype.getLocalTextPrefix = function () { return Store.WaresMovementRow.localTextPrefix; };
+            WaresMovementGrid.prototype.getService = function () { return Store.WaresMovementService.baseUrl; };
+            WaresMovementGrid.prototype.getQuickFilters = function () {
+                var _this = this;
+                var filters = _super.prototype.getQuickFilters.call(this);
+                filters.push({
+                    type: Serenity.LookupEditor,
+                    options: {
+                        lookupKey: Store.WaresRow.lookupKey
+                    },
+                    field: 'WaresID',
+                    title: 'Contains Wares in Details',
+                    handler: function (w) {
+                        _this.view.params.WaresID = Q.toId(w.value);
+                    },
+                    cssClass: 'hidden-xs'
+                });
+                return filters;
+            };
+            WaresMovementGrid.prototype.createQuickFilters = function () {
+                _super.prototype.createQuickFilters.call(this);
+                //this.findQuickFilter(Serenity.LookupEditor, fld.OperationTypeOperation).values = ["[102]Доставка на стоки"];
+                this.shippingStateFilter = this.findQuickFilter(Serenity.EnumEditor, "ShippingState" /* ShippingState */);
+            };
+            WaresMovementGrid.prototype.getButtons = function () {
+                var _this = this;
+                var buttons = _super.prototype.getButtons.call(this);
+                buttons.push(Store_96.Common.ExcelExportHelper.createToolButton({
+                    grid: this,
+                    service: Store.WaresMovementService.baseUrl + '/ListExcel',
+                    onViewSubmit: function () { return _this.onViewSubmit(); },
+                    separator: true
+                }));
+                buttons.push(Store_96.Common.PdfExportHelper.createToolButton({
+                    grid: this,
+                    onViewSubmit: function () { return _this.onViewSubmit(); }
+                }));
+                return buttons;
+            };
+            WaresMovementGrid.prototype.getColumns = function () {
+                var columns = _super.prototype.getColumns.call(this);
+                columns.splice(1, 0, {
+                    field: 'Print Invoice',
+                    name: '',
+                    format: function (ctx) { return '<a class="inline-action print-invoice" title="invoice">' +
+                        '<i class="fa fa-file-pdf-o text-red"></i></a>'; },
+                    width: 24,
+                    minWidth: 24,
+                    maxWidth: 24
+                });
+                return columns;
+            };
+            WaresMovementGrid.prototype.onClick = function (e, row, cell) {
+                _super.prototype.onClick.call(this, e, row, cell);
+                if (e.isDefaultPrevented())
+                    return;
+                var item = this.itemAt(row);
+                var target = $(e.target);
+                // if user clicks "i" element, e.g. icon
+                if (target.parent().hasClass('inline-action'))
+                    target = target.parent();
+                if (target.hasClass('inline-action')) {
+                    e.preventDefault();
+                    if (target.hasClass('print-invoice')) {
+                        Store_96.Common.ReportHelper.execute({
+                            reportKey: 'Store.WaresMovementDetails',
+                            params: {
+                                WatesMoveID: item.WatesMoveID
+                            }
+                        });
+                    }
+                }
+            };
+            WaresMovementGrid.prototype.set_shippingState = function (value) {
+                this.shippingStateFilter.value = value == null ? '' : value.toString();
+            };
+            //public set_OpCode(value: any): void {
+            //    this.OpCodeQuickFilter.value = value == ["[102]Доставка на стоки"].toString();
+            WaresMovementGrid.prototype.addButtonClick = function () {
+                var eq = this.view.params.EqualityFilter;
+                this.editItem({
+                    CounterpartyID: eq ? eq.CounterpartyID : null
+                });
+            };
+            WaresMovementGrid = __decorate([
+                Serenity.Decorators.registerClass(),
+                Serenity.Decorators.filterable()
+            ], WaresMovementGrid);
+            return WaresMovementGrid;
+        }(Serenity.EntityGrid));
+        Store.WaresMovementGrid = WaresMovementGrid;
+    })(Store = Store_96.Store || (Store_96.Store = {}));
+})(Store || (Store = {}));
+/// <reference path="../WaresMovement/WaresMovementGrid.ts" />
+var Store;
+(function (Store_97) {
+    var Store;
+    (function (Store) {
+        var CounterpartyWaresMovementGrid = /** @class */ (function (_super) {
+            __extends(CounterpartyWaresMovementGrid, _super);
+            function CounterpartyWaresMovementGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            CounterpartyWaresMovementGrid.prototype.getDialogType = function () { return Store.CounterpartyWaresMovementDialog; };
+            CounterpartyWaresMovementGrid.prototype.getColumns = function () {
+                return _super.prototype.getColumns.call(this).filter(function (x) { return x.field !== "CounterpartyCompanyName" /* CounterpartyCompanyName */; });
+            };
+            CounterpartyWaresMovementGrid.prototype.initEntityDialog = function (itemType, dialog) {
+                _super.prototype.initEntityDialog.call(this, itemType, dialog);
+                Serenity.SubDialogHelper.cascade(dialog, this.element.closest('.ui-dialog'));
+            };
+            CounterpartyWaresMovementGrid.prototype.AddButtonClick = function () {
+                this.editItem({ CounterpartyID: this.counterpartyID });
+            };
+            CounterpartyWaresMovementGrid.prototype.getInitialTitle = function () {
+                return null;
+            };
+            CounterpartyWaresMovementGrid.prototype.getGridCanLoad = function () {
+                return _super.prototype.getGridCanLoad.call(this) && !!this.counterpartyID;
+            };
+            Object.defineProperty(CounterpartyWaresMovementGrid.prototype, "counterpartyID", {
+                get: function () {
+                    return this._counterpartyID;
+                },
+                set: function (value) {
+                    if (this._counterpartyID !== value) {
+                        this._counterpartyID = value;
+                        this.setEquality('CounterpartyID', value);
+                        this.refresh();
+                    }
+                },
+                enumerable: true,
+                configurable: true
+            });
+            CounterpartyWaresMovementGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], CounterpartyWaresMovementGrid);
+            return CounterpartyWaresMovementGrid;
+        }(Store.WaresMovementGrid));
+        Store.CounterpartyWaresMovementGrid = CounterpartyWaresMovementGrid;
+    })(Store = Store_97.Store || (Store_97.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_98) {
+    var Store;
+    (function (Store) {
         var EmployeeDialog = /** @class */ (function (_super) {
             __extends(EmployeeDialog, _super);
             function EmployeeDialog() {
@@ -4844,10 +5063,10 @@ var Store;
             return EmployeeDialog;
         }(Serenity.EntityDialog));
         Store.EmployeeDialog = EmployeeDialog;
-    })(Store = Store_94.Store || (Store_94.Store = {}));
+    })(Store = Store_98.Store || (Store_98.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_95) {
+(function (Store_99) {
     var Store;
     (function (Store) {
         var EmployeeFormatter = /** @class */ (function () {
@@ -4877,10 +5096,10 @@ var Store;
             return EmployeeFormatter;
         }());
         Store.EmployeeFormatter = EmployeeFormatter;
-    })(Store = Store_95.Store || (Store_95.Store = {}));
+    })(Store = Store_99.Store || (Store_99.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_96) {
+(function (Store_100) {
     var Store;
     (function (Store) {
         var EmployeeGrid = /** @class */ (function (_super) {
@@ -4899,10 +5118,10 @@ var Store;
             return EmployeeGrid;
         }(Serenity.EntityGrid));
         Store.EmployeeGrid = EmployeeGrid;
-    })(Store = Store_96.Store || (Store_96.Store = {}));
+    })(Store = Store_100.Store || (Store_100.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_97) {
+(function (Store_101) {
     var Store;
     (function (Store) {
         var EmployeeListFormatter = /** @class */ (function () {
@@ -4922,10 +5141,10 @@ var Store;
             return EmployeeListFormatter;
         }());
         Store.EmployeeListFormatter = EmployeeListFormatter;
-    })(Store = Store_97.Store || (Store_97.Store = {}));
+    })(Store = Store_101.Store || (Store_101.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_98) {
+(function (Store_102) {
     var Store;
     (function (Store) {
         var MeasureDialog = /** @class */ (function (_super) {
@@ -4946,10 +5165,10 @@ var Store;
             return MeasureDialog;
         }(Serenity.EntityDialog));
         Store.MeasureDialog = MeasureDialog;
-    })(Store = Store_98.Store || (Store_98.Store = {}));
+    })(Store = Store_102.Store || (Store_102.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_99) {
+(function (Store_103) {
     var Store;
     (function (Store) {
         var MeasureGrid = /** @class */ (function (_super) {
@@ -4968,10 +5187,10 @@ var Store;
             return MeasureGrid;
         }(Serenity.EntityGrid));
         Store.MeasureGrid = MeasureGrid;
-    })(Store = Store_99.Store || (Store_99.Store = {}));
+    })(Store = Store_103.Store || (Store_103.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_100) {
+(function (Store_104) {
     var Store;
     (function (Store) {
         var NoteDialog = /** @class */ (function (_super) {
@@ -5020,10 +5239,10 @@ var Store;
             return NoteDialog;
         }(Serenity.EntityDialog));
         Store.NoteDialog = NoteDialog;
-    })(Store = Store_100.Store || (Store_100.Store = {}));
+    })(Store = Store_104.Store || (Store_104.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_101) {
+(function (Store_105) {
     var Store;
     (function (Store) {
         var NotesEditor = /** @class */ (function (_super) {
@@ -5079,7 +5298,7 @@ var Store;
                     _this.items = _this.items || [];
                     Q.insert(_this.items, 0, {
                         Text: text,
-                        InsertUserDisplayName: Store_101.Authorization.userDefinition.DisplayName,
+                        InsertUserDisplayName: Store_105.Authorization.userDefinition.DisplayName,
                         InsertDate: Q.formatISODateTimeUTC(new Date())
                     });
                     _this.updateContent();
@@ -5152,10 +5371,10 @@ var Store;
             return NotesEditor;
         }(Serenity.TemplatedWidget));
         Store.NotesEditor = NotesEditor;
-    })(Store = Store_101.Store || (Store_101.Store = {}));
+    })(Store = Store_105.Store || (Store_105.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_102) {
+(function (Store_106) {
     var Store;
     (function (Store) {
         var OperationTypeDialog = /** @class */ (function (_super) {
@@ -5176,10 +5395,10 @@ var Store;
             return OperationTypeDialog;
         }(Serenity.EntityDialog));
         Store.OperationTypeDialog = OperationTypeDialog;
-    })(Store = Store_102.Store || (Store_102.Store = {}));
+    })(Store = Store_106.Store || (Store_106.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_103) {
+(function (Store_107) {
     var Store;
     (function (Store) {
         var OperationTypeEditor = /** @class */ (function (_super) {
@@ -5199,10 +5418,10 @@ var Store;
             return OperationTypeEditor;
         }(Serenity.LookupEditorBase));
         Store.OperationTypeEditor = OperationTypeEditor;
-    })(Store = Store_103.Store || (Store_103.Store = {}));
+    })(Store = Store_107.Store || (Store_107.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_104) {
+(function (Store_108) {
     var Store;
     (function (Store) {
         var OperationTypeGrid = /** @class */ (function (_super) {
@@ -5221,10 +5440,10 @@ var Store;
             return OperationTypeGrid;
         }(Serenity.EntityGrid));
         Store.OperationTypeGrid = OperationTypeGrid;
-    })(Store = Store_104.Store || (Store_104.Store = {}));
+    })(Store = Store_108.Store || (Store_108.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_105) {
+(function (Store_109) {
     var Store;
     (function (Store) {
         var ProductDialog = /** @class */ (function (_super) {
@@ -5239,17 +5458,42 @@ var Store;
             ProductDialog.prototype.getLocalTextPrefix = function () { return Store.ProductRow.localTextPrefix; };
             ProductDialog.prototype.getNameProperty = function () { return Store.ProductRow.nameProperty; };
             ProductDialog.prototype.getService = function () { return Store.ProductService.baseUrl; };
-            ProductDialog.prototype.getLanguages = function () { return Store_105.LanguageList.getValue(); };
+            ProductDialog.prototype.getLanguages = function () { return Store_109.LanguageList.getValue(); };
             ProductDialog = __decorate([
                 Serenity.Decorators.registerClass()
             ], ProductDialog);
             return ProductDialog;
         }(Serenity.EntityDialog));
         Store.ProductDialog = ProductDialog;
-    })(Store = Store_105.Store || (Store_105.Store = {}));
+    })(Store = Store_109.Store || (Store_109.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_106) {
+(function (Store_110) {
+    var Store;
+    (function (Store) {
+        var ProductEditor = /** @class */ (function (_super) {
+            __extends(ProductEditor, _super);
+            function ProductEditor(hidden) {
+                return _super.call(this, hidden) || this;
+            }
+            ProductEditor.prototype.getLookupKey = function () {
+                return Store.CategoryRow.lookupKey;
+            };
+            ProductEditor.prototype.getItems = function (lookup) {
+                return _super.prototype.getItems.call(this, lookup).filter(function (x) {
+                    return x.Type === 200;
+                });
+            };
+            ProductEditor = __decorate([
+                Serenity.Decorators.registerEditor()
+            ], ProductEditor);
+            return ProductEditor;
+        }(Serenity.LookupEditorBase));
+        Store.ProductEditor = ProductEditor;
+    })(Store = Store_110.Store || (Store_110.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_111) {
     var Store;
     (function (Store) {
         var ProductGrid = /** @class */ (function (_super) {
@@ -5292,13 +5536,13 @@ var Store;
             ProductGrid.prototype.getButtons = function () {
                 var _this = this;
                 var buttons = _super.prototype.getButtons.call(this);
-                buttons.push(Store_106.Common.ExcelExportHelper.createToolButton({
+                buttons.push(Store_111.Common.ExcelExportHelper.createToolButton({
                     grid: this,
                     service: Store.ProductService.baseUrl + '/ListExcel',
                     onViewSubmit: function () { return _this.onViewSubmit(); },
                     separator: true
                 }));
-                buttons.push(Store_106.Common.PdfExportHelper.createToolButton({
+                buttons.push(Store_111.Common.PdfExportHelper.createToolButton({
                     grid: this,
                     onViewSubmit: function () { return _this.onViewSubmit(); },
                     reportTitle: 'Product List',
@@ -5409,9 +5653,9 @@ var Store;
                 var category = Q.first(columns, function (x) { return x.field === "CategoryCategoryName" /* CategoryCategoryName */; });
                 category.referencedFields = ["CategoryID" /* CategoryID */];
                 category.format = function (ctx) { return _this.selectFormatter(ctx, "CategoryID" /* CategoryID */, Store.CategoryRow.getLookup()); };
-                var supplier = Q.first(columns, function (x) { return x.field === "SupplierCompanyName" /* SupplierCompanyName */; });
-                supplier.referencedFields = ["SupplierID" /* SupplierID */];
-                supplier.format = function (ctx) { return _this.selectFormatter(ctx, "SupplierID" /* SupplierID */, Store.SupplierRow.getLookup()); };
+                //var supplier = Q.first(columns, x => x.field === fld.SupplierCompanyName);
+                //supplier.referencedFields = [fld.SupplierID];
+                //supplier.format = ctx => this.selectFormatter(ctx, fld.SupplierID, SupplierRow.getLookup());
                 Q.first(columns, function (x) { return x.field === "UnitPrice" /* UnitPrice */; }).format = num;
                 Q.first(columns, function (x) { return x.field === "UnitsInStock" /* UnitsInStock */; }).format = num;
                 Q.first(columns, function (x) { return x.field === "UnitsOnOrder" /* UnitsOnOrder */; }).format = num;
@@ -5500,11 +5744,11 @@ var Store;
             return ProductGrid;
         }(Serenity.EntityGrid));
         Store.ProductGrid = ProductGrid;
-    })(Store = Store_106.Store || (Store_106.Store = {}));
+    })(Store = Store_111.Store || (Store_111.Store = {}));
 })(Store || (Store = {}));
 /// <reference path="../../Common/Helpers/GridEditorDialog.ts" />
 var Store;
-(function (Store_107) {
+(function (Store_112) {
     var Store;
     (function (Store) {
         var ProductDetailDialog = /** @class */ (function (_super) {
@@ -5540,12 +5784,12 @@ var Store;
                 Serenity.Decorators.registerClass()
             ], ProductDetailDialog);
             return ProductDetailDialog;
-        }(Store_107.Common.GridEditorDialog));
+        }(Store_112.Common.GridEditorDialog));
         Store.ProductDetailDialog = ProductDetailDialog;
-    })(Store = Store_107.Store || (Store_107.Store = {}));
+    })(Store = Store_112.Store || (Store_112.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_108) {
+(function (Store_113) {
     var Store;
     (function (Store) {
         var ProductDetailEditor = /** @class */ (function (_super) {
@@ -5570,10 +5814,10 @@ var Store;
             return ProductDetailEditor;
         }(Serenity.LookupEditorBase));
         Store.ProductDetailEditor = ProductDetailEditor;
-    })(Store = Store_108.Store || (Store_108.Store = {}));
+    })(Store = Store_113.Store || (Store_113.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_109) {
+(function (Store_114) {
     var Store;
     (function (Store) {
         var ProductDetailGrid = /** @class */ (function (_super) {
@@ -5592,11 +5836,11 @@ var Store;
             return ProductDetailGrid;
         }(Serenity.EntityGrid));
         Store.ProductDetailGrid = ProductDetailGrid;
-    })(Store = Store_109.Store || (Store_109.Store = {}));
+    })(Store = Store_114.Store || (Store_114.Store = {}));
 })(Store || (Store = {}));
 /// <reference path="../../Common/Helpers/GridEditorBase.ts" />
 var Store;
-(function (Store_110) {
+(function (Store_115) {
     var Store;
     (function (Store) {
         var ProductDetailsEditor = /** @class */ (function (_super) {
@@ -5622,13 +5866,13 @@ var Store;
                 Serenity.Decorators.registerClass()
             ], ProductDetailsEditor);
             return ProductDetailsEditor;
-        }(Store_110.Common.GridEditorBase));
+        }(Store_115.Common.GridEditorBase));
         Store.ProductDetailsEditor = ProductDetailsEditor;
-    })(Store = Store_110.Store || (Store_110.Store = {}));
+    })(Store = Store_115.Store || (Store_115.Store = {}));
 })(Store || (Store = {}));
 /// <reference path="../../Common/Helpers/GridEditorDialog.ts" />
 var Store;
-(function (Store_111) {
+(function (Store_116) {
     var Store;
     (function (Store) {
         var ProductMovementDetailsDialog = /** @class */ (function (_super) {
@@ -5659,13 +5903,13 @@ var Store;
                 Serenity.Decorators.registerClass()
             ], ProductMovementDetailsDialog);
             return ProductMovementDetailsDialog;
-        }(Store_111.Common.GridEditorDialog));
+        }(Store_116.Common.GridEditorDialog));
         Store.ProductMovementDetailsDialog = ProductMovementDetailsDialog;
-    })(Store = Store_111.Store || (Store_111.Store = {}));
+    })(Store = Store_116.Store || (Store_116.Store = {}));
 })(Store || (Store = {}));
 /// <reference path="../../Common/Helpers/GridEditorBase.ts" />
 var Store;
-(function (Store_112) {
+(function (Store_117) {
     var Store;
     (function (Store) {
         var ProductMovementDetailsEditor = /** @class */ (function (_super) {
@@ -5704,12 +5948,12 @@ var Store;
                 Serenity.Decorators.registerClass()
             ], ProductMovementDetailsEditor);
             return ProductMovementDetailsEditor;
-        }(Store_112.Common.GridEditorBase));
+        }(Store_117.Common.GridEditorBase));
         Store.ProductMovementDetailsEditor = ProductMovementDetailsEditor;
-    })(Store = Store_112.Store || (Store_112.Store = {}));
+    })(Store = Store_117.Store || (Store_117.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_113) {
+(function (Store_118) {
     var Store;
     (function (Store) {
         var ProductMovementDetailsGrid = /** @class */ (function (_super) {
@@ -5728,10 +5972,10 @@ var Store;
             return ProductMovementDetailsGrid;
         }(Serenity.EntityGrid));
         Store.ProductMovementDetailsGrid = ProductMovementDetailsGrid;
-    })(Store = Store_113.Store || (Store_113.Store = {}));
+    })(Store = Store_118.Store || (Store_118.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_114) {
+(function (Store_119) {
     var Store;
     (function (Store) {
         var PhoneEditor = /** @class */ (function (_super) {
@@ -5869,10 +6113,10 @@ var Store;
             return PhoneEditor;
         }(Serenity.StringEditor));
         Store.PhoneEditor = PhoneEditor;
-    })(Store = Store_114.Store || (Store_114.Store = {}));
+    })(Store = Store_119.Store || (Store_119.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_115) {
+(function (Store_120) {
     var Store;
     (function (Store) {
         var ShipperDialog = /** @class */ (function (_super) {
@@ -5893,10 +6137,10 @@ var Store;
             return ShipperDialog;
         }(Serenity.EntityDialog));
         Store.ShipperDialog = ShipperDialog;
-    })(Store = Store_115.Store || (Store_115.Store = {}));
+    })(Store = Store_120.Store || (Store_120.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_116) {
+(function (Store_121) {
     var Store;
     (function (Store) {
         var ShipperFormatter = /** @class */ (function () {
@@ -5913,10 +6157,10 @@ var Store;
             return ShipperFormatter;
         }());
         Store.ShipperFormatter = ShipperFormatter;
-    })(Store = Store_116.Store || (Store_116.Store = {}));
+    })(Store = Store_121.Store || (Store_121.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_117) {
+(function (Store_122) {
     var Store;
     (function (Store) {
         var ShipperGrid = /** @class */ (function (_super) {
@@ -5935,10 +6179,10 @@ var Store;
             return ShipperGrid;
         }(Serenity.EntityGrid));
         Store.ShipperGrid = ShipperGrid;
-    })(Store = Store_117.Store || (Store_117.Store = {}));
+    })(Store = Store_122.Store || (Store_122.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_118) {
+(function (Store_123) {
     var Store;
     (function (Store) {
         var ShopsDialog = /** @class */ (function (_super) {
@@ -5959,10 +6203,10 @@ var Store;
             return ShopsDialog;
         }(Serenity.EntityDialog));
         Store.ShopsDialog = ShopsDialog;
-    })(Store = Store_118.Store || (Store_118.Store = {}));
+    })(Store = Store_123.Store || (Store_123.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_119) {
+(function (Store_124) {
     var Store;
     (function (Store) {
         var ShopsEditor = /** @class */ (function (_super) {
@@ -5982,10 +6226,10 @@ var Store;
             return ShopsEditor;
         }(Serenity.LookupEditorBase));
         Store.ShopsEditor = ShopsEditor;
-    })(Store = Store_119.Store || (Store_119.Store = {}));
+    })(Store = Store_124.Store || (Store_124.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_120) {
+(function (Store_125) {
     var Store;
     (function (Store) {
         var ShopsGrid = /** @class */ (function (_super) {
@@ -6004,10 +6248,10 @@ var Store;
             return ShopsGrid;
         }(Serenity.EntityGrid));
         Store.ShopsGrid = ShopsGrid;
-    })(Store = Store_120.Store || (Store_120.Store = {}));
+    })(Store = Store_125.Store || (Store_125.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_121) {
+(function (Store_126) {
     var Store;
     (function (Store) {
         var SupplierDialog = /** @class */ (function (_super) {
@@ -6028,10 +6272,10 @@ var Store;
             return SupplierDialog;
         }(Serenity.EntityDialog));
         Store.SupplierDialog = SupplierDialog;
-    })(Store = Store_121.Store || (Store_121.Store = {}));
+    })(Store = Store_126.Store || (Store_126.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_122) {
+(function (Store_127) {
     var Store;
     (function (Store) {
         var SupplierGrid = /** @class */ (function (_super) {
@@ -6050,10 +6294,10 @@ var Store;
             return SupplierGrid;
         }(Serenity.EntityGrid));
         Store.SupplierGrid = SupplierGrid;
-    })(Store = Store_122.Store || (Store_122.Store = {}));
+    })(Store = Store_127.Store || (Store_127.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_123) {
+(function (Store_128) {
     var Store;
     (function (Store) {
         var WaresDialog = /** @class */ (function (_super) {
@@ -6068,17 +6312,17 @@ var Store;
             WaresDialog.prototype.getLocalTextPrefix = function () { return Store.WaresRow.localTextPrefix; };
             WaresDialog.prototype.getNameProperty = function () { return Store.WaresRow.nameProperty; };
             WaresDialog.prototype.getService = function () { return Store.WaresService.baseUrl; };
-            WaresDialog.prototype.getLanguages = function () { return Store_123.LanguageList.getValue(); };
+            WaresDialog.prototype.getLanguages = function () { return Store_128.LanguageList.getValue(); };
             WaresDialog = __decorate([
                 Serenity.Decorators.registerClass()
             ], WaresDialog);
             return WaresDialog;
         }(Serenity.EntityDialog));
         Store.WaresDialog = WaresDialog;
-    })(Store = Store_123.Store || (Store_123.Store = {}));
+    })(Store = Store_128.Store || (Store_128.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_124) {
+(function (Store_129) {
     var Store;
     (function (Store) {
         var WaresEditor = /** @class */ (function (_super) {
@@ -6103,10 +6347,10 @@ var Store;
             return WaresEditor;
         }(Serenity.LookupEditorBase));
         Store.WaresEditor = WaresEditor;
-    })(Store = Store_124.Store || (Store_124.Store = {}));
+    })(Store = Store_129.Store || (Store_129.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_125) {
+(function (Store_130) {
     var Store;
     (function (Store) {
         var WaresGrid = /** @class */ (function (_super) {
@@ -6136,13 +6380,13 @@ var Store;
             WaresGrid.prototype.getButtons = function () {
                 var _this = this;
                 var buttons = _super.prototype.getButtons.call(this);
-                buttons.push(Store_125.Common.ExcelExportHelper.createToolButton({
+                buttons.push(Store_130.Common.ExcelExportHelper.createToolButton({
                     grid: this,
                     service: Store.WaresService.baseUrl + '/ListExcel',
                     onViewSubmit: function () { return _this.onViewSubmit(); },
                     separator: true
                 }));
-                buttons.push(Store_125.Common.PdfExportHelper.createToolButton({
+                buttons.push(Store_130.Common.PdfExportHelper.createToolButton({
                     grid: this,
                     onViewSubmit: function () { return _this.onViewSubmit(); },
                     reportTitle: 'Wares List',
@@ -6330,159 +6574,11 @@ var Store;
             return WaresGrid;
         }(Serenity.EntityGrid));
         Store.WaresGrid = WaresGrid;
-    })(Store = Store_125.Store || (Store_125.Store = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store_126) {
-    var Store;
-    (function (Store) {
-        var WaresMovementDialog = /** @class */ (function (_super) {
-            __extends(WaresMovementDialog, _super);
-            function WaresMovementDialog() {
-                var _this = _super.call(this) || this;
-                _this.form = new Store.WaresMovementForm(_this.idPrefix);
-                return _this;
-            }
-            WaresMovementDialog.prototype.getFormKey = function () { return Store.WaresMovementForm.formKey; };
-            WaresMovementDialog.prototype.getIdProperty = function () { return Store.WaresMovementRow.idProperty; };
-            WaresMovementDialog.prototype.getLocalTextPrefix = function () { return Store.WaresMovementRow.localTextPrefix; };
-            WaresMovementDialog.prototype.getNameProperty = function () { return Store.WaresMovementRow.nameProperty; };
-            WaresMovementDialog.prototype.getService = function () { return Store.WaresMovementService.baseUrl; };
-            WaresMovementDialog.prototype.getToolbarButtons = function () {
-                var _this = this;
-                var buttons = _super.prototype.getToolbarButtons.call(this);
-                buttons.push(Store_126.Common.ReportHelper.createToolButton({
-                    title: 'Invoice',
-                    cssClass: 'export-pdf-button',
-                    reportKey: 'Store.WaresMovementDetails',
-                    getParams: function () { return ({
-                        WaresMoveID: _this.get_entityId()
-                    }); }
-                }));
-                return buttons;
-            };
-            WaresMovementDialog.prototype.updateInterface = function () {
-                _super.prototype.updateInterface.call(this);
-                this.toolbar.findButton('export-pdf-button').toggle(this.isEditMode());
-            };
-            WaresMovementDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.panel()
-            ], WaresMovementDialog);
-            return WaresMovementDialog;
-        }(Serenity.EntityDialog));
-        Store.WaresMovementDialog = WaresMovementDialog;
-    })(Store = Store_126.Store || (Store_126.Store = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store_127) {
-    var Store;
-    (function (Store) {
-        var WaresMovementGrid = /** @class */ (function (_super) {
-            __extends(WaresMovementGrid, _super);
-            //protected OpCodeQuickFilter: Serenity.LookupEditor;
-            function WaresMovementGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            WaresMovementGrid.prototype.getColumnsKey = function () { return 'Store.WaresMovement'; };
-            WaresMovementGrid.prototype.getDialogType = function () { return Store.WaresMovementDialog; };
-            WaresMovementGrid.prototype.getIdProperty = function () { return Store.WaresMovementRow.idProperty; };
-            WaresMovementGrid.prototype.getLocalTextPrefix = function () { return Store.WaresMovementRow.localTextPrefix; };
-            WaresMovementGrid.prototype.getService = function () { return Store.WaresMovementService.baseUrl; };
-            WaresMovementGrid.prototype.getQuickFilters = function () {
-                var _this = this;
-                var filters = _super.prototype.getQuickFilters.call(this);
-                filters.push({
-                    type: Serenity.LookupEditor,
-                    options: {
-                        lookupKey: Store.WaresRow.lookupKey
-                    },
-                    field: 'WaresID',
-                    title: 'Contains Wares in Details',
-                    handler: function (w) {
-                        _this.view.params.WaresID = Q.toId(w.value);
-                    },
-                    cssClass: 'hidden-xs'
-                });
-                return filters;
-            };
-            WaresMovementGrid.prototype.createQuickFilters = function () {
-                _super.prototype.createQuickFilters.call(this);
-                //this.findQuickFilter(Serenity.LookupEditor, fld.OperationTypeOperation).values = ["[102]Доставка на стоки"];
-                this.shippingStateFilter = this.findQuickFilter(Serenity.EnumEditor, "ShippingState" /* ShippingState */);
-            };
-            WaresMovementGrid.prototype.getButtons = function () {
-                var _this = this;
-                var buttons = _super.prototype.getButtons.call(this);
-                buttons.push(Store_127.Common.ExcelExportHelper.createToolButton({
-                    grid: this,
-                    service: Store.WaresMovementService.baseUrl + '/ListExcel',
-                    onViewSubmit: function () { return _this.onViewSubmit(); },
-                    separator: true
-                }));
-                buttons.push(Store_127.Common.PdfExportHelper.createToolButton({
-                    grid: this,
-                    onViewSubmit: function () { return _this.onViewSubmit(); }
-                }));
-                return buttons;
-            };
-            WaresMovementGrid.prototype.getColumns = function () {
-                var columns = _super.prototype.getColumns.call(this);
-                columns.splice(1, 0, {
-                    field: 'Print Invoice',
-                    name: '',
-                    format: function (ctx) { return '<a class="inline-action print-invoice" title="invoice">' +
-                        '<i class="fa fa-file-pdf-o text-red"></i></a>'; },
-                    width: 24,
-                    minWidth: 24,
-                    maxWidth: 24
-                });
-                return columns;
-            };
-            WaresMovementGrid.prototype.onClick = function (e, row, cell) {
-                _super.prototype.onClick.call(this, e, row, cell);
-                if (e.isDefaultPrevented())
-                    return;
-                var item = this.itemAt(row);
-                var target = $(e.target);
-                // if user clicks "i" element, e.g. icon
-                if (target.parent().hasClass('inline-action'))
-                    target = target.parent();
-                if (target.hasClass('inline-action')) {
-                    e.preventDefault();
-                    if (target.hasClass('print-invoice')) {
-                        Store_127.Common.ReportHelper.execute({
-                            reportKey: 'Store.WaresMovementDetails',
-                            params: {
-                                WatesMoveID: item.WatesMoveID
-                            }
-                        });
-                    }
-                }
-            };
-            WaresMovementGrid.prototype.set_shippingState = function (value) {
-                this.shippingStateFilter.value = value == null ? '' : value.toString();
-            };
-            //public set_OpCode(value: any): void {
-            //    this.OpCodeQuickFilter.value = value == ["[102]Доставка на стоки"].toString();
-            WaresMovementGrid.prototype.addButtonClick = function () {
-                var eq = this.view.params.EqualityFilter;
-                this.editItem({
-                    CounterpartyID: eq ? eq.CounterpartyID : null
-                });
-            };
-            WaresMovementGrid = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.filterable()
-            ], WaresMovementGrid);
-            return WaresMovementGrid;
-        }(Serenity.EntityGrid));
-        Store.WaresMovementGrid = WaresMovementGrid;
-    })(Store = Store_127.Store || (Store_127.Store = {}));
+    })(Store = Store_130.Store || (Store_130.Store = {}));
 })(Store || (Store = {}));
 /// <reference path="../../Common/Helpers/GridEditorDialog.ts" />
 var Store;
-(function (Store_128) {
+(function (Store_131) {
     var Store;
     (function (Store) {
         var WaresMovementDetailsDialog = /** @class */ (function (_super) {
@@ -6513,13 +6609,13 @@ var Store;
                 Serenity.Decorators.registerClass()
             ], WaresMovementDetailsDialog);
             return WaresMovementDetailsDialog;
-        }(Store_128.Common.GridEditorDialog));
+        }(Store_131.Common.GridEditorDialog));
         Store.WaresMovementDetailsDialog = WaresMovementDetailsDialog;
-    })(Store = Store_128.Store || (Store_128.Store = {}));
+    })(Store = Store_131.Store || (Store_131.Store = {}));
 })(Store || (Store = {}));
 /// <reference path="../../Common/Helpers/GridEditorBase.ts" />
 var Store;
-(function (Store_129) {
+(function (Store_132) {
     var Store;
     (function (Store) {
         var WaresMovementDetailsEditor = /** @class */ (function (_super) {
@@ -6558,12 +6654,12 @@ var Store;
                 Serenity.Decorators.registerClass()
             ], WaresMovementDetailsEditor);
             return WaresMovementDetailsEditor;
-        }(Store_129.Common.GridEditorBase));
+        }(Store_132.Common.GridEditorBase));
         Store.WaresMovementDetailsEditor = WaresMovementDetailsEditor;
-    })(Store = Store_129.Store || (Store_129.Store = {}));
+    })(Store = Store_132.Store || (Store_132.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_130) {
+(function (Store_133) {
     var Store;
     (function (Store) {
         var WaresMovementDetailsGrid = /** @class */ (function (_super) {
@@ -6607,7 +6703,7 @@ var Store;
             return WaresMovementDetailsGrid;
         }(Serenity.EntityGrid));
         Store.WaresMovementDetailsGrid = WaresMovementDetailsGrid;
-    })(Store = Store_130.Store || (Store_130.Store = {}));
+    })(Store = Store_133.Store || (Store_133.Store = {}));
 })(Store || (Store = {}));
 var Store;
 (function (Store) {

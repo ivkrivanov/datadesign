@@ -8,7 +8,6 @@ namespace Store.Store.Entities
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
-    using System.IO;
 
     [ConnectionKey("Store"), Module("Store"), TableName("[dbo].[Products]")]
     [DisplayName("Product"), InstanceName("Product")]
@@ -26,21 +25,21 @@ namespace Store.Store.Entities
             set { Fields.ProductID[this] = value; }
         }
 
-        [DisplayName("Wares Code"), Size(15), NotNull, QuickSearch, LookupInclude]
+        [DisplayName("Product Code"), Size(15), NotNull, QuickSearch, LookupInclude]
         public String ProductCode
         {
             get { return Fields.ProductCode[this]; }
             set { Fields.ProductCode[this] = value; }
         }
 
-        [DisplayName("Wares Barcode"), Size(15), QuickSearch, LookupInclude]
+        [DisplayName("Product Barcode"), Size(15), QuickSearch, LookupInclude]
         public String ProductBarcode
         {
             get { return Fields.ProductBarcode[this]; }
             set { Fields.ProductBarcode[this] = value; }
         }
 
-        [DisplayName("Wares Label"), Size(20)]
+        [DisplayName("Product Label"), Size(20)]
         public String ProductLabel
         {
             get { return Fields.ProductLabel[this]; }

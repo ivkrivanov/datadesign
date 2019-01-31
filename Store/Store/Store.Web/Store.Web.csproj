@@ -1004,6 +1004,8 @@
     <TypeScriptCompile Include="Modules\Store\Counterparty\CounterpartyProductMovementGrid.ts" />
     <TypeScriptCompile Include="Modules\Store\Counterparty\CounterpartyEditor.ts" />
     <TypeScriptCompile Include="Modules\Store\Counterparty\CounterpartyProductMovementDialog.ts" />
+    <TypeScriptCompile Include="Modules\Store\Counterparty\CounterpartyWaresMovementDialog.ts" />
+    <TypeScriptCompile Include="Modules\Store\Counterparty\CounterpartyWaresMovementGrid.ts" />
     <TypeScriptCompile Include="Modules\Store\Employee\EmployeeFormatter.ts" />
     <TypeScriptCompile Include="Modules\Store\Employee\EmployeeListFormatter.ts" />
     <TypeScriptCompile Include="Modules\Store\Note\NotesEditor.ts" />
@@ -1011,6 +1013,7 @@
     <TypeScriptCompile Include="Modules\Store\ProductDetail\ProductDetailEditor.ts" />
     <TypeScriptCompile Include="Modules\Store\ProductDetail\ProductDetailsEditor.ts" />
     <TypeScriptCompile Include="Modules\Store\ProductMovementDetails\ProductMovementDetailsEditor.ts" />
+    <TypeScriptCompile Include="Modules\Store\Product\ProductEditor.ts" />
     <TypeScriptCompile Include="Modules\Store\Shared\PhoneEditor.ts" />
     <TypeScriptCompile Include="Modules\Store\Shipper\ShipperFormatter.ts" />
     <TypeScriptCompile Include="Modules\Store\Shops\ShopsEditor.ts" />
@@ -1995,7 +1998,6 @@
     <Compile Include="Modules\Store\Shipper\ShippingState.cs" />
     <Compile Include="Modules\Store\Shops\ShopLookup.cs" />
     <Compile Include="Modules\Store\WaresMovement\WaresMovementOperations.cs" />
-    <Compile Include="Store\Store\Entities\Shopsrow.cs" />
     <Content Include="Modules\Common\Reporting\ReportPage.cshtml" />
     <Compile Include="Modules\Common\Reporting\ReportTree.cs" />
     <Compile Include="Modules\Common\Reporting\ReportController.cs" />

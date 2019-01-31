@@ -3597,6 +3597,56 @@ declare namespace Store.Store {
     }
 }
 declare namespace Store.Store {
+    class WaresMovementDialog extends Serenity.EntityDialog<WaresMovementRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: WaresMovementForm;
+        constructor();
+        getToolbarButtons(): Serenity.ToolButton[];
+        protected updateInterface(): void;
+    }
+}
+declare namespace Store.Store {
+    class CounterpartyWaresMovementDialog extends WaresMovementDialog {
+        constructor();
+        updateInterface(): void;
+    }
+}
+declare namespace Store.Store {
+    class WaresMovementGrid extends Serenity.EntityGrid<WaresMovementRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof WaresMovementDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        protected shippingStateFilter: Serenity.EnumEditor;
+        constructor(container: JQuery);
+        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
+        protected createQuickFilters(): void;
+        protected getButtons(): Serenity.ToolButton[];
+        protected getColumns(): Slick.Column[];
+        protected onClick(e: JQueryEventObject, row: number, cell: number): void;
+        set_shippingState(value: number): void;
+        protected addButtonClick(): void;
+    }
+}
+declare namespace Store.Store {
+    class CounterpartyWaresMovementGrid extends WaresMovementGrid {
+        protected getDialogType(): typeof CounterpartyWaresMovementDialog;
+        constructor(container: JQuery);
+        protected getColumns(): Slick.Column[];
+        protected initEntityDialog(itemType: any, dialog: any): void;
+        protected AddButtonClick(): void;
+        protected getInitialTitle(): any;
+        protected getGridCanLoad(): boolean;
+        private _counterpartyID;
+        counterpartyID: string;
+    }
+}
+declare namespace Store.Store {
     class EmployeeDialog extends Serenity.EntityDialog<EmployeeRow, any> {
         protected getFormKey(): any;
         protected getIdProperty(): string;
@@ -3712,6 +3762,13 @@ declare namespace Store.Store {
         protected getService(): string;
         protected getLanguages(): string[][];
         protected form: ProductForm;
+    }
+}
+declare namespace Store.Store {
+    class ProductEditor extends Serenity.LookupEditorBase<Serenity.LookupEditorOptions, CategoryRow> {
+        constructor(hidden: JQuery);
+        protected getLookupKey(): string;
+        protected getItems(lookup: Q.Lookup<CategoryRow>): CategoryRow[];
     }
 }
 declare namespace Store.Store {
@@ -3931,37 +3988,6 @@ declare namespace Store.Store {
         private inputsChange;
         private setSaveButtonState;
         private saveClick;
-    }
-}
-declare namespace Store.Store {
-    class WaresMovementDialog extends Serenity.EntityDialog<WaresMovementRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: WaresMovementForm;
-        constructor();
-        getToolbarButtons(): Serenity.ToolButton[];
-        protected updateInterface(): void;
-    }
-}
-declare namespace Store.Store {
-    class WaresMovementGrid extends Serenity.EntityGrid<WaresMovementRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof WaresMovementDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        protected shippingStateFilter: Serenity.EnumEditor;
-        constructor(container: JQuery);
-        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
-        protected createQuickFilters(): void;
-        protected getButtons(): Serenity.ToolButton[];
-        protected getColumns(): Slick.Column[];
-        protected onClick(e: JQueryEventObject, row: number, cell: number): void;
-        set_shippingState(value: number): void;
-        protected addButtonClick(): void;
     }
 }
 declare namespace Store.Store {

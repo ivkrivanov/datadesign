@@ -189,9 +189,9 @@ namespace Store.Store {
             category.referencedFields = [fld.CategoryID];
             category.format = ctx => this.selectFormatter(ctx, fld.CategoryID, CategoryRow.getLookup());
 
-            var supplier = Q.first(columns, x => x.field === fld.SupplierCompanyName);
-            supplier.referencedFields = [fld.SupplierID];
-            supplier.format = ctx => this.selectFormatter(ctx, fld.SupplierID, SupplierRow.getLookup());
+            //var supplier = Q.first(columns, x => x.field === fld.SupplierCompanyName);
+            //supplier.referencedFields = [fld.SupplierID];
+            //supplier.format = ctx => this.selectFormatter(ctx, fld.SupplierID, SupplierRow.getLookup());
 
             Q.first(columns, x => x.field === fld.UnitPrice).format = num;
             Q.first(columns, x => x.field === fld.UnitsInStock).format = num;

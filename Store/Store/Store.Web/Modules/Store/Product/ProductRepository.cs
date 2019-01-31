@@ -2,6 +2,7 @@
 namespace Store.Store.Repositories
 {
     using global::Store.Store.Entities;
+    using Serenity;
     using Serenity.Data;
     using Serenity.Services;
     using System;
@@ -72,7 +73,7 @@ namespace Store.Store.Repositories
                 base.ApplyFilters(query);
 
                 if (Request.WaresID != null)
-                {
+                    {
                     var pd = ProductDetailRow.Fields.As("pd");
 
                     query.Where(Criteria.Exists(
@@ -84,6 +85,11 @@ namespace Store.Store.Repositories
                                 pd.ProductID == Request.WaresID.Value)
                                 .ToString()));
                 }
+
+
+                var user = (UserDefinition)Authorization.UserDefinition;
+                if (!Authorization.HasPermission(Administration.PermissionKeys.Tenants))
+                    query.Where(fld.TenantId == user.TenantId);
             }
         }
     }
