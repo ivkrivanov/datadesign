@@ -2003,10 +2003,10 @@ declare namespace Store.Store {
         ShopID: ShopsEditor;
         OrderDate: Serenity.DateEditor;
         RequiredDate: Serenity.DateEditor;
-        ShippedDate: Serenity.DateEditor;
         EmployeeID: Serenity.LookupEditor;
-        ShipperID: Serenity.LookupEditor;
         DetailList: ProductMovementDetailsEditor;
+        ShippedDate: Serenity.DateEditor;
+        ShipperID: Serenity.LookupEditor;
     }
     class ProductMovementForm extends Serenity.PrefixedContext {
         static formKey: string;

@@ -16,25 +16,28 @@ namespace Store.Store.Forms
         public ProductMovementOperations? OperationTypeOpCode { get; set; }
         [HalfWidth]
         public String CounterpartyID { get; set; }
+
         [HalfWidth]
         public String ShopID { get; set; }
+        [HalfWidth]
+        public Int32 EmployeeID { get; set; }
 
         [DefaultValue("now")]
         [HalfWidth]
         public DateTime OrderDate { get; set; }
         [HalfWidth]
         public DateTime RequiredDate { get; set; }
-        [HalfWidth]
-        public DateTime ShippedDate { get; set; }
-
-        [HalfWidth]
-        public Int32 EmployeeID { get; set; }
-        [HalfWidth]
-        public Int32 ShipperID { get; set; }
 
         [Category("WaresMovementDetailsRow")]
         [ProductMovementDetailsEditor]
         public List<Entities.ProductMovementRow> DetailList { get; set; }
+
+        [HalfWidth]
+        public DateTime ShippedDate { get; set; }
+        [HalfWidth]
+        public Int32 ShipperID { get; set; }
+
+
 
     }
 }

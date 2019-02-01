@@ -1537,10 +1537,10 @@ var Store;
                         'ShopID', w2,
                         'OrderDate', w3,
                         'RequiredDate', w3,
-                        'ShippedDate', w3,
                         'EmployeeID', w4,
-                        'ShipperID', w4,
-                        'DetailList', w5
+                        'DetailList', w5,
+                        'ShippedDate', w3,
+                        'ShipperID', w4
                     ]);
                 }
                 return _this;
@@ -4536,7 +4536,7 @@ var Store;
             };
             CounterpartyDialog.prototype.loadEntity = function (entity) {
                 _super.prototype.loadEntity.call(this, entity);
-                Serenity.TabsExtensions.setDisabled(this.tabs, 'Orders', this.isNewOrDeleted());
+                Serenity.TabsExtensions.setDisabled(this.tabs, 'Product Movement', this.isNewOrDeleted());
                 this.ordersGrid.counterpartyID = entity.CounterpartyID;
             };
             CounterpartyDialog.prototype.onSaveSuccess = function (response) {

@@ -5,10 +5,10 @@
         ShopID: ShopsEditor;
         OrderDate: Serenity.DateEditor;
         RequiredDate: Serenity.DateEditor;
-        ShippedDate: Serenity.DateEditor;
         EmployeeID: Serenity.LookupEditor;
-        ShipperID: Serenity.LookupEditor;
         DetailList: ProductMovementDetailsEditor;
+        ShippedDate: Serenity.DateEditor;
+        ShipperID: Serenity.LookupEditor;
     }
 
     export class ProductMovementForm extends Serenity.PrefixedContext {
@@ -35,10 +35,10 @@
                     'ShopID', w2,
                     'OrderDate', w3,
                     'RequiredDate', w3,
-                    'ShippedDate', w3,
                     'EmployeeID', w4,
-                    'ShipperID', w4,
-                    'DetailList', w5
+                    'DetailList', w5,
+                    'ShippedDate', w3,
+                    'ShipperID', w4
                 ]);
             }
         }

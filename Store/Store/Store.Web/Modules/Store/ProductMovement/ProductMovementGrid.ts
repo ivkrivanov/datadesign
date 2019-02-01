@@ -19,7 +19,6 @@ namespace Store.Store {
         }
 
         protected getQuickFilters() {
-
             var filters = super.getQuickFilters();
 
             filters.push({
@@ -38,7 +37,7 @@ namespace Store.Store {
             return filters;
         }
 
-        protected createQuickFilters(): void {
+        protected createQuickFilters() {
             super.createQuickFilters();
 
             this.shippingStateFilter = this.findQuickFilter(Serenity.EnumEditor, fld.ShippingState);

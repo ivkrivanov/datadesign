@@ -33,13 +33,11 @@ namespace Store.Store.Endpoints
             return new MyRepository().Delete(uow, request);
         }
 
-        [HttpPost]
         public RetrieveResponse<MyRow> Retrieve(IDbConnection connection, RetrieveRequest request)
         {
             return new MyRepository().Retrieve(connection, request);
         }
 
-        [HttpPost]
         public ListResponse<MyRow> List(IDbConnection connection, ProductMovementListRequest request)
         {
             return new MyRepository().List(connection, request);
@@ -50,7 +48,7 @@ namespace Store.Store.Endpoints
             var data = List(connection, request).Entities;
             var report = new DynamicDataReport(data, request.IncludeColumns, typeof(Columns.ProductMovementColumns));
             var bytes = new ReportRepository().Render(report);
-            return ExcelContentResult.Create(bytes, "OrderList_" +
+            return ExcelContentResult.Create(bytes, "ProductMovementList_" +
                 DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".xlsx");
         }
     }

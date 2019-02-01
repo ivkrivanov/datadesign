@@ -3,6 +3,7 @@
 }
 
 @section Head {
+    @Html.Script("dynamic://Lookup.Store.OperationType")
     @Html.Script("dynamic://Lookup.Store.Counterparty")
     @Html.Script("dynamic://Lookup.Store.CounterpartyCountry")
     @Html.Script("dynamic://Lookup.Store.CounterpartyCity")
@@ -16,7 +17,6 @@
 <script type="text/javascript">
     jQuery(function () {
         var productmoveGrid = new Store.Store.ProductMovementGrid($('#GridDiv'), {
-
         });
 
         var q = Q.parseQueryString();

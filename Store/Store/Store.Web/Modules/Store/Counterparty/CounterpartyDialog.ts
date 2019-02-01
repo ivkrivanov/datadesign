@@ -44,7 +44,7 @@ namespace Store.Store {
         loadEntity(entity: CounterpartyRow) {
             super.loadEntity(entity);
 
-            Serenity.TabsExtensions.setDisabled(this.tabs, 'Orders', this.isNewOrDeleted());
+            Serenity.TabsExtensions.setDisabled(this.tabs, 'Product Movement', this.isNewOrDeleted());
 
             this.ordersGrid.counterpartyID = entity.CounterpartyID;
         }
