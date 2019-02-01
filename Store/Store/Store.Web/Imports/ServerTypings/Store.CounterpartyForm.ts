@@ -6,10 +6,10 @@
         ContactTitle: Serenity.StringEditor;
         Representatives: Serenity.LookupEditor;
         Address: Serenity.StringEditor;
+        Country: Serenity.LookupEditor;
         City: Serenity.LookupEditor;
         Region: Serenity.StringEditor;
         PostalCode: Serenity.StringEditor;
-        Country: Serenity.LookupEditor;
         Phone: PhoneEditor;
         NoteList: NotesEditor;
         LastContactDate: Serenity.DateEditor;
@@ -44,10 +44,10 @@
                     'ContactTitle', w0,
                     'Representatives', w1,
                     'Address', w0,
+                    'Country', w1,
                     'City', w1,
                     'Region', w0,
                     'PostalCode', w0,
-                    'Country', w1,
                     'Phone', w2,
                     'NoteList', w3,
                     'LastContactDate', w4,

@@ -110,7 +110,7 @@ namespace Store.Store {
 
         protected addButtonClick() {
             var eq = this.view.params.EqualityFilter;
-            this.editItem(<WaresMovementRow>{
+            this.editItem(<ProductMovementRow>{
                 CounterpartyID: eq ? eq.CounterpartyID : null
             });
         }

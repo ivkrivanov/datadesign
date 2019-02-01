@@ -733,10 +733,10 @@ var Store;
                         'ContactTitle', w0,
                         'Representatives', w1,
                         'Address', w0,
+                        'Country', w1,
                         'City', w1,
                         'Region', w0,
                         'PostalCode', w0,
-                        'Country', w1,
                         'Phone', w2,
                         'NoteList', w3,
                         'LastContactDate', w4,
@@ -1393,21 +1393,26 @@ var Store;
                     var w1 = s.StringEditor;
                     var w2 = s.ImageUploadEditor;
                     var w3 = s.BooleanEditor;
-                    var w4 = Store.ProductDetailsEditor;
-                    var w5 = s.DecimalEditor;
-                    var w6 = s.IntegerEditor;
+                    var w4 = Store.CounterpartyEditor;
+                    var w5 = Store.ProductDetailsEditor;
+                    var w6 = s.DecimalEditor;
+                    var w7 = s.IntegerEditor;
                     Q.initFormType(ProductForm, [
                         'CategoryID', w0,
+                        'ProductCode', w1,
+                        'ProductBarcode', w1,
+                        'ProductLabel', w1,
                         'ProductName', w1,
                         'ProductImage', w2,
                         'Discontinued', w3,
-                        'SupplierID', w0,
-                        'DetailList', w4,
+                        'CounterpartyID', w4,
+                        'DetailList', w5,
+                        'MeasureID', w0,
                         'QuantityPerUnit', w1,
-                        'UnitPrice', w5,
-                        'UnitsInStock', w6,
-                        'UnitsOnOrder', w6,
-                        'ReorderLevel', w6
+                        'UnitPrice', w6,
+                        'UnitsInStock', w7,
+                        'UnitsOnOrder', w7,
+                        'ReorderLevel', w7
                     ]);
                 }
                 return _this;
@@ -5449,7 +5454,7 @@ var Store;
         var ProductDialog = /** @class */ (function (_super) {
             __extends(ProductDialog, _super);
             function ProductDialog() {
-                var _this = _super !== null && _super.apply(this, arguments) || this;
+                var _this = _super.call(this) || this;
                 _this.form = new Store.ProductForm(_this.idPrefix);
                 return _this;
             }
@@ -5459,6 +5464,10 @@ var Store;
             ProductDialog.prototype.getNameProperty = function () { return Store.ProductRow.nameProperty; };
             ProductDialog.prototype.getService = function () { return Store.ProductService.baseUrl; };
             ProductDialog.prototype.getLanguages = function () { return Store_109.LanguageList.getValue(); };
+            ProductDialog.prototype.UpdateInterface = function () {
+                _super.prototype.updateInterface.call(this);
+                Serenity.EditorUtils.setReadOnly(this.form.ProductCode, true);
+            };
             ProductDialog = __decorate([
                 Serenity.Decorators.registerClass()
             ], ProductDialog);

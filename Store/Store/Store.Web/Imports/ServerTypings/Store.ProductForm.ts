@@ -1,11 +1,15 @@
 ﻿namespace Store.Store {
     export interface ProductForm {
         CategoryID: Serenity.LookupEditor;
+        ProductCode: Serenity.StringEditor;
+        ProductBarcode: Serenity.StringEditor;
+        ProductLabel: Serenity.StringEditor;
         ProductName: Serenity.StringEditor;
         ProductImage: Serenity.ImageUploadEditor;
         Discontinued: Serenity.BooleanEditor;
-        SupplierID: Serenity.LookupEditor;
+        CounterpartyID: CounterpartyEditor;
         DetailList: ProductDetailsEditor;
+        MeasureID: Serenity.LookupEditor;
         QuantityPerUnit: Serenity.StringEditor;
         UnitPrice: Serenity.DecimalEditor;
         UnitsInStock: Serenity.IntegerEditor;
@@ -28,22 +32,27 @@
                 var w1 = s.StringEditor;
                 var w2 = s.ImageUploadEditor;
                 var w3 = s.BooleanEditor;
-                var w4 = ProductDetailsEditor;
-                var w5 = s.DecimalEditor;
-                var w6 = s.IntegerEditor;
+                var w4 = CounterpartyEditor;
+                var w5 = ProductDetailsEditor;
+                var w6 = s.DecimalEditor;
+                var w7 = s.IntegerEditor;
 
                 Q.initFormType(ProductForm, [
                     'CategoryID', w0,
+                    'ProductCode', w1,
+                    'ProductBarcode', w1,
+                    'ProductLabel', w1,
                     'ProductName', w1,
                     'ProductImage', w2,
                     'Discontinued', w3,
-                    'SupplierID', w0,
-                    'DetailList', w4,
+                    'CounterpartyID', w4,
+                    'DetailList', w5,
+                    'MeasureID', w0,
                     'QuantityPerUnit', w1,
-                    'UnitPrice', w5,
-                    'UnitsInStock', w6,
-                    'UnitsOnOrder', w6,
-                    'ReorderLevel', w6
+                    'UnitPrice', w6,
+                    'UnitsInStock', w7,
+                    'UnitsOnOrder', w7,
+                    'ReorderLevel', w7
                 ]);
             }
         }
