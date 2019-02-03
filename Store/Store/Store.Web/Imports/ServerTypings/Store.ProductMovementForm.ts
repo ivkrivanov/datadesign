@@ -3,9 +3,9 @@
         OperationTypeOpCode: Serenity.EnumEditor;
         CounterpartyID: CounterpartyEditor;
         ShopID: ShopsEditor;
+        EmployeeID: Serenity.LookupEditor;
         OrderDate: Serenity.DateEditor;
         RequiredDate: Serenity.DateEditor;
-        EmployeeID: Serenity.LookupEditor;
         DetailList: ProductMovementDetailsEditor;
         ShippedDate: Serenity.DateEditor;
         ShipperID: Serenity.LookupEditor;
@@ -25,20 +25,20 @@
                 var w0 = s.EnumEditor;
                 var w1 = CounterpartyEditor;
                 var w2 = ShopsEditor;
-                var w3 = s.DateEditor;
-                var w4 = s.LookupEditor;
+                var w3 = s.LookupEditor;
+                var w4 = s.DateEditor;
                 var w5 = ProductMovementDetailsEditor;
 
                 Q.initFormType(ProductMovementForm, [
                     'OperationTypeOpCode', w0,
                     'CounterpartyID', w1,
                     'ShopID', w2,
-                    'OrderDate', w3,
-                    'RequiredDate', w3,
-                    'EmployeeID', w4,
+                    'EmployeeID', w3,
+                    'OrderDate', w4,
+                    'RequiredDate', w4,
                     'DetailList', w5,
-                    'ShippedDate', w3,
-                    'ShipperID', w4
+                    'ShippedDate', w4,
+                    'ShipperID', w3
                 ]);
             }
         }

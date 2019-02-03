@@ -68,7 +68,7 @@ namespace Store.Store.Entities
             set { Fields.Type[this] = value; }
         }
 
-        [Origin("type")]
+        [Origin("type"), LookupInclude]
         public String CategoryType
         {
             get { return Fields.CategoryType[this]; }

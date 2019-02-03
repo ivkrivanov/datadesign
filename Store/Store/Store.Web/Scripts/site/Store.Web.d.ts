@@ -2001,9 +2001,9 @@ declare namespace Store.Store {
         OperationTypeOpCode: Serenity.EnumEditor;
         CounterpartyID: CounterpartyEditor;
         ShopID: ShopsEditor;
+        EmployeeID: Serenity.LookupEditor;
         OrderDate: Serenity.DateEditor;
         RequiredDate: Serenity.DateEditor;
-        EmployeeID: Serenity.LookupEditor;
         DetailList: ProductMovementDetailsEditor;
         ShippedDate: Serenity.DateEditor;
         ShipperID: Serenity.LookupEditor;

@@ -170,6 +170,7 @@ namespace MVC
 
             public static class WaresMovement
             {
+                public const string WaresMovementDetailReport = "~/Modules/Store/WaresMovement/WaresMovementDetailReport.cshtml";
                 public const string WaresMovementIndex = "~/Modules/Store/WaresMovement/WaresMovementIndex.cshtml";
             }
 

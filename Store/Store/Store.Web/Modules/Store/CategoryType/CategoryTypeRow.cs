@@ -23,7 +23,7 @@ namespace Store.Store.Entities
             set { Fields.CategoryTypeID[this] = value; }
         }
 
-        [DisplayName("Type"), NotNull]
+        [DisplayName("Type"), NotNull, QuickSearch]
         public Int16? Type
         {
             get { return Fields.Type[this]; }
