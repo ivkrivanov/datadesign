@@ -1,6 +1,6 @@
 ﻿namespace Store.Store {
     export interface OperationTypeRow {
-        OperationTypeID?: number;
+        OperationTypeId?: number;
         OpCode?: number;
         Operation?: string;
         IsActive?: number;
@@ -12,7 +12,7 @@
     }
 
     export namespace OperationTypeRow {
-        export const idProperty = 'OperationTypeID';
+        export const idProperty = 'OperationTypeId';
         export const isActiveProperty = 'IsActive';
         export const nameProperty = 'Operation';
         export const localTextPrefix = 'Store.OperationType';
@@ -23,7 +23,7 @@
         }
 
         export declare const enum Fields {
-            OperationTypeID = "OperationTypeID",
+            OperationTypeId = "OperationTypeId",
             OpCode = "OpCode",
             Operation = "Operation",
             IsActive = "IsActive",
