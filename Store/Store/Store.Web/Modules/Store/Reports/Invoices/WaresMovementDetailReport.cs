@@ -10,7 +10,7 @@ namespace Store.Store
 
 
     [Report("Store.WaresMovementDetails")]
-    [ReportDesign(MVC.Views.Store.WaresMovement.WaresMovementDetailReport)]
+    [ReportDesign(MVC.Views.Store.Reports.Invoices.WaresMovementDetailReport)]
     [RequiredPermission(PermissionKeys.General)]
     public class WaresMovementDetailReport : IReport, ICustomizeHtmlToPdf
     {
@@ -23,10 +23,10 @@ namespace Store.Store
             using (var connection = SqlConnections.NewFor<WaresMovementRow>())
             {
                 var wm = WaresMovementRow.Fields;
-
                 data.WaresMovement = connection.TryById<WaresMovementRow>(this.WaresMoveID, q => q
                     .SelectTableFields()
                     .Select(wm.EmployeeFullName)
+                    .Select(wm.OperationTypeOperation)
                     .Select(wm.ShopShopName)) ?? new WaresMovementRow();
 
                 var wmd = WaresMovementDetailsRow.Fields;
@@ -39,6 +39,14 @@ namespace Store.Store
                 var c = CounterpartyRow.Fields;
                 data.Counterparty = connection.TryFirst<CounterpartyRow>(c.CounterpartyID == data.WaresMovement.CounterpartyID)
                     ?? new CounterpartyRow();
+
+                var s = ShopsRow.Fields;
+                data.Shop = connection.TryFirst<ShopsRow>(s.ShopID == data.WaresMovement.ShopID)
+                    ?? new ShopsRow();
+
+                var o = OperationTypeRow.Fields;
+                data.Operation = connection.TryFirst<OperationTypeRow>(o.OperationTypeID == (Int32)data.WaresMovement.OperationTypeID)
+                    ?? new OperationTypeRow();
             }
 
             return data;
@@ -48,7 +56,6 @@ namespace Store.Store
         {
             options.MarginsAll = "2cm";
             options.PageSize = "A4";
-
         }
     }
 
@@ -57,5 +64,7 @@ namespace Store.Store
         public WaresMovementRow WaresMovement { get; set; }
         public List<WaresMovementDetailsRow> Details { get; set; }
         public CounterpartyRow Counterparty { get; set; }
+        public ShopsRow Shop { get; set; }
+        public OperationTypeRow Operation { get; set;}
     }
 }

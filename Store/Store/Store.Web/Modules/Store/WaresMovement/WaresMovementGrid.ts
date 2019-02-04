@@ -13,7 +13,6 @@ namespace Store.Store {
         protected getService() { return WaresMovementService.baseUrl; }
 
         protected shippingStateFilter: Serenity.EnumEditor;
-        //protected OpCodeQuickFilter: Serenity.LookupEditor;
 
         constructor(container: JQuery) {
             super(container);
@@ -40,13 +39,10 @@ namespace Store.Store {
 
         }
 
-        protected createQuickFilters(): void {
-
+        protected createQuickFilters() {
             super.createQuickFilters();
 
             //this.findQuickFilter(Serenity.LookupEditor, fld.OperationTypeOperation).values = ["[102]Доставка на стоки"];
-
-
 
             this.shippingStateFilter = this.findQuickFilter(Serenity.EnumEditor, fld.ShippingState);
         }
@@ -105,7 +101,7 @@ namespace Store.Store {
                     Common.ReportHelper.execute({
                         reportKey: 'Store.WaresMovementDetails',
                         params: {
-                            WatesMoveID: item.WatesMoveID
+                            WaresMoveID: item.WaresMoveID
                         }
                     });
                 }

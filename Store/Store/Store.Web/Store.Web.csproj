@@ -822,6 +822,7 @@
     <Content Include="Scripts\serenity\Serenity.CoreLib.min.js" />
     <Content Include="Scripts\serenity\Serenity.Script.UI.js" />
     <Content Include="Scripts\serenity\Serenity.Script.UI.min.js" />
+    <Content Include="Scripts\site\Store.Web.js" />
     <Content Include="Scripts\SlickGrid\Controls\slick.columnpicker.js" />
     <Content Include="Scripts\SlickGrid\Controls\slick.pager.js" />
     <Content Include="Scripts\SlickGrid\MIT-LICENSE.txt" />
@@ -874,7 +875,8 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
-    <Content Include="Modules\Store\WaresMovement\WaresMovementDetailReport.cshtml" />
+    <Content Include="Modules\Store\Reports\Invoices\WaresMovementDetailReport.cshtml" />
+    <Content Include="Modules\Store\Reports\Invoices\ProductMovementDetailReport.cshtml" />
     <None Include="packages.config" />
     <Content Include="Scripts\ckeditor\skins\moono\readme.md" />
     <Content Include="Scripts\ckeditor\README.md" />
@@ -912,6 +914,7 @@
     <Content Include="Scripts\serenity\texts\serenity.texts.bn.json" />
     <Content Include="Scripts\serenity\Serenity.CoreLib.js.map" />
     <Content Include="Scripts\site\ScriptBundles.json" />
+    <Content Include="Scripts\site\Store.Web.js.map" />
     <None Include="tsconfig.json" />
     <TypeScriptCompile Include="Imports\ServerTypings\Administration.TenantColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
@@ -1862,6 +1865,7 @@
     <Content Include="Modules\Store\WaresMovement\WaresMovementIndex.cshtml" />
     <TypeScriptCompile Include="Modules\Store\WaresMovement\WaresMovementDialog.ts" />
     <TypeScriptCompile Include="Modules\Store\WaresMovement\WaresMovementGrid.ts" />
+    <TypeScriptCompile Include="Scripts\site\Store.Web.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\serenity\Serenity.CoreLib.d.ts" />
     <TypeScriptCompile Include="Imports\ServerTypings\Store.ProductMovementRow.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
@@ -2011,9 +2015,10 @@
     <Compile Include="Modules\Common\Reporting\ExcelReportGenerator.cs" />
     <Compile Include="Modules\Store\ProductMovement\ProductMovementListRequest.cs" />
     <Compile Include="Modules\Store\ProductMovement\ProductMovementOperations.cs" />
+    <Compile Include="Modules\Store\Reports\Invoices\ProductMovementDetailReport.cs" />
     <Compile Include="Modules\Store\Shipper\ShippingState.cs" />
     <Compile Include="Modules\Store\Shops\ShopLookup.cs" />
-    <Compile Include="Modules\Store\WaresMovement\WaresMovementDetailReport.cs" />
+    <Compile Include="Modules\Store\Reports\Invoices\WaresMovementDetailReport.cs" />
     <Compile Include="Modules\Store\WaresMovement\WaresMovementOperations.cs" />
     <Content Include="Modules\Common\Reporting\ReportPage.cshtml" />
     <Compile Include="Modules\Common\Reporting\ReportTree.cs" />

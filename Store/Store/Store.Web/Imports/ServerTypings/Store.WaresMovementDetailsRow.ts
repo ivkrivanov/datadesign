@@ -21,13 +21,11 @@
         WaresMoveShippedDate?: string;
         WaresCode?: string;
         WaresName?: string;
-        WaresSupplierID?: number;
         WaresCounterpartyID?: string;
         WaresCategoryID?: number;
         WaresMeasureID?: number;
         WaresQuantityPerUnit?: string;
         WaresUnitPrice?: number;
-        WaresDiscontinued?: boolean;
         LineTotal?: number;
         InsertUserId?: number;
         InsertDate?: string;
@@ -62,13 +60,11 @@
             WaresMoveShippedDate = "WaresMoveShippedDate",
             WaresCode = "WaresCode",
             WaresName = "WaresName",
-            WaresSupplierID = "WaresSupplierID",
             WaresCounterpartyID = "WaresCounterpartyID",
             WaresCategoryID = "WaresCategoryID",
             WaresMeasureID = "WaresMeasureID",
             WaresQuantityPerUnit = "WaresQuantityPerUnit",
             WaresUnitPrice = "WaresUnitPrice",
-            WaresDiscontinued = "WaresDiscontinued",
             LineTotal = "LineTotal",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",

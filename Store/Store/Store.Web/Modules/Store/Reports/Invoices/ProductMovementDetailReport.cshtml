@@ -1,0 +1,103 @@
+﻿@model Store.Store.ProductMovementDetailReportData
+
+@if ((bool?)ViewData["Printing"] == true)
+{
+    Layout = MVC.Views.Shared._LayoutNoNavigation;
+}
+
+<section class="invoice">
+    <div class="row">
+        <div class="col-xs-12">
+            <h2 class="page-header">
+                Фактура
+                <small class="pull-right">@DateTime.Now.ToShortDateString()</small>
+            </h2>
+            <h4>
+                @Model.Operation.Operation
+            </h4>
+        </div>
+    </div>
+    <!-- info row -->
+    <div class="row invoice-info">
+        <div class="col-sm-4 invoice-col">
+            FROM
+            <address>
+                <strong>@Model.Shop.ShopName</strong>
+                <br>
+                @Model.Shop.Address
+                @Model.Shop.City
+                <br>
+            </address>
+        </div>
+        <!-- /.col -->
+        <div class="col-sm-4 invoice-col">
+            To
+            <address>
+                <strong>@Model.Counterparty.CompanyName</strong>
+                <br>
+                @Model.Counterparty.Address
+                Phone: @Model.Counterparty.Phone
+                <br>
+            </address>
+        </div>
+        <!-- /.col -->
+        <div class="col-sm-4 invoice-col">
+
+            <br>
+            <b>Order ID:</b> @Model.ProductMovement.ProductMoveID<br>
+            <b>Payment Due:</b> @Model.ProductMovement.OrderDate.Value.ToShortDateString()<br>
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+    <!-- Table row -->
+    <div class="row">
+        <div class="col-xs-12 table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th align="Left">Products</th>
+                        <th align="right">Unit Price</th>
+                        <th align="right">Quantity</th>
+                        <th align="right">Discount</th>
+                        <th align="right">Line Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var d in Model.Details)
+                    {
+                        if (Model.Operation.OpCode == 301)
+                        {
+                            <tr>
+                                <td align="Left">@d.ProductName</td>
+                                <td align="right">@(d.SalePrice.ToStringDefault("#,##0.00"))</td>
+                                <td align="right">@(d.Quantity.ToStringDefault())</td>
+                                <td align="right">@(d.Discount.ToStringDefault("#,##0.00"))</td>
+                                <td align="right">@(d.LineTotal.ToStringDefault("#,##0.00"))</td>
+                            </tr>
+                        }
+                        if (Model.Operation.OpCode == 401)
+                        {
+                            <tr>
+                                <td align="Left">@d.ProductName</td>
+                                <td align="right">@(d.SalePrice.ToStringDefault("#,##0.00"))</td>
+                                <td align="right">@(d.Quantity.ToStringDefault())</td>
+                                <td align="right">@(d.Discount.ToStringDefault("#,##0.00"))</td>
+                                <td align="right">@(d.LineTotal.ToStringDefault("#,##0.00"))</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+</section>

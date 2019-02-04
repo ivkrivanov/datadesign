@@ -16,10 +16,10 @@ namespace Store.Store.Entities
     public sealed class OperationTypeRow : LoggingRow, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
     {
         [DisplayName("Operation ID"), Identity, LookupInclude]
-        public Int32? OperationTypeId
+        public Int32? OperationTypeID
         {
-            get { return Fields.OperationTypeId[this]; }
-            set { Fields.OperationTypeId[this] = value; }
+            get { return Fields.OperationTypeID[this]; }
+            set { Fields.OperationTypeID[this] = value; }
         }
 
         [DisplayName("OpCode"), NotNull, QuickSearch, LookupInclude]
@@ -39,7 +39,7 @@ namespace Store.Store.Entities
 
         IIdField IIdRow.IdField
         {
-            get { return Fields.OperationTypeId; }
+            get { return Fields.OperationTypeID; }
         }
 
         StringField INameRow.NameField
@@ -84,7 +84,7 @@ namespace Store.Store.Entities
 
         public class RowFields : LoggingRowFields
         {
-            public Int32Field OperationTypeId;
+            public Int32Field OperationTypeID;
             public Int16Field OpCode;
             public StringField Operation;
 

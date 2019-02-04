@@ -133,12 +133,12 @@ namespace Store.Store.Entities
             set { Fields.WaresName[this] = value; }
         }
 
-        [Origin("w")]
-        public Int32? WaresSupplierID
-        {
-            get { return Fields.WaresSupplierID[this]; }
-            set { Fields.WaresSupplierID[this] = value; }
-        }
+        //[Origin("w")]
+        //public Int32? WaresSupplierID
+        //{
+        //    get { return Fields.WaresSupplierID[this]; }
+        //    set { Fields.WaresSupplierID[this] = value; }
+        //}
 
         [Origin("w")]
         public String WaresCounterpartyID
@@ -175,22 +175,14 @@ namespace Store.Store.Entities
             set { Fields.WaresUnitPrice[this] = value; }
         }
 
-        [Origin("w")]
-        public Boolean? WaresDiscontinued
-        {
-            get { return Fields.WaresDiscontinued[this]; }
-            set { Fields.WaresDiscontinued[this] = value; }
-        }
+        //[Origin("w")]
+        //public Boolean? WaresDiscontinued
+        //{
+        //    get { return Fields.WaresDiscontinued[this]; }
+        //    set { Fields.WaresDiscontinued[this] = value; }
+        //}
 
         #endregion Wares
-
-
-        [DisplayName("Quantity"), NotNull, DefaultValue(1), AlignRight]
-        public Single? Quantity
-        {
-            get { return Fields.Quantity[this]; }
-            set { Fields.Quantity[this] = value; }
-        }
 
         [DisplayName("Income Price"), Scale(4), NotNull, AlignRight, DisplayFormat("#,##0.00")]
         public Decimal? IncomePrice
@@ -211,6 +203,13 @@ namespace Store.Store.Entities
         {
             get { return Fields.SinglePrice[this]; }
             set { Fields.SinglePrice[this] = value; }
+        }
+
+        [DisplayName("Quantity"), NotNull, DefaultValue(1), AlignRight]
+        public Single? Quantity
+        {
+            get { return Fields.Quantity[this]; }
+            set { Fields.Quantity[this] = value; }
         }
 
         [DisplayName("Discount"), NotNull, DefaultValue(0), AlignRight, DisplayFormat("#,##0.00")]
@@ -294,13 +293,13 @@ namespace Store.Store.Entities
 
             public StringField WaresCode;
             public StringField WaresName;
-            public Int32Field WaresSupplierID;
+            //public Int32Field WaresSupplierID;
             public StringField WaresCounterpartyID;
             public Int32Field WaresCategoryID;
             public Int32Field WaresMeasureID;
             public StringField WaresQuantityPerUnit;
             public DecimalField WaresUnitPrice;
-            public BooleanField WaresDiscontinued;
+            //public BooleanField WaresDiscontinued;
 
             public DecimalField LineTotal;
         }

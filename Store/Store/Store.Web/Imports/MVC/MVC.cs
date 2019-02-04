@@ -148,6 +148,15 @@ namespace MVC
                 public const string ProductMovementDetailsIndex = "~/Modules/Store/ProductMovementDetails/ProductMovementDetailsIndex.cshtml";
             }
 
+            public static class Reports
+            {
+                public static class Invoices
+                {
+                    public const string ProductMovementDetailReport = "~/Modules/Store/Reports/Invoices/ProductMovementDetailReport.cshtml";
+                    public const string WaresMovementDetailReport = "~/Modules/Store/Reports/Invoices/WaresMovementDetailReport.cshtml";
+                }
+            }
+
             public static class Shipper
             {
                 public const string ShipperIndex = "~/Modules/Store/Shipper/ShipperIndex.cshtml";
@@ -170,7 +179,6 @@ namespace MVC
 
             public static class WaresMovement
             {
-                public const string WaresMovementDetailReport = "~/Modules/Store/WaresMovement/WaresMovementDetailReport.cshtml";
                 public const string WaresMovementIndex = "~/Modules/Store/WaresMovement/WaresMovementIndex.cshtml";
             }
 
