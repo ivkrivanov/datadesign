@@ -160,7 +160,13 @@ namespace Store.Store.Entities
             get { return Fields.WaresMeasureID[this]; }
             set { Fields.WaresMeasureID[this] = value; }
         }
-
+        [Origin("w")]
+        public String WaresMeasureName
+        {
+            get { return Fields.WaresMeasureName[this]; }
+            set { Fields.WaresMeasureName[this] = value; }
+        }
+        
         [Origin("w")]
         public String WaresQuantityPerUnit
         {
@@ -297,6 +303,7 @@ namespace Store.Store.Entities
             public StringField WaresCounterpartyID;
             public Int32Field WaresCategoryID;
             public Int32Field WaresMeasureID;
+            public StringField WaresMeasureName;
             public StringField WaresQuantityPerUnit;
             public DecimalField WaresUnitPrice;
             //public BooleanField WaresDiscontinued;

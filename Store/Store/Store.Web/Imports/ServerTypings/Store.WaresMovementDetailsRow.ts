@@ -24,6 +24,7 @@
         WaresCounterpartyID?: string;
         WaresCategoryID?: number;
         WaresMeasureID?: number;
+        WaresMeasureName?: string;
         WaresQuantityPerUnit?: string;
         WaresUnitPrice?: number;
         LineTotal?: number;
@@ -63,6 +64,7 @@
             WaresCounterpartyID = "WaresCounterpartyID",
             WaresCategoryID = "WaresCategoryID",
             WaresMeasureID = "WaresMeasureID",
+            WaresMeasureName = "WaresMeasureName",
             WaresQuantityPerUnit = "WaresQuantityPerUnit",
             WaresUnitPrice = "WaresUnitPrice",
             LineTotal = "LineTotal",

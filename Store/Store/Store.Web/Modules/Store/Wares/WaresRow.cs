@@ -310,10 +310,10 @@ namespace Store.Store.Entities
         }
 
         [Origin("meas")]
-        public String MeasureMeasureName
+        public String MeasureName
         {
-            get { return Fields.MeasureMeasureName[this]; }
-            set { Fields.MeasureMeasureName[this] = value; }
+            get { return Fields.MeasureName[this]; }
+            set { Fields.MeasureName[this] = value; }
         }
 
         #endregion Measure
@@ -415,7 +415,7 @@ namespace Store.Store.Entities
             public StringField CategoryDescription;
             //public StreamField CategoryPicture;
 
-            public StringField MeasureMeasureName;
+            public StringField MeasureName;
         }
     }
 }

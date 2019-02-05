@@ -16,7 +16,9 @@ namespace Store.Store.Forms
         public String ProductCode { get; set; }
         [HalfWidth]
         public String ProductBarcode { get; set; }
+        [HalfWidth]
         public String ProductLabel { get; set; }
+        [HalfWidth]
         public String ProductName { get; set; }
 
         public String ProductImage { get; set; }

@@ -27,7 +27,7 @@ namespace Store.Store.Columns
         [EditLink(ItemType = "Store.Category"), Width(150), QuickFilter, QuickFilterOption("multiple", true)]
         public Int32 CategoryCategoryName { get; set; }
         [Width(60), AlignCenter]
-        public String MeasureMeasureName { get; set; }
+        public String MeasureName { get; set; }
         [Width(80), AlignRight]
         public Int32 QuantityPerUnit { get; set; }
         [Width(80), AlignRight] //, DisplayFormat("#,##0.00")]

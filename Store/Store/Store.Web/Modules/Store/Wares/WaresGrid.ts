@@ -165,7 +165,7 @@ namespace Store.Store {
 
             Q.first(columns, x => x.field === fld.UnitPrice).format = num;
             Q.first(columns, x => x.field === fld.QuantityPerUnit).format = num;
-            Q.first(columns, x => x.field === fld.MeasureMeasureName).format = str;
+            Q.first(columns, x => x.field === fld.MeasureName).format = str;
             //Q.first(columns, x => x.field === fld.ReorderLevel).format = num;
 
             return columns;

@@ -26,7 +26,7 @@
         Type?: number;
         CategoryCategoryName?: string;
         CategoryDescription?: string;
-        MeasureMeasureName?: string;
+        MeasureName?: string;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -71,7 +71,7 @@
             Type = "Type",
             CategoryCategoryName = "CategoryCategoryName",
             CategoryDescription = "CategoryDescription",
-            MeasureMeasureName = "MeasureMeasureName",
+            MeasureName = "MeasureName",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",

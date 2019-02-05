@@ -33,6 +33,7 @@ namespace Store.Store
                 data.Details = connection.List<WaresMovementDetailsRow>(q => q
                     .SelectTableFields()
                     .Select(wmd.WaresName)
+                    .Select(wmd.WaresMeasureName)
                     .Select(wmd.LineTotal)
                     .Where(wmd.WaresMoveID == this.WaresMoveID));
 
@@ -47,6 +48,7 @@ namespace Store.Store
                 var o = OperationTypeRow.Fields;
                 data.Operation = connection.TryFirst<OperationTypeRow>(o.OperationTypeID == (Int32)data.WaresMovement.OperationTypeID)
                     ?? new OperationTypeRow();
+
             }
 
             return data;
@@ -66,5 +68,6 @@ namespace Store.Store
         public CounterpartyRow Counterparty { get; set; }
         public ShopsRow Shop { get; set; }
         public OperationTypeRow Operation { get; set;}
+        //public MeasureRow Measure { get; set; }
     }
 }

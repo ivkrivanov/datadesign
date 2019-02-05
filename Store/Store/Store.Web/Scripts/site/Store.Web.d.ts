@@ -2729,6 +2729,7 @@ declare namespace Store.Store {
         WaresCounterpartyID?: string;
         WaresCategoryID?: number;
         WaresMeasureID?: number;
+        WaresMeasureName?: string;
         WaresQuantityPerUnit?: string;
         WaresUnitPrice?: number;
         LineTotal?: number;
@@ -2766,6 +2767,7 @@ declare namespace Store.Store {
             WaresCounterpartyID = "WaresCounterpartyID",
             WaresCategoryID = "WaresCategoryID",
             WaresMeasureID = "WaresMeasureID",
+            WaresMeasureName = "WaresMeasureName",
             WaresQuantityPerUnit = "WaresQuantityPerUnit",
             WaresUnitPrice = "WaresUnitPrice",
             LineTotal = "LineTotal",
@@ -2962,7 +2964,7 @@ declare namespace Store.Store {
         Type?: number;
         CategoryCategoryName?: string;
         CategoryDescription?: string;
-        MeasureMeasureName?: string;
+        MeasureName?: string;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -3002,7 +3004,7 @@ declare namespace Store.Store {
             Type = "Type",
             CategoryCategoryName = "CategoryCategoryName",
             CategoryDescription = "CategoryDescription",
-            MeasureMeasureName = "MeasureMeasureName",
+            MeasureName = "MeasureName",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",
