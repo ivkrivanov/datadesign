@@ -1675,7 +1675,7 @@ declare namespace Store.Store {
 }
 declare namespace Store.Store {
     interface OperationTypeRow {
-        OperationTypeId?: number;
+        OperationTypeID?: number;
         OpCode?: number;
         Operation?: string;
         IsActive?: number;
@@ -1686,14 +1686,14 @@ declare namespace Store.Store {
         UpdateDate?: string;
     }
     namespace OperationTypeRow {
-        const idProperty = "OperationTypeId";
+        const idProperty = "OperationTypeID";
         const isActiveProperty = "IsActive";
         const nameProperty = "Operation";
         const localTextPrefix = "Store.OperationType";
         const lookupKey = "Store.OperationType";
         function getLookup(): Q.Lookup<OperationTypeRow>;
         const enum Fields {
-            OperationTypeId = "OperationTypeId",
+            OperationTypeID = "OperationTypeID",
             OpCode = "OpCode",
             Operation = "Operation",
             IsActive = "IsActive",
@@ -1999,14 +1999,14 @@ declare namespace Store.Store {
 declare namespace Store.Store {
     interface ProductMovementForm {
         OperationTypeOpCode: Serenity.EnumEditor;
-        CounterpartyID: CounterpartyEditor;
-        ShopID: ShopsEditor;
-        EmployeeID: Serenity.LookupEditor;
         OrderDate: Serenity.DateEditor;
+        ShopID: ShopsEditor;
+        CounterpartyID: CounterpartyEditor;
+        EmployeeID: Serenity.LookupEditor;
         RequiredDate: Serenity.DateEditor;
-        DetailList: ProductMovementDetailsEditor;
-        ShippedDate: Serenity.DateEditor;
         ShipperID: Serenity.LookupEditor;
+        ShippedDate: Serenity.DateEditor;
+        DetailList: ProductMovementDetailsEditor;
     }
     class ProductMovementForm extends Serenity.PrefixedContext {
         static formKey: string;
@@ -2726,13 +2726,11 @@ declare namespace Store.Store {
         WaresMoveShippedDate?: string;
         WaresCode?: string;
         WaresName?: string;
-        WaresSupplierID?: number;
         WaresCounterpartyID?: string;
         WaresCategoryID?: number;
         WaresMeasureID?: number;
         WaresQuantityPerUnit?: string;
         WaresUnitPrice?: number;
-        WaresDiscontinued?: boolean;
         LineTotal?: number;
         InsertUserId?: number;
         InsertDate?: string;
@@ -2765,13 +2763,11 @@ declare namespace Store.Store {
             WaresMoveShippedDate = "WaresMoveShippedDate",
             WaresCode = "WaresCode",
             WaresName = "WaresName",
-            WaresSupplierID = "WaresSupplierID",
             WaresCounterpartyID = "WaresCounterpartyID",
             WaresCategoryID = "WaresCategoryID",
             WaresMeasureID = "WaresMeasureID",
             WaresQuantityPerUnit = "WaresQuantityPerUnit",
             WaresUnitPrice = "WaresUnitPrice",
-            WaresDiscontinued = "WaresDiscontinued",
             LineTotal = "LineTotal",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
@@ -2793,14 +2789,14 @@ declare namespace Store.Store {
 }
 declare namespace Store.Store {
     interface WaresMovementForm {
-        OperationTypeID: OperationTypeEditor;
-        CounterpartyID: CounterpartyEditor;
-        ShopID: ShopsEditor;
+        OperationTypeOpCode: Serenity.EnumEditor;
         OrderDate: Serenity.DateEditor;
-        RequiredDate: Serenity.DateEditor;
-        ShippedDate: Serenity.DateEditor;
+        ShopID: ShopsEditor;
+        CounterpartyID: CounterpartyEditor;
         EmployeeID: Serenity.LookupEditor;
+        RequiredDate: Serenity.DateEditor;
         ShipperID: Serenity.LookupEditor;
+        ShippedDate: Serenity.DateEditor;
         DetailList: WaresMovementDetailsEditor;
     }
     class WaresMovementForm extends Serenity.PrefixedContext {

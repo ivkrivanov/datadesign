@@ -1,14 +1,14 @@
 ﻿namespace Store.Store {
     export interface ProductMovementForm {
         OperationTypeOpCode: Serenity.EnumEditor;
-        CounterpartyID: CounterpartyEditor;
-        ShopID: ShopsEditor;
-        EmployeeID: Serenity.LookupEditor;
         OrderDate: Serenity.DateEditor;
+        ShopID: ShopsEditor;
+        CounterpartyID: CounterpartyEditor;
+        EmployeeID: Serenity.LookupEditor;
         RequiredDate: Serenity.DateEditor;
-        DetailList: ProductMovementDetailsEditor;
-        ShippedDate: Serenity.DateEditor;
         ShipperID: Serenity.LookupEditor;
+        ShippedDate: Serenity.DateEditor;
+        DetailList: ProductMovementDetailsEditor;
     }
 
     export class ProductMovementForm extends Serenity.PrefixedContext {
@@ -23,22 +23,22 @@
 
                 var s = Serenity;
                 var w0 = s.EnumEditor;
-                var w1 = CounterpartyEditor;
+                var w1 = s.DateEditor;
                 var w2 = ShopsEditor;
-                var w3 = s.LookupEditor;
-                var w4 = s.DateEditor;
+                var w3 = CounterpartyEditor;
+                var w4 = s.LookupEditor;
                 var w5 = ProductMovementDetailsEditor;
 
                 Q.initFormType(ProductMovementForm, [
                     'OperationTypeOpCode', w0,
-                    'CounterpartyID', w1,
+                    'OrderDate', w1,
                     'ShopID', w2,
-                    'EmployeeID', w3,
-                    'OrderDate', w4,
-                    'RequiredDate', w4,
-                    'DetailList', w5,
-                    'ShippedDate', w4,
-                    'ShipperID', w3
+                    'CounterpartyID', w3,
+                    'EmployeeID', w4,
+                    'RequiredDate', w1,
+                    'ShipperID', w4,
+                    'ShippedDate', w1,
+                    'DetailList', w5
                 ]);
             }
         }
