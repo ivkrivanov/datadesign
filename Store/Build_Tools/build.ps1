@@ -259,27 +259,20 @@ if(!(Test-Path ".\Build_Artifacts")) {
     new-item .\Build_Artifacts\Logs -ItemType directory
 }
 
-
-
 #set up the location for the different targets and tools
 #$binaryDirectory = "$baseDirectory\..\Binaries"
 $binaryDirectory = "$baseDirectory\Build_Artifacts\Binaries\"
 $msbuild = Get-LatestMsBuildPath false
 $logfilepath = "$baseDirectory\Build_Artifacts\Logs\msbuild.log"
 $errorlogfilepath = "$baseDirectory\Build_Artifacts\Logs\errors.log"
-
 $solutionFilesPath = "$baseDirectory\SolutionsConfig.txt"
-
 $cttPath = "$baseDirectory\build_tools\"
 #we get the manually compiled list of solutions
 $projectFiles = Get-Content $solutionFilesPath
-
 #check for the existance of nuget, if it doesnt exist the function will download it automatically
 Write-Output "Fetching NuGet."
 $nuget = "$baseDirectory\build_tools\nuget.exe"
 Fetch-Nuget (Join-Path $baseDirectory "\build_tools\")
-
-
 #we first run nuget restore on all .sln files in the target sub-folders recursively
 $solutionsList = Get-ChildItem "$baseDirectory" -Recurse -Filter *.sln 
 
@@ -289,27 +282,9 @@ foreach ($item in $solutionsList) {
     $filedir = $solution.DirectoryName;
     $filename = [System.IO.Path]::GetFileName($solution)
     Write-Host $filedir\$filename -foreground Magenta
-
     Write-Host "NuGet Restore" 
     & $nuget restore -ConfigFile nuget.config $filedir\$filename
 } 
-
-
-<#next we restore the legacy libs manually
-Write-Host "NuGet Restore" 
-    & $nuget restore -ConfigFile nuget.config "$baseDirectory\packages.config" -PackagesDirectory .\packages
-#>
-
-#we restore the libs into their legacy location if they don't already exist
-<#
-if(! (Test-Path ".\lib")) {
-	Move-Item packages\LegacyLib.1.0.0\ .\lib -Force
-}
-
-if(! (Test-Path "..\EntLib41Src")) {
-	Move-Item packages\EntLib41Src.1.0.0\ ..\EntLib41Src -Force
-}
-#>
 
 #we remove old log files if they exist
 if (Test-Path $logfilepath) {

@@ -1891,6 +1891,9 @@
     <TypeScriptCompile Include="Imports\ServerTypings\Store.ProductMovementDetailsForm.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.StoreRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -2019,6 +2022,7 @@
     <Compile Include="Modules\Store\Shipper\ShippingState.cs" />
     <Compile Include="Modules\Store\Shops\ShopLookup.cs" />
     <Compile Include="Modules\Store\Reports\Invoices\WaresMovementDetailReport.cs" />
+    <Compile Include="Modules\Store\Store\Average.cs" />
     <Compile Include="Modules\Store\WaresMovement\WaresMovementOperations.cs" />
     <Content Include="Modules\Common\Reporting\ReportPage.cshtml" />
     <Compile Include="Modules\Common\Reporting\ReportTree.cs" />
@@ -2201,6 +2205,7 @@
     <Compile Include="Modules\Store\ProductMovementDetails\ProductMovementDetailsPage.cs" />
     <Compile Include="Modules\Store\ProductMovementDetails\ProductMovementDetailsColumns.cs" />
     <Compile Include="Modules\Store\ProductMovementDetails\ProductMovementDetailsForm.cs" />
+    <Compile Include="Modules\Store\Store\StoreRow.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
