@@ -11,7 +11,7 @@ using MyPages = Store.Store.Pages;
 [assembly: NavigationLink(2600, "Store/Shipper", typeof(MyPages.ShipperController), icon: "fa-ship")]
 
 [assembly: NavigationLink(3000, "Store/Measure", typeof(MyPages.MeasureController), icon: null)]
-//[assembly: NavigationLink(3100, "Store/Operation Type", typeof(MyPages.OperationTypeController), icon: null)]
+[assembly: NavigationLink(3100, "Store/Operation Type", typeof(MyPages.OperationTypeController), icon: null)]
 [assembly: NavigationLink(3200, "Store/Wares Movement", typeof(MyPages.WaresMovementController), icon: "fa-shopping-cart")]
 [assembly: NavigationLink(3300, "Store/Product Movement", typeof(MyPages.ProductMovementController), icon: "fa-shopping-cart")]
 

@@ -8,11 +8,11 @@ namespace Store.Store
     public enum ProductMovementOperations
     {
         [Description("Income products")]
-        IncomeItems = 300,
+        IncomeItems = 200,
         [Description("Products delivery")]
-        StockDelivery = 302,
+        StockDelivery = 202,
         [Description("Surplus products")]
-        SurplusGoods = 303,
+        SurplusGoods = 203,
         [Description("Sale of products")]
         SaleOfArticles = 401,
         [Description("Lack of products")]

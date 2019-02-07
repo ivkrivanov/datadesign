@@ -20,13 +20,13 @@ namespace Store.Store
         [Description("Unsubscription of goods")]
         UnsubscriptionOfGoods = 109,
         [Description("Sale of articles")]
-        SaleOfArticles = 201,
+        SaleOfArticles = 301,
         [Description("Lack of items")]
-        LackOfItems = 202,
+        LackOfItems = 302,
         [Description("Scrapping articles")]
-        ScrappingЬrticles = 203,
+        ScrappingЬrticles = 303,
         [Description("Exchange expense")]
-        ExchangeExpense = 205,
+        ExchangeExpense = 305,
         [Description("Inventory")]
         Inventory = 500
     }

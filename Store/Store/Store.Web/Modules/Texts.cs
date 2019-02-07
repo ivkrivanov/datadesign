@@ -108,9 +108,9 @@ namespace Store
 
             public static class Dashboard
             {
-                public static LocalText ContentDescription =
-                    "a sample with random data (from free <em><a href = \"https://almsaeedstudio.com/\" target= \"_blank\">" +
-                    "AdminLTE theme</a></em>)";
+                public static LocalText ContentDescription = "";
+                    //"a sample with random data (from free <em><a href = \"https://almsaeedstudio.com/\" target= \"_blank\">" +
+                    //"AdminLTE theme</a></em>)";
             }
 
             public static class BasicProgressDialog

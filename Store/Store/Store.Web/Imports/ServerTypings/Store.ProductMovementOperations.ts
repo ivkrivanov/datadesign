@@ -1,8 +1,8 @@
 ﻿namespace Store.Store {
     export enum ProductMovementOperations {
-        IncomeItems = 300,
-        StockDelivery = 302,
-        SurplusGoods = 303,
+        IncomeItems = 200,
+        StockDelivery = 202,
+        SurplusGoods = 203,
         SaleOfArticles = 401,
         LackOfItems = 402,
         ScrappingЬrticles = 403

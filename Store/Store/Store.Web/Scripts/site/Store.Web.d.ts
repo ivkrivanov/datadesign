@@ -2021,9 +2021,9 @@ declare namespace Store.Store {
 }
 declare namespace Store.Store {
     enum ProductMovementOperations {
-        IncomeItems = 300,
-        StockDelivery = 302,
-        SurplusGoods = 303,
+        IncomeItems = 200,
+        StockDelivery = 202,
+        SurplusGoods = 203,
         SaleOfArticles = 401,
         LackOfItems = 402,
         ScrappingЬrticles = 403
@@ -2414,6 +2414,86 @@ declare namespace Store.Store {
             Delete = "Store/Shops/Delete",
             Retrieve = "Store/Shops/Retrieve",
             List = "Store/Shops/List"
+        }
+    }
+}
+declare namespace Store.Store {
+    interface StoreRow {
+        Position?: number;
+        WaresMode?: boolean;
+        MoveId?: number;
+        ShopId?: number;
+        WaresId?: number;
+        Key?: string;
+        Date?: string;
+        OperationId?: number;
+        IncomeQuantity?: number;
+        IncomeSinglePrice?: number;
+        IncomeValue?: number;
+        AIncomeSinglePrice?: number;
+        AIncomeValue?: number;
+        ExpenceQuantity?: number;
+        ExpenceSinglePrice?: number;
+        ExpenceValue?: number;
+        AExpenceSinglePrice?: number;
+        AExpenceValue?: number;
+        RestQuantity?: number;
+        RestSinglePrice?: number;
+        RestValue?: number;
+        ARestQuantity?: number;
+        ARestSinglePrice?: number;
+        ARestValue?: number;
+        ReCost?: number;
+        AReCost?: number;
+        Mistake?: boolean;
+        AMistake?: boolean;
+        IsActive?: number;
+        TenantId?: number;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+    }
+    namespace StoreRow {
+        const idProperty = "Position";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "Key";
+        const localTextPrefix = "Store.Store";
+        const enum Fields {
+            Position = "Position",
+            WaresMode = "WaresMode",
+            MoveId = "MoveId",
+            ShopId = "ShopId",
+            WaresId = "WaresId",
+            Key = "Key",
+            Date = "Date",
+            OperationId = "OperationId",
+            IncomeQuantity = "IncomeQuantity",
+            IncomeSinglePrice = "IncomeSinglePrice",
+            IncomeValue = "IncomeValue",
+            AIncomeSinglePrice = "AIncomeSinglePrice",
+            AIncomeValue = "AIncomeValue",
+            ExpenceQuantity = "ExpenceQuantity",
+            ExpenceSinglePrice = "ExpenceSinglePrice",
+            ExpenceValue = "ExpenceValue",
+            AExpenceSinglePrice = "AExpenceSinglePrice",
+            AExpenceValue = "AExpenceValue",
+            RestQuantity = "RestQuantity",
+            RestSinglePrice = "RestSinglePrice",
+            RestValue = "RestValue",
+            ARestQuantity = "ARestQuantity",
+            ARestSinglePrice = "ARestSinglePrice",
+            ARestValue = "ARestValue",
+            ReCost = "ReCost",
+            AReCost = "AReCost",
+            Mistake = "Mistake",
+            AMistake = "AMistake",
+            IsActive = "IsActive",
+            TenantId = "TenantId",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate"
         }
     }
 }
@@ -2820,10 +2900,10 @@ declare namespace Store.Store {
         SurplusGoods = 103,
         ExchangeRevenue = 105,
         UnsubscriptionOfGoods = 109,
-        SaleOfArticles = 201,
-        LackOfItems = 202,
-        ScrappingЬrticles = 203,
-        ExchangeExpense = 205,
+        SaleOfArticles = 301,
+        LackOfItems = 302,
+        ScrappingЬrticles = 303,
+        ExchangeExpense = 305,
         Inventory = 500
     }
 }

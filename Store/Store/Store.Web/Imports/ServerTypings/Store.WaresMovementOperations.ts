@@ -6,10 +6,10 @@
         SurplusGoods = 103,
         ExchangeRevenue = 105,
         UnsubscriptionOfGoods = 109,
-        SaleOfArticles = 201,
-        LackOfItems = 202,
-        ScrappingЬrticles = 203,
-        ExchangeExpense = 205,
+        SaleOfArticles = 301,
+        LackOfItems = 302,
+        ScrappingЬrticles = 303,
+        ExchangeExpense = 305,
         Inventory = 500
     }
     Serenity.Decorators.registerEnumType(WaresMovementOperations, 'Store.Store.WaresMovementOperations', 'Store.WaresMovementOperations');
