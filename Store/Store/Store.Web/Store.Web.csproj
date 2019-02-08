@@ -1894,6 +1894,11 @@
     <TypeScriptCompile Include="Imports\ServerTypings\Store.StoreRow.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.StoreService.ts">  <DependentUpon>ServerTypings.tt</DependentUpon></TypeScriptCompile>
+    <Content Include="Modules\Store\Store\StoreIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Store\Store\StoreDialog.ts" />
+    <TypeScriptCompile Include="Modules\Store\Store\StoreGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.StoreForm.ts">  <DependentUpon>ServerTypings.tt</DependentUpon></TypeScriptCompile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -2206,6 +2211,11 @@
     <Compile Include="Modules\Store\ProductMovementDetails\ProductMovementDetailsColumns.cs" />
     <Compile Include="Modules\Store\ProductMovementDetails\ProductMovementDetailsForm.cs" />
     <Compile Include="Modules\Store\Store\StoreRow.cs" />
+    <Compile Include="Modules\Store\Store\StoreRepository.cs" />
+    <Compile Include="Modules\Store\Store\StoreEndpoint.cs" />
+    <Compile Include="Modules\Store\Store\StorePage.cs" />
+    <Compile Include="Modules\Store\Store\StoreColumns.cs" />
+    <Compile Include="Modules\Store\Store\StoreForm.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

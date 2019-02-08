@@ -6,6 +6,7 @@ namespace Store.Store
     using Serenity.Data;
     using Serenity.Reporting;
     using System;
+    using System.Data;
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Drawing;
@@ -16,9 +17,15 @@ namespace Store.Store
         public object GetData()
         {
             var data = new AverageData();
-
-            using (var connection = SqlConnections.NewFor<Entities.StoreRow>())
+            var st = new DataTable();
+            using (var connection = SqlConnections.NewByKey("Store"))
+            //using (var connection = SqlConnections.NewFor<Entities.StoreRow>())
             {
+                
+                //using (var da = )
+
+
+
                 //return connection.Query<Item>("sp_GetStore",
                 //    param: new
                 //    {

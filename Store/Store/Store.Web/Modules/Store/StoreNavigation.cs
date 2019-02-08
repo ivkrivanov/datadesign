@@ -34,3 +34,4 @@ using MyPages = Store.Store.Pages;
 
 //[assembly: NavigationLink(int.MaxValue, "Store/Wares Movement Details", typeof(MyPages.WaresMovementDetailsController), icon: null)]
 //[assembly: NavigationLink(int.MaxValue, "Store/Product Movement Details", typeof(MyPages.ProductMovementDetailsController), icon: null)]
+[assembly: NavigationLink(int.MaxValue, "Store/Store", typeof(MyPages.StoreController), icon: null)]

@@ -8003,3 +8003,9 @@ s-Store-CounterpartyProductMovementDialog.s-Panel .grid-container {
 .s-NoteDialog .ui-dialog-content {
   padding-bottom: 10px;
 }
+.s-Store-StoreDialog > .size {
+  width: 650px;
+}
+.s-Store-StoreDialog .caption {
+  width: 150px;
+}

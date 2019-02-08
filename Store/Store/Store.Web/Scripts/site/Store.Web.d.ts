@@ -2418,6 +2418,46 @@ declare namespace Store.Store {
     }
 }
 declare namespace Store.Store {
+    class StoreForm extends Serenity.PrefixedContext {
+        static formKey: string;
+    }
+    interface StoreForm {
+        Position: Serenity.IntegerEditor;
+        WaresMode: Serenity.BooleanEditor;
+        ShopId: Serenity.IntegerEditor;
+        WaresId: Serenity.IntegerEditor;
+        Key: Serenity.StringEditor;
+        Date: Serenity.DateEditor;
+        OperationId: Serenity.IntegerEditor;
+        IncomeQuantity: Serenity.DecimalEditor;
+        IncomeSinglePrice: Serenity.DecimalEditor;
+        IncomeValue: Serenity.DecimalEditor;
+        AIncomeSinglePrice: Serenity.DecimalEditor;
+        AIncomeValue: Serenity.DecimalEditor;
+        ExpenceQuantity: Serenity.DecimalEditor;
+        ExpenceSinglePrice: Serenity.DecimalEditor;
+        ExpenceValue: Serenity.DecimalEditor;
+        AExpenceSinglePrice: Serenity.DecimalEditor;
+        AExpenceValue: Serenity.DecimalEditor;
+        RestQuantity: Serenity.DecimalEditor;
+        RestSinglePrice: Serenity.DecimalEditor;
+        RestValue: Serenity.DecimalEditor;
+        ARestQuantity: Serenity.DecimalEditor;
+        ARestSinglePrice: Serenity.DecimalEditor;
+        ARestValue: Serenity.DecimalEditor;
+        ReCost: Serenity.DecimalEditor;
+        AReCost: Serenity.DecimalEditor;
+        Mistake: Serenity.BooleanEditor;
+        AMistake: Serenity.BooleanEditor;
+        InsertDate: Serenity.DateEditor;
+        InsertUserId: Serenity.IntegerEditor;
+        UpdateDate: Serenity.DateEditor;
+        UpdateUserId: Serenity.IntegerEditor;
+        IsActive: Serenity.IntegerEditor;
+        TenantId: Serenity.IntegerEditor;
+    }
+}
+declare namespace Store.Store {
     interface StoreRow {
         Position?: number;
         WaresMode?: boolean;
@@ -2494,6 +2534,23 @@ declare namespace Store.Store {
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",
             UpdateDate = "UpdateDate"
+        }
+    }
+}
+declare namespace Store.Store {
+    namespace StoreService {
+        const baseUrl = "Store/Store";
+        function Create(request: Serenity.SaveRequest<StoreRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<StoreRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<StoreRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<StoreRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        namespace Methods {
+            const Create: string;
+            const Update: string;
+            const Delete: string;
+            const Retrieve: string;
+            const List: string;
         }
     }
 }
@@ -4008,6 +4065,26 @@ declare namespace Store.Store {
     class ShopsGrid extends Serenity.EntityGrid<ShopsRow, any> {
         protected getColumnsKey(): string;
         protected getDialogType(): typeof ShopsDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Store.Store {
+    class StoreDialog extends Serenity.EntityDialog<StoreRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: StoreForm;
+    }
+}
+declare namespace Store.Store {
+    class StoreGrid extends Serenity.EntityGrid<StoreRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof StoreDialog;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;

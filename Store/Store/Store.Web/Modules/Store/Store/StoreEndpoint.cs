@@ -1,16 +1,17 @@
 ﻿
 namespace Store.Store.Endpoints
 {
+    using Serenity;
     using Serenity.Data;
     using Serenity.Services;
     using System.Data;
     using System.Web.Mvc;
-    using MyRepository = Repositories.ShopsRepository;
-    using MyRow = Entities.ShopsRow;
+    using MyRepository = Repositories.StoreRepository;
+    using MyRow = Entities.StoreRow;
 
-    [RoutePrefix("Services/Store/Shops"), Route("{action}")]
+    [RoutePrefix("Services/Store/Store"), Route("{action}")]
     [ConnectionKey(typeof(MyRow)), ServiceAuthorize(typeof(MyRow))]
-    public class ShopsController : ServiceEndpoint
+    public class StoreController : ServiceEndpoint
     {
         [HttpPost, AuthorizeCreate(typeof(MyRow))]
         public SaveResponse Create(IUnitOfWork uow, SaveRequest<MyRow> request)
