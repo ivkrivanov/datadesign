@@ -2418,11 +2418,10 @@ declare namespace Store.Store {
     }
 }
 declare namespace Store.Store {
-    class StoreForm extends Serenity.PrefixedContext {
-        static formKey: string;
-    }
+}
+declare namespace Store.Store {
     interface StoreForm {
-        Position: Serenity.IntegerEditor;
+        Position: Serenity.StringEditor;
         WaresMode: Serenity.BooleanEditor;
         ShopId: Serenity.IntegerEditor;
         WaresId: Serenity.IntegerEditor;
@@ -2432,29 +2431,19 @@ declare namespace Store.Store {
         IncomeQuantity: Serenity.DecimalEditor;
         IncomeSinglePrice: Serenity.DecimalEditor;
         IncomeValue: Serenity.DecimalEditor;
-        AIncomeSinglePrice: Serenity.DecimalEditor;
-        AIncomeValue: Serenity.DecimalEditor;
         ExpenceQuantity: Serenity.DecimalEditor;
         ExpenceSinglePrice: Serenity.DecimalEditor;
         ExpenceValue: Serenity.DecimalEditor;
-        AExpenceSinglePrice: Serenity.DecimalEditor;
-        AExpenceValue: Serenity.DecimalEditor;
         RestQuantity: Serenity.DecimalEditor;
         RestSinglePrice: Serenity.DecimalEditor;
         RestValue: Serenity.DecimalEditor;
-        ARestQuantity: Serenity.DecimalEditor;
-        ARestSinglePrice: Serenity.DecimalEditor;
-        ARestValue: Serenity.DecimalEditor;
         ReCost: Serenity.DecimalEditor;
-        AReCost: Serenity.DecimalEditor;
         Mistake: Serenity.BooleanEditor;
-        AMistake: Serenity.BooleanEditor;
-        InsertDate: Serenity.DateEditor;
-        InsertUserId: Serenity.IntegerEditor;
-        UpdateDate: Serenity.DateEditor;
-        UpdateUserId: Serenity.IntegerEditor;
-        IsActive: Serenity.IntegerEditor;
-        TenantId: Serenity.IntegerEditor;
+    }
+    class StoreForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
     }
 }
 declare namespace Store.Store {
@@ -2545,12 +2534,12 @@ declare namespace Store.Store {
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<StoreRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<StoreRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        namespace Methods {
-            const Create: string;
-            const Update: string;
-            const Delete: string;
-            const Retrieve: string;
-            const List: string;
+        const enum Methods {
+            Create = "Store/Store/Create",
+            Update = "Store/Store/Update",
+            Delete = "Store/Store/Delete",
+            Retrieve = "Store/Store/Retrieve",
+            List = "Store/Store/List"
         }
     }
 }

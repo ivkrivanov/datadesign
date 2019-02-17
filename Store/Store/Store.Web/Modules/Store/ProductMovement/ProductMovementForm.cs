@@ -30,7 +30,7 @@ namespace Store.Store.Forms
         [HalfWidth]
         public DateTime ShippedDate { get; set; }
 
-        [Category("WaresMovementDetailsRow")]
+        [Category("ProductMovementDetailsRow")]
         [ProductMovementDetailsEditor]
         public List<Entities.ProductMovementRow> DetailList { get; set; }
     }

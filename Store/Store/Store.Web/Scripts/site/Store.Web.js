@@ -1797,54 +1797,43 @@ var Store;
     (function (Store) {
         var StoreForm = /** @class */ (function (_super) {
             __extends(StoreForm, _super);
-            function StoreForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
+            function StoreForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!StoreForm.init) {
+                    StoreForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.StringEditor;
+                    var w1 = s.BooleanEditor;
+                    var w2 = s.IntegerEditor;
+                    var w3 = s.DateEditor;
+                    var w4 = s.DecimalEditor;
+                    Q.initFormType(StoreForm, [
+                        'Position', w0,
+                        'WaresMode', w1,
+                        'ShopId', w2,
+                        'WaresId', w2,
+                        'Key', w0,
+                        'Date', w3,
+                        'OperationId', w2,
+                        'IncomeQuantity', w4,
+                        'IncomeSinglePrice', w4,
+                        'IncomeValue', w4,
+                        'ExpenceQuantity', w4,
+                        'ExpenceSinglePrice', w4,
+                        'ExpenceValue', w4,
+                        'RestQuantity', w4,
+                        'RestSinglePrice', w4,
+                        'RestValue', w4,
+                        'ReCost', w4,
+                        'Mistake', w1
+                    ]);
+                }
+                return _this;
             }
             StoreForm.formKey = 'Store.Store';
             return StoreForm;
         }(Serenity.PrefixedContext));
         Store.StoreForm = StoreForm;
-        [
-            ['Position', function () { return Serenity.IntegerEditor; }],
-            ['WaresMode', function () { return Serenity.BooleanEditor; }],
-            ['ShopId', function () { return Serenity.IntegerEditor; }],
-            ['WaresId', function () { return Serenity.IntegerEditor; }],
-            ['Key', function () { return Serenity.StringEditor; }],
-            ['Date', function () { return Serenity.DateEditor; }],
-            ['OperationId', function () { return Serenity.IntegerEditor; }],
-            ['IncomeQuantity', function () { return Serenity.DecimalEditor; }],
-            ['IncomeSinglePrice', function () { return Serenity.DecimalEditor; }],
-            ['IncomeValue', function () { return Serenity.DecimalEditor; }],
-            ['AIncomeSinglePrice', function () { return Serenity.DecimalEditor; }],
-            ['AIncomeValue', function () { return Serenity.DecimalEditor; }],
-            ['ExpenceQuantity', function () { return Serenity.DecimalEditor; }],
-            ['ExpenceSinglePrice', function () { return Serenity.DecimalEditor; }],
-            ['ExpenceValue', function () { return Serenity.DecimalEditor; }],
-            ['AExpenceSinglePrice', function () { return Serenity.DecimalEditor; }],
-            ['AExpenceValue', function () { return Serenity.DecimalEditor; }],
-            ['RestQuantity', function () { return Serenity.DecimalEditor; }],
-            ['RestSinglePrice', function () { return Serenity.DecimalEditor; }],
-            ['RestValue', function () { return Serenity.DecimalEditor; }],
-            ['ARestQuantity', function () { return Serenity.DecimalEditor; }],
-            ['ARestSinglePrice', function () { return Serenity.DecimalEditor; }],
-            ['ARestValue', function () { return Serenity.DecimalEditor; }],
-            ['ReCost', function () { return Serenity.DecimalEditor; }],
-            ['AReCost', function () { return Serenity.DecimalEditor; }],
-            ['Mistake', function () { return Serenity.BooleanEditor; }],
-            ['AMistake', function () { return Serenity.BooleanEditor; }],
-            ['InsertDate', function () { return Serenity.DateEditor; }],
-            ['InsertUserId', function () { return Serenity.IntegerEditor; }],
-            ['UpdateDate', function () { return Serenity.DateEditor; }],
-            ['UpdateUserId', function () { return Serenity.IntegerEditor; }],
-            ['IsActive', function () { return Serenity.IntegerEditor; }],
-            ['TenantId', function () { return Serenity.IntegerEditor; }]
-        ].forEach(function (x) { return Object.defineProperty(StoreForm.prototype, x[0], {
-            get: function () {
-                return this.w(x[0], x[1]());
-            },
-            enumerable: true,
-            configurable: true
-        }); });
     })(Store = Store_62.Store || (Store_62.Store = {}));
 })(Store || (Store = {}));
 var Store;
@@ -1867,9 +1856,6 @@ var Store;
         var StoreService;
         (function (StoreService) {
             StoreService.baseUrl = 'Store/Store';
-            var Methods;
-            (function (Methods) {
-            })(Methods = StoreService.Methods || (StoreService.Methods = {}));
             [
                 'Create',
                 'Update',
@@ -1880,7 +1866,6 @@ var Store;
                 StoreService[x] = function (r, s, o) {
                     return Q.serviceRequest(StoreService.baseUrl + '/' + x, r, s, o);
                 };
-                Methods[x] = StoreService.baseUrl + '/' + x;
             });
         })(StoreService = Store.StoreService || (Store.StoreService = {}));
     })(Store = Store_64.Store || (Store_64.Store = {}));

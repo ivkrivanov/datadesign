@@ -167,6 +167,11 @@ namespace MVC
                 public const string ShopsIndex = "~/Modules/Store/Shops/ShopsIndex.cshtml";
             }
 
+            public static class Store_
+            {
+                public const string StoreIndex = "~/Modules/Store/Store/StoreIndex.cshtml";
+            }
+
             public static class Supplier
             {
                 public const string SupplierIndex = "~/Modules/Store/Supplier/SupplierIndex.cshtml";
