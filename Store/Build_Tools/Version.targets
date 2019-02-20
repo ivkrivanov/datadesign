@@ -7,7 +7,7 @@
     <Revision>0</Revision>
     <AssemblyCopyright>Copyright Data Design © 2019</AssemblyCopyright>
     <AssemblyCompany>Data Design</AssemblyCompany>
-  </PropertyGroup>
+  </PropertyGroup> 
   <Target Name="clean_folders">
     <!-- Remove obj folder -->
     <RemoveDir Directories=".\bin" />

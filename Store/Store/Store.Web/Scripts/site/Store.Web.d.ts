@@ -3647,7 +3647,8 @@ declare namespace Store.Store {
         protected getNameProperty(): string;
         protected getService(): string;
         protected form: CounterpartyForm;
-        private ordersGrid;
+        private ProductMoveGrid;
+        private WaresMoveGrid;
         private loadedState;
         constructor();
         getSaveState(): string;

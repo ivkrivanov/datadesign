@@ -12,16 +12,19 @@ namespace Store.Store {
 
         protected form = new CounterpartyForm(this.idPrefix);
 
-        private ordersGrid: CounterpartyProductMovementGrid;
+        private ProductMoveGrid: CounterpartyProductMovementGrid;
+        private WaresMoveGrid: CounterpartyWaresMovementGrid;
         private loadedState: string;
 
         constructor() {
             super();
 
-            this.ordersGrid = new CounterpartyProductMovementGrid(this.byId('ProductMovementGrid'));
+            this.ProductMoveGrid = new CounterpartyProductMovementGrid(this.byId('ProductMovementGrid'));
+            this.WaresMoveGrid = new CounterpartyWaresMovementGrid(this.byId('WaresMovementGrid'));
             // force order dialog to open in Dialog mode instead of Panel mode
             // which is set as default on OrderDialog with @panelAttribute
-            this.ordersGrid.openDialogsAsPanel = false;
+            this.ProductMoveGrid.openDialogsAsPanel = false;
+            this.WaresMoveGrid.openDialogsAsPanel = false;
 
             this.byId('NoteList').closest('.field').hide().end().appendTo(this.byId('TabNotes'));
             DialogUtils.pendingChangesConfirmation(this.element, () => this.getSaveState() != this.loadedState);
@@ -45,8 +48,10 @@ namespace Store.Store {
             super.loadEntity(entity);
 
             Serenity.TabsExtensions.setDisabled(this.tabs, 'Product Movement', this.isNewOrDeleted());
+            Serenity.TabsExtensions.setDisabled(this.tabs, 'Wares Movement', this.isNewOrDeleted());
 
-            this.ordersGrid.counterpartyID = entity.CounterpartyID;
+            this.ProductMoveGrid.counterpartyID = entity.CounterpartyID;
+            this.WaresMoveGrid.counterpartyID = entity.CounterpartyID;
         }
 
         onSaveSuccess(response) {

@@ -19,6 +19,7 @@ namespace Store.Store {
         }
 
         protected getQuickFilters() {
+
             var filters = super.getQuickFilters();
 
             filters.push({

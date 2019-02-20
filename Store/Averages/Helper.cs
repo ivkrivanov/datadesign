@@ -669,7 +669,6 @@ namespace Average
     }
     public class Item
     {
-
         public Int64 Position { get; set; }
         public Boolean WaresMode { get; set; }
         public Int32 MoveID { get; set; }

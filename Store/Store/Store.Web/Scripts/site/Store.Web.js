@@ -4588,10 +4588,12 @@ var Store;
             function CounterpartyDialog() {
                 var _this = _super.call(this) || this;
                 _this.form = new Store.CounterpartyForm(_this.idPrefix);
-                _this.ordersGrid = new Store.CounterpartyProductMovementGrid(_this.byId('ProductMovementGrid'));
+                _this.ProductMoveGrid = new Store.CounterpartyProductMovementGrid(_this.byId('ProductMovementGrid'));
+                _this.WaresMoveGrid = new Store.CounterpartyWaresMovementGrid(_this.byId('WaresMovementGrid'));
                 // force order dialog to open in Dialog mode instead of Panel mode
                 // which is set as default on OrderDialog with @panelAttribute
-                _this.ordersGrid.openDialogsAsPanel = false;
+                _this.ProductMoveGrid.openDialogsAsPanel = false;
+                _this.WaresMoveGrid.openDialogsAsPanel = false;
                 _this.byId('NoteList').closest('.field').hide().end().appendTo(_this.byId('TabNotes'));
                 Store_90.DialogUtils.pendingChangesConfirmation(_this.element, function () { return _this.getSaveState() != _this.loadedState; });
                 return _this;
@@ -4616,7 +4618,9 @@ var Store;
             CounterpartyDialog.prototype.loadEntity = function (entity) {
                 _super.prototype.loadEntity.call(this, entity);
                 Serenity.TabsExtensions.setDisabled(this.tabs, 'Product Movement', this.isNewOrDeleted());
-                this.ordersGrid.counterpartyID = entity.CounterpartyID;
+                Serenity.TabsExtensions.setDisabled(this.tabs, 'Wares Movement', this.isNewOrDeleted());
+                this.ProductMoveGrid.counterpartyID = entity.CounterpartyID;
+                this.WaresMoveGrid.counterpartyID = entity.CounterpartyID;
             };
             CounterpartyDialog.prototype.onSaveSuccess = function (response) {
                 _super.prototype.onSaveSuccess.call(this, response);
