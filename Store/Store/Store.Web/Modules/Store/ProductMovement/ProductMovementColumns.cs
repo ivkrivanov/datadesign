@@ -9,15 +9,16 @@ namespace Store.Store.Columns
     [BasedOnRow(typeof(Entities.ProductMovementRow), CheckNames = true)]
     public class ProductMovementColumns
     {
-        [EditLink, QuickFilter(CssClass = "hidden-xs"), SortOrder(1), Width(200)]
+        [EditLink, QuickFilter(CssClass = "hidden-xs"), SortOrder(1), Width(160)]
         public String OperationTypeOpCode { get; set; }
                           
-        [EditLink, AlignRight, SortOrder(1, descending: true), Width(70)]
+        [EditLink, AlignRight, SortOrder(1, descending: true), Width(50)]
         public Int32 ProductMoveID { get; set; }
 
         [Width(200), EditLink]
         public String ShopShopName { get; set; }
-        [EditLink, Width(100), QuickFilter]
+
+        [EditLink, Width(80), QuickFilter]
         public String CounterpartyID { get; set; }
         [Width(200)]
         public String CounterpartyCompanyName { get; set; }
@@ -35,10 +36,5 @@ namespace Store.Store.Columns
 
         [Width(200), ShipperFormatter, QuickFilter(CssClass = "hidden-xs"), QuickFilterOption("multiple", true)]
         public String ShipperCompanyName { get; set; }
-
-
-        public String OperationTypeOperation { get; set; }
-
-
     }
 }

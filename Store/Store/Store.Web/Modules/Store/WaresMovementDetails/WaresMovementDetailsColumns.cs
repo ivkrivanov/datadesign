@@ -11,17 +11,17 @@ namespace Store.Store.Forms
     {
         [EditLink, Width(200)]
         public String WaresName { get; set; }
-        [Width(100)]
+        [Width(100), AlignRight]
         public Single Quantity { get; set; }
-        [Width(80)]
+        [Width(80), AlignRight]
         public Decimal IncomePrice { get; set; }
-        [Width(80)]
+        [Width(80), AlignRight]
         public Decimal SalePrice { get; set; }
-        [Width(80)]
+        [Width(80), AlignRight]
         public Decimal SinglePrice { get; set; }
-        [Width(80)]
+        [Width(80), AlignRight]
         public Single Discount { get; set; }
-        [Width(100)]
+        [Width(100), AlignRight]
         public Decimal LineTotal { get; set; }
 
     }
