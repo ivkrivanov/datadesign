@@ -83,6 +83,20 @@ namespace Store.Store.Entities
             set { Fields.UnitPrice[this] = value; }
         }
 
+        [DisplayName("Unit In Stock"), Scale(4), LookupInclude]
+        public Decimal? UnitsInStock
+        {
+            get { return Fields.UnitsInStock[this]; }
+            set { Fields.UnitsInStock[this] = value; }
+        }
+
+        [DisplayName("Unit On Order"), Scale(4), LookupInclude]
+        public Decimal? UnitsOnOrder
+        {
+            get { return Fields.UnitsOnOrder[this]; }
+            set { Fields.UnitsOnOrder[this] = value; }
+        }
+
         [DisplayName("Discontinued"), NotNull]
         public Boolean? Discontinued
         {
@@ -378,6 +392,8 @@ namespace Store.Store.Entities
             public Int32Field MeasureID;
             public Int32Field QuantityPerUnit;
             public DecimalField UnitPrice;
+            public DecimalField UnitsInStock;
+            public DecimalField UnitsOnOrder;
             public BooleanField Discontinued;
             public Int32Field AccountID;
 

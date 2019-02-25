@@ -32,6 +32,10 @@ namespace Store.Store.Columns
         public Int32 QuantityPerUnit { get; set; }
         [Width(80), AlignRight] //, DisplayFormat("#,##0.00")]
         public Decimal UnitPrice { get; set; }
+        [Width(80), AlignRight]
+        public Decimal UnitsInStock { get; set; }
+        [Width(80), AlignRight]
+        public Decimal UnitsOnOrder { get; set; }
         //[Width(100), AlignRight]
         //public Int32 AccountID { get; set; }
         [EditLink(ItemType = "Store.Counterparty"), Width(200), QuickFilter]

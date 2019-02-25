@@ -71,6 +71,20 @@ namespace Store.Store {
                 separator: true
             });
 
+            buttons.push({
+                title: 'Import From Excel',
+                cssClass: 'export-xlsx-button',
+                onClick: () => {
+                    // open import dialog, let it handle rest
+                    var dialog = new WaresExcelImportDialog();
+                    dialog.element.on('dialogclose', () => {
+                        this.refresh();
+                        dialog = null;
+                    });
+                    dialog.dialogOpen();
+                }
+            });
+
             return buttons;
         }
 

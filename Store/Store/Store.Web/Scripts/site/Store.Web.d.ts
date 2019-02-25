@@ -2747,6 +2747,25 @@ declare namespace Store.Store {
 declare namespace Store.Store {
 }
 declare namespace Store.Store {
+    interface WaresExcelImportForm {
+        FileName: Serenity.ImageUploadEditor;
+    }
+    class WaresExcelImportForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace Store.Store {
+    namespace WaresExcelImportService {
+        const baseUrl = "Store/Wares/WaresExcelImport";
+        function ExcelImport(request: ExcelImportRequest, onSuccess?: (response: ExcelImportResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            ExcelImport = "Store/Wares/WaresExcelImport/ExcelImport"
+        }
+    }
+}
+declare namespace Store.Store {
     interface WaresForm {
         CategoryID: Serenity.LookupEditor;
         WaresCode: Serenity.StringEditor;
@@ -3076,6 +3095,8 @@ declare namespace Store.Store {
         MeasureID?: number;
         QuantityPerUnit?: number;
         UnitPrice?: number;
+        UnitsInStock?: number;
+        UnitsOnOrder?: number;
         Discontinued?: boolean;
         AccountID?: number;
         IsActive?: number;
@@ -3116,6 +3137,8 @@ declare namespace Store.Store {
             MeasureID = "MeasureID",
             QuantityPerUnit = "QuantityPerUnit",
             UnitPrice = "UnitPrice",
+            UnitsInStock = "UnitsInStock",
+            UnitsOnOrder = "UnitsOnOrder",
             Discontinued = "Discontinued",
             AccountID = "AccountID",
             IsActive = "IsActive",
@@ -4202,5 +4225,19 @@ declare namespace Store.Membership {
         protected getFormKey(): string;
         private form;
         constructor(container: JQuery);
+    }
+}
+declare namespace Store.Store {
+    class WaresExcelImportDialog extends Serenity.PropertyDialog<any, any> {
+        private form;
+        constructor();
+        protected getDialogTitle(): string;
+        protected getDialogButtons(): Serenity.DialogButton[];
+    }
+}
+declare namespace Store.Store {
+    class WaresExcelImportGrid extends Store.WaresGrid {
+        constructor(container: JQuery);
+        protected getButtons(): Serenity.ToolButton[];
     }
 }

@@ -12,6 +12,8 @@
         MeasureID?: number;
         QuantityPerUnit?: number;
         UnitPrice?: number;
+        UnitsInStock?: number;
+        UnitsOnOrder?: number;
         Discontinued?: boolean;
         AccountID?: number;
         IsActive?: number;
@@ -57,6 +59,8 @@
             MeasureID = "MeasureID",
             QuantityPerUnit = "QuantityPerUnit",
             UnitPrice = "UnitPrice",
+            UnitsInStock = "UnitsInStock",
+            UnitsOnOrder = "UnitsOnOrder",
             Discontinued = "Discontinued",
             AccountID = "AccountID",
             IsActive = "IsActive",
