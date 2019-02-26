@@ -592,6 +592,21 @@ declare namespace Store {
     }
 }
 declare namespace Store.Store {
+    interface CaregoryListRequest extends Serenity.ListRequest {
+        CategoryID?: number;
+    }
+}
+declare namespace Store.Store {
+}
+declare namespace Store.Store {
+    interface CategoryExcelImportForm {
+        FileName: Serenity.ImageUploadEditor;
+    }
+    class CategoryExcelImportForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
 }
 declare namespace Store.Store {
     interface CategoryForm {
@@ -692,14 +707,16 @@ declare namespace Store.Store {
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function RetrieveLocalization(request: Serenity.RetrieveLocalizationRequest, onSuccess?: (response: Serenity.RetrieveLocalizationResponse<CategoryRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<CategoryRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<CategoryRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: CaregoryListRequest, onSuccess?: (response: Serenity.ListResponse<CategoryRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function ExcelImport(request: ExcelImportRequest, onSuccess?: (response: ExcelImportResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         const enum Methods {
             Create = "Store/Category/Create",
             Update = "Store/Category/Update",
             Delete = "Store/Category/Delete",
             RetrieveLocalization = "Store/Category/RetrieveLocalization",
             Retrieve = "Store/Category/Retrieve",
-            List = "Store/Category/List"
+            List = "Store/Category/List",
+            ExcelImport = "Store/Category/ExcelImport"
         }
     }
 }
@@ -1832,16 +1849,16 @@ declare namespace Store.Store {
 }
 declare namespace Store.Store {
     interface ProductForm {
-        CategoryID: Serenity.LookupEditor;
         ProductCode: Serenity.StringEditor;
+        CategoryID: Serenity.LookupEditor;
         ProductBarcode: Serenity.StringEditor;
-        ProductLabel: Serenity.StringEditor;
         ProductName: Serenity.StringEditor;
-        ProductImage: Serenity.ImageUploadEditor;
-        Discontinued: Serenity.BooleanEditor;
-        CounterpartyID: CounterpartyEditor;
-        DetailList: ProductDetailsEditor;
+        ProductLabel: Serenity.StringEditor;
         MeasureID: Serenity.LookupEditor;
+        CounterpartyID: CounterpartyEditor;
+        Discontinued: Serenity.BooleanEditor;
+        ProductImage: Serenity.ImageUploadEditor;
+        DetailList: ProductDetailsEditor;
         QuantityPerUnit: Serenity.StringEditor;
         UnitPrice: Serenity.DecimalEditor;
         UnitsInStock: Serenity.IntegerEditor;
@@ -2747,6 +2764,16 @@ declare namespace Store.Store {
 declare namespace Store.Store {
 }
 declare namespace Store.Store {
+    interface WaresExcelImportForm {
+        FileName: Serenity.ImageUploadEditor;
+    }
+    class WaresExcelImportForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace Store.Store {
     interface WaresForm {
         CategoryID: Serenity.LookupEditor;
         WaresCode: Serenity.StringEditor;
@@ -3076,11 +3103,13 @@ declare namespace Store.Store {
         MeasureID?: number;
         QuantityPerUnit?: number;
         UnitPrice?: number;
+        UnitsInStock?: number;
+        UnitsOnOrder?: number;
         Discontinued?: boolean;
         AccountID?: number;
         IsActive?: number;
         TenantId?: number;
-        CounterpartyCompanyName?: string;
+        CompanyName?: string;
         CounterpartyContactName?: string;
         CounterpartyContactTitle?: string;
         CounterpartyCity?: string;
@@ -3116,11 +3145,13 @@ declare namespace Store.Store {
             MeasureID = "MeasureID",
             QuantityPerUnit = "QuantityPerUnit",
             UnitPrice = "UnitPrice",
+            UnitsInStock = "UnitsInStock",
+            UnitsOnOrder = "UnitsOnOrder",
             Discontinued = "Discontinued",
             AccountID = "AccountID",
             IsActive = "IsActive",
             TenantId = "TenantId",
-            CounterpartyCompanyName = "CounterpartyCompanyName",
+            CompanyName = "CompanyName",
             CounterpartyContactName = "CounterpartyContactName",
             CounterpartyContactTitle = "CounterpartyContactTitle",
             CounterpartyCity = "CounterpartyCity",
@@ -3147,13 +3178,15 @@ declare namespace Store.Store {
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<WaresRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function List(request: WaresListRequest, onSuccess?: (response: Serenity.ListResponse<WaresRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function ExcelImport(request: ExcelImportRequest, onSuccess?: (response: ExcelImportResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         const enum Methods {
             Create = "Store/Wares/Create",
             Update = "Store/Wares/Update",
             RetrieveLocalization = "Store/Wares/RetrieveLocalization",
             Delete = "Store/Wares/Delete",
             Retrieve = "Store/Wares/Retrieve",
-            List = "Store/Wares/List"
+            List = "Store/Wares/List",
+            ExcelImport = "Store/Wares/ExcelImport"
         }
     }
 }
@@ -3610,6 +3643,14 @@ declare namespace Store.Store {
     }
 }
 declare namespace Store.Store {
+    class CategoryExcelImportDialog extends Serenity.PropertyDialog<any, any> {
+        private form;
+        constructor();
+        protected getDialogTitle(): string;
+        protected getDialogButtons(): Serenity.DialogButton[];
+    }
+}
+declare namespace Store.Store {
     class CategoryGrid extends Serenity.EntityGrid<CategoryRow, any> {
         protected getColumnsKey(): string;
         protected getDialogType(): typeof CategoryDialog;
@@ -3617,6 +3658,8 @@ declare namespace Store.Store {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
+        protected getButtons(): Serenity.ToolButton[];
     }
 }
 declare namespace Store.Store {
@@ -4117,6 +4160,14 @@ declare namespace Store.Store {
         constructor(hidden: JQuery);
         protected getLookupKey(): string;
         protected getItems(lookup: Q.Lookup<CategoryRow>): CategoryRow[];
+    }
+}
+declare namespace Store.Store {
+    class WaresExcelImportDialog extends Serenity.PropertyDialog<any, any> {
+        private form;
+        constructor();
+        protected getDialogTitle(): string;
+        protected getDialogButtons(): Serenity.DialogButton[];
     }
 }
 declare namespace Store.Store {

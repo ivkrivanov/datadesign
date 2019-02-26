@@ -83,6 +83,20 @@ namespace Store.Store.Entities
             set { Fields.UnitPrice[this] = value; }
         }
 
+        [DisplayName("Unit In Stock"), Scale(4), LookupInclude]
+        public Decimal? UnitsInStock
+        {
+            get { return Fields.UnitsInStock[this]; }
+            set { Fields.UnitsInStock[this] = value; }
+        }
+
+        [DisplayName("Unit On Order"), Scale(4), LookupInclude]
+        public Decimal? UnitsOnOrder
+        {
+            get { return Fields.UnitsOnOrder[this]; }
+            set { Fields.UnitsOnOrder[this] = value; }
+        }
+
         [DisplayName("Discontinued"), NotNull]
         public Boolean? Discontinued
         {
@@ -114,10 +128,10 @@ namespace Store.Store.Entities
         }
 
         [Origin("c"), DisplayName("Counterparty"), LookupInclude]
-        public String CounterpartyCompanyName
+        public String CompanyName
         {
-            get { return Fields.CounterpartyCompanyName[this]; }
-            set { Fields.CounterpartyCompanyName[this] = value; }
+            get { return Fields.CompanyName[this]; }
+            set { Fields.CompanyName[this] = value; }
         }
 
         [Origin("c")]
@@ -378,6 +392,8 @@ namespace Store.Store.Entities
             public Int32Field MeasureID;
             public Int32Field QuantityPerUnit;
             public DecimalField UnitPrice;
+            public DecimalField UnitsInStock;
+            public DecimalField UnitsOnOrder;
             public BooleanField Discontinued;
             public Int32Field AccountID;
 
@@ -397,7 +413,7 @@ namespace Store.Store.Entities
             //public StringField SupplierFax;
             //public StringField SupplierEmail;
             //public StringField SupplierHomePage;
-            public StringField CounterpartyCompanyName;
+            public StringField CompanyName;
             public StringField CounterpartyContactName;
             public StringField CounterpartyContactTitle;
             public StringField CounterpartyCity;

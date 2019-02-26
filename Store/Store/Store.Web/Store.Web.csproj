@@ -928,7 +928,13 @@
     <TypeScriptCompile Include="Imports\ServerTypings\Administration.TenantService.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.CaregoryListRequest.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\Store.CategoryColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.CategoryExcelImportForm.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\Store.CategoryTypeColumns.ts">
@@ -1000,6 +1006,9 @@
     <TypeScriptCompile Include="Imports\ServerTypings\Store.WaresColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.WaresExcelImportForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\Store.WaresListRequest.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
@@ -1020,6 +1029,7 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Administration\Tenant\TenantDialog.ts" />
     <TypeScriptCompile Include="Modules\Administration\Tenant\TenantGrid.ts" />
+    <TypeScriptCompile Include="Modules\Store\Category\CategoryExcelImportDialog.ts" />
     <TypeScriptCompile Include="Modules\Store\Counterparty\CounterpartyProductMovementGrid.ts" />
     <TypeScriptCompile Include="Modules\Store\Counterparty\CounterpartyEditor.ts" />
     <TypeScriptCompile Include="Modules\Store\Counterparty\CounterpartyProductMovementDialog.ts" />
@@ -1039,6 +1049,7 @@
     <TypeScriptCompile Include="Modules\Store\WaresMovementDetails\WaresMovementDetailsEditor.ts" />
     <TypeScriptCompile Include="Modules\Store\WaresMovementDetails\WaresMovementDetailsGrid.ts" />
     <TypeScriptCompile Include="Modules\Store\Wares\WaresEditor.ts" />
+    <TypeScriptCompile Include="Modules\Store\Wares\WaresExcelImportDialog.ts" />
     <TypeScriptCompile Include="node_modules\%40types\jquery\index.d.ts" />
     <TypeScriptCompile Include="node_modules\%40types\jqueryui\index.d.ts" />
     <TypeScriptCompile Include="node_modules\%40types\jquery.blockui\index.d.ts" />
@@ -1868,7 +1879,6 @@
     <Content Include="Modules\Store\WaresMovement\WaresMovementIndex.cshtml" />
     <TypeScriptCompile Include="Modules\Store\WaresMovement\WaresMovementDialog.ts" />
     <TypeScriptCompile Include="Modules\Store\WaresMovement\WaresMovementGrid.ts" />
-    <TypeScriptCompile Include="Scripts\site\Store.Web.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\serenity\Serenity.CoreLib.d.ts" />
     <TypeScriptCompile Include="Imports\ServerTypings\Store.ProductMovementRow.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
@@ -2028,6 +2038,8 @@
     <Compile Include="Modules\Common\Navigation\NavigationModel.cs" />
     <Compile Include="Modules\Common\Reporting\DynamicDataReport.cs" />
     <Compile Include="Modules\Common\Reporting\ExcelReportGenerator.cs" />
+    <Compile Include="Modules\Store\Category\CaregoryListRequest.cs" />
+    <Compile Include="Modules\Store\Category\CategoryExcelImportForm.cs" />
     <Compile Include="Modules\Store\ProductMovement\ProductMovementListRequest.cs" />
     <Compile Include="Modules\Store\ProductMovement\ProductMovementOperations.cs" />
     <Compile Include="Modules\Store\Reports\Invoices\ProductMovementDetailReport.cs" />
@@ -2073,6 +2085,7 @@
     <Compile Include="Modules\Store\Supplier\SupplierCountryLookup.cs" />
     <Compile Include="Modules\Store\WaresMovement\WaresMovementListRequest.cs" />
     <Compile Include="Modules\Store\Wares\WaresCategory.cs" />
+    <Compile Include="Modules\Store\Wares\WaresExcelImportForm.cs" />
     <Compile Include="Modules\Store\Wares\WaresListRequest.cs" />
     <Compile Include="Modules\Texts.cs" />
     <Compile Include="Modules\Membership\Account\AccountPage.cs" />

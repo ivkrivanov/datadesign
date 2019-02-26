@@ -38,7 +38,7 @@ namespace Store.Store.Repositories
             return new LocalizationRowHandler<MyRow>().Retrieve(connection, request);
         }
 
-        public ListResponse<MyRow> List(IDbConnection connection, ListRequest request)
+        public ListResponse<MyRow> List(IDbConnection connection, CaregoryListRequest request)
         {
             return new MyListHandler().Process(connection, request);
         }
@@ -53,12 +53,23 @@ namespace Store.Store.Repositories
                     foreach (var pair in Request.Localizations)
                     {
                         pair.Value.CategoryID = Row.CategoryID.Value;
-                        new LocalizationRowHandler<MyRow>().Update<Entities.CategoryLangRow>(this.UnitOfWork, pair.Value, Convert.ToInt32(pair.Key));
+                        new LocalizationRowHandler<MyRow>().Update<Entities.CategoryLangRow>(
+                            this.UnitOfWork, pair.Value, Convert.ToInt32(pair.Key));
                     }
             }
         }
         private class MyDeleteHandler : DeleteRequestHandler<MyRow> { }
         private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> { }
-        private class MyListHandler : ListRequestHandler<MyRow> { }
+        private class MyListHandler : ListRequestHandler<MyRow>
+        {
+            protected override void ApplyFilters(SqlQuery query)
+            {
+                base.ApplyFilters(query);
+
+                var user = (UserDefinition)Authorization.UserDefinition;
+                if (!Authorization.HasPermission(Administration.PermissionKeys.Tenants))
+                    query.Where(fld.TenantId == user.TenantId);
+            }
+        }
     }
 }

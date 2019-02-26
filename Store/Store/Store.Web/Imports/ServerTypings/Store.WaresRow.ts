@@ -12,11 +12,13 @@
         MeasureID?: number;
         QuantityPerUnit?: number;
         UnitPrice?: number;
+        UnitsInStock?: number;
+        UnitsOnOrder?: number;
         Discontinued?: boolean;
         AccountID?: number;
         IsActive?: number;
         TenantId?: number;
-        CounterpartyCompanyName?: string;
+        CompanyName?: string;
         CounterpartyContactName?: string;
         CounterpartyContactTitle?: string;
         CounterpartyCity?: string;
@@ -57,11 +59,13 @@
             MeasureID = "MeasureID",
             QuantityPerUnit = "QuantityPerUnit",
             UnitPrice = "UnitPrice",
+            UnitsInStock = "UnitsInStock",
+            UnitsOnOrder = "UnitsOnOrder",
             Discontinued = "Discontinued",
             AccountID = "AccountID",
             IsActive = "IsActive",
             TenantId = "TenantId",
-            CounterpartyCompanyName = "CounterpartyCompanyName",
+            CompanyName = "CompanyName",
             CounterpartyContactName = "CounterpartyContactName",
             CounterpartyContactTitle = "CounterpartyContactTitle",
             CounterpartyCity = "CounterpartyCity",
