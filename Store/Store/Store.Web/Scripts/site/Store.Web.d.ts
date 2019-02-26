@@ -4136,6 +4136,12 @@ declare namespace Store.Store {
         private selectFormatter;
         private getEffectiveValue;
         protected getColumns(): Slick.Column[];
+        /**
+        * This method is called for all rows
+        * @param item Data item for current row
+        * @param index Index of the row in grid
+        */
+        protected getItemCssClass(item: Store.WaresRow, index: number): string;
         private inputsChange;
         private setSaveButtonState;
         private saveClick;

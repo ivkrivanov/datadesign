@@ -6630,6 +6630,17 @@ var Store;
                 //Q.first(columns, x => x.field === fld.ReorderLevel).format = num;
                 return columns;
             };
+            /**
+            * This method is called for all rows
+            * @param item Data item for current row
+            * @param index Index of the row in grid
+            */
+            WaresGrid.prototype.getItemCssClass = function (item, index) {
+                var klass = "";
+                if (item.Discontinued == true)
+                    klass += " discontinued";
+                return Q.trimToNull(klass);
+            };
             WaresGrid.prototype.inputsChange = function (e) {
                 var cell = this.slickGrid.getCellFromEvent(e);
                 var item = this.itemAt(cell.row);

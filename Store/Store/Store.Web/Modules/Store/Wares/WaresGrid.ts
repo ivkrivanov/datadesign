@@ -6,6 +6,7 @@ namespace Store.Store {
     @Serenity.Decorators.registerClass()
     @Serenity.Decorators.filterable()
     export class WaresGrid extends Serenity.EntityGrid<WaresRow, any> {
+
         protected getColumnsKey() { return 'Store.Wares'; }
         protected getDialogType() { return WaresDialog; }
         protected getIdProperty() { return WaresRow.idProperty; }
@@ -148,7 +149,7 @@ namespace Store.Store {
             return item[field];
         }
 
-        protected getColumns() {
+        protected getColumns(): Slick.Column[] {
             var columns = super.getColumns();
             var num = ctx => this.numericInputFormatter(ctx);
             var str = ctx => this.stringInputFormatter(ctx);
@@ -169,6 +170,25 @@ namespace Store.Store {
             //Q.first(columns, x => x.field === fld.ReorderLevel).format = num;
 
             return columns;
+        }
+
+         /**
+         * This method is called for all rows
+         * @param item Data item for current row
+         * @param index Index of the row in grid
+         */
+        protected getItemCssClass(item: Store.WaresRow, index: number): string {
+            let klass: string = "";
+
+            if (item.Discontinued == true)
+                klass += " discontinued";
+
+
+
+            return Q.trimToNull(klass);
+
+
+
         }
 
         private inputsChange(e: JQueryEventObject) {
