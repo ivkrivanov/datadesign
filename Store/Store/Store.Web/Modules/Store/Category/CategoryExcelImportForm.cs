@@ -1,12 +1,12 @@
-
+﻿
 namespace Store.Store.Forms
 {
     using Serenity.ComponentModel;
     using Serenity.Web;
     using System;
 
-    [FormScript("Store.Wares.WaresExcelImports")]
-    public class WaresExcelImportForm
+    [FormScript("Store.CategoryExcelImport")]
+    public class CategoryExcelImportForm
     {
         [FileUploadEditor, Required]
         public String FileName { get; set; }

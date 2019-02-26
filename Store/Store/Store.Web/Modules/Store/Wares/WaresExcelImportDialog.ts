@@ -29,7 +29,7 @@
                             return;
                         }
 
-                        WaresExcelImportService.ExcelImport({
+                        WaresService.ExcelImport({
                             FileName: this.form.FileName.value.Filename
                         }, response => {
                             Q.notifyInfo(

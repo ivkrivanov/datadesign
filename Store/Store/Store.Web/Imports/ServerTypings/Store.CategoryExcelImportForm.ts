@@ -1,22 +1,22 @@
 ﻿namespace Store.Store {
-    export interface WaresExcelImportForm {
+    export interface CategoryExcelImportForm {
         FileName: Serenity.ImageUploadEditor;
     }
 
-    export class WaresExcelImportForm extends Serenity.PrefixedContext {
-        static formKey = 'Store.WaresExcelImport';
+    export class CategoryExcelImportForm extends Serenity.PrefixedContext {
+        static formKey = 'Store.CategoryExcelImport';
         private static init: boolean;
 
         constructor(prefix: string) {
             super(prefix);
 
-            if (!WaresExcelImportForm.init)  {
-                WaresExcelImportForm.init = true;
+            if (!CategoryExcelImportForm.init)  {
+                CategoryExcelImportForm.init = true;
 
                 var s = Serenity;
                 var w0 = s.ImageUploadEditor;
 
-                Q.initFormType(WaresExcelImportForm, [
+                Q.initFormType(CategoryExcelImportForm, [
                     'FileName', w0
                 ]);
             }

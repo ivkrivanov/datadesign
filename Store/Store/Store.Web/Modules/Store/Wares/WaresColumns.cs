@@ -36,6 +36,8 @@ namespace Store.Store.Columns
         public Decimal UnitsInStock { get; set; }
         [Width(80), AlignRight]
         public Decimal UnitsOnOrder { get; set; }
+        [Width(80), AlignRight]
+        public string CounterpartyID { get; set; }
         //[Width(100), AlignRight]
         //public Int32 AccountID { get; set; }
         [EditLink(ItemType = "Store.Counterparty"), Width(200), QuickFilter]
