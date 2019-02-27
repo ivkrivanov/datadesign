@@ -18,7 +18,7 @@
         AccountID?: number;
         IsActive?: number;
         TenantId?: number;
-        CounterpartyCompanyName?: string;
+        CompanyName?: string;
         CounterpartyContactName?: string;
         CounterpartyContactTitle?: string;
         CounterpartyCity?: string;
@@ -65,7 +65,7 @@
             AccountID = "AccountID",
             IsActive = "IsActive",
             TenantId = "TenantId",
-            CounterpartyCompanyName = "CounterpartyCompanyName",
+            CompanyName = "CompanyName",
             CounterpartyContactName = "CounterpartyContactName",
             CounterpartyContactTitle = "CounterpartyContactTitle",
             CounterpartyCity = "CounterpartyCity",

@@ -128,10 +128,10 @@ namespace Store.Store.Entities
         }
 
         [Origin("c"), DisplayName("Counterparty"), LookupInclude]
-        public String CounterpartyCompanyName
+        public String CompanyName
         {
-            get { return Fields.CounterpartyCompanyName[this]; }
-            set { Fields.CounterpartyCompanyName[this] = value; }
+            get { return Fields.CompanyName[this]; }
+            set { Fields.CompanyName[this] = value; }
         }
 
         [Origin("c")]
@@ -413,7 +413,7 @@ namespace Store.Store.Entities
             //public StringField SupplierFax;
             //public StringField SupplierEmail;
             //public StringField SupplierHomePage;
-            public StringField CounterpartyCompanyName;
+            public StringField CompanyName;
             public StringField CounterpartyContactName;
             public StringField CounterpartyContactTitle;
             public StringField CounterpartyCity;

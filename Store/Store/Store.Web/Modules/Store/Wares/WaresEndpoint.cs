@@ -59,7 +59,7 @@ namespace Store.Store.Endpoints
             var data = List(connection, request).Entities;
             var report = new DynamicDataReport(data, request.IncludeColumns, typeof(Columns.WaresColumns));
             var bytes = new ReportRepository().Render(report);
-            return ExcelContentResult.Create(bytes, "ProductList_" +
+            return ExcelContentResult.Create(bytes, "WaresList_" +
                 DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".xlsx");
         }
 
@@ -157,26 +157,26 @@ namespace Store.Store.Endpoints
 
                     #region Counterparty
 
-                    var counterpartyName = Convert.ToString(worksheet.Cells[row, 10].Value ?? 0);
-                    if (!string.IsNullOrWhiteSpace(counterpartyName))
-                    {
-                        var counterparty = uow.Connection.TryFirst<CounterpartyRow>(q => q
-                            .Select(cp.CounterpartyID)
-                            .Where(cp.CompanyName == counterpartyName));
+                    //var counterpartyName = Convert.ToString(worksheet.Cells[row, 13].Value ?? 0);
+                    //if (!string.IsNullOrWhiteSpace(counterpartyName))
+                    //{
+                    //    var counterparty = uow.Connection.TryFirst<CounterpartyRow>(q => q
+                    //        .Select(cp.CounterpartyID)
+                    //        .Where(cp.CompanyName == counterpartyName));
 
-                        if(counterparty == null)
-                        {
-                            response.ErrorList.Add("Error On Row" + row + ": Counterparty with name '" +
-                                counterpartyName + "' is not found!");
-                            continue;
-                        }
+                    //    if(counterparty == null)
+                    //    {
+                    //        response.ErrorList.Add("Error On Row" + row + ": Counterparty with name '" +
+                    //            counterpartyName + "' is not found!");
+                    //        continue;
+                    //    }
 
-                        wares.CounterpartyID = counterparty.CounterpartyID.ToString();
-                    }
-                    else
-                    {
-                        wares.CounterpartyID = null;
-                    }
+                    //    wares.CounterpartyID = counterparty.CounterpartyID.ToString();
+                    //}
+                    //else
+                    //{
+                    //    wares.CounterpartyID = null;
+                    //}
 
                     #endregion Counterparty
 
@@ -187,8 +187,10 @@ namespace Store.Store.Endpoints
 
                     wares.QuantityPerUnit = Convert.ToInt32(worksheet.Cells[row, 8].Value ?? "");
                     wares.UnitPrice = Convert.ToDecimal(worksheet.Cells[row, 9].Value ?? 0);
-                    //wares.UnitsInStock = Convert.ToDecimal(worksheet.Cells[row, 10].Value ?? 0);
-                    //wares.UnitsOnOrder = Convert.ToDecimal(worksheet.Cells[row, 11].Value ?? 0);
+                    wares.UnitsInStock = Convert.ToDecimal(worksheet.Cells[row, 10].Value ?? 0);
+                    wares.UnitsOnOrder = Convert.ToDecimal(worksheet.Cells[row, 11].Value ?? 0);
+
+                    wares.CounterpartyID = Convert.ToString(worksheet.Cells[row, 12].Value ?? 0);
 
                     if (wares.WaresID == null)
                     {

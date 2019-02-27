@@ -11,19 +11,25 @@ namespace Store.Store.Forms
     public class ProductForm
     {
         [Category("General")]
-        public Int32 CategoryID { get; set; }
         [HalfWidth]
         public String ProductCode { get; set; }
         [HalfWidth]
+        public Int32 CategoryID { get; set; }
+        [HalfWidth]
         public String ProductBarcode { get; set; }
         [HalfWidth]
-        public String ProductLabel { get; set; }
-        [HalfWidth]
         public String ProductName { get; set; }
+        [HalfWidth]
+        public String ProductLabel { get; set; }
 
-        public String ProductImage { get; set; }
-        public Boolean Discontinued { get; set; }
+        [OneThirdWidth]
+        public Int32 MeasureID { get; set; }
+        [HalfWidth]
         public String CounterpartyID { get; set; }
+        [OneThirdWidth]
+        public Boolean Discontinued { get; set; }
+
+        public String ProductImage { get; set; }   
         //public Int32 SupplierID { get; set; }
 
 
@@ -32,8 +38,7 @@ namespace Store.Store.Forms
         public List<Entities.ProductDetailRow> DetailList { get; set; }
 
         [Category("Pricing")]
-        [HalfWidth]
-        public Int32 MeasureID { get; set; }
+
         [HalfWidth]
         public String QuantityPerUnit { get; set; }
         public Decimal UnitPrice { get; set; }
@@ -42,6 +47,7 @@ namespace Store.Store.Forms
         public Int16 UnitsInStock { get; set; }
         [HalfWidth]
         public Int16 UnitsOnOrder { get; set; }
+        [HalfWidth]
         public Int16 ReorderLevel { get; set; }
 
 

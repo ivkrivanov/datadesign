@@ -1849,16 +1849,16 @@ declare namespace Store.Store {
 }
 declare namespace Store.Store {
     interface ProductForm {
-        CategoryID: Serenity.LookupEditor;
         ProductCode: Serenity.StringEditor;
+        CategoryID: Serenity.LookupEditor;
         ProductBarcode: Serenity.StringEditor;
-        ProductLabel: Serenity.StringEditor;
         ProductName: Serenity.StringEditor;
-        ProductImage: Serenity.ImageUploadEditor;
-        Discontinued: Serenity.BooleanEditor;
-        CounterpartyID: CounterpartyEditor;
-        DetailList: ProductDetailsEditor;
+        ProductLabel: Serenity.StringEditor;
         MeasureID: Serenity.LookupEditor;
+        CounterpartyID: CounterpartyEditor;
+        Discontinued: Serenity.BooleanEditor;
+        ProductImage: Serenity.ImageUploadEditor;
+        DetailList: ProductDetailsEditor;
         QuantityPerUnit: Serenity.StringEditor;
         UnitPrice: Serenity.DecimalEditor;
         UnitsInStock: Serenity.IntegerEditor;
@@ -3109,7 +3109,7 @@ declare namespace Store.Store {
         AccountID?: number;
         IsActive?: number;
         TenantId?: number;
-        CounterpartyCompanyName?: string;
+        CompanyName?: string;
         CounterpartyContactName?: string;
         CounterpartyContactTitle?: string;
         CounterpartyCity?: string;
@@ -3151,7 +3151,7 @@ declare namespace Store.Store {
             AccountID = "AccountID",
             IsActive = "IsActive",
             TenantId = "TenantId",
-            CounterpartyCompanyName = "CounterpartyCompanyName",
+            CompanyName = "CompanyName",
             CounterpartyContactName = "CounterpartyContactName",
             CounterpartyContactTitle = "CounterpartyContactTitle",
             CounterpartyCity = "CounterpartyCity",
@@ -4187,6 +4187,12 @@ declare namespace Store.Store {
         private selectFormatter;
         private getEffectiveValue;
         protected getColumns(): Slick.Column[];
+        /**
+        * This method is called for all rows
+        * @param item Data item for current row
+        * @param index Index of the row in grid
+        */
+        protected getItemCssClass(item: Store.WaresRow, index: number): string;
         private inputsChange;
         private setSaveButtonState;
         private saveClick;

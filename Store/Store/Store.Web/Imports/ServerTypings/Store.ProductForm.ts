@@ -1,15 +1,15 @@
 ﻿namespace Store.Store {
     export interface ProductForm {
-        CategoryID: Serenity.LookupEditor;
         ProductCode: Serenity.StringEditor;
+        CategoryID: Serenity.LookupEditor;
         ProductBarcode: Serenity.StringEditor;
-        ProductLabel: Serenity.StringEditor;
         ProductName: Serenity.StringEditor;
-        ProductImage: Serenity.ImageUploadEditor;
-        Discontinued: Serenity.BooleanEditor;
-        CounterpartyID: CounterpartyEditor;
-        DetailList: ProductDetailsEditor;
+        ProductLabel: Serenity.StringEditor;
         MeasureID: Serenity.LookupEditor;
+        CounterpartyID: CounterpartyEditor;
+        Discontinued: Serenity.BooleanEditor;
+        ProductImage: Serenity.ImageUploadEditor;
+        DetailList: ProductDetailsEditor;
         QuantityPerUnit: Serenity.StringEditor;
         UnitPrice: Serenity.DecimalEditor;
         UnitsInStock: Serenity.IntegerEditor;
@@ -28,27 +28,27 @@
                 ProductForm.init = true;
 
                 var s = Serenity;
-                var w0 = s.LookupEditor;
-                var w1 = s.StringEditor;
-                var w2 = s.ImageUploadEditor;
+                var w0 = s.StringEditor;
+                var w1 = s.LookupEditor;
+                var w2 = CounterpartyEditor;
                 var w3 = s.BooleanEditor;
-                var w4 = CounterpartyEditor;
+                var w4 = s.ImageUploadEditor;
                 var w5 = ProductDetailsEditor;
                 var w6 = s.DecimalEditor;
                 var w7 = s.IntegerEditor;
 
                 Q.initFormType(ProductForm, [
-                    'CategoryID', w0,
-                    'ProductCode', w1,
-                    'ProductBarcode', w1,
-                    'ProductLabel', w1,
-                    'ProductName', w1,
-                    'ProductImage', w2,
+                    'ProductCode', w0,
+                    'CategoryID', w1,
+                    'ProductBarcode', w0,
+                    'ProductName', w0,
+                    'ProductLabel', w0,
+                    'MeasureID', w1,
+                    'CounterpartyID', w2,
                     'Discontinued', w3,
-                    'CounterpartyID', w4,
+                    'ProductImage', w4,
                     'DetailList', w5,
-                    'MeasureID', w0,
-                    'QuantityPerUnit', w1,
+                    'QuantityPerUnit', w0,
                     'UnitPrice', w6,
                     'UnitsInStock', w7,
                     'UnitsOnOrder', w7,

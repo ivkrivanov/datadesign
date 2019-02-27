@@ -6,6 +6,7 @@ namespace Store.Store {
     @Serenity.Decorators.registerClass()
     @Serenity.Decorators.filterable()
     export class WaresGrid extends Serenity.EntityGrid<WaresRow, any> {
+
         protected getColumnsKey() { return 'Store.Wares'; }
         protected getDialogType() { return WaresDialog; }
         protected getIdProperty() { return WaresRow.idProperty; }
@@ -38,11 +39,26 @@ namespace Store.Store {
             var buttons = super.getButtons();
 
             buttons.push(Common.ExcelExportHelper.createToolButton({
+                title: 'Export To Excel',
                 grid: this,
                 service: WaresService.baseUrl + '/ListExcel',
                 onViewSubmit: () => this.onViewSubmit(),
                 separator: true
             }));
+
+            buttons.push({
+                title: 'Import From Excel',
+                cssClass: 'export-xlsx-button',
+                onClick: () => {
+                    // open import dialog, let it handle rest
+                    var dialog = new WaresExcelImportDialog();
+                    dialog.element.on('dialogclose', () => {
+                        this.refresh();
+                        dialog = null;
+                    });
+                    dialog.dialogOpen();
+                }
+            });
 
             buttons.push(Common.PdfExportHelper.createToolButton({
                 grid: this,
@@ -69,20 +85,6 @@ namespace Store.Store {
                 cssClass: 'apply-changes-button disabled',
                 onClick: e => this.saveClick(),
                 separator: true
-            });
-
-            buttons.push({
-                title: 'Import From Excel',
-                cssClass: 'export-xlsx-button',
-                onClick: () => {
-                    // open import dialog, let it handle rest
-                    var dialog = new WaresExcelImportDialog();
-                    dialog.element.on('dialogclose', () => {
-                        this.refresh();
-                        dialog = null;
-                    });
-                    dialog.dialogOpen();
-                }
             });
 
             return buttons;
@@ -162,7 +164,7 @@ namespace Store.Store {
             return item[field];
         }
 
-        protected getColumns() {
+        protected getColumns(): Slick.Column[] {
             var columns = super.getColumns();
             var num = ctx => this.numericInputFormatter(ctx);
             var str = ctx => this.stringInputFormatter(ctx);
@@ -183,6 +185,25 @@ namespace Store.Store {
             //Q.first(columns, x => x.field === fld.ReorderLevel).format = num;
 
             return columns;
+        }
+
+         /**
+         * This method is called for all rows
+         * @param item Data item for current row
+         * @param index Index of the row in grid
+         */
+        protected getItemCssClass(item: Store.WaresRow, index: number): string {
+            let klass: string = "";
+
+            if (item.Discontinued == true)
+                klass += " discontinued";
+
+
+
+            return Q.trimToNull(klass);
+
+
+
         }
 
         private inputsChange(e: JQueryEventObject) {

@@ -41,6 +41,6 @@ namespace Store.Store.Columns
         [Width(80), AlignRight]
         public Int16 ReorderLevel { get; set; }
         [EditLink(ItemType = "Store.Counterparty"), Width(200), QuickFilter]
-        public String CounterpartyCompanyName { get; set; }
+        public String CounterpartyID { get; set; }
     }
 }
