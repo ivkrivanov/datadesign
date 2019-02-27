@@ -1,12 +1,18 @@
 ﻿
 namespace Store.Store.Endpoints
 {
+    using global::Store.Store.Entities;
+    using global::Store.Store.Repositories;
+    using OfficeOpenXml;
+    using Serenity;
     using Serenity.Data;
     using Serenity.Reporting;
     using Serenity.Services;
     using Serenity.Web;
     using System;
+    using System.Collections.Generic;
     using System.Data;
+    using System.IO;
     using System.Web.Mvc;
     using MyRepository = Repositories.ProductRepository;
     using MyRow = Entities.ProductRow;
@@ -55,6 +61,164 @@ namespace Store.Store.Endpoints
             var bytes = new ReportRepository().Render(report);
             return ExcelContentResult.Create(bytes, "ProductList_" +
                 DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".xlsx");
+        }
+
+        [HttpPost]
+        public ExcelImportResponse ExcelImport(IUnitOfWork uow, ExcelImportRequest request)
+        {
+            request.CheckNotNull();
+            Check.NotNullOrWhiteSpace(request.FileName, "filename");
+
+            UploadHelper.CheckFileNameSecurity(request.FileName);
+
+            if (!request.FileName.StartsWith("temporary/"))
+                throw new ArgumentOutOfRangeException("filename");
+
+            ExcelPackage ep = new ExcelPackage();
+            using (var fs = new FileStream(UploadHelper.DbFilePath(request.FileName), FileMode.Open, FileAccess.Read))
+                ep.Load(fs);
+
+            var p = ProductRow.Fields;
+            var c = CategoryRow.Fields;
+            var m = MeasureRow.Fields;
+            var cp = CounterpartyRow.Fields;
+
+            var response = new ExcelImportResponse();
+            response.ErrorList = new List<string>();
+
+            var worksheet = ep.Workbook.Worksheets[1];
+            for (var row = 2;row <= worksheet.Dimension.End.Row; row++)
+            {
+                try
+                {
+                    var productName = Convert.ToString(worksheet.Cells[row, 4].Value ?? "");
+                    if (productName.IsTrimmedEmpty())
+                        continue;
+
+                    var product = uow.Connection.TryFirst<ProductRow>(q => q
+                        .Select(p.ProductID)
+                        .Where(p.ProductName == productName));
+
+                    if (product == null)
+                        product = new ProductRow
+                        {
+                            ProductName = productName
+                        };
+                    else
+                    {
+                        product.TrackWithChecks = false;
+                    }
+
+                    #region Category
+
+                    var categoryName = Convert.ToString(worksheet.Cells[row, 6].Value ?? "");
+                    if (!string.IsNullOrWhiteSpace(categoryName))
+                    {
+                        var category = uow.Connection.TryFirst<CategoryRow>(q => q
+                            .Select(c.CategoryID)
+                            .Where(c.CategoryName == categoryName));
+
+                        if (category == null)
+                        {
+                            response.ErrorList.Add("Error On Row" + row + ": Category with name '" +
+                                categoryName + "' is not found!");
+                            continue;
+                        }
+
+                        product.CategoryID = category.CategoryID.Value;
+                    }
+                    else
+                        product.CategoryID = null;
+
+                    #endregion Category
+
+                    #region Measure
+
+                    var measureName = Convert.ToString(worksheet.Cells[row, 7].Value ?? "");
+                    if (!string.IsNullOrWhiteSpace(measureName))
+                    {
+                        var measure = uow.Connection.TryFirst<MeasureRow>(q => q
+                            .Select(m.MeasureID)
+                            .Where(m.MeasureName == measureName));
+
+                        if (measure == null)
+                        {
+                            response.ErrorList.Add("Error On Row" + row + ": Measure with name '" +
+                                measureName + "' is not found!");
+                            continue;
+                        }
+
+                        product.MeasureID = measure.MeasureID.Value;
+                    }
+                    else
+                        product.MeasureID = null;
+
+                    #endregion Measure
+
+                    #region Counterparty
+
+                    //var counterpartyName = Convert.ToString(worksheet.Cells[row, 13].Value ?? 0);
+                    //if (!string.IsNullOrWhiteSpace(counterpartyName))
+                    //{
+                    //    var counterparty = uow.Connection.TryFirst<CounterpartyRow>(q => q
+                    //        .Select(cp.CounterpartyID)
+                    //        .Where(cp.CompanyName == counterpartyName));
+
+                    //    if(counterparty == null)
+                    //    {
+                    //        response.ErrorList.Add("Error On Row" + row + ": Counterparty with name '" +
+                    //            counterpartyName + "' is not found!");
+                    //        continue;
+                    //    }
+
+                    //    product.CounterpartyID = counterparty.CounterpartyID.ToString();
+                    //}
+                    //else
+                    //{
+                    //    product.CounterpartyID = null;
+                    //}
+
+                    #endregion Counterparty
+
+                    product.ProductCode = Convert.ToString(worksheet.Cells[row, 1].Value ?? "");
+                    product.ProductBarcode = Convert.ToString(worksheet.Cells[row, 2].Value ?? "");
+                    product.ProductLabel = Convert.ToString(worksheet.Cells[row, 3].Value ?? "");
+                    product.Discontinued = Convert.ToBoolean(worksheet.Cells[row, 5].Value ?? "");
+
+                    product.QuantityPerUnit = Convert.ToString(worksheet.Cells[row, 8].Value ?? "");
+                    product.UnitPrice = Convert.ToDecimal(worksheet.Cells[row, 9].Value ?? 0);
+                    product.UnitsInStock = Convert.ToInt16(worksheet.Cells[row, 10].Value ?? 0);
+                    product.UnitsOnOrder = Convert.ToInt16(worksheet.Cells[row, 11].Value ?? 0);
+
+                    product.CounterpartyID = Convert.ToString(worksheet.Cells[row, 13].Value ?? 0);
+
+                    if(product.ProductID == null)
+                    {
+                        new ProductRepository().Create(uow, new SaveWithLocalizationRequest<MyRow>
+                        {
+                            Entity = product
+                        });
+
+                        response.Inserted = response.Inserted + 1;
+                    }
+                    else
+                    {
+                        new ProductRepository().Update(uow, new SaveWithLocalizationRequest<MyRow>
+                        {
+                            Entity = product,
+                            EntityId = product.ProductID.Value
+                        });
+
+                        response.Updated = response.Updated + 1;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    response.ErrorList.Add("Exception on Row " + row + ": " + ex.Message);
+                }
+            }
+
+            return response; 
         }
     }
 }

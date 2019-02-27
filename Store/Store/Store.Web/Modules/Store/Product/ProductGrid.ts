@@ -52,11 +52,26 @@ namespace Store.Store {
             var buttons = super.getButtons();
 
             buttons.push(Common.ExcelExportHelper.createToolButton({
+                title: 'Export To Excel',
                 grid: this,
                 service: ProductService.baseUrl + '/ListExcel',
                 onViewSubmit: () => this.onViewSubmit(),
                 separator: true
             }));
+
+            buttons.push({
+                title: 'Import From Excel',
+                cssClass: 'export-xlsx-button',
+                onClick: () => {
+                    // open import dialog, let it handle rest
+                    var dialog = new ProductExcelImportDialog();
+                    dialog.element.on('dialogclose', () => {
+                        this.refresh();
+                        dialog = null;
+                    });
+                    dialog.dialogOpen();
+                }
+            });
 
             buttons.push(Common.PdfExportHelper.createToolButton({
                 grid: this,

@@ -1848,6 +1848,16 @@ declare namespace Store.Store {
     }
 }
 declare namespace Store.Store {
+    interface ProductExcelImportForm {
+        FileName: Serenity.ImageUploadEditor;
+    }
+    class ProductExcelImportForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace Store.Store {
     interface ProductForm {
         ProductCode: Serenity.StringEditor;
         CategoryID: Serenity.LookupEditor;
@@ -2270,13 +2280,15 @@ declare namespace Store.Store {
         function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<ProductRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function RetrieveLocalization(request: Serenity.RetrieveLocalizationRequest, onSuccess?: (response: Serenity.RetrieveLocalizationResponse<ProductRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function List(request: ProductListRequest, onSuccess?: (response: Serenity.ListResponse<ProductRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function ExcelImport(request: ExcelImportRequest, onSuccess?: (response: ExcelImportResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         const enum Methods {
             Create = "Store/Product/Create",
             Update = "Store/Product/Update",
             Delete = "Store/Product/Delete",
             Retrieve = "Store/Product/Retrieve",
             RetrieveLocalization = "Store/Product/RetrieveLocalization",
-            List = "Store/Product/List"
+            List = "Store/Product/List",
+            ExcelImport = "Store/Product/ExcelImport"
         }
     }
 }
@@ -3943,6 +3955,14 @@ declare namespace Store.Store {
         constructor(hidden: JQuery);
         protected getLookupKey(): string;
         protected getItems(lookup: Q.Lookup<CategoryRow>): CategoryRow[];
+    }
+}
+declare namespace Store.Store {
+    class ProductExcelImportDialog extends Serenity.PropertyDialog<any, any> {
+        private form;
+        constructor();
+        protected getDialogTitle(): string;
+        protected getDialogButtons(): Serenity.DialogButton[];
     }
 }
 declare namespace Store.Store {

@@ -964,6 +964,9 @@
     <TypeScriptCompile Include="Imports\ServerTypings\Store.ProductDetailColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ProductExcelImportForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\Store.ProductListRequest.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
@@ -1043,6 +1046,7 @@
     <TypeScriptCompile Include="Modules\Store\ProductDetail\ProductDetailsEditor.ts" />
     <TypeScriptCompile Include="Modules\Store\ProductMovementDetails\ProductMovementDetailsEditor.ts" />
     <TypeScriptCompile Include="Modules\Store\Product\ProductEditor.ts" />
+    <TypeScriptCompile Include="Modules\Store\Product\ProductExcelImportDialog.ts" />
     <TypeScriptCompile Include="Modules\Store\Shared\PhoneEditor.ts" />
     <TypeScriptCompile Include="Modules\Store\Shipper\ShipperFormatter.ts" />
     <TypeScriptCompile Include="Modules\Store\Shops\ShopsEditor.ts" />
@@ -2042,6 +2046,7 @@
     <Compile Include="Modules\Store\Category\CategoryExcelImportForm.cs" />
     <Compile Include="Modules\Store\ProductMovement\ProductMovementListRequest.cs" />
     <Compile Include="Modules\Store\ProductMovement\ProductMovementOperations.cs" />
+    <Compile Include="Modules\Store\Product\ProductExcelImportForm.cs" />
     <Compile Include="Modules\Store\Reports\Invoices\ProductMovementDetailReport.cs" />
     <Compile Include="Modules\Store\Shipper\ShippingState.cs" />
     <Compile Include="Modules\Store\Shops\ShopLookup.cs" />
