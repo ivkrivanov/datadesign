@@ -2,12 +2,12 @@
     export interface StoreRow {
         Position?: number;
         WaresMode?: boolean;
-        MoveId?: number;
-        ShopId?: number;
-        WaresId?: number;
+        MoveID?: number;
+        ShopID?: number;
+        WaresID?: number;
         Key?: string;
         Date?: string;
-        OperationId?: number;
+        OperationID?: number;
         IncomeQuantity?: number;
         IncomeSinglePrice?: number;
         IncomeValue?: number;
@@ -45,12 +45,12 @@
         export declare const enum Fields {
             Position = "Position",
             WaresMode = "WaresMode",
-            MoveId = "MoveId",
-            ShopId = "ShopId",
-            WaresId = "WaresId",
+            MoveID = "MoveID",
+            ShopID = "ShopID",
+            WaresID = "WaresID",
             Key = "Key",
             Date = "Date",
-            OperationId = "OperationId",
+            OperationID = "OperationID",
             IncomeQuantity = "IncomeQuantity",
             IncomeSinglePrice = "IncomeSinglePrice",
             IncomeValue = "IncomeValue",

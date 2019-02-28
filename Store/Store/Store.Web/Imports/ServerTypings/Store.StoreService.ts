@@ -7,13 +7,15 @@
         export declare function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         export declare function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<StoreRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         export declare function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<StoreRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        export declare function Warehouse(request: WarehouseRequest, onSuccess?: (response: WarehouseResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
 
         export declare const enum Methods {
             Create = "Store/Store/Create",
             Update = "Store/Store/Update",
             Delete = "Store/Store/Delete",
             Retrieve = "Store/Store/Retrieve",
-            List = "Store/Store/List"
+            List = "Store/Store/List",
+            Warehouse = "Store/Store/Warehouse"
         }
 
         [
@@ -21,7 +23,8 @@
             'Update', 
             'Delete', 
             'Retrieve', 
-            'List'
+            'List', 
+            'Warehouse'
         ].forEach(x => {
             (<any>StoreService)[x] = function (r, s, o) {
                 return Q.serviceRequest(baseUrl + '/' + x, r, s, o);

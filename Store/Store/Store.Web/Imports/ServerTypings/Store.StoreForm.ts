@@ -2,11 +2,11 @@
     export interface StoreForm {
         Position: Serenity.StringEditor;
         WaresMode: Serenity.BooleanEditor;
-        ShopId: Serenity.IntegerEditor;
-        WaresId: Serenity.IntegerEditor;
+        ShopID: Serenity.IntegerEditor;
+        WaresID: Serenity.IntegerEditor;
         Key: Serenity.StringEditor;
         Date: Serenity.DateEditor;
-        OperationId: Serenity.IntegerEditor;
+        OperationID: Serenity.IntegerEditor;
         IncomeQuantity: Serenity.DecimalEditor;
         IncomeSinglePrice: Serenity.DecimalEditor;
         IncomeValue: Serenity.DecimalEditor;
@@ -40,11 +40,11 @@
                 Q.initFormType(StoreForm, [
                     'Position', w0,
                     'WaresMode', w1,
-                    'ShopId', w2,
-                    'WaresId', w2,
+                    'ShopID', w2,
+                    'WaresID', w2,
                     'Key', w0,
                     'Date', w3,
-                    'OperationId', w2,
+                    'OperationID', w2,
                     'IncomeQuantity', w4,
                     'IncomeSinglePrice', w4,
                     'IncomeValue', w4,

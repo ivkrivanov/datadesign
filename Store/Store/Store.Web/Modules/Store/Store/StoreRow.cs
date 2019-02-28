@@ -30,25 +30,25 @@ namespace Store.Store.Entities
             set { Fields.WaresMode[this] = value; }
         }
 
-        [DisplayName("Move Id"), Column("MoveID"), PrimaryKey]
-        public Int32? MoveId
+        [DisplayName("Move ID"), Column("MoveID"), PrimaryKey]
+        public Int32? MoveID
         {
-            get { return Fields.MoveId[this]; }
-            set { Fields.MoveId[this] = value; }
+            get { return Fields.MoveID[this]; }
+            set { Fields.MoveID[this] = value; }
         }
 
-        [DisplayName("Shop Id"), Column("ShopID"), PrimaryKey]
-        public Int32? ShopId
+        [DisplayName("Shop ID"), Column("ShopID"), PrimaryKey]
+        public Int32? ShopID
         {
-            get { return Fields.ShopId[this]; }
-            set { Fields.ShopId[this] = value; }
+            get { return Fields.ShopID[this]; }
+            set { Fields.ShopID[this] = value; }
         }
 
-        [DisplayName("Wares Id"), Column("WaresID"), PrimaryKey]
-        public Int32? WaresId
+        [DisplayName("Wares ID"), Column("WaresID"), PrimaryKey]
+        public Int32? WaresID
         {
-            get { return Fields.WaresId[this]; }
-            set { Fields.WaresId[this] = value; }
+            get { return Fields.WaresID[this]; }
+            set { Fields.WaresID[this] = value; }
         }
 
         [DisplayName("Key"), Size(15), QuickSearch]
@@ -66,10 +66,10 @@ namespace Store.Store.Entities
         }
 
         [DisplayName("Operation Id"), Column("OperationID"), PrimaryKey]
-        public Int32? OperationId
+        public Int32? OperationID
         {
-            get { return Fields.OperationId[this]; }
-            set { Fields.OperationId[this] = value; }
+            get { return Fields.OperationID[this]; }
+            set { Fields.OperationID[this] = value; }
         }
 
         [DisplayName("Income Quantity"), Size(15), Scale(4)]
@@ -261,12 +261,12 @@ namespace Store.Store.Entities
         {
             public Int64Field Position;
             public BooleanField WaresMode;
-            public Int32Field MoveId;
-            public Int32Field ShopId;
-            public Int32Field WaresId;
+            public Int32Field MoveID;
+            public Int32Field ShopID;
+            public Int32Field WaresID;
             public StringField Key;
             public DateTimeField Date;
-            public Int32Field OperationId;
+            public Int32Field OperationID;
             public DecimalField IncomeQuantity;
             public DecimalField IncomeSinglePrice;
             public DecimalField IncomeValue;

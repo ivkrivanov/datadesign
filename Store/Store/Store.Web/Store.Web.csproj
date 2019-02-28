@@ -1000,6 +1000,9 @@
     <TypeScriptCompile Include="Imports\ServerTypings\Store.ShopsColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.StoreAverageForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\Store.StoreColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
@@ -1030,6 +1033,12 @@
     <TypeScriptCompile Include="Imports\ServerTypings\Texts.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\WarehouseRequest.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\WarehouseResponse.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Administration\Tenant\TenantDialog.ts" />
     <TypeScriptCompile Include="Modules\Administration\Tenant\TenantGrid.ts" />
     <TypeScriptCompile Include="Modules\Store\Category\CategoryExcelImportDialog.ts" />
@@ -1052,6 +1061,7 @@
     <TypeScriptCompile Include="Modules\Store\Shops\ShopsEditor.ts" />
     <TypeScriptCompile Include="Modules\Store\WaresMovementDetails\WaresMovementDetailsEditor.ts" />
     <TypeScriptCompile Include="Modules\Store\WaresMovementDetails\WaresMovementDetailsGrid.ts" />
+    <TypeScriptCompile Include="Modules\Store\WaresMovement\StoreAverageDialog.ts" />
     <TypeScriptCompile Include="Modules\Store\Wares\WaresEditor.ts" />
     <TypeScriptCompile Include="Modules\Store\Wares\WaresExcelImportDialog.ts" />
     <TypeScriptCompile Include="node_modules\%40types\jquery\index.d.ts" />
@@ -2038,6 +2048,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MVC.tt</DependentUpon>
     </Compile>
+    <Compile Include="Modules\Common\Helpers\WarehouseRequest.cs" />
     <Compile Include="Modules\Common\Navigation\NavigationItems.cs" />
     <Compile Include="Modules\Common\Navigation\NavigationModel.cs" />
     <Compile Include="Modules\Common\Reporting\DynamicDataReport.cs" />
@@ -2052,6 +2063,7 @@
     <Compile Include="Modules\Store\Shops\ShopLookup.cs" />
     <Compile Include="Modules\Store\Reports\Invoices\WaresMovementDetailReport.cs" />
     <Compile Include="Modules\Store\Store\Average.cs" />
+    <Compile Include="Modules\Store\WaresMovement\StoreAverageForm.cs" />
     <Compile Include="Modules\Store\WaresMovement\WaresMovementOperations.cs" />
     <Content Include="Modules\Common\Reporting\ReportPage.cshtml" />
     <Compile Include="Modules\Common\Reporting\ReportTree.cs" />

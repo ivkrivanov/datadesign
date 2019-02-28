@@ -36,7 +36,7 @@ namespace Store.Store
                 data.StoreList = connection.List<StoreRow>(q => q
                     .SelectTableFields()
                     .Where(s.TenantId == (int)this.Tenant)
-                    .OrderBy(s.ShopId, s.Key, s.Date, s.OperationId, s.MoveId));
+                    .OrderBy(s.ShopID, s.Key, s.Date, s.OperationID, s.MoveID));
 
                 return data;
             } 

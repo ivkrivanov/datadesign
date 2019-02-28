@@ -2447,16 +2447,26 @@ declare namespace Store.Store {
     }
 }
 declare namespace Store.Store {
+    interface StoreAverageForm {
+        FileName: Serenity.ImageUploadEditor;
+    }
+    class StoreAverageForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace Store.Store {
 }
 declare namespace Store.Store {
     interface StoreForm {
         Position: Serenity.StringEditor;
         WaresMode: Serenity.BooleanEditor;
-        ShopId: Serenity.IntegerEditor;
-        WaresId: Serenity.IntegerEditor;
+        ShopID: Serenity.IntegerEditor;
+        WaresID: Serenity.IntegerEditor;
         Key: Serenity.StringEditor;
         Date: Serenity.DateEditor;
-        OperationId: Serenity.IntegerEditor;
+        OperationID: Serenity.IntegerEditor;
         IncomeQuantity: Serenity.DecimalEditor;
         IncomeSinglePrice: Serenity.DecimalEditor;
         IncomeValue: Serenity.DecimalEditor;
@@ -2479,12 +2489,12 @@ declare namespace Store.Store {
     interface StoreRow {
         Position?: number;
         WaresMode?: boolean;
-        MoveId?: number;
-        ShopId?: number;
-        WaresId?: number;
+        MoveID?: number;
+        ShopID?: number;
+        WaresID?: number;
         Key?: string;
         Date?: string;
-        OperationId?: number;
+        OperationID?: number;
         IncomeQuantity?: number;
         IncomeSinglePrice?: number;
         IncomeValue?: number;
@@ -2520,12 +2530,12 @@ declare namespace Store.Store {
         const enum Fields {
             Position = "Position",
             WaresMode = "WaresMode",
-            MoveId = "MoveId",
-            ShopId = "ShopId",
-            WaresId = "WaresId",
+            MoveID = "MoveID",
+            ShopID = "ShopID",
+            WaresID = "WaresID",
             Key = "Key",
             Date = "Date",
-            OperationId = "OperationId",
+            OperationID = "OperationID",
             IncomeQuantity = "IncomeQuantity",
             IncomeSinglePrice = "IncomeSinglePrice",
             IncomeValue = "IncomeValue",
@@ -2563,12 +2573,14 @@ declare namespace Store.Store {
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<StoreRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<StoreRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Warehouse(request: WarehouseRequest, onSuccess?: (response: WarehouseResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         const enum Methods {
             Create = "Store/Store/Create",
             Update = "Store/Store/Update",
             Delete = "Store/Store/Delete",
             Retrieve = "Store/Store/Retrieve",
-            List = "Store/Store/List"
+            List = "Store/Store/List",
+            Warehouse = "Store/Store/Warehouse"
         }
     }
 }
@@ -3203,6 +3215,17 @@ declare namespace Store.Store {
     }
 }
 declare namespace Store.Texts {
+}
+declare namespace Store {
+    interface WarehouseRequest extends Serenity.ServiceRequest {
+    }
+}
+declare namespace Store {
+    interface WarehouseResponse extends Serenity.ServiceResponse {
+        Inserted?: number;
+        Updated?: number;
+        ErrorList?: string[];
+    }
 }
 declare namespace Store.LanguageList {
     function getValue(): string[][];
@@ -4216,6 +4239,14 @@ declare namespace Store.Store {
         private inputsChange;
         private setSaveButtonState;
         private saveClick;
+    }
+}
+declare namespace Store.Store {
+    class StoreAverageDialog extends Serenity.PropertyDialog<any, any> {
+        private form;
+        constructor();
+        protected getDialogTitle(): string;
+        protected getDialogButtons(): Serenity.DialogButton[];
     }
 }
 declare namespace Store.Store {

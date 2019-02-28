@@ -15,11 +15,11 @@ namespace Store.Store.Forms
     {
         public Int64 Position { get; set; }
         public Boolean WaresMode { get; set; }
-        public Int32 ShopId { get; set; }
-        public Int32 WaresId { get; set; }
+        public Int32 ShopID { get; set; }
+        public Int32 WaresID { get; set; }
         public String Key { get; set; }
         public DateTime Date { get; set; }
-        public Int32 OperationId { get; set; }
+        public Int32 OperationID { get; set; }
         public Decimal IncomeQuantity { get; set; }
         public Decimal IncomeSinglePrice { get; set; }
         public Decimal IncomeValue { get; set; }
