@@ -129,7 +129,7 @@ namespace Store.Store.Endpoints
 
                 Position = i;
             }
-
+            // https://volkanceylan.gitbooks.io/serenity-guide/entities/entities_row.html
 
 
             return response;
