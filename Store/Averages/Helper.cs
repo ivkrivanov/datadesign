@@ -463,7 +463,7 @@ namespace Average
     public class Average
     {
 
-        public static void AverageStore(List<Item> items)
+        public void AverageStore(List<Item> items)
         {
             Int64 Position = 0;
             Boolean WaresMode = false;
@@ -665,7 +665,6 @@ namespace Average
                 Position = Position + 1;
             }
         }
-
     }
     public class Item
     {

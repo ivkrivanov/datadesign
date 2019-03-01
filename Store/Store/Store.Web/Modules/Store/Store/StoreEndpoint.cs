@@ -58,31 +58,41 @@ namespace Store.Store.Endpoints
             var response = new WarehouseResponse();
             response.ErrorList = new List<string>();
 
-            //var warehouse = uow.Connection.Query(
-            //    new SqlQuery()
-            //        .From(s)
-            //        .Select(s.Position)
-            //        .Select(s.WaresMode)
-            //        .Select(s.MoveID)
-            //        .Select(s.ShopID)
-            //        .Select(s.WaresID)
-            //        .Select(s.Key)
-            //        .Select(s.Date)
-            //        .Select(s.OperationID)
-            //        .Select(s.IncomeQuantity)
-            //        .Select(s.IncomeSinglePrice)
-            //        .Select(s.IncomeValue)
-            //        .Select(s.ExpenceQuantity)
-            //        .Select(s.ExpenceSinglePrice)
-            //        .Select(s.ExpenceValue)
-            //        .Select(s.RestQuantity)
-            //        .Select(s.RestSinglePrice)
-            //        .Select(s.RestValue)
-            //        .Select(s.ReCost)
-            //        .Select(s.Mistake)
-            //        .OrderBy(s.ShopID, s.Key, s.Date, s.OperationID, s.MoveID));
+            List<StoreRow> Items = new List<StoreRow>();
 
+            using (var conn = SqlConnections.NewFor<MyRow>())
+            {
+                Items = (conn.List<MyRow>());
+                //Items.Sort();
+            }
 
+            Average(Items);
+
+            foreach(MyRow row in Items)
+            {
+                try
+                {
+                    new MyRepository().Update(uow, new SaveRequest<MyRow>
+                    {
+                        Entity = row,
+                        EntityId = row.Position.Value
+                    });
+
+                    response.Updated = response.Updated + 1;
+                }
+                catch (Exception ex)
+                {
+                    response.ErrorList.Add("Exception on Row " + row + ": " + ex.Message);
+                }
+            }
+
+            return response;
+        }
+
+        // https://volkanceylan.gitbooks.io/serenity-guide/entities/entities_row.html
+
+        public static void Average(List<StoreRow> items)
+        {
             Int64 Position = 0;
             Boolean WaresMode = false;
             Int32 KeyShop = 0;
@@ -99,40 +109,190 @@ namespace Store.Store.Endpoints
             KeyShop = 0;
             KeyWares = 0;
 
-            var warehouse = uow.Connection.TryFirst<StoreRow>(q => q
-                    .Select(s.Position)
-                    .Select(s.WaresMode)
-                    .Select(s.MoveID)
-                    .Select(s.ShopID)
-                    .Select(s.WaresID)
-                    .Select(s.Key)
-                    .Select(s.Date)
-                    .Select(s.OperationID)
-                    .Select(s.IncomeQuantity)
-                    .Select(s.IncomeSinglePrice)
-                    .Select(s.IncomeValue)
-                    .Select(s.ExpenceQuantity)
-                    .Select(s.ExpenceSinglePrice)
-                    .Select(s.ExpenceValue)
-                    .Select(s.RestQuantity)
-                    .Select(s.RestSinglePrice)
-                    .Select(s.RestValue)
-                    .Select(s.ReCost)
-                    .Select(s.Mistake)
-                    .OrderBy(s.ShopID, s.Key, s.Date, s.OperationID, s.MoveID));
+            if (items.Count > 0) { Position = 1; };
 
-            //foreach (MyRow Row in warehouse)
-            for (var i = 0; i <= warehouse.FieldCount; i++)
+            foreach (StoreRow item in items)
             {
-                warehouse.Position = Position;
+                item.Position = Position;
+                if ((item.WaresID != KeyWares) || (item.ShopID != KeyShop))
+                {
+                    WaresMode = (bool)item.WaresMode;
+                    KeyShop = (int)item.ShopID;
+                    KeyWares = (int)item.WaresID;
 
+                    ExpenceQuantity = 0;
+                    ExpenceSinglePrice = 0;
+                    ExpenceValue = 0;
 
-                Position = i;
+                    RestQuantity = 0;
+                    RestSinglePrice = 0;
+                    RestValue = 0;
+                }
+
+                item.UpdateDate = (DateTime.Now);
+
+                switch (item.OperationID)
+                {
+                    case 101:
+                        RestQuantity = (int)item.RestQuantity;
+                        RestSinglePrice = (int)item.RestSinglePrice;
+                        RestValue = (int)item.RestValue;
+                        break;
+
+                    case 102:
+                    case 103:
+                    case 105:
+                        if (RestQuantity >= 0)
+                            RestValue = RestValue + (int)item.IncomeValue;
+                        else
+                            RestValue = (RestQuantity + (int)item.IncomeQuantity) * (int)item.IncomeSinglePrice;
+
+                        RestQuantity = RestQuantity + (int)item.IncomeQuantity;
+
+                        if (RestQuantity != 0)
+                            RestSinglePrice = RestValue / RestQuantity;
+                        else
+                            RestSinglePrice = 0;
+                        item.RestQuantity = RestQuantity;
+                        item.RestSinglePrice = RestSinglePrice;
+                        item.RestValue = RestValue;
+                        break;
+
+                    case 109:
+                        item.IncomeSinglePrice = RestSinglePrice;
+                        item.IncomeValue = item.IncomeQuantity * RestSinglePrice;
+
+                        if ((double)(RestQuantity + item.IncomeQuantity) < (-0.0001))
+                            item.Mistake = true;
+
+                        if (RestQuantity >= 0)
+                            RestValue = RestValue + (int)item.IncomeValue;
+                        else
+                            RestValue = (RestQuantity + (int)item.IncomeQuantity) * (int)item.IncomeSinglePrice;
+
+                        RestQuantity = RestQuantity + (int)item.IncomeQuantity;
+
+                        if (RestQuantity != 0)
+                            RestSinglePrice = RestValue / RestQuantity;
+                        else
+                            RestSinglePrice = 0;
+
+                        item.RestQuantity = RestQuantity;
+                        item.RestSinglePrice = RestSinglePrice;
+                        item.RestValue = RestValue;
+                        break;
+
+                    case 202:
+                    case 203:
+                        if (WaresMode)
+                        {
+                            if (RestQuantity >= 0)
+                                RestValue = RestValue + (int)item.IncomeValue;
+                            else
+                                RestValue = (RestQuantity + (int)item.IncomeQuantity) * (int)item.IncomeSinglePrice;
+
+                            RestQuantity = RestQuantity + (int)item.IncomeSinglePrice;
+
+                            if (RestQuantity != 0)
+                                RestSinglePrice = RestValue / RestQuantity;
+                            else
+                                RestSinglePrice = 0;
+
+                            item.RestQuantity = RestQuantity;
+                            item.RestSinglePrice = RestSinglePrice;
+                            item.RestValue = RestValue;
+                        }
+                        else
+                        {
+                            if ((double)(RestQuantity - item.ExpenceQuantity) < (-0.0001))
+                            {
+                                item.Mistake = true;
+                            }
+                            item.ExpenceSinglePrice = RestSinglePrice;
+                            item.ExpenceValue = item.ExpenceQuantity * item.ExpenceSinglePrice;
+                            RestQuantity = RestQuantity - (int)item.ExpenceQuantity;
+                            RestValue = RestValue - (int)item.ExpenceValue;
+                            if (RestQuantity != 0)
+                                RestSinglePrice = RestValue / RestQuantity;
+                            else
+                                RestSinglePrice = 0;
+
+                            item.RestQuantity = RestQuantity;
+                            item.RestSinglePrice = RestSinglePrice;
+                            item.RestValue = RestValue;
+                        }
+                        break;
+
+                    case 301:
+                    case 302:
+                    case 303:
+                    case 304:
+                    case 305:
+                    case 401:
+                    case 402:
+                    case 403:
+                    case 404:
+                        if ((double)(RestQuantity - item.ExpenceQuantity) < (-0.0001))
+                        {
+                            item.Mistake = true;
+                        }
+                        item.ExpenceSinglePrice = RestSinglePrice;
+                        item.ExpenceValue = item.ExpenceQuantity * item.ExpenceSinglePrice;
+                        RestQuantity = RestQuantity - (int)item.ExpenceQuantity;
+                        RestValue = RestValue - (int)item.ExpenceValue;
+                        if (RestQuantity != 0)
+                            RestSinglePrice = RestValue / RestQuantity;
+                        else
+                            RestSinglePrice = 0;
+
+                        item.RestQuantity = RestQuantity;
+                        item.RestSinglePrice = RestSinglePrice;
+                        item.RestValue = RestValue;
+                        break;
+
+                    case 500:
+                        item.ExpenceQuantity = RestQuantity - item.RestQuantity;
+                        if (RestQuantity > 0)
+                            item.ExpenceSinglePrice = RestSinglePrice;
+                        else
+                        {
+                            if (item.RestQuantity > 0)
+                            {
+                                ExpenceQuantity = ExpenceQuantity + RestQuantity;
+                                ExpenceValue = ExpenceValue + RestValue;
+                                if (ExpenceQuantity != 0)
+                                    ExpenceSinglePrice = ExpenceValue / ExpenceQuantity;
+                                else
+                                    ExpenceSinglePrice = 0;
+
+                                if (ExpenceQuantity != 0)
+                                    item.ExpenceSinglePrice = (item.RestQuantity * ExpenceSinglePrice - RestValue) / (item.RestQuantity - RestQuantity);
+                                else
+                                {
+                                    if (RestQuantity != 0)
+                                        item.ExpenceSinglePrice = RestSinglePrice;
+                                    else
+                                        item.ExpenceSinglePrice = item.RestSinglePrice;
+                                }
+                            }
+                            else
+                            {
+                                if (RestQuantity != 0)
+                                    item.ExpenceSinglePrice = RestSinglePrice;
+                                else
+                                {
+                                    if (ExpenceQuantity != 0)
+                                        item.ExpenceSinglePrice = RestSinglePrice;
+                                    else
+                                        item.ExpenceSinglePrice = item.RestSinglePrice;
+                                }
+                            }
+                        }
+                        break;
+                }
+                Position = Position + 1;
             }
-            // https://volkanceylan.gitbooks.io/serenity-guide/entities/entities_row.html
-
-
-            return response;
         }
+
     }
 }
