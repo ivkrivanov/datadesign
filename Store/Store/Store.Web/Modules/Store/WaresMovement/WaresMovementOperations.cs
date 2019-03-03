@@ -24,7 +24,7 @@ namespace Store.Store
         [Description("Lack of items")]
         LackOfItems = 302,
         [Description("Scrapping articles")]
-        ScrappingЬrticles = 303,
+        Scrappingarticles = 303,
         [Description("Exchange expense")]
         ExchangeExpense = 305,
         [Description("Inventory")]

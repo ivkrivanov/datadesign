@@ -18,6 +18,6 @@ namespace Store.Store
         [Description("Lack of products")]
         LackOfItems = 402,
         [Description("Scrapping products")]
-        ScrappingЬrticles = 403
+        Scrappingarticles = 403
     }
 }

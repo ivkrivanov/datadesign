@@ -1,17 +1,19 @@
 ﻿
 namespace Store.Store.Endpoints
 {
+    using global::Store.Store.Entities;
     using Serenity;
     using Serenity.Data;
     using Serenity.Services;
+    using System;
+    using System.Collections.Generic;
     using System.Data;
+    using System.Data.SqlClient;
     using System.Web.Mvc;
     using MyRepository = Repositories.StoreRepository;
     using MyRow = Entities.StoreRow;
-    using global::Store.Store.Entities;
-    using global::Store.Store.Repositories;
-    using System.Collections.Generic;
-    using System;
+    using Store;
+    using System.Configuration;
 
     [RoutePrefix("Services/Store/Store"), Route("{action}")]
     [ConnectionKey(typeof(MyRow)), ServiceAuthorize(typeof(MyRow))]
@@ -50,40 +52,59 @@ namespace Store.Store.Endpoints
         {
             request.CheckNotNull();
             //Check.NotNullOrWhiteSpace();
-            //var fld = StoreRow.Fields;
-            var w = WaresRow.Fields;
-            var o = OperationTypeRow.Fields;
-            var s = StoreRow.Fields;
+
+            //var w = WaresRow.Fields;
+            //var o = OperationTypeRow.Fields;
+            //var s = StoreRow.Fields;
 
             var response = new WarehouseResponse();
             response.ErrorList = new List<string>();
 
-            List<StoreRow> Items = new List<StoreRow>();
+            DataSet ds = new DataSet();
+            DataTable dt = new DataTable();
 
-            using (var conn = SqlConnections.NewFor<MyRow>())
+            var user = (UserDefinition)Authorization.UserDefinition;
+            int tn = user.TenantId;
+
+
+            List<MyRow> Items = new List<MyRow>();
+            SqlDataAdapter adapter = new SqlDataAdapter();
+
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Store"].ToString()))
             {
-                Items = (conn.List<MyRow>());
-                //Items.Sort();
-            }
-
-            Average(Items);
-
-            foreach(MyRow row in Items)
-            {
-                try
+                using (SqlCommand cmd = new SqlCommand("sp_MakeStore", conn))
                 {
-                    new MyRepository().Update(uow, new SaveRequest<MyRow>
+                    try
                     {
-                        Entity = row,
-                        EntityId = row.Position.Value
-                    });
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add("Tenant", SqlDbType.Int).Value = tn;
 
-                    response.Updated = response.Updated + 1;
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (SqlException sqlException)
+                    {
+                        response.ErrorList.Add("Exception: " + sqlException.Message);
+                    }
                 }
-                catch (Exception ex)
+
+                adapter = DAL.StoreAdapter(conn);
+                adapter.Fill(dt);
+                adapter.DeleteCommand.ExecuteNonQuery();
+
+                foreach (DataRow row in dt.Rows)
                 {
-                    response.ErrorList.Add("Exception on Row " + row + ": " + ex.Message);
+                    MyRow obj = row.ToObject<MyRow>();
+                    Items.Add(obj);
                 }
+
+                Average(Items);
+
+                dt = DAL.ConvertTo(Items);
+                //ShowDataTable(dt);
+                adapter.Update(dt);
+                adapter.Dispose();
+
             }
 
             return response;
@@ -133,15 +154,16 @@ namespace Store.Store.Endpoints
 
                 switch (item.OperationID)
                 {
-                    case 101:
+                    //case 101:
+                    case (int)WaresMovementOperations.InitialBalance:
                         RestQuantity = (int)item.RestQuantity;
                         RestSinglePrice = (int)item.RestSinglePrice;
                         RestValue = (int)item.RestValue;
                         break;
 
-                    case 102:
-                    case 103:
-                    case 105:
+                    case 102://WaresMovementOperations.StockDelivery
+                    case 103://WaresMovementOperations.SurplusGoods
+                    case 105://WaresMovementOperations.ExchangeRevenue
                         if (RestQuantity >= 0)
                             RestValue = RestValue + (int)item.IncomeValue;
                         else
@@ -158,7 +180,7 @@ namespace Store.Store.Endpoints
                         item.RestValue = RestValue;
                         break;
 
-                    case 109:
+                    case 109://WaresMovementOperations.UnsubscriptionOfGoods
                         item.IncomeSinglePrice = RestSinglePrice;
                         item.IncomeValue = item.IncomeQuantity * RestSinglePrice;
 
@@ -182,8 +204,8 @@ namespace Store.Store.Endpoints
                         item.RestValue = RestValue;
                         break;
 
-                    case 202:
-                    case 203:
+                    case 202://ProductMovementOperations.StockDelivery
+                    case 203://ProductMovementOperations.SurplusGoods
                         if (WaresMode)
                         {
                             if (RestQuantity >= 0)
@@ -223,14 +245,14 @@ namespace Store.Store.Endpoints
                         }
                         break;
 
-                    case 301:
-                    case 302:
-                    case 303:
+                    case 301://WaresMovementOperations.SaleOfArticles
+                    case 302://WaresMovementOperations.LackOfItems
+                    case 303://WaresMovementOperations.Scrappingarticles
                     case 304:
-                    case 305:
-                    case 401:
-                    case 402:
-                    case 403:
+                    case 305://WaresMovementOperations.ExchangeExpense
+                    case 401://ProductMovementOperations.SaleOfArticles
+                    case 402://ProductMovementOperations.LackOfItems
+                    case 403://ProductMovementOperations.ScrappingЬrticles
                     case 404:
                         if ((double)(RestQuantity - item.ExpenceQuantity) < (-0.0001))
                         {
@@ -250,7 +272,7 @@ namespace Store.Store.Endpoints
                         item.RestValue = RestValue;
                         break;
 
-                    case 500:
+                    case 500://WaresMovementOperations.Inventory
                         item.ExpenceQuantity = RestQuantity - item.RestQuantity;
                         if (RestQuantity > 0)
                             item.ExpenceSinglePrice = RestSinglePrice;

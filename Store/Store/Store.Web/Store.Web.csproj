@@ -2063,6 +2063,7 @@
     <Compile Include="Modules\Store\Shops\ShopLookup.cs" />
     <Compile Include="Modules\Store\Reports\Invoices\WaresMovementDetailReport.cs" />
     <Compile Include="Modules\Store\Store\Average.cs" />
+    <Compile Include="Modules\Store\Store\DAL.cs" />
     <Compile Include="Modules\Store\WaresMovement\StoreAverageForm.cs" />
     <Compile Include="Modules\Store\WaresMovement\WaresMovementOperations.cs" />
     <Content Include="Modules\Common\Reporting\ReportPage.cshtml" />
