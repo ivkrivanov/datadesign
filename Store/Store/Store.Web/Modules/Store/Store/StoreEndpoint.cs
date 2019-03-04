@@ -51,12 +51,7 @@ namespace Store.Store.Endpoints
         public WarehouseResponse Warehouse(IUnitOfWork uow, WarehouseRequest request)
         {
             request.CheckNotNull();
-            //Check.NotNullOrWhiteSpace();
-
-            //var w = WaresRow.Fields;
-            //var o = OperationTypeRow.Fields;
-            //var s = StoreRow.Fields;
-
+ 
             var response = new WarehouseResponse();
             response.ErrorList = new List<string>();
 
@@ -88,7 +83,7 @@ namespace Store.Store.Endpoints
                     }
                 }
 
-                adapter = DAL.StoreAdapter(conn);
+                adapter = DAL.StoreAdapter(conn, tn);
                 adapter.Fill(dt);
                 adapter.DeleteCommand.ExecuteNonQuery();
 
@@ -101,7 +96,6 @@ namespace Store.Store.Endpoints
                 Average(Items);
 
                 dt = DAL.ConvertTo(Items);
-                //ShowDataTable(dt);
                 adapter.Update(dt);
                 adapter.Dispose();
 
@@ -156,20 +150,20 @@ namespace Store.Store.Endpoints
                 {
                     //case 101:
                     case (int)WaresMovementOperations.InitialBalance:
-                        RestQuantity = (int)item.RestQuantity;
-                        RestSinglePrice = (int)item.RestSinglePrice;
-                        RestValue = (int)item.RestValue;
+                        RestQuantity = (decimal)item.RestQuantity;
+                        RestSinglePrice = (decimal)item.RestSinglePrice;
+                        RestValue = (decimal)item.RestValue;
                         break;
 
                     case 102://WaresMovementOperations.StockDelivery
                     case 103://WaresMovementOperations.SurplusGoods
                     case 105://WaresMovementOperations.ExchangeRevenue
                         if (RestQuantity >= 0)
-                            RestValue = RestValue + (int)item.IncomeValue;
+                            RestValue = RestValue + (decimal)item.IncomeValue;
                         else
-                            RestValue = (RestQuantity + (int)item.IncomeQuantity) * (int)item.IncomeSinglePrice;
+                            RestValue = (RestQuantity + (decimal)item.IncomeQuantity) * (decimal)item.IncomeSinglePrice;
 
-                        RestQuantity = RestQuantity + (int)item.IncomeQuantity;
+                        RestQuantity = RestQuantity + (decimal)item.IncomeQuantity;
 
                         if (RestQuantity != 0)
                             RestSinglePrice = RestValue / RestQuantity;
@@ -188,11 +182,11 @@ namespace Store.Store.Endpoints
                             item.Mistake = true;
 
                         if (RestQuantity >= 0)
-                            RestValue = RestValue + (int)item.IncomeValue;
+                            RestValue = RestValue + (decimal)item.IncomeValue;
                         else
-                            RestValue = (RestQuantity + (int)item.IncomeQuantity) * (int)item.IncomeSinglePrice;
+                            RestValue = (RestQuantity + (decimal)item.IncomeQuantity) * (decimal)item.IncomeSinglePrice;
 
-                        RestQuantity = RestQuantity + (int)item.IncomeQuantity;
+                        RestQuantity = RestQuantity + (decimal)item.IncomeQuantity;
 
                         if (RestQuantity != 0)
                             RestSinglePrice = RestValue / RestQuantity;
@@ -203,17 +197,19 @@ namespace Store.Store.Endpoints
                         item.RestSinglePrice = RestSinglePrice;
                         item.RestValue = RestValue;
                         break;
-
+                    //case 102://WaresMovementOperations.StockDelivery
+                    //case 103://WaresMovementOperations.SurplusGoods
+                    //case 105://WaresMovementOperations.ExchangeRevenue
                     case 202://ProductMovementOperations.StockDelivery
                     case 203://ProductMovementOperations.SurplusGoods
                         if (WaresMode)
                         {
                             if (RestQuantity >= 0)
-                                RestValue = RestValue + (int)item.IncomeValue;
+                                RestValue = RestValue + (decimal)item.IncomeValue;
                             else
-                                RestValue = (RestQuantity + (int)item.IncomeQuantity) * (int)item.IncomeSinglePrice;
+                                RestValue = (RestQuantity + (decimal)item.IncomeQuantity) * (decimal)item.IncomeSinglePrice;
 
-                            RestQuantity = RestQuantity + (int)item.IncomeSinglePrice;
+                            RestQuantity = RestQuantity + (decimal)item.IncomeQuantity;
 
                             if (RestQuantity != 0)
                                 RestSinglePrice = RestValue / RestQuantity;
@@ -230,10 +226,12 @@ namespace Store.Store.Endpoints
                             {
                                 item.Mistake = true;
                             }
+
                             item.ExpenceSinglePrice = RestSinglePrice;
                             item.ExpenceValue = item.ExpenceQuantity * item.ExpenceSinglePrice;
-                            RestQuantity = RestQuantity - (int)item.ExpenceQuantity;
-                            RestValue = RestValue - (int)item.ExpenceValue;
+                            RestQuantity = RestQuantity - (decimal)item.ExpenceQuantity;
+                            RestValue = RestValue - (decimal)item.ExpenceValue;
+
                             if (RestQuantity != 0)
                                 RestSinglePrice = RestValue / RestQuantity;
                             else
@@ -258,10 +256,12 @@ namespace Store.Store.Endpoints
                         {
                             item.Mistake = true;
                         }
+
                         item.ExpenceSinglePrice = RestSinglePrice;
                         item.ExpenceValue = item.ExpenceQuantity * item.ExpenceSinglePrice;
-                        RestQuantity = RestQuantity - (int)item.ExpenceQuantity;
-                        RestValue = RestValue - (int)item.ExpenceValue;
+                        RestQuantity = RestQuantity - (decimal)item.ExpenceQuantity;
+                        RestValue = RestValue - (decimal)item.ExpenceValue;
+
                         if (RestQuantity != 0)
                             RestSinglePrice = RestValue / RestQuantity;
                         else
@@ -282,6 +282,7 @@ namespace Store.Store.Endpoints
                             {
                                 ExpenceQuantity = ExpenceQuantity + RestQuantity;
                                 ExpenceValue = ExpenceValue + RestValue;
+
                                 if (ExpenceQuantity != 0)
                                     ExpenceSinglePrice = ExpenceValue / ExpenceQuantity;
                                 else
@@ -310,11 +311,20 @@ namespace Store.Store.Endpoints
                                 }
                             }
                         }
+                        item.ExpenceValue = item.ExpenceQuantity * item.ExpenceSinglePrice;
+                        item.ReCost = item.RestValue - (RestValue - item.ExpenceValue);
+                        RestQuantity = (decimal)item.RestQuantity;
+                        RestValue = (decimal)item.RestValue;
+
+                        if (RestQuantity != 0)
+                            RestSinglePrice = RestValue / RestQuantity;
+                        else
+                            RestSinglePrice = 0;
+
                         break;
                 }
                 Position = Position + 1;
             }
         }
-
     }
 }

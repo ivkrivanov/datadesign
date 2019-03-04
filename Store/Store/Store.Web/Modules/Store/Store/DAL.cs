@@ -12,7 +12,7 @@ namespace Store
 
     public static class DAL
     {
-        public static SqlDataAdapter StoreAdapter(SqlConnection con)
+        public static SqlDataAdapter StoreAdapter(SqlConnection con, int tenant)
         {
             SqlDataAdapter adapter = new SqlDataAdapter();
 
@@ -39,8 +39,7 @@ namespace Store
             #region SELECT
 
             SqlCommand command = new SqlCommand(SelectString, con);
-            //command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.Add("@TenantId", SqlDbType.Int).Value = 4;
+            command.Parameters.Add("@TenantId", SqlDbType.Int).Value = tenant;
             adapter.SelectCommand = command;
 
             #endregion
@@ -139,7 +138,7 @@ namespace Store
 
             // Create the DeleteCommand.
             command = new SqlCommand(DeleteString, con);
-            command.Parameters.Add("@TenantId", SqlDbType.Int).Value = 4;
+            command.Parameters.Add("@TenantId", SqlDbType.Int).Value = tenant;
             adapter.DeleteCommand = command;
 
             return adapter;
@@ -258,10 +257,6 @@ namespace Store
             PropertyDescriptorCollection properties = TypeDescriptor.GetProperties(entityType);
             if (properties != null)
             {
-                //foreach (PropertyDescriptor prop in properties)
-                //{
-                //    dt.Columns.Add(prop.Name, prop.PropertyType);
-                //}
                 foreach (PropertyDescriptor prop in properties)
                 {
                     dc = new DataColumn();
@@ -276,34 +271,5 @@ namespace Store
             }
             return dt;
         }
-
-        /// <summary>
-        /// Converts a List to a datatable
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="data"></param>
-        /// <returns></returns>
-        public static DataTable ToDataTable<T>(this IList<T> data)
-        {
-            PropertyDescriptorCollection properties = TypeDescriptor.GetProperties(typeof(T));
-            DataTable dt = new DataTable();
-            for (int i = 0; i < properties.Count; i++)
-            {
-                PropertyDescriptor property = properties[i];
-                dt.Columns.Add(property.Name, property.PropertyType);
-            }
-            object[] values = new object[properties.Count];
-            foreach (T item in data)
-            {
-                for (int i = 0; i < values.Length; i++)
-                {
-                    values[i] = properties[i].GetValue(item);
-                }
-                dt.Rows.Add(values);
-            }
-            return dt;
-        }
-
-
     }
 }
