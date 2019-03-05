@@ -91,7 +91,7 @@ namespace Store.Store.Endpoints
             {
                 try
                 {
-                    var waresName = Convert.ToString(worksheet.Cells[row, 4].Value ?? "");
+                    var waresName = Convert.ToString(worksheet.Cells[row, 3].Value ?? "");
                     if (waresName.IsTrimmedEmpty())
                         continue;
 
@@ -182,7 +182,7 @@ namespace Store.Store.Endpoints
 
                     wares.WaresCode = Convert.ToString(worksheet.Cells[row, 1].Value ?? "");
                     wares.WaresBarcode = Convert.ToString(worksheet.Cells[row, 2].Value ?? "");
-                    wares.WaresLabel = Convert.ToString(worksheet.Cells[row, 3].Value ?? "");
+                    wares.WaresLabel = Convert.ToString(worksheet.Cells[row, 4].Value ?? "");
                     wares.Discontinued = Convert.ToBoolean(worksheet.Cells[row, 5].Value ?? "");
 
                     wares.QuantityPerUnit = Convert.ToInt32(worksheet.Cells[row, 8].Value ?? "");

@@ -15,10 +15,10 @@ namespace Store.Store.Columns
         public String ProductCode { get; set; }
         [EditLink, Width(60), AlignCenter]
         public String ProductBarcode { get; set; }
-        [EditLink, Width(100), AlignCenter]
-        public String ProductLabel { get; set; }
         [EditLink, Width(250)]
         public String ProductName { get; set; }
+        [EditLink, Width(100), AlignCenter]
+        public String ProductLabel { get; set; }
 
         [QuickFilter]
         public Boolean Discontinued { get; set; }

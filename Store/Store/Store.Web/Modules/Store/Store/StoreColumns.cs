@@ -31,8 +31,8 @@ namespace Store.Store.Columns
         public Decimal ExpenceQuantity { get; set; }
         public Decimal ExpenceSinglePrice { get; set; }
         public Decimal ExpenceValue { get; set; }
-        public Decimal AExpenceSinglePrice { get; set; }
-        public Decimal AExpenceValue { get; set; }
+        //public Decimal AExpenceSinglePrice { get; set; }
+        //public Decimal AExpenceValue { get; set; }
         public Decimal RestQuantity { get; set; }
         public Decimal RestSinglePrice { get; set; }
         public Decimal RestValue { get; set; }
