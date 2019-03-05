@@ -13,7 +13,7 @@ namespace Store.Store.Forms
         [Tab("General")]
         [Category("Order")]
         [HalfWidth]
-        public WaresMovementOperations? OperationTypeOpCode { get; set; }
+        public WaresMovementOperations? OperationTypeID { get; set; }
         [DefaultValue("now")]
         [HalfWidth]
         public DateTime OrderDate { get; set; }

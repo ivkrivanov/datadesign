@@ -69,7 +69,7 @@ namespace Store.Store.Entities
             set { Fields.SupplierID[this] = value; }
         }
 
-        [DisplayName("Quantity Per Unit")]
+        [DisplayName("Quantity Per Unit"), DefaultValue(1)]
         public Int32? QuantityPerUnit
         {
             get { return Fields.QuantityPerUnit[this]; }
@@ -83,14 +83,14 @@ namespace Store.Store.Entities
             set { Fields.UnitPrice[this] = value; }
         }
 
-        [DisplayName("Unit In Stock"), Scale(4), LookupInclude]
+        [DisplayName("Unit In Stock"), Scale(4), DefaultValue(0), LookupInclude]
         public Decimal? UnitsInStock
         {
             get { return Fields.UnitsInStock[this]; }
             set { Fields.UnitsInStock[this] = value; }
         }
 
-        [DisplayName("Unit On Order"), Scale(4), LookupInclude]
+        [DisplayName("Unit On Order"), Scale(4), DefaultValue(0), LookupInclude]
         public Decimal? UnitsOnOrder
         {
             get { return Fields.UnitsOnOrder[this]; }

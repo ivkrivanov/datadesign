@@ -8,7 +8,7 @@
         UnsubscriptionOfGoods = 109,
         SaleOfArticles = 301,
         LackOfItems = 302,
-        ScrappingЬrticles = 303,
+        Scrappingarticles = 303,
         ExchangeExpense = 305,
         Inventory = 500
     }

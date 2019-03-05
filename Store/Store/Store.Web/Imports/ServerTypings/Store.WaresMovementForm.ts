@@ -1,6 +1,6 @@
 ﻿namespace Store.Store {
     export interface WaresMovementForm {
-        OperationTypeOpCode: Serenity.EnumEditor;
+        OperationTypeID: OperationTypeEditor;
         OrderDate: Serenity.DateEditor;
         ShopID: ShopsEditor;
         CounterpartyID: CounterpartyEditor;
@@ -22,7 +22,7 @@
                 WaresMovementForm.init = true;
 
                 var s = Serenity;
-                var w0 = s.EnumEditor;
+                var w0 = OperationTypeEditor;
                 var w1 = s.DateEditor;
                 var w2 = ShopsEditor;
                 var w3 = CounterpartyEditor;
@@ -30,7 +30,7 @@
                 var w5 = WaresMovementDetailsEditor;
 
                 Q.initFormType(WaresMovementForm, [
-                    'OperationTypeOpCode', w0,
+                    'OperationTypeID', w0,
                     'OrderDate', w1,
                     'ShopID', w2,
                     'CounterpartyID', w3,

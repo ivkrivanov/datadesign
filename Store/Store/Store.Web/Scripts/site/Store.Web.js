@@ -1611,7 +1611,7 @@ var Store;
             ProductMovementOperations[ProductMovementOperations["SurplusGoods"] = 203] = "SurplusGoods";
             ProductMovementOperations[ProductMovementOperations["SaleOfArticles"] = 401] = "SaleOfArticles";
             ProductMovementOperations[ProductMovementOperations["LackOfItems"] = 402] = "LackOfItems";
-            ProductMovementOperations[ProductMovementOperations["Scrapping\u042Crticles"] = 403] = "Scrapping\u042Crticles";
+            ProductMovementOperations[ProductMovementOperations["Scrappingarticles"] = 403] = "Scrappingarticles";
         })(ProductMovementOperations = Store.ProductMovementOperations || (Store.ProductMovementOperations = {}));
         Serenity.Decorators.registerEnumType(ProductMovementOperations, 'Store.Store.ProductMovementOperations', 'Store.ProductMovementOperations');
     })(Store = Store_52.Store || (Store_52.Store = {}));
@@ -2289,14 +2289,14 @@ var Store;
                 if (!WaresMovementForm.init) {
                     WaresMovementForm.init = true;
                     var s = Serenity;
-                    var w0 = s.EnumEditor;
+                    var w0 = Store.OperationTypeEditor;
                     var w1 = s.DateEditor;
                     var w2 = Store.ShopsEditor;
                     var w3 = Store.CounterpartyEditor;
                     var w4 = s.LookupEditor;
                     var w5 = Store.WaresMovementDetailsEditor;
                     Q.initFormType(WaresMovementForm, [
-                        'OperationTypeOpCode', w0,
+                        'OperationTypeID', w0,
                         'OrderDate', w1,
                         'ShopID', w2,
                         'CounterpartyID', w3,
@@ -2329,7 +2329,7 @@ var Store;
             WaresMovementOperations[WaresMovementOperations["UnsubscriptionOfGoods"] = 109] = "UnsubscriptionOfGoods";
             WaresMovementOperations[WaresMovementOperations["SaleOfArticles"] = 301] = "SaleOfArticles";
             WaresMovementOperations[WaresMovementOperations["LackOfItems"] = 302] = "LackOfItems";
-            WaresMovementOperations[WaresMovementOperations["Scrapping\u042Crticles"] = 303] = "Scrapping\u042Crticles";
+            WaresMovementOperations[WaresMovementOperations["Scrappingarticles"] = 303] = "Scrappingarticles";
             WaresMovementOperations[WaresMovementOperations["ExchangeExpense"] = 305] = "ExchangeExpense";
             WaresMovementOperations[WaresMovementOperations["Inventory"] = 500] = "Inventory";
         })(WaresMovementOperations = Store.WaresMovementOperations || (Store.WaresMovementOperations = {}));

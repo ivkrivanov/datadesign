@@ -13,10 +13,11 @@ namespace Store.Store.Columns
         public String WaresCode { get; set; }
         [EditLink, Width(60), AlignCenter]
         public String WaresBarcode { get; set; }
-        [EditLink, Width(100), AlignCenter]
-        public String WaresLabel { get; set; }
         [EditLink, Width(200)]
         public String WaresName { get; set; }
+        [EditLink, Width(100), AlignCenter]
+        public String WaresLabel { get; set; }
+
 
         [QuickFilter]
         public Boolean Discontinued { get; set; }

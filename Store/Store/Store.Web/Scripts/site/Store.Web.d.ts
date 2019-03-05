@@ -2053,7 +2053,7 @@ declare namespace Store.Store {
         SurplusGoods = 203,
         SaleOfArticles = 401,
         LackOfItems = 402,
-        ScrappingЬrticles = 403
+        Scrappingarticles = 403
     }
 }
 declare namespace Store.Store {
@@ -2968,7 +2968,7 @@ declare namespace Store.Store {
 }
 declare namespace Store.Store {
     interface WaresMovementForm {
-        OperationTypeOpCode: Serenity.EnumEditor;
+        OperationTypeID: OperationTypeEditor;
         OrderDate: Serenity.DateEditor;
         ShopID: ShopsEditor;
         CounterpartyID: CounterpartyEditor;
@@ -2999,7 +2999,7 @@ declare namespace Store.Store {
         UnsubscriptionOfGoods = 109,
         SaleOfArticles = 301,
         LackOfItems = 302,
-        ScrappingЬrticles = 303,
+        Scrappingarticles = 303,
         ExchangeExpense = 305,
         Inventory = 500
     }
