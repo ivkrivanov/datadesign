@@ -4226,6 +4226,7 @@ declare namespace Store.Store {
         protected getButtons(): Serenity.ToolButton[];
         protected onViewProcessData(response: any): Serenity.ListResponse<WaresRow>;
         private numericInputFormatter;
+        private moneyInputFormatter;
         private stringInputFormatter;
         private selectFormatter;
         private getEffectiveValue;

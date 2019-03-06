@@ -8,7 +8,7 @@ namespace Store.Store {
     export class WaresGrid extends Serenity.EntityGrid<WaresRow, any> {
 
         protected getColumnsKey() { return 'Store.Wares'; }
-        protected getDialogType() { return WaresDialog; }
+        protected getDialogType() { return <any>WaresDialog; }
         protected getIdProperty() { return WaresRow.idProperty; }
         protected getLocalTextPrefix() { return WaresRow.localTextPrefix; }
         protected getService() { return WaresService.baseUrl; }
@@ -109,7 +109,23 @@ namespace Store.Store {
 
             return "<input type='text' style='text - align:right' class='" + klass +
                 "' data-field='" + ctx.column.field +
-                "' value='" + Q.formatNumber(value, '0.##') + "'/>";
+                "' value='" + Q.formatNumber(value, '0.####') + "'/>";
+        }
+
+        private moneyInputFormatter(ctx) {
+            var klass = 'edit numeric';
+            var item = ctx.item as WaresRow;
+            var pending = this.pendingChanges[item.WaresID];
+
+            if (pending && pending[ctx.column.field] !== undefined) {
+                klass += ' dirty';
+            }
+
+            var value = this.getEffectiveValue(item, ctx.column.field) as number;
+
+            return "<input type='text' style='text - align:right' class='" + klass +
+                "' data-field='" + ctx.column.field +
+                "' value='" + Q.formatNumber(value, '0.0000') + "'/>";
         }
 
         private stringInputFormatter(ctx) {
@@ -168,6 +184,7 @@ namespace Store.Store {
             var columns = super.getColumns();
             var num = ctx => this.numericInputFormatter(ctx);
             var str = ctx => this.stringInputFormatter(ctx);
+            var mon = ctx => this.moneyInputFormatter(ctx);
 
             //Q.first(columns, x => x.field === 'QuantityPerUnit').format = str;
 
@@ -179,7 +196,8 @@ namespace Store.Store {
             //supplier.referencedFields = [fld.SupplierID];
             //supplier.format = ctx => this.selectFormatter(ctx, fld.SupplierID, SupplierRow.getLookup());
 
-            Q.first(columns, x => x.field === fld.UnitPrice).format = num;
+            Q.first(columns, x => x.field === fld.UnitPrice).format = mon;
+            Q.first(columns, x => x.field == fld.UnitPrice).cssClass += " col-unit-price";
             Q.first(columns, x => x.field === fld.QuantityPerUnit).format = num;
             Q.first(columns, x => x.field === fld.MeasureName).format = str;
             //Q.first(columns, x => x.field === fld.ReorderLevel).format = num;
@@ -197,13 +215,21 @@ namespace Store.Store {
 
             if (item.Discontinued == true)
                 klass += " discontinued";
+            else if (item.UnitsInStock <= 0)
+                klass += " out-of-stock";
+            else if (item.UnitsInStock < 20)
+                klass += " critical-stock";
+            else if (item.UnitsInStock > 50)
+                klass += " needs-reorder";
 
-
+            if (item.UnitPrice >= 50)
+                klass += " high-price";
+            else if (item.UnitPrice >= 20)
+                klass += " medium-price";
+            else
+                klass += " low-price";
 
             return Q.trimToNull(klass);
-
-
-
         }
 
         private inputsChange(e: JQueryEventObject) {
@@ -217,7 +243,7 @@ namespace Store.Store {
             var effective = this.getEffectiveValue(item, field);
             var oldText: string;
             if (input.hasClass("numeric"))
-                oldText = Q.formatNumber(effective, '0.##');
+                oldText = Q.formatNumber(effective, '0.####');
             else
                 oldText = effective as string;
 
@@ -253,7 +279,7 @@ namespace Store.Store {
             this.view.refresh();
 
             if (input.hasClass("numeric"))
-                value = Q.formatNumber(value, '0.##');
+                value = Q.formatNumber(value, '0.####');
 
             input.val(value).addClass('dirty');
 

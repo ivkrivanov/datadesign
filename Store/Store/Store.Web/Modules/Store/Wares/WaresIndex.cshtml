@@ -7,20 +7,13 @@
     @Html.Script("Dynamic://Lookup.Store.Counterparty")
 }
 
-@*<div class="alert alert-info alert-dismissable">
-    <p style="text-align: right;">
-        <b>Source Files:</b>
-        @Html.AppSourceFile("Index.cshtml"),
-        @Html.AppSourceFile("ConditionalFormattingGrid.ts")
-    </p>
-</div>*@
 
-    <div id="GridDiv"></div>
+<div id="GridDiv"></div>
 
-    <script type="text/javascript">
-        jQuery(function () {
-            new Store.Store.WaresGrid($('#GridDiv'), {}).init();
+<script type="text/javascript">
+    jQuery(function () {
+        new Store.Store.WaresGrid($('#GridDiv'), {}).init();
 
-            Q.initFullHeightGridPage($('#GridDiv'));
-        });
-    </script>
+        Q.initFullHeightGridPage($('#GridDiv'));
+    });
+</script>

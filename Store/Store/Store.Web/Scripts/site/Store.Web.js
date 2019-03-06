@@ -6903,7 +6903,19 @@ var Store;
                 var value = this.getEffectiveValue(item, ctx.column.field);
                 return "<input type='text' style='text - align:right' class='" + klass +
                     "' data-field='" + ctx.column.field +
-                    "' value='" + Q.formatNumber(value, '0.##') + "'/>";
+                    "' value='" + Q.formatNumber(value, '0.####') + "'/>";
+            };
+            WaresGrid.prototype.moneyInputFormatter = function (ctx) {
+                var klass = 'edit numeric';
+                var item = ctx.item;
+                var pending = this.pendingChanges[item.WaresID];
+                if (pending && pending[ctx.column.field] !== undefined) {
+                    klass += ' dirty';
+                }
+                var value = this.getEffectiveValue(item, ctx.column.field);
+                return "<input type='text' style='text - align:right' class='" + klass +
+                    "' data-field='" + ctx.column.field +
+                    "' value='" + Q.formatNumber(value, '0.0000') + "'/>";
             };
             WaresGrid.prototype.stringInputFormatter = function (ctx) {
                 var klass = 'edit string';
@@ -6954,6 +6966,7 @@ var Store;
                 var columns = _super.prototype.getColumns.call(this);
                 var num = function (ctx) { return _this.numericInputFormatter(ctx); };
                 var str = function (ctx) { return _this.stringInputFormatter(ctx); };
+                var mon = function (ctx) { return _this.moneyInputFormatter(ctx); };
                 //Q.first(columns, x => x.field === 'QuantityPerUnit').format = str;
                 var warescategory = Q.first(columns, function (x) { return x.field === "CategoryCategoryName" /* CategoryCategoryName */; });
                 warescategory.referencedFields = ["CategoryID" /* CategoryID */];
@@ -6961,7 +6974,8 @@ var Store;
                 //var supplier = Q.first(columns, x => x.field === fld.SupplierCompanyName);
                 //supplier.referencedFields = [fld.SupplierID];
                 //supplier.format = ctx => this.selectFormatter(ctx, fld.SupplierID, SupplierRow.getLookup());
-                Q.first(columns, function (x) { return x.field === "UnitPrice" /* UnitPrice */; }).format = num;
+                Q.first(columns, function (x) { return x.field === "UnitPrice" /* UnitPrice */; }).format = mon;
+                Q.first(columns, function (x) { return x.field == "UnitPrice" /* UnitPrice */; }).cssClass += " col-unit-price";
                 Q.first(columns, function (x) { return x.field === "QuantityPerUnit" /* QuantityPerUnit */; }).format = num;
                 Q.first(columns, function (x) { return x.field === "MeasureName" /* MeasureName */; }).format = str;
                 //Q.first(columns, x => x.field === fld.ReorderLevel).format = num;
@@ -6976,6 +6990,18 @@ var Store;
                 var klass = "";
                 if (item.Discontinued == true)
                     klass += " discontinued";
+                else if (item.UnitsInStock <= 0)
+                    klass += " out-of-stock";
+                else if (item.UnitsInStock < 20)
+                    klass += " critical-stock";
+                else if (item.UnitsInStock > 50)
+                    klass += " needs-reorder";
+                if (item.UnitPrice >= 50)
+                    klass += " high-price";
+                else if (item.UnitPrice >= 20)
+                    klass += " medium-price";
+                else
+                    klass += " low-price";
                 return Q.trimToNull(klass);
             };
             WaresGrid.prototype.inputsChange = function (e) {
@@ -6988,7 +7014,7 @@ var Store;
                 var effective = this.getEffectiveValue(item, field);
                 var oldText;
                 if (input.hasClass("numeric"))
-                    oldText = Q.formatNumber(effective, '0.##');
+                    oldText = Q.formatNumber(effective, '0.####');
                 else
                     oldText = effective;
                 var value;
@@ -7020,7 +7046,7 @@ var Store;
                 item[field] = value;
                 this.view.refresh();
                 if (input.hasClass("numeric"))
-                    value = Q.formatNumber(value, '0.##');
+                    value = Q.formatNumber(value, '0.####');
                 input.val(value).addClass('dirty');
                 this.setSaveButtonState();
             };
