@@ -70,27 +70,27 @@ namespace Store.Store.Entities
         }
 
         [DisplayName("Quantity Per Unit"), DefaultValue(1)]
-        public Int32? QuantityPerUnit
+        public Decimal? QuantityPerUnit
         {
             get { return Fields.QuantityPerUnit[this]; }
             set { Fields.QuantityPerUnit[this] = value; }
         }
 
-        [DisplayName("Unit Price"), Scale(4), LookupInclude]
+        [DisplayName("Unit Price"), LookupInclude]
         public Decimal? UnitPrice
         {
             get { return Fields.UnitPrice[this]; }
             set { Fields.UnitPrice[this] = value; }
         }
 
-        [DisplayName("Unit In Stock"), Scale(4), DefaultValue(0), LookupInclude]
+        [DisplayName("Unit In Stock"), DefaultValue(0), LookupInclude]
         public Decimal? UnitsInStock
         {
             get { return Fields.UnitsInStock[this]; }
             set { Fields.UnitsInStock[this] = value; }
         }
 
-        [DisplayName("Unit On Order"), Scale(4), DefaultValue(0), LookupInclude]
+        [DisplayName("Unit On Order"), DefaultValue(0), LookupInclude]
         public Decimal? UnitsOnOrder
         {
             get { return Fields.UnitsOnOrder[this]; }
@@ -390,7 +390,7 @@ namespace Store.Store.Entities
             public Int32Field SupplierID;
             public Int32Field CategoryID;
             public Int32Field MeasureID;
-            public Int32Field QuantityPerUnit;
+            public DecimalField QuantityPerUnit;
             public DecimalField UnitPrice;
             public DecimalField UnitsInStock;
             public DecimalField UnitsOnOrder;

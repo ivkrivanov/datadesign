@@ -67,6 +67,7 @@ namespace Store.Store.Endpoints
 
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Store"].ToString()))
             {
+                conn.Open();
                 using (SqlCommand cmd = new SqlCommand("sp_MakeStore", conn))
                 {
                     try
@@ -74,7 +75,7 @@ namespace Store.Store.Endpoints
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.Add("Tenant", SqlDbType.Int).Value = tn;
 
-                        conn.Open();
+                        //conn.Open();
                         cmd.ExecuteNonQuery();
                     }
                     catch (SqlException sqlException)
@@ -99,6 +100,23 @@ namespace Store.Store.Endpoints
                 adapter.Update(dt);
                 adapter.Dispose();
 
+                using (SqlCommand cmd = new SqlCommand("usp_PriceUpdate", conn))
+                {
+                    try
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add("Tenant", SqlDbType.Int).Value = tn;
+
+                        //conn.Open();
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (SqlException sqlException)
+                    {
+                        response.ErrorList.Add("Exception: " + sqlException.Message);
+                    }
+                }
+
+                conn.Close();
             }
 
             return response;
