@@ -4216,7 +4216,7 @@ declare namespace Store.Store {
 declare namespace Store.Store {
     class WaresGrid extends Serenity.EntityGrid<WaresRow, any> {
         protected getColumnsKey(): string;
-        protected getDialogType(): typeof WaresDialog;
+        protected getDialogType(): any;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;
