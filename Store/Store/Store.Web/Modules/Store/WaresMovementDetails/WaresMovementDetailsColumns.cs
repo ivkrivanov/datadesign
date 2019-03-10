@@ -9,6 +9,8 @@ namespace Store.Store.Forms
     [BasedOnRow(typeof(Entities.WaresMovementDetailsRow), CheckNames = true)]
     public class WaresMovementDetailsColumns
     {
+        [EditLink, Width(100), AlignRight]
+        public String WaresCode { get; set; }
         [EditLink, Width(200)]
         public String WaresName { get; set; }
         [Width(100), AlignRight]

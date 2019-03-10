@@ -190,35 +190,40 @@ namespace Store.Store.Entities
 
         #endregion Wares
 
-        [DisplayName("Income Price"), Scale(4), NotNull, AlignRight, DisplayFormat("#,##0.00")]
+        [DisplayName("Income Price"), NotNull]
+        [AlignRight, DisplayFormat("#,##0.0000")]
         public Decimal? IncomePrice
         {
             get { return Fields.IncomePrice[this]; }
             set { Fields.IncomePrice[this] = value; }
         }
 
-        [DisplayName("Sale Price"), Scale(4), NotNull, AlignRight, DisplayFormat("#,##0.00")]
+        [DisplayName("Sale Price"), NotNull, DefaultValue(0)]
+        [AlignRight, DisplayFormat("#,##0.0000")]
         public Decimal? SalePrice
         {
             get { return Fields.SalePrice[this]; }
             set { Fields.SalePrice[this] = value; }
         }
 
-        [DisplayName("Single Price"), Scale(4), NotNull, AlignRight, DisplayFormat("#,##0.00")]
+        [DisplayName("Single Price"), NotNull]
+        [AlignRight, DisplayFormat("#,##0.0000")]
         public Decimal? SinglePrice
         {
             get { return Fields.SinglePrice[this]; }
             set { Fields.SinglePrice[this] = value; }
         }
 
-        [DisplayName("Quantity"), NotNull, DefaultValue(1), AlignRight]
+        [DisplayName("Quantity"), NotNull, DefaultValue(1)]
+        [AlignRight, DisplayFormat("#,##0.0000")]
         public Single? Quantity
         {
             get { return Fields.Quantity[this]; }
             set { Fields.Quantity[this] = value; }
         }
 
-        [DisplayName("Discount"), NotNull, DefaultValue(0), AlignRight, DisplayFormat("#,##0.00")]
+        [DisplayName("Discount"), NotNull, DefaultValue(0)]
+        [AlignRight, DisplayFormat("#,##0.0000")]
         public Single? Discount
         {
             get { return Fields.Discount[this]; }
@@ -226,7 +231,7 @@ namespace Store.Store.Entities
         }
 
         [DisplayName("Line Total"), Expression("(t0.[IncomePrice] * t0.[Quantity] - t0.[Discount])")]
-        [AlignRight, DisplayFormat("#,##0.00"), MinSelectLevel(SelectLevel.List)]
+        [AlignRight, DisplayFormat("#,##0.0000"), MinSelectLevel(SelectLevel.List)]
         public Decimal? LineTotal
         {
             get { return Fields.LineTotal[this]; }
