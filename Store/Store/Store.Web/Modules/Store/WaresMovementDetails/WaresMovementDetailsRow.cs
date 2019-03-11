@@ -106,7 +106,7 @@ namespace Store.Store.Entities
             set { Fields.WaresID[this] = value; }
         }
 
-        [Origin("w")]
+        [Origin("w"), SortOrder(1)]
         [Column("WaresCode"), LookupInclude, MinSelectLevel(SelectLevel.List)]
         public String WaresCode
         {
