@@ -11,6 +11,8 @@ namespace Store.Store.Columns
         //[EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         //public Int32 DetailID { get; set; }
         //public String ProductProductName { get; set; }
+        [Width(100)]
+        public String WaresCode { get; set; }
         [EditLink, Width(200)]
         public String WaresName { get; set; }
         [Width(100)]

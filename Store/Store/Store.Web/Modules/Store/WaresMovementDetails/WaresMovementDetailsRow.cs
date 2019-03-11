@@ -97,8 +97,8 @@ namespace Store.Store.Entities
 
         #region Wares
 
-        [DisplayName("Wares"), PrimaryKey, ForeignKey(typeof(WaresRow)), LeftJoin("w")]
-        [LookupEditor(typeof(WaresRow))]
+        [DisplayName("Wares"), ForeignKey(typeof(WaresRow)), LeftJoin("w"), LookupInclude]
+        [LookupEditor(typeof(WaresRow), InplaceAdd = true)]
         public Int32? WaresID
         {
             get { return Fields.WaresID[this]; }
@@ -106,6 +106,7 @@ namespace Store.Store.Entities
         }
 
         [Origin("w")]
+        [Column("WaresCode"), LookupInclude, MinSelectLevel(SelectLevel.List)]
         public String WaresCode
         {
             get { return Fields.WaresCode[this]; }
@@ -127,6 +128,7 @@ namespace Store.Store.Entities
         //}
 
         [Origin("w"), MinSelectLevel(SelectLevel.List)]
+        [Column("WaresName")]
         public String WaresName
         {
             get { return Fields.WaresName[this]; }
@@ -215,7 +217,7 @@ namespace Store.Store.Entities
         }
 
         [DisplayName("Quantity"), NotNull, DefaultValue(1)]
-        [AlignRight, DisplayFormat("#,##0.0000")]
+        [AlignRight, DisplayFormat("#,##0.000")]
         public Single? Quantity
         {
             get { return Fields.Quantity[this]; }

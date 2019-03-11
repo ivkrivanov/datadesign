@@ -97,15 +97,15 @@ namespace Store.Store.Entities
 
         #region Wares
 
-        [DisplayName("Wares"), PrimaryKey, ForeignKey(typeof(WaresRow)), LeftJoin("w")]
-        [LookupEditor(typeof(WaresRow))]
+        [DisplayName("Wares"), ForeignKey(typeof(WaresRow)), LeftJoin("w"), LookupInclude]
+        [LookupEditor(typeof(WaresRow), InplaceAdd = true)]
         public Int32? WaresID
         {
             get { return Fields.WaresID[this]; }
             set { Fields.WaresID[this] = value; }
         }
 
-        [Origin("w")]
+        [Origin("w"), LookupInclude, MinSelectLevel(SelectLevel.List)]
         public String WaresCode
         {
             get { return Fields.WaresCode[this]; }
@@ -198,14 +198,16 @@ namespace Store.Store.Entities
             set { Fields.ProductQuantity[this] = value; }
         }
 
-        [DisplayName("Plan Price"), Scale(4), NotNull, AlignRight, DisplayFormat("#,##0.00")]
+        [DisplayName("Plan Price"), Scale(4), NotNull]
+        [AlignRight, DisplayFormat("#,##0.0000")]
         public Decimal? PlanPrice
         {
             get { return Fields.PlanPrice[this]; }
             set { Fields.PlanPrice[this] = value; }
         }
 
-        [DisplayName("Discount"), NotNull, DefaultValue(0), AlignRight, DisplayFormat("#,##0.00")]
+        [DisplayName("Discount"), NotNull, DefaultValue(0)]
+        [AlignRight, DisplayFormat("#,##0.0000")]
         public Double? Discount
         {
             get { return Fields.Discount[this]; }
@@ -213,7 +215,7 @@ namespace Store.Store.Entities
         }
 
         [DisplayName("Line Total"), Expression("(t0.[Quantity] * t0.[PlanPrice] - t0.[Discount])")]
-        [AlignRight, DisplayFormat("#,##0.00"), MinSelectLevel(SelectLevel.List)]
+        [AlignRight, DisplayFormat("#,##0.0000"), MinSelectLevel(SelectLevel.List)]
         public Decimal? LineTotal
         {
             get { return Fields.LineTotal[this]; }
