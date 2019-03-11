@@ -10,8 +10,9 @@ namespace Store.Store.Entities
 
     [ConnectionKey("Store"), Module("Store"), TableName("[dbo].[WaresMovement Details]")]
     [DisplayName("Wares Movement Details"), InstanceName("Wares Movement Details")]
-    [ReadPermission("Store:General")]
-    [ModifyPermission("Store:General")]
+    [ReadPermission(PermissionKeys.Wares.View)]
+    [ModifyPermission(PermissionKeys.Wares.Modify)]
+    [DeletePermission(PermissionKeys.Wares.Delete)]
     public sealed class WaresMovementDetailsRow : LoggingRow, IIdRow, IIsActiveRow, IMultiTenantRow
     {
         [DisplayName("ID"), Identity]

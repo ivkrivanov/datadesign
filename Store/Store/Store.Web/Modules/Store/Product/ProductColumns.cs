@@ -40,7 +40,10 @@ namespace Store.Store.Columns
         public Int16 UnitsOnOrder { get; set; }
         [Width(80), AlignRight]
         public Int16 ReorderLevel { get; set; }
-        [EditLink(ItemType = "Store.Counterparty"), Width(200), QuickFilter]
+        [Width(80), AlignRight]
+        [EditLink(ItemType = "Store.Counterparty"), QuickFilter]
         public String CounterpartyID { get; set; }
+        [Width(200)]
+        public String CounterpartyCompanyName { get; set; }
     }
 }

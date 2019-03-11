@@ -11,8 +11,9 @@ namespace Store.Store.Entities
 
     [ConnectionKey("Store"), Module("Store"), TableName("[dbo].[Wares]")]
     [DisplayName("Wares"), InstanceName("Wares")]
-    [ReadPermission(PermissionKeys.General)]
-    [ModifyPermission(PermissionKeys.General)]
+    [ReadPermission(PermissionKeys.Wares.View)]
+    [ModifyPermission(PermissionKeys.Wares.Modify)]
+    [DeletePermission(PermissionKeys.Wares.Delete)]
     [LookupScript("Store.Wares", LookupType = typeof(MultiTenantRowLookupScript<>))]
     //[CaptureLog(typeof(ItemLogRow))]
     [LocalizationRow(typeof(WaresLangRow))]
@@ -113,7 +114,8 @@ namespace Store.Store.Entities
 
         #region Counterparty
 
-        [DisplayName("Counterparty ID"), NotNull, ForeignKey(typeof(CounterpartyRow)), LeftJoin("c"), CounterpartyEditor]
+        [DisplayName("Counterparty ID"), NotNull, ForeignKey(typeof(CounterpartyRow), "CounterpartyID"), LeftJoin("c")]
+        [QuickSearch, CounterpartyEditor, LookupInclude]
         public String CounterpartyID
         {
             get { return Fields.CounterpartyID[this]; }
@@ -127,11 +129,12 @@ namespace Store.Store.Entities
             set { Fields.CounterpartyContactName[this] = value; }
         }
 
-        [Origin("c"), DisplayName("Counterparty"), LookupInclude]
-        public String CompanyName
+        [Origin("c"), DisplayName("Counterparty")]
+        [LookupInclude, MinSelectLevel(SelectLevel.List)]
+        public String CounterpartyCompanyName
         {
-            get { return Fields.CompanyName[this]; }
-            set { Fields.CompanyName[this] = value; }
+            get { return Fields.CounterpartyCompanyName[this]; }
+            set { Fields.CounterpartyCompanyName[this] = value; }
         }
 
         [Origin("c")]
@@ -413,7 +416,7 @@ namespace Store.Store.Entities
             //public StringField SupplierFax;
             //public StringField SupplierEmail;
             //public StringField SupplierHomePage;
-            public StringField CompanyName;
+            public StringField CounterpartyCompanyName;
             public StringField CounterpartyContactName;
             public StringField CounterpartyContactTitle;
             public StringField CounterpartyCity;

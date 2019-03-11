@@ -11,8 +11,9 @@ namespace Store.Store.Entities
 
     [ConnectionKey("Store"), Module("Store"), TableName("[dbo].[Products]")]
     [DisplayName("Product"), InstanceName("Product")]
-    [ReadPermission(PermissionKeys.General)]
-    [ModifyPermission(PermissionKeys.General)]
+    [ReadPermission(PermissionKeys.Product.View)]
+    [ModifyPermission(PermissionKeys.Product.Modify)]
+    [DeletePermission(PermissionKeys.Product.Delete)]
     [LookupScript("Store.Product", LookupType = typeof(Scripts.MultiTenantRowLookupScript<>))]
     //[CaptureLog(typeof(ProductLogRow))]
     [LocalizationRow(typeof(ProductLangRow))]
@@ -173,7 +174,8 @@ namespace Store.Store.Entities
 
         #region Counterparty
 
-        [DisplayName("Counterparty ID"), NotNull, ForeignKey(typeof(CounterpartyRow)), LeftJoin("c"), CounterpartyEditor]
+        [DisplayName("Counterparty ID"), NotNull, ForeignKey(typeof(CounterpartyRow), "CounterpartyID"), LeftJoin("c")]
+        [QuickSearch, CounterpartyEditor, LookupInclude]
         public String CounterpartyID
         {
             get { return Fields.CounterpartyID[this]; }
@@ -187,7 +189,8 @@ namespace Store.Store.Entities
             set { Fields.CounterpartyContactName[this] = value; }
         }
 
-        [Origin("c"), DisplayName("Counterparty"), LookupInclude]
+        [Origin("c"), DisplayName("Counterparty")]
+        [LookupInclude, MinSelectLevel(SelectLevel.List)]
         public String CounterpartyCompanyName
         {
             get { return Fields.CounterpartyCompanyName[this]; }

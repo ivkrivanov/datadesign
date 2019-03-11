@@ -3133,7 +3133,7 @@ declare namespace Store.Store {
         AccountID?: number;
         IsActive?: number;
         TenantId?: number;
-        CompanyName?: string;
+        CounterpartyCompanyName?: string;
         CounterpartyContactName?: string;
         CounterpartyContactTitle?: string;
         CounterpartyCity?: string;
@@ -3175,7 +3175,7 @@ declare namespace Store.Store {
             AccountID = "AccountID",
             IsActive = "IsActive",
             TenantId = "TenantId",
-            CompanyName = "CompanyName",
+            CounterpartyCompanyName = "CounterpartyCompanyName",
             CounterpartyContactName = "CounterpartyContactName",
             CounterpartyContactTitle = "CounterpartyContactTitle",
             CounterpartyCity = "CounterpartyCity",

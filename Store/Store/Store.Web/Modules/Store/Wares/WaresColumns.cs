@@ -41,8 +41,8 @@ namespace Store.Store.Columns
         [EditLink(ItemType = "Store.Counterparty"), QuickFilter]
         public string CounterpartyID { get; set; }
         //[EditLink(ItemType = "Store.Counterparty"), Width(200), QuickFilter]
-        [Width(150), AlignRight]
-        public String CompanyName { get; set; }
+        [Width(200)]
+        public String CounterpartyCompanyName { get; set; }
         //[Width(100), AlignRight]
         //public Int32 AccountID { get; set; }
     }

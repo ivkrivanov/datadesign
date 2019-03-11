@@ -11,8 +11,9 @@ namespace Store.Store.Entities
 
     [ConnectionKey("Store"), Module("Store"), TableName("[dbo].[WaresMovement]")]
     [DisplayName("Wares Movement"), InstanceName("Wares Movement")]
-    [ReadPermission(PermissionKeys.General)]
-    [ModifyPermission(PermissionKeys.General)]
+    [ReadPermission(PermissionKeys.Wares.View)]
+    [ModifyPermission(PermissionKeys.Wares.Modify)]
+    [DeletePermission(PermissionKeys.Wares.Delete)]
     public sealed class WaresMovementRow : LoggingRow, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
     {
         [DisplayName("Move Id"), NotNull, Identity, QuickSearch]
@@ -24,8 +25,8 @@ namespace Store.Store.Entities
 
         #region Counterparty
 
-        [DisplayName("Counterparty"), Size(14), NotNull, ForeignKey(typeof(CounterpartyRow), "CounterpartyID"), LeftJoin("c")]
-        [QuickSearch, CounterpartyEditor]
+        [DisplayName("Counterparty"), NotNull, ForeignKey(typeof(CounterpartyRow), "CounterpartyID"), LeftJoin("c")]
+        [QuickSearch, CounterpartyEditor, LookupInclude]
         public String CounterpartyID
         {
             get { return Fields.CounterpartyID[this]; }
@@ -33,6 +34,7 @@ namespace Store.Store.Entities
         }
 
         [Origin("c"), DisplayName("Counterparty"), QuickSearch]
+        [LookupInclude, MinSelectLevel(SelectLevel.List)]
         public String CounterpartyCompanyName
         {
             get { return Fields.CounterpartyCompanyName[this]; }
