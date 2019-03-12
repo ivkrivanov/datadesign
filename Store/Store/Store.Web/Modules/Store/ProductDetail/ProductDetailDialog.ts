@@ -24,9 +24,10 @@ namespace Store.Store {
             this.form.Discount.addValidationRule(this.uniqueName, e => {
                 var price = this.form.PlanPrice.value;
                 var quantity = this.form.Quantity.value;
+                var quanprod = this.form.ProductQuantity.value;
                 var discount = this.form.Discount.value;
-                if (price != null && quantity != null && discount != null &&
-                    discount > 0 && discount >= price * quantity) {
+                if (price != null && quantity != null && quanprod != null && discount != null &&
+                    discount > 0 && discount >= price * quantity /quanprod) {
                     return "Discount can't be higher than total price!";
                 }
             });

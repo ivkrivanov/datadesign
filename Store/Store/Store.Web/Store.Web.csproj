@@ -1052,6 +1052,7 @@
     <TypeScriptCompile Include="Modules\Store\Note\NotesEditor.ts" />
     <TypeScriptCompile Include="Modules\Store\OperationType\OperationTypeEditor.ts" />
     <TypeScriptCompile Include="Modules\Store\ProductDetail\ProductDetailEditor.ts" />
+    <TypeScriptCompile Include="Modules\Store\ProductDetail\ProductDetailGrid.ts" />
     <TypeScriptCompile Include="Modules\Store\ProductDetail\ProductDetailsEditor.ts" />
     <TypeScriptCompile Include="Modules\Store\ProductMovementDetails\ProductMovementDetailsEditor.ts" />
     <TypeScriptCompile Include="Modules\Store\Product\ProductEditor.ts" />

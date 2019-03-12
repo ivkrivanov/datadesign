@@ -22,7 +22,8 @@ namespace Store.Store {
             }
 
             row.WaresName = WaresRow.getLookup().itemById[row.WaresID].WaresName;
-            row.LineTotal = (row.Quantity || 0) * (row.UnitPrice || 0) - (row.Discount || 0);
+            row.WaresCode = WaresRow.getLookup().itemById[row.WaresID].WaresCode;
+            row.LineTotal = (row.Quantity || 0) * (row.UnitPrice || 0) / (row.ProductQuantity || 0) - (row.Discount || 0);
             return true;
         }
     }

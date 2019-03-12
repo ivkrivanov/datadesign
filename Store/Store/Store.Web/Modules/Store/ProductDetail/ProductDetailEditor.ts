@@ -14,7 +14,7 @@ namespace Store.Store {
         protected getItemText(item: Store.WaresRow, lookup: Q.Lookup<WaresRow>) {
             return super.getItemText(item, lookup) +
                 ' (' +
-                '$' + Q.formatNumber(item.UnitPrice, '#, ##0.00') +
+                '$' + Q.formatNumber(item.UnitPrice, '#, ##0.0000') +
                 //', ' + (item.UnitsInStock > 0 ? (item.UnitsInStock + ' in stock') : 'out of stock') +
                 //', ' + (item.SupplierCompanyName || 'Unknown') +
                 ')';

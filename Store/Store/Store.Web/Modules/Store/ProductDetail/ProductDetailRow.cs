@@ -214,7 +214,7 @@ namespace Store.Store.Entities
             set { Fields.Discount[this] = value; }
         }
 
-        [DisplayName("Line Total"), Expression("(t0.[Quantity] * t0.[PlanPrice] - t0.[Discount])")]
+        [DisplayName("Line Total"), Expression("(t0.[Quantity] * t0.[PlanPrice] / t0.[ProductQuantity] - t0.[Discount])")]
         [AlignRight, DisplayFormat("#,##0.0000"), MinSelectLevel(SelectLevel.List)]
         public Decimal? LineTotal
         {
