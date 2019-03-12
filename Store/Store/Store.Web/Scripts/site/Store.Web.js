@@ -5064,7 +5064,7 @@ var Store;
             }
             CounterpartyProductMovementGrid.prototype.getDialogType = function () { return Store.CounterpartyProductMovementDialog; };
             CounterpartyProductMovementGrid.prototype.getColumns = function () {
-                return _super.prototype.getColumns.call(this).filter(function (x) { return x.field !== "CounterpartyCompanyName" /* CounterpartyCompanyName */; });
+                return _super.prototype.getColumns.call(this).filter(function (x) { return x.field !== "CounterpartyCompanyName" /* CounterpartyCompanyName */ && x.field !== "CounterpartyID" /* CounterpartyID */; });
             };
             CounterpartyProductMovementGrid.prototype.initEntityDialog = function (itemType, dialog) {
                 _super.prototype.initEntityDialog.call(this, itemType, dialog);
@@ -5294,7 +5294,7 @@ var Store;
             }
             CounterpartyWaresMovementGrid.prototype.getDialogType = function () { return Store.CounterpartyWaresMovementDialog; };
             CounterpartyWaresMovementGrid.prototype.getColumns = function () {
-                return _super.prototype.getColumns.call(this).filter(function (x) { return x.field !== "CounterpartyCompanyName" /* CounterpartyCompanyName */; });
+                return _super.prototype.getColumns.call(this).filter(function (x) { return x.field !== "CounterpartyCompanyName" /* CounterpartyCompanyName */ && x.field !== "CounterpartyID" /* CounterpartyID */; });
             };
             CounterpartyWaresMovementGrid.prototype.initEntityDialog = function (itemType, dialog) {
                 _super.prototype.initEntityDialog.call(this, itemType, dialog);

@@ -40,11 +40,11 @@ namespace Store.Store.Repositories
         {
             return new MyListHandler().Process(connection, request);
         }
+
         public GetNextNumberResponse GetNextNumber(IDbConnection connection, GetNextNumberRequest request)
         {
             return GetNextNumberHelper.GetNextNumber(connection, request, fld.CounterpartyID);
         }
-
 
         private class MySaveHandler : SaveRequestHandler<MyRow> { }
         private class MyDeleteHandler : DeleteRequestHandler<MyRow>
@@ -62,6 +62,7 @@ namespace Store.Store.Repositories
                 }
             }
         }
+
         private class MyUndeleteHandler : UndeleteRequestHandler<MyRow> { }
         private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> { }
         private class MyListHandler : ListRequestHandler<MyRow> { }

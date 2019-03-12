@@ -82,7 +82,7 @@ namespace Store.Store.Repositories
                             .From(pd)
                             .Where(
                                 pd.ProductID == fld.ProductID &
-                                pd.ProductID == Request.WaresID.Value)
+                                pd.WaresID == Request.WaresID.Value)
                                 .ToString()));
                 }
 

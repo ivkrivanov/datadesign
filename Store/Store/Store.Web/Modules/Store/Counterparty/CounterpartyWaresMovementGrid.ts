@@ -13,7 +13,7 @@ namespace Store.Store {
         }
 
         protected getColumns(): Slick.Column[] {
-            return super.getColumns().filter(x => x.field !== fld.CounterpartyCompanyName);
+            return super.getColumns().filter(x => x.field !== fld.CounterpartyCompanyName && x.field !== fld.CounterpartyID);
         }
 
         protected initEntityDialog(itemType, dialog) {

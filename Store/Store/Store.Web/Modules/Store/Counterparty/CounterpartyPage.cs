@@ -10,7 +10,6 @@ namespace Store.Store.Pages
     {
         public ActionResult Index()
         {
-            //return View("~/Modules/Store/Counterparty/CounterpartyIndex.cshtml");
             return View(MVC.Views.Store.Counterparty.CounterpartyIndex);
         }
     }
