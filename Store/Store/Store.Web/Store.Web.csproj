@@ -877,6 +877,7 @@
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="Modules\Store\Reports\Invoices\WaresMovementDetailReport.cshtml" />
     <Content Include="Modules\Store\Reports\Invoices\ProductMovementDetailReport.cshtml" />
+    <Content Include="Modules\Store\Store\StoreMoveIndex.cshtml" />
     <None Include="packages.config" />
     <Content Include="Scripts\ckeditor\skins\moono\readme.md" />
     <Content Include="Scripts\ckeditor\README.md" />
@@ -2065,6 +2066,11 @@
     <Compile Include="Modules\Store\Reports\Invoices\WaresMovementDetailReport.cs" />
     <Compile Include="Modules\Store\Store\Average.cs" />
     <Compile Include="Modules\Store\Store\DAL.cs" />
+    <Compile Include="Modules\Store\Store\StoreMoveColumns.cs" />
+    <Compile Include="Modules\Store\Store\StoreMoveEndpoint.cs" />
+    <Compile Include="Modules\Store\Store\StoreMoveListRequest.cs" />
+    <Compile Include="Modules\Store\Store\StoreMoveRepository.cs" />
+    <Compile Include="Modules\Store\Store\StoreMoveRow.cs" />
     <Compile Include="Modules\Store\WaresMovement\StoreAverageForm.cs" />
     <Compile Include="Modules\Store\WaresMovement\WaresMovementOperations.cs" />
     <Content Include="Modules\Common\Reporting\ReportPage.cshtml" />

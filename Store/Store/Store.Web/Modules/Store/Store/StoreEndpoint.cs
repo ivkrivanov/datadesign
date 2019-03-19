@@ -68,7 +68,7 @@ namespace Store.Store.Endpoints
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Store"].ToString()))
             {
                 conn.Open();
-                using (SqlCommand cmd = new SqlCommand("sp_MakeStore", conn))
+                using (SqlCommand cmd = new SqlCommand("usp_MakeStore", conn))
                 {
                     try
                     {
