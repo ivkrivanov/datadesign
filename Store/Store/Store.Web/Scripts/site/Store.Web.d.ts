@@ -2486,6 +2486,62 @@ declare namespace Store.Store {
     }
 }
 declare namespace Store.Store {
+}
+declare namespace Store.Store {
+    interface StoreMoveListRequest extends Serenity.ListRequest {
+        ShopID?: number;
+        StartDate?: string;
+        EndDate?: string;
+    }
+}
+declare namespace Store.Store {
+    interface StoreMoveRow {
+        ShopID?: number;
+        WaresID?: number;
+        Key?: string;
+        Date?: string;
+        IncomeQuantity?: number;
+        IncomeSinglePrice?: number;
+        IncomeValue?: number;
+        ExpenceQuantity?: number;
+        ExpenceSinglePrice?: number;
+        ExpenceValue?: number;
+        RestSinglePrice?: number;
+        RestValue?: number;
+        ReCost?: number;
+        Mistake?: boolean;
+    }
+    namespace StoreMoveRow {
+        const nameProperty = "Key";
+        const localTextPrefix = "Store.StoreMove";
+        const enum Fields {
+            ShopID = "ShopID",
+            WaresID = "WaresID",
+            Key = "Key",
+            Date = "Date",
+            IncomeQuantity = "IncomeQuantity",
+            IncomeSinglePrice = "IncomeSinglePrice",
+            IncomeValue = "IncomeValue",
+            ExpenceQuantity = "ExpenceQuantity",
+            ExpenceSinglePrice = "ExpenceSinglePrice",
+            ExpenceValue = "ExpenceValue",
+            RestSinglePrice = "RestSinglePrice",
+            RestValue = "RestValue",
+            ReCost = "ReCost",
+            Mistake = "Mistake"
+        }
+    }
+}
+declare namespace Store.Store {
+    namespace StoreMoveService {
+        const baseUrl = "~/Store/Store/StoreMove";
+        function List(request: StoreMoveListRequest, onSuccess?: (response: Serenity.ListResponse<StoreMoveRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            List = "~/Store/Store/StoreMove/List"
+        }
+    }
+}
+declare namespace Store.Store {
     interface StoreRow {
         Position?: number;
         WaresMode?: boolean;
@@ -3227,6 +3283,11 @@ declare namespace Store {
         ErrorList?: string[];
     }
 }
+declare namespace Store.LanguageList {
+    function getValue(): string[][];
+}
+declare namespace Store.ScriptInitialization {
+}
 declare namespace Store.Administration {
     class LanguageDialog extends Serenity.EntityDialog<LanguageRow, any> {
         protected getFormKey(): string;
@@ -3353,10 +3414,6 @@ declare namespace Store.Administration {
         protected getDefaultSortBy(): UserRow.Fields[];
     }
 }
-declare namespace Store.Authorization {
-    let userDefinition: ScriptUserDefinition;
-    function hasPermission(permissionKey: string): boolean;
-}
 declare namespace Store.Administration {
     class PermissionCheckEditor extends Serenity.DataGrid<PermissionCheckItem, PermissionCheckEditorOptions> {
         protected getIdProperty(): string;
@@ -3427,11 +3484,6 @@ declare namespace Store.Administration {
         userID: number;
         username: string;
     }
-}
-declare namespace Store.LanguageList {
-    function getValue(): string[][];
-}
-declare namespace Store.ScriptInitialization {
 }
 declare namespace Store {
     class BasicProgressDialog extends Serenity.TemplatedDialog<any> {
@@ -3668,34 +3720,6 @@ declare namespace Store.Common {
     class UserPreferenceStorage implements Serenity.SettingStorage {
         getItem(key: string): string;
         setItem(key: string, data: string): void;
-    }
-}
-declare namespace Store.Membership {
-    class ChangePasswordPanel extends Serenity.PropertyPanel<ChangePasswordRequest, any> {
-        protected getFormKey(): string;
-        private form;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Store.Membership {
-    class ForgotPasswordPanel extends Serenity.PropertyPanel<ForgotPasswordRequest, any> {
-        protected getFormKey(): string;
-        private form;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Store.Membership {
-    class ResetPasswordPanel extends Serenity.PropertyPanel<ResetPasswordRequest, any> {
-        protected getFormKey(): string;
-        private form;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Store.Membership {
-    class SignUpPanel extends Serenity.PropertyPanel<SignUpRequest, any> {
-        protected getFormKey(): string;
-        private form;
-        constructor(container: JQuery);
     }
 }
 declare namespace Store.Store {
@@ -4315,5 +4339,37 @@ declare namespace Store.Store {
         protected getColumns(): Slick.Column[];
         protected getSlickOptions(): Slick.GridOptions;
         protected usePager(): boolean;
+    }
+}
+declare namespace Store.Authorization {
+    let userDefinition: ScriptUserDefinition;
+    function hasPermission(permissionKey: string): boolean;
+}
+declare namespace Store.Membership {
+    class ChangePasswordPanel extends Serenity.PropertyPanel<ChangePasswordRequest, any> {
+        protected getFormKey(): string;
+        private form;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Store.Membership {
+    class ForgotPasswordPanel extends Serenity.PropertyPanel<ForgotPasswordRequest, any> {
+        protected getFormKey(): string;
+        private form;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Store.Membership {
+    class ResetPasswordPanel extends Serenity.PropertyPanel<ResetPasswordRequest, any> {
+        protected getFormKey(): string;
+        private form;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Store.Membership {
+    class SignUpPanel extends Serenity.PropertyPanel<SignUpRequest, any> {
+        protected getFormKey(): string;
+        private form;
+        constructor(container: JQuery);
     }
 }

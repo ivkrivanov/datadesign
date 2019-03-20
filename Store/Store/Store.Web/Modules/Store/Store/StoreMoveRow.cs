@@ -85,6 +85,13 @@
             set { Fields.ExpenceValue[this] = value; }
         }
 
+        [DisplayName("Rest Quantity"), Size(15), Scale(4)]
+        public Decimal? RestQuantity
+        {
+            get { return Fields.RestQuantity[this]; }
+            set { Fields.RestQuantity[this] = value; }
+        }
+
         [DisplayName("Rest Single Price"), Size(15), Scale(4)]
         public Decimal? RestSinglePrice
         {

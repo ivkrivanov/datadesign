@@ -878,6 +878,7 @@
     <Content Include="Modules\Store\Reports\Invoices\WaresMovementDetailReport.cshtml" />
     <Content Include="Modules\Store\Reports\Invoices\ProductMovementDetailReport.cshtml" />
     <Content Include="Modules\Store\Store\StoreMoveIndex.cshtml" />
+    <Content Include="Modules\Store\Reports\Warehause\StoreMoveReport.cshtml" />
     <None Include="packages.config" />
     <Content Include="Scripts\ckeditor\skins\moono\readme.md" />
     <Content Include="Scripts\ckeditor\README.md" />
@@ -1005,6 +1006,18 @@
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\Store.StoreColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.StoreMoveColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.StoreMoveListRequest.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.StoreMoveRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.StoreMoveService.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\Store.SupplierColumns.ts">
@@ -2061,6 +2074,7 @@
     <Compile Include="Modules\Store\ProductMovement\ProductMovementOperations.cs" />
     <Compile Include="Modules\Store\Product\ProductExcelImportForm.cs" />
     <Compile Include="Modules\Store\Reports\Invoices\ProductMovementDetailReport.cs" />
+    <Compile Include="Modules\Store\Reports\Warehause\StoreMoveReport.cs" />
     <Compile Include="Modules\Store\Shipper\ShippingState.cs" />
     <Compile Include="Modules\Store\Shops\ShopLookup.cs" />
     <Compile Include="Modules\Store\Reports\Invoices\WaresMovementDetailReport.cs" />
