@@ -10,6 +10,7 @@
         ExpenceQuantity?: number;
         ExpenceSinglePrice?: number;
         ExpenceValue?: number;
+        RestQuantity?: number;
         RestSinglePrice?: number;
         RestValue?: number;
         ReCost?: number;
@@ -31,6 +32,7 @@
             ExpenceQuantity = "ExpenceQuantity",
             ExpenceSinglePrice = "ExpenceSinglePrice",
             ExpenceValue = "ExpenceValue",
+            RestQuantity = "RestQuantity",
             RestSinglePrice = "RestSinglePrice",
             RestValue = "RestValue",
             ReCost = "ReCost",

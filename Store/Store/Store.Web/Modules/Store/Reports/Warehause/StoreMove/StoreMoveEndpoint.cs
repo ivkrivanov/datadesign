@@ -11,7 +11,7 @@ namespace Store.Store.Endpoints
     using MyRepository = Repositories.StoreMoveRepository;
     using MyRow = Entities.StoreMoveRow;
 
-    [RoutePrefix("Store/Store/StoreMove"), Route("{action}")]
+    [RoutePrefix("Store/StoreMove"), Route("{action}")]
     [ConnectionKey(typeof(MyRow)), ServiceAuthorize(typeof(MyRow))]
     public class StoreMoveController : ServiceEndpoint
     {

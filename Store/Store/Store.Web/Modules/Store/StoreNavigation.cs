@@ -18,7 +18,7 @@ using MyPages = Store.Store.Pages;
 [assembly: NavigationLink(5000, "Store/Supplier", typeof(MyPages.SupplierController), icon: "fa-truck")]
 
 
-
+[assembly: NavigationLink(7900, "Store/Reports", typeof(MyPages.ReportsController), icon: "fa-files-o")]
 
 //[assembly: NavigationLink(6000, "Store/Order", typeof(MyPages.OrderController), icon: null)]
 

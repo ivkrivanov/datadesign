@@ -2506,6 +2506,7 @@ declare namespace Store.Store {
         ExpenceQuantity?: number;
         ExpenceSinglePrice?: number;
         ExpenceValue?: number;
+        RestQuantity?: number;
         RestSinglePrice?: number;
         RestValue?: number;
         ReCost?: number;
@@ -2525,6 +2526,7 @@ declare namespace Store.Store {
             ExpenceQuantity = "ExpenceQuantity",
             ExpenceSinglePrice = "ExpenceSinglePrice",
             ExpenceValue = "ExpenceValue",
+            RestQuantity = "RestQuantity",
             RestSinglePrice = "RestSinglePrice",
             RestValue = "RestValue",
             ReCost = "ReCost",
@@ -2534,10 +2536,10 @@ declare namespace Store.Store {
 }
 declare namespace Store.Store {
     namespace StoreMoveService {
-        const baseUrl = "~/Store/Store/StoreMove";
+        const baseUrl = "~/Store/StoreMove";
         function List(request: StoreMoveListRequest, onSuccess?: (response: Serenity.ListResponse<StoreMoveRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         const enum Methods {
-            List = "~/Store/Store/StoreMove/List"
+            List = "~/Store/StoreMove/List"
         }
     }
 }
@@ -4225,6 +4227,21 @@ declare namespace Store.Store {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+    }
+}
+declare namespace Store.Store {
+    class StoreMove extends Serenity.EntityGrid<StoreMoveRow, any> {
+        protected getColumnsKey(): string;
+        protected getIdProperty(): string;
+        protected getNameProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        private nextId;
+        constructor(container: JQuery);
+        protected getButtons(): any[];
+        protected getSlickOptions(): Slick.GridOptions;
+        protected usePager(): boolean;
+        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
     }
 }
 declare namespace Store.Store {
