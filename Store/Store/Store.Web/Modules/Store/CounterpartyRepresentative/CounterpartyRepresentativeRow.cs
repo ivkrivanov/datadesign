@@ -9,8 +9,8 @@ namespace Store.Store.Entities
 
     [ConnectionKey("Store"), Module("Store"), TableName("[dbo].[CounterpartyRepresentatives]")]
     [DisplayName("Counterparties Representative"), InstanceName("Counterparty Representative")]
-    [ReadPermission(PermissionKeys.Counterparty.View)]
-    [ModifyPermission(PermissionKeys.Counterparty.View)]
+    [ReadPermission(StorePermissionKeys.Counterparty.View)]
+    [ModifyPermission(StorePermissionKeys.Counterparty.View)]
     public sealed class CounterpartyRepresentativeRow : Row, IIdRow
     {
         [DisplayName("Representative Id"), Column("RepresentativeID"), Identity]

@@ -11,9 +11,9 @@ namespace Store.Store.Entities
 
     [ConnectionKey("Store"), Module("Store"), TableName("[dbo].[WaresMovement]")]
     [DisplayName("Wares Movement"), InstanceName("Wares Movement")]
-    [ReadPermission(PermissionKeys.Wares.View)]
-    [ModifyPermission(PermissionKeys.Wares.Modify)]
-    [DeletePermission(PermissionKeys.Wares.Delete)]
+    [ReadPermission(StorePermissionKeys.Wares.View)]
+    [ModifyPermission(StorePermissionKeys.Wares.Modify)]
+    [DeletePermission(StorePermissionKeys.Wares.Delete)]
     public sealed class WaresMovementRow : LoggingRow, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
     {
         [DisplayName("Move Id"), NotNull, Identity, QuickSearch]

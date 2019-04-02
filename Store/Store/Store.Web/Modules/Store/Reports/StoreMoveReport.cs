@@ -10,10 +10,10 @@ namespace Store.Store
     using System.ComponentModel;
     using System.Drawing;
 
-    [Report("Store.StoreMove")]
-    [ReportDesign(MVC.Views.Store.Reports.Warehause.StoreMoveReport)]
-    [RequiredPermission(PermissionKeys.General)]
-    public class StoreMoveReport : IReport, ICustomizeHtmlToPdf
+    [Report, RequiredPermission(StorePermissionKeys.General)]
+    //[ReportDesign(MVC.Views.BasicReports.Warehause.StoreMove.Index)]
+    [Category("Store/Store"), DisplayName("Warehause")]
+    public class StoreMoveReport : IReport, IDataOnlyReport
     {
         [DisplayName("Start Date")]
         public DateTime? StartDate { get; set; }
@@ -21,15 +21,19 @@ namespace Store.Store
         [DisplayName("End Date")]
         public DateTime? EndDate { get; set; }
 
+        [DisplayName("Object")]
+        public int? Object { get; set; }
+
         public Object GetData()
         {
             using (var connection = SqlConnections.NewFor<StoreMoveRow>())
             {
-                return connection.Query<Item>("StoreMove",
+                return connection.Query<Item>("usp_StoreMove",
                     param: new
                     {
                         startDate = StartDate,
-                        endDate = EndDate
+                        endDate = EndDate,
+                        shop = Object
                     },
                     commandType: System.Data.CommandType.StoredProcedure);
              }

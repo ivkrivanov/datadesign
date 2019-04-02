@@ -2,7 +2,7 @@
     @Serenity.Decorators.registerClass()
     export class StoreMove extends Serenity.EntityGrid<StoreMoveRow, any> {
 
-        protected getColumnsKey() { return "Store.StoreMoves"; }
+        protected getColumnsKey() { return "BasicReports.StoreMoves"; }
         protected getIdProperty() { return "__id"; }
         protected getNameProperty() { return StoreMoveRow.nameProperty; }
         protected getLocalTextPrefix() { return StoreMoveRow.localTextPrefix; }
@@ -12,6 +12,15 @@
 
         constructor(container: JQuery) {
             super(container);
+        }
+
+        protected onViewProcessData(response: Serenity.ListResponse<Store.StoreMoveRow>) {
+            response = super.onViewProcessData(response);
+
+            for (var x of response.Entities) {
+                (x as any).__id = this.nextId++;
+            }
+            return response;
         }
 
         protected getButtons() {
@@ -32,6 +41,13 @@
             return buttons;
         }
 
+        protected createSlickGrid() {
+            var grid = super.createSlickGrid();
+
+
+            return grid;
+        }
+
         protected getSlickOptions() {
             var opt = super.getSlickOptions();
             opt.showFooterRow = true;
@@ -45,8 +61,22 @@
         protected getQuickFilters() {
             var filters = super.getQuickFilters();
 
+            var orderDate = this.dateRangeQuickFilter('Date', 'Date');
 
+            orderDate.handler = args => {
 
+                var start = args.widget.value;
+
+                var end = args.widget.element.nextAll('.s-DateEditor')
+                    .getWidget(Serenity.DateEditor).value;
+
+                (args.request as StoreMoveListRequest).StartDate = start;
+                (args.request as StoreMoveListRequest).EndDate = end;
+
+                args.active = !Q.isEmptyOrNull(start) || !Q.isEmptyOrNull(end);
+            };
+
+            filters.push(orderDate);
 
             return filters;
         }

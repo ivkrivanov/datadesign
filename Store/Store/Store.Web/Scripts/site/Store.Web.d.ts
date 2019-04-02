@@ -2490,6 +2490,7 @@ declare namespace Store.Store {
 declare namespace Store.Store {
     interface StoreMoveListRequest extends Serenity.ListRequest {
         ShopID?: number;
+        TenantID?: number;
         StartDate?: string;
         EndDate?: string;
     }
@@ -2536,10 +2537,10 @@ declare namespace Store.Store {
 }
 declare namespace Store.Store {
     namespace StoreMoveService {
-        const baseUrl = "~/Store/StoreMove";
+        const baseUrl = "BasicReports/StoreMove";
         function List(request: StoreMoveListRequest, onSuccess?: (response: Serenity.ListResponse<StoreMoveRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         const enum Methods {
-            List = "~/Store/StoreMove/List"
+            List = "BasicReports/StoreMove/List"
         }
     }
 }
@@ -4230,21 +4231,6 @@ declare namespace Store.Store {
     }
 }
 declare namespace Store.Store {
-    class StoreMove extends Serenity.EntityGrid<StoreMoveRow, any> {
-        protected getColumnsKey(): string;
-        protected getIdProperty(): string;
-        protected getNameProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        private nextId;
-        constructor(container: JQuery);
-        protected getButtons(): any[];
-        protected getSlickOptions(): Slick.GridOptions;
-        protected usePager(): boolean;
-        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
-    }
-}
-declare namespace Store.Store {
     class SupplierDialog extends Serenity.EntityDialog<SupplierRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
@@ -4361,6 +4347,23 @@ declare namespace Store.Store {
 declare namespace Store.Authorization {
     let userDefinition: ScriptUserDefinition;
     function hasPermission(permissionKey: string): boolean;
+}
+declare namespace Store.Store {
+    class StoreMove extends Serenity.EntityGrid<StoreMoveRow, any> {
+        protected getColumnsKey(): string;
+        protected getIdProperty(): string;
+        protected getNameProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        private nextId;
+        constructor(container: JQuery);
+        protected onViewProcessData(response: Serenity.ListResponse<Store.StoreMoveRow>): Serenity.ListResponse<StoreMoveRow>;
+        protected getButtons(): any[];
+        protected createSlickGrid(): Slick.Grid;
+        protected getSlickOptions(): Slick.GridOptions;
+        protected usePager(): boolean;
+        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
+    }
 }
 declare namespace Store.Membership {
     class ChangePasswordPanel extends Serenity.PropertyPanel<ChangePasswordRequest, any> {

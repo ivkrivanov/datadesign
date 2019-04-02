@@ -12,8 +12,8 @@ namespace Store.Store.Entities
 
     [ConnectionKey("Store"), Module("Store"), TableName("[dbo].[Shops]")]
     [DisplayName("Shops"), InstanceName("Shops")]
-    [ReadPermission(PermissionKeys.Supplier.View)]
-    [ModifyPermission(PermissionKeys.Supplier.Modify)]
+    [ReadPermission(StorePermissionKeys.Supplier.View)]
+    [ModifyPermission(StorePermissionKeys.Supplier.Modify)]
     //[LookupScript("Store.Shops", LookupType = typeof(Scripts.MultiTenantRowLookupScript<>))]
     [LookupScript(typeof(Lookups.ShopsLookup))]
     public sealed class ShopsRow : LoggingRow, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow

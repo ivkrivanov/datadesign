@@ -11,8 +11,8 @@ namespace Store.Store.Entities
 
     [ConnectionKey("Store"), Module("Store"), TableName("[dbo].[ProductMovement]")]
     [DisplayName("Product Movement"), InstanceName("Product Movement")]
-    [ReadPermission(PermissionKeys.Counterparty.View)]
-    [ModifyPermission(PermissionKeys.Counterparty.Modify)]
+    [ReadPermission(StorePermissionKeys.Counterparty.View)]
+    [ModifyPermission(StorePermissionKeys.Counterparty.Modify)]
     public sealed class ProductMovementRow : LoggingRow, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
     {
         [DisplayName("Move Id"), NotNull, Identity, QuickSearch]

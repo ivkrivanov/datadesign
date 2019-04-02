@@ -875,10 +875,9 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
-    <Content Include="Modules\Store\Reports\Invoices\WaresMovementDetailReport.cshtml" />
-    <Content Include="Modules\Store\Reports\Invoices\ProductMovementDetailReport.cshtml" />
-    <Content Include="Modules\Store\Reports\Warehause\StoreMove\StoreMoveIndex.cshtml" />
-    <Content Include="Modules\Store\Reports\Warehause\StoreMoveReport.cshtml" />
+    <Content Include="Modules\BasicReports\Invoices\WaresMovementDetailReport.cshtml" />
+    <Content Include="Modules\BasicReports\Invoices\ProductMovementDetailReport.cshtml" />
+    <Content Include="Modules\BasicReports\Warehause\StoreMove\Index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Scripts\ckeditor\skins\moono\readme.md" />
     <Content Include="Scripts\ckeditor\README.md" />
@@ -1074,7 +1073,7 @@
     <TypeScriptCompile Include="Modules\Store\Shared\PhoneEditor.ts" />
     <TypeScriptCompile Include="Modules\Store\Shipper\ShipperFormatter.ts" />
     <TypeScriptCompile Include="Modules\Store\Shops\ShopsEditor.ts" />
-    <TypeScriptCompile Include="Modules\Store\Reports\Warehause\StoreMove\StoreMoveGrid.ts" />
+    <TypeScriptCompile Include="Modules\BasicReports\Warehause\StoreMove\StoreMoveGrid.ts" />
     <TypeScriptCompile Include="Modules\Store\WaresMovementDetails\WaresMovementDetailsEditor.ts" />
     <TypeScriptCompile Include="Modules\Store\WaresMovementDetails\WaresMovementDetailsGrid.ts" />
     <TypeScriptCompile Include="Modules\Store\WaresMovement\StoreAverageDialog.ts" />
@@ -2074,23 +2073,23 @@
     <Compile Include="Modules\Store\ProductMovement\ProductMovementListRequest.cs" />
     <Compile Include="Modules\Store\ProductMovement\ProductMovementOperations.cs" />
     <Compile Include="Modules\Store\Product\ProductExcelImportForm.cs" />
-    <Compile Include="Modules\Store\Reports\BasicReportNavigation.cs" />
-    <Compile Include="Modules\Store\Reports\BasicReportPage.cs" />
-    <Compile Include="Modules\Store\Reports\Invoices\ProductMovementDetailReport.cs" />
+    <Compile Include="Modules\BasicReports\BasicReportsNavigation.cs" />
+    <Compile Include="Modules\BasicReports\BasicReportsPage.cs" />
+    <Compile Include="Modules\BasicReports\Invoices\ProductMovementDetailReport.cs" />
+    <Compile Include="Modules\BasicReports\Warehause\BasicReportNavigation.Warehause.cs" />
+    <Compile Include="Modules\BasicReports\Warehause\BasicReportPage.Warehause.cs" />
     <Compile Include="Modules\Store\Reports\ReportsPage.cs" />
-    <Compile Include="Modules\Store\Reports\Warehause\BasicReportNavigation.Warehause.cs" />
-    <Compile Include="Modules\Store\Reports\Warehause\BasicReportPage.Warehause.cs" />
-    <Compile Include="Modules\Store\Reports\Warehause\StoreMoveReport.cs" />
+    <Compile Include="Modules\Store\Reports\StoreMoveReport.cs" />
     <Compile Include="Modules\Store\Shipper\ShippingState.cs" />
     <Compile Include="Modules\Store\Shops\ShopLookup.cs" />
-    <Compile Include="Modules\Store\Reports\Invoices\WaresMovementDetailReport.cs" />
+    <Compile Include="Modules\BasicReports\Invoices\WaresMovementDetailReport.cs" />
     <Compile Include="Modules\Store\Store\Average.cs" />
     <Compile Include="Modules\Store\Store\DAL.cs" />
-    <Compile Include="Modules\Store\Reports\Warehause\StoreMove\StoreMoveColumns.cs" />
-    <Compile Include="Modules\Store\Reports\Warehause\StoreMove\StoreMoveEndpoint.cs" />
-    <Compile Include="Modules\Store\Reports\Warehause\StoreMove\StoreMoveListRequest.cs" />
-    <Compile Include="Modules\Store\Reports\Warehause\StoreMove\StoreMoveRepository.cs" />
-    <Compile Include="Modules\Store\Reports\Warehause\StoreMove\StoreMoveRow.cs" />
+    <Compile Include="Modules\BasicReports\Warehause\StoreMove\StoreMoveColumns.cs" />
+    <Compile Include="Modules\BasicReports\Warehause\StoreMove\StoreMoveEndpoint.cs" />
+    <Compile Include="Modules\BasicReports\Warehause\StoreMove\StoreMoveListRequest.cs" />
+    <Compile Include="Modules\BasicReports\Warehause\StoreMove\StoreMoveRepository.cs" />
+    <Compile Include="Modules\BasicReports\Warehause\StoreMove\StoreMoveRow.cs" />
     <Compile Include="Modules\Store\WaresMovement\StoreAverageForm.cs" />
     <Compile Include="Modules\Store\WaresMovement\WaresMovementOperations.cs" />
     <Content Include="Modules\Common\Reporting\ReportPage.cshtml" />
@@ -2412,6 +2411,9 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Common\Reporting\PdfExportHelper.ts" />
     <TypeScriptCompile Include="Scripts\typings\jspdf\jspdf.autotable.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Modules\BasicReports\Warehause\WaresFile\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

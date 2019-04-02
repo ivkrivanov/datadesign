@@ -18,7 +18,7 @@ using MyPages = Store.Store.Pages;
 [assembly: NavigationLink(5000, "Store/Supplier", typeof(MyPages.SupplierController), icon: "fa-truck")]
 
 
-[assembly: NavigationLink(7900, "Store/Reports", typeof(MyPages.ReportsController), icon: "fa-files-o")]
+//[assembly: NavigationLink(7900, "BasicReports", typeof(MyPages.BasicReportsController), icon: "fa-files-o")]
 
 //[assembly: NavigationLink(6000, "Store/Order", typeof(MyPages.OrderController), icon: null)]
 
@@ -35,3 +35,4 @@ using MyPages = Store.Store.Pages;
 //[assembly: NavigationLink(int.MaxValue, "Store/Wares Movement Details", typeof(MyPages.WaresMovementDetailsController), icon: null)]
 //[assembly: NavigationLink(int.MaxValue, "Store/Product Movement Details", typeof(MyPages.ProductMovementDetailsController), icon: null)]
 [assembly: NavigationLink(int.MaxValue, "Store/Store", typeof(MyPages.StoreController), icon: null)]
+[assembly: NavigationLink(7900, "Store/Reports", typeof(MyPages.ReportsController), icon: "fa-files-o")]

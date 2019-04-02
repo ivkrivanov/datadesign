@@ -11,9 +11,9 @@ namespace Store.Store.Entities
 
     [ConnectionKey("Store"), Module("Store"), TableName("[dbo].[Counterparties]")]
     [DisplayName("Counterparties"), InstanceName("Counterparty")]
-    [ReadPermission(PermissionKeys.Counterparty.View)]
-    [ModifyPermission(PermissionKeys.Counterparty.Modify)]
-    [DeletePermission(PermissionKeys.Counterparty.Delete)]
+    [ReadPermission(StorePermissionKeys.Counterparty.View)]
+    [ModifyPermission(StorePermissionKeys.Counterparty.Modify)]
+    [DeletePermission(StorePermissionKeys.Counterparty.Delete)]
     [LeftJoin("cd", "CounterpartyDetails", "cd.[ID] = t0.[ID]", RowType = typeof(CounterpartyDetailRow), TitlePrefix = "")]
     [UpdatableExtension("cd", typeof(CounterpartyDetailRow), CascadeDelete = true)]
     [LookupScript(typeof(Lookups.CounterpartyLookup))]

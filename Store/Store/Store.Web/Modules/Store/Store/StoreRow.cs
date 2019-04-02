@@ -12,8 +12,8 @@ namespace Store.Store.Entities
 
     [ConnectionKey("Store"), Module("Store"), TableName("[dbo].[Store]")]
     [DisplayName("Store"), InstanceName("Store")]
-    [ReadPermission(PermissionKeys.General)]
-    [ModifyPermission(PermissionKeys.General)]
+    [ReadPermission(StorePermissionKeys.General)]
+    [ModifyPermission(StorePermissionKeys.General)]
     public sealed class StoreRow : LoggingRow, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
     {
         [DisplayName("Position")]

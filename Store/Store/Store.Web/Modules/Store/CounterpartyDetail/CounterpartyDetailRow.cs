@@ -10,8 +10,8 @@ namespace Store.Store.Entities
 
     [ConnectionKey("Store"), Module("Store"), TableName("[dbo].[CounterpartyDetails]")]
     [DisplayName("CounterpartiesDetails"), InstanceName("CounterpartyDetail")]
-    [ReadPermission(PermissionKeys.Counterparty.View)]
-    [ModifyPermission(PermissionKeys.Counterparty.Modify)]
+    [ReadPermission(StorePermissionKeys.Counterparty.View)]
+    [ModifyPermission(StorePermissionKeys.Counterparty.Modify)]
     public sealed class CounterpartyDetailRow : Row, IIdRow, INameRow
     {
         [DisplayName("Id"), Column("ID"), PrimaryKey]

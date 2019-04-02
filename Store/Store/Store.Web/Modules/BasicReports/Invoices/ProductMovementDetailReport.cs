@@ -9,8 +9,8 @@ namespace Store.Store
     using System.Collections.Generic;
 
     [Report("Store.ProductMovementDetails")]
-    [ReportDesign(MVC.Views.Store.Reports.Invoices.ProductMovementDetailReport)]
-    [RequiredPermission(PermissionKeys.General)]
+    [ReportDesign(MVC.Views.BasicReports.Invoices.ProductMovementDetailReport)]
+    [RequiredPermission(StorePermissionKeys.General)]
     public class ProductMovementDetailReport : IReport, ICustomizeHtmlToPdf
     {
         public Int32 ProductMoveID { get; set; }

@@ -11,9 +11,9 @@ namespace Store.Store.Entities
 
     [ConnectionKey("Store"), Module("Store"), TableName("[dbo].[Wares]")]
     [DisplayName("Wares"), InstanceName("Wares")]
-    [ReadPermission(PermissionKeys.Wares.View)]
-    [ModifyPermission(PermissionKeys.Wares.Modify)]
-    [DeletePermission(PermissionKeys.Wares.Delete)]
+    [ReadPermission(StorePermissionKeys.Wares.View)]
+    [ModifyPermission(StorePermissionKeys.Wares.Modify)]
+    [DeletePermission(StorePermissionKeys.Wares.Delete)]
     [LookupScript("Store.Wares", LookupType = typeof(MultiTenantRowLookupScript<>))]
     //[CaptureLog(typeof(ItemLogRow))]
     [LocalizationRow(typeof(WaresLangRow))]

@@ -6,7 +6,7 @@ namespace Store.Store
 
     [NestedPermissionKeys]
     [DisplayName("Store")]
-    public class PermissionKeys
+    public class StorePermissionKeys
     {
         [DisplayName("Customers")]
         public class Customer

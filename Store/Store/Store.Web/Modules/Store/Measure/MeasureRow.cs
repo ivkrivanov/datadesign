@@ -13,8 +13,8 @@ namespace Store.Store.Entities
 
     [ConnectionKey("Store"), Module("Store"), TableName("[dbo].[Measures]")]
     [DisplayName("Measures"), InstanceName("Measure")]
-    [ReadPermission(PermissionKeys.General)]
-    [ModifyPermission(PermissionKeys.General)]
+    [ReadPermission(StorePermissionKeys.General)]
+    [ModifyPermission(StorePermissionKeys.General)]
     [LookupScript("Store.Measure", LookupType = typeof(MultiTenantRowLookupScript<>))]
     public sealed class MeasureRow : LoggingRow, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
     {

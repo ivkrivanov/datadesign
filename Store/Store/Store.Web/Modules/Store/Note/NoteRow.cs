@@ -8,8 +8,8 @@
 
     [ConnectionKey("Store"), Module("Store"), TableName("[dbo].[Notes]")]
     [DisplayName("Note"), InstanceName("Note")]
-    [ReadPermission(PermissionKeys.General)]
-    [ModifyPermission(PermissionKeys.General)]
+    [ReadPermission(StorePermissionKeys.General)]
+    [ModifyPermission(StorePermissionKeys.General)]
     public sealed class NoteRow : Row, IIdRow, INameRow, IInsertLogRow
     {
         [DisplayName("Note Id"), Column("NoteID"), Identity]

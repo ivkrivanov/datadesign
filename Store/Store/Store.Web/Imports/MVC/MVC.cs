@@ -33,6 +33,24 @@ namespace MVC
 
         }
 
+        public static class BasicReports
+        {
+            public static class Invoices
+            {
+                public const string ProductMovementDetailReport = "~/Modules/BasicReports/Invoices/ProductMovementDetailReport.cshtml";
+                public const string WaresMovementDetailReport = "~/Modules/BasicReports/Invoices/WaresMovementDetailReport.cshtml";
+            }
+
+            public static class Warehause
+            {
+                public static class StoreMove
+                {
+                    public const string Index = "~/Modules/BasicReports/Warehause/StoreMove/Index.cshtml";
+                }
+            }
+
+        }
+
         public static class Common
         {
             public static class Dashboard
@@ -148,20 +166,6 @@ namespace MVC
                 public const string ProductMovementDetailsIndex = "~/Modules/Store/ProductMovementDetails/ProductMovementDetailsIndex.cshtml";
             }
 
-            public static class Reports
-            {
-                public static class Invoices
-                {
-                    public const string ProductMovementDetailReport = "~/Modules/Store/Reports/Invoices/ProductMovementDetailReport.cshtml";
-                    public const string WaresMovementDetailReport = "~/Modules/Store/Reports/Invoices/WaresMovementDetailReport.cshtml";
-                }
-
-                public static class Warehause
-                {
-                    public const string StoreMoveReport = "~/Modules/Store/Reports/Warehause/StoreMoveReport.cshtml";
-                }
-            }
-
             public static class Shipper
             {
                 public const string ShipperIndex = "~/Modules/Store/Shipper/ShipperIndex.cshtml";
@@ -175,11 +179,6 @@ namespace MVC
             public static class Store_
             {
                 public const string StoreIndex = "~/Modules/Store/Store/StoreIndex.cshtml";
-            }
-
-            public static class StoreMove
-            {
-                public const string StoreMoveIndex = "~/Modules/Store/StoreMove/StoreMoveIndex.cshtml";
             }
 
             public static class Supplier

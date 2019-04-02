@@ -1,18 +1,15 @@
 ﻿namespace Store.Store.Entities
 {
-    using global::Store.Administration.Entities;
-    using Serenity;
     using Serenity.ComponentModel;
     using Serenity.Data;
     using Serenity.Data.Mapping;
     using System;
     using System.ComponentModel;
-    using System.IO;
 
-    [ConnectionKey("Store"), Module("Store"), TableName("[dbo].[Store]")]
+    [ConnectionKey("Store"), Module("Store"), TableName("[dbo].[StoreMove]")]
     [DisplayName("Store move")]
-    [ReadPermission(PermissionKeys.General)]
-    [ModifyPermission(PermissionKeys.General)]
+    [ReadPermission(StorePermissionKeys.General)]
+    [ModifyPermission(StorePermissionKeys.General)]
     public sealed class StoreMoveRow : Row, INameRow
     {
         [DisplayName("Shop ID"), Column("ShopID"), PrimaryKey]
@@ -152,6 +149,7 @@
 
             public DecimalField ReCost;
             public BooleanField Mistake;
+            //public Int32Field TenantID;
         }
     }
 }

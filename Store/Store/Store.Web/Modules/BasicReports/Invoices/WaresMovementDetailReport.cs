@@ -10,8 +10,8 @@ namespace Store.Store
 
 
     [Report("Store.WaresMovementDetails")]
-    [ReportDesign(MVC.Views.Store.Reports.Invoices.WaresMovementDetailReport)]
-    [RequiredPermission(PermissionKeys.General)]
+    [ReportDesign(MVC.Views.BasicReports.Invoices.WaresMovementDetailReport)]
+    [RequiredPermission(StorePermissionKeys.General)]
     public class WaresMovementDetailReport : IReport, ICustomizeHtmlToPdf
     {
         public Int32 WaresMoveID { get; set; }

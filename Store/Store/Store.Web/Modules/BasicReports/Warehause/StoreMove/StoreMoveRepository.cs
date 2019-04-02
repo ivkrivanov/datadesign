@@ -1,8 +1,10 @@
 ﻿
 namespace Store.Store.Repositories
 {
+    using Serenity;
     using Serenity.Data;
     using Serenity.Services;
+    using Store;
     using System.Collections.Generic;
     using System.Data;
     using MyRow = Entities.StoreMoveRow;
@@ -14,13 +16,17 @@ namespace Store.Store.Repositories
         public ListResponse<MyRow> List(IDbConnection connection,
             StoreMoveListRequest request)
         {
+
+            var user = (UserDefinition)Authorization.UserDefinition;
+            int tn = user.TenantId;
+
             var data = connection.Query<MyRow>("usp_StoreMove",
                 param: new
                 {
                     @dateFrom = request.StartDate,
                     @dateTill = request.EndDate,
                     @shopid = 1,
-                    @Tenant = 4
+                    @Tenant = tn
                 },
                 commandType: CommandType.StoredProcedure);
 

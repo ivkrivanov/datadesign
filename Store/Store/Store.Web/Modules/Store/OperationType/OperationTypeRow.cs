@@ -10,8 +10,8 @@ namespace Store.Store.Entities
 
     [ConnectionKey("Store"), Module("Store"), TableName("[dbo].[OperationType]")]
     [DisplayName("Operation Type"), InstanceName("OperationType")]
-    [ReadPermission(PermissionKeys.General)]
-    [ModifyPermission(PermissionKeys.General)]
+    [ReadPermission(StorePermissionKeys.General)]
+    [ModifyPermission(StorePermissionKeys.General)]
     [LookupScript("Store.OperationType", LookupType = typeof(Scripts.MultiTenantRowLookupScript<>))]
     public sealed class OperationTypeRow : LoggingRow, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
     {

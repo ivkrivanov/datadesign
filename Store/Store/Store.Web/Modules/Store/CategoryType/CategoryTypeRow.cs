@@ -10,8 +10,8 @@ namespace Store.Store.Entities
 
     [ConnectionKey("Store"), Module("Store"), TableName("[dbo].[CategoriesType]")]
     [DisplayName("Category Type"), InstanceName("Category Type")]
-    [ReadPermission(PermissionKeys.General)]
-    [ModifyPermission(PermissionKeys.General)]
+    [ReadPermission(StorePermissionKeys.General)]
+    [ModifyPermission(StorePermissionKeys.General)]
     [LookupScript("Store.CategoryType", LookupType = typeof(Scripts.MultiTenantRowLookupScript<>))]
 
     public sealed class CategoryTypeRow : LoggingRow, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
