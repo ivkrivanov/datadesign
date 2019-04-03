@@ -1,11 +1,11 @@
-﻿namespace Store.Store {
+﻿namespace Store.BasicReports {
     @Serenity.Decorators.registerClass()
-    export class StoreMove extends Serenity.EntityGrid<StoreMoveRow, any> {
+    export class StoreMoveGrid extends Serenity.EntityGrid<Store.StoreMoveRow, any> {
 
-        protected getColumnsKey() { return "BasicReports.StoreMoves"; }
+        protected getColumnsKey() { return "BasicReports.StoreMove"; }
         protected getIdProperty() { return "__id"; }
-        protected getNameProperty() { return StoreMoveRow.nameProperty; }
-        protected getLocalTextPrefix() { return StoreMoveRow.localTextPrefix; }
+        protected getNameProperty() { return Store.StoreMoveRow.nameProperty; }
+        protected getLocalTextPrefix() { return Store.StoreMoveRow.localTextPrefix; }
         protected getService() { return StoreMoveService.baseUrl; }
 
         private nextId = 1;
@@ -43,7 +43,13 @@
 
         protected createSlickGrid() {
             var grid = super.createSlickGrid();
+            grid.registerPlugin(new Slick.Data.GroupItemMetadataProvider());
 
+
+            this.view.setGrouping(
+                [{
+                    getter: 'ShopID'
+                }]);
 
             return grid;
         }

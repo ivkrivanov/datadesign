@@ -2,8 +2,12 @@
     export interface StoreMoveRow {
         ShopID?: number;
         WaresID?: number;
-        Key?: string;
+        WaresCode?: string;
+        WaresName?: string;
         Date?: string;
+        InitialQuantity?: number;
+        InitialSinglePrice?: number;
+        InitialValue?: number;
         IncomeQuantity?: number;
         IncomeSinglePrice?: number;
         IncomeValue?: number;
@@ -18,14 +22,18 @@
     }
 
     export namespace StoreMoveRow {
-        export const nameProperty = 'Key';
+        export const nameProperty = 'WaresCode';
         export const localTextPrefix = 'Store.StoreMove';
 
         export declare const enum Fields {
             ShopID = "ShopID",
             WaresID = "WaresID",
-            Key = "Key",
+            WaresCode = "WaresCode",
+            WaresName = "WaresName",
             Date = "Date",
+            InitialQuantity = "InitialQuantity",
+            InitialSinglePrice = "InitialSinglePrice",
+            InitialValue = "InitialValue",
             IncomeQuantity = "IncomeQuantity",
             IncomeSinglePrice = "IncomeSinglePrice",
             IncomeValue = "IncomeValue",

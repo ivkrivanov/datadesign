@@ -1,4 +1,4 @@
-﻿namespace Store.Store {
+﻿namespace Store.BasicReports {
     export interface StoreMoveListRequest extends Serenity.ListRequest {
         ShopID?: number;
         TenantID?: number;

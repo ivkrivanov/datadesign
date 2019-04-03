@@ -1,5 +1,5 @@
 ﻿
-namespace Store.Store
+namespace Store.BasicReports
 {
     using Serenity.Services;
     using System;

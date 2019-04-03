@@ -26,11 +26,18 @@
             set { Fields.WaresID[this] = value; }
         }
 
-        [DisplayName("Key"), Size(15), QuickSearch]
-        public String Key
+        [DisplayName("Key"), QuickSearch]
+        public String WaresCode
         {
-            get { return Fields.Key[this]; }
-            set { Fields.Key[this] = value; }
+            get { return Fields.WaresCode[this]; }
+            set { Fields.WaresCode[this] = value; }
+        }
+
+        [DisplayName("Name"), QuickSearch]
+        public String WaresName
+        {
+            get { return Fields.WaresName[this]; }
+            set { Fields.WaresName[this] = value; }
         }
 
         [DisplayName("Date"), PrimaryKey]
@@ -38,6 +45,27 @@
         {
             get { return Fields.Date[this]; }
             set { Fields.Date[this] = value; }
+        }
+
+        [DisplayName("Initial Quantity"), Size(15), Scale(4)]
+        public Decimal? InitialQuantity
+        {
+            get { return Fields.InitialQuantity[this]; }
+            set { Fields.InitialQuantity[this] = value; }
+        }
+
+        [DisplayName("Initial Single Price"), Size(15), Scale(4)]
+        public Decimal? InitialSinglePrice
+        {
+            get { return Fields.InitialSinglePrice[this]; }
+            set { Fields.InitialSinglePrice[this] = value; }
+        }
+
+        [DisplayName("Initial Value"), Size(15), Scale(4)]
+        public Decimal? InitialValue
+        {
+            get { return Fields.InitialValue[this]; }
+            set { Fields.InitialValue[this] = value; }
         }
 
         [DisplayName("Income Quantity"), Size(15), Scale(4)]
@@ -119,12 +147,11 @@
 
         StringField INameRow.NameField
         {
-            get { return Fields.Key; }
+            get { return Fields.WaresCode; }
         }
 
         public static readonly RowFields Fields = new RowFields().Init();
-        public StoreMoveRow()
-        : base(Fields)
+        public StoreMoveRow() : base(Fields)
         {
         }
 
@@ -132,8 +159,13 @@
         {
             public Int32Field ShopID;
             public Int32Field WaresID;
-            public StringField Key;
+            public StringField WaresCode;
+            public StringField WaresName;
             public DateTimeField Date;
+
+            public DecimalField InitialQuantity;
+            public DecimalField InitialSinglePrice;
+            public DecimalField InitialValue;
 
             public DecimalField IncomeQuantity;
             public DecimalField IncomeSinglePrice;

@@ -1,8 +1,8 @@
-﻿namespace Store.Store {
+﻿namespace Store.BasicReports {
     export namespace StoreMoveService {
         export const baseUrl = 'BasicReports/StoreMove';
 
-        export declare function List(request: StoreMoveListRequest, onSuccess?: (response: Serenity.ListResponse<StoreMoveRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        export declare function List(request: StoreMoveListRequest, onSuccess?: (response: Serenity.ListResponse<Store.StoreMoveRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
 
         export declare const enum Methods {
             List = "BasicReports/StoreMove/List"

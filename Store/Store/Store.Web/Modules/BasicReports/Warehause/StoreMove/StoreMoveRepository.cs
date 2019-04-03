@@ -1,13 +1,12 @@
 ﻿
-namespace Store.Store.Repositories
+namespace Store.BasicReports.Repositories
 {
     using Serenity;
     using Serenity.Data;
     using Serenity.Services;
-    using Store;
     using System.Collections.Generic;
     using System.Data;
-    using MyRow = Entities.StoreMoveRow;
+    using MyRow = Store.Entities.StoreMoveRow;
 
     public class StoreMoveRepository
     {
@@ -23,10 +22,10 @@ namespace Store.Store.Repositories
             var data = connection.Query<MyRow>("usp_StoreMove",
                 param: new
                 {
-                    @dateFrom = request.StartDate,
-                    @dateTill = request.EndDate,
-                    @shopid = 1,
-                    @Tenant = tn
+                    dateFrom = request.StartDate,
+                    dateTill = request.EndDate,
+                    shopid = 1,
+                    Tenant = tn
                 },
                 commandType: CommandType.StoredProcedure);
 

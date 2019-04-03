@@ -1,5 +1,5 @@
 ﻿
-namespace Store.Store.Endpoints
+namespace Store.BasicReports.Endpoints
 {
     using Serenity.Data;
     using Serenity.Reporting;
@@ -9,7 +9,7 @@ namespace Store.Store.Endpoints
     using System.Data;
     using System.Web.Mvc;
     using MyRepository = Repositories.StoreMoveRepository;
-    using MyRow = Entities.StoreMoveRow;
+    using MyRow = Store.Entities.StoreMoveRow;
 
     [RoutePrefix("Services/BasicReports/StoreMove"), Route("{action}")]
     [ConnectionKey(typeof(MyRow)), ServiceAuthorize(typeof(MyRow))]
