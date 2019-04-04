@@ -19,6 +19,7 @@
         RestValue?: number;
         ReCost?: number;
         Mistake?: boolean;
+        ShopName?: string;
     }
 
     export namespace StoreMoveRow {
@@ -44,7 +45,8 @@
             RestSinglePrice = "RestSinglePrice",
             RestValue = "RestValue",
             ReCost = "ReCost",
-            Mistake = "Mistake"
+            Mistake = "Mistake",
+            ShopName = "ShopName"
         }
     }
 }

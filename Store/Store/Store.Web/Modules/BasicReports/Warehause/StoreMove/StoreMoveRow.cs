@@ -6,17 +6,26 @@
     using System;
     using System.ComponentModel;
 
-    [ConnectionKey("Store"), Module("Store"), TableName("[dbo].[StoreMove]")]
+    [ConnectionKey("Store"), Module("Store")] //, TableName("[dbo].[StoreMove]")]
     [DisplayName("Store move")]
     [ReadPermission(StorePermissionKeys.General)]
     [ModifyPermission(StorePermissionKeys.General)]
     public sealed class StoreMoveRow : Row, INameRow
     {
         [DisplayName("Shop ID"), Column("ShopID"), PrimaryKey]
+        //[DisplayName("Shop"), ForeignKey(typeof(ShopsRow)), LeftJoin("shop")]
         public Int32? ShopID
         {
             get { return Fields.ShopID[this]; }
             set { Fields.ShopID[this] = value; }
+        }
+
+        [DisplayName("Shop"), Expression("shop.ShopName")]
+        [LookupEditor(typeof(ShopsRow))]
+        public String ShopName
+        {
+            get { return Fields.ShopName[this]; }
+            set { Fields.ShopName[this] = value; }
         }
 
         [DisplayName("Wares ID"), Column("WaresID"), PrimaryKey]
@@ -47,35 +56,37 @@
             set { Fields.Date[this] = value; }
         }
 
-        [DisplayName("Initial Quantity"), Size(15), Scale(4)]
+        [DisplayName("Init Q-ty"), Size(15), Scale(4), Expression("(T0.[RestQuantity] - T0.[IncomeQuantity] + T0.[ExpenceQuantity])")]
+        [AlignRight, DisplayFormat("#,##0.00"), MinSelectLevel(SelectLevel.List)]
         public Decimal? InitialQuantity
         {
             get { return Fields.InitialQuantity[this]; }
             set { Fields.InitialQuantity[this] = value; }
         }
 
-        [DisplayName("Initial Single Price"), Size(15), Scale(4)]
+        [DisplayName("Init Price"), Size(15), Scale(4)]
         public Decimal? InitialSinglePrice
         {
             get { return Fields.InitialSinglePrice[this]; }
             set { Fields.InitialSinglePrice[this] = value; }
         }
 
-        [DisplayName("Initial Value"), Size(15), Scale(4)]
+        [DisplayName("Init Value"), Size(15), Scale(4), Expression("(t0. [RestValue] - t0.[IncomeValue] + t0.[ExpenceValue])")]
+        [AlignRight, DisplayFormat("#,##0.00"), MinSelectLevel(SelectLevel.List)]
         public Decimal? InitialValue
         {
             get { return Fields.InitialValue[this]; }
             set { Fields.InitialValue[this] = value; }
         }
 
-        [DisplayName("Income Quantity"), Size(15), Scale(4)]
+        [DisplayName("Income Q-ty"), Size(15), Scale(4)]
         public Decimal? IncomeQuantity
         {
             get { return Fields.IncomeQuantity[this]; }
             set { Fields.IncomeQuantity[this] = value; }
         }
 
-        [DisplayName("Income Single Price"), Size(15), Scale(4)]
+        [DisplayName("Income Price"), Size(15), Scale(4)]
         public Decimal? IncomeSinglePrice
         {
             get { return Fields.IncomeSinglePrice[this]; }
@@ -89,35 +100,35 @@
             set { Fields.IncomeValue[this] = value; }
         }
 
-        [DisplayName("Expence Quantity"), Size(15), Scale(4)]
+        [DisplayName("Exp. Q-ty"), Size(15), Scale(4)]
         public Decimal? ExpenceQuantity
         {
             get { return Fields.ExpenceQuantity[this]; }
             set { Fields.ExpenceQuantity[this] = value; }
         }
 
-        [DisplayName("Expence Single Price"), Size(15), Scale(4)]
+        [DisplayName("Exp. Price"), Size(15), Scale(4)]
         public Decimal? ExpenceSinglePrice
         {
             get { return Fields.ExpenceSinglePrice[this]; }
             set { Fields.ExpenceSinglePrice[this] = value; }
         }
 
-        [DisplayName("Expence Value"), Size(15), Scale(4)]
+        [DisplayName("Exp. Value"), Size(15), Scale(4)]
         public Decimal? ExpenceValue
         {
             get { return Fields.ExpenceValue[this]; }
             set { Fields.ExpenceValue[this] = value; }
         }
 
-        [DisplayName("Rest Quantity"), Size(15), Scale(4)]
+        [DisplayName("Rest Q-ty"), Size(15), Scale(4)]
         public Decimal? RestQuantity
         {
             get { return Fields.RestQuantity[this]; }
             set { Fields.RestQuantity[this] = value; }
         }
 
-        [DisplayName("Rest Single Price"), Size(15), Scale(4)]
+        [DisplayName("Rest Price"), Size(15), Scale(4)]
         public Decimal? RestSinglePrice
         {
             get { return Fields.RestSinglePrice[this]; }
@@ -158,6 +169,7 @@
         public class RowFields : RowFieldsBase
         {
             public Int32Field ShopID;
+            
             public Int32Field WaresID;
             public StringField WaresCode;
             public StringField WaresName;
@@ -182,6 +194,8 @@
             public DecimalField ReCost;
             public BooleanField Mistake;
             //public Int32Field TenantID;
+
+            public StringField ShopName;
         }
     }
 }

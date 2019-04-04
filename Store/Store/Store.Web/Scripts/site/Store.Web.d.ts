@@ -2525,6 +2525,7 @@ declare namespace Store.Store {
         RestValue?: number;
         ReCost?: number;
         Mistake?: boolean;
+        ShopName?: string;
     }
     namespace StoreMoveRow {
         const nameProperty = "WaresCode";
@@ -2548,7 +2549,8 @@ declare namespace Store.Store {
             RestSinglePrice = "RestSinglePrice",
             RestValue = "RestValue",
             ReCost = "ReCost",
-            Mistake = "Mistake"
+            Mistake = "Mistake",
+            ShopName = "ShopName"
         }
     }
 }
