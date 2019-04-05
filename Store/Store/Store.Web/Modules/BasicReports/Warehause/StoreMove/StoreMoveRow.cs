@@ -6,14 +6,13 @@
     using System;
     using System.ComponentModel;
 
-    [ConnectionKey("Store"), Module("Store")] //, TableName("[dbo].[StoreMove]")]
+    [ConnectionKey("Store"), Module("Store"), TableName("[dbo].[usp_StoreMove]")]
     [DisplayName("Store move")]
     [ReadPermission(StorePermissionKeys.General)]
     [ModifyPermission(StorePermissionKeys.General)]
     public sealed class StoreMoveRow : Row, INameRow
     {
         [DisplayName("Shop ID"), Column("ShopID"), PrimaryKey]
-        //[DisplayName("Shop"), ForeignKey(typeof(ShopsRow)), LeftJoin("shop")]
         public Int32? ShopID
         {
             get { return Fields.ShopID[this]; }
@@ -56,7 +55,7 @@
             set { Fields.Date[this] = value; }
         }
 
-        [DisplayName("Init Q-ty"), Size(15), Scale(4), Expression("(T0.[RestQuantity] - T0.[IncomeQuantity] + T0.[ExpenceQuantity])")]
+        [DisplayName("Init Q-ty"), Size(15), Scale(4)]
         [AlignRight, DisplayFormat("#,##0.00"), MinSelectLevel(SelectLevel.List)]
         public Decimal? InitialQuantity
         {
@@ -71,8 +70,7 @@
             set { Fields.InitialSinglePrice[this] = value; }
         }
 
-        [DisplayName("Init Value"), Size(15), Scale(4), Expression("(t0. [RestValue] - t0.[IncomeValue] + t0.[ExpenceValue])")]
-        [AlignRight, DisplayFormat("#,##0.00"), MinSelectLevel(SelectLevel.List)]
+        [DisplayName("Init Value"), Size(15), Scale(4)]
         public Decimal? InitialValue
         {
             get { return Fields.InitialValue[this]; }

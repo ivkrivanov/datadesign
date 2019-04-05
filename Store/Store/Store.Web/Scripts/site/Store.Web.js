@@ -2448,6 +2448,38 @@ var Store;
 })(Store || (Store = {}));
 var Store;
 (function (Store) {
+    var LanguageList;
+    (function (LanguageList) {
+        function getValue() {
+            var result = [];
+            for (var _i = 0, _a = Store.Administration.LanguageRow.getLookup().items; _i < _a.length; _i++) {
+                var k = _a[_i];
+                if (k.LanguageId !== 'en') {
+                    result.push([k.Id.toString(), k.LanguageName]);
+                }
+            }
+            return result;
+        }
+        LanguageList.getValue = getValue;
+    })(LanguageList = Store.LanguageList || (Store.LanguageList = {}));
+})(Store || (Store = {}));
+/// <reference path="../Common/Helpers/LanguageList.ts" />
+var Store;
+(function (Store) {
+    var ScriptInitialization;
+    (function (ScriptInitialization) {
+        Q.Config.responsiveDialogs = true;
+        Q.Config.rootNamespaces.push('Store');
+        Serenity.EntityDialog.defaultLanguageList = Store.LanguageList.getValue;
+        if ($.fn['colorbox']) {
+            $.fn['colorbox'].settings.maxWidth = "95%";
+            $.fn['colorbox'].settings.maxHeight = "95%";
+        }
+        window.onerror = Q.ErrorHandling.runtimeErrorHandler;
+    })(ScriptInitialization = Store.ScriptInitialization || (Store.ScriptInitialization = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store) {
     var Administration;
     (function (Administration) {
         var LanguageDialog = /** @class */ (function (_super) {
@@ -2971,22 +3003,6 @@ var Store;
 })(Store || (Store = {}));
 var Store;
 (function (Store) {
-    var Authorization;
-    (function (Authorization) {
-        Object.defineProperty(Authorization, 'userDefinition', {
-            get: function () {
-                return Q.getRemoteData('UserData');
-            }
-        });
-        function hasPermission(permissionKey) {
-            var ud = Authorization.userDefinition;
-            return ud.Username === 'admin' || !!ud.Permissions[permissionKey];
-        }
-        Authorization.hasPermission = hasPermission;
-    })(Authorization = Store.Authorization || (Store.Authorization = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
     var Administration;
     (function (Administration) {
         var PermissionCheckEditor = /** @class */ (function (_super) {
@@ -3456,123 +3472,6 @@ var Store;
         }(Serenity.TemplatedDialog));
         Administration.UserRoleDialog = UserRoleDialog;
     })(Administration = Store.Administration || (Store.Administration = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var BasicReports;
-    (function (BasicReports) {
-        var StoreMoveGrid = /** @class */ (function (_super) {
-            __extends(StoreMoveGrid, _super);
-            function StoreMoveGrid(container) {
-                var _this = _super.call(this, container) || this;
-                _this.nextId = 1;
-                return _this;
-            }
-            StoreMoveGrid.prototype.getColumnsKey = function () { return "BasicReports.StoreMove"; };
-            StoreMoveGrid.prototype.getIdProperty = function () { return "__id"; };
-            StoreMoveGrid.prototype.getNameProperty = function () { return Store.Store.StoreMoveRow.nameProperty; };
-            StoreMoveGrid.prototype.getLocalTextPrefix = function () { return Store.Store.StoreMoveRow.localTextPrefix; };
-            StoreMoveGrid.prototype.getService = function () { return BasicReports.StoreMoveService.baseUrl; };
-            StoreMoveGrid.prototype.onViewProcessData = function (response) {
-                response = _super.prototype.onViewProcessData.call(this, response);
-                for (var _i = 0, _a = response.Entities; _i < _a.length; _i++) {
-                    var x = _a[_i];
-                    x.__id = this.nextId++;
-                }
-                return response;
-            };
-            StoreMoveGrid.prototype.getButtons = function () {
-                var _this = this;
-                var buttons = [];
-                buttons.push(Store.Common.ExcelExportHelper.createToolButton({
-                    grid: this,
-                    service: BasicReports.StoreMoveService.baseUrl + '/ListExcel',
-                    onViewSubmit: function () { return _this.onViewSubmit(); },
-                    separator: true
-                }));
-                buttons.push(Store.Common.PdfExportHelper.createToolButton({
-                    grid: this,
-                    onViewSubmit: function () { return _this.onViewSubmit(); }
-                }));
-                return buttons;
-            };
-            StoreMoveGrid.prototype.createSlickGrid = function () {
-                var grid = _super.prototype.createSlickGrid.call(this);
-                grid.registerPlugin(new Slick.Data.GroupItemMetadataProvider());
-                this.view.setSummaryOptions({
-                    aggregators: [
-                        new Slick.Aggregators.Sum('InitValue'),
-                        new Slick.Aggregators.Sum('IncomeValue'),
-                        new Slick.Aggregators.Sum('ExpenceValue'),
-                        new Slick.Aggregators.Sum('RestValue')
-                    ]
-                });
-                this.view.setGrouping([{
-                        getter: 'ShopName'
-                    }]);
-                return grid;
-            };
-            StoreMoveGrid.prototype.getSlickOptions = function () {
-                var opt = _super.prototype.getSlickOptions.call(this);
-                opt.showFooterRow = true;
-                return opt;
-            };
-            StoreMoveGrid.prototype.usePager = function () {
-                return false;
-            };
-            StoreMoveGrid.prototype.getQuickFilters = function () {
-                var filters = _super.prototype.getQuickFilters.call(this);
-                var orderDate = this.dateRangeQuickFilter('Date', 'Date');
-                orderDate.handler = function (args) {
-                    var start = args.widget.value;
-                    var end = args.widget.element.nextAll('.s-DateEditor')
-                        .getWidget(Serenity.DateEditor).value;
-                    args.request.StartDate = start;
-                    args.request.EndDate = end;
-                    args.active = !Q.isEmptyOrNull(start) || !Q.isEmptyOrNull(end);
-                };
-                filters.push(orderDate);
-                return filters;
-            };
-            StoreMoveGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], StoreMoveGrid);
-            return StoreMoveGrid;
-        }(Serenity.EntityGrid));
-        BasicReports.StoreMoveGrid = StoreMoveGrid;
-    })(BasicReports = Store.BasicReports || (Store.BasicReports = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var LanguageList;
-    (function (LanguageList) {
-        function getValue() {
-            var result = [];
-            for (var _i = 0, _a = Store.Administration.LanguageRow.getLookup().items; _i < _a.length; _i++) {
-                var k = _a[_i];
-                if (k.LanguageId !== 'en') {
-                    result.push([k.Id.toString(), k.LanguageName]);
-                }
-            }
-            return result;
-        }
-        LanguageList.getValue = getValue;
-    })(LanguageList = Store.LanguageList || (Store.LanguageList = {}));
-})(Store || (Store = {}));
-/// <reference path="../Common/Helpers/LanguageList.ts" />
-var Store;
-(function (Store) {
-    var ScriptInitialization;
-    (function (ScriptInitialization) {
-        Q.Config.responsiveDialogs = true;
-        Q.Config.rootNamespaces.push('Store');
-        Serenity.EntityDialog.defaultLanguageList = Store.LanguageList.getValue;
-        if ($.fn['colorbox']) {
-            $.fn['colorbox'].settings.maxWidth = "95%";
-            $.fn['colorbox'].settings.maxHeight = "95%";
-        }
-        window.onerror = Q.ErrorHandling.runtimeErrorHandler;
-    })(ScriptInitialization = Store.ScriptInitialization || (Store.ScriptInitialization = {}));
 })(Store || (Store = {}));
 var Store;
 (function (Store) {
@@ -4714,184 +4613,6 @@ var Store;
         }());
         Common.UserPreferenceStorage = UserPreferenceStorage;
     })(Common = Store.Common || (Store.Common = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Membership;
-    (function (Membership) {
-        var ChangePasswordPanel = /** @class */ (function (_super) {
-            __extends(ChangePasswordPanel, _super);
-            function ChangePasswordPanel(container) {
-                var _this = _super.call(this, container) || this;
-                _this.form = new Membership.ChangePasswordForm(_this.idPrefix);
-                _this.form.NewPassword.addValidationRule(_this.uniqueName, function (e) {
-                    if (_this.form.w('ConfirmPassword', Serenity.PasswordEditor).value.length < 7) {
-                        return Q.format(Q.text('Validation.MinRequiredPasswordLength'), 7);
-                    }
-                });
-                _this.form.ConfirmPassword.addValidationRule(_this.uniqueName, function (e) {
-                    if (_this.form.ConfirmPassword.value !== _this.form.NewPassword.value) {
-                        return Q.text('Validation.PasswordConfirm');
-                    }
-                });
-                _this.byId('SubmitButton').click(function (e) {
-                    e.preventDefault();
-                    if (!_this.validateForm()) {
-                        return;
-                    }
-                    var request = _this.getSaveEntity();
-                    Q.serviceCall({
-                        url: Q.resolveUrl('~/Account/ChangePassword'),
-                        request: request,
-                        onSuccess: function (response) {
-                            Q.information(Q.text('Forms.Membership.ChangePassword.Success'), function () {
-                                window.location.href = Q.resolveUrl('~/');
-                            });
-                        }
-                    });
-                });
-                return _this;
-            }
-            ChangePasswordPanel.prototype.getFormKey = function () { return Membership.ChangePasswordForm.formKey; };
-            ChangePasswordPanel = __decorate([
-                Serenity.Decorators.registerClass()
-            ], ChangePasswordPanel);
-            return ChangePasswordPanel;
-        }(Serenity.PropertyPanel));
-        Membership.ChangePasswordPanel = ChangePasswordPanel;
-    })(Membership = Store.Membership || (Store.Membership = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Membership;
-    (function (Membership) {
-        var ForgotPasswordPanel = /** @class */ (function (_super) {
-            __extends(ForgotPasswordPanel, _super);
-            function ForgotPasswordPanel(container) {
-                var _this = _super.call(this, container) || this;
-                _this.form = new Membership.ForgotPasswordForm(_this.idPrefix);
-                _this.byId('SubmitButton').click(function (e) {
-                    e.preventDefault();
-                    if (!_this.validateForm()) {
-                        return;
-                    }
-                    var request = _this.getSaveEntity();
-                    Q.serviceCall({
-                        url: Q.resolveUrl('~/Account/ForgotPassword'),
-                        request: request,
-                        onSuccess: function (response) {
-                            Q.information(Q.text('Forms.Membership.ForgotPassword.Success'), function () {
-                                window.location.href = Q.resolveUrl('~/');
-                            });
-                        }
-                    });
-                });
-                return _this;
-            }
-            ForgotPasswordPanel.prototype.getFormKey = function () { return Membership.ForgotPasswordForm.formKey; };
-            ForgotPasswordPanel = __decorate([
-                Serenity.Decorators.registerClass()
-            ], ForgotPasswordPanel);
-            return ForgotPasswordPanel;
-        }(Serenity.PropertyPanel));
-        Membership.ForgotPasswordPanel = ForgotPasswordPanel;
-    })(Membership = Store.Membership || (Store.Membership = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Membership;
-    (function (Membership) {
-        var ResetPasswordPanel = /** @class */ (function (_super) {
-            __extends(ResetPasswordPanel, _super);
-            function ResetPasswordPanel(container) {
-                var _this = _super.call(this, container) || this;
-                _this.form = new Membership.ResetPasswordForm(_this.idPrefix);
-                _this.form.NewPassword.addValidationRule(_this.uniqueName, function (e) {
-                    if (_this.form.ConfirmPassword.value.length < 7) {
-                        return Q.format(Q.text('Validation.MinRequiredPasswordLength'), 7);
-                    }
-                });
-                _this.form.ConfirmPassword.addValidationRule(_this.uniqueName, function (e) {
-                    if (_this.form.ConfirmPassword.value !== _this.form.NewPassword.value) {
-                        return Q.text('Validation.PasswordConfirm');
-                    }
-                });
-                _this.byId('SubmitButton').click(function (e) {
-                    e.preventDefault();
-                    if (!_this.validateForm()) {
-                        return;
-                    }
-                    var request = _this.getSaveEntity();
-                    request.Token = _this.byId('Token').val();
-                    Q.serviceCall({
-                        url: Q.resolveUrl('~/Account/ResetPassword'),
-                        request: request,
-                        onSuccess: function (response) {
-                            Q.information(Q.text('Forms.Membership.ResetPassword.Success'), function () {
-                                window.location.href = Q.resolveUrl('~/Account/Login');
-                            });
-                        }
-                    });
-                });
-                return _this;
-            }
-            ResetPasswordPanel.prototype.getFormKey = function () { return Membership.ResetPasswordForm.formKey; };
-            ResetPasswordPanel = __decorate([
-                Serenity.Decorators.registerClass()
-            ], ResetPasswordPanel);
-            return ResetPasswordPanel;
-        }(Serenity.PropertyPanel));
-        Membership.ResetPasswordPanel = ResetPasswordPanel;
-    })(Membership = Store.Membership || (Store.Membership = {}));
-})(Store || (Store = {}));
-var Store;
-(function (Store) {
-    var Membership;
-    (function (Membership) {
-        var SignUpPanel = /** @class */ (function (_super) {
-            __extends(SignUpPanel, _super);
-            function SignUpPanel(container) {
-                var _this = _super.call(this, container) || this;
-                _this.form = new Membership.SignUpForm(_this.idPrefix);
-                _this.form.ConfirmEmail.addValidationRule(_this.uniqueName, function (e) {
-                    if (_this.form.ConfirmEmail.value !== _this.form.Email.value) {
-                        return Q.text('Validation.EmailConfirm');
-                    }
-                });
-                _this.form.ConfirmPassword.addValidationRule(_this.uniqueName, function (e) {
-                    if (_this.form.ConfirmPassword.value !== _this.form.Password.value) {
-                        return Q.text('Validation.PasswordConfirm');
-                    }
-                });
-                _this.byId('SubmitButton').click(function (e) {
-                    e.preventDefault();
-                    if (!_this.validateForm()) {
-                        return;
-                    }
-                    Q.serviceCall({
-                        url: Q.resolveUrl('~/Account/SignUp'),
-                        request: {
-                            DisplayName: _this.form.DisplayName.value,
-                            Email: _this.form.Email.value,
-                            Password: _this.form.Password.value
-                        },
-                        onSuccess: function (response) {
-                            Q.information(Q.text('Forms.Membership.SignUp.Success'), function () {
-                                window.location.href = Q.resolveUrl('~/');
-                            });
-                        }
-                    });
-                });
-                return _this;
-            }
-            SignUpPanel.prototype.getFormKey = function () { return Membership.SignUpForm.formKey; };
-            SignUpPanel = __decorate([
-                Serenity.Decorators.registerClass()
-            ], SignUpPanel);
-            return SignUpPanel;
-        }(Serenity.PropertyPanel));
-        Membership.SignUpPanel = SignUpPanel;
-    })(Membership = Store.Membership || (Store.Membership = {}));
 })(Store || (Store = {}));
 var Store;
 (function (Store_91) {
@@ -7602,5 +7323,284 @@ var Store;
         }(Serenity.EntityGrid));
         Store.WaresMovementDetailsGrid = WaresMovementDetailsGrid;
     })(Store = Store_147.Store || (Store_147.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store) {
+    var Authorization;
+    (function (Authorization) {
+        Object.defineProperty(Authorization, 'userDefinition', {
+            get: function () {
+                return Q.getRemoteData('UserData');
+            }
+        });
+        function hasPermission(permissionKey) {
+            var ud = Authorization.userDefinition;
+            return ud.Username === 'admin' || !!ud.Permissions[permissionKey];
+        }
+        Authorization.hasPermission = hasPermission;
+    })(Authorization = Store.Authorization || (Store.Authorization = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store) {
+    var BasicReports;
+    (function (BasicReports) {
+        var StoreMoveGrid = /** @class */ (function (_super) {
+            __extends(StoreMoveGrid, _super);
+            function StoreMoveGrid(container) {
+                var _this = _super.call(this, container) || this;
+                _this.nextId = 1;
+                return _this;
+            }
+            StoreMoveGrid.prototype.getColumnsKey = function () { return "BasicReports.StoreMove"; };
+            StoreMoveGrid.prototype.getIdProperty = function () { return "__id"; };
+            StoreMoveGrid.prototype.getNameProperty = function () { return Store.Store.StoreMoveRow.nameProperty; };
+            StoreMoveGrid.prototype.getLocalTextPrefix = function () { return Store.Store.StoreMoveRow.localTextPrefix; };
+            StoreMoveGrid.prototype.getService = function () { return BasicReports.StoreMoveService.baseUrl; };
+            StoreMoveGrid.prototype.onViewProcessData = function (response) {
+                response = _super.prototype.onViewProcessData.call(this, response);
+                for (var _i = 0, _a = response.Entities; _i < _a.length; _i++) {
+                    var x = _a[_i];
+                    x.__id = this.nextId++;
+                }
+                return response;
+            };
+            StoreMoveGrid.prototype.getButtons = function () {
+                var _this = this;
+                var buttons = [];
+                buttons.push(Store.Common.ExcelExportHelper.createToolButton({
+                    grid: this,
+                    service: BasicReports.StoreMoveService.baseUrl + '/ListExcel',
+                    onViewSubmit: function () { return _this.onViewSubmit(); },
+                    separator: true
+                }));
+                buttons.push(Store.Common.PdfExportHelper.createToolButton({
+                    grid: this,
+                    onViewSubmit: function () { return _this.onViewSubmit(); }
+                }));
+                return buttons;
+            };
+            StoreMoveGrid.prototype.createSlickGrid = function () {
+                var grid = _super.prototype.createSlickGrid.call(this);
+                grid.registerPlugin(new Slick.Data.GroupItemMetadataProvider());
+                this.view.setSummaryOptions({
+                    aggregators: [
+                        new Slick.Aggregators.Sum('InitialValue'),
+                        new Slick.Aggregators.Sum('IncomeValue'),
+                        new Slick.Aggregators.Sum('ExpenceValue'),
+                        new Slick.Aggregators.Sum('RestValue')
+                    ]
+                });
+                this.view.setGrouping([{
+                        getter: 'ShopName'
+                    }]);
+                return grid;
+            };
+            StoreMoveGrid.prototype.getSlickOptions = function () {
+                var opt = _super.prototype.getSlickOptions.call(this);
+                opt.showFooterRow = true;
+                return opt;
+            };
+            StoreMoveGrid.prototype.usePager = function () {
+                return false;
+            };
+            StoreMoveGrid.prototype.getQuickFilters = function () {
+                var filters = _super.prototype.getQuickFilters.call(this);
+                var orderDate = this.dateRangeQuickFilter('Date', 'Date');
+                orderDate.handler = function (args) {
+                    var start = args.widget.value;
+                    var end = args.widget.element.nextAll('.s-DateEditor')
+                        .getWidget(Serenity.DateEditor).value;
+                    args.request.StartDate = start;
+                    args.request.EndDate = end;
+                    args.active = !Q.isEmptyOrNull(start) || !Q.isEmptyOrNull(end);
+                };
+                filters.push(orderDate);
+                return filters;
+            };
+            StoreMoveGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], StoreMoveGrid);
+            return StoreMoveGrid;
+        }(Serenity.EntityGrid));
+        BasicReports.StoreMoveGrid = StoreMoveGrid;
+    })(BasicReports = Store.BasicReports || (Store.BasicReports = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store) {
+    var Membership;
+    (function (Membership) {
+        var ChangePasswordPanel = /** @class */ (function (_super) {
+            __extends(ChangePasswordPanel, _super);
+            function ChangePasswordPanel(container) {
+                var _this = _super.call(this, container) || this;
+                _this.form = new Membership.ChangePasswordForm(_this.idPrefix);
+                _this.form.NewPassword.addValidationRule(_this.uniqueName, function (e) {
+                    if (_this.form.w('ConfirmPassword', Serenity.PasswordEditor).value.length < 7) {
+                        return Q.format(Q.text('Validation.MinRequiredPasswordLength'), 7);
+                    }
+                });
+                _this.form.ConfirmPassword.addValidationRule(_this.uniqueName, function (e) {
+                    if (_this.form.ConfirmPassword.value !== _this.form.NewPassword.value) {
+                        return Q.text('Validation.PasswordConfirm');
+                    }
+                });
+                _this.byId('SubmitButton').click(function (e) {
+                    e.preventDefault();
+                    if (!_this.validateForm()) {
+                        return;
+                    }
+                    var request = _this.getSaveEntity();
+                    Q.serviceCall({
+                        url: Q.resolveUrl('~/Account/ChangePassword'),
+                        request: request,
+                        onSuccess: function (response) {
+                            Q.information(Q.text('Forms.Membership.ChangePassword.Success'), function () {
+                                window.location.href = Q.resolveUrl('~/');
+                            });
+                        }
+                    });
+                });
+                return _this;
+            }
+            ChangePasswordPanel.prototype.getFormKey = function () { return Membership.ChangePasswordForm.formKey; };
+            ChangePasswordPanel = __decorate([
+                Serenity.Decorators.registerClass()
+            ], ChangePasswordPanel);
+            return ChangePasswordPanel;
+        }(Serenity.PropertyPanel));
+        Membership.ChangePasswordPanel = ChangePasswordPanel;
+    })(Membership = Store.Membership || (Store.Membership = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store) {
+    var Membership;
+    (function (Membership) {
+        var ForgotPasswordPanel = /** @class */ (function (_super) {
+            __extends(ForgotPasswordPanel, _super);
+            function ForgotPasswordPanel(container) {
+                var _this = _super.call(this, container) || this;
+                _this.form = new Membership.ForgotPasswordForm(_this.idPrefix);
+                _this.byId('SubmitButton').click(function (e) {
+                    e.preventDefault();
+                    if (!_this.validateForm()) {
+                        return;
+                    }
+                    var request = _this.getSaveEntity();
+                    Q.serviceCall({
+                        url: Q.resolveUrl('~/Account/ForgotPassword'),
+                        request: request,
+                        onSuccess: function (response) {
+                            Q.information(Q.text('Forms.Membership.ForgotPassword.Success'), function () {
+                                window.location.href = Q.resolveUrl('~/');
+                            });
+                        }
+                    });
+                });
+                return _this;
+            }
+            ForgotPasswordPanel.prototype.getFormKey = function () { return Membership.ForgotPasswordForm.formKey; };
+            ForgotPasswordPanel = __decorate([
+                Serenity.Decorators.registerClass()
+            ], ForgotPasswordPanel);
+            return ForgotPasswordPanel;
+        }(Serenity.PropertyPanel));
+        Membership.ForgotPasswordPanel = ForgotPasswordPanel;
+    })(Membership = Store.Membership || (Store.Membership = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store) {
+    var Membership;
+    (function (Membership) {
+        var ResetPasswordPanel = /** @class */ (function (_super) {
+            __extends(ResetPasswordPanel, _super);
+            function ResetPasswordPanel(container) {
+                var _this = _super.call(this, container) || this;
+                _this.form = new Membership.ResetPasswordForm(_this.idPrefix);
+                _this.form.NewPassword.addValidationRule(_this.uniqueName, function (e) {
+                    if (_this.form.ConfirmPassword.value.length < 7) {
+                        return Q.format(Q.text('Validation.MinRequiredPasswordLength'), 7);
+                    }
+                });
+                _this.form.ConfirmPassword.addValidationRule(_this.uniqueName, function (e) {
+                    if (_this.form.ConfirmPassword.value !== _this.form.NewPassword.value) {
+                        return Q.text('Validation.PasswordConfirm');
+                    }
+                });
+                _this.byId('SubmitButton').click(function (e) {
+                    e.preventDefault();
+                    if (!_this.validateForm()) {
+                        return;
+                    }
+                    var request = _this.getSaveEntity();
+                    request.Token = _this.byId('Token').val();
+                    Q.serviceCall({
+                        url: Q.resolveUrl('~/Account/ResetPassword'),
+                        request: request,
+                        onSuccess: function (response) {
+                            Q.information(Q.text('Forms.Membership.ResetPassword.Success'), function () {
+                                window.location.href = Q.resolveUrl('~/Account/Login');
+                            });
+                        }
+                    });
+                });
+                return _this;
+            }
+            ResetPasswordPanel.prototype.getFormKey = function () { return Membership.ResetPasswordForm.formKey; };
+            ResetPasswordPanel = __decorate([
+                Serenity.Decorators.registerClass()
+            ], ResetPasswordPanel);
+            return ResetPasswordPanel;
+        }(Serenity.PropertyPanel));
+        Membership.ResetPasswordPanel = ResetPasswordPanel;
+    })(Membership = Store.Membership || (Store.Membership = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store) {
+    var Membership;
+    (function (Membership) {
+        var SignUpPanel = /** @class */ (function (_super) {
+            __extends(SignUpPanel, _super);
+            function SignUpPanel(container) {
+                var _this = _super.call(this, container) || this;
+                _this.form = new Membership.SignUpForm(_this.idPrefix);
+                _this.form.ConfirmEmail.addValidationRule(_this.uniqueName, function (e) {
+                    if (_this.form.ConfirmEmail.value !== _this.form.Email.value) {
+                        return Q.text('Validation.EmailConfirm');
+                    }
+                });
+                _this.form.ConfirmPassword.addValidationRule(_this.uniqueName, function (e) {
+                    if (_this.form.ConfirmPassword.value !== _this.form.Password.value) {
+                        return Q.text('Validation.PasswordConfirm');
+                    }
+                });
+                _this.byId('SubmitButton').click(function (e) {
+                    e.preventDefault();
+                    if (!_this.validateForm()) {
+                        return;
+                    }
+                    Q.serviceCall({
+                        url: Q.resolveUrl('~/Account/SignUp'),
+                        request: {
+                            DisplayName: _this.form.DisplayName.value,
+                            Email: _this.form.Email.value,
+                            Password: _this.form.Password.value
+                        },
+                        onSuccess: function (response) {
+                            Q.information(Q.text('Forms.Membership.SignUp.Success'), function () {
+                                window.location.href = Q.resolveUrl('~/');
+                            });
+                        }
+                    });
+                });
+                return _this;
+            }
+            SignUpPanel.prototype.getFormKey = function () { return Membership.SignUpForm.formKey; };
+            SignUpPanel = __decorate([
+                Serenity.Decorators.registerClass()
+            ], SignUpPanel);
+            return SignUpPanel;
+        }(Serenity.PropertyPanel));
+        Membership.SignUpPanel = SignUpPanel;
+    })(Membership = Store.Membership || (Store.Membership = {}));
 })(Store || (Store = {}));
 //# sourceMappingURL=Store.Web.js.map

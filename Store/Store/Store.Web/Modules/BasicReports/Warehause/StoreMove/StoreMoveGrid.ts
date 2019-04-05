@@ -47,7 +47,7 @@
 
             this.view.setSummaryOptions({
                 aggregators: [
-                    new Slick.Aggregators.Sum('InitValue'),
+                    new Slick.Aggregators.Sum('InitialValue'),
                     new Slick.Aggregators.Sum('IncomeValue'),
                     new Slick.Aggregators.Sum('ExpenceValue'),
                     new Slick.Aggregators.Sum('RestValue')

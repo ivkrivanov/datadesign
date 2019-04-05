@@ -40,7 +40,7 @@ namespace Store.Store
                         Tenant = tn
                     },
                     commandType: System.Data.CommandType.StoredProcedure);
-             }
+            }
         }
 
         public List<ReportColumn> GetColumnList()
@@ -131,20 +131,8 @@ namespace Store.Store
                 set { }
             }
             public Decimal RestValue { get; set; }
-
             public Decimal ReCost { get; set; }
             public Boolean Mistake { get; set; }
         }
-
-        public void Customize(IHtmlToPdfOptions options)
-        {
-            options.MarginsAll = "2cm";
-            options.PageSize = "A4";
-        }
-    }
-
-    public class StoreMoveReportData
-    {
-        public StoreMoveRow StoreMove { get; set; }
     }
 }
