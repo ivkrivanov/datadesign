@@ -954,6 +954,9 @@
     <TypeScriptCompile Include="Imports\ServerTypings\Store.CounterpartyColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.DocumentTypeColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\Store.EmployeeRow.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
@@ -1946,6 +1949,21 @@
     <TypeScriptCompile Include="Imports\ServerTypings\Store.StoreForm.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.DocumentTypeRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.DocumentTypeService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Modules\Store\DocumentType\DocumentTypeIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Store\DocumentType\DocumentTypeDialog.ts" />
+    <TypeScriptCompile Include="Modules\Store\DocumentType\DocumentTypeGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.DocumentTypeForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.WaresMovementDocRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -2092,6 +2110,7 @@
     <Compile Include="Modules\BasicReports\Warehause\StoreMove\StoreMoveRepository.cs" />
     <Compile Include="Modules\BasicReports\Warehause\StoreMove\StoreMoveRow.cs" />
     <Compile Include="Modules\Store\WaresMovement\StoreAverageForm.cs" />
+    <Compile Include="Modules\Store\WaresMovement\WaresMovementLookup.cs" />
     <Compile Include="Modules\Store\WaresMovement\WaresMovementOperations.cs" />
     <Content Include="Modules\Common\Reporting\ReportPage.cshtml" />
     <Compile Include="Modules\Common\Reporting\ReportTree.cs" />
@@ -2281,6 +2300,13 @@
     <Compile Include="Modules\Store\Store\StorePage.cs" />
     <Compile Include="Modules\Store\Store\StoreColumns.cs" />
     <Compile Include="Modules\Store\Store\StoreForm.cs" />
+    <Compile Include="Modules\Store\DocumentType\DocumentTypeRow.cs" />
+    <Compile Include="Modules\Store\DocumentType\DocumentTypeRepository.cs" />
+    <Compile Include="Modules\Store\DocumentType\DocumentTypeEndpoint.cs" />
+    <Compile Include="Modules\Store\DocumentType\DocumentTypePage.cs" />
+    <Compile Include="Modules\Store\DocumentType\DocumentTypeColumns.cs" />
+    <Compile Include="Modules\Store\DocumentType\DocumentTypeForm.cs" />
+    <Compile Include="Modules\Store\WaresMovementDoc\WaresMovementDocRow.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

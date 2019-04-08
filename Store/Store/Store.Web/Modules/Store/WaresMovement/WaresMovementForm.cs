@@ -29,6 +29,12 @@ namespace Store.Store.Forms
         public Int32 ShipperID { get; set; }
         [HalfWidth]
         public DateTime ShippedDate { get; set; }
+        [OneThirdWidth]
+        public Int32 DocumentTypeID { get; set; }
+        [OneThirdWidth]
+        public String DocumentNumber { get; set; }
+        [OneThirdWidth]
+        public DateTime DocumentDate { get; set; }
 
         [Category("WaresMovementDetailsRow")]
         [WaresMovementDetailsEditor]

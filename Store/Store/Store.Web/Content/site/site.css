@@ -8009,3 +8009,9 @@ s-Store-CounterpartyProductMovementDialog.s-Panel .grid-container {
 .s-Store-StoreDialog .caption {
   width: 150px;
 }
+.s-Store-DocumentTypeDialog > .size {
+  width: 650px;
+}
+.s-Store-DocumentTypeDialog .caption {
+  width: 150px;
+}

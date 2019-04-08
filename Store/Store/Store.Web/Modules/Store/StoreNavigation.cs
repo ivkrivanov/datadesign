@@ -36,3 +36,4 @@ using MyPages = Store.Store.Pages;
 //[assembly: NavigationLink(int.MaxValue, "Store/Product Movement Details", typeof(MyPages.ProductMovementDetailsController), icon: null)]
 [assembly: NavigationLink(int.MaxValue, "Store/Store", typeof(MyPages.StoreController), icon: null)]
 [assembly: NavigationLink(7900, "Store/Reports", typeof(MyPages.ReportsController), icon: "fa-files-o")]
+[assembly: NavigationLink(int.MaxValue, "Store/Document Type", typeof(MyPages.DocumentTypeController), icon: null)]

@@ -3,6 +3,7 @@ namespace Store.Store.Repositories
 {
     using Serenity.Data;
     using Serenity.Services;
+    using System;
     using System.Data;
     using MyRow = Entities.WaresMovementRow;
 
@@ -40,8 +41,28 @@ namespace Store.Store.Repositories
             return new MyListHandler().Process(connection, request);
         }
 
+        public GetNextNumberResponse GetNextNumber(IDbConnection connection, GetNextNumberRequest request)
+        {
+            return GetNextNumberHelper.GetNextNumber(connection, request, fld.WaresMoveID);
+        }
+
         private class MySaveHandler : SaveRequestHandler<MyRow> { }
-        private class MyDeleteHandler : DeleteRequestHandler<MyRow> { }
+
+        private class MyDeleteHandler : DeleteRequestHandler<MyRow>
+        {
+            protected override void ExecuteDelete()
+            {
+                try
+                {
+                    base.ExecuteDelete();
+                }
+                catch (Exception e)
+                {
+                    SqlExceptionHelper.HandleDeleteForeignKeyException(e);
+                    throw;
+                }
+            }
+        }
         private class MyUndeleteHandler : UndeleteRequestHandler<MyRow> { }
         private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> { }
         private class MyListHandler : ListRequestHandler<MyRow, WaresMovementListRequest>

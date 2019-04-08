@@ -131,6 +131,11 @@ namespace MVC
                 public const string CounterpartyIndex = "~/Modules/Store/Counterparty/CounterpartyIndex.cshtml";
             }
 
+            public static class DocumentType
+            {
+                public const string DocumentTypeIndex = "~/Modules/Store/DocumentType/DocumentTypeIndex.cshtml";
+            }
+
             public static class Employee
             {
                 public const string EmployeeIndex = "~/Modules/Store/Employee/EmployeeIndex.cshtml";

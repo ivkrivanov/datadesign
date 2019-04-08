@@ -9,6 +9,9 @@
         OrderDate?: string;
         RequiredDate?: string;
         ShippedDate?: string;
+        DocumentTypeID?: number;
+        DocumentNumber?: string;
+        DocumentDate?: string;
         IsActive?: number;
         TenantId?: number;
         ShopShopName?: string;
@@ -47,6 +50,11 @@
         export const isActiveProperty = 'IsActive';
         export const nameProperty = 'CounterpartyID';
         export const localTextPrefix = 'Store.WaresMovement';
+        export const lookupKey = 'Store.WaresMovement';
+
+        export function getLookup(): Q.Lookup<WaresMovementRow> {
+            return Q.getLookup<WaresMovementRow>('Store.WaresMovement');
+        }
 
         export declare const enum Fields {
             WaresMoveID = "WaresMoveID",
@@ -58,6 +66,9 @@
             OrderDate = "OrderDate",
             RequiredDate = "RequiredDate",
             ShippedDate = "ShippedDate",
+            DocumentTypeID = "DocumentTypeID",
+            DocumentNumber = "DocumentNumber",
+            DocumentDate = "DocumentDate",
             IsActive = "IsActive",
             TenantId = "TenantId",
             ShopShopName = "ShopShopName",
