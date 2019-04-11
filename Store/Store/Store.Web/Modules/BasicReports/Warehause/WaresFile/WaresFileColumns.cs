@@ -16,6 +16,12 @@ namespace Store.BasicReports.Columns
         public String WaresCode { get; set; }
         [Width(120)]
         public String WaresName { get; set; }
+        [Width(100)]
+        public String DocumentType { get; set; }
+        [Width(100)]
+        public String DocumentNumber { get; set; }
+        [Width(100)]
+        public DateTime DocumentDate { get; set; }
 
         [Width(80), AlignRight, DisplayFormat("#,##0.00")]
         public Decimal IncomeQuantity { get; set; }

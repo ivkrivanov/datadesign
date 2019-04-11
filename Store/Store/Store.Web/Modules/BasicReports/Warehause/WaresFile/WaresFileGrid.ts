@@ -57,6 +57,11 @@
             this.view.setGrouping(
                 [{
                     getter: 'ShopName'
+
+                },
+                {
+                    getter: 'WaresCode'
+
                 }]);
 
             return grid;

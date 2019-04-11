@@ -2951,6 +2951,9 @@ declare namespace Store.Store {
         WaresCode?: string;
         WaresName?: string;
         Date?: string;
+        DocumentType?: string;
+        DocumentNumber?: string;
+        DocumentDate?: string;
         IncomeQuantity?: number;
         IncomeSinglePrice?: number;
         IncomeValue?: number;
@@ -2973,6 +2976,9 @@ declare namespace Store.Store {
             WaresCode = "WaresCode",
             WaresName = "WaresName",
             Date = "Date",
+            DocumentType = "DocumentType",
+            DocumentNumber = "DocumentNumber",
+            DocumentDate = "DocumentDate",
             IncomeQuantity = "IncomeQuantity",
             IncomeSinglePrice = "IncomeSinglePrice",
             IncomeValue = "IncomeValue",

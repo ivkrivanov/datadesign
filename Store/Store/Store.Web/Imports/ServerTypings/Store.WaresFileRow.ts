@@ -5,6 +5,9 @@
         WaresCode?: string;
         WaresName?: string;
         Date?: string;
+        DocumentType?: string;
+        DocumentNumber?: string;
+        DocumentDate?: string;
         IncomeQuantity?: number;
         IncomeSinglePrice?: number;
         IncomeValue?: number;
@@ -29,6 +32,9 @@
             WaresCode = "WaresCode",
             WaresName = "WaresName",
             Date = "Date",
+            DocumentType = "DocumentType",
+            DocumentNumber = "DocumentNumber",
+            DocumentDate = "DocumentDate",
             IncomeQuantity = "IncomeQuantity",
             IncomeSinglePrice = "IncomeSinglePrice",
             IncomeValue = "IncomeValue",

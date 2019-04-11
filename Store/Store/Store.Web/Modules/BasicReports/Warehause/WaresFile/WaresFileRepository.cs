@@ -19,7 +19,7 @@ namespace Store.BasicReports.Repositories
             var user = (UserDefinition)Authorization.UserDefinition;
             int tn = user.TenantId;
 
-            var data = connection.Query<MyRow>("usp_StoreFile",
+            var data = connection.Query<MyRow>("usp_WaresFile",
                 param: new
                 {
                     dateFrom = request.StartDate,

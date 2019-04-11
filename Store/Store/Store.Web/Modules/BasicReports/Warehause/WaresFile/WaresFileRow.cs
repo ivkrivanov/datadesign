@@ -6,7 +6,7 @@
     using System;
     using System.ComponentModel;
 
-    [ConnectionKey("Store"), Module("Store"), TableName("[dbo].[usp_StoreFile]")]
+    [ConnectionKey("Store"), Module("Store"), TableName("[dbo].[usp_WaresFile]")]
     [DisplayName("Wares File")]
     [ReadPermission(StorePermissionKeys.General)]
     [ModifyPermission(StorePermissionKeys.General)]
@@ -53,6 +53,27 @@
         {
             get { return Fields.Date[this]; }
             set { Fields.Date[this] = value; }
+        }
+
+        [DisplayName("Document"), QuickSearch]
+        public String DocumentType
+        { 
+            get { return Fields.DocumentType[this]; }
+            set { Fields.DocumentType[this] = value; }
+        }
+
+        [DisplayName("Number"), QuickSearch]
+        public String DocumentNumber
+        {
+            get { return Fields.DocumentNumber[this]; }
+            set { Fields.DocumentNumber[this] = value; }
+        }
+
+        [DisplayName("Date"), PrimaryKey]
+        public DateTime? DocumentDate
+        {
+            get { return Fields.DocumentDate[this]; }
+            set { Fields.DocumentDate[this] = value; }
         }
 
         //[DisplayName("Init Q-ty"), Size(15), Scale(4)]
@@ -173,6 +194,10 @@
             public StringField WaresCode;
             public StringField WaresName;
             public DateTimeField Date;
+
+            public StringField DocumentType;
+            public StringField DocumentNumber;
+            public DateTimeField DocumentDate;
 
             //public DecimalField InitialQuantity;
             //public DecimalField InitialSinglePrice;
