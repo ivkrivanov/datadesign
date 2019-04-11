@@ -47,6 +47,11 @@ namespace MVC
                 {
                     public const string Index = "~/Modules/BasicReports/Warehause/StoreMove/Index.cshtml";
                 }
+
+                public static class WaresFile
+                {
+                    public const string Index = "~/Modules/BasicReports/Warehause/WaresFile/Index.cshtml";
+                }
             }
 
         }

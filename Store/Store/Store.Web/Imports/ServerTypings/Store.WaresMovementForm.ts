@@ -8,6 +8,9 @@
         RequiredDate: Serenity.DateEditor;
         ShipperID: Serenity.LookupEditor;
         ShippedDate: Serenity.DateEditor;
+        DocumentTypeID: Serenity.LookupEditor;
+        DocumentNumber: Serenity.StringEditor;
+        DocumentDate: Serenity.DateEditor;
         DetailList: WaresMovementDetailsEditor;
     }
 
@@ -27,7 +30,8 @@
                 var w2 = ShopsEditor;
                 var w3 = CounterpartyEditor;
                 var w4 = s.LookupEditor;
-                var w5 = WaresMovementDetailsEditor;
+                var w5 = s.StringEditor;
+                var w6 = WaresMovementDetailsEditor;
 
                 Q.initFormType(WaresMovementForm, [
                     'OperationTypeID', w0,
@@ -38,7 +42,10 @@
                     'RequiredDate', w1,
                     'ShipperID', w4,
                     'ShippedDate', w1,
-                    'DetailList', w5
+                    'DocumentTypeID', w4,
+                    'DocumentNumber', w5,
+                    'DocumentDate', w1,
+                    'DetailList', w6
                 ]);
             }
         }

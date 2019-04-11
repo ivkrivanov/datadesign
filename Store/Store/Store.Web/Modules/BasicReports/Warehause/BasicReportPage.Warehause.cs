@@ -10,5 +10,9 @@ namespace Store.BasicReports.Pages
         {
             return View(Views.StoreMove.Index);
         }
+        public ActionResult WaresFile()
+        {
+            return View(Views.WaresFile.Index);
+        }
     }
 }

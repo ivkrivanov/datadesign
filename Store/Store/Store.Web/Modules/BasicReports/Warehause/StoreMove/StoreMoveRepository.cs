@@ -1,12 +1,9 @@
 ﻿
 namespace Store.BasicReports.Repositories
 {
-    using global::Store.Store.Entities;
     using Serenity;
-    using Serenity.ComponentModel;
     using Serenity.Data;
     using Serenity.Services;
-    using System;
     using System.Collections.Generic;
     using System.Data;
     using MyRow = Store.Entities.StoreMoveRow;

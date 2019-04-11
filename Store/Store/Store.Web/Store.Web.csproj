@@ -879,6 +879,7 @@
     <Content Include="Modules\BasicReports\Invoices\ProductMovementDetailReport.cshtml" />
     <Content Include="Modules\BasicReports\Warehause\StoreMove\Index.cshtml" />
     <Content Include="Content\site\site.basicreports.less" />
+    <Content Include="Modules\BasicReports\Warehause\WaresFile\Index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Scripts\ckeditor\skins\moono\readme.md" />
     <Content Include="Scripts\ckeditor\README.md" />
@@ -937,6 +938,15 @@
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\BasicReports.StoreMoveService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\BasicReports.WaresFileColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\BasicReports.WaresFileListRequest.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\BasicReports.WaresFileService.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\Store.CaregoryListRequest.ts">
@@ -1032,6 +1042,9 @@
     <TypeScriptCompile Include="Imports\ServerTypings\Store.WaresExcelImportForm.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.WaresFileRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\Store.WaresListRequest.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
@@ -1058,6 +1071,7 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Administration\Tenant\TenantDialog.ts" />
     <TypeScriptCompile Include="Modules\Administration\Tenant\TenantGrid.ts" />
+    <TypeScriptCompile Include="Modules\BasicReports\Warehause\WaresFile\WaresFileGrid.ts" />
     <TypeScriptCompile Include="Modules\Store\Category\CategoryExcelImportDialog.ts" />
     <TypeScriptCompile Include="Modules\Store\Counterparty\CounterpartyProductMovementGrid.ts" />
     <TypeScriptCompile Include="Modules\Store\Counterparty\CounterpartyEditor.ts" />
@@ -2054,6 +2068,11 @@
     <Compile Include="Modules\Administration\User\Authentication\IDirectoryService.cs" />
     <Compile Include="Modules\Administration\User\Authentication\ScriptUserDefinition.cs" />
     <Compile Include="Modules\Administration\User\UserColumns.cs" />
+    <Compile Include="Modules\BasicReports\Warehause\WaresFile\WaresFileColumns.cs" />
+    <Compile Include="Modules\BasicReports\Warehause\WaresFile\WaresFileEndpoint.cs" />
+    <Compile Include="Modules\BasicReports\Warehause\WaresFile\WaresFileListRequest.cs" />
+    <Compile Include="Modules\BasicReports\Warehause\WaresFile\WaresFileRepository.cs" />
+    <Compile Include="Modules\BasicReports\Warehause\WaresFile\WaresFileRow.cs" />
     <Compile Include="Modules\Common\Helpers\EmailHelper.cs" />
     <Compile Include="Modules\Common\Helpers\ExcelImportRequest.cs" />
     <Compile Include="Modules\Common\Dashboard\DashboardPageModel.cs" />
@@ -2439,9 +2458,7 @@
     <TypeScriptCompile Include="Modules\Common\Reporting\PdfExportHelper.ts" />
     <TypeScriptCompile Include="Scripts\typings\jspdf\jspdf.autotable.d.ts" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Modules\BasicReports\Warehause\WaresFile\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

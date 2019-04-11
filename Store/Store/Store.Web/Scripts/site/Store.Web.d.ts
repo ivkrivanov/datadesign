@@ -431,6 +431,25 @@ declare namespace Store.BasicReports {
         }
     }
 }
+declare namespace Store.BasicReports {
+}
+declare namespace Store.BasicReports {
+    interface WaresFileListRequest extends Serenity.ListRequest {
+        ShopID?: number;
+        TenantID?: number;
+        StartDate?: string;
+        EndDate?: string;
+    }
+}
+declare namespace Store.BasicReports {
+    namespace WaresFileService {
+        const baseUrl = "BasicReports/WaresFile";
+        function List(request: WaresFileListRequest, onSuccess?: (response: Serenity.ListResponse<Store.WaresFileRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            List = "BasicReports/WaresFile/List"
+        }
+    }
+}
 declare namespace Store.Common {
     interface UserPreferenceRetrieveRequest extends Serenity.ServiceRequest {
         PreferenceType?: string;
@@ -2926,6 +2945,50 @@ declare namespace Store.Store {
     }
 }
 declare namespace Store.Store {
+    interface WaresFileRow {
+        ShopID?: number;
+        WaresID?: number;
+        WaresCode?: string;
+        WaresName?: string;
+        Date?: string;
+        IncomeQuantity?: number;
+        IncomeSinglePrice?: number;
+        IncomeValue?: number;
+        ExpenceQuantity?: number;
+        ExpenceSinglePrice?: number;
+        ExpenceValue?: number;
+        RestQuantity?: number;
+        RestSinglePrice?: number;
+        RestValue?: number;
+        ReCost?: number;
+        Mistake?: boolean;
+        ShopName?: string;
+    }
+    namespace WaresFileRow {
+        const nameProperty = "WaresCode";
+        const localTextPrefix = "Store.WaresFile";
+        const enum Fields {
+            ShopID = "ShopID",
+            WaresID = "WaresID",
+            WaresCode = "WaresCode",
+            WaresName = "WaresName",
+            Date = "Date",
+            IncomeQuantity = "IncomeQuantity",
+            IncomeSinglePrice = "IncomeSinglePrice",
+            IncomeValue = "IncomeValue",
+            ExpenceQuantity = "ExpenceQuantity",
+            ExpenceSinglePrice = "ExpenceSinglePrice",
+            ExpenceValue = "ExpenceValue",
+            RestQuantity = "RestQuantity",
+            RestSinglePrice = "RestSinglePrice",
+            RestValue = "RestValue",
+            ReCost = "ReCost",
+            Mistake = "Mistake",
+            ShopName = "ShopName"
+        }
+    }
+}
+declare namespace Store.Store {
     interface WaresForm {
         CategoryID: Serenity.LookupEditor;
         WaresCode: Serenity.StringEditor;
@@ -3125,6 +3188,9 @@ declare namespace Store.Store {
         RequiredDate: Serenity.DateEditor;
         ShipperID: Serenity.LookupEditor;
         ShippedDate: Serenity.DateEditor;
+        DocumentTypeID: Serenity.LookupEditor;
+        DocumentNumber: Serenity.StringEditor;
+        DocumentDate: Serenity.DateEditor;
         DetailList: WaresMovementDetailsEditor;
     }
     class WaresMovementForm extends Serenity.PrefixedContext {
@@ -4476,6 +4542,23 @@ declare namespace Store.BasicReports {
         private nextId;
         constructor(container: JQuery);
         protected onViewProcessData(response: Serenity.ListResponse<Store.StoreMoveRow>): Serenity.ListResponse<Store.StoreMoveRow>;
+        protected getButtons(): any[];
+        protected createSlickGrid(): Slick.Grid;
+        protected getSlickOptions(): Slick.GridOptions;
+        protected usePager(): boolean;
+        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
+    }
+}
+declare namespace Store.BasicReports {
+    class WaresFileGrid extends Serenity.EntityGrid<Store.WaresFileRow, any> {
+        protected getColumnsKey(): string;
+        protected getIdProperty(): string;
+        protected getNameProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        private nextId;
+        constructor(container: JQuery);
+        protected onViewProcessData(response: Serenity.ListResponse<Store.WaresFileRow>): Serenity.ListResponse<Store.WaresFileRow>;
         protected getButtons(): any[];
         protected createSlickGrid(): Slick.Grid;
         protected getSlickOptions(): Slick.GridOptions;
