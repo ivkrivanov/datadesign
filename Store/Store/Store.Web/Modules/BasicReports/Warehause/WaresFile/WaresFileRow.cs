@@ -10,6 +10,7 @@
     [DisplayName("Wares File")]
     [ReadPermission(StorePermissionKeys.General)]
     [ModifyPermission(StorePermissionKeys.General)]
+    [LookupScript]
     public sealed class WaresFileRow : Row, INameRow
     {
         [DisplayName("Shop ID"), Column("ShopID"), PrimaryKey]
@@ -34,14 +35,14 @@
             set { Fields.WaresID[this] = value; }
         }
 
-        [DisplayName("Key"), QuickSearch]
+        [DisplayName("Key"), QuickSearch, LookupInclude]
         public String WaresCode
         {
             get { return Fields.WaresCode[this]; }
             set { Fields.WaresCode[this] = value; }
         }
 
-        [DisplayName("Name"), QuickSearch]
+        [DisplayName("Name"), QuickSearch, LookupInclude]
         public String WaresName
         {
             get { return Fields.WaresName[this]; }
@@ -62,7 +63,7 @@
             set { Fields.DocumentType[this] = value; }
         }
 
-        [DisplayName("Number"), QuickSearch]
+        [DisplayName("Number"), QuickSearch, LookupInclude]
         public String DocumentNumber
         {
             get { return Fields.DocumentNumber[this]; }

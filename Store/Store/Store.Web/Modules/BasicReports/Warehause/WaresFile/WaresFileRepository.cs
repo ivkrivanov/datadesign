@@ -24,7 +24,8 @@ namespace Store.BasicReports.Repositories
                 {
                     dateFrom = request.StartDate,
                     dateTill = request.EndDate,
-                    shopid = 1,
+                    waresid = request.WaresID,
+                    shopid = request.ShopID,
                     Tenant = tn
                 },
                 commandType: CommandType.StoredProcedure);

@@ -1,4 +1,7 @@
 ﻿namespace Store.BasicReports {
+
+    import fld = Store.WaresFileRow.Fields;
+
     @Serenity.Decorators.registerClass()
     export class WaresFileGrid extends Serenity.EntityGrid<Store.WaresFileRow, any> {
 
@@ -49,8 +52,8 @@
                 aggregators: [
                     //new Slick.Aggregators.Sum('InitialValue'),
                     new Slick.Aggregators.Sum('IncomeValue'),
-                    new Slick.Aggregators.Sum('ExpenceValue'),
-                    new Slick.Aggregators.Sum('RestValue')
+                    new Slick.Aggregators.Sum('ExpenceValue')
+                    //new Slick.Aggregators.Sum('RestValue')
                 ]
             });
 
@@ -77,11 +80,20 @@
             return false;
         }
 
-        protected getQuickFilters() {
+        protected getQuickFilters() { //: Serenity.QuickFilter<Serenity.Widget<any>, any>[]  {
+
             var filters = super.getQuickFilters();
+            //var q = Q.parseQueryString();
+            //if (q["wares"]) {
+            //    var waresid = Q.tryFirst(filters, x => x.field == "WaresID");
+            //    waresid.init = e => {
+            //        e.element.getWidget(Serenity.LookupEditor).value = q["wares"];
+            //    };
+            //}
 
             var orderDate = this.dateRangeQuickFilter('Date', 'Date');
 
+            orderDate.title = "Date between"
             orderDate.handler = args => {
 
                 var start = args.widget.value;
@@ -95,7 +107,17 @@
                 args.active = !Q.isEmptyOrNull(start) || !Q.isEmptyOrNull(end);
             };
 
-            filters.push(orderDate);
+
+            //var waresid = Q.first(filters, x => x.field == fld.WaresID);
+            //waresid.title = "Wares Code";
+            //waresid.handler = h => {
+            //    if (h.active) {
+            //        h.request.Criteria = Serenity.Criteria.and(h.request.Criteria,
+            //            [[fld.WaresID], '=', h.value]);
+            //    }
+            //};
+
+            filters.push(orderDate); // ,  waresid );
 
             return filters;
         }
