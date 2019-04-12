@@ -7,18 +7,18 @@ namespace Store.Store.Entities
     using System;
     using System.ComponentModel;
 
-    [ConnectionKey("Store"), Module("Store"), TableName("[dbo].[WaresMovement Doc]")]
-    [DisplayName("Wares Movement Doc"), InstanceName("Wares Movement Doc")]
-    [ReadPermission(StorePermissionKeys.Wares.View)]
-    [ModifyPermission(StorePermissionKeys.Wares.Modify)]
-    [DeletePermission(StorePermissionKeys.Wares.Delete)]
-    public sealed class WaresMovementDocRow : Row, IIdRow, INameRow
+    [ConnectionKey("Store"), Module("Store"), TableName("[dbo].[ProductMovement Doc]")]
+    [DisplayName("Product Movement Doc"), InstanceName("Product Movement Doc")]
+    [ReadPermission(StorePermissionKeys.Product.View)]
+    [ModifyPermission(StorePermissionKeys.Product.Modify)]
+    [DeletePermission(StorePermissionKeys.Product.Delete)]
+    public sealed class ProductMovementDocRow : Row, IIdRow, INameRow
     {
-        [DisplayName("Wares Move Id"), Column("WaresMoveID"), PrimaryKey]
-        public Int32? WaresMoveID
+        [DisplayName("Product Move Id"), Column("ProductMoveID"), PrimaryKey]
+        public Int32? ProductMoveID
         {
-            get { return Fields.WaresMoveID[this]; }
-            set { Fields.WaresMoveID[this] = value; }
+            get { return Fields.ProductMoveID[this]; }
+            set { Fields.ProductMoveID[this] = value; }
         }
 
         [DisplayName("Document Type"), Column("DocumentTypeID"), ForeignKey("[dbo].[DocumentType]", "DocumentTypeID"), LeftJoin("jDocumentType"), TextualField("DocumentTypeDocumentName")]
@@ -49,23 +49,9 @@ namespace Store.Store.Entities
             set { Fields.DocumentTypeDocumentName[this] = value; }
         }
 
-        //[DisplayName("Document Type Is Active"), Expression("jDocumentType.[IsActive]")]
-        //public Int32? DocumentTypeIsActive
-        //{
-        //    get { return Fields.DocumentTypeIsActive[this]; }
-        //    set { Fields.DocumentTypeIsActive[this] = value; }
-        //}
-
-        //[DisplayName("Document Type Tenant Id"), Expression("jDocumentType.[TenantId]")]
-        //public Int32? DocumentTypeTenantId
-        //{
-        //    get { return Fields.DocumentTypeTenantId[this]; }
-        //    set { Fields.DocumentTypeTenantId[this] = value; }
-        //}
-
         IIdField IIdRow.IdField
         {
-            get { return Fields.WaresMoveID; }
+            get { return Fields.ProductMoveID; }
         }
 
         StringField INameRow.NameField
@@ -75,21 +61,19 @@ namespace Store.Store.Entities
 
         public static readonly RowFields Fields = new RowFields().Init();
 
-        public WaresMovementDocRow()
+        public ProductMovementDocRow()
             : base(Fields)
         {
         }
 
         public class RowFields : RowFieldsBase
         {
-            public Int32Field WaresMoveID;
+            public Int32Field ProductMoveID;
             public Int32Field DocumentTypeID;
             public StringField DocumentNumber;
             public DateTimeField DocumentDate;
 
             public StringField DocumentTypeDocumentName;
-            //public Int32Field DocumentTypeIsActive;
-            //public Int32Field DocumentTypeTenantId;
         }
     }
 }

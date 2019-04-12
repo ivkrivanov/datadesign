@@ -1978,6 +1978,9 @@
     <TypeScriptCompile Include="Imports\ServerTypings\Store.WaresMovementDocRow.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ProductMovementDocRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -2109,6 +2112,7 @@
     <Compile Include="Modules\Store\Category\CaregoryListRequest.cs" />
     <Compile Include="Modules\Store\Category\CategoryExcelImportForm.cs" />
     <Compile Include="Modules\Store\ProductMovement\ProductMovementListRequest.cs" />
+    <Compile Include="Modules\Store\ProductMovement\ProductMovementLookup.cs" />
     <Compile Include="Modules\Store\ProductMovement\ProductMovementOperations.cs" />
     <Compile Include="Modules\Store\Product\ProductExcelImportForm.cs" />
     <Compile Include="Modules\BasicReports\BasicReportsNavigation.cs" />
@@ -2326,6 +2330,7 @@
     <Compile Include="Modules\Store\DocumentType\DocumentTypeColumns.cs" />
     <Compile Include="Modules\Store\DocumentType\DocumentTypeForm.cs" />
     <Compile Include="Modules\Store\WaresMovementDoc\WaresMovementDocRow.cs" />
+    <Compile Include="Modules\Store\ProductMovementDoc\ProductMovementDocRow.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

@@ -1664,6 +1664,30 @@ var Store;
 (function (Store_54) {
     var Store;
     (function (Store) {
+        var ProductMovementDocRow;
+        (function (ProductMovementDocRow) {
+            ProductMovementDocRow.idProperty = 'ProductMoveId';
+            ProductMovementDocRow.nameProperty = 'DocumentNumber';
+            ProductMovementDocRow.localTextPrefix = 'Store.ProductMovementDoc';
+            var Fields;
+            (function (Fields) {
+            })(Fields = ProductMovementDocRow.Fields || (ProductMovementDocRow.Fields = {}));
+            [
+                'ProductMoveId',
+                'DocumentTypeId',
+                'DocumentNumber',
+                'DocumentDate',
+                'DocumentTypeDocumentName',
+                'DocumentTypeIsActive',
+                'DocumentTypeTenantId'
+            ].forEach(function (x) { return Fields[x] = x; });
+        })(ProductMovementDocRow = Store.ProductMovementDocRow || (Store.ProductMovementDocRow = {}));
+    })(Store = Store_54.Store || (Store_54.Store = {}));
+})(Store || (Store = {}));
+var Store;
+(function (Store_55) {
+    var Store;
+    (function (Store) {
         var ProductMovementForm = /** @class */ (function (_super) {
             __extends(ProductMovementForm, _super);
             function ProductMovementForm(prefix) {
@@ -1695,10 +1719,10 @@ var Store;
             return ProductMovementForm;
         }(Serenity.PrefixedContext));
         Store.ProductMovementForm = ProductMovementForm;
-    })(Store = Store_54.Store || (Store_54.Store = {}));
+    })(Store = Store_55.Store || (Store_55.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_55) {
+(function (Store_56) {
     var Store;
     (function (Store) {
         var ProductMovementOperations;
@@ -1711,10 +1735,10 @@ var Store;
             ProductMovementOperations[ProductMovementOperations["Scrappingarticles"] = 403] = "Scrappingarticles";
         })(ProductMovementOperations = Store.ProductMovementOperations || (Store.ProductMovementOperations = {}));
         Serenity.Decorators.registerEnumType(ProductMovementOperations, 'Store.Store.ProductMovementOperations', 'Store.ProductMovementOperations');
-    })(Store = Store_55.Store || (Store_55.Store = {}));
+    })(Store = Store_56.Store || (Store_56.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_56) {
+(function (Store_57) {
     var Store;
     (function (Store) {
         var ProductMovementRow;
@@ -1724,10 +1748,10 @@ var Store;
             ProductMovementRow.nameProperty = 'CounterpartyID';
             ProductMovementRow.localTextPrefix = 'Store.ProductMovement';
         })(ProductMovementRow = Store.ProductMovementRow || (Store.ProductMovementRow = {}));
-    })(Store = Store_56.Store || (Store_56.Store = {}));
+    })(Store = Store_57.Store || (Store_57.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_57) {
+(function (Store_58) {
     var Store;
     (function (Store) {
         var ProductMovementService;
@@ -1745,10 +1769,10 @@ var Store;
                 };
             });
         })(ProductMovementService = Store.ProductMovementService || (Store.ProductMovementService = {}));
-    })(Store = Store_57.Store || (Store_57.Store = {}));
+    })(Store = Store_58.Store || (Store_58.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_58) {
+(function (Store_59) {
     var Store;
     (function (Store) {
         var ProductRow;
@@ -1763,10 +1787,10 @@ var Store;
             }
             ProductRow.getLookup = getLookup;
         })(ProductRow = Store.ProductRow || (Store.ProductRow = {}));
-    })(Store = Store_58.Store || (Store_58.Store = {}));
+    })(Store = Store_59.Store || (Store_59.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_59) {
+(function (Store_60) {
     var Store;
     (function (Store) {
         var ProductService;
@@ -1786,10 +1810,10 @@ var Store;
                 };
             });
         })(ProductService = Store.ProductService || (Store.ProductService = {}));
-    })(Store = Store_59.Store || (Store_59.Store = {}));
+    })(Store = Store_60.Store || (Store_60.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_60) {
+(function (Store_61) {
     var Store;
     (function (Store) {
         var ShipperForm = /** @class */ (function (_super) {
@@ -1812,10 +1836,10 @@ var Store;
             return ShipperForm;
         }(Serenity.PrefixedContext));
         Store.ShipperForm = ShipperForm;
-    })(Store = Store_60.Store || (Store_60.Store = {}));
+    })(Store = Store_61.Store || (Store_61.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_61) {
+(function (Store_62) {
     var Store;
     (function (Store) {
         var ShipperRow;
@@ -1830,10 +1854,10 @@ var Store;
             }
             ShipperRow.getLookup = getLookup;
         })(ShipperRow = Store.ShipperRow || (Store.ShipperRow = {}));
-    })(Store = Store_61.Store || (Store_61.Store = {}));
+    })(Store = Store_62.Store || (Store_62.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_62) {
+(function (Store_63) {
     var Store;
     (function (Store) {
         var ShipperService;
@@ -1851,10 +1875,10 @@ var Store;
                 };
             });
         })(ShipperService = Store.ShipperService || (Store.ShipperService = {}));
-    })(Store = Store_62.Store || (Store_62.Store = {}));
+    })(Store = Store_63.Store || (Store_63.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_63) {
+(function (Store_64) {
     var Store;
     (function (Store) {
         var ShippingState;
@@ -1863,10 +1887,10 @@ var Store;
             ShippingState[ShippingState["Shipped"] = 1] = "Shipped";
         })(ShippingState = Store.ShippingState || (Store.ShippingState = {}));
         Serenity.Decorators.registerEnumType(ShippingState, 'Store.Store.ShippingState', 'Store.ShippingState');
-    })(Store = Store_63.Store || (Store_63.Store = {}));
+    })(Store = Store_64.Store || (Store_64.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_64) {
+(function (Store_65) {
     var Store;
     (function (Store) {
         var ShopsForm = /** @class */ (function (_super) {
@@ -1897,10 +1921,10 @@ var Store;
             return ShopsForm;
         }(Serenity.PrefixedContext));
         Store.ShopsForm = ShopsForm;
-    })(Store = Store_64.Store || (Store_64.Store = {}));
+    })(Store = Store_65.Store || (Store_65.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_65) {
+(function (Store_66) {
     var Store;
     (function (Store) {
         var ShopsRow;
@@ -1915,10 +1939,10 @@ var Store;
             }
             ShopsRow.getLookup = getLookup;
         })(ShopsRow = Store.ShopsRow || (Store.ShopsRow = {}));
-    })(Store = Store_65.Store || (Store_65.Store = {}));
+    })(Store = Store_66.Store || (Store_66.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_66) {
+(function (Store_67) {
     var Store;
     (function (Store) {
         var ShopsService;
@@ -1936,10 +1960,10 @@ var Store;
                 };
             });
         })(ShopsService = Store.ShopsService || (Store.ShopsService = {}));
-    })(Store = Store_66.Store || (Store_66.Store = {}));
+    })(Store = Store_67.Store || (Store_67.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_67) {
+(function (Store_68) {
     var Store;
     (function (Store) {
         var StoreAverageForm = /** @class */ (function (_super) {
@@ -1960,10 +1984,10 @@ var Store;
             return StoreAverageForm;
         }(Serenity.PrefixedContext));
         Store.StoreAverageForm = StoreAverageForm;
-    })(Store = Store_67.Store || (Store_67.Store = {}));
+    })(Store = Store_68.Store || (Store_68.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_68) {
+(function (Store_69) {
     var Store;
     (function (Store) {
         var StoreForm = /** @class */ (function (_super) {
@@ -2005,10 +2029,10 @@ var Store;
             return StoreForm;
         }(Serenity.PrefixedContext));
         Store.StoreForm = StoreForm;
-    })(Store = Store_68.Store || (Store_68.Store = {}));
+    })(Store = Store_69.Store || (Store_69.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_69) {
+(function (Store_70) {
     var Store;
     (function (Store) {
         var StoreMoveRow;
@@ -2016,10 +2040,10 @@ var Store;
             StoreMoveRow.nameProperty = 'WaresCode';
             StoreMoveRow.localTextPrefix = 'Store.StoreMove';
         })(StoreMoveRow = Store.StoreMoveRow || (Store.StoreMoveRow = {}));
-    })(Store = Store_69.Store || (Store_69.Store = {}));
+    })(Store = Store_70.Store || (Store_70.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_70) {
+(function (Store_71) {
     var Store;
     (function (Store) {
         var StoreRow;
@@ -2029,10 +2053,10 @@ var Store;
             StoreRow.nameProperty = 'Key';
             StoreRow.localTextPrefix = 'Store.Store';
         })(StoreRow = Store.StoreRow || (Store.StoreRow = {}));
-    })(Store = Store_70.Store || (Store_70.Store = {}));
+    })(Store = Store_71.Store || (Store_71.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_71) {
+(function (Store_72) {
     var Store;
     (function (Store) {
         var StoreService;
@@ -2051,10 +2075,10 @@ var Store;
                 };
             });
         })(StoreService = Store.StoreService || (Store.StoreService = {}));
-    })(Store = Store_71.Store || (Store_71.Store = {}));
+    })(Store = Store_72.Store || (Store_72.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_72) {
+(function (Store_73) {
     var Store;
     (function (Store) {
         var SupplierForm = /** @class */ (function (_super) {
@@ -2087,10 +2111,10 @@ var Store;
             return SupplierForm;
         }(Serenity.PrefixedContext));
         Store.SupplierForm = SupplierForm;
-    })(Store = Store_72.Store || (Store_72.Store = {}));
+    })(Store = Store_73.Store || (Store_73.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_73) {
+(function (Store_74) {
     var Store;
     (function (Store) {
         var SupplierRow;
@@ -2105,10 +2129,10 @@ var Store;
             }
             SupplierRow.getLookup = getLookup;
         })(SupplierRow = Store.SupplierRow || (Store.SupplierRow = {}));
-    })(Store = Store_73.Store || (Store_73.Store = {}));
+    })(Store = Store_74.Store || (Store_74.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_74) {
+(function (Store_75) {
     var Store;
     (function (Store) {
         var SupplierService;
@@ -2126,10 +2150,10 @@ var Store;
                 };
             });
         })(SupplierService = Store.SupplierService || (Store.SupplierService = {}));
-    })(Store = Store_74.Store || (Store_74.Store = {}));
+    })(Store = Store_75.Store || (Store_75.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_75) {
+(function (Store_76) {
     var Store;
     (function (Store) {
         var WaresCategoriesForm = /** @class */ (function (_super) {
@@ -2154,10 +2178,10 @@ var Store;
             return WaresCategoriesForm;
         }(Serenity.PrefixedContext));
         Store.WaresCategoriesForm = WaresCategoriesForm;
-    })(Store = Store_75.Store || (Store_75.Store = {}));
+    })(Store = Store_76.Store || (Store_76.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_76) {
+(function (Store_77) {
     var Store;
     (function (Store) {
         var WaresCategoriesLangRow;
@@ -2166,10 +2190,10 @@ var Store;
             WaresCategoriesLangRow.nameProperty = 'WaresCategoryName';
             WaresCategoriesLangRow.localTextPrefix = 'Store.WaresCategoriesLang';
         })(WaresCategoriesLangRow = Store.WaresCategoriesLangRow || (Store.WaresCategoriesLangRow = {}));
-    })(Store = Store_76.Store || (Store_76.Store = {}));
+    })(Store = Store_77.Store || (Store_77.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_77) {
+(function (Store_78) {
     var Store;
     (function (Store) {
         var WaresCategoriesLangService;
@@ -2187,10 +2211,10 @@ var Store;
                 };
             });
         })(WaresCategoriesLangService = Store.WaresCategoriesLangService || (Store.WaresCategoriesLangService = {}));
-    })(Store = Store_77.Store || (Store_77.Store = {}));
+    })(Store = Store_78.Store || (Store_78.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_78) {
+(function (Store_79) {
     var Store;
     (function (Store) {
         var WaresCategoriesRow;
@@ -2205,10 +2229,10 @@ var Store;
             }
             WaresCategoriesRow.getLookup = getLookup;
         })(WaresCategoriesRow = Store.WaresCategoriesRow || (Store.WaresCategoriesRow = {}));
-    })(Store = Store_78.Store || (Store_78.Store = {}));
+    })(Store = Store_79.Store || (Store_79.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_79) {
+(function (Store_80) {
     var Store;
     (function (Store) {
         var WaresCategoriesService;
@@ -2226,10 +2250,10 @@ var Store;
                 };
             });
         })(WaresCategoriesService = Store.WaresCategoriesService || (Store.WaresCategoriesService = {}));
-    })(Store = Store_79.Store || (Store_79.Store = {}));
+    })(Store = Store_80.Store || (Store_80.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_80) {
+(function (Store_81) {
     var Store;
     (function (Store) {
         var WaresExcelImportForm = /** @class */ (function (_super) {
@@ -2250,10 +2274,10 @@ var Store;
             return WaresExcelImportForm;
         }(Serenity.PrefixedContext));
         Store.WaresExcelImportForm = WaresExcelImportForm;
-    })(Store = Store_80.Store || (Store_80.Store = {}));
+    })(Store = Store_81.Store || (Store_81.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_81) {
+(function (Store_82) {
     var Store;
     (function (Store) {
         var WaresFileRow;
@@ -2261,10 +2285,10 @@ var Store;
             WaresFileRow.nameProperty = 'WaresCode';
             WaresFileRow.localTextPrefix = 'Store.WaresFile';
         })(WaresFileRow = Store.WaresFileRow || (Store.WaresFileRow = {}));
-    })(Store = Store_81.Store || (Store_81.Store = {}));
+    })(Store = Store_82.Store || (Store_82.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_82) {
+(function (Store_83) {
     var Store;
     (function (Store) {
         var WaresForm = /** @class */ (function (_super) {
@@ -2302,10 +2326,10 @@ var Store;
             return WaresForm;
         }(Serenity.PrefixedContext));
         Store.WaresForm = WaresForm;
-    })(Store = Store_82.Store || (Store_82.Store = {}));
+    })(Store = Store_83.Store || (Store_83.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_83) {
+(function (Store_84) {
     var Store;
     (function (Store) {
         var WaresLangRow;
@@ -2314,10 +2338,10 @@ var Store;
             WaresLangRow.nameProperty = 'WaresName';
             WaresLangRow.localTextPrefix = 'Store.WaresLang';
         })(WaresLangRow = Store.WaresLangRow || (Store.WaresLangRow = {}));
-    })(Store = Store_83.Store || (Store_83.Store = {}));
+    })(Store = Store_84.Store || (Store_84.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_84) {
+(function (Store_85) {
     var Store;
     (function (Store) {
         var WaresLangService;
@@ -2335,10 +2359,10 @@ var Store;
                 };
             });
         })(WaresLangService = Store.WaresLangService || (Store.WaresLangService = {}));
-    })(Store = Store_84.Store || (Store_84.Store = {}));
+    })(Store = Store_85.Store || (Store_85.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_85) {
+(function (Store_86) {
     var Store;
     (function (Store) {
         var WaresMovementDetailsForm = /** @class */ (function (_super) {
@@ -2365,10 +2389,10 @@ var Store;
             return WaresMovementDetailsForm;
         }(Serenity.PrefixedContext));
         Store.WaresMovementDetailsForm = WaresMovementDetailsForm;
-    })(Store = Store_85.Store || (Store_85.Store = {}));
+    })(Store = Store_86.Store || (Store_86.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_86) {
+(function (Store_87) {
     var Store;
     (function (Store) {
         var WaresMovementDetailsRow;
@@ -2377,10 +2401,10 @@ var Store;
             WaresMovementDetailsRow.isActiveProperty = 'IsActive';
             WaresMovementDetailsRow.localTextPrefix = 'Store.WaresMovementDetails';
         })(WaresMovementDetailsRow = Store.WaresMovementDetailsRow || (Store.WaresMovementDetailsRow = {}));
-    })(Store = Store_86.Store || (Store_86.Store = {}));
+    })(Store = Store_87.Store || (Store_87.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_87) {
+(function (Store_88) {
     var Store;
     (function (Store) {
         var WaresMovementDetailsService;
@@ -2395,10 +2419,10 @@ var Store;
                 };
             });
         })(WaresMovementDetailsService = Store.WaresMovementDetailsService || (Store.WaresMovementDetailsService = {}));
-    })(Store = Store_87.Store || (Store_87.Store = {}));
+    })(Store = Store_88.Store || (Store_88.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_88) {
+(function (Store_89) {
     var Store;
     (function (Store) {
         var WaresMovementDocRow;
@@ -2407,10 +2431,10 @@ var Store;
             WaresMovementDocRow.nameProperty = 'DocumentNumber';
             WaresMovementDocRow.localTextPrefix = 'Store.WaresMovementDoc';
         })(WaresMovementDocRow = Store.WaresMovementDocRow || (Store.WaresMovementDocRow = {}));
-    })(Store = Store_88.Store || (Store_88.Store = {}));
+    })(Store = Store_89.Store || (Store_89.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_89) {
+(function (Store_90) {
     var Store;
     (function (Store) {
         var WaresMovementForm = /** @class */ (function (_super) {
@@ -2448,10 +2472,10 @@ var Store;
             return WaresMovementForm;
         }(Serenity.PrefixedContext));
         Store.WaresMovementForm = WaresMovementForm;
-    })(Store = Store_89.Store || (Store_89.Store = {}));
+    })(Store = Store_90.Store || (Store_90.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_90) {
+(function (Store_91) {
     var Store;
     (function (Store) {
         var WaresMovementOperations;
@@ -2469,10 +2493,10 @@ var Store;
             WaresMovementOperations[WaresMovementOperations["Inventory"] = 500] = "Inventory";
         })(WaresMovementOperations = Store.WaresMovementOperations || (Store.WaresMovementOperations = {}));
         Serenity.Decorators.registerEnumType(WaresMovementOperations, 'Store.Store.WaresMovementOperations', 'Store.WaresMovementOperations');
-    })(Store = Store_90.Store || (Store_90.Store = {}));
+    })(Store = Store_91.Store || (Store_91.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_91) {
+(function (Store_92) {
     var Store;
     (function (Store) {
         var WaresMovementRow;
@@ -2487,10 +2511,10 @@ var Store;
             }
             WaresMovementRow.getLookup = getLookup;
         })(WaresMovementRow = Store.WaresMovementRow || (Store.WaresMovementRow = {}));
-    })(Store = Store_91.Store || (Store_91.Store = {}));
+    })(Store = Store_92.Store || (Store_92.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_92) {
+(function (Store_93) {
     var Store;
     (function (Store) {
         var WaresMovementService;
@@ -2508,10 +2532,10 @@ var Store;
                 };
             });
         })(WaresMovementService = Store.WaresMovementService || (Store.WaresMovementService = {}));
-    })(Store = Store_92.Store || (Store_92.Store = {}));
+    })(Store = Store_93.Store || (Store_93.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_93) {
+(function (Store_94) {
     var Store;
     (function (Store) {
         var WaresRow;
@@ -2526,10 +2550,10 @@ var Store;
             }
             WaresRow.getLookup = getLookup;
         })(WaresRow = Store.WaresRow || (Store.WaresRow = {}));
-    })(Store = Store_93.Store || (Store_93.Store = {}));
+    })(Store = Store_94.Store || (Store_94.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_94) {
+(function (Store_95) {
     var Store;
     (function (Store) {
         var WaresService;
@@ -2549,14 +2573,14 @@ var Store;
                 };
             });
         })(WaresService = Store.WaresService || (Store.WaresService = {}));
-    })(Store = Store_94.Store || (Store_94.Store = {}));
+    })(Store = Store_95.Store || (Store_95.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_95) {
+(function (Store_96) {
     var Texts;
     (function (Texts) {
-        Store_95.Store['Texts'] = Q.proxyTexts(Texts, '', { Db: { Administration: { Language: { Id: 1, LanguageId: 1, LanguageName: 1 }, Role: { RoleId: 1, RoleName: 1, TenantId: 1 }, RolePermission: { PermissionKey: 1, RoleId: 1, RolePermissionId: 1, RoleRoleName: 1 }, Tenant: { TenantId: 1, TenantName: 1 }, Translation: { CustomText: 1, EntityPlural: 1, Key: 1, OverrideConfirmation: 1, SaveChangesButton: 1, SourceLanguage: 1, SourceText: 1, TargetLanguage: 1, TargetText: 1 }, User: { DisplayName: 1, Email: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, LastDirectoryUpdate: 1, Password: 1, PasswordConfirm: 1, PasswordHash: 1, PasswordSalt: 1, Source: 1, TenantId: 1, TenantName: 1, UpdateDate: 1, UpdateUserId: 1, UserId: 1, UserImage: 1, Username: 1 }, UserPermission: { Granted: 1, PermissionKey: 1, User: 1, UserId: 1, UserPermissionId: 1, Username: 1 }, UserRole: { RoleId: 1, User: 1, UserId: 1, UserRoleId: 1, Username: 1 } }, Common: { UserPreference: { Name: 1, PreferenceType: 1, UserId: 1, UserPreferenceId: 1, Value: 1 } }, Store: { Category: { CategoryCode: 1, CategoryID: 1, CategoryName: 1, CategoryType: 1, CategoryTypeID: 1, Description: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, Picture: 1, TenantId: 1, Type: 1, UpdateDate: 1, UpdateUserId: 1 }, CategoryLang: { CategoryName: 1, Description: 1, ID: 1, LanguageID: 1 }, CategoryType: { CategoryType: 1, CategoryTypeID: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, TenantId: 1, Type: 1, UpdateDate: 1, UpdateUserId: 1 }, Counterparty: { Address: 1, City: 1, CompanyName: 1, ContactName: 1, ContactTitle: 1, CounterpartyID: 1, Country: 1, Email: 1, ID: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, LastContactDate: 1, LastContactedBy: 1, NoteList: 1, Phone: 1, PostalCode: 1, Region: 1, Representatives: 1, SendBulletin: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, CounterpartyDetail: { Email: 1, ID: 1, LastContactDate: 1, LastContactedBy: 1, LastContactedByAddress: 1, LastContactedByBirthDate: 1, LastContactedByCity: 1, LastContactedByCountry: 1, LastContactedByExtension: 1, LastContactedByFirstName: 1, LastContactedByHireDate: 1, LastContactedByHomePhone: 1, LastContactedByLastName: 1, LastContactedByNotes: 1, LastContactedByPhoto: 1, LastContactedByPhotoPath: 1, LastContactedByPostalCode: 1, LastContactedByRegion: 1, LastContactedByReportsTo: 1, LastContactedByTitle: 1, LastContactedByTitleOfCourtesy: 1, SendBulletin: 1 }, CounterpartyRepresentative: { CounterpartyID: 1, EmployeeID: 1, RepresentativeID: 1 }, DocumentType: { DocumentName: 1, DocumentTypeID: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, Employee: { Address: 1, BirthDate: 1, City: 1, Country: 1, EmployeeID: 1, Extension: 1, FirstName: 1, FullName: 1, Gender: 1, HireDate: 1, HomePhone: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, LastName: 1, Notes: 1, Photo: 1, PhotoPath: 1, PostalCode: 1, Region: 1, ReportsTo: 1, ReportsToAddress: 1, ReportsToBirthDate: 1, ReportsToCity: 1, ReportsToCountry: 1, ReportsToExtension: 1, ReportsToFirstName: 1, ReportsToFullName: 1, ReportsToHireDate: 1, ReportsToHomePhone: 1, ReportsToLastName: 1, ReportsToNotes: 1, ReportsToPhoto: 1, ReportsToPhotoPath: 1, ReportsToPostalCode: 1, ReportsToRegion: 1, ReportsToReportsTo: 1, ReportsToTitle: 1, ReportsToTitleOfCourtesy: 1, TenantId: 1, Title: 1, TitleOfCourtesy: 1, UpdateDate: 1, UpdateUserId: 1 }, Measure: { InsertDate: 1, InsertUserId: 1, IsActive: 1, MeasureID: 1, MeasureName: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, Note: { EntityId: 1, EntityType: 1, InsertDate: 1, InsertUserDisplayName: 1, InsertUserId: 1, NoteId: 1, Text: 1 }, OperationType: { InsertDate: 1, InsertUserId: 1, IsActive: 1, OpCode: 1, Operation: 1, OperationTypeID: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, Product: { CategoryCategoryName: 1, CategoryDescription: 1, CategoryID: 1, CounterpartyCity: 1, CounterpartyCompanyName: 1, CounterpartyContactName: 1, CounterpartyContactTitle: 1, CounterpartyCountry: 1, CounterpartyID: 1, CounterpartyPhone: 1, CounterpartyRegion: 1, DetailList: 1, Discontinued: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, MeasureID: 1, MeasureMeasureName: 1, ProductBarcode: 1, ProductCode: 1, ProductID: 1, ProductImage: 1, ProductLabel: 1, ProductName: 1, QuantityPerUnit: 1, ReorderLevel: 1, SupplierAddress: 1, SupplierCity: 1, SupplierCompanyName: 1, SupplierContactName: 1, SupplierContactTitle: 1, SupplierCountry: 1, SupplierEmail: 1, SupplierFax: 1, SupplierHomePage: 1, SupplierID: 1, SupplierPhone: 1, SupplierPostalCode: 1, SupplierRegion: 1, SupplierSupplierStat: 1, TenantId: 1, UnitPrice: 1, UnitsInStock: 1, UnitsOnOrder: 1, UpdateDate: 1, UpdateUserId: 1 }, ProductDetail: { DetailID: 1, Discount: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, LineTotal: 1, PlanPrice: 1, ProductCategoryID: 1, ProductDiscontinued: 1, ProductID: 1, ProductName: 1, ProductQuantity: 1, ProductQuantityPerUnit: 1, ProductReorderLevel: 1, ProductSupplierID: 1, ProductUnitPrice: 1, ProductUnitsInStock: 1, ProductUnitsOnOrder: 1, Quantity: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1, WaresAccountID: 1, WaresBarcode: 1, WaresCategoryID: 1, WaresCode: 1, WaresDiscontinued: 1, WaresID: 1, WaresImage: 1, WaresLabel: 1, WaresMeasureID: 1, WaresName: 1, WaresQuantityPerUnit: 1, WaresUnitPrice: 1 }, ProductLang: { ID: 1, LanguageID: 1, ProductID: 1, ProductName: 1 }, ProductMovement: { CounterpartyCity: 1, CounterpartyCompanyName: 1, CounterpartyContactName: 1, CounterpartyContactTitle: 1, CounterpartyCountry: 1, CounterpartyID: 1, CounterpartyPhone: 1, CounterpartyRegion: 1, DetailList: 1, EmployeeFullName: 1, EmployeeGender: 1, EmployeeID: 1, EmployeeReportsToFullName: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, OperationTypeID: 1, OperationTypeOpCode: 1, OperationTypeOperation: 1, OrderDate: 1, ProductMoveID: 1, RequiredDate: 1, ShippedDate: 1, ShipperCompanyName: 1, ShipperID: 1, ShipperPhone: 1, ShippingState: 1, ShopAddress: 1, ShopCity: 1, ShopContactName: 1, ShopContactTitle: 1, ShopCountry: 1, ShopID: 1, ShopPhone: 1, ShopPostalCode: 1, ShopRegion: 1, ShopShopName: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, ProductMovementDetails: { DetailID: 1, Discount: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, LineTotal: 1, ProductCategoryID: 1, ProductDiscontinued: 1, ProductID: 1, ProductMoveCounterpartyID: 1, ProductMoveEmployeeID: 1, ProductMoveID: 1, ProductMoveOperationTypeID: 1, ProductMoveOperationTypeOpCode: 1, ProductMoveOrderDate: 1, ProductMoveRequiredDate: 1, ProductMoveShippedDate: 1, ProductMoveShipperID: 1, ProductMoveShopID: 1, ProductName: 1, ProductQuantityPerUnit: 1, ProductReorderLevel: 1, ProductSupplierID: 1, ProductUnitPrice: 1, ProductUnitsInStock: 1, ProductUnitsOnOrder: 1, Quantity: 1, SalePrice: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, Shipper: { CompanyName: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, Phone: 1, ShipperID: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, Shops: { Address: 1, City: 1, ContactName: 1, ContactTitle: 1, Country: 1, ID: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, Phone: 1, PostalCode: 1, Region: 1, ShopID: 1, ShopName: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, Store: { AExpenceSinglePrice: 1, AExpenceValue: 1, AIncomeSinglePrice: 1, AIncomeValue: 1, AMistake: 1, AReCost: 1, ARestQuantity: 1, ARestSinglePrice: 1, ARestValue: 1, Date: 1, ExpenceQuantity: 1, ExpenceSinglePrice: 1, ExpenceValue: 1, IncomeQuantity: 1, IncomeSinglePrice: 1, IncomeValue: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, Key: 1, Mistake: 1, MoveID: 1, OperationID: 1, Position: 1, ReCost: 1, RestQuantity: 1, RestSinglePrice: 1, RestValue: 1, ShopID: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1, WaresID: 1, WaresMode: 1 }, StoreMove: { Date: 1, ExpenceQuantity: 1, ExpenceSinglePrice: 1, ExpenceValue: 1, IncomeQuantity: 1, IncomeSinglePrice: 1, IncomeValue: 1, InitialQuantity: 1, InitialSinglePrice: 1, InitialValue: 1, Mistake: 1, ReCost: 1, RestQuantity: 1, RestSinglePrice: 1, RestValue: 1, ShopID: 1, ShopName: 1, WaresCode: 1, WaresID: 1, WaresName: 1 }, Supplier: { Address: 1, City: 1, CompanyName: 1, ContactName: 1, ContactTitle: 1, Country: 1, Email: 1, Fax: 1, HomePage: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, Phone: 1, PostalCode: 1, Region: 1, SupplierID: 1, SupplierStat: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, Wares: { AccountID: 1, CategoryCategoryName: 1, CategoryDescription: 1, CategoryID: 1, CounterpartyCity: 1, CounterpartyCompanyName: 1, CounterpartyContactName: 1, CounterpartyContactTitle: 1, CounterpartyCountry: 1, CounterpartyID: 1, CounterpartyPhone: 1, CounterpartyRegion: 1, Discontinued: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, MeasureID: 1, MeasureName: 1, QuantityPerUnit: 1, SupplierID: 1, TenantId: 1, Type: 1, UnitPrice: 1, UnitsInStock: 1, UnitsOnOrder: 1, UpdateDate: 1, UpdateUserId: 1, WaresBarcode: 1, WaresCode: 1, WaresID: 1, WaresImage: 1, WaresLabel: 1, WaresName: 1 }, WaresFile: { Date: 1, DocumentDate: 1, DocumentNumber: 1, DocumentType: 1, ExpenceQuantity: 1, ExpenceSinglePrice: 1, ExpenceValue: 1, IncomeQuantity: 1, IncomeSinglePrice: 1, IncomeValue: 1, Mistake: 1, ReCost: 1, RestQuantity: 1, RestSinglePrice: 1, RestValue: 1, ShopID: 1, ShopName: 1, WaresCode: 1, WaresID: 1, WaresName: 1 }, WaresLang: { Description: 1, ID: 1, LanguageID: 1, WaresID: 1, WaresName: 1 }, WaresMovement: { CounterpartyCity: 1, CounterpartyCompanyName: 1, CounterpartyContactName: 1, CounterpartyContactTitle: 1, CounterpartyCountry: 1, CounterpartyID: 1, CounterpartyPhone: 1, CounterpartyRegion: 1, DetailList: 1, DocumentDate: 1, DocumentNumber: 1, DocumentTypeID: 1, EmployeeFullName: 1, EmployeeGender: 1, EmployeeID: 1, EmployeeReportsToFullName: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, OperationTypeID: 1, OperationTypeOpCode: 1, OperationTypeOperation: 1, OrderDate: 1, RequiredDate: 1, ShippedDate: 1, ShipperCompanyName: 1, ShipperID: 1, ShipperPhone: 1, ShippingState: 1, ShopAddress: 1, ShopCity: 1, ShopContactName: 1, ShopContactTitle: 1, ShopCountry: 1, ShopID: 1, ShopPhone: 1, ShopPostalCode: 1, ShopRegion: 1, ShopShopName: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1, WaresMoveID: 1 }, WaresMovementDetails: { DetailID: 1, Discount: 1, IncomePrice: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, LineTotal: 1, Quantity: 1, SalePrice: 1, SinglePrice: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1, WaresCategoryID: 1, WaresCode: 1, WaresCounterpartyID: 1, WaresID: 1, WaresMeasureID: 1, WaresMeasureName: 1, WaresMoveCounterpartyID: 1, WaresMoveEmployeeID: 1, WaresMoveID: 1, WaresMoveOperationTypeID: 1, WaresMoveOperationTypeOpCode: 1, WaresMoveOrderDate: 1, WaresMoveRequiredDate: 1, WaresMoveShippedDate: 1, WaresMoveShipperID: 1, WaresMoveShopID: 1, WaresName: 1, WaresQuantityPerUnit: 1, WaresUnitPrice: 1 }, WaresMovementDoc: { DocumentDate: 1, DocumentNumber: 1, DocumentTypeDocumentName: 1, DocumentTypeID: 1, WaresMoveID: 1 } } }, Forms: { Membership: { ChangePassword: { FormTitle: 1, SubmitButton: 1, Success: 1 }, ForgotPassword: { BackToLogin: 1, FormInfo: 1, FormTitle: 1, SubmitButton: 1, Success: 1 }, Login: { FacebookButton: 1, ForgotPassword: 1, FormTitle: 1, GoogleButton: 1, OR: 1, RememberMe: 1, SignInButton: 1, SignUpButton: 1 }, ResetPassword: { BackToLogin: 1, EmailSubject: 1, FormTitle: 1, SubmitButton: 1, Success: 1 }, SignUp: { AcceptTerms: 1, ActivateEmailSubject: 1, ActivationCompleteMessage: 1, BackToLogin: 1, ConfirmEmail: 1, ConfirmPassword: 1, DisplayName: 1, Email: 1, FormInfo: 1, FormTitle: 1, Password: 1, SubmitButton: 1, Success: 1 } } }, Site: { AccessDenied: { ClickToChangeUser: 1, ClickToLogin: 1, LackPermissions: 1, NotLoggedIn: 1, PageTitle: 1 }, BasicProgressDialog: { CancelTitle: 1, PleaseWait: 1 }, BulkServiceAction: { AllHadErrorsFormat: 1, AllSuccessFormat: 1, ConfirmationFormat: 1, ErrorCount: 1, NothingToProcess: 1, SomeHadErrorsFormat: 1, SuccessCount: 1 }, Dashboard: { ContentDescription: 1 }, Layout: { FooterCopyright: 1, FooterInfo: 1, FooterRights: 1, GeneralSettings: 1, Language: 1, Theme: 1, ThemeBlack: 1, ThemeBlackLight: 1, ThemeBlue: 1, ThemeBlueLight: 1, ThemeGreen: 1, ThemeGreenLight: 1, ThemePurple: 1, ThemePurpleLight: 1, ThemeRed: 1, ThemeRedLight: 1, ThemeYellow: 1, ThemeYellowLight: 1 }, RolePermissionDialog: { DialogTitle: 1, EditButton: 1, SaveSuccess: 1 }, UserDialog: { EditPermissionsButton: 1, EditRolesButton: 1 }, UserPermissionDialog: { DialogTitle: 1, Grant: 1, Permission: 1, Revoke: 1, SaveSuccess: 1 }, UserRoleDialog: { DialogTitle: 1, SaveSuccess: 1 }, ValidationError: { Title: 1 } }, Validation: { AuthenticationError: 1, CantFindUserWithEmail: 1, CurrentPasswordMismatch: 1, DeleteForeignKeyError: 1, EmailConfirm: 1, EmailInUse: 1, InvalidActivateToken: 1, InvalidResetToken: 1, MinRequiredPasswordLength: 1, SavePrimaryKeyError: 1 } });
-    })(Texts = Store_95.Texts || (Store_95.Texts = {}));
+        Store_96.Store['Texts'] = Q.proxyTexts(Texts, '', { Db: { Administration: { Language: { Id: 1, LanguageId: 1, LanguageName: 1 }, Role: { RoleId: 1, RoleName: 1, TenantId: 1 }, RolePermission: { PermissionKey: 1, RoleId: 1, RolePermissionId: 1, RoleRoleName: 1 }, Tenant: { TenantId: 1, TenantName: 1 }, Translation: { CustomText: 1, EntityPlural: 1, Key: 1, OverrideConfirmation: 1, SaveChangesButton: 1, SourceLanguage: 1, SourceText: 1, TargetLanguage: 1, TargetText: 1 }, User: { DisplayName: 1, Email: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, LastDirectoryUpdate: 1, Password: 1, PasswordConfirm: 1, PasswordHash: 1, PasswordSalt: 1, Source: 1, TenantId: 1, TenantName: 1, UpdateDate: 1, UpdateUserId: 1, UserId: 1, UserImage: 1, Username: 1 }, UserPermission: { Granted: 1, PermissionKey: 1, User: 1, UserId: 1, UserPermissionId: 1, Username: 1 }, UserRole: { RoleId: 1, User: 1, UserId: 1, UserRoleId: 1, Username: 1 } }, Common: { UserPreference: { Name: 1, PreferenceType: 1, UserId: 1, UserPreferenceId: 1, Value: 1 } }, Store: { Category: { CategoryCode: 1, CategoryID: 1, CategoryName: 1, CategoryType: 1, CategoryTypeID: 1, Description: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, Picture: 1, TenantId: 1, Type: 1, UpdateDate: 1, UpdateUserId: 1 }, CategoryLang: { CategoryName: 1, Description: 1, ID: 1, LanguageID: 1 }, CategoryType: { CategoryType: 1, CategoryTypeID: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, TenantId: 1, Type: 1, UpdateDate: 1, UpdateUserId: 1 }, Counterparty: { Address: 1, City: 1, CompanyName: 1, ContactName: 1, ContactTitle: 1, CounterpartyID: 1, Country: 1, Email: 1, ID: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, LastContactDate: 1, LastContactedBy: 1, NoteList: 1, Phone: 1, PostalCode: 1, Region: 1, Representatives: 1, SendBulletin: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, CounterpartyDetail: { Email: 1, ID: 1, LastContactDate: 1, LastContactedBy: 1, LastContactedByAddress: 1, LastContactedByBirthDate: 1, LastContactedByCity: 1, LastContactedByCountry: 1, LastContactedByExtension: 1, LastContactedByFirstName: 1, LastContactedByHireDate: 1, LastContactedByHomePhone: 1, LastContactedByLastName: 1, LastContactedByNotes: 1, LastContactedByPhoto: 1, LastContactedByPhotoPath: 1, LastContactedByPostalCode: 1, LastContactedByRegion: 1, LastContactedByReportsTo: 1, LastContactedByTitle: 1, LastContactedByTitleOfCourtesy: 1, SendBulletin: 1 }, CounterpartyRepresentative: { CounterpartyID: 1, EmployeeID: 1, RepresentativeID: 1 }, DocumentType: { DocumentName: 1, DocumentTypeID: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, Employee: { Address: 1, BirthDate: 1, City: 1, Country: 1, EmployeeID: 1, Extension: 1, FirstName: 1, FullName: 1, Gender: 1, HireDate: 1, HomePhone: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, LastName: 1, Notes: 1, Photo: 1, PhotoPath: 1, PostalCode: 1, Region: 1, ReportsTo: 1, ReportsToAddress: 1, ReportsToBirthDate: 1, ReportsToCity: 1, ReportsToCountry: 1, ReportsToExtension: 1, ReportsToFirstName: 1, ReportsToFullName: 1, ReportsToHireDate: 1, ReportsToHomePhone: 1, ReportsToLastName: 1, ReportsToNotes: 1, ReportsToPhoto: 1, ReportsToPhotoPath: 1, ReportsToPostalCode: 1, ReportsToRegion: 1, ReportsToReportsTo: 1, ReportsToTitle: 1, ReportsToTitleOfCourtesy: 1, TenantId: 1, Title: 1, TitleOfCourtesy: 1, UpdateDate: 1, UpdateUserId: 1 }, Measure: { InsertDate: 1, InsertUserId: 1, IsActive: 1, MeasureID: 1, MeasureName: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, Note: { EntityId: 1, EntityType: 1, InsertDate: 1, InsertUserDisplayName: 1, InsertUserId: 1, NoteId: 1, Text: 1 }, OperationType: { InsertDate: 1, InsertUserId: 1, IsActive: 1, OpCode: 1, Operation: 1, OperationTypeID: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, Product: { CategoryCategoryName: 1, CategoryDescription: 1, CategoryID: 1, CounterpartyCity: 1, CounterpartyCompanyName: 1, CounterpartyContactName: 1, CounterpartyContactTitle: 1, CounterpartyCountry: 1, CounterpartyID: 1, CounterpartyPhone: 1, CounterpartyRegion: 1, DetailList: 1, Discontinued: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, MeasureID: 1, MeasureMeasureName: 1, ProductBarcode: 1, ProductCode: 1, ProductID: 1, ProductImage: 1, ProductLabel: 1, ProductName: 1, QuantityPerUnit: 1, ReorderLevel: 1, SupplierAddress: 1, SupplierCity: 1, SupplierCompanyName: 1, SupplierContactName: 1, SupplierContactTitle: 1, SupplierCountry: 1, SupplierEmail: 1, SupplierFax: 1, SupplierHomePage: 1, SupplierID: 1, SupplierPhone: 1, SupplierPostalCode: 1, SupplierRegion: 1, SupplierSupplierStat: 1, TenantId: 1, UnitPrice: 1, UnitsInStock: 1, UnitsOnOrder: 1, UpdateDate: 1, UpdateUserId: 1 }, ProductDetail: { DetailID: 1, Discount: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, LineTotal: 1, PlanPrice: 1, ProductCategoryID: 1, ProductDiscontinued: 1, ProductID: 1, ProductName: 1, ProductQuantity: 1, ProductQuantityPerUnit: 1, ProductReorderLevel: 1, ProductSupplierID: 1, ProductUnitPrice: 1, ProductUnitsInStock: 1, ProductUnitsOnOrder: 1, Quantity: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1, WaresAccountID: 1, WaresBarcode: 1, WaresCategoryID: 1, WaresCode: 1, WaresDiscontinued: 1, WaresID: 1, WaresImage: 1, WaresLabel: 1, WaresMeasureID: 1, WaresName: 1, WaresQuantityPerUnit: 1, WaresUnitPrice: 1 }, ProductLang: { ID: 1, LanguageID: 1, ProductID: 1, ProductName: 1 }, ProductMovement: { CounterpartyCity: 1, CounterpartyCompanyName: 1, CounterpartyContactName: 1, CounterpartyContactTitle: 1, CounterpartyCountry: 1, CounterpartyID: 1, CounterpartyPhone: 1, CounterpartyRegion: 1, DetailList: 1, EmployeeFullName: 1, EmployeeGender: 1, EmployeeID: 1, EmployeeReportsToFullName: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, OperationTypeID: 1, OperationTypeOpCode: 1, OperationTypeOperation: 1, OrderDate: 1, ProductMoveID: 1, RequiredDate: 1, ShippedDate: 1, ShipperCompanyName: 1, ShipperID: 1, ShipperPhone: 1, ShippingState: 1, ShopAddress: 1, ShopCity: 1, ShopContactName: 1, ShopContactTitle: 1, ShopCountry: 1, ShopID: 1, ShopPhone: 1, ShopPostalCode: 1, ShopRegion: 1, ShopShopName: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, ProductMovementDetails: { DetailID: 1, Discount: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, LineTotal: 1, ProductCategoryID: 1, ProductDiscontinued: 1, ProductID: 1, ProductMoveCounterpartyID: 1, ProductMoveEmployeeID: 1, ProductMoveID: 1, ProductMoveOperationTypeID: 1, ProductMoveOperationTypeOpCode: 1, ProductMoveOrderDate: 1, ProductMoveRequiredDate: 1, ProductMoveShippedDate: 1, ProductMoveShipperID: 1, ProductMoveShopID: 1, ProductName: 1, ProductQuantityPerUnit: 1, ProductReorderLevel: 1, ProductSupplierID: 1, ProductUnitPrice: 1, ProductUnitsInStock: 1, ProductUnitsOnOrder: 1, Quantity: 1, SalePrice: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, Shipper: { CompanyName: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, Phone: 1, ShipperID: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, Shops: { Address: 1, City: 1, ContactName: 1, ContactTitle: 1, Country: 1, ID: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, Phone: 1, PostalCode: 1, Region: 1, ShopID: 1, ShopName: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, Store: { AExpenceSinglePrice: 1, AExpenceValue: 1, AIncomeSinglePrice: 1, AIncomeValue: 1, AMistake: 1, AReCost: 1, ARestQuantity: 1, ARestSinglePrice: 1, ARestValue: 1, Date: 1, ExpenceQuantity: 1, ExpenceSinglePrice: 1, ExpenceValue: 1, IncomeQuantity: 1, IncomeSinglePrice: 1, IncomeValue: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, Key: 1, Mistake: 1, MoveID: 1, OperationID: 1, Position: 1, ReCost: 1, RestQuantity: 1, RestSinglePrice: 1, RestValue: 1, ShopID: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1, WaresID: 1, WaresMode: 1 }, StoreMove: { Date: 1, ExpenceQuantity: 1, ExpenceSinglePrice: 1, ExpenceValue: 1, IncomeQuantity: 1, IncomeSinglePrice: 1, IncomeValue: 1, InitialQuantity: 1, InitialSinglePrice: 1, InitialValue: 1, Mistake: 1, ReCost: 1, RestQuantity: 1, RestSinglePrice: 1, RestValue: 1, ShopID: 1, ShopName: 1, WaresCode: 1, WaresID: 1, WaresName: 1 }, Supplier: { Address: 1, City: 1, CompanyName: 1, ContactName: 1, ContactTitle: 1, Country: 1, Email: 1, Fax: 1, HomePage: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, Phone: 1, PostalCode: 1, Region: 1, SupplierID: 1, SupplierStat: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1 }, Wares: { AccountID: 1, CategoryCategoryName: 1, CategoryDescription: 1, CategoryID: 1, CounterpartyCity: 1, CounterpartyCompanyName: 1, CounterpartyContactName: 1, CounterpartyContactTitle: 1, CounterpartyCountry: 1, CounterpartyID: 1, CounterpartyPhone: 1, CounterpartyRegion: 1, Discontinued: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, MeasureID: 1, MeasureName: 1, QuantityPerUnit: 1, SupplierID: 1, TenantId: 1, Type: 1, UnitPrice: 1, UnitsInStock: 1, UnitsOnOrder: 1, UpdateDate: 1, UpdateUserId: 1, WaresBarcode: 1, WaresCode: 1, WaresID: 1, WaresImage: 1, WaresLabel: 1, WaresName: 1 }, WaresFile: { Date: 1, DocumentDate: 1, DocumentNumber: 1, DocumentType: 1, ExpenceQuantity: 1, ExpenceSinglePrice: 1, ExpenceValue: 1, IncomeQuantity: 1, IncomeSinglePrice: 1, IncomeValue: 1, Mistake: 1, ReCost: 1, RestQuantity: 1, RestSinglePrice: 1, RestValue: 1, ShopID: 1, ShopName: 1, WaresCode: 1, WaresID: 1, WaresName: 1 }, WaresLang: { Description: 1, ID: 1, LanguageID: 1, WaresID: 1, WaresName: 1 }, WaresMovement: { CounterpartyCity: 1, CounterpartyCompanyName: 1, CounterpartyContactName: 1, CounterpartyContactTitle: 1, CounterpartyCountry: 1, CounterpartyID: 1, CounterpartyPhone: 1, CounterpartyRegion: 1, DetailList: 1, DocumentDate: 1, DocumentNumber: 1, DocumentTypeID: 1, EmployeeFullName: 1, EmployeeGender: 1, EmployeeID: 1, EmployeeReportsToFullName: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, OperationTypeID: 1, OperationTypeOpCode: 1, OperationTypeOperation: 1, OrderDate: 1, RequiredDate: 1, ShippedDate: 1, ShipperCompanyName: 1, ShipperID: 1, ShipperPhone: 1, ShippingState: 1, ShopAddress: 1, ShopCity: 1, ShopContactName: 1, ShopContactTitle: 1, ShopCountry: 1, ShopID: 1, ShopPhone: 1, ShopPostalCode: 1, ShopRegion: 1, ShopShopName: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1, WaresMoveID: 1 }, WaresMovementDetails: { DetailID: 1, Discount: 1, IncomePrice: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, LineTotal: 1, Quantity: 1, SalePrice: 1, SinglePrice: 1, TenantId: 1, UpdateDate: 1, UpdateUserId: 1, WaresCategoryID: 1, WaresCode: 1, WaresCounterpartyID: 1, WaresID: 1, WaresMeasureID: 1, WaresMeasureName: 1, WaresMoveCounterpartyID: 1, WaresMoveEmployeeID: 1, WaresMoveID: 1, WaresMoveOperationTypeID: 1, WaresMoveOperationTypeOpCode: 1, WaresMoveOrderDate: 1, WaresMoveRequiredDate: 1, WaresMoveShippedDate: 1, WaresMoveShipperID: 1, WaresMoveShopID: 1, WaresName: 1, WaresQuantityPerUnit: 1, WaresUnitPrice: 1 }, WaresMovementDoc: { DocumentDate: 1, DocumentNumber: 1, DocumentTypeDocumentName: 1, DocumentTypeID: 1, WaresMoveID: 1 } } }, Forms: { Membership: { ChangePassword: { FormTitle: 1, SubmitButton: 1, Success: 1 }, ForgotPassword: { BackToLogin: 1, FormInfo: 1, FormTitle: 1, SubmitButton: 1, Success: 1 }, Login: { FacebookButton: 1, ForgotPassword: 1, FormTitle: 1, GoogleButton: 1, OR: 1, RememberMe: 1, SignInButton: 1, SignUpButton: 1 }, ResetPassword: { BackToLogin: 1, EmailSubject: 1, FormTitle: 1, SubmitButton: 1, Success: 1 }, SignUp: { AcceptTerms: 1, ActivateEmailSubject: 1, ActivationCompleteMessage: 1, BackToLogin: 1, ConfirmEmail: 1, ConfirmPassword: 1, DisplayName: 1, Email: 1, FormInfo: 1, FormTitle: 1, Password: 1, SubmitButton: 1, Success: 1 } } }, Site: { AccessDenied: { ClickToChangeUser: 1, ClickToLogin: 1, LackPermissions: 1, NotLoggedIn: 1, PageTitle: 1 }, BasicProgressDialog: { CancelTitle: 1, PleaseWait: 1 }, BulkServiceAction: { AllHadErrorsFormat: 1, AllSuccessFormat: 1, ConfirmationFormat: 1, ErrorCount: 1, NothingToProcess: 1, SomeHadErrorsFormat: 1, SuccessCount: 1 }, Dashboard: { ContentDescription: 1 }, Layout: { FooterCopyright: 1, FooterInfo: 1, FooterRights: 1, GeneralSettings: 1, Language: 1, Theme: 1, ThemeBlack: 1, ThemeBlackLight: 1, ThemeBlue: 1, ThemeBlueLight: 1, ThemeGreen: 1, ThemeGreenLight: 1, ThemePurple: 1, ThemePurpleLight: 1, ThemeRed: 1, ThemeRedLight: 1, ThemeYellow: 1, ThemeYellowLight: 1 }, RolePermissionDialog: { DialogTitle: 1, EditButton: 1, SaveSuccess: 1 }, UserDialog: { EditPermissionsButton: 1, EditRolesButton: 1 }, UserPermissionDialog: { DialogTitle: 1, Grant: 1, Permission: 1, Revoke: 1, SaveSuccess: 1 }, UserRoleDialog: { DialogTitle: 1, SaveSuccess: 1 }, ValidationError: { Title: 1 } }, Validation: { AuthenticationError: 1, CantFindUserWithEmail: 1, CurrentPasswordMismatch: 1, DeleteForeignKeyError: 1, EmailConfirm: 1, EmailInUse: 1, InvalidActivateToken: 1, InvalidResetToken: 1, MinRequiredPasswordLength: 1, SavePrimaryKeyError: 1 } });
+    })(Texts = Store_96.Texts || (Store_96.Texts = {}));
 })(Store || (Store = {}));
 var Store;
 (function (Store) {
@@ -4727,7 +4751,7 @@ var Store;
     })(Common = Store.Common || (Store.Common = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_96) {
+(function (Store_97) {
     var Store;
     (function (Store) {
         var CategoryDialog = /** @class */ (function (_super) {
@@ -4742,17 +4766,17 @@ var Store;
             CategoryDialog.prototype.getLocalTextPrefix = function () { return Store.CategoryRow.localTextPrefix; };
             CategoryDialog.prototype.getNameProperty = function () { return Store.CategoryRow.nameProperty; };
             CategoryDialog.prototype.getService = function () { return Store.CategoryService.baseUrl; };
-            CategoryDialog.prototype.getLanguages = function () { return Store_96.LanguageList.getValue(); };
+            CategoryDialog.prototype.getLanguages = function () { return Store_97.LanguageList.getValue(); };
             CategoryDialog = __decorate([
                 Serenity.Decorators.registerClass()
             ], CategoryDialog);
             return CategoryDialog;
         }(Serenity.EntityDialog));
         Store.CategoryDialog = CategoryDialog;
-    })(Store = Store_96.Store || (Store_96.Store = {}));
+    })(Store = Store_97.Store || (Store_97.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_97) {
+(function (Store_98) {
     var Store;
     (function (Store) {
         var CategoryExcelImportDialog = /** @class */ (function (_super) {
@@ -4802,10 +4826,10 @@ var Store;
             return CategoryExcelImportDialog;
         }(Serenity.PropertyDialog));
         Store.CategoryExcelImportDialog = CategoryExcelImportDialog;
-    })(Store = Store_97.Store || (Store_97.Store = {}));
+    })(Store = Store_98.Store || (Store_98.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_98) {
+(function (Store_99) {
     var Store;
     (function (Store) {
         var CategoryGrid = /** @class */ (function (_super) {
@@ -4833,7 +4857,7 @@ var Store;
             CategoryGrid.prototype.getButtons = function () {
                 var _this = this;
                 var buttons = _super.prototype.getButtons.call(this);
-                buttons.push(Store_98.Common.ExcelExportHelper.createToolButton({
+                buttons.push(Store_99.Common.ExcelExportHelper.createToolButton({
                     title: 'Export To Excel',
                     grid: this,
                     service: Store.CategoryService.baseUrl + '/ListExcel',
@@ -4862,10 +4886,10 @@ var Store;
             return CategoryGrid;
         }(Serenity.EntityGrid));
         Store.CategoryGrid = CategoryGrid;
-    })(Store = Store_98.Store || (Store_98.Store = {}));
+    })(Store = Store_99.Store || (Store_99.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_99) {
+(function (Store_100) {
     var Store;
     (function (Store) {
         var CategoryTypeDialog = /** @class */ (function (_super) {
@@ -4886,10 +4910,10 @@ var Store;
             return CategoryTypeDialog;
         }(Serenity.EntityDialog));
         Store.CategoryTypeDialog = CategoryTypeDialog;
-    })(Store = Store_99.Store || (Store_99.Store = {}));
+    })(Store = Store_100.Store || (Store_100.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_100) {
+(function (Store_101) {
     var Store;
     (function (Store) {
         var CategoryTypeGrid = /** @class */ (function (_super) {
@@ -4908,10 +4932,10 @@ var Store;
             return CategoryTypeGrid;
         }(Serenity.EntityGrid));
         Store.CategoryTypeGrid = CategoryTypeGrid;
-    })(Store = Store_100.Store || (Store_100.Store = {}));
+    })(Store = Store_101.Store || (Store_101.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_101) {
+(function (Store_102) {
     var Store;
     (function (Store) {
         var CounterpartyDialog = /** @class */ (function (_super) {
@@ -4926,7 +4950,7 @@ var Store;
                 _this.ProductMoveGrid.openDialogsAsPanel = false;
                 _this.WaresMoveGrid.openDialogsAsPanel = false;
                 _this.byId('NoteList').closest('.field').hide().end().appendTo(_this.byId('TabNotes'));
-                Store_101.DialogUtils.pendingChangesConfirmation(_this.element, function () { return _this.getSaveState() != _this.loadedState; });
+                Store_102.DialogUtils.pendingChangesConfirmation(_this.element, function () { return _this.getSaveState() != _this.loadedState; });
                 return _this;
             }
             CounterpartyDialog.prototype.getFormKey = function () { return Store.CounterpartyForm.formKey; };
@@ -4964,10 +4988,10 @@ var Store;
             return CounterpartyDialog;
         }(Serenity.EntityDialog));
         Store.CounterpartyDialog = CounterpartyDialog;
-    })(Store = Store_101.Store || (Store_101.Store = {}));
+    })(Store = Store_102.Store || (Store_102.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_102) {
+(function (Store_103) {
     var Store;
     (function (Store) {
         var CounterpartyEditor = /** @class */ (function (_super) {
@@ -4987,10 +5011,10 @@ var Store;
             return CounterpartyEditor;
         }(Serenity.LookupEditorBase));
         Store.CounterpartyEditor = CounterpartyEditor;
-    })(Store = Store_102.Store || (Store_102.Store = {}));
+    })(Store = Store_103.Store || (Store_103.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_103) {
+(function (Store_104) {
     var Store;
     (function (Store) {
         var CounterpartyGrid = /** @class */ (function (_super) {
@@ -5006,13 +5030,13 @@ var Store;
             CounterpartyGrid.prototype.getButtons = function () {
                 var _this = this;
                 var buttons = _super.prototype.getButtons.call(this);
-                buttons.push(Store_103.Common.ExcelExportHelper.createToolButton({
+                buttons.push(Store_104.Common.ExcelExportHelper.createToolButton({
                     grid: this,
                     onViewSubmit: function () { return _this.onViewSubmit(); },
                     service: 'Store/Counterparty/ListExcel',
                     separator: true
                 }));
-                buttons.push(Store_103.Common.PdfExportHelper.createToolButton({
+                buttons.push(Store_104.Common.PdfExportHelper.createToolButton({
                     grid: this,
                     onViewSubmit: function () { return _this.onViewSubmit(); }
                 }));
@@ -5025,10 +5049,10 @@ var Store;
             return CounterpartyGrid;
         }(Serenity.EntityGrid));
         Store.CounterpartyGrid = CounterpartyGrid;
-    })(Store = Store_103.Store || (Store_103.Store = {}));
+    })(Store = Store_104.Store || (Store_104.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_104) {
+(function (Store_105) {
     var Store;
     (function (Store) {
         var ProductMovementDialog = /** @class */ (function (_super) {
@@ -5046,7 +5070,7 @@ var Store;
             ProductMovementDialog.prototype.getToolbarButtons = function () {
                 var _this = this;
                 var buttons = _super.prototype.getToolbarButtons.call(this);
-                buttons.push(Store_104.Common.ReportHelper.createToolButton({
+                buttons.push(Store_105.Common.ReportHelper.createToolButton({
                     title: 'Invoice',
                     cssClass: 'export-pdf-button',
                     reportKey: 'Store.ProductMovementDetails',
@@ -5067,11 +5091,11 @@ var Store;
             return ProductMovementDialog;
         }(Serenity.EntityDialog));
         Store.ProductMovementDialog = ProductMovementDialog;
-    })(Store = Store_104.Store || (Store_104.Store = {}));
+    })(Store = Store_105.Store || (Store_105.Store = {}));
 })(Store || (Store = {}));
 /// <reference path="../ProductMovement/ProductMovementDialog.ts" />
 var Store;
-(function (Store_105) {
+(function (Store_106) {
     var Store;
     (function (Store) {
         var CounterpartyProductMovementDialog = /** @class */ (function (_super) {
@@ -5089,10 +5113,10 @@ var Store;
             return CounterpartyProductMovementDialog;
         }(Store.ProductMovementDialog));
         Store.CounterpartyProductMovementDialog = CounterpartyProductMovementDialog;
-    })(Store = Store_105.Store || (Store_105.Store = {}));
+    })(Store = Store_106.Store || (Store_106.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_106) {
+(function (Store_107) {
     var Store;
     (function (Store) {
         var ProductMovementGrid = /** @class */ (function (_super) {
@@ -5129,13 +5153,13 @@ var Store;
             ProductMovementGrid.prototype.getButtons = function () {
                 var _this = this;
                 var buttons = _super.prototype.getButtons.call(this);
-                buttons.push(Store_106.Common.ExcelExportHelper.createToolButton({
+                buttons.push(Store_107.Common.ExcelExportHelper.createToolButton({
                     grid: this,
                     service: Store.ProductMovementService.baseUrl + '/ListExcel',
                     onViewSubmit: function () { return _this.onViewSubmit(); },
                     separator: true
                 }));
-                buttons.push(Store_106.Common.PdfExportHelper.createToolButton({
+                buttons.push(Store_107.Common.PdfExportHelper.createToolButton({
                     grid: this,
                     onViewSubmit: function () { return _this.onViewSubmit(); }
                 }));
@@ -5165,7 +5189,7 @@ var Store;
                 if (target.hasClass('inline-action')) {
                     e.preventDefault();
                     if (target.hasClass('print-invoice')) {
-                        Store_106.Common.ReportHelper.execute({
+                        Store_107.Common.ReportHelper.execute({
                             reportKey: 'Store.ProductMovementDetails',
                             params: {
                                 ProductMoveID: item.ProductMoveID
@@ -5190,11 +5214,11 @@ var Store;
             return ProductMovementGrid;
         }(Serenity.EntityGrid));
         Store.ProductMovementGrid = ProductMovementGrid;
-    })(Store = Store_106.Store || (Store_106.Store = {}));
+    })(Store = Store_107.Store || (Store_107.Store = {}));
 })(Store || (Store = {}));
 /// <reference path="../ProductMovement/ProductMovementGrid.ts" />
 var Store;
-(function (Store_107) {
+(function (Store_108) {
     var Store;
     (function (Store) {
         var CounterpartyProductMovementGrid = /** @class */ (function (_super) {
@@ -5239,10 +5263,10 @@ var Store;
             return CounterpartyProductMovementGrid;
         }(Store.ProductMovementGrid));
         Store.CounterpartyProductMovementGrid = CounterpartyProductMovementGrid;
-    })(Store = Store_107.Store || (Store_107.Store = {}));
+    })(Store = Store_108.Store || (Store_108.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_108) {
+(function (Store_109) {
     var Store;
     (function (Store) {
         var WaresMovementDialog = /** @class */ (function (_super) {
@@ -5260,7 +5284,7 @@ var Store;
             WaresMovementDialog.prototype.getToolbarButtons = function () {
                 var _this = this;
                 var buttons = _super.prototype.getToolbarButtons.call(this);
-                buttons.push(Store_108.Common.ReportHelper.createToolButton({
+                buttons.push(Store_109.Common.ReportHelper.createToolButton({
                     title: 'Invoice',
                     cssClass: 'export-pdf-button',
                     reportKey: 'Store.WaresMovementDetails',
@@ -5281,11 +5305,11 @@ var Store;
             return WaresMovementDialog;
         }(Serenity.EntityDialog));
         Store.WaresMovementDialog = WaresMovementDialog;
-    })(Store = Store_108.Store || (Store_108.Store = {}));
+    })(Store = Store_109.Store || (Store_109.Store = {}));
 })(Store || (Store = {}));
 /// <reference path="../WaresMovement/WaresMovementDialog.ts" />
 var Store;
-(function (Store_109) {
+(function (Store_110) {
     var Store;
     (function (Store) {
         var CounterpartyWaresMovementDialog = /** @class */ (function (_super) {
@@ -5303,10 +5327,10 @@ var Store;
             return CounterpartyWaresMovementDialog;
         }(Store.WaresMovementDialog));
         Store.CounterpartyWaresMovementDialog = CounterpartyWaresMovementDialog;
-    })(Store = Store_109.Store || (Store_109.Store = {}));
+    })(Store = Store_110.Store || (Store_110.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_110) {
+(function (Store_111) {
     var Store;
     (function (Store) {
         var WaresMovementGrid = /** @class */ (function (_super) {
@@ -5344,13 +5368,13 @@ var Store;
             WaresMovementGrid.prototype.getButtons = function () {
                 var _this = this;
                 var buttons = _super.prototype.getButtons.call(this);
-                buttons.push(Store_110.Common.ExcelExportHelper.createToolButton({
+                buttons.push(Store_111.Common.ExcelExportHelper.createToolButton({
                     grid: this,
                     service: Store.WaresMovementService.baseUrl + '/ListExcel',
                     onViewSubmit: function () { return _this.onViewSubmit(); },
                     separator: true
                 }));
-                buttons.push(Store_110.Common.PdfExportHelper.createToolButton({
+                buttons.push(Store_111.Common.PdfExportHelper.createToolButton({
                     grid: this,
                     onViewSubmit: function () { return _this.onViewSubmit(); }
                 }));
@@ -5393,7 +5417,7 @@ var Store;
                 if (target.hasClass('inline-action')) {
                     e.preventDefault();
                     if (target.hasClass('print-invoice')) {
-                        Store_110.Common.ReportHelper.execute({
+                        Store_111.Common.ReportHelper.execute({
                             reportKey: 'Store.WaresMovementDetails',
                             params: {
                                 WaresMoveID: item.WaresMoveID
@@ -5420,11 +5444,11 @@ var Store;
             return WaresMovementGrid;
         }(Serenity.EntityGrid));
         Store.WaresMovementGrid = WaresMovementGrid;
-    })(Store = Store_110.Store || (Store_110.Store = {}));
+    })(Store = Store_111.Store || (Store_111.Store = {}));
 })(Store || (Store = {}));
 /// <reference path="../WaresMovement/WaresMovementGrid.ts" />
 var Store;
-(function (Store_111) {
+(function (Store_112) {
     var Store;
     (function (Store) {
         var CounterpartyWaresMovementGrid = /** @class */ (function (_super) {
@@ -5469,10 +5493,10 @@ var Store;
             return CounterpartyWaresMovementGrid;
         }(Store.WaresMovementGrid));
         Store.CounterpartyWaresMovementGrid = CounterpartyWaresMovementGrid;
-    })(Store = Store_111.Store || (Store_111.Store = {}));
+    })(Store = Store_112.Store || (Store_112.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_112) {
+(function (Store_113) {
     var Store;
     (function (Store) {
         var DocumentTypeDialog = /** @class */ (function (_super) {
@@ -5493,10 +5517,10 @@ var Store;
             return DocumentTypeDialog;
         }(Serenity.EntityDialog));
         Store.DocumentTypeDialog = DocumentTypeDialog;
-    })(Store = Store_112.Store || (Store_112.Store = {}));
+    })(Store = Store_113.Store || (Store_113.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_113) {
+(function (Store_114) {
     var Store;
     (function (Store) {
         var DocumentTypeGrid = /** @class */ (function (_super) {
@@ -5515,10 +5539,10 @@ var Store;
             return DocumentTypeGrid;
         }(Serenity.EntityGrid));
         Store.DocumentTypeGrid = DocumentTypeGrid;
-    })(Store = Store_113.Store || (Store_113.Store = {}));
+    })(Store = Store_114.Store || (Store_114.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_114) {
+(function (Store_115) {
     var Store;
     (function (Store) {
         var EmployeeDialog = /** @class */ (function (_super) {
@@ -5539,10 +5563,10 @@ var Store;
             return EmployeeDialog;
         }(Serenity.EntityDialog));
         Store.EmployeeDialog = EmployeeDialog;
-    })(Store = Store_114.Store || (Store_114.Store = {}));
+    })(Store = Store_115.Store || (Store_115.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_115) {
+(function (Store_116) {
     var Store;
     (function (Store) {
         var EmployeeFormatter = /** @class */ (function () {
@@ -5572,10 +5596,10 @@ var Store;
             return EmployeeFormatter;
         }());
         Store.EmployeeFormatter = EmployeeFormatter;
-    })(Store = Store_115.Store || (Store_115.Store = {}));
+    })(Store = Store_116.Store || (Store_116.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_116) {
+(function (Store_117) {
     var Store;
     (function (Store) {
         var EmployeeGrid = /** @class */ (function (_super) {
@@ -5594,10 +5618,10 @@ var Store;
             return EmployeeGrid;
         }(Serenity.EntityGrid));
         Store.EmployeeGrid = EmployeeGrid;
-    })(Store = Store_116.Store || (Store_116.Store = {}));
+    })(Store = Store_117.Store || (Store_117.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_117) {
+(function (Store_118) {
     var Store;
     (function (Store) {
         var EmployeeListFormatter = /** @class */ (function () {
@@ -5617,10 +5641,10 @@ var Store;
             return EmployeeListFormatter;
         }());
         Store.EmployeeListFormatter = EmployeeListFormatter;
-    })(Store = Store_117.Store || (Store_117.Store = {}));
+    })(Store = Store_118.Store || (Store_118.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_118) {
+(function (Store_119) {
     var Store;
     (function (Store) {
         var MeasureDialog = /** @class */ (function (_super) {
@@ -5641,10 +5665,10 @@ var Store;
             return MeasureDialog;
         }(Serenity.EntityDialog));
         Store.MeasureDialog = MeasureDialog;
-    })(Store = Store_118.Store || (Store_118.Store = {}));
+    })(Store = Store_119.Store || (Store_119.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_119) {
+(function (Store_120) {
     var Store;
     (function (Store) {
         var MeasureGrid = /** @class */ (function (_super) {
@@ -5663,10 +5687,10 @@ var Store;
             return MeasureGrid;
         }(Serenity.EntityGrid));
         Store.MeasureGrid = MeasureGrid;
-    })(Store = Store_119.Store || (Store_119.Store = {}));
+    })(Store = Store_120.Store || (Store_120.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_120) {
+(function (Store_121) {
     var Store;
     (function (Store) {
         var NoteDialog = /** @class */ (function (_super) {
@@ -5715,10 +5739,10 @@ var Store;
             return NoteDialog;
         }(Serenity.EntityDialog));
         Store.NoteDialog = NoteDialog;
-    })(Store = Store_120.Store || (Store_120.Store = {}));
+    })(Store = Store_121.Store || (Store_121.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_121) {
+(function (Store_122) {
     var Store;
     (function (Store) {
         var NotesEditor = /** @class */ (function (_super) {
@@ -5774,7 +5798,7 @@ var Store;
                     _this.items = _this.items || [];
                     Q.insert(_this.items, 0, {
                         Text: text,
-                        InsertUserDisplayName: Store_121.Authorization.userDefinition.DisplayName,
+                        InsertUserDisplayName: Store_122.Authorization.userDefinition.DisplayName,
                         InsertDate: Q.formatISODateTimeUTC(new Date())
                     });
                     _this.updateContent();
@@ -5847,10 +5871,10 @@ var Store;
             return NotesEditor;
         }(Serenity.TemplatedWidget));
         Store.NotesEditor = NotesEditor;
-    })(Store = Store_121.Store || (Store_121.Store = {}));
+    })(Store = Store_122.Store || (Store_122.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_122) {
+(function (Store_123) {
     var Store;
     (function (Store) {
         var OperationTypeDialog = /** @class */ (function (_super) {
@@ -5871,10 +5895,10 @@ var Store;
             return OperationTypeDialog;
         }(Serenity.EntityDialog));
         Store.OperationTypeDialog = OperationTypeDialog;
-    })(Store = Store_122.Store || (Store_122.Store = {}));
+    })(Store = Store_123.Store || (Store_123.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_123) {
+(function (Store_124) {
     var Store;
     (function (Store) {
         var OperationTypeEditor = /** @class */ (function (_super) {
@@ -5894,10 +5918,10 @@ var Store;
             return OperationTypeEditor;
         }(Serenity.LookupEditorBase));
         Store.OperationTypeEditor = OperationTypeEditor;
-    })(Store = Store_123.Store || (Store_123.Store = {}));
+    })(Store = Store_124.Store || (Store_124.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_124) {
+(function (Store_125) {
     var Store;
     (function (Store) {
         var OperationTypeGrid = /** @class */ (function (_super) {
@@ -5916,10 +5940,10 @@ var Store;
             return OperationTypeGrid;
         }(Serenity.EntityGrid));
         Store.OperationTypeGrid = OperationTypeGrid;
-    })(Store = Store_124.Store || (Store_124.Store = {}));
+    })(Store = Store_125.Store || (Store_125.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_125) {
+(function (Store_126) {
     var Store;
     (function (Store) {
         var ProductDialog = /** @class */ (function (_super) {
@@ -5934,7 +5958,7 @@ var Store;
             ProductDialog.prototype.getLocalTextPrefix = function () { return Store.ProductRow.localTextPrefix; };
             ProductDialog.prototype.getNameProperty = function () { return Store.ProductRow.nameProperty; };
             ProductDialog.prototype.getService = function () { return Store.ProductService.baseUrl; };
-            ProductDialog.prototype.getLanguages = function () { return Store_125.LanguageList.getValue(); };
+            ProductDialog.prototype.getLanguages = function () { return Store_126.LanguageList.getValue(); };
             ProductDialog.prototype.UpdateInterface = function () {
                 _super.prototype.updateInterface.call(this);
                 Serenity.EditorUtils.setReadOnly(this.form.ProductCode, true);
@@ -5946,10 +5970,10 @@ var Store;
             return ProductDialog;
         }(Serenity.EntityDialog));
         Store.ProductDialog = ProductDialog;
-    })(Store = Store_125.Store || (Store_125.Store = {}));
+    })(Store = Store_126.Store || (Store_126.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_126) {
+(function (Store_127) {
     var Store;
     (function (Store) {
         var ProductEditor = /** @class */ (function (_super) {
@@ -5971,10 +5995,10 @@ var Store;
             return ProductEditor;
         }(Serenity.LookupEditorBase));
         Store.ProductEditor = ProductEditor;
-    })(Store = Store_126.Store || (Store_126.Store = {}));
+    })(Store = Store_127.Store || (Store_127.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_127) {
+(function (Store_128) {
     var Store;
     (function (Store) {
         var ProductExcelImportDialog = /** @class */ (function (_super) {
@@ -6024,10 +6048,10 @@ var Store;
             return ProductExcelImportDialog;
         }(Serenity.PropertyDialog));
         Store.ProductExcelImportDialog = ProductExcelImportDialog;
-    })(Store = Store_127.Store || (Store_127.Store = {}));
+    })(Store = Store_128.Store || (Store_128.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_128) {
+(function (Store_129) {
     var Store;
     (function (Store) {
         var ProductGrid = /** @class */ (function (_super) {
@@ -6070,7 +6094,7 @@ var Store;
             ProductGrid.prototype.getButtons = function () {
                 var _this = this;
                 var buttons = _super.prototype.getButtons.call(this);
-                buttons.push(Store_128.Common.ExcelExportHelper.createToolButton({
+                buttons.push(Store_129.Common.ExcelExportHelper.createToolButton({
                     title: 'Export To Excel',
                     grid: this,
                     service: Store.ProductService.baseUrl + '/ListExcel',
@@ -6090,7 +6114,7 @@ var Store;
                         dialog.dialogOpen();
                     }
                 });
-                buttons.push(Store_128.Common.PdfExportHelper.createToolButton({
+                buttons.push(Store_129.Common.PdfExportHelper.createToolButton({
                     grid: this,
                     onViewSubmit: function () { return _this.onViewSubmit(); },
                     reportTitle: 'Product List',
@@ -6292,11 +6316,11 @@ var Store;
             return ProductGrid;
         }(Serenity.EntityGrid));
         Store.ProductGrid = ProductGrid;
-    })(Store = Store_128.Store || (Store_128.Store = {}));
+    })(Store = Store_129.Store || (Store_129.Store = {}));
 })(Store || (Store = {}));
 /// <reference path="../../Common/Helpers/GridEditorDialog.ts" />
 var Store;
-(function (Store_129) {
+(function (Store_130) {
     var Store;
     (function (Store) {
         var ProductDetailDialog = /** @class */ (function (_super) {
@@ -6333,12 +6357,12 @@ var Store;
                 Serenity.Decorators.registerClass()
             ], ProductDetailDialog);
             return ProductDetailDialog;
-        }(Store_129.Common.GridEditorDialog));
+        }(Store_130.Common.GridEditorDialog));
         Store.ProductDetailDialog = ProductDetailDialog;
-    })(Store = Store_129.Store || (Store_129.Store = {}));
+    })(Store = Store_130.Store || (Store_130.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_130) {
+(function (Store_131) {
     var Store;
     (function (Store) {
         var ProductDetailEditor = /** @class */ (function (_super) {
@@ -6363,10 +6387,10 @@ var Store;
             return ProductDetailEditor;
         }(Serenity.LookupEditorBase));
         Store.ProductDetailEditor = ProductDetailEditor;
-    })(Store = Store_130.Store || (Store_130.Store = {}));
+    })(Store = Store_131.Store || (Store_131.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_131) {
+(function (Store_132) {
     var Store;
     (function (Store) {
         var ProductDetailGrid = /** @class */ (function (_super) {
@@ -6409,11 +6433,11 @@ var Store;
             return ProductDetailGrid;
         }(Serenity.EntityGrid));
         Store.ProductDetailGrid = ProductDetailGrid;
-    })(Store = Store_131.Store || (Store_131.Store = {}));
+    })(Store = Store_132.Store || (Store_132.Store = {}));
 })(Store || (Store = {}));
 /// <reference path="../../Common/Helpers/GridEditorBase.ts" />
 var Store;
-(function (Store_132) {
+(function (Store_133) {
     var Store;
     (function (Store) {
         var ProductDetailsEditor = /** @class */ (function (_super) {
@@ -6440,13 +6464,13 @@ var Store;
                 Serenity.Decorators.registerClass()
             ], ProductDetailsEditor);
             return ProductDetailsEditor;
-        }(Store_132.Common.GridEditorBase));
+        }(Store_133.Common.GridEditorBase));
         Store.ProductDetailsEditor = ProductDetailsEditor;
-    })(Store = Store_132.Store || (Store_132.Store = {}));
+    })(Store = Store_133.Store || (Store_133.Store = {}));
 })(Store || (Store = {}));
 /// <reference path="../../Common/Helpers/GridEditorDialog.ts" />
 var Store;
-(function (Store_133) {
+(function (Store_134) {
     var Store;
     (function (Store) {
         var ProductMovementDetailsDialog = /** @class */ (function (_super) {
@@ -6477,13 +6501,13 @@ var Store;
                 Serenity.Decorators.registerClass()
             ], ProductMovementDetailsDialog);
             return ProductMovementDetailsDialog;
-        }(Store_133.Common.GridEditorDialog));
+        }(Store_134.Common.GridEditorDialog));
         Store.ProductMovementDetailsDialog = ProductMovementDetailsDialog;
-    })(Store = Store_133.Store || (Store_133.Store = {}));
+    })(Store = Store_134.Store || (Store_134.Store = {}));
 })(Store || (Store = {}));
 /// <reference path="../../Common/Helpers/GridEditorBase.ts" />
 var Store;
-(function (Store_134) {
+(function (Store_135) {
     var Store;
     (function (Store) {
         var ProductMovementDetailsEditor = /** @class */ (function (_super) {
@@ -6522,12 +6546,12 @@ var Store;
                 Serenity.Decorators.registerClass()
             ], ProductMovementDetailsEditor);
             return ProductMovementDetailsEditor;
-        }(Store_134.Common.GridEditorBase));
+        }(Store_135.Common.GridEditorBase));
         Store.ProductMovementDetailsEditor = ProductMovementDetailsEditor;
-    })(Store = Store_134.Store || (Store_134.Store = {}));
+    })(Store = Store_135.Store || (Store_135.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_135) {
+(function (Store_136) {
     var Store;
     (function (Store) {
         var ProductMovementDetailsGrid = /** @class */ (function (_super) {
@@ -6546,10 +6570,10 @@ var Store;
             return ProductMovementDetailsGrid;
         }(Serenity.EntityGrid));
         Store.ProductMovementDetailsGrid = ProductMovementDetailsGrid;
-    })(Store = Store_135.Store || (Store_135.Store = {}));
+    })(Store = Store_136.Store || (Store_136.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_136) {
+(function (Store_137) {
     var Store;
     (function (Store) {
         var PhoneEditor = /** @class */ (function (_super) {
@@ -6687,10 +6711,10 @@ var Store;
             return PhoneEditor;
         }(Serenity.StringEditor));
         Store.PhoneEditor = PhoneEditor;
-    })(Store = Store_136.Store || (Store_136.Store = {}));
+    })(Store = Store_137.Store || (Store_137.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_137) {
+(function (Store_138) {
     var Store;
     (function (Store) {
         var ShipperDialog = /** @class */ (function (_super) {
@@ -6711,10 +6735,10 @@ var Store;
             return ShipperDialog;
         }(Serenity.EntityDialog));
         Store.ShipperDialog = ShipperDialog;
-    })(Store = Store_137.Store || (Store_137.Store = {}));
+    })(Store = Store_138.Store || (Store_138.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_138) {
+(function (Store_139) {
     var Store;
     (function (Store) {
         var ShipperFormatter = /** @class */ (function () {
@@ -6731,10 +6755,10 @@ var Store;
             return ShipperFormatter;
         }());
         Store.ShipperFormatter = ShipperFormatter;
-    })(Store = Store_138.Store || (Store_138.Store = {}));
+    })(Store = Store_139.Store || (Store_139.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_139) {
+(function (Store_140) {
     var Store;
     (function (Store) {
         var ShipperGrid = /** @class */ (function (_super) {
@@ -6753,10 +6777,10 @@ var Store;
             return ShipperGrid;
         }(Serenity.EntityGrid));
         Store.ShipperGrid = ShipperGrid;
-    })(Store = Store_139.Store || (Store_139.Store = {}));
+    })(Store = Store_140.Store || (Store_140.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_140) {
+(function (Store_141) {
     var Store;
     (function (Store) {
         var ShopsDialog = /** @class */ (function (_super) {
@@ -6777,10 +6801,10 @@ var Store;
             return ShopsDialog;
         }(Serenity.EntityDialog));
         Store.ShopsDialog = ShopsDialog;
-    })(Store = Store_140.Store || (Store_140.Store = {}));
+    })(Store = Store_141.Store || (Store_141.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_141) {
+(function (Store_142) {
     var Store;
     (function (Store) {
         var ShopsEditor = /** @class */ (function (_super) {
@@ -6800,10 +6824,10 @@ var Store;
             return ShopsEditor;
         }(Serenity.LookupEditorBase));
         Store.ShopsEditor = ShopsEditor;
-    })(Store = Store_141.Store || (Store_141.Store = {}));
+    })(Store = Store_142.Store || (Store_142.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_142) {
+(function (Store_143) {
     var Store;
     (function (Store) {
         var ShopsGrid = /** @class */ (function (_super) {
@@ -6822,10 +6846,10 @@ var Store;
             return ShopsGrid;
         }(Serenity.EntityGrid));
         Store.ShopsGrid = ShopsGrid;
-    })(Store = Store_142.Store || (Store_142.Store = {}));
+    })(Store = Store_143.Store || (Store_143.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_143) {
+(function (Store_144) {
     var Store;
     (function (Store) {
         var StoreDialog = /** @class */ (function (_super) {
@@ -6846,10 +6870,10 @@ var Store;
             return StoreDialog;
         }(Serenity.EntityDialog));
         Store.StoreDialog = StoreDialog;
-    })(Store = Store_143.Store || (Store_143.Store = {}));
+    })(Store = Store_144.Store || (Store_144.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_144) {
+(function (Store_145) {
     var Store;
     (function (Store) {
         var StoreGrid = /** @class */ (function (_super) {
@@ -6868,10 +6892,10 @@ var Store;
             return StoreGrid;
         }(Serenity.EntityGrid));
         Store.StoreGrid = StoreGrid;
-    })(Store = Store_144.Store || (Store_144.Store = {}));
+    })(Store = Store_145.Store || (Store_145.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_145) {
+(function (Store_146) {
     var Store;
     (function (Store) {
         var SupplierDialog = /** @class */ (function (_super) {
@@ -6892,10 +6916,10 @@ var Store;
             return SupplierDialog;
         }(Serenity.EntityDialog));
         Store.SupplierDialog = SupplierDialog;
-    })(Store = Store_145.Store || (Store_145.Store = {}));
+    })(Store = Store_146.Store || (Store_146.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_146) {
+(function (Store_147) {
     var Store;
     (function (Store) {
         var SupplierGrid = /** @class */ (function (_super) {
@@ -6914,10 +6938,10 @@ var Store;
             return SupplierGrid;
         }(Serenity.EntityGrid));
         Store.SupplierGrid = SupplierGrid;
-    })(Store = Store_146.Store || (Store_146.Store = {}));
+    })(Store = Store_147.Store || (Store_147.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_147) {
+(function (Store_148) {
     var Store;
     (function (Store) {
         var WaresDialog = /** @class */ (function (_super) {
@@ -6932,17 +6956,17 @@ var Store;
             WaresDialog.prototype.getLocalTextPrefix = function () { return Store.WaresRow.localTextPrefix; };
             WaresDialog.prototype.getNameProperty = function () { return Store.WaresRow.nameProperty; };
             WaresDialog.prototype.getService = function () { return Store.WaresService.baseUrl; };
-            WaresDialog.prototype.getLanguages = function () { return Store_147.LanguageList.getValue(); };
+            WaresDialog.prototype.getLanguages = function () { return Store_148.LanguageList.getValue(); };
             WaresDialog = __decorate([
                 Serenity.Decorators.registerClass()
             ], WaresDialog);
             return WaresDialog;
         }(Serenity.EntityDialog));
         Store.WaresDialog = WaresDialog;
-    })(Store = Store_147.Store || (Store_147.Store = {}));
+    })(Store = Store_148.Store || (Store_148.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_148) {
+(function (Store_149) {
     var Store;
     (function (Store) {
         var WaresEditor = /** @class */ (function (_super) {
@@ -6967,10 +6991,10 @@ var Store;
             return WaresEditor;
         }(Serenity.LookupEditorBase));
         Store.WaresEditor = WaresEditor;
-    })(Store = Store_148.Store || (Store_148.Store = {}));
+    })(Store = Store_149.Store || (Store_149.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_149) {
+(function (Store_150) {
     var Store;
     (function (Store) {
         var WaresExcelImportDialog = /** @class */ (function (_super) {
@@ -7020,10 +7044,10 @@ var Store;
             return WaresExcelImportDialog;
         }(Serenity.PropertyDialog));
         Store.WaresExcelImportDialog = WaresExcelImportDialog;
-    })(Store = Store_149.Store || (Store_149.Store = {}));
+    })(Store = Store_150.Store || (Store_150.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_150) {
+(function (Store_151) {
     var Store;
     (function (Store) {
         var WaresGrid = /** @class */ (function (_super) {
@@ -7053,7 +7077,7 @@ var Store;
             WaresGrid.prototype.getButtons = function () {
                 var _this = this;
                 var buttons = _super.prototype.getButtons.call(this);
-                buttons.push(Store_150.Common.ExcelExportHelper.createToolButton({
+                buttons.push(Store_151.Common.ExcelExportHelper.createToolButton({
                     title: 'Export To Excel',
                     grid: this,
                     service: Store.WaresService.baseUrl + '/ListExcel',
@@ -7073,7 +7097,7 @@ var Store;
                         dialog.dialogOpen();
                     }
                 });
-                buttons.push(Store_150.Common.PdfExportHelper.createToolButton({
+                buttons.push(Store_151.Common.PdfExportHelper.createToolButton({
                     grid: this,
                     onViewSubmit: function () { return _this.onViewSubmit(); },
                     reportTitle: 'Wares List',
@@ -7298,10 +7322,10 @@ var Store;
             return WaresGrid;
         }(Serenity.EntityGrid));
         Store.WaresGrid = WaresGrid;
-    })(Store = Store_150.Store || (Store_150.Store = {}));
+    })(Store = Store_151.Store || (Store_151.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_151) {
+(function (Store_152) {
     var Store;
     (function (Store) {
         var StoreAverageDialog = /** @class */ (function (_super) {
@@ -7351,11 +7375,11 @@ var Store;
             return StoreAverageDialog;
         }(Serenity.PropertyDialog));
         Store.StoreAverageDialog = StoreAverageDialog;
-    })(Store = Store_151.Store || (Store_151.Store = {}));
+    })(Store = Store_152.Store || (Store_152.Store = {}));
 })(Store || (Store = {}));
 /// <reference path="../../Common/Helpers/GridEditorDialog.ts" />
 var Store;
-(function (Store_152) {
+(function (Store_153) {
     var Store;
     (function (Store) {
         var WaresMovementDetailsDialog = /** @class */ (function (_super) {
@@ -7386,13 +7410,13 @@ var Store;
                 Serenity.Decorators.registerClass()
             ], WaresMovementDetailsDialog);
             return WaresMovementDetailsDialog;
-        }(Store_152.Common.GridEditorDialog));
+        }(Store_153.Common.GridEditorDialog));
         Store.WaresMovementDetailsDialog = WaresMovementDetailsDialog;
-    })(Store = Store_152.Store || (Store_152.Store = {}));
+    })(Store = Store_153.Store || (Store_153.Store = {}));
 })(Store || (Store = {}));
 /// <reference path="../../Common/Helpers/GridEditorBase.ts" />
 var Store;
-(function (Store_153) {
+(function (Store_154) {
     var Store;
     (function (Store) {
         var WaresMovementDetailsEditor = /** @class */ (function (_super) {
@@ -7431,12 +7455,12 @@ var Store;
                 Serenity.Decorators.registerClass()
             ], WaresMovementDetailsEditor);
             return WaresMovementDetailsEditor;
-        }(Store_153.Common.GridEditorBase));
+        }(Store_154.Common.GridEditorBase));
         Store.WaresMovementDetailsEditor = WaresMovementDetailsEditor;
-    })(Store = Store_153.Store || (Store_153.Store = {}));
+    })(Store = Store_154.Store || (Store_154.Store = {}));
 })(Store || (Store = {}));
 var Store;
-(function (Store_154) {
+(function (Store_155) {
     var Store;
     (function (Store) {
         var WaresMovementDetailsGrid = /** @class */ (function (_super) {
@@ -7480,7 +7504,7 @@ var Store;
             return WaresMovementDetailsGrid;
         }(Serenity.EntityGrid));
         Store.WaresMovementDetailsGrid = WaresMovementDetailsGrid;
-    })(Store = Store_154.Store || (Store_154.Store = {}));
+    })(Store = Store_155.Store || (Store_155.Store = {}));
 })(Store || (Store = {}));
 var Store;
 (function (Store) {

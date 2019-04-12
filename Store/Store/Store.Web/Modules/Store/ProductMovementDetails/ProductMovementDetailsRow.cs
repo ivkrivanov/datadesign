@@ -97,8 +97,8 @@ namespace Store.Store.Entities
 
         #region Products
 
-        [DisplayName("Product"), PrimaryKey, ForeignKey(typeof(ProductRow)), LeftJoin("p")]
-        [LookupEditor(typeof(ProductRow))]
+        [DisplayName("Product"), PrimaryKey, ForeignKey(typeof(ProductRow)), LeftJoin("p"), LookupInclude]
+        [LookupEditor(typeof(ProductRow), InplaceAdd = true)]
         public Int32? ProductID
         {
             get { return Fields.ProductID[this]; }
@@ -106,6 +106,7 @@ namespace Store.Store.Entities
         }
 
         [Origin("p"), MinSelectLevel(SelectLevel.List)]
+        [Column("ProductName")]
         public String ProductName
         {
             get { return Fields.ProductName[this]; }

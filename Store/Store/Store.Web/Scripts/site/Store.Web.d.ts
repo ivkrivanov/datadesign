@@ -2122,6 +2122,31 @@ declare namespace Store.Store {
     }
 }
 declare namespace Store.Store {
+    interface ProductMovementDocRow {
+        ProductMoveId?: number;
+        DocumentTypeId?: number;
+        DocumentNumber?: string;
+        DocumentDate?: string;
+        DocumentTypeDocumentName?: string;
+        DocumentTypeIsActive?: number;
+        DocumentTypeTenantId?: number;
+    }
+    namespace ProductMovementDocRow {
+        const idProperty = "ProductMoveId";
+        const nameProperty = "DocumentNumber";
+        const localTextPrefix = "Store.ProductMovementDoc";
+        namespace Fields {
+            const ProductMoveId: any;
+            const DocumentTypeId: any;
+            const DocumentNumber: any;
+            const DocumentDate: any;
+            const DocumentTypeDocumentName: any;
+            const DocumentTypeIsActive: any;
+            const DocumentTypeTenantId: any;
+        }
+    }
+}
+declare namespace Store.Store {
     interface ProductMovementForm {
         OperationTypeOpCode: Serenity.EnumEditor;
         OrderDate: Serenity.DateEditor;

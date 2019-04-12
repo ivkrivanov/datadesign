@@ -11,8 +11,12 @@ namespace Store.Store.Entities
 
     [ConnectionKey("Store"), Module("Store"), TableName("[dbo].[ProductMovement]")]
     [DisplayName("Product Movement"), InstanceName("Product Movement")]
-    [ReadPermission(StorePermissionKeys.Counterparty.View)]
-    [ModifyPermission(StorePermissionKeys.Counterparty.Modify)]
+    [ReadPermission(StorePermissionKeys.Product.View)]
+    [ModifyPermission(StorePermissionKeys.Product.Modify)]
+    [DeletePermission(StorePermissionKeys.Product.Delete)]
+    [LeftJoin("pmd", "[dbo].[ProductMovement Doc]", "pmd.[ProductMoveID] = t0.[ProductMoveID]", RowType = typeof(ProductMovementDocRow), TitlePrefix = "")]
+    [UpdatableExtension("pmd", typeof(ProductMovementDocRow), CascadeDelete = true)]
+    [LookupScript(typeof(Lookups.ProductMovementLookup))]
     public sealed class ProductMovementRow : LoggingRow, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
     {
         [DisplayName("Move Id"), NotNull, Identity, QuickSearch]
@@ -271,12 +275,37 @@ namespace Store.Store.Entities
             set { Fields.ShippingState[this] = (Int32?)value; }
         }
 
+        [Origin("pmd"), LookupEditor(typeof(DocumentTypeRow))]
+        public Int32? DocumentTypeID
+        {
+            get { return Fields.DocumentTypeID[this]; }
+            set { Fields.DocumentTypeID[this] = value; }
+        }
+
+        //[DisplayName("Document Number"), Size(10), QuickSearch]
+        [Origin("pmd")]
+        public String DocumentNumber
+        {
+            get { return Fields.DocumentNumber[this]; }
+            set { Fields.DocumentNumber[this] = value; }
+        }
+
+        //[DisplayName("Document Date")]
+        [Origin("pmd")]
+        public DateTime? DocumentDate
+        {
+            get { return Fields.DocumentDate[this]; }
+            set { Fields.DocumentDate[this] = value; }
+        }
+
         [DisplayName("Details"), MasterDetailRelation(foreignKey: "ProductMoveID"), NotMapped]
         public List<ProductMovementDetailsRow> DetailList
         {
             get { return Fields.DetailList[this]; }
             set { Fields.DetailList[this] = value; }
         }
+
+
 
         #region Tenant & Activ
 
@@ -334,6 +363,10 @@ namespace Store.Store.Entities
             public DateTimeField OrderDate;
             public DateTimeField RequiredDate;
             public DateTimeField ShippedDate;
+
+            public Int32Field DocumentTypeID;
+            public StringField DocumentNumber;
+            public DateTimeField DocumentDate;
 
             public Int16Field IsActive;
             public Int32Field TenantId;
