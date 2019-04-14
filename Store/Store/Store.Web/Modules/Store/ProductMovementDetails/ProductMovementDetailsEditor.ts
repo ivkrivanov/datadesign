@@ -16,18 +16,19 @@ namespace Store.Store {
             row.ProductID = Q.toId(row.ProductID);
 
             var sameProduct = Q.tryFirst(this.view.getItems(), x => x.ProductID === row.ProductID);
+
             if (sameProduct && this.id(sameProduct) !== id) {
                 Q.alert('This product is already in order details!');
                 return false;
             }
 
             row.ProductName = ProductRow.getLookup().itemById[row.ProductID].ProductName;
+
             switch (row.ProductMoveOperationTypeOpCode) {
                 case 302: {
                     row.LineTotal = (row.Quantity || 0) * (row.IncomePrice || 0) - (row.Discount || 0);
                     break;
                 }
-
                 case 401: {
                     row.LineTotal = (row.Quantity || 0) * (row.SalePrice || 0) - (row.Discount || 0);
                     break;

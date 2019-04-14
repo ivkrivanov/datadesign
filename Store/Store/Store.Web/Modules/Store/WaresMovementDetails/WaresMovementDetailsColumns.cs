@@ -3,7 +3,6 @@ namespace Store.Store.Forms
 {
     using Serenity.ComponentModel;
     using System;
-    using System.ComponentModel;
 
     [ColumnsScript("Store.WaresMovementDetails")]
     [BasedOnRow(typeof(Entities.WaresMovementDetailsRow), CheckNames = true)]

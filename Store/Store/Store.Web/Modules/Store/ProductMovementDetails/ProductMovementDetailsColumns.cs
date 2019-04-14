@@ -8,6 +8,8 @@ namespace Store.Store.Columns
     [BasedOnRow(typeof(Entities.ProductMovementDetailsRow), CheckNames = true)]
     public class ProductMovementDetailsColumns
     {
+        [EditLink, Width(60), AlignRight]
+        public String ProductCode { get; set; }
         [EditLink, Width(200)]
         public String ProductName { get; set; }
         [Width(100)]
