@@ -4327,7 +4327,17 @@ declare namespace Store.Store {
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;
+        private pendingChanges;
         constructor(container: JQuery);
+        protected getButtons(): Serenity.ToolButton[];
+        private numericInputFormatter;
+        private moneyInputFormatter;
+        private stringInputFormatter;
+        private selectFormatter;
+        private getEffectiveValue;
+        private inputsChange;
+        private setSaveButtonState;
+        private saveClick;
         protected createSlickGrid(): Slick.Grid;
         protected getColumns(): Slick.Column[];
         protected getSlickOptions(): Slick.GridOptions;
