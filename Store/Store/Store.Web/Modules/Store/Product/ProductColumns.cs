@@ -30,8 +30,8 @@ namespace Store.Store.Columns
         public String CategoryCategoryName { get; set; }
         [Width(60), AlignCenter]
         public String MeasureMeasureName { get; set; }
-        [Width(80), AlignRight]
-        public String QuantityPerUnit { get; set; }
+        //[Width(80), AlignRight]
+        //public String QuantityPerUnit { get; set; }
         [Width(80), AlignRight]
         public Decimal UnitPrice { get; set; }
         [Width(80), AlignRight]

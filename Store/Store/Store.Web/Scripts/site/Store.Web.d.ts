@@ -4450,6 +4450,8 @@ declare namespace Store.Store {
         protected getService(): string;
         protected getLanguages(): string[][];
         protected form: WaresForm;
+        constructor();
+        protected UpdateInterface(): void;
     }
 }
 declare namespace Store.Store {

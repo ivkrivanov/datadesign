@@ -7547,6 +7547,15 @@ section.content > .s-DataGrid {
 .s-Store-ProductDialog .s-PropertyGrid .categories {
   height: 500px;
 }
+.s-Store-WaresDialog > .size {
+  width: 650px;
+}
+.s-Store-WaresDialog .caption {
+  width: 150px;
+}
+.s-Store-WaresDialog .s-PropertyGrid .categories {
+  height: 500px;
+}
 .s-Store-ProductDialog.s-Panel {
   min-height: 750px;
 }
@@ -7687,12 +7696,6 @@ section.content > .s-DataGrid {
   width: 650px;
 }
 .s-Store-OrderProductDialog .caption {
-  width: 150px;
-}
-.s-Store-WaresDialog > .size {
-  width: 650px;
-}
-.s-Store-WaresDialog .caption {
   width: 150px;
 }
 .s-Store-WaresCategoriesDialog > .size {

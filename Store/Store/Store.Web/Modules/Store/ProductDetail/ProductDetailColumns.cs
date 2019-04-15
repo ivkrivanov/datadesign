@@ -11,19 +11,19 @@ namespace Store.Store.Columns
         //[EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         //public Int32 DetailID { get; set; }
         //public String ProductProductName { get; set; }
-        [Width(100)]
+        [Width(80)]
         public String WaresCode { get; set; }
-        [EditLink, Width(200)]
+        [EditLink, Width(150)]
         public String WaresName { get; set; }
-        [Width(100)]
+        [Width(80)]
         public Decimal PlanPrice { get; set; }
-        [Width(100)]
+        [Width(80)]
         public Double Quantity { get; set; }
-        [Width(100)]
+        [Width(80)]
         public Double ProductQuantity { get; set; }
-        [Width(100)]
+        [Width(80)]
         public Double Discount { get; set; }
-        [Width(100)]
+        [Width(80)]
         public Decimal LineTotal { get; set; }
     }
 }

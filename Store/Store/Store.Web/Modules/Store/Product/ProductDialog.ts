@@ -2,7 +2,7 @@
 namespace Store.Store {
 
     @Serenity.Decorators.registerClass()
-    @Serenity.Decorators.panel()
+    //@Serenity.Decorators.panel()
     export class ProductDialog extends Serenity.EntityDialog<ProductRow, any> {
         protected getFormKey() { return ProductForm.formKey; }
         protected getIdProperty() { return ProductRow.idProperty; }

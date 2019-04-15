@@ -12,5 +12,14 @@ namespace Store.Store {
 
         protected form = new WaresForm(this.idPrefix);
 
+        constructor() {
+            super();
+        }
+
+        protected UpdateInterface() {
+            super.updateInterface();
+
+            Serenity.EditorUtils.setReadOnly(this.form.WaresCode, true);
+        }
     }
 }

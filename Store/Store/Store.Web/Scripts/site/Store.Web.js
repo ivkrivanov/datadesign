@@ -5940,8 +5940,8 @@ var Store;
                 Serenity.EditorUtils.setReadOnly(this.form.ProductCode, true);
             };
             ProductDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.panel()
+                Serenity.Decorators.registerClass()
+                //@Serenity.Decorators.panel()
             ], ProductDialog);
             return ProductDialog;
         }(Serenity.EntityDialog));
@@ -6923,7 +6923,7 @@ var Store;
         var WaresDialog = /** @class */ (function (_super) {
             __extends(WaresDialog, _super);
             function WaresDialog() {
-                var _this = _super !== null && _super.apply(this, arguments) || this;
+                var _this = _super.call(this) || this;
                 _this.form = new Store.WaresForm(_this.idPrefix);
                 return _this;
             }
@@ -6933,6 +6933,10 @@ var Store;
             WaresDialog.prototype.getNameProperty = function () { return Store.WaresRow.nameProperty; };
             WaresDialog.prototype.getService = function () { return Store.WaresService.baseUrl; };
             WaresDialog.prototype.getLanguages = function () { return Store_147.LanguageList.getValue(); };
+            WaresDialog.prototype.UpdateInterface = function () {
+                _super.prototype.updateInterface.call(this);
+                Serenity.EditorUtils.setReadOnly(this.form.WaresCode, true);
+            };
             WaresDialog = __decorate([
                 Serenity.Decorators.registerClass()
             ], WaresDialog);
