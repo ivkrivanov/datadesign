@@ -17,6 +17,7 @@
         ProductMoveOrderDate?: string;
         ProductMoveRequiredDate?: string;
         ProductMoveShippedDate?: string;
+        ProductCode?: string;
         ProductName?: string;
         ProductSupplierID?: number;
         ProductCategoryID?: number;
@@ -56,6 +57,7 @@
             ProductMoveOrderDate = "ProductMoveOrderDate",
             ProductMoveRequiredDate = "ProductMoveRequiredDate",
             ProductMoveShippedDate = "ProductMoveShippedDate",
+            ProductCode = "ProductCode",
             ProductName = "ProductName",
             ProductSupplierID = "ProductSupplierID",
             ProductCategoryID = "ProductCategoryID",

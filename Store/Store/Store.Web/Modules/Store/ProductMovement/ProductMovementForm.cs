@@ -13,7 +13,7 @@ namespace Store.Store.Forms
         [Tab("General")]
         [Category("Order")]
         [HalfWidth]
-        public ProductMovementOperations? OperationTypeOpCode { get; set; }
+        public ProductMovementOperations? OperationTypeID { get; set; }
         [DefaultValue("now")]
         [HalfWidth]
         public DateTime OrderDate { get; set; }
@@ -29,6 +29,12 @@ namespace Store.Store.Forms
         public Int32 ShipperID { get; set; }
         [HalfWidth]
         public DateTime ShippedDate { get; set; }
+        [OneThirdWidth]
+        public Int32 DocumentTypeID { get; set; }
+        [OneThirdWidth]
+        public String DocumentNumber { get; set; }
+        [OneThirdWidth]
+        public DateTime DocumentDate { get; set; }
 
         [Category("ProductMovementDetailsRow")]
         [ProductMovementDetailsEditor]

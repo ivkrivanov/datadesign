@@ -59,6 +59,19 @@ namespace Store.Store {
                 onViewSubmit: () => this.onViewSubmit()
             }));
 
+            buttons.push({
+                title: 'Warehouse',
+                cssClass: 'export-xlsx-button',
+                onClick: () => {
+                    var dialog = new StoreAverageDialog();
+                    dialog.element.on('dialogclose', () => {
+                        this.refresh();
+                        dialog = null;
+                    });
+                    dialog.dialogOpen();
+                }
+            });
+
             return buttons;
         }
 

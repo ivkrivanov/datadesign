@@ -2056,6 +2056,7 @@ declare namespace Store.Store {
         ProductMoveOrderDate?: string;
         ProductMoveRequiredDate?: string;
         ProductMoveShippedDate?: string;
+        ProductCode?: string;
         ProductName?: string;
         ProductSupplierID?: number;
         ProductCategoryID?: number;
@@ -2093,6 +2094,7 @@ declare namespace Store.Store {
             ProductMoveOrderDate = "ProductMoveOrderDate",
             ProductMoveRequiredDate = "ProductMoveRequiredDate",
             ProductMoveShippedDate = "ProductMoveShippedDate",
+            ProductCode = "ProductCode",
             ProductName = "ProductName",
             ProductSupplierID = "ProductSupplierID",
             ProductCategoryID = "ProductCategoryID",
@@ -2122,8 +2124,29 @@ declare namespace Store.Store {
     }
 }
 declare namespace Store.Store {
+    interface ProductMovementDocRow {
+        ProductMoveID?: number;
+        DocumentTypeID?: number;
+        DocumentNumber?: string;
+        DocumentDate?: string;
+        DocumentTypeDocumentName?: string;
+    }
+    namespace ProductMovementDocRow {
+        const idProperty = "ProductMoveID";
+        const nameProperty = "DocumentNumber";
+        const localTextPrefix = "Store.ProductMovementDoc";
+        const enum Fields {
+            ProductMoveID = "ProductMoveID",
+            DocumentTypeID = "DocumentTypeID",
+            DocumentNumber = "DocumentNumber",
+            DocumentDate = "DocumentDate",
+            DocumentTypeDocumentName = "DocumentTypeDocumentName"
+        }
+    }
+}
+declare namespace Store.Store {
     interface ProductMovementForm {
-        OperationTypeOpCode: Serenity.EnumEditor;
+        OperationTypeID: OperationTypeEditor;
         OrderDate: Serenity.DateEditor;
         ShopID: ShopsEditor;
         CounterpartyID: CounterpartyEditor;
@@ -2131,6 +2154,9 @@ declare namespace Store.Store {
         RequiredDate: Serenity.DateEditor;
         ShipperID: Serenity.LookupEditor;
         ShippedDate: Serenity.DateEditor;
+        DocumentTypeID: Serenity.LookupEditor;
+        DocumentNumber: Serenity.StringEditor;
+        DocumentDate: Serenity.DateEditor;
         DetailList: ProductMovementDetailsEditor;
     }
     class ProductMovementForm extends Serenity.PrefixedContext {
@@ -2165,6 +2191,9 @@ declare namespace Store.Store {
         OrderDate?: string;
         RequiredDate?: string;
         ShippedDate?: string;
+        DocumentTypeID?: number;
+        DocumentNumber?: string;
+        DocumentDate?: string;
         IsActive?: number;
         TenantId?: number;
         ShopShopName?: string;
@@ -2202,6 +2231,8 @@ declare namespace Store.Store {
         const isActiveProperty = "IsActive";
         const nameProperty = "CounterpartyID";
         const localTextPrefix = "Store.ProductMovement";
+        const lookupKey = "Store.ProductMovement";
+        function getLookup(): Q.Lookup<ProductMovementRow>;
         const enum Fields {
             ProductMoveID = "ProductMoveID",
             ShopID = "ShopID",
@@ -2212,6 +2243,9 @@ declare namespace Store.Store {
             OrderDate = "OrderDate",
             RequiredDate = "RequiredDate",
             ShippedDate = "ShippedDate",
+            DocumentTypeID = "DocumentTypeID",
+            DocumentNumber = "DocumentNumber",
+            DocumentDate = "DocumentDate",
             IsActive = "IsActive",
             TenantId = "TenantId",
             ShopShopName = "ShopShopName",
@@ -2971,6 +3005,8 @@ declare namespace Store.Store {
     namespace WaresFileRow {
         const nameProperty = "WaresCode";
         const localTextPrefix = "Store.WaresFile";
+        const lookupKey = "Store.WaresFile";
+        function getLookup(): Q.Lookup<WaresFileRow>;
         const enum Fields {
             ShopID = "ShopID",
             WaresID = "WaresID",
@@ -4256,6 +4292,7 @@ declare namespace Store.Store {
          * no event handlers to rendered cell contents
          */
         private numericInputFormatter;
+        private moneyInputFormatter;
         private stringInputFormatter;
         /**
          * Sorry but you cannot use LookupEditor, e.g. Select2 here, only possible is a SELECT element

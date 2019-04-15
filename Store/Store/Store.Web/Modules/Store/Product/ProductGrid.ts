@@ -136,7 +136,23 @@ namespace Store.Store {
 
             return "<input type='text' class='" + klass +
                 "' data-field='" + ctx.column.field +
-                "' value='" + Q.formatNumber(value, '0.##') + "'/>";
+                "' value='" + Q.formatNumber(value, '0.####') + "'/>";
+        }
+
+        private moneyInputFormatter(ctx) {
+            var klass = 'edit numeric';
+            var item = ctx.item as ProductRow;
+            var pending = this.pendingChanges[item.ProductID];
+
+            if (pending && pending[ctx.column.field] !== undefined) {
+                klass += ' dirty';
+            }
+
+            var value = this.getEffectiveValue(item, ctx.column.field) as number;
+
+            return "<input type='text' style='text - align:right' class='" + klass +
+                "' data-field='" + ctx.column.field +
+                "' value='" + Q.formatNumber(value, '0.0000') + "'/>";
         }
 
         private stringInputFormatter(ctx) {
@@ -198,6 +214,7 @@ namespace Store.Store {
             var columns = super.getColumns();
             var num = ctx => this.numericInputFormatter(ctx);
             var str = ctx => this.stringInputFormatter(ctx);
+            var mon = ctx => this.moneyInputFormatter(ctx);
 
             Q.first(columns, x => x.field === 'QuantityPerUnit').format = str;
 
@@ -209,7 +226,8 @@ namespace Store.Store {
             //supplier.referencedFields = [fld.SupplierID];
             //supplier.format = ctx => this.selectFormatter(ctx, fld.SupplierID, SupplierRow.getLookup());
 
-            Q.first(columns, x => x.field === fld.UnitPrice).format = num;
+            Q.first(columns, x => x.field === fld.UnitPrice).format = mon;
+            Q.first(columns, x => x.field == fld.UnitPrice).cssClass += " col-unit-price";
             Q.first(columns, x => x.field === fld.UnitsInStock).format = num;
             Q.first(columns, x => x.field === fld.UnitsOnOrder).format = num;
             Q.first(columns, x => x.field === fld.ReorderLevel).format = num;
@@ -228,7 +246,7 @@ namespace Store.Store {
             var effective = this.getEffectiveValue(item, field);
             var oldText: string;
             if (input.hasClass("numeric"))
-                oldText = Q.formatNumber(effective, '0.##');
+                oldText = Q.formatNumber(effective, '0.####');
             else
                 oldText = effective as string;
 
@@ -264,7 +282,7 @@ namespace Store.Store {
             this.view.refresh();
 
             if (input.hasClass("numeric"))
-                value = Q.formatNumber(value, '0.##');
+                value = Q.formatNumber(value, '0.####');
 
             input.val(value).addClass('dirty');
 

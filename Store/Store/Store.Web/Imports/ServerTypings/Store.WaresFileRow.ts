@@ -25,6 +25,11 @@
     export namespace WaresFileRow {
         export const nameProperty = 'WaresCode';
         export const localTextPrefix = 'Store.WaresFile';
+        export const lookupKey = 'Store.WaresFile';
+
+        export function getLookup(): Q.Lookup<WaresFileRow> {
+            return Q.getLookup<WaresFileRow>('Store.WaresFile');
+        }
 
         export declare const enum Fields {
             ShopID = "ShopID",
