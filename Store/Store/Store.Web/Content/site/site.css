@@ -7557,7 +7557,7 @@ section.content > .s-DataGrid {
   height: 500px;
 }
 .s-Store-ProductDialog.s-Panel {
-  min-height: 750px;
+  min-height: 1000px;
 }
 .s-Store-ProductDialog.s-Panel .categories {
   height: auto;

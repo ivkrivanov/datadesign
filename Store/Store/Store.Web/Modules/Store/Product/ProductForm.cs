@@ -22,8 +22,8 @@ namespace Store.Store.Forms
         public String CounterpartyID { get; set; }
         [Category("Pricing")]
 
-        [HalfWidth]
-        public String QuantityPerUnit { get; set; }
+        //[HalfWidth]
+        //public String QuantityPerUnit { get; set; }
         public Decimal UnitPrice { get; set; }
 
         [Category("Product Details")]

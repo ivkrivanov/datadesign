@@ -1535,27 +1535,26 @@ var Store;
                 if (!ProductForm.init) {
                     ProductForm.init = true;
                     var s = Serenity;
-                    var w0 = s.StringEditor;
-                    var w1 = s.LookupEditor;
-                    var w2 = Store.CounterpartyEditor;
+                    var w0 = s.LookupEditor;
+                    var w1 = s.StringEditor;
+                    var w2 = s.ImageUploadEditor;
                     var w3 = s.BooleanEditor;
-                    var w4 = s.ImageUploadEditor;
-                    var w5 = Store.ProductDetailsEditor;
-                    var w6 = s.DecimalEditor;
+                    var w4 = Store.CounterpartyEditor;
+                    var w5 = s.DecimalEditor;
+                    var w6 = Store.ProductDetailsEditor;
                     var w7 = s.IntegerEditor;
                     Q.initFormType(ProductForm, [
-                        'ProductCode', w0,
-                        'CategoryID', w1,
-                        'ProductBarcode', w0,
-                        'ProductName', w0,
-                        'ProductLabel', w0,
-                        'MeasureID', w1,
-                        'CounterpartyID', w2,
+                        'CategoryID', w0,
+                        'ProductCode', w1,
+                        'ProductBarcode', w1,
+                        'ProductLabel', w1,
+                        'ProductName', w1,
+                        'MeasureID', w0,
+                        'ProductImage', w2,
                         'Discontinued', w3,
-                        'ProductImage', w4,
-                        'DetailList', w5,
-                        'QuantityPerUnit', w0,
-                        'UnitPrice', w6,
+                        'CounterpartyID', w4,
+                        'UnitPrice', w5,
+                        'DetailList', w6,
                         'UnitsInStock', w7,
                         'UnitsOnOrder', w7,
                         'ReorderLevel', w7
@@ -6984,7 +6983,7 @@ var Store;
             WaresDialog.prototype.getLocalTextPrefix = function () { return Store.WaresRow.localTextPrefix; };
             WaresDialog.prototype.getNameProperty = function () { return Store.WaresRow.nameProperty; };
             WaresDialog.prototype.getService = function () { return Store.WaresService.baseUrl; };
-            WaresDialog.prototype.getLanguages = function () { return Store_147.LanguageList.getValue(); };
+            WaresDialog.prototype.getLanguages = function () { return Store_148.LanguageList.getValue(); };
             WaresDialog.prototype.UpdateInterface = function () {
                 _super.prototype.updateInterface.call(this);
                 Serenity.EditorUtils.setReadOnly(this.form.WaresCode, true);

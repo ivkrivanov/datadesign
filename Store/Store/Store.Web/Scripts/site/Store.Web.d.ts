@@ -1957,18 +1957,17 @@ declare namespace Store.Store {
 }
 declare namespace Store.Store {
     interface ProductForm {
-        ProductCode: Serenity.StringEditor;
         CategoryID: Serenity.LookupEditor;
+        ProductCode: Serenity.StringEditor;
         ProductBarcode: Serenity.StringEditor;
-        ProductName: Serenity.StringEditor;
         ProductLabel: Serenity.StringEditor;
+        ProductName: Serenity.StringEditor;
         MeasureID: Serenity.LookupEditor;
-        CounterpartyID: CounterpartyEditor;
-        Discontinued: Serenity.BooleanEditor;
         ProductImage: Serenity.ImageUploadEditor;
-        DetailList: ProductDetailsEditor;
-        QuantityPerUnit: Serenity.StringEditor;
+        Discontinued: Serenity.BooleanEditor;
+        CounterpartyID: CounterpartyEditor;
         UnitPrice: Serenity.DecimalEditor;
+        DetailList: ProductDetailsEditor;
         UnitsInStock: Serenity.IntegerEditor;
         UnitsOnOrder: Serenity.IntegerEditor;
         ReorderLevel: Serenity.IntegerEditor;
