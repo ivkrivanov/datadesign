@@ -248,6 +248,24 @@ namespace Store.Store.Entities
 
         #endregion Operation
 
+        #region Total
+
+        [DisplayName("Total"), Identity, NotNull, ForeignKey(typeof(WaresMovementTotalRow)), LeftJoin("wmt")]
+        //public Int32? WaresMoveID
+        //{
+        //    get { return Fields.WaresMoveID[this]; }
+        //    set { Fields.WaresMoveID[this] = value; }
+        //}
+
+        [Origin("wmt")]
+        public Decimal? Total
+        {
+            get { return Fields.Total[this]; }
+            set { Fields.Total[this] = value; }
+        }
+
+        #endregion Total
+
         [DisplayName("Order Date")]
         public DateTime? OrderDate
         {
@@ -398,6 +416,9 @@ namespace Store.Store.Entities
 
             public Int16Field OperationTypeOpCode;
             public StringField OperationTypeOperation;
+
+            //public Int32Field WaresMoveID;
+            public DecimalField Total;
 
             public RowListField<WaresMovementDetailsRow> DetailList;
         }

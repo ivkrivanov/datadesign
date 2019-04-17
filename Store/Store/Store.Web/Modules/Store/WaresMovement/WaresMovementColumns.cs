@@ -22,7 +22,9 @@ namespace Store.Store.Columns
         public String CounterpartyID { get; set; }
         [Width(200)]
         public String CounterpartyCompanyName { get; set; }
-        
+
+        public Decimal Total { get; set; }
+
         [EditLink, QuickFilter(CssClass = "hidden-xs")]
         public DateTime OrderDate { get; set; }
         public DateTime? RequiredDate { get; set; }

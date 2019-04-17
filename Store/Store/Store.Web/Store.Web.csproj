@@ -2132,6 +2132,10 @@
     <Compile Include="Modules\BasicReports\Warehause\StoreMove\StoreMoveListRequest.cs" />
     <Compile Include="Modules\BasicReports\Warehause\StoreMove\StoreMoveRepository.cs" />
     <Compile Include="Modules\BasicReports\Warehause\StoreMove\StoreMoveRow.cs" />
+    <Compile Include="Modules\Store\WaresMovementTotal\WaresMovementTotalEndpoint.cs" />
+    <Compile Include="Modules\Store\WaresMovementTotal\WaresMovementTotalListRequest.cs" />
+    <Compile Include="Modules\Store\WaresMovementTotal\WaresMovementTotalRepository.cs" />
+    <Compile Include="Modules\Store\WaresMovementTotal\WaresMovementTotalRow.cs" />
     <Compile Include="Modules\Store\WaresMovement\StoreAverageForm.cs" />
     <Compile Include="Modules\Store\WaresMovement\WaresMovementLookup.cs" />
     <Compile Include="Modules\Store\WaresMovement\WaresMovementOperations.cs" />
