@@ -16,6 +16,7 @@ namespace Store.Store.Entities
     [DeletePermission(StorePermissionKeys.Wares.Delete)]
     [LeftJoin("wmd", "[dbo].[WaresMovement Doc]", "wmd.[WaresMoveID] = t0.[WaresMoveID]", RowType =typeof(WaresMovementDocRow), TitlePrefix = "")]
     [UpdatableExtension("wmd", typeof(WaresMovementDocRow), CascadeDelete = true)]
+    [LeftJoin("wmt", "dbo.WaresMovementTotal", "wmt.[WaresMoveID] = t0.[WaresMoveID]", RowType = typeof(WaresMovementTotalRow), TitlePrefix = "")]
     [LookupScript(typeof(Lookups.WaresMovementLookup))]
     public sealed class WaresMovementRow : LoggingRow, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
     {
@@ -250,14 +251,8 @@ namespace Store.Store.Entities
 
         #region Total
 
-        [DisplayName("Total"), Identity, NotNull, ForeignKey(typeof(WaresMovementTotalRow)), LeftJoin("wmt")]
-        //public Int32? WaresMoveID
-        //{
-        //    get { return Fields.WaresMoveID[this]; }
-        //    set { Fields.WaresMoveID[this] = value; }
-        //}
-
         [Origin("wmt")]
+        [AlignRight, DisplayFormat("#,##0.0000")]
         public Decimal? Total
         {
             get { return Fields.Total[this]; }
@@ -417,7 +412,6 @@ namespace Store.Store.Entities
             public Int16Field OperationTypeOpCode;
             public StringField OperationTypeOperation;
 
-            //public Int32Field WaresMoveID;
             public DecimalField Total;
 
             public RowListField<WaresMovementDetailsRow> DetailList;

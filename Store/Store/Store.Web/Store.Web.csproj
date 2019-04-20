@@ -1006,6 +1006,9 @@
     <TypeScriptCompile Include="Imports\ServerTypings\Store.ProductMovementOperations.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.ProductMovementTotalRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\Store.ShipperColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
@@ -1058,6 +1061,9 @@
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\Store.WaresMovementOperations.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Store.WaresMovementTotalRow.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\Texts.ts">
@@ -2111,6 +2117,7 @@
     <Compile Include="Modules\Common\Reporting\ExcelReportGenerator.cs" />
     <Compile Include="Modules\Store\Category\CaregoryListRequest.cs" />
     <Compile Include="Modules\Store\Category\CategoryExcelImportForm.cs" />
+    <Compile Include="Modules\Store\ProductMovementTotal\ProductMovementTotalRow.cs" />
     <Compile Include="Modules\Store\ProductMovement\ProductMovementListRequest.cs" />
     <Compile Include="Modules\Store\ProductMovement\ProductMovementLookup.cs" />
     <Compile Include="Modules\Store\ProductMovement\ProductMovementOperations.cs" />
@@ -2132,9 +2139,6 @@
     <Compile Include="Modules\BasicReports\Warehause\StoreMove\StoreMoveListRequest.cs" />
     <Compile Include="Modules\BasicReports\Warehause\StoreMove\StoreMoveRepository.cs" />
     <Compile Include="Modules\BasicReports\Warehause\StoreMove\StoreMoveRow.cs" />
-    <Compile Include="Modules\Store\WaresMovementTotal\WaresMovementTotalEndpoint.cs" />
-    <Compile Include="Modules\Store\WaresMovementTotal\WaresMovementTotalListRequest.cs" />
-    <Compile Include="Modules\Store\WaresMovementTotal\WaresMovementTotalRepository.cs" />
     <Compile Include="Modules\Store\WaresMovementTotal\WaresMovementTotalRow.cs" />
     <Compile Include="Modules\Store\WaresMovement\StoreAverageForm.cs" />
     <Compile Include="Modules\Store\WaresMovement\WaresMovementLookup.cs" />

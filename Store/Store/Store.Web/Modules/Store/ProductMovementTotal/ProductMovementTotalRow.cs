@@ -6,18 +6,18 @@
     using System;
     using System.ComponentModel;
 
-    [ConnectionKey("Store"), Module("Store"), TableName("[dbo].[WaresMovementTotal]")]
-    [DisplayName("Total"), InstanceName("Wares Movement Total")]
-    [ReadPermission(StorePermissionKeys.Wares.View)]
-    [ModifyPermission(StorePermissionKeys.Wares.Modify)]
-    [DeletePermission(StorePermissionKeys.Wares.Delete)]
-    public sealed class WaresMovementTotalRow : Row, IIdRow
+    [ConnectionKey("Store"), Module("Store"), TableName("[dbo].[ProductMovementTotal]")]
+    [DisplayName("Total"), InstanceName("Product Movement Total")]
+    [ReadPermission(StorePermissionKeys.Product.View)]
+    [ModifyPermission(StorePermissionKeys.Product.Modify)]
+    [DeletePermission(StorePermissionKeys.Product.Delete)]
+    public class ProductMovementTotalRow:Row, IIdRow
     {
         [DisplayName("Wares Move ID"), Column("WaresMoveID"), PrimaryKey]
-        public Int32? WaresMoveID
+        public Int32? ProductMoveID
         {
-            get { return Fields.WaresMoveID[this]; }
-            set { Fields.WaresMoveID[this] = value; }
+            get { return Fields.ProductMoveID[this]; }
+            set { Fields.ProductMoveID[this] = value; }
         }
 
         [DisplayName("Total"), NotNull]
@@ -29,18 +29,18 @@
         }
         IIdField IIdRow.IdField
         {
-            get { return Fields.WaresMoveID; }
+            get { return Fields.ProductMoveID; }
         }
 
         public static readonly RowFields Fields = new RowFields().Init();
 
-        public WaresMovementTotalRow() : base(Fields)
+        public ProductMovementTotalRow() : base(Fields)
         {
         }
 
         public class RowFields : RowFieldsBase
         {
-            public Int32Field WaresMoveID;
+            public Int32Field ProductMoveID;
             public DecimalField Total;
         }
     }

@@ -2156,6 +2156,7 @@ declare namespace Store.Store {
         DocumentTypeID: Serenity.LookupEditor;
         DocumentNumber: Serenity.StringEditor;
         DocumentDate: Serenity.DateEditor;
+        Total: Serenity.DecimalEditor;
         DetailList: ProductMovementDetailsEditor;
     }
     class ProductMovementForm extends Serenity.PrefixedContext {
@@ -2219,6 +2220,7 @@ declare namespace Store.Store {
         ShippingState?: ShippingState;
         OperationTypeOpCode?: ProductMovementOperations;
         OperationTypeOperation?: string;
+        Total?: number;
         DetailList?: ProductMovementDetailsRow[];
         InsertUserId?: number;
         InsertDate?: string;
@@ -2271,6 +2273,7 @@ declare namespace Store.Store {
             ShippingState = "ShippingState",
             OperationTypeOpCode = "OperationTypeOpCode",
             OperationTypeOperation = "OperationTypeOperation",
+            Total = "Total",
             DetailList = "DetailList",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
@@ -2293,6 +2296,20 @@ declare namespace Store.Store {
             Delete = "Store/ProductMovement/Delete",
             Retrieve = "Store/ProductMovement/Retrieve",
             List = "Store/ProductMovement/List"
+        }
+    }
+}
+declare namespace Store.Store {
+    interface ProductMovementTotalRow {
+        ProductMoveID?: number;
+        Total?: number;
+    }
+    namespace ProductMovementTotalRow {
+        const idProperty = "ProductMoveID";
+        const localTextPrefix = "Store.ProductMovementTotal";
+        const enum Fields {
+            ProductMoveID = "ProductMoveID",
+            Total = "Total"
         }
     }
 }
@@ -3233,6 +3250,7 @@ declare namespace Store.Store {
         DocumentTypeID: Serenity.LookupEditor;
         DocumentNumber: Serenity.StringEditor;
         DocumentDate: Serenity.DateEditor;
+        Total: Serenity.DecimalEditor;
         DetailList: WaresMovementDetailsEditor;
     }
     class WaresMovementForm extends Serenity.PrefixedContext {
@@ -3301,6 +3319,7 @@ declare namespace Store.Store {
         ShippingState?: ShippingState;
         OperationTypeOpCode?: WaresMovementOperations;
         OperationTypeOperation?: string;
+        Total?: number;
         DetailList?: WaresMovementDetailsRow[];
         InsertUserId?: number;
         InsertDate?: string;
@@ -3353,6 +3372,7 @@ declare namespace Store.Store {
             ShippingState = "ShippingState",
             OperationTypeOpCode = "OperationTypeOpCode",
             OperationTypeOperation = "OperationTypeOperation",
+            Total = "Total",
             DetailList = "DetailList",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
@@ -3375,6 +3395,20 @@ declare namespace Store.Store {
             Delete = "Store/WaresMovement/Delete",
             Retrieve = "Store/WaresMovement/Retrieve",
             List = "Store/WaresMovement/List"
+        }
+    }
+}
+declare namespace Store.Store {
+    interface WaresMovementTotalRow {
+        WaresMoveID?: number;
+        Total?: number;
+    }
+    namespace WaresMovementTotalRow {
+        const idProperty = "WaresMoveID";
+        const localTextPrefix = "Store.WaresMovementTotal";
+        const enum Fields {
+            WaresMoveID = "WaresMoveID",
+            Total = "Total"
         }
     }
 }
