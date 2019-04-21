@@ -2027,7 +2027,7 @@ declare namespace Store.Store {
     interface ProductMovementDetailsForm {
         ProductID: Serenity.LookupEditor;
         Quantity: Serenity.DecimalEditor;
-        SalePrice: Serenity.DecimalEditor;
+        SinglePrice: Serenity.DecimalEditor;
         Discount: Serenity.DecimalEditor;
     }
     class ProductMovementDetailsForm extends Serenity.PrefixedContext {
@@ -2041,7 +2041,7 @@ declare namespace Store.Store {
         ProductMoveID?: number;
         ProductID?: number;
         Quantity?: number;
-        SalePrice?: number;
+        SinglePrice?: number;
         Discount?: number;
         DetailID?: number;
         IsActive?: number;
@@ -2079,7 +2079,7 @@ declare namespace Store.Store {
             ProductMoveID = "ProductMoveID",
             ProductID = "ProductID",
             Quantity = "Quantity",
-            SalePrice = "SalePrice",
+            SinglePrice = "SinglePrice",
             Discount = "Discount",
             DetailID = "DetailID",
             IsActive = "IsActive",
@@ -3118,8 +3118,6 @@ declare namespace Store.Store {
 declare namespace Store.Store {
     interface WaresMovementDetailsForm {
         WaresID: Serenity.LookupEditor;
-        IncomePrice: Serenity.DecimalEditor;
-        SalePrice: Serenity.DecimalEditor;
         SinglePrice: Serenity.DecimalEditor;
         Quantity: Serenity.DecimalEditor;
         Discount: Serenity.DecimalEditor;
@@ -3135,8 +3133,6 @@ declare namespace Store.Store {
         WaresMoveID?: number;
         WaresID?: number;
         Quantity?: number;
-        IncomePrice?: number;
-        SalePrice?: number;
         SinglePrice?: number;
         Discount?: number;
         DetailID?: number;
@@ -3173,8 +3169,6 @@ declare namespace Store.Store {
             WaresMoveID = "WaresMoveID",
             WaresID = "WaresID",
             Quantity = "Quantity",
-            IncomePrice = "IncomePrice",
-            SalePrice = "SalePrice",
             SinglePrice = "SinglePrice",
             Discount = "Discount",
             DetailID = "DetailID",

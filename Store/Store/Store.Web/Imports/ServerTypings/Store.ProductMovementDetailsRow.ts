@@ -3,7 +3,7 @@
         ProductMoveID?: number;
         ProductID?: number;
         Quantity?: number;
-        SalePrice?: number;
+        SinglePrice?: number;
         Discount?: number;
         DetailID?: number;
         IsActive?: number;
@@ -43,7 +43,7 @@
             ProductMoveID = "ProductMoveID",
             ProductID = "ProductID",
             Quantity = "Quantity",
-            SalePrice = "SalePrice",
+            SinglePrice = "SinglePrice",
             Discount = "Discount",
             DetailID = "DetailID",
             IsActive = "IsActive",

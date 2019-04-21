@@ -15,10 +15,6 @@ namespace Store.Store.Forms
         [Width(100), AlignRight]
         public Single Quantity { get; set; }
         [Width(80), AlignRight]
-        public Decimal IncomePrice { get; set; }
-        [Width(80), AlignRight]
-        public Decimal SalePrice { get; set; }
-        [Width(80), AlignRight]
         public Decimal SinglePrice { get; set; }
         [Width(80), AlignRight]
         public Single Discount { get; set; }

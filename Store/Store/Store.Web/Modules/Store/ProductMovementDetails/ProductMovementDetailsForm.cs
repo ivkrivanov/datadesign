@@ -10,7 +10,7 @@ namespace Store.Store.Forms
     {
         public Int32 ProductID { get; set; }
         public Single Quantity { get; set; }
-        public Decimal SalePrice { get; set; }
+        public Decimal SinglePrice { get; set; }
         public Single Discount { get; set; }
     }
 }

@@ -193,22 +193,6 @@ namespace Store.Store.Entities
 
         #endregion Wares
 
-        [DisplayName("Income Price"), NotNull]
-        [AlignRight, DisplayFormat("#,##0.0000")]
-        public Decimal? IncomePrice
-        {
-            get { return Fields.IncomePrice[this]; }
-            set { Fields.IncomePrice[this] = value; }
-        }
-
-        [DisplayName("Sale Price"), NotNull, DefaultValue(0)]
-        [AlignRight, DisplayFormat("#,##0.0000")]
-        public Decimal? SalePrice
-        {
-            get { return Fields.SalePrice[this]; }
-            set { Fields.SalePrice[this] = value; }
-        }
-
         [DisplayName("Single Price"), NotNull]
         [AlignRight, DisplayFormat("#,##0.0000")]
         public Decimal? SinglePrice
@@ -233,7 +217,7 @@ namespace Store.Store.Entities
             set { Fields.Discount[this] = value; }
         }
 
-        [DisplayName("Line Total"), Expression("(t0.[IncomePrice] * t0.[Quantity] - t0.[Discount])")]
+        [DisplayName("Line Total"), Expression("(t0.[SinglePrice] * t0.[Quantity] - t0.[Discount])")]
         [AlignRight, DisplayFormat("#,##0.0000"), MinSelectLevel(SelectLevel.List)]
         public Decimal? LineTotal
         {
@@ -286,8 +270,6 @@ namespace Store.Store.Entities
             public Int32Field WaresMoveID;
             public Int32Field WaresID;
             public SingleField Quantity;
-            public DecimalField IncomePrice;
-            public DecimalField SalePrice;
             public DecimalField SinglePrice;
             public SingleField Discount;
             public Int32Field DetailID;

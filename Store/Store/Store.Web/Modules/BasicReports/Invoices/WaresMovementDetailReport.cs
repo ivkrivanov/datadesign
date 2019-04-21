@@ -68,6 +68,5 @@ namespace Store.Store
         public CounterpartyRow Counterparty { get; set; }
         public ShopsRow Shop { get; set; }
         public OperationTypeRow Operation { get; set;}
-        //public MeasureRow Measure { get; set; }
     }
 }

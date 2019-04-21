@@ -187,12 +187,12 @@ namespace Store.Store.Entities
             set { Fields.Quantity[this] = value; }
         }
 
-        [DisplayName("Sale Price"), Scale(4), NotNull]
+        [DisplayName("Single Price"), Scale(4), NotNull]
         [AlignRight, DisplayFormat("#,##0.0000")]
-        public Decimal? SalePrice
+        public Decimal? SinglePrice
         {
-            get { return Fields.SalePrice[this]; }
-            set { Fields.SalePrice[this] = value; }
+            get { return Fields.SinglePrice[this]; }
+            set { Fields.SinglePrice[this] = value; }
         }
 
         [DisplayName("Discount"), NotNull, DefaultValue(0)]
@@ -204,7 +204,7 @@ namespace Store.Store.Entities
         }
 
         [DisplayName("Line Total"), Scale(4)]
-        [Expression("(t0.[SalePrice] * t0.[Quantity] - t0.[Discount])")]
+        [Expression("(t0.[SinglePrice] * t0.[Quantity] - t0.[Discount])")]
         [AlignRight, DisplayFormat("#,##0.0000"), MinSelectLevel(SelectLevel.List)]
         public Decimal? LineTotal
         {
@@ -257,7 +257,7 @@ namespace Store.Store.Entities
             public Int32Field ProductMoveID;
             public Int32Field ProductID;
             public SingleField Quantity;
-            public DecimalField SalePrice;
+            public DecimalField SinglePrice;
             public SingleField Discount;
             public Int32Field DetailID;
 

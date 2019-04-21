@@ -3,8 +3,6 @@
         WaresMoveID?: number;
         WaresID?: number;
         Quantity?: number;
-        IncomePrice?: number;
-        SalePrice?: number;
         SinglePrice?: number;
         Discount?: number;
         DetailID?: number;
@@ -43,8 +41,6 @@
             WaresMoveID = "WaresMoveID",
             WaresID = "WaresID",
             Quantity = "Quantity",
-            IncomePrice = "IncomePrice",
-            SalePrice = "SalePrice",
             SinglePrice = "SinglePrice",
             Discount = "Discount",
             DetailID = "DetailID",

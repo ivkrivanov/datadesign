@@ -13,10 +13,6 @@ namespace Store.Store.Forms
         public Int32 WaresID { get; set; }
  
         [Width(100)]
-        public Decimal IncomePrice { get; set; }
-        [Width(100)]
-        public Decimal SalePrice { get; set; }
-        [Width(100)]
         public Decimal SinglePrice { get; set; }
         [Width(100)]
         public Single Quantity { get; set; }

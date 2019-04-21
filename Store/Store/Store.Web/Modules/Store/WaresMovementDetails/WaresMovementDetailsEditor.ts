@@ -22,21 +22,24 @@ namespace Store.Store {
             }
 
             row.WaresName = WaresRow.getLookup().itemById[row.WaresID].WaresName;
-            switch (row.WaresMoveOperationTypeOpCode) {
-                case 102: {
-                    row.LineTotal = (row.Quantity || 0) * (row.IncomePrice || 0) - (row.Discount || 0);
-                    break;
-                }
-                case 201: {
-                    row.LineTotal = (row.Quantity || 0) * (row.SalePrice || 0) - (row.Discount || 0);
-                    break;
-                }
 
-                default: {
-                    row.LineTotal = (row.Quantity || 0) * (row.SinglePrice || 0) - (row.Discount || 0);
-                    break;
-                }
-            }
+            row.LineTotal = (row.Quantity || 0) * (row.SinglePrice || 0) - (row.Discount || 0);
+
+            //switch (row.WaresMoveOperationTypeOpCode) {
+            //    case 102: {
+            //        row.LineTotal = (row.Quantity || 0) * (row.IncomePrice || 0) - (row.Discount || 0);
+            //        break;
+            //    }
+            //    case 201: {
+            //        row.LineTotal = (row.Quantity || 0) * (row.SalePrice || 0) - (row.Discount || 0);
+            //        break;
+            //    }
+
+            //    default: {
+            //        row.LineTotal = (row.Quantity || 0) * (row.SinglePrice || 0) - (row.Discount || 0);
+            //        break;
+            //    }
+            //}
             return true;
         }
     }

@@ -70,7 +70,7 @@
                             <tr>
                                 <td align="Left">@d.WaresName</td>
                                 <td align="center">@d.WaresMeasureName</td>
-                                <td align="right">@(d.IncomePrice.ToStringDefault("#,##0.00"))</td>
+                                <td align="right">@(d.SinglePrice.ToStringDefault("#,##0.00"))</td>
                                 <td align="right">@(d.Quantity.ToStringDefault())</td>
                                 <td align="right">@(d.Discount.ToStringDefault("#,##0.00"))</td>
                                 <td align="right">@(d.LineTotal.ToStringDefault("#,##0.00"))</td>
@@ -81,7 +81,7 @@
                             <tr>
                                 <td align="Left">@d.WaresName</td>
                                 <td align="center">@d.WaresMeasureName</td>
-                                <td align="right">@(d.SalePrice.ToStringDefault("#,##0.00"))</td>
+                                <td align="right">@(d.SinglePrice.ToStringDefault("#,##0.00"))</td>
                                 <td align="right">@(d.Quantity.ToStringDefault())</td>
                                 <td align="right">@(d.Discount.ToStringDefault("#,##0.00"))</td>
                                 <td align="right">@(d.LineTotal.ToStringDefault("#,##0.00"))</td>

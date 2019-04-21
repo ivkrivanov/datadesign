@@ -15,7 +15,7 @@ namespace Store.Store.Columns
         [Width(100)]
         public Single Quantity { get; set; }
         [Width(100)]
-        public Decimal SalePrice { get; set; }
+        public Decimal SinglePrice { get; set; }
         [Width(80)]
         public Single Discount { get; set; }
         [Width(100)]

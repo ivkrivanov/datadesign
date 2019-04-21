@@ -2,7 +2,7 @@
     export interface ProductMovementDetailsForm {
         ProductID: Serenity.LookupEditor;
         Quantity: Serenity.DecimalEditor;
-        SalePrice: Serenity.DecimalEditor;
+        SinglePrice: Serenity.DecimalEditor;
         Discount: Serenity.DecimalEditor;
     }
 
@@ -23,7 +23,7 @@
                 Q.initFormType(ProductMovementDetailsForm, [
                     'ProductID', w0,
                     'Quantity', w1,
-                    'SalePrice', w1,
+                    'SinglePrice', w1,
                     'Discount', w1
                 ]);
             }
