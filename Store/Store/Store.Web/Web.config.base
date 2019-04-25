@@ -16,6 +16,7 @@
   <connectionStrings>
     <add name="Default" connectionString="Data Source=.\SQLEXPRESS; Initial Catalog=Store_Default_v1; Integrated Security=True" providerName="System.Data.SqlClient" />
     <add name="Store" connectionString="Data Source=.\SQLEXPRESS; Initial Catalog=Store_Store_v1; Integrated Security=True" providerName="System.Data.SqlClient" />
+    <!--<add name="Default" connectionString="Server=tcp:datadesign.database.windows.net,1433;Database=LedgerDesign_Default_v1;User ID=IIvanov@datadesign;Password=lz2klrLom;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" providerName="System.Data.SqlClient" />-->
     <!--<add name="Default" connectionString="Data Source=DATADESIGN; Initial Catalog=Store_Default_v1; Integrated Security=True" providerName="System.Data.SqlClient" />
     <add name="Store" connectionString="Data Source=DATADESIGN; Initial Catalog=Store_Store_v1; Integrated Security=True" providerName="System.Data.SqlClient" />-->
   </connectionStrings>
