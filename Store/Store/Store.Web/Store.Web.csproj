@@ -583,6 +583,7 @@
     <Content Include="Migrations\DefaultDB\DefaultDBScript_SQLServer.sql" />
     <Content Include="Migrations\StoreDB\StoreDBScript_SqlServer..sql" />
     <Content Include="Modules\Store\Counterparty\Store.CounterpartyDialog.Template.html" />
+    <Content Include="Modules\Store\ProductMovement\Store.ProductMovementDialog.Template.html" />
     <Content Include="Readme.CodeGenerator.txt" />
     <Content Include="Scripts\ckeditor\adapters\jquery.js" />
     <Content Include="Scripts\ckeditor\build-config.js" />
