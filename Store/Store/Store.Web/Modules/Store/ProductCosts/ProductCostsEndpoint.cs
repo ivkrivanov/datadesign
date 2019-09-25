@@ -5,12 +5,12 @@ namespace Store.Store.Endpoints
     using Serenity.Services;
     using System.Data;
     using System.Web.Mvc;
-    using MyRepository = Repositories.ProductDetailRepository;
-    using MyRow = Entities.ProductDetailRow;
+    using MyRepository = Repositories.ProductCostsRepository;
+    using MyRow = Entities.ProductCostsRow;
 
-    [RoutePrefix("Services/Store/ProductDetail"), Route("{action}")]
+    [RoutePrefix("Services/Store/ProductCosts"), Route("{action}")]
     [ConnectionKey(typeof(MyRow)), ServiceAuthorize(typeof(MyRow))]
-    public class ProductDetailController : ServiceEndpoint
+    public class ProductCostsController : ServiceEndpoint
     {
         public RetrieveResponse<MyRow> Retrieve(IDbConnection connection, RetrieveRequest request)
         {

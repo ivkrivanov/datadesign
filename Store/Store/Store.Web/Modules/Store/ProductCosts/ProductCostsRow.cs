@@ -38,6 +38,29 @@ namespace Store.Store.Entities
             set { Fields.WaresName[this] = value; }
         }
 
+        [DisplayName("Quantity"), Size(60)]
+        public Decimal? Quantity
+        {
+            get { return Fields.Quantity[this]; }
+            set { Fields.Quantity[this] = value; }
+        }
+
+        [DisplayName("Price"),Size(60)]
+        public Decimal? SinglePrice
+        {
+            get { return Fields.SinglePrice[this]; }
+            set { Fields.SinglePrice[this] = value; }
+        }
+
+        [DisplayName("Value"), Size(60), Scale(4)]
+        [Expression("(t0.[SinglePrice] * t0.[Quantity])")]
+        [AlignRight, DisplayFormat("#,##0.0000"), MinSelectLevel(SelectLevel.List)]
+        public Decimal? Value
+        {
+            get { return Fields.Value[this]; }
+            set { Fields.Value[this] = value; }
+        }
+
         #region Measure
 
         [DisplayName("Measure Id"), ForeignKey(typeof(MeasureRow)), LeftJoin("meas"), LookupInclude]
@@ -79,6 +102,9 @@ namespace Store.Store.Entities
             public Int32Field WaresID;
             public StringField WaresCode;
             public StringField WaresName;
+            public DecimalField Quantity;
+            public DecimalField SinglePrice;
+            public DecimalField Value;
 
             public Int32Field MeasureID;
             public StringField MeasureName;
