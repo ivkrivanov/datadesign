@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Text;
-using System.Reflection;
-using System.Data.Common;
 
 namespace DALC4NET
 {
@@ -80,7 +76,5 @@ namespace DALC4NET
 
             return connection;
         }      
-
-       
     }
 }
