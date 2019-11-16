@@ -2118,6 +2118,9 @@
     <Compile Include="Modules\Common\Reporting\ExcelReportGenerator.cs" />
     <Compile Include="Modules\Store\Category\CaregoryListRequest.cs" />
     <Compile Include="Modules\Store\Category\CategoryExcelImportForm.cs" />
+    <Compile Include="Modules\Store\ProductCosts\ProductCostsEndpoint.cs" />
+    <Compile Include="Modules\Store\ProductCosts\ProductCostsRepository.cs" />
+    <Compile Include="Modules\Store\ProductCosts\ProductCostsRow.cs" />
     <Compile Include="Modules\Store\ProductMovementTotal\ProductMovementTotalRow.cs" />
     <Compile Include="Modules\Store\ProductMovement\ProductMovementListRequest.cs" />
     <Compile Include="Modules\Store\ProductMovement\ProductMovementLookup.cs" />

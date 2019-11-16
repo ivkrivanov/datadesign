@@ -181,7 +181,7 @@ namespace Store.Store.Entities
 
         [DisplayName("Quantity"), Scale(4), NotNull]
         [AlignRight, DisplayFormat("#,##0.0000")]
-        public Single? Quantity
+        public Decimal? Quantity
         {
             get { return Fields.Quantity[this]; }
             set { Fields.Quantity[this] = value; }
@@ -256,7 +256,7 @@ namespace Store.Store.Entities
         {
             public Int32Field ProductMoveID;
             public Int32Field ProductID;
-            public SingleField Quantity;
+            public DecimalField Quantity;
             public DecimalField SinglePrice;
             public SingleField Discount;
             public Int32Field DetailID;

@@ -2,22 +2,23 @@
 ############## functions #################
 ##########################################
 function print1($what) {
-  Write-Host $what -foreground Green -NoNewline
+  Write-Output $what -foreground Green -NoNewline
 }
 
 function println1($what) {
-  Write-Host $what -foreground Magenta
+  Write-Output $what -foreground Magenta
 }
+
 #performs a transformation on the app.config files in the system using the ctt tool
 function AppConfig ($directory, $cttPath) {
     $a = Get-ChildItem -Path $directory -Recurse -Filter app.config.base
 
     foreach ($item in $a) {
-        $filedir = $item.directoryname; 
-        $s = $filedir + "\App.config.base"; 
-        $t = $filedir + "\App.config." + $nameEnv; 
+        $filedir = $item.directoryname;
+        $s = $filedir + "\App.config.base";
+        $t = $filedir + "\App.config." + $nameEnv;
         $d = $filedir + "\App.config";
-	    
+
         if(($isLocal) -and (Test-Path $d)) {
             #skip config
         }
@@ -47,16 +48,17 @@ function AppConfig ($directory, $cttPath) {
         }
     }
 }
+
 #performs a transformation on the web.config files in the system using the ctt tool
 function WebConfig ($directory, $cttPath) {
     $a = Get-ChildItem -Path $directory -Recurse -Filter web.config.base
 
     foreach ($item in $a) {
-        $filedir = $item.directoryname; 
-        $s = $filedir + "\Web.config.base"; 
-        $t = $filedir + "\Web.config." + $nameEnv; 
+        $filedir = $item.directoryname;
+        $s = $filedir + "\Web.config.base";
+        $t = $filedir + "\Web.config." + $nameEnv;
         $d = $filedir + "\Web.config";
-	    
+
         if(($isLocal) -and (Test-Path $d)) {
             #skip config
         }
@@ -98,9 +100,9 @@ function Fetch-Nuget($targetLocation ) {
 }
 
 Function Run-BatchFile ($computer, [string]$batfilename) {
-    Write-Host -ForegroundColor green "$batfilename"
+    Write-Output -ForegroundColor green "$batfilename"
 
-    $pw=convertto-securestring "ToLbuild"-AsPlainText -Force
+    $pw=convertto-securestring "ToLbuild" -AsPlainText -Force
     $cred = New-Object System.Management.Automation.PsCredential("bgdev\ToLbuild",$pw)
     $sessions = New-PSSession -ComputerName $computer -Credential $cred
 
@@ -114,22 +116,22 @@ Function Run-BatchFile ($computer, [string]$batfilename) {
 
 #minifying widgets
 Function jsMinifiyng {
-    Write-Host -ForegroundColor green "Processing minified js files - setting them to be readonly"
-    
-    Write-Host -ForegroundColor green "Minifiyng V6"
+    Write-Output -ForegroundColor green "Processing minified js files - setting them to be readonly"
+
+    Write-Output -ForegroundColor green "Minifiyng V6"
         Start-Process $baseDirectory\P4X\P4X.WEB\TOL.Widgets\Widgets\v6\lib\external\compresor\build.bat
 
-    Write-Host -ForegroundColor green "Minifiyng V7"
+    Write-Output -ForegroundColor green "Minifiyng V7"
         Start-Process $baseDirectory\P4X\P4X.WEB\TOL.Widgets\Widgets\v7\lib\external\compresor\build.bat
 
-    Write-Host -ForegroundColor green "Minifiying completed"
+    Write-Output -ForegroundColor green "Minifiying completed"
 }
 
 Function DisplayErrors {
     $data = Get-Content "$baseDirectory\Build_Artifacts\Logs\Errors.log"
-    write-host $data.count total errors lines read from file
+	Write-Output $data.count total errors lines read from file
     foreach ($line in $data) {
-        write-host $line
+        Write-Output $line
     }
 }
 
@@ -141,61 +143,61 @@ Function ErrorsCount($errdir) {
 
 function StartIIS($serverName){
     Try{
-        Write-Host " ";
-        Write-Host "-----------------------------------------------------";
-        Write-Host "-----------------------------------------------------";
-        Write-Host "Attempting to start IIS";
-        Write-Host "-----------------------------------------------------";
-     
+        Write-Output " ";
+        Write-Output "-----------------------------------------------------";
+        Write-Output "-----------------------------------------------------";
+        Write-Output "Attempting to start IIS";
+        Write-Output "-----------------------------------------------------";
+
         $start=Get-Date;
         $cred = GetCredentials;
-         
+
         Invoke-Command –ComputerName $serverName –ScriptBlock { iisreset /start } -Authentication Default -Credential $cred
- 
+
         $elapsedTime = new-timespan $start $(get-date);
-        Write-Host "Sucessfully completed script.";
-        Write-Host "Time taken to run script: " $elapsedTime;
+        Write-Output "Sucessfully completed script.";
+        Write-Output "Time taken to run script: " $elapsedTime;
     }
     Catch{
-       Write-Host "There was an error running this powershell script";
-       Write-Host $_.Exception.Message;
+       Write-Output "There was an error running this powershell script";
+       Write-Output $_.Exception.Message;
        return 0;
     }
     Finally{
-        Write-Host "-----------------------------------------------------";
+        Write-Output "-----------------------------------------------------";
     }
 }
 
 function StopIIS($serverName){
     Try{
-        Write-Host " ";
-        Write-Host "-----------------------------------------------------";
-        Write-Host "-----------------------------------------------------";
-        Write-Host "Attempting to stop IIS";
-        Write-Host "-----------------------------------------------------";
-     
+        Write-Output " ";
+        Write-Output "-----------------------------------------------------";
+        Write-Output "-----------------------------------------------------";
+        Write-Output "Attempting to stop IIS";
+        Write-Output "-----------------------------------------------------";
+
         $start=Get-Date;
         $cred = GetCredentials;
-         
+
         Invoke-Command –ComputerName $serverName –ScriptBlock { iisreset /stop } -Authentication Default -Credential $cred
- 
+
         $elapsedTime = new-timespan $start $(get-date);
-        Write-Host "Sucessfully completed script.";
-        Write-Host "Time taken to run script: " $elapsedTime;
+        Write-Output "Sucessfully completed script.";
+        Write-Output "Time taken to run script: " $elapsedTime;
     }
     Catch{
-       Write-Host "There was an error running this powershell script";
-       Write-Host $_.Exception.Message;
+       Write-Output "There was an error running this powershell script";
+       Write-Output $_.Exception.Message;
        return 0;
     }
     Finally{
-        Write-Host "-----------------------------------------------------";
+        Write-Output "-----------------------------------------------------";
     }
 }
 
 function GetCredentials(){
-    $username = "DATADESIGN\IIvanov"
-    $password = "02121999"
+    $username = "pxd\IIvanov-PC"
+    $password = "lz2klrLom"
     $secstr = New-Object -TypeName System.Security.SecureString
     $password.ToCharArray() | ForEach-Object {$secstr.AppendChar($_)}
     $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $secstr;
@@ -205,14 +207,19 @@ function GetCredentials(){
 
 Function CopyToServer {
     $DESTAPP = $Args[0]
-    $DESTWEB = $Args[1]
+	$DESTWEB = $Args[1]
     $SERVER = $Args[2]
+
+    NET USE \\$SERVER\IPC$ /u:pxd\IIvanov /p:lz2klrLom
+
     if ($SERVER -eq "DATADESIGN") {
         robocopy /NFL $BUILDPATH\_PublishedWebsites\Store.Web $DESTWEB\Store.Web *.* /S /XF *.pdb *.cs *.dll.config  *.mdf *.sln *.csproj *.csproj.user *.vspscc  /XD obj .svn /Purge /MT:32
     }
     if ($SERVER -eq "IIVANOV-PC") {
         robocopy /NFL $BUILDPATH\_PublishedWebsites\Store.Web $DESTWEB\Store.Web *.* /S /XF *.pdb *.cs *.dll.config  *.mdf *.sln *.csproj *.csproj.user *.vspscc  /XD obj .svn /Purge /MT:32
     }
+
+    net use \\$SERVER /D
 }
 ##########################################
 ############ end functions ###############
@@ -222,7 +229,7 @@ Function CopyToServer {
 #script starts from here
 Clear-Host
 #set dev as the default environment for the build
-if ($Args[0] -eq $null) {
+if ($null -eq $Args[0]) {
     $nameEnv = "dev"
     $isLocal = $true
 }
@@ -231,7 +238,7 @@ else {
     $isLocal = $false
 }
 
-if (($Args[1] -eq $null) -or ([string]::IsNullOrEmpty($Args[1]))) {
+if (($null -eq $Args[1]) -or ([string]::IsNullOrEmpty($Args[1]))) {
     #we get the current location of the script as the default starting point
     $baseDirectory = split-path -parent $MyInvocation.MyCommand.Definition
     $baseDirectory = Join-Path -Path $PSScriptRoot -ChildPath ..\ -Resolve
@@ -274,17 +281,17 @@ Write-Output "Fetching NuGet."
 $nuget = "$baseDirectory\build_tools\nuget.exe"
 Fetch-Nuget (Join-Path $baseDirectory "\build_tools\")
 #we first run nuget restore on all .sln files in the target sub-folders recursively
-$solutionsList = Get-ChildItem "$baseDirectory" -Recurse -Filter *.sln 
+$solutionsList = Get-ChildItem "$baseDirectory" -Recurse -Filter *.sln
 
 foreach ($item in $solutionsList) {
-   
+
     $solution = Get-ChildItem $item.FullName
     $filedir = $solution.DirectoryName;
     $filename = [System.IO.Path]::GetFileName($solution)
-    Write-Host $filedir\$filename -foreground Magenta
-    Write-Host "NuGet Restore" 
+    Write-Output $filedir\$filename -foreground Magenta
+    Write-Output "NuGet Restore"
     & $nuget restore -ConfigFile nuget.config $filedir\$filename
-} 
+}
 
 #we remove old log files if they exist
 if (Test-Path $logfilepath) {
@@ -298,47 +305,47 @@ if (Test-Path $errorlogfilepath) {
 #we perform widgets.min.js
 #jsMinifiyng
 #we perform the needed transformation on the config files 
-AppConfig $baseDirectory $cttPath
+#AppConfig $baseDirectory $cttPath
 WebConfig $baseDirectory $cttPath
 
 foreach ($projectFile in $projectFiles) {
 	if($projectFile.EndsWith(".sln")) { 
 
-		Write-Host $projectFile -foreground Magenta
+		Write-Output $projectFile -foreground Magenta
 		$projectFileAbsPath = "$baseDirectory\$projectFile"
-        
-		$filename = [System.IO.Path]::GetFileName($projectFile); 
-		$fileDir = [System.IO.Path]::GetDirectoryName($projectFile); 
-		$action = "Y"  
+
+		$filename = [System.IO.Path]::GetFileName($projectFile);
+		$fileDir = [System.IO.Path]::GetDirectoryName($projectFile);
+		$action = "Y"
 		while ($action -eq "Y") {
 			if (Test-Path $projectFileAbsPath) {
-               
-				if ($Args[0] -eq $null) {   
-					Write-Host "Building $projectFileAbsPath"
+
+				if ($null -eq $Args[0]) {
+					Write-Output "Building $projectFileAbsPath"
 					<#$collectionofArgs = @($projectFileAbsPath, "/target:Clean", "/target:clean_folders", "/target:Build", "/p:Configuration=Debug", "/fl1", "/fl2", "/flp1:Verbosity=normal;LogFile=$logfilepath;Append=true", "/flp2:Verbosity=normal;LogFile=$errorlogfilepath;Append=true;errorsonly")
 					& $msbuild $collectionofArgs#>
-					$collectionofArgs = @($projectFileAbsPath, "/target:Clean", "/target:Build", "/p:Configuration=Debug", "/fl1", "/fl2", "/flp1:Verbosity=normal;LogFile=$logfilepath;Append=true", "/flp2:Verbosity=normal;LogFile=$errorlogfilepath;Append=true;errorsonly")
+					$collectionofArgs = @($projectFileAbsPath, "/target:Clean;Build", "/p:Configuration=Debug", "/fl1", "/fl2", "/flp1:Verbosity=normal;LogFile=$logfilepath;Append=true", "/flp2:Verbosity=normal;LogFile=$errorlogfilepath;Append=true;errorsonly")
 					& $msbuild $collectionofArgs
 
 				}
 				else {
-					Write-Host "Building $projectFileAbsPath"
-					$collectionofArgs = @($projectFileAbsPath, "/target:Clean", "/target:Build", "/p:Configuration=Release", "/property:outdir=$binaryDirectory", "/fl1", "/fl2", "/flp1:Verbosity=normal;LogFile=$logfilepath;Append=true", "/flp2:Verbosity=detailed;LogFile=$errorlogfilepath;Append=true;errorsonly")
-					& $msbuild $collectionofArgs 
+					Write-Output "Building $projectFileAbsPath"
+					$collectionofArgs = @($projectFileAbsPath, "/target:Clean;Build", "/p:Configuration=Release", "/property:outdir=$binaryDirectory", "/fl1", "/fl2", "/flp1:Verbosity=normal;LogFile=$logfilepath;Append=true", "/flp2:Verbosity=detailed;LogFile=$errorlogfilepath;Append=true;errorsonly")
+					& $msbuild $collectionofArgs
 					<#$collectionofArgs = @($projectFileAbsPath,  "/target:Build", "/p:Configuration=Release", "/property:outdir=$binaryDirectory", "/fl1", "/fl2", "/flp1:Verbosity=normal;LogFile=$logfilepath;Append=true", "/flp2:Verbosity=detailed;LogFile=$errorlogfilepath;Append=true;errorsonly")
 					& $msbuild $collectionofArgs#>
 				}
 
 				if ($LASTEXITCODE -eq 0) {
-					Write-Host "Build SUCCESS" -ForegroundColor Green
+					Write-Output "Build SUCCESS" -ForegroundColor Green
 					Clear-Host
 					break
 				}
 				else {
-					Write-Host "Build FAILED" -ForegroundColor Red
-                    
+					Write-Output "Build FAILED" -ForegroundColor Red
+
 					#$action = Read-Host "Enter Y to Fix then continue, N to Terminate, I to Ignore and continue the build"
-                    
+
 					$action = "I"
 
 					if ($action -eq "Y") {
@@ -346,23 +353,23 @@ foreach ($projectFile in $projectFiles) {
 					}
 					else {
 						if ($action -eq "I") {
-							Write-Host "Ignoring build failure..."
+							Write-Output "Ignoring build failure..."
 							break
 						}
 						else {
-							Write-Host "Terminating Build... Please restart the build once the issue is fixed." -ForegroundColor Red
+							Write-Output "Terminating Build... Please restart the build once the issue is fixed." -ForegroundColor Red
 							break
 						}
 					}
 				}
 			}
 			else {
-				Write-Host "File does not exist : $projectFileAbsPath"
+				Write-Output "File does not exist : $projectFileAbsPath"
 				Start-Sleep -s 5
 				break
 			}
 		}
-        
+
 		if ($action -eq "N") {
 			break;
 		}
@@ -391,7 +398,7 @@ if ($err -eq 0) {
             #StopIIS("calypso")
             #Run-BatchFile "calypso" "KillServices.bat" 90
             #Start-Sleep -s 5
-            CopyToServer "\\IIvanov-PC\Processes\Batch" "\\IIvanov-PC\c$\inetpub\wwwroot" "IIvanov-PC"
+            CopyToServer "\\IIvanov-PC\Processes\Batch" "c:\inetpub\wwwroot" "IIvanov-PC"
             #Run-BatchFile "calypso" "StartServices.bat" 120
             #StartIIS("calypso")
             Break;
@@ -399,6 +406,6 @@ if ($err -eq 0) {
     }
 }
 else {
-    write-host $err total errors.
+    Write-Output $err total errors.
     println1("Too many errors. Deploy not completed.")
 }

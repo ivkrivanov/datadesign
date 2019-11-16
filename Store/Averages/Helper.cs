@@ -462,7 +462,10 @@ namespace Average
 
     public class Average
     {
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="items"></param>
         public void AverageStore(List<Item> items)
         {
             Int64 Position = 0;
@@ -666,6 +669,9 @@ namespace Average
             }
         }
     }
+    /// <summary>
+    /// 
+    /// </summary>
     public class Item
     {
         public Int64 Position { get; set; }
