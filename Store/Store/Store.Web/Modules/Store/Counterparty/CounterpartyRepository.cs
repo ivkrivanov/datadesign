@@ -9,7 +9,7 @@ namespace Store.Store.Repositories
 
     public class CounterpartyRepository
     {
-        private static MyRow.RowFields fld { get { return MyRow.Fields; } }
+        private static MyRow.RowFields Fld { get { return MyRow.Fields; } }
 
         public SaveResponse Create(IUnitOfWork uow, SaveRequest<MyRow> request)
         {
@@ -43,7 +43,7 @@ namespace Store.Store.Repositories
 
         public GetNextNumberResponse GetNextNumber(IDbConnection connection, GetNextNumberRequest request)
         {
-            return GetNextNumberHelper.GetNextNumber(connection, request, fld.CounterpartyID);
+            return GetNextNumberHelper.GetNextNumber(connection, request, Fld.CounterpartyID);
         }
 
         private class MySaveHandler : SaveRequestHandler<MyRow> { }

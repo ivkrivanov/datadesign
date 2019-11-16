@@ -10,7 +10,7 @@ namespace Store.Store.Repositories
 
     public class ProductMovementRepository
     {
-        private static MyRow.RowFields fld { get { return MyRow.Fields; } }
+        private static MyRow.RowFields Fld { get { return MyRow.Fields; } }
 
         public SaveResponse Create(IUnitOfWork uow, SaveRequest<MyRow> request)
         {
@@ -61,7 +61,7 @@ namespace Store.Store.Repositories
                         .Select("1")
                         .From(pm)
                         .Where(
-                            pm.ProductMoveID == fld.ProductMoveID &
+                            pm.ProductMoveID == Fld.ProductMoveID &
                             pm.ProductID == Request.ProductID.Value).ToString()));
                 }
             }
