@@ -26,6 +26,7 @@
     <DefaultFilegroup>PRIMARY</DefaultFilegroup>
     <ServiceBrokerOption>EnableBroker</ServiceBrokerOption>
     <TargetFrameworkProfile />
+    <IncludeSchemaNameInFileName>True</IncludeSchemaNameInFileName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
