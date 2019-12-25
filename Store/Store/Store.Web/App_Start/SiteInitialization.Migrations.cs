@@ -152,7 +152,7 @@
             if (!isOracle && cs.ConnectionString.IndexOf(typeof(SiteInitialization).Namespace +
                     @"_" + databaseKey + "_v1", StringComparison.OrdinalIgnoreCase) < 0)
             {
-                SkippedMigrations = true;
+                SkippedMigrations = false;
                 return;
             }
 
