@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DirectedGraph GraphDirection="LeftToRight" xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+  <Nodes>
+    <Node Id="SharpMap.Extensions.x86" Label="SharpMap.Extensions.x86" Category="Project" />
+    <Node Id="Common.Logging 2.0.0" Label="Common.Logging 2.0.0" Category="Package" />
+    <Node Id="GeoAPI 1.7.1" Label="GeoAPI 1.7.1" Category="Package" />
+    <Node Id="NetTopologySuite 1.13.0" Label="NetTopologySuite 1.13.0" Category="Package" />
+    <Node Id="odp.net.x86 112.3.0" Label="odp.net.x86 112.3.0" Category="Package" />
+    <Node Id="System.Data.SQLite.MSIL 1.0.84.0" Label="System.Data.SQLite.MSIL 1.0.84.0" Category="Package" />
+    <Node Id="SharpMap.Web" Label="SharpMap.Web" Category="Project" />
+    <Node Id="GDAL.Native 1.9.2" Label="GDAL.Native 1.9.2" Category="Package" />
+    <Node Id="GeoAPI 1.7.1" Label="GeoAPI 1.7.1" Category="Package" />
+    <Node Id="Newtonsoft.Json 4.5.11" Label="Newtonsoft.Json 4.5.11" Category="Package" />
+    <Node Id="SharpMap.Serialization" Label="SharpMap.Serialization" Category="Project" />
+    <Node Id="BruTile 0.7.4" Label="BruTile 0.7.4" Category="Package" />
+    <Node Id="Common.Logging 2.0.0" Label="Common.Logging 2.0.0" Category="Package" />
+    <Node Id="GeoAPI 1.7.1" Label="GeoAPI 1.7.1" Category="Package" />
+    <Node Id="SharpMap.SqlServerSpatialObjects" Label="SharpMap.SqlServerSpatialObjects" Category="Project" />
+    <Node Id="DotSpatial.Projections 1.2" Label="DotSpatial.Projections 1.2" Category="Package" />
+    <Node Id="GeoAPI 1.7.1" Label="GeoAPI 1.7.1" Category="Package" />
+    <Node Id="NetTopologySuite 1.13.0" Label="NetTopologySuite 1.13.0" Category="Package" />
+    <Node Id="SharpMap.Extensions" Label="SharpMap.Extensions" Category="Project" />
+    <Node Id="Common.Logging 2.0.0" Label="Common.Logging 2.0.0" Category="Package" />
+    <Node Id="DotSpatial.Projections 1.2" Label="DotSpatial.Projections 1.2" Category="Package" />
+    <Node Id="GDAL 1.9.2" Label="GDAL 1.9.2" Category="Package" />
+    <Node Id="GDAL.Native 1.9.2" Label="GDAL.Native 1.9.2" Category="Package" />
+    <Node Id="GeoAPI 1.7.1" Label="GeoAPI 1.7.1" Category="Package" />
+    <Node Id="NetTopologySuite 1.13.0" Label="NetTopologySuite 1.13.0" Category="Package" />
+    <Node Id="NetTopologySuite.IO 1.13.0" Label="NetTopologySuite.IO 1.13.0" Category="Package" />
+    <Node Id="NetTopologySuite.IO.SpatiaLite 1.13.0.1" Label="NetTopologySuite.IO.SpatiaLite 1.13.0.1" Category="Package" />
+    <Node Id="Npgsql 2.0.12.1" Label="Npgsql 2.0.12.1" Category="Package" />
+    <Node Id="odp.net.x64 112.3.0" Label="odp.net.x64 112.3.0" Category="Package" />
+    <Node Id="ProjNET4GeoAPI 1.3.0.1" Label="ProjNET4GeoAPI 1.3.0.1" Category="Package" />
+    <Node Id="System.Data.SQLite.MSIL 1.0.84.0" Label="System.Data.SQLite.MSIL 1.0.84.0" Category="Package" />
+    <Node Id="UnitTests" Label="UnitTests" Category="Project" />
+    <Node Id="BruTile 0.7.4" Label="BruTile 0.7.4" Category="Package" />
+    <Node Id="DotSpatial.Projections 1.2" Label="DotSpatial.Projections 1.2" Category="Package" />
+    <Node Id="GDAL.Native 1.9.2" Label="GDAL.Native 1.9.2" Category="Package" />
+    <Node Id="GeoAPI 1.7.1" Label="GeoAPI 1.7.1" Category="Package" />
+    <Node Id="NetTopologySuite 1.13.0" Label="NetTopologySuite 1.13.0" Category="Package" />
+    <Node Id="NetTopologySuite.IO 1.13.0" Label="NetTopologySuite.IO 1.13.0" Category="Package" />
+    <Node Id="Npgsql 2.0.12.1" Label="Npgsql 2.0.12.1" Category="Package" />
+    <Node Id="NUnit 2.6.2" Label="NUnit 2.6.2" Category="Package" />
+    <Node Id="ProjNET4GeoAPI 1.3.0.1" Label="ProjNET4GeoAPI 1.3.0.1" Category="Package" />
+    <Node Id="System.Data.SQLite 1.0.84.0" Label="System.Data.SQLite 1.0.84.0" Category="Package" />
+    <Node Id="SharpMap.UI" Label="SharpMap.UI" Category="Project" />
+    <Node Id="Common.Logging 2.0.0" Label="Common.Logging 2.0.0" Category="Package" />
+    <Node Id="GeoAPI 1.7.1" Label="GeoAPI 1.7.1" Category="Package" />
+    <Node Id="NetTopologySuite 1.13.0" Label="NetTopologySuite 1.13.0" Category="Package" />
+    <Node Id="ProjNET4GeoAPI 1.3.0.1" Label="ProjNET4GeoAPI 1.3.0.1" Category="Package" />
+    <Node Id="SharpMap" Label="SharpMap" Category="Project" />
+    <Node Id="BruTile 0.7.4" Label="BruTile 0.7.4" Category="Package" />
+    <Node Id="Common.Logging 2.0.0" Label="Common.Logging 2.0.0" Category="Package" />
+    <Node Id="DotSpatial.Projections 1.2" Label="DotSpatial.Projections 1.2" Category="Package" />
+    <Node Id="GDAL.Native 1.9.2" Label="GDAL.Native 1.9.2" Category="Package" />
+    <Node Id="GeoAPI 1.7.1" Label="GeoAPI 1.7.1" Category="Package" />
+    <Node Id="NetTopologySuite 1.13.0" Label="NetTopologySuite 1.13.0" Category="Package" />
+    <Node Id="NetTopologySuite.IO 1.13.0" Label="NetTopologySuite.IO 1.13.0" Category="Package" />
+    <Node Id="Newtonsoft.Json 4.5.11" Label="Newtonsoft.Json 4.5.11" Category="Package" />
+    <Node Id="ProjNET4GeoAPI 1.3.0.1" Label="ProjNET4GeoAPI 1.3.0.1" Category="Package" />
+    <Node Id="Examples\SharpMap.Demo.Wms" Label="SharpMap.Demo.Wms" Category="Project" />
+    <Node Id="GeoAPI 1.7.1" Label="GeoAPI 1.7.1" Category="Package" />
+    <Node Id="NetTopologySuite 1.13.0" Label="NetTopologySuite 1.13.0" Category="Package" />
+    <Node Id="Newtonsoft.Json 4.5.11" Label="Newtonsoft.Json 4.5.11" Category="Package" />
+    <Node Id="Examples\ExampleCodeSnippets" Label="ExampleCodeSnippets" Category="Project" />
+    <Node Id="DotSpatial.Projections 1.2" Label="DotSpatial.Projections 1.2" Category="Package" />
+    <Node Id="GeoAPI 1.7.1" Label="GeoAPI 1.7.1" Category="Package" />
+    <Node Id="NetTopologySuite 1.13.0" Label="NetTopologySuite 1.13.0" Category="Package" />
+    <Node Id="ProjNET4GeoAPI 1.3.0.1" Label="ProjNET4GeoAPI 1.3.0.1" Category="Package" />
+    <Node Id="Examples\WinFormSamples" Label="WinFormSamples" Category="Project" />
+    <Node Id="BruTile 0.7.4" Label="BruTile 0.7.4" Category="Package" />
+    <Node Id="Common.Logging 2.0.0" Label="Common.Logging 2.0.0" Category="Package" />
+    <Node Id="Common.Logging.Log4Net 2.0.1" Label="Common.Logging.Log4Net 2.0.1" Category="Package" />
+    <Node Id="DotSpatial.Projections 1.2" Label="DotSpatial.Projections 1.2" Category="Package" />
+    <Node Id="GDAL.Native 1.9.2" Label="GDAL.Native 1.9.2" Category="Package" />
+    <Node Id="GeoAPI 1.7.1" Label="GeoAPI 1.7.1" Category="Package" />
+    <Node Id="log4net 1.2.10" Label="log4net 1.2.10" Category="Package" />
+    <Node Id="NetTopologySuite 1.13.0" Label="NetTopologySuite 1.13.0" Category="Package" />
+    <Node Id="NetTopologySuite.IO 1.13.0" Label="NetTopologySuite.IO 1.13.0" Category="Package" />
+    <Node Id="ProjNET4GeoAPI 1.3.0.1" Label="ProjNET4GeoAPI 1.3.0.1" Category="Package" />
+    <Node Id="System.Data.SQLite 1.0.84.0" Label="System.Data.SQLite 1.0.84.0" Category="Package" />
+    <Node Id="Examples\DemoWinForm" Label="DemoWinForm" Category="Project" />
+    <Node Id="GeoAPI 1.7.1" Label="GeoAPI 1.7.1" Category="Package" />
+    <Node Id="NetTopologySuite 1.13.0" Label="NetTopologySuite 1.13.0" Category="Package" />
+    <Node Id="DemoWebSite(1)" Label="DemoWebSite(1)" Category="Project" />
+    <Node Id="GDAL.Native 1.9.2" Label="GDAL.Native 1.9.2" Category="Package" />
+    <Node Id="GeoAPI 1.7.1" Label="GeoAPI 1.7.1" Category="Package" />
+    <Node Id="NetTopologySuite 1.13.0" Label="NetTopologySuite 1.13.0" Category="Package" />
+    <Node Id="ProjNET4GeoAPI 1.3.0.1" Label="ProjNET4GeoAPI 1.3.0.1" Category="Package" />
+  </Nodes>
+  <Links>
+    <Link Source="NetTopologySuite 1.13.0" Target="GeoAPI 1.7.1" Category="Package Dependency" />
+    <Link Source="SharpMap.Extensions.x86" Target="Common.Logging 2.0.0" Category="Installed Package" />
+    <Link Source="SharpMap.Extensions.x86" Target="NetTopologySuite 1.13.0" Category="Installed Package" />
+    <Link Source="SharpMap.Extensions.x86" Target="odp.net.x86 112.3.0" Category="Installed Package" />
+    <Link Source="SharpMap.Extensions.x86" Target="System.Data.SQLite.MSIL 1.0.84.0" Category="Installed Package" />
+    <Link Source="SharpMap.Web" Target="GDAL.Native 1.9.2" Category="Installed Package" />
+    <Link Source="SharpMap.Web" Target="GeoAPI 1.7.1" Category="Installed Package" />
+    <Link Source="SharpMap.Web" Target="Newtonsoft.Json 4.5.11" Category="Installed Package" />
+    <Link Source="SharpMap.Serialization" Target="BruTile 0.7.4" Category="Installed Package" />
+    <Link Source="SharpMap.Serialization" Target="Common.Logging 2.0.0" Category="Installed Package" />
+    <Link Source="SharpMap.Serialization" Target="GeoAPI 1.7.1" Category="Installed Package" />
+    <Link Source="NetTopologySuite 1.13.0" Target="GeoAPI 1.7.1" Category="Package Dependency" />
+    <Link Source="SharpMap.SqlServerSpatialObjects" Target="DotSpatial.Projections 1.2" Category="Installed Package" />
+    <Link Source="SharpMap.SqlServerSpatialObjects" Target="NetTopologySuite 1.13.0" Category="Installed Package" />
+    <Link Source="GDAL 1.9.2" Target="GDAL.Native 1.9.2" Category="Package Dependency" />
+    <Link Source="NetTopologySuite 1.13.0" Target="GeoAPI 1.7.1" Category="Package Dependency" />
+    <Link Source="NetTopologySuite.IO 1.13.0" Target="GeoAPI 1.7.1" Category="Package Dependency" />
+    <Link Source="NetTopologySuite.IO 1.13.0" Target="NetTopologySuite 1.13.0" Category="Package Dependency" />
+    <Link Source="NetTopologySuite.IO.SpatiaLite 1.13.0.1" Target="GeoAPI 1.7.1" Category="Package Dependency" />
+    <Link Source="NetTopologySuite.IO.SpatiaLite 1.13.0.1" Target="NetTopologySuite 1.13.0" Category="Package Dependency" />
+    <Link Source="ProjNET4GeoAPI 1.3.0.1" Target="GeoAPI 1.7.1" Category="Package Dependency" />
+    <Link Source="SharpMap.Extensions" Target="Common.Logging 2.0.0" Category="Installed Package" />
+    <Link Source="SharpMap.Extensions" Target="DotSpatial.Projections 1.2" Category="Installed Package" />
+    <Link Source="SharpMap.Extensions" Target="GDAL 1.9.2" Category="Installed Package" />
+    <Link Source="SharpMap.Extensions" Target="NetTopologySuite.IO 1.13.0" Category="Installed Package" />
+    <Link Source="SharpMap.Extensions" Target="NetTopologySuite.IO.SpatiaLite 1.13.0.1" Category="Installed Package" />
+    <Link Source="SharpMap.Extensions" Target="Npgsql 2.0.12.1" Category="Installed Package" />
+    <Link Source="SharpMap.Extensions" Target="odp.net.x64 112.3.0" Category="Installed Package" />
+    <Link Source="SharpMap.Extensions" Target="ProjNET4GeoAPI 1.3.0.1" Category="Installed Package" />
+    <Link Source="SharpMap.Extensions" Target="System.Data.SQLite.MSIL 1.0.84.0" Category="Installed Package" />
+    <Link Source="NetTopologySuite 1.13.0" Target="GeoAPI 1.7.1" Category="Package Dependency" />
+    <Link Source="NetTopologySuite.IO 1.13.0" Target="GeoAPI 1.7.1" Category="Package Dependency" />
+    <Link Source="NetTopologySuite.IO 1.13.0" Target="NetTopologySuite 1.13.0" Category="Package Dependency" />
+    <Link Source="ProjNET4GeoAPI 1.3.0.1" Target="GeoAPI 1.7.1" Category="Package Dependency" />
+    <Link Source="UnitTests" Target="BruTile 0.7.4" Category="Installed Package" />
+    <Link Source="UnitTests" Target="DotSpatial.Projections 1.2" Category="Installed Package" />
+    <Link Source="UnitTests" Target="GDAL.Native 1.9.2" Category="Installed Package" />
+    <Link Source="UnitTests" Target="NetTopologySuite.IO 1.13.0" Category="Installed Package" />
+    <Link Source="UnitTests" Target="Npgsql 2.0.12.1" Category="Installed Package" />
+    <Link Source="UnitTests" Target="NUnit 2.6.2" Category="Installed Package" />
+    <Link Source="UnitTests" Target="ProjNET4GeoAPI 1.3.0.1" Category="Installed Package" />
+    <Link Source="UnitTests" Target="System.Data.SQLite 1.0.84.0" Category="Installed Package" />
+    <Link Source="NetTopologySuite 1.13.0" Target="GeoAPI 1.7.1" Category="Package Dependency" />
+    <Link Source="ProjNET4GeoAPI 1.3.0.1" Target="GeoAPI 1.7.1" Category="Package Dependency" />
+    <Link Source="SharpMap.UI" Target="Common.Logging 2.0.0" Category="Installed Package" />
+    <Link Source="SharpMap.UI" Target="NetTopologySuite 1.13.0" Category="Installed Package" />
+    <Link Source="SharpMap.UI" Target="ProjNET4GeoAPI 1.3.0.1" Category="Installed Package" />
+    <Link Source="NetTopologySuite 1.13.0" Target="GeoAPI 1.7.1" Category="Package Dependency" />
+    <Link Source="NetTopologySuite.IO 1.13.0" Target="GeoAPI 1.7.1" Category="Package Dependency" />
+    <Link Source="NetTopologySuite.IO 1.13.0" Target="NetTopologySuite 1.13.0" Category="Package Dependency" />
+    <Link Source="ProjNET4GeoAPI 1.3.0.1" Target="GeoAPI 1.7.1" Category="Package Dependency" />
+    <Link Source="SharpMap" Target="BruTile 0.7.4" Category="Installed Package" />
+    <Link Source="SharpMap" Target="Common.Logging 2.0.0" Category="Installed Package" />
+    <Link Source="SharpMap" Target="DotSpatial.Projections 1.2" Category="Installed Package" />
+    <Link Source="SharpMap" Target="GDAL.Native 1.9.2" Category="Installed Package" />
+    <Link Source="SharpMap" Target="NetTopologySuite.IO 1.13.0" Category="Installed Package" />
+    <Link Source="SharpMap" Target="Newtonsoft.Json 4.5.11" Category="Installed Package" />
+    <Link Source="SharpMap" Target="ProjNET4GeoAPI 1.3.0.1" Category="Installed Package" />
+    <Link Source="NetTopologySuite 1.13.0" Target="GeoAPI 1.7.1" Category="Package Dependency" />
+    <Link Source="Examples\SharpMap.Demo.Wms" Target="NetTopologySuite 1.13.0" Category="Installed Package" />
+    <Link Source="Examples\SharpMap.Demo.Wms" Target="Newtonsoft.Json 4.5.11" Category="Installed Package" />
+    <Link Source="NetTopologySuite 1.13.0" Target="GeoAPI 1.7.1" Category="Package Dependency" />
+    <Link Source="ProjNET4GeoAPI 1.3.0.1" Target="GeoAPI 1.7.1" Category="Package Dependency" />
+    <Link Source="Examples\ExampleCodeSnippets" Target="DotSpatial.Projections 1.2" Category="Installed Package" />
+    <Link Source="Examples\ExampleCodeSnippets" Target="NetTopologySuite 1.13.0" Category="Installed Package" />
+    <Link Source="Examples\ExampleCodeSnippets" Target="ProjNET4GeoAPI 1.3.0.1" Category="Installed Package" />
+    <Link Source="Common.Logging.Log4Net 2.0.1" Target="Common.Logging 2.0.0" Category="Package Dependency" />
+    <Link Source="Common.Logging.Log4Net 2.0.1" Target="log4net 1.2.10" Category="Package Dependency" />
+    <Link Source="NetTopologySuite 1.13.0" Target="GeoAPI 1.7.1" Category="Package Dependency" />
+    <Link Source="NetTopologySuite.IO 1.13.0" Target="GeoAPI 1.7.1" Category="Package Dependency" />
+    <Link Source="NetTopologySuite.IO 1.13.0" Target="NetTopologySuite 1.13.0" Category="Package Dependency" />
+    <Link Source="ProjNET4GeoAPI 1.3.0.1" Target="GeoAPI 1.7.1" Category="Package Dependency" />
+    <Link Source="Examples\WinFormSamples" Target="BruTile 0.7.4" Category="Installed Package" />
+    <Link Source="Examples\WinFormSamples" Target="Common.Logging.Log4Net 2.0.1" Category="Installed Package" />
+    <Link Source="Examples\WinFormSamples" Target="DotSpatial.Projections 1.2" Category="Installed Package" />
+    <Link Source="Examples\WinFormSamples" Target="GDAL.Native 1.9.2" Category="Installed Package" />
+    <Link Source="Examples\WinFormSamples" Target="NetTopologySuite.IO 1.13.0" Category="Installed Package" />
+    <Link Source="Examples\WinFormSamples" Target="ProjNET4GeoAPI 1.3.0.1" Category="Installed Package" />
+    <Link Source="Examples\WinFormSamples" Target="System.Data.SQLite 1.0.84.0" Category="Installed Package" />
+    <Link Source="NetTopologySuite 1.13.0" Target="GeoAPI 1.7.1" Category="Package Dependency" />
+    <Link Source="Examples\DemoWinForm" Target="NetTopologySuite 1.13.0" Category="Installed Package" />
+    <Link Source="NetTopologySuite 1.13.0" Target="GeoAPI 1.7.1" Category="Package Dependency" />
+    <Link Source="ProjNET4GeoAPI 1.3.0.1" Target="GeoAPI 1.7.1" Category="Package Dependency" />
+    <Link Source="DemoWebSite(1)" Target="GDAL.Native 1.9.2" Category="Installed Package" />
+    <Link Source="DemoWebSite(1)" Target="NetTopologySuite 1.13.0" Category="Installed Package" />
+    <Link Source="DemoWebSite(1)" Target="ProjNET4GeoAPI 1.3.0.1" Category="Installed Package" />
+  </Links>
+  <Categories>
+    <Category Id="Project" />
+    <Category Id="Package" />
+  </Categories>
+  <Styles>
+    <Style TargetType="Node" GroupLabel="Project" ValueLabel="True">
+      <Condition Expression="HasCategory('Project')" />
+      <Setter Property="Background" Value="Blue" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Package Dependency" ValueLabel="True">
+      <Condition Expression="HasCategory('Package Dependency')" />
+      <Setter Property="Background" Value="Yellow" />
+    </Style>
+  </Styles>
+</DirectedGraph>
