@@ -26,6 +26,8 @@
     <DefaultFilegroup>PRIMARY</DefaultFilegroup>
     <ServiceBrokerOption>EnableBroker</ServiceBrokerOption>
     <GenerateCreateScript>True</GenerateCreateScript>
+    <Recovery>BULK_LOGGED</Recovery>
+    <DefaultCursor>GLOBAL</DefaultCursor>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
