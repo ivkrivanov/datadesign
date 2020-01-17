@@ -63,5 +63,9 @@
     <Build Include="CategoriesType.sql" />
     <Build Include="Products.sql" />
     <Build Include="Product Details.sql" />
+    <Build Include="Wares.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Script.sql" />
   </ItemGroup>
 </Project>
