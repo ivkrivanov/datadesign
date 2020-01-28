@@ -9,79 +9,56 @@ function println1($what) {
   Write-Output $what -foreground Magenta
 }
 
-#performs a transformation on the app.config files in the system using the ctt tool
-function AppConfig ($directory, $cttPath) {
-    $a = Get-ChildItem -Path $directory -Recurse -Filter app.config.base
+#performs a transformation on the *.config files in the system using the ctt tool
+function TransformConfigs {
+
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory=$False, Position=1)]
+        $directory, 
+        [Parameter(Mandatory=$False, Position=2)]
+        $scriptPath
+    )
+
+    $a = Get-ChildItem -Path $directory -Recurse -Filter '*.config.base'
 
     foreach ($item in $a) {
-        $filedir = $item.directoryname;
-        $s = $filedir + "\App.config.base";
-        $t = $filedir + "\App.config." + $nameEnv;
-        $d = $filedir + "\App.config";
-
-        if(($isLocal) -and (Test-Path $d)) {
+        $filedir = $item.directoryname; 
+        $base = $filedir + "\app.config.base"
+        if (Test-Path $base) {
+            $env = $filedir + "\app.config." + $nameEnv; 
+            $output = $filedir + "\app.config";
+	    }
+        else {
+            $base = $filedir + "\Web.config.base"
+            if (Test-Path $base) {
+                $env = $filedir + "\Web.config." + $nameEnv; 
+                $output = $filedir + "\Web.config";
+            }
+        }
+        if(($isLocal) -and (Test-Path $output)) {
             #skip config
         }
         else {
             try {
                 $ErrorActionPreference = "Stop";
-                $File = get-item $d;
+                $File = get-item $output;
                 $File.IsReadOnly = $false;
             }
-            Catch {$d + " is missing!"}
+            Catch {$output + " is missing!"}
             finally {
                 $ErrorActionPreference = "Continue"; #Reset the error action pref to default
             }
 
-            $cttCommand = "$cttPath\ctt.exe s:$s t:$t d:$d;"
-            invoke-Expression -Command $cttCommand
+            $TransformCommand = "$scriptPath\ctt.exe s:$base t:$env d:$output;"
+            invoke-Expression -Command $TransformCommand
 
             try {
                 $ErrorActionPreference = "Stop";
-                $File = get-item $d;
+                $File = get-item $output;
                 $File.IsReadOnly = $true;
             }
-            Catch {$d + " is missing!"}
-            finally {
-                $ErrorActionPreference = "Continue"; #Reset the error action pref to default
-            }
-        }
-    }
-}
-
-#performs a transformation on the web.config files in the system using the ctt tool
-function WebConfig ($directory, $cttPath) {
-    $a = Get-ChildItem -Path $directory -Recurse -Filter web.config.base
-
-    foreach ($item in $a) {
-        $filedir = $item.directoryname;
-        $s = $filedir + "\Web.config.base";
-        $t = $filedir + "\Web.config." + $nameEnv;
-        $d = $filedir + "\Web.config";
-
-        if(($isLocal) -and (Test-Path $d)) {
-            #skip config
-        }
-        else {
-            try {
-                $ErrorActionPreference = "Stop";
-                $File = get-item $d;
-                $File.IsReadOnly = $false;
-            }
-            Catch {$d + " is missing!"}
-            finally {
-                $ErrorActionPreference = "Continue"; #Reset the error action pref to default
-            }
-
-            $cttCommand = "$cttPath\ctt.exe s:$s t:$t d:$d;"
-            invoke-Expression -Command $cttCommand
-
-            try {
-                $ErrorActionPreference = "Stop";
-                $File = get-item $d;
-                $File.IsReadOnly = $true;
-            }
-            Catch {$d + " is missing!"}
+            Catch {$output + " is missing!"}
             finally {
                 $ErrorActionPreference = "Continue"; #Reset the error action pref to default
             }
@@ -96,7 +73,6 @@ function Fetch-Nuget($targetLocation ) {
         $target = Join-Path $targetLocation "nuget.exe"
         (New-Object System.Net.WebClient).DownloadFile("http://nuget.org/nuget.exe", $target)
     }
-
 }
 
 Function Run-BatchFile ($computer, [string]$batfilename) {
@@ -112,19 +88,6 @@ Function Run-BatchFile ($computer, [string]$batfilename) {
     } -ArgumentList $batfilename -AsJob
     Start-Sleep -s 60
     Remove-PSSession -Session $sessions
-}
-
-#minifying widgets
-Function jsMinifiyng {
-    Write-Output -ForegroundColor green "Processing minified js files - setting them to be readonly"
-
-    Write-Output -ForegroundColor green "Minifiyng V6"
-        Start-Process $baseDirectory\P4X\P4X.WEB\TOL.Widgets\Widgets\v6\lib\external\compresor\build.bat
-
-    Write-Output -ForegroundColor green "Minifiyng V7"
-        Start-Process $baseDirectory\P4X\P4X.WEB\TOL.Widgets\Widgets\v7\lib\external\compresor\build.bat
-
-    Write-Output -ForegroundColor green "Minifiying completed"
 }
 
 Function DisplayErrors {
@@ -302,11 +265,8 @@ if (Test-Path $errorlogfilepath) {
     Remove-Item $errorlogfilepath
 }
 
-#we perform widgets.min.js
-#jsMinifiyng
 #we perform the needed transformation on the config files 
-#AppConfig $baseDirectory $cttPath
-WebConfig $baseDirectory $cttPath
+TransformConfigs $baseDirectory $cttPath
 
 foreach ($projectFile in $projectFiles) {
 	if($projectFile.EndsWith(".sln")) { 

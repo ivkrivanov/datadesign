@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  store.web:
+    image: ${DOCKER_REGISTRY-}storeweb
+    build:
+      context: .\Store\Store.Web
+      dockerfile: Dockerfile
