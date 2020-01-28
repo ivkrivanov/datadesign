@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.29509.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Web", "Store\Store.Web\Store.Web.csproj", "{E298DC33-D240-4585-AC47-775575246780}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Default", "Default\Default.sqlproj", "{DC8978A7-7A14-4EFC-A126-E0EADDACA8E2}"
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Store_Default_v1", "Default\Store_Default_v1.sqlproj", "{DC8978A7-7A14-4EFC-A126-E0EADDACA8E2}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Store", "Store\Store.sqlproj", "{E26C17B5-DA5B-4330-BAE3-E6EC14B473CF}"
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Store_Store_v1", "Store\Store_Store_v1.sqlproj", "{E26C17B5-DA5B-4330-BAE3-E6EC14B473CF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1840,6 +1840,44 @@ declare namespace Store.Store {
 declare namespace Store.Store {
 }
 declare namespace Store.Store {
+    interface ProductCostsRow {
+        WaresID?: number;
+        WaresCode?: string;
+        WaresName?: string;
+        Quantity?: number;
+        SinglePrice?: number;
+        Value?: number;
+        MeasureID?: number;
+        MeasureName?: string;
+    }
+    namespace ProductCostsRow {
+        const idProperty = "WaresID";
+        const nameProperty = "WaresName";
+        const localTextPrefix = "Store.ProductCosts";
+        const enum Fields {
+            WaresID = "WaresID",
+            WaresCode = "WaresCode",
+            WaresName = "WaresName",
+            Quantity = "Quantity",
+            SinglePrice = "SinglePrice",
+            Value = "Value",
+            MeasureID = "MeasureID",
+            MeasureName = "MeasureName"
+        }
+    }
+}
+declare namespace Store.Store {
+    namespace ProductCostsService {
+        const baseUrl = "Store/ProductCosts";
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<ProductCostsRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<ProductCostsRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Retrieve = "Store/ProductCosts/Retrieve",
+            List = "Store/ProductCosts/List"
+        }
+    }
+}
+declare namespace Store.Store {
 }
 declare namespace Store.Store {
     interface ProductDetailForm {

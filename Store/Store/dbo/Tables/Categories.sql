@@ -15,7 +15,6 @@
     CONSTRAINT [FK_Categories_CategoryTypes] FOREIGN KEY ([CategoryTypeID]) REFERENCES [dbo].[CategoriesType] ([CategoryTypeID])
 );
 
-
 GO
 CREATE NONCLUSTERED INDEX [CategoryCode]
     ON [dbo].[Categories]([CategoryCode] ASC);
