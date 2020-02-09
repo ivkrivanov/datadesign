@@ -125,5 +125,6 @@
     <Build Include="dbo\Stored Procedures\usp_WaresFile.sql" />
     <Build Include="dbo\Stored Procedures\usp_WaresMovementTotal.sql" />
     <Build Include="dbo\Stored Procedures\usp_MakeStore.sql" />
+    <Build Include="Security\RoleMemberships.sql" />
   </ItemGroup>
 </Project>
