@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = Serenity.LocalText.Get("Db.Store.Category.EntityPlural");
+}
+
+@section Head{
+    @Html.Script("dynamic://Lookup.Store.CategoryType")
+    }
+
+<div id="GridDiv"></div>
+
+<script type="text/javascript">
+    jQuery(function () {
+        new Store.Store.CategoryGrid($('#GridDiv'), {}).init();
+
+        Q.initFullHeightGridPage($('#GridDiv'));
+    });
+</script>

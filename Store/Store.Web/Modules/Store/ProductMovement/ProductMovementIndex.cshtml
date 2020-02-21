@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = Serenity.LocalText.Get("Db.Store.ProductMovement.EntityPlural");
+}
+
+@section Head {
+    @Html.Script("dynamic://Lookup.Store.OperationType")
+    @Html.Script("dynamic://Lookup.Store.Counterparty")
+    @Html.Script("dynamic://Lookup.Store.CounterpartyCountry")
+    @Html.Script("dynamic://Lookup.Store.CounterpartyCity")
+    @Html.Script("dynamic://Lookup.Store.Employee")
+    @Html.Script("dynamic://Lookup.Store.Product")
+
+}
+
+<div id="GridDiv"></div>
+
+<script type="text/javascript">
+    jQuery(function () {
+        var productmoveGrid = new Store.Store.ProductMovementGrid($('#GridDiv'), {
+        });
+
+        var q = Q.parseQueryString();
+        if (q.shippingState != null && q.shippingState.length) {
+            ProductMovementGrid.set_shippingState(parseInt(q.shippingState, 10));
+        }
+
+        Q.initFullHeightGridPage($('#GridDiv'));
+    });
+</script>

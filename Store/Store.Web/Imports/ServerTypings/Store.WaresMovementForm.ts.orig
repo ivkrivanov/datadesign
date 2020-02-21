@@ -1,0 +1,46 @@
+﻿
+namespace Store.Store {
+    export class WaresMovementForm extends Serenity.PrefixedContext {
+        static formKey = 'Store.WaresMovement';
+    }
+
+    export interface WaresMovementForm {
+        ShopId: Serenity.IntegerEditor;
+        SupplierId: Serenity.IntegerEditor;
+        EmployeeId: Serenity.IntegerEditor;
+        ShipperId: Serenity.IntegerEditor;
+        OperationTypeId: Serenity.IntegerEditor;
+        OrderDate: Serenity.DateEditor;
+        RequiredDate: Serenity.DateEditor;
+        ShippedDate: Serenity.DateEditor;
+        InsertDate: Serenity.DateEditor;
+        InsertUserId: Serenity.IntegerEditor;
+        UpdateDate: Serenity.DateEditor;
+        UpdateUserId: Serenity.IntegerEditor;
+        IsActive: Serenity.IntegerEditor;
+        TenantId: Serenity.IntegerEditor;
+    }
+
+    [,
+        ['ShopId', () => Serenity.IntegerEditor],
+        ['SupplierId', () => Serenity.IntegerEditor],
+        ['EmployeeId', () => Serenity.IntegerEditor],
+        ['ShipperId', () => Serenity.IntegerEditor],
+        ['OperationTypeId', () => Serenity.IntegerEditor],
+        ['OrderDate', () => Serenity.DateEditor],
+        ['RequiredDate', () => Serenity.DateEditor],
+        ['ShippedDate', () => Serenity.DateEditor],
+        ['InsertDate', () => Serenity.DateEditor],
+        ['InsertUserId', () => Serenity.IntegerEditor],
+        ['UpdateDate', () => Serenity.DateEditor],
+        ['UpdateUserId', () => Serenity.IntegerEditor],
+        ['IsActive', () => Serenity.IntegerEditor],
+        ['TenantId', () => Serenity.IntegerEditor]
+    ].forEach(x => Object.defineProperty(WaresMovementForm.prototype, <string>x[0], {
+        get: function () {
+            return this.w(x[0], (x[1] as any)());
+        },
+        enumerable: true,
+        configurable: true
+    }));
+}
