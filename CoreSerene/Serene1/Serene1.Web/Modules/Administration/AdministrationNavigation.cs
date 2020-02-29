@@ -7,3 +7,4 @@ using Administration = Serene1.Administration.Pages;
 [assembly: NavigationLink(9000, "Administration/Sergen", typeof(Administration.SergenController), icon: "fa-magic")]
 [assembly: NavigationLink(9000, "Administration/Roles", typeof(Administration.RoleController), icon: "fa-lock")]
 [assembly: NavigationLink(9000, "Administration/User Management", typeof(Administration.UserController), icon: "fa-users")]
+[assembly: NavigationLink(9000, "Administration/Tenant", typeof(Administration.TenantController), icon: "fa-users")]

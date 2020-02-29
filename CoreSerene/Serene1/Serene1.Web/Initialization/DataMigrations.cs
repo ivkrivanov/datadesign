@@ -185,9 +185,9 @@
             // safety check to ensure that we are not modifying an arbitrary database.
             // remove these lines if you want Serene1 migrations to run on your DB.
             if (!isOracle && cs.ConnectionString.IndexOf(typeof(DataMigrations).Namespace +
-                    @"_" + databaseKey + "_v1", StringComparison.OrdinalIgnoreCase) < 0)
+                    @"_" + databaseKey + "_v2", StringComparison.OrdinalIgnoreCase) < 0)
             {
-                SkippedMigrations = true;
+                SkippedMigrations = false;
                 return;
             }
 

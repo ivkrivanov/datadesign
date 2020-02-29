@@ -124,6 +124,7 @@ declare namespace Serene1.Administration {
     interface RoleRow {
         RoleId?: number;
         RoleName?: string;
+        TenantId?: number;
     }
     namespace RoleRow {
         const idProperty = "RoleId";
@@ -137,7 +138,8 @@ declare namespace Serene1.Administration {
         const updatePermission = "Administration:Security";
         const enum Fields {
             RoleId = "RoleId",
-            RoleName = "RoleName"
+            RoleName = "RoleName",
+            TenantId = "TenantId"
         }
     }
 }
@@ -204,6 +206,56 @@ declare namespace Serene1.Administration {
     }
 }
 declare namespace Serene1.Administration {
+}
+declare namespace Serene1.Administration {
+    interface TenantForm {
+        TenantName: Serenity.StringEditor;
+    }
+    class TenantForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace Serene1.Administration {
+    interface TenantRow {
+        TenantId?: number;
+        TenantName?: string;
+    }
+    namespace TenantRow {
+        const idProperty = "TenantId";
+        const nameProperty = "TenantName";
+        const localTextPrefix = "Administration.Tenant";
+        const lookupKey = "Administration.Tenant";
+        function getLookup(): Q.Lookup<TenantRow>;
+        const deletePermission = "Administration:Tenants";
+        const insertPermission = "Administration:Tenants";
+        const readPermission = "Administration:Tenants";
+        const updatePermission = "Administration:Tenants";
+        const enum Fields {
+            TenantId = "TenantId",
+            TenantName = "TenantName"
+        }
+    }
+}
+declare namespace Serene1.Administration {
+    namespace TenantService {
+        const baseUrl = "Administration/Tenant";
+        function Create(request: Serenity.SaveRequest<TenantRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<TenantRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<TenantRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<TenantRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Administration/Tenant/Create",
+            Update = "Administration/Tenant/Update",
+            Delete = "Administration/Tenant/Delete",
+            Retrieve = "Administration/Tenant/Retrieve",
+            List = "Administration/Tenant/List"
+        }
+    }
+}
+declare namespace Serene1.Administration {
     interface TranslationItem {
         Key?: string;
         SourceText?: string;
@@ -247,6 +299,7 @@ declare namespace Serene1.Administration {
         Password: Serenity.PasswordEditor;
         PasswordConfirm: Serenity.PasswordEditor;
         Source: Serenity.StringEditor;
+        TenantId: Serenity.LookupEditor;
     }
     class UserForm extends Serenity.PrefixedContext {
         static formKey: string;
@@ -372,6 +425,8 @@ declare namespace Serene1.Administration {
         Email?: string;
         UserImage?: string;
         LastDirectoryUpdate?: string;
+        TenantId?: number;
+        TenantName?: string;
         IsActive?: number;
         Password?: string;
         PasswordConfirm?: string;
@@ -401,6 +456,8 @@ declare namespace Serene1.Administration {
             Email = "Email",
             UserImage = "UserImage",
             LastDirectoryUpdate = "LastDirectoryUpdate",
+            TenantId = "TenantId",
+            TenantName = "TenantName",
             IsActive = "IsActive",
             Password = "Password",
             PasswordConfirm = "PasswordConfirm",
@@ -2102,6 +2159,26 @@ declare namespace Serene1.Administration {
 declare var Vue: any;
 declare namespace Serene1.Administration {
     class SergenPanel extends Serenity.Widget<any> {
+        constructor(container: JQuery);
+    }
+}
+declare namespace Serene1.Administration {
+    class TenantDialog extends Serenity.EntityDialog<TenantRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: TenantForm;
+    }
+}
+declare namespace Serene1.Administration {
+    class TenantGrid extends Serenity.EntityGrid<TenantRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof TenantDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
         constructor(container: JQuery);
     }
 }

@@ -242,6 +242,7 @@ namespace Serene1.Administration.Repositories
                     }
                 }
 
+                result.Remove(Administration.PermissionKeys.Tenants);
                 result.Remove("*");
                 result.Remove("?");
 

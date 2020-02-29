@@ -2,6 +2,7 @@
     export interface RoleRow {
         RoleId?: number;
         RoleName?: string;
+        TenantId?: number;
     }
 
     export namespace RoleRow {
@@ -20,7 +21,8 @@
 
         export declare const enum Fields {
             RoleId = "RoleId",
-            RoleName = "RoleName"
+            RoleName = "RoleName",
+            TenantId = "TenantId"
         }
     }
 }
