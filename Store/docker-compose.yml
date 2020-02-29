@@ -2,18 +2,8 @@ version: '3.4'
 
 services:
 
-    sqldb:
-        build: ./docker/Default/
-        environment:
-            SA_PASSWORD: "lz2klrLom"
-            ACCEPT_EULA: "Y"
-            MSSQL_AGENT_ENABLED: "true"
-
-        container_name: sqldb
-        hostname: sqldb
-
     store.web:
         image: ${DOCKER_REGISTRY-}storeweb
         build:
-            context: .\Store\Store.Web
+            context: ./Store.Web
             dockerfile: Dockerfile
