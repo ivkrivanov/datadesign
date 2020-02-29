@@ -6,13 +6,14 @@ namespace Serene1.Northwind.Entities
     using Serenity.Data.Mapping;
     using System;
     using System.ComponentModel;
+    using Serene1.Northwind.Scripts;
 
     [ConnectionKey("Northwind"), Module("Northwind"), TableName("Territories")]
     [DisplayName("Territories"), InstanceName("Territory")]
     [ReadPermission(PermissionKeys.General)]
     [ModifyPermission(PermissionKeys.General)]
-    [LookupScript]
-    public sealed class TerritoryRow : Row, IIdRow, INameRow
+    [LookupScript("Northwind.Territory", LookupType = typeof(MultiTenantRowLookupScript<>))]
+    public sealed class TerritoryRow : Row, IIdRow, INameRow, IMultiTenantRow
     {
         [DisplayName("ID"), Identity]
         public Int32? ID
@@ -49,6 +50,18 @@ namespace Serene1.Northwind.Entities
             set { Fields.RegionDescription[this] = value; }
         }
 
+        [Insertable(false), Updatable(false)]
+        public Int32? TenantId
+        {
+            get { return Fields.TenantId[this]; }
+            set { Fields.TenantId[this] = value; }
+        }
+
+        public Int32Field TenantIdField
+        {
+            get { return Fields.TenantId; }
+        }
+
         IIdField IIdRow.IdField
         {
             get { return Fields.ID; }
@@ -74,6 +87,8 @@ namespace Serene1.Northwind.Entities
             public Int32Field RegionID;
 
             public StringField RegionDescription;
+
+            public readonly Int32Field TenantId;
         }
     }
 }

@@ -2,6 +2,7 @@
     export interface RegionRow {
         RegionID?: number;
         RegionDescription?: string;
+        TenantId?: number;
     }
 
     export namespace RegionRow {
@@ -20,7 +21,8 @@
 
         export declare const enum Fields {
             RegionID = "RegionID",
-            RegionDescription = "RegionDescription"
+            RegionDescription = "RegionDescription",
+            TenantId = "TenantId"
         }
     }
 }

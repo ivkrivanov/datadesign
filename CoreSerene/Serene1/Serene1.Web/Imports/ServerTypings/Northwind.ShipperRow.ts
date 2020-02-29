@@ -3,6 +3,7 @@
         ShipperID?: number;
         CompanyName?: string;
         Phone?: string;
+        TenantId?: number;
     }
 
     export namespace ShipperRow {
@@ -22,7 +23,8 @@
         export declare const enum Fields {
             ShipperID = "ShipperID",
             CompanyName = "CompanyName",
-            Phone = "Phone"
+            Phone = "Phone",
+            TenantId = "TenantId"
         }
     }
 }

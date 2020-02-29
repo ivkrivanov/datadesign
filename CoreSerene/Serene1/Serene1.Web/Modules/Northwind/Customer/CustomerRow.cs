@@ -1,6 +1,7 @@
 ﻿
 namespace Serene1.Northwind.Entities
 {
+    using Serene1.Northwind.Scripts;
     using Serenity.ComponentModel;
     using Serenity.Data;
     using Serenity.Data.Mapping;
@@ -16,7 +17,7 @@ namespace Serene1.Northwind.Entities
     [LeftJoin("cd", "CustomerDetails", "cd.[ID] = t0.[ID]", RowType = typeof(CustomerDetailsRow), TitlePrefix = "")]
     [UpdatableExtension("cd", typeof(CustomerDetailsRow), CascadeDelete = true)]
     [LookupScript(typeof(Lookups.CustomerLookup))]
-    public sealed class CustomerRow : Row, IIdRow, INameRow
+    public sealed class CustomerRow : Row, IIdRow, INameRow, IMultiTenantRow
     {
         [DisplayName("ID"), Identity]
         public Int32? ID
@@ -146,6 +147,18 @@ namespace Serene1.Northwind.Entities
             set { Fields.Representatives[this] = value; }
         }
 
+        [Insertable(false), Updatable(false)]
+        public Int32? TenantId
+        {
+            get { return Fields.TenantId[this]; }
+            set { Fields.TenantId[this] = value; }
+        }
+
+        public Int32Field TenantIdField
+        {
+            get { return Fields.TenantId; }
+        }
+
         IIdField IIdRow.IdField
         {
             get { return Fields.ID; }
@@ -183,6 +196,8 @@ namespace Serene1.Northwind.Entities
             public Int32Field LastContactedBy;
             public StringField Email;
             public BooleanField SendBulletin;
+
+            public readonly Int32Field TenantId;
         }
     }
 }

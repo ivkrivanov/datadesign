@@ -217,7 +217,8 @@ namespace Serene1.Administration.Repositories
                 {
                     Row.Source = "site";
                     Row.IsActive = Row.IsActive ?? 1;
-                    if (!Authorization.HasPermission(Administration.PermissionKeys.Tenants) || Row.TenantId == null)
+                    if (!Authorization.HasPermission(Administration.PermissionKeys.Tenants) || 
+                        Row.TenantId == null)
                     {
                         Row.TenantId = ((UserDefinition)Authorization.UserDefinition)
                             .TenantId;

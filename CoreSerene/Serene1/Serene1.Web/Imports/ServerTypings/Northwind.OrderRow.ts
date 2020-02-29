@@ -28,6 +28,7 @@
         ShipViaCompanyName?: string;
         ShipViaPhone?: string;
         ShippingState?: OrderShippingState;
+        TenantId?: number;
         DetailList?: OrderDetailRow[];
     }
 
@@ -69,6 +70,7 @@
             ShipViaCompanyName = "ShipViaCompanyName",
             ShipViaPhone = "ShipViaPhone",
             ShippingState = "ShippingState",
+            TenantId = "TenantId",
             DetailList = "DetailList"
         }
     }

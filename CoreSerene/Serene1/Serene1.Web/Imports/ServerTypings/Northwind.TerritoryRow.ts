@@ -5,6 +5,7 @@
         TerritoryDescription?: string;
         RegionID?: number;
         RegionDescription?: string;
+        TenantId?: number;
     }
 
     export namespace TerritoryRow {
@@ -26,7 +27,8 @@
             TerritoryID = "TerritoryID",
             TerritoryDescription = "TerritoryDescription",
             RegionID = "RegionID",
-            RegionDescription = "RegionDescription"
+            RegionDescription = "RegionDescription",
+            TenantId = "TenantId"
         }
     }
 }

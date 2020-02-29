@@ -4,9 +4,10 @@ namespace Serene1.Northwind.Lookups
     using Serenity.ComponentModel;
     using Serenity.Data;
     using Serenity.Web;
+    using Serene1.Northwind.Scripts;
 
     [LookupScript]
-    public class SupplierCountryLookup : RowLookupScript<Entities.SupplierRow>
+    public class SupplierCountryLookup : MultiTenantRowLookupScript<Entities.SupplierRow>
     {
         public SupplierCountryLookup()
         {
@@ -21,6 +22,8 @@ namespace Serene1.Northwind.Lookups
                 .Where(
                     new Criteria(fld.Country) != "" &
                     new Criteria(fld.Country).IsNotNull());
+
+            AddTenantFilter(query);
         }
 
         protected override void ApplyOrder(SqlQuery query)

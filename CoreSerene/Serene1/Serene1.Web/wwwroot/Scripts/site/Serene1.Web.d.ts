@@ -923,6 +923,7 @@ declare namespace Serene1.Northwind {
         CategoryName?: string;
         Description?: string;
         Picture?: number[];
+        TenantId?: number;
     }
     namespace CategoryRow {
         const idProperty = "CategoryID";
@@ -938,7 +939,8 @@ declare namespace Serene1.Northwind {
             CategoryID = "CategoryID",
             CategoryName = "CategoryName",
             Description = "Description",
-            Picture = "Picture"
+            Picture = "Picture",
+            TenantId = "TenantId"
         }
     }
 }
@@ -1174,6 +1176,7 @@ declare namespace Serene1.Northwind {
         LastContactedBy?: number;
         Email?: string;
         SendBulletin?: boolean;
+        TenantId?: number;
     }
     namespace CustomerRow {
         const idProperty = "ID";
@@ -1203,7 +1206,8 @@ declare namespace Serene1.Northwind {
             LastContactDate = "LastContactDate",
             LastContactedBy = "LastContactedBy",
             Email = "Email",
-            SendBulletin = "SendBulletin"
+            SendBulletin = "SendBulletin",
+            TenantId = "TenantId"
         }
     }
 }
@@ -1266,6 +1270,7 @@ declare namespace Serene1.Northwind {
         ReportsToReportsTo?: number;
         ReportsToPhotoPath?: string;
         Gender?: Gender;
+        TenantId?: number;
     }
     namespace EmployeeRow {
         const idProperty = "EmployeeID";
@@ -1315,7 +1320,8 @@ declare namespace Serene1.Northwind {
             ReportsToNotes = "ReportsToNotes",
             ReportsToReportsTo = "ReportsToReportsTo",
             ReportsToPhotoPath = "ReportsToPhotoPath",
-            Gender = "Gender"
+            Gender = "Gender",
+            TenantId = "TenantId"
         }
     }
 }
@@ -1549,6 +1555,7 @@ declare namespace Serene1.Northwind {
         ShipViaCompanyName?: string;
         ShipViaPhone?: string;
         ShippingState?: OrderShippingState;
+        TenantId?: number;
         DetailList?: OrderDetailRow[];
     }
     namespace OrderRow {
@@ -1588,6 +1595,7 @@ declare namespace Serene1.Northwind {
             ShipViaCompanyName = "ShipViaCompanyName",
             ShipViaPhone = "ShipViaPhone",
             ShippingState = "ShippingState",
+            TenantId = "TenantId",
             DetailList = "DetailList"
         }
     }
@@ -1751,6 +1759,7 @@ declare namespace Serene1.Northwind {
         CategoryName?: string;
         CategoryDescription?: string;
         CategoryPicture?: number[];
+        TenantId?: number;
     }
     namespace ProductRow {
         const idProperty = "ProductID";
@@ -1787,7 +1796,8 @@ declare namespace Serene1.Northwind {
             SupplierHomePage = "SupplierHomePage",
             CategoryName = "CategoryName",
             CategoryDescription = "CategoryDescription",
-            CategoryPicture = "CategoryPicture"
+            CategoryPicture = "CategoryPicture",
+            TenantId = "TenantId"
         }
     }
 }
@@ -1825,6 +1835,7 @@ declare namespace Serene1.Northwind {
     interface RegionRow {
         RegionID?: number;
         RegionDescription?: string;
+        TenantId?: number;
     }
     namespace RegionRow {
         const idProperty = "RegionID";
@@ -1838,7 +1849,8 @@ declare namespace Serene1.Northwind {
         const updatePermission = "Northwind:General";
         const enum Fields {
             RegionID = "RegionID",
-            RegionDescription = "RegionDescription"
+            RegionDescription = "RegionDescription",
+            TenantId = "TenantId"
         }
     }
 }
@@ -1910,6 +1922,7 @@ declare namespace Serene1.Northwind {
         ShipperID?: number;
         CompanyName?: string;
         Phone?: string;
+        TenantId?: number;
     }
     namespace ShipperRow {
         const idProperty = "ShipperID";
@@ -1924,7 +1937,8 @@ declare namespace Serene1.Northwind {
         const enum Fields {
             ShipperID = "ShipperID",
             CompanyName = "CompanyName",
-            Phone = "Phone"
+            Phone = "Phone",
+            TenantId = "TenantId"
         }
     }
 }
@@ -1981,6 +1995,7 @@ declare namespace Serene1.Northwind {
         Phone?: string;
         Fax?: string;
         HomePage?: string;
+        TenantId?: number;
     }
     namespace SupplierRow {
         const idProperty = "SupplierID";
@@ -2004,7 +2019,8 @@ declare namespace Serene1.Northwind {
             Country = "Country",
             Phone = "Phone",
             Fax = "Fax",
-            HomePage = "HomePage"
+            HomePage = "HomePage",
+            TenantId = "TenantId"
         }
     }
 }
@@ -2046,6 +2062,7 @@ declare namespace Serene1.Northwind {
         TerritoryDescription?: string;
         RegionID?: number;
         RegionDescription?: string;
+        TenantId?: number;
     }
     namespace TerritoryRow {
         const idProperty = "ID";
@@ -2062,7 +2079,8 @@ declare namespace Serene1.Northwind {
             TerritoryID = "TerritoryID",
             TerritoryDescription = "TerritoryDescription",
             RegionID = "RegionID",
-            RegionDescription = "RegionDescription"
+            RegionDescription = "RegionDescription",
+            TenantId = "TenantId"
         }
     }
 }
@@ -2217,6 +2235,7 @@ declare namespace Serene1.Administration {
         protected getToolbarButtons(): Serenity.ToolButton[];
         protected updateInterface(): void;
         protected afterLoadEntity(): void;
+        protected getPropertyItems(): Serenity.PropertyItem[];
     }
 }
 declare namespace Serene1.Administration {

@@ -7,15 +7,16 @@ namespace Serene1.Northwind.Entities
     using System;
     using System.ComponentModel;
     using System.IO;
+    using Serene1.Northwind.Scripts;
 
     [ConnectionKey("Northwind"), Module("Northwind"), TableName("Products")]
     [DisplayName("Products"), InstanceName("Product")]
     [ReadPermission(PermissionKeys.General)]
     [ModifyPermission(PermissionKeys.General)]
-    [LookupScript]
+    [LookupScript("Northwind.Product", LookupType = typeof(MultiTenantRowLookupScript<>))]
     [CaptureLog(typeof(ProductLogRow))]
     [LocalizationRow(typeof(ProductLangRow))]
-    public sealed class ProductRow : Row, IIdRow, INameRow
+    public sealed class ProductRow : Row, IIdRow, INameRow, IMultiTenantRow
     {
         [DisplayName("Product Id"), Identity, LookupInclude]
         public Int32? ProductID
@@ -195,6 +196,19 @@ namespace Serene1.Northwind.Entities
             set { Fields.CategoryPicture[this] = value; }
         }
 
+
+        [Insertable(false), Updatable(false)]
+        public Int32? TenantId
+        {
+            get { return Fields.TenantId[this]; }
+            set { Fields.TenantId[this] = value; }
+        }
+
+        public Int32Field TenantIdField
+        {
+            get { return Fields.TenantId; }
+        }
+
         IIdField IIdRow.IdField
         {
             get { return Fields.ProductID; }
@@ -241,6 +255,8 @@ namespace Serene1.Northwind.Entities
             public StringField CategoryName;
             public StringField CategoryDescription;
             public StreamField CategoryPicture;
+
+            public readonly Int32Field TenantId;
         }
     }
 }

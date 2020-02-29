@@ -12,7 +12,7 @@ namespace Serene1.Northwind.Entities
     [DisplayName("Orders"), InstanceName("Order")]
     [ReadPermission(PermissionKeys.General)]
     [ModifyPermission(PermissionKeys.General)]
-    public sealed class OrderRow : Row, IIdRow, INameRow
+    public sealed class OrderRow : Row, IIdRow, INameRow, IMultiTenantRow
     {
         [DisplayName("Order ID"), NotNull, Identity, QuickSearch]
         public Int32? OrderID
@@ -211,6 +211,19 @@ namespace Serene1.Northwind.Entities
             set { Fields.ShipViaPhone[this] = value; }
         }
 
+
+        [Insertable(false), Updatable(false)]
+        public Int32? TenantId
+        {
+            get { return Fields.TenantId[this]; }
+            set { Fields.TenantId[this] = value; }
+        }
+
+        public Int32Field TenantIdField
+        {
+            get { return Fields.TenantId; }
+        }
+
         [DisplayName("Details"), MasterDetailRelation(foreignKey: "OrderID"), NotMapped]
         public List<OrderDetailRow> DetailList
         {
@@ -269,6 +282,9 @@ namespace Serene1.Northwind.Entities
             public StringField ShipViaPhone;
 
             public Int32Field ShippingState;
+
+            public readonly Int32Field TenantId;
+
             public RowListField<OrderDetailRow> DetailList;
         }
     }

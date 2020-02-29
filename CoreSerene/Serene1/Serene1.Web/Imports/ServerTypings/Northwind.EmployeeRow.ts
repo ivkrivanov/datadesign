@@ -38,6 +38,7 @@
         ReportsToReportsTo?: number;
         ReportsToPhotoPath?: string;
         Gender?: Gender;
+        TenantId?: number;
     }
 
     export namespace EmployeeRow {
@@ -92,7 +93,8 @@
             ReportsToNotes = "ReportsToNotes",
             ReportsToReportsTo = "ReportsToReportsTo",
             ReportsToPhotoPath = "ReportsToPhotoPath",
-            Gender = "Gender"
+            Gender = "Gender",
+            TenantId = "TenantId"
         }
     }
 }

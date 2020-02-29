@@ -12,6 +12,7 @@
         Phone?: string;
         Fax?: string;
         HomePage?: string;
+        TenantId?: number;
     }
 
     export namespace SupplierRow {
@@ -40,7 +41,8 @@
             Country = "Country",
             Phone = "Phone",
             Fax = "Fax",
-            HomePage = "HomePage"
+            HomePage = "HomePage",
+            TenantId = "TenantId"
         }
     }
 }

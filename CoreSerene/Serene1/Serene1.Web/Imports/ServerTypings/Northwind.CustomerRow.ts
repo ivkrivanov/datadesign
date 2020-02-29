@@ -18,6 +18,7 @@
         LastContactedBy?: number;
         Email?: string;
         SendBulletin?: boolean;
+        TenantId?: number;
     }
 
     export namespace CustomerRow {
@@ -52,7 +53,8 @@
             LastContactDate = "LastContactDate",
             LastContactedBy = "LastContactedBy",
             Email = "Email",
-            SendBulletin = "SendBulletin"
+            SendBulletin = "SendBulletin",
+            TenantId = "TenantId"
         }
     }
 }

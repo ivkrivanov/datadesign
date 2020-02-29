@@ -4,6 +4,7 @@
         CategoryName?: string;
         Description?: string;
         Picture?: number[];
+        TenantId?: number;
     }
 
     export namespace CategoryRow {
@@ -24,7 +25,8 @@
             CategoryID = "CategoryID",
             CategoryName = "CategoryName",
             Description = "Description",
-            Picture = "Picture"
+            Picture = "Picture",
+            TenantId = "TenantId"
         }
     }
 }

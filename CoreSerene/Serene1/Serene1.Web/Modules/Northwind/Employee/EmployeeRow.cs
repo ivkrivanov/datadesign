@@ -1,6 +1,7 @@
 ﻿
 namespace Serene1.Northwind.Entities
 {
+    using Serene1.Northwind.Scripts;
     using Serenity.ComponentModel;
     using Serenity.Data;
     using Serenity.Data.Mapping;
@@ -12,8 +13,8 @@ namespace Serene1.Northwind.Entities
     [DisplayName("Employees"), InstanceName("Employee")]
     [ReadPermission(PermissionKeys.General)]
     [ModifyPermission(PermissionKeys.General)]
-    [LookupScript]
-    public sealed class EmployeeRow : Row, IIdRow, INameRow
+    [LookupScript("Northwind.Employee", LookupType = typeof(MultiTenantRowLookupScript<>))]
+    public sealed class EmployeeRow : Row, IIdRow, INameRow, IMultiTenantRow
     {
         [DisplayName("Employee Id"), Identity]
         public Int32? EmployeeID
@@ -283,6 +284,18 @@ namespace Serene1.Northwind.Entities
             set { Fields.ReportsToPhotoPath[this] = value; }
         }
 
+        [Insertable(false), Updatable(false)]
+        public Int32? TenantId
+        {
+            get { return Fields.TenantId[this]; }
+            set { Fields.TenantId[this] = value; }
+        }
+
+        public Int32Field TenantIdField
+        {
+            get { return Fields.TenantId; }
+        }
+
         IIdField IIdRow.IdField
         {
             get { return Fields.EmployeeID; }
@@ -342,6 +355,8 @@ namespace Serene1.Northwind.Entities
             public StringField ReportsToPhotoPath;
 
             public Int32Field Gender;
+
+            public readonly Int32Field TenantId;
         }
     }
 }

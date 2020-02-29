@@ -6,13 +6,14 @@ namespace Serene1.Northwind.Entities
     using Serenity.Data.Mapping;
     using System;
     using System.ComponentModel;
+    using Serene1.Northwind.Scripts;
 
     [ConnectionKey("Northwind"), Module("Northwind"), TableName("Shippers")]
     [DisplayName("Shippers"), InstanceName("Shipper")]
     [ReadPermission(PermissionKeys.General)]
     [ModifyPermission(PermissionKeys.General)]
-    [LookupScript]
-    public sealed class ShipperRow : Row, IIdRow, INameRow
+    [LookupScript("Northwind.Shipper", LookupType = typeof(MultiTenantRowLookupScript<>))]
+    public sealed class ShipperRow : Row, IIdRow, INameRow, IMultiTenantRow
     {
         [DisplayName("Shipper Id"), Identity]
         public Int32? ShipperID
@@ -33,6 +34,18 @@ namespace Serene1.Northwind.Entities
         {
             get { return Fields.Phone[this]; }
             set { Fields.Phone[this] = value; }
+        }
+
+        [Insertable(false), Updatable(false)]
+        public Int32? TenantId
+        {
+            get { return Fields.TenantId[this]; }
+            set { Fields.TenantId[this] = value; }
+        }
+
+        public Int32Field TenantIdField
+        {
+            get { return Fields.TenantId; }
         }
 
         IIdField IIdRow.IdField
@@ -57,6 +70,8 @@ namespace Serene1.Northwind.Entities
             public Int32Field ShipperID;
             public StringField CompanyName;
             public StringField Phone;
+
+            public readonly Int32Field TenantId;
         }
     }
 }

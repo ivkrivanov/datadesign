@@ -25,6 +25,7 @@
         CategoryName?: string;
         CategoryDescription?: string;
         CategoryPicture?: number[];
+        TenantId?: number;
     }
 
     export namespace ProductRow {
@@ -66,7 +67,8 @@
             SupplierHomePage = "SupplierHomePage",
             CategoryName = "CategoryName",
             CategoryDescription = "CategoryDescription",
-            CategoryPicture = "CategoryPicture"
+            CategoryPicture = "CategoryPicture",
+            TenantId = "TenantId"
         }
     }
 }
