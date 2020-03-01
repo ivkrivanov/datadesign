@@ -8,6 +8,9 @@
     <DotNetSergen Condition=" '$(TargetFramework)' == 'net461' AND Exists('..\..\Serenity\Serenity.CodeGenerator\bin\$(Configuration)\$(TargetFramework)\dotnet-sergen.exe')">..\..\Serenity\Serenity.CodeGenerator\bin\$(Configuration)\$(TargetFramework)\dotnet-sergen.exe</DotNetSergen>
     <DotNetSergen Condition=" '$(TargetFramework)' == 'netcoreapp2.2' AND Exists('..\..\Serenity\Serenity.CodeGenerator\bin\$(Configuration)\$(TargetFramework)\dotnet-sergen.dll')">dotnet ..\..\Serenity\Serenity.CodeGenerator\bin\$(Configuration)\$(TargetFramework)\dotnet-sergen.dll</DotNetSergen>
     <TypeScriptToolsVersion>3.0</TypeScriptToolsVersion>
+    <DockerComposeProjectPath>..\..\docker-compose.dcproj</DockerComposeProjectPath>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..</DockerfileContext>
   </PropertyGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\**\*.sql" Exclude="bin\**;obj\**;**\*.xproj;packages\**;@(EmbeddedResource)" />
@@ -19,11 +22,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="MailKit" Version="2.0.6" />
-    <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.7" />
-    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="3.1.1" />
+    <PackageReference Include="MailKit" Version="2.5.1" />
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="3.8.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.9.10" />
     <PackageReference Include="Serenity.FluentMigrator.Runner" Version="1.6.904" />
-    <PackageReference Include="Microsoft.Data.Sqlite" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="3.1.2" />
   </ItemGroup>
   <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.2' ">
     <PackageReference Include="EPPlus" Version="4.5.2.1" />
