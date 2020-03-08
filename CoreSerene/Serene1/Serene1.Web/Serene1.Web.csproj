@@ -100,4 +100,5 @@
   <ItemGroup>
     <Folder Include="Modules\Administration\Tenant\" />
   </ItemGroup>
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="http://json.schemastore.org/config" /></VisualStudio></ProjectExtensions>
 </Project>

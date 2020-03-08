@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  serene1.web:
+    image: ${DOCKER_REGISTRY-}serene1web
+    build:
+      context: .
+      dockerfile: Serene1/Serene1.Web/Dockerfile

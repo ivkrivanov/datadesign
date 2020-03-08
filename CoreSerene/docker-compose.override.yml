@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  serene1.web:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "88:80"
