@@ -1,0 +1,36 @@
+{
+  "RootNamespace": "CoreStore",
+  "ServerTypings": {
+    "Assemblies": [],
+    "LocalTexts": true
+  },
+  "Connections": [
+    {
+      "Key": "Store",
+      "Tables": [
+        {
+          "Tablename": "dbo.Categories",
+          "Identifier": "Categories",
+          "Module": "Store",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.CategoriesLang",
+          "Identifier": "CategoriesLang",
+          "Module": "Store",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.CategoriesType",
+          "Identifier": "CategoriesType",
+          "Module": "Store",
+          "PermissionKey": "Administration:General"
+        }
+      ]
+    }
+  ],
+  "BaseRowClasses": [],
+  "RemoveForeignFields": [],
+  "CustomGenerate": {},
+  "CustomSettings": {}
+}
