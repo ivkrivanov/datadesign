@@ -92,10 +92,10 @@ namespace CoreStore
             services.AddCaching();
             services.AddTextRegistry();
             services.AddFileLogging();
-            services.AddSingleton<IAuthenticationService, CoreStore.Administration.AuthenticationService>();
-            services.AddSingleton<IAuthorizationService, CoreStore.Administration.AuthorizationService>();
-            services.AddSingleton<IUserRetrieveService, CoreStore.Administration.UserRetrieveService>();
-            services.AddSingleton<IPermissionService, CoreStore.Administration.PermissionService>();
+            services.AddSingleton<IAuthenticationService, Administration.AuthenticationService>();
+            services.AddSingleton<IAuthorizationService, Administration.AuthorizationService>();
+            services.AddSingleton<IUserRetrieveService, Administration.UserRetrieveService>();
+            services.AddSingleton<IPermissionService, Administration.PermissionService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -114,7 +114,7 @@ namespace CoreStore
             SqlSettings.AutoQuotedIdentifiers = true;
             RegisterDataProviders();
 
-            Dependency.SetResolver(new DependencyResolver(app.ApplicationServices));
+            Dependency.SetResolver(new AppServices.DependencyResolver(app.ApplicationServices));
 
             var textRegistry = app.ApplicationServices.GetRequiredService<ILocalTextRegistry>();
             textRegistry.AddNestedTexts();

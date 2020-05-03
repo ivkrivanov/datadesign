@@ -2,7 +2,7 @@
 namespace CoreStore.Store.Entities
 {
     using Administration.Entities;
-    using CoreStore.Store.Scripts;
+    using CoreStore.Scripts;
     using Serenity.ComponentModel;
     using Serenity.Data;
     using Serenity.Data.Mapping;
@@ -11,10 +11,11 @@ namespace CoreStore.Store.Entities
     using System.IO;
 
     [ConnectionKey("Store"), Module("Store"), TableName("[dbo].[Categories]")]
-    [DisplayName("Categories"), InstanceName("Categories")]
-    [ReadPermission(StorePermissionKeys.General)]
-    [ModifyPermission(StorePermissionKeys.General)]
-    [LookupScript("Store.Category", LookupType = typeof(MultiTenantRowLookupScript<>))]
+    [DisplayName("Categories"), InstanceName("Category")]
+    [ReadPermission(PermissionKeys.Categories.View)]
+    [ModifyPermission(PermissionKeys.Categories.Modify)]
+    [DeletePermission(PermissionKeys.Categories.Delete)]
+    [LookupScript("Store.Categories", LookupType = typeof(MultiTenantRowLookupScript<>))]
     [LocalizationRow(typeof(CategoriesLangRow))]
     public sealed class CategoriesRow : LoggingRow, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
     {
@@ -25,18 +26,12 @@ namespace CoreStore.Store.Entities
             set { Fields.CategoryId[this] = value; }
         }
 
-        [DisplayName("Category Type"), Column("CategoryTypeID"), NotNull, ForeignKey(typeof(CategoriesTypeRow)), LeftJoin("jCategoryType"), TextualField("CategoryType"), LookupInclude]
-        public Int32? CategoryTypeId
+        [DisplayName("Category Type"), ForeignKey(typeof(CategoriesTypeRow)), LeftJoin("type"), LookupInclude]
+        [LookupEditor(typeof(CategoriesTypeRow), InplaceAdd = true)]
+        public Int16? CategoryTypeId
         {
             get { return Fields.CategoryTypeId[this]; }
             set { Fields.CategoryTypeId[this] = value; }
-        }
-
-        [DisplayName("Category Code"), Size(15), NotNull, QuickSearch]
-        public String CategoryCode
-        {
-            get { return Fields.CategoryCode[this]; }
-            set { Fields.CategoryCode[this] = value; }
         }
 
         [DisplayName("Category Name"), Size(15), NotNull, QuickSearch]
@@ -44,6 +39,13 @@ namespace CoreStore.Store.Entities
         {
             get { return Fields.CategoryName[this]; }
             set { Fields.CategoryName[this] = value; }
+        }
+
+        [DisplayName("Category Code"), Size(15), NotNull, QuickSearch]
+        public String CategoryCode
+        {
+            get { return Fields.CategoryCode[this]; }
+            set { Fields.CategoryCode[this] = value; }
         }
 
         [DisplayName("Description"), QuickSearch]
@@ -60,20 +62,19 @@ namespace CoreStore.Store.Entities
             set { Fields.Picture[this] = value; }
         }
 
-        [DisplayName("Category Type Type"), Expression("jCategoryType.[Type]"), LookupInclude]
-        public Int16? CategoryTypeType
+        [Origin("type"), LookupInclude]
+        public Int16? Type
         {
-            get { return Fields.CategoryTypeType[this]; }
-            set { Fields.CategoryTypeType[this] = value; }
+            get { return Fields.Type[this]; }
+            set { Fields.Type[this] = value; }
         }
 
-        [DisplayName("Category Type"), Expression("jCategoryType.[CategoryType]"), LookupInclude]
+        [Origin("type"), LookupInclude]
         public String CategoryType
         {
             get { return Fields.CategoryType[this]; }
             set { Fields.CategoryType[this] = value; }
         }
-
         IIdField IIdRow.IdField
         {
             get { return Fields.CategoryId; }
@@ -81,7 +82,7 @@ namespace CoreStore.Store.Entities
 
         StringField INameRow.NameField
         {
-            get { return Fields.CategoryCode; }
+            get { return Fields.CategoryName; }
         }
 
         #region Tenant & Activ
@@ -122,7 +123,7 @@ namespace CoreStore.Store.Entities
         public class RowFields : LoggingRowFields
         {
             public Int32Field CategoryId;
-            public Int32Field CategoryTypeId;
+            public Int16Field CategoryTypeId;
             public StringField CategoryCode;
             public StringField CategoryName;
             public StringField Description;
@@ -131,7 +132,7 @@ namespace CoreStore.Store.Entities
             public Int16Field IsActive;
             public readonly Int32Field TenantId;
 
-            public Int16Field CategoryTypeType;
+            public Int16Field Type;
             public StringField CategoryType;
         }
     }

@@ -38,7 +38,7 @@ namespace CoreStore.Store.Repositories
             return new LocalizationRowHandler<MyRow>().Retrieve(connection, request);
         }
 
-        public ListResponse<MyRow> List(IDbConnection connection, CaregoriesListRequest request)
+        public ListResponse<MyRow> List(IDbConnection connection, CategoriesListRequest request)
         {
             return new MyListHandler().Process(connection, request);
         }
@@ -58,7 +58,6 @@ namespace CoreStore.Store.Repositories
                     }
             }
         }
-
         private class MyDeleteHandler : DeleteRequestHandler<MyRow> { }
         private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> { }
         private class MyListHandler : ListRequestHandler<MyRow>

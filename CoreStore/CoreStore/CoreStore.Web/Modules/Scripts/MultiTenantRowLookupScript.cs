@@ -1,5 +1,5 @@
 ﻿
-namespace CoreStore.Store.Scripts
+namespace CoreStore.Scripts
 {
     using Serenity;
     using Serenity.Data;
@@ -28,7 +28,8 @@ namespace CoreStore.Store.Scripts
             return TwoLevelCache.GetLocalStoreOnly("MultiTenantLookup:" +
                 this.ScriptName + ":" +
                 ((UserDefinition)Authorization.UserDefinition).TenantId,
-                TimeSpan.FromHours(1), new TRow().GetFields().GenerationKey, () =>
+                TimeSpan.FromHours(1), 
+                new TRow().GetFields().GenerationKey, () =>
                 {
                     return base.GetScript();
                 });

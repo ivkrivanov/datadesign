@@ -1,34 +1,28 @@
-﻿
-namespace CoreStore.Store {
-    export class CategoriesTypeForm extends Serenity.PrefixedContext {
-        static formKey = 'Store.CategoriesType';
-    }
-
+﻿namespace CoreStore.Store {
     export interface CategoriesTypeForm {
         Type: Serenity.IntegerEditor;
         CategoryType: Serenity.StringEditor;
-        InsertDate: Serenity.DateEditor;
-        InsertUserId: Serenity.IntegerEditor;
-        UpdateDate: Serenity.DateEditor;
-        UpdateUserId: Serenity.IntegerEditor;
-        IsActive: Serenity.IntegerEditor;
-        TenantId: Serenity.IntegerEditor;
     }
 
-    [,
-        ['Type', () => Serenity.IntegerEditor],
-        ['CategoryType', () => Serenity.StringEditor],
-        ['InsertDate', () => Serenity.DateEditor],
-        ['InsertUserId', () => Serenity.IntegerEditor],
-        ['UpdateDate', () => Serenity.DateEditor],
-        ['UpdateUserId', () => Serenity.IntegerEditor],
-        ['IsActive', () => Serenity.IntegerEditor],
-        ['TenantId', () => Serenity.IntegerEditor]
-    ].forEach(x => Object.defineProperty(CategoriesTypeForm.prototype, <string>x[0], {
-        get: function () {
-            return this.w(x[0], (x[1] as any)());
-        },
-        enumerable: true,
-        configurable: true
-    }));
+    export class CategoriesTypeForm extends Serenity.PrefixedContext {
+        static formKey = 'Store.CategoriesType';
+        private static init: boolean;
+
+        constructor(prefix: string) {
+            super(prefix);
+
+            if (!CategoriesTypeForm.init)  {
+                CategoriesTypeForm.init = true;
+
+                var s = Serenity;
+                var w0 = s.IntegerEditor;
+                var w1 = s.StringEditor;
+
+                Q.initFormType(CategoriesTypeForm, [
+                    'Type', w0,
+                    'CategoryType', w1
+                ]);
+            }
+        }
+    }
 }

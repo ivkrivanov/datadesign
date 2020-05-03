@@ -1,48 +1,41 @@
-﻿
-namespace CoreStore.Store {
+﻿namespace CoreStore.Store {
     export interface CategoriesTypeRow {
         CategoryTypeId?: number;
         Type?: number;
         CategoryType?: string;
-        InsertDate?: string;
-        InsertUserId?: number;
-        UpdateDate?: string;
-        UpdateUserId?: number;
         IsActive?: number;
         TenantId?: number;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
     }
 
     export namespace CategoriesTypeRow {
         export const idProperty = 'CategoryTypeId';
+        export const isActiveProperty = 'IsActive';
         export const nameProperty = 'CategoryType';
         export const localTextPrefix = 'Store.CategoriesType';
-        export const deletePermission = 'Administration:General';
-        export const insertPermission = 'Administration:General';
-        export const readPermission = 'Administration:General';
-        export const updatePermission = 'Administration:General';
+        export const lookupKey = 'Store.CategoriesType';
 
-        export namespace Fields {
-            export declare const CategoryTypeId;
-            export declare const Type;
-            export declare const CategoryType;
-            export declare const InsertDate;
-            export declare const InsertUserId;
-            export declare const UpdateDate;
-            export declare const UpdateUserId;
-            export declare const IsActive;
-            export declare const TenantId;
+        export function getLookup(): Q.Lookup<CategoriesTypeRow> {
+            return Q.getLookup<CategoriesTypeRow>('Store.CategoriesType');
         }
+        export const deletePermission = 'Store:CategoriesType:Delete';
+        export const insertPermission = 'Store:CategoriesType:Modify';
+        export const readPermission = 'Store:CategoriesType:View';
+        export const updatePermission = 'Store:CategoriesType:Modify';
 
-        [
-            'CategoryTypeId',
-            'Type',
-            'CategoryType',
-            'InsertDate',
-            'InsertUserId',
-            'UpdateDate',
-            'UpdateUserId',
-            'IsActive',
-            'TenantId'
-        ].forEach(x => (<any>Fields)[x] = x);
+        export declare const enum Fields {
+            CategoryTypeId = "CategoryTypeId",
+            Type = "Type",
+            CategoryType = "CategoryType",
+            IsActive = "IsActive",
+            TenantId = "TenantId",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate"
+        }
     }
 }

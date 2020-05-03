@@ -7,38 +7,18 @@
     <DotNetSergen>dotnet sergen</DotNetSergen>
     <DotNetSergen Condition="Exists('..\..\Serenity\Serenity.CodeGenerator\bin\$(Configuration)\sergen.exe')">..\..\Serenity\Serenity.CodeGenerator\bin\$(Configuration)\sergen.exe</DotNetSergen>
     <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
-    <DockerComposeProjectPath>..\..\docker-compose.dcproj</DockerComposeProjectPath>
-    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-    <DockerfileContext>..\..</DockerfileContext>
   </PropertyGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\**\*.sql" Exclude="bin\**;obj\**;**\*.xproj;packages\**;@(EmbeddedResource)" />
-    <Compile Remove="Migrations\NorthwindDB\**" />
-    <Compile Remove="Modules\BasicSamples\**" />
-    <Compile Remove="Modules\Northwind\**" />
-    <Compile Remove="Modules\Store\CategoryType\**" />
-    <Compile Remove="Modules\Store\Category\**" />
-    <Content Remove="Migrations\NorthwindDB\**" />
-    <Content Remove="Modules\BasicSamples\**" />
-    <Content Remove="Modules\Northwind\**" />
-    <Content Remove="Modules\Store\CategoryType\**" />
-    <Content Remove="Modules\Store\Category\**" />
-    <EmbeddedResource Remove="Migrations\NorthwindDB\**" />
-    <EmbeddedResource Remove="Modules\BasicSamples\**" />
-    <EmbeddedResource Remove="Modules\Northwind\**" />
-    <EmbeddedResource Remove="Modules\Store\CategoryType\**" />
-    <EmbeddedResource Remove="Modules\Store\Category\**" />
-    <None Remove="Migrations\NorthwindDB\**" />
-    <None Remove="Modules\BasicSamples\**" />
-    <None Remove="Modules\Northwind\**" />
-    <None Remove="Modules\Store\CategoryType\**" />
-    <None Remove="Modules\Store\Category\**" />
-    <TypeScriptCompile Remove="Migrations\NorthwindDB\**" />
-    <TypeScriptCompile Remove="Modules\BasicSamples\**" />
-    <TypeScriptCompile Remove="Modules\Northwind\**" />
-    <TypeScriptCompile Remove="Modules\Store\CategoryType\**" />
-    <TypeScriptCompile Remove="Modules\Store\Category\**" />
+    <None Remove="Modules\Store\Counterparties\CounterpartiesEditor.ts" />
+    <None Remove="Modules\Store\Employees\EmployeesFormatter.ts" />
+    <None Remove="Modules\Store\Employees\EmployeesListFormatter.ts" />
+    <None Remove="Modules\Store\Wares\WaresExcelImportDialog.ts" />
     <TypeScriptCompile Remove="Modules\Store\Categories\CategoriesExcelImportDialog.ts" />
+    <TypeScriptCompile Remove="Modules\Store\Notes\NotesEditor.ts" />
+    <TypeScriptCompile Remove="Modules\Store\OperationType\OperationTypeEditor.ts" />
+    <TypeScriptCompile Remove="Modules\Store\Shops\ShopsEditor.ts" />
+    <TypeScriptCompile Remove="Modules\Store\Wares\WaresEditor.ts" />
     <None Update="wwwroot\**\*">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </None>
@@ -64,7 +44,7 @@
     <PackageReference Include="Serenity.Web" Version="3.12.6" />
     <PackageReference Include="Serenity.Web.Assets" Version="3.9.2" />
   </ItemGroup>
-   <PropertyGroup>
+  <PropertyGroup>
     <DefineConstants>$(DefineConstants);COREFX;ASPNETCORE</DefineConstants>
   </PropertyGroup>
   <Import Project="$(SolutionDir)Serenity\tools\Submodule\Serenity.Submodule.AspNetCore.targets" Condition="Exists('$(SolutionDir)Serenity\tools\Submodule\Serenity.Submodule.AspNetCore.targets')" />
@@ -91,47 +71,8 @@
   <Target Name="TransformServerTypings" AfterTargets="AfterBuild">
     <Exec Command="$(DotNetSergen) servertypings" ContinueOnError="true" />
   </Target>
-  <Target Name="CompileTSC" AfterTargets="AfterBuild" Inputs="@(CompileTSCInputs)" Outputs="wwwroot\Scripts\site\Serene2.Web.js">
+  <Target Name="CompileTSC" AfterTargets="AfterBuild" Inputs="@(CompileTSCInputs)" Outputs="wwwroot\Scripts\site\CoreStore.Web.js">
     <Message Text="Executing TypeScript compiler..." Importance="high"></Message>
     <Exec Command="&quot;$(NodePath)\node&quot; &quot;$(TSJavaScriptFile.Replace('build\\..\tools\', 'tools\'))&quot; -p ./tsconfig.json" ContinueOnError="true" />
   </Target>
-  <ItemGroup>
-    <DotNetCliToolReference Include="Serenity.CodeGenerator" Version="3.9.14" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Modules\Administration\Tenant\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Modules\AdminLTE\Calendar.cshtml" />
-    <None Include="Modules\AdminLTE\Charts\ChartJS.cshtml" />
-    <None Include="Modules\AdminLTE\Charts\Flot.cshtml" />
-    <None Include="Modules\AdminLTE\Charts\InlineCharts.cshtml" />
-    <None Include="Modules\AdminLTE\Charts\Morris.cshtml" />
-    <None Include="Modules\AdminLTE\DashboardV2.cshtml" />
-    <None Include="Modules\AdminLTE\Examples\BlankPage.cshtml" />
-    <None Include="Modules\AdminLTE\Examples\Error404.cshtml" />
-    <None Include="Modules\AdminLTE\Examples\Error500.cshtml" />
-    <None Include="Modules\AdminLTE\Examples\Invoice.cshtml" />
-    <None Include="Modules\AdminLTE\Examples\InvoicePrint.cshtml" />
-    <None Include="Modules\AdminLTE\Examples\Lockscreen.cshtml" />
-    <None Include="Modules\AdminLTE\Examples\Login.cshtml" />
-    <None Include="Modules\AdminLTE\Examples\PacePage.cshtml" />
-    <None Include="Modules\AdminLTE\Examples\Profile.cshtml" />
-    <None Include="Modules\AdminLTE\Examples\Register.cshtml" />
-    <None Include="Modules\AdminLTE\Forms\AdvancedElements.cshtml" />
-    <None Include="Modules\AdminLTE\Forms\GeneralElements.cshtml" />
-    <None Include="Modules\AdminLTE\Forms\TextEditors.cshtml" />
-    <None Include="Modules\AdminLTE\Mailbox\Compose.cshtml" />
-    <None Include="Modules\AdminLTE\Mailbox\Inbox.cshtml" />
-    <None Include="Modules\AdminLTE\Mailbox\Read.cshtml" />
-    <None Include="Modules\AdminLTE\Tables\SimpleTables.cshtml" />
-    <None Include="Modules\AdminLTE\UIElements\Buttons.cshtml" />
-    <None Include="Modules\AdminLTE\UIElements\General.cshtml" />
-    <None Include="Modules\AdminLTE\UIElements\Icons.cshtml" />
-    <None Include="Modules\AdminLTE\UIElements\Modals.cshtml" />
-    <None Include="Modules\AdminLTE\UIElements\Sliders.cshtml" />
-    <None Include="Modules\AdminLTE\UIElements\Timeline.cshtml" />
-    <None Include="Modules\AdminLTE\Widgets.cshtml" />
-  </ItemGroup>
-  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="http://json.schemastore.org/config" /></VisualStudio></ProjectExtensions>
 </Project>

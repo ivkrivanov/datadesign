@@ -1,5 +1,4 @@
-﻿
-namespace CoreStore.Store {
+﻿namespace CoreStore.Store {
     export namespace CategoriesLangService {
         export const baseUrl = 'Store/CategoriesLang';
 
@@ -9,12 +8,12 @@ namespace CoreStore.Store {
         export declare function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<CategoriesLangRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         export declare function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<CategoriesLangRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
 
-        export namespace Methods {
-            export declare const Create: string;
-            export declare const Update: string;
-            export declare const Delete: string;
-            export declare const Retrieve: string;
-            export declare const List: string;
+        export declare const enum Methods {
+            Create = "Store/CategoriesLang/Create",
+            Update = "Store/CategoriesLang/Update",
+            Delete = "Store/CategoriesLang/Delete",
+            Retrieve = "Store/CategoriesLang/Retrieve",
+            List = "Store/CategoriesLang/List"
         }
 
         [
@@ -24,10 +23,9 @@ namespace CoreStore.Store {
             'Retrieve', 
             'List'
         ].forEach(x => {
-            (<any>CategoriesLangService)[x] = function (r, s, o) { 
-                return Q.serviceRequest(baseUrl + '/' + x, r, s, o); 
+            (<any>CategoriesLangService)[x] = function (r, s, o) {
+                return Q.serviceRequest(baseUrl + '/' + x, r, s, o);
             };
-            (<any>Methods)[x] = baseUrl + '/' + x;
         });
     }
 }

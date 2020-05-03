@@ -15,6 +15,8 @@ namespace CoreStore.Store {
 
         constructor(container: JQuery) {
             super(container);
+
+             //this.slickContainer.on('change', '.edit:input', (e) => this.inputsChange(e));
         }
 
         protected getQuickFilters() {
@@ -22,7 +24,7 @@ namespace CoreStore.Store {
 
             var q = Q.parseQueryString();
             if (q["cattype"]) {
-                var cattype = Q.tryFirst(flt, x => x.field == "CategoryTypeId");
+                var cattype = Q.tryFirst(flt, x => x.field == "CategoriesTypeID");
                 cattype.init = e => {
                     e.element.getWidget(Serenity.LookupEditor).value = q["cattype"];
                 };

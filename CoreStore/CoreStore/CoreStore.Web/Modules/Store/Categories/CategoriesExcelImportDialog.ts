@@ -1,4 +1,5 @@
-﻿namespace CoreStore.Store {
+﻿
+namespace CoreStore.Store {
 
     @Serenity.Decorators.registerClass()
     export class CategoriesExcelImportDialog extends Serenity.PropertyDialog<any, any>{

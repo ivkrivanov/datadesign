@@ -14,7 +14,8 @@ namespace CoreStore.AppServices
         {
             { "en", "en-US" },
             { "zh", "zh-CN" },
-            { "vi", "vi-VN" }
+            { "vi", "vi-VN" },
+            { "fa", "fa-IR" }
         };
 
         public Task<ProviderCultureResult> DetermineProviderCultureResult(HttpContext httpContext)
@@ -38,8 +39,7 @@ namespace CoreStore.AppServices
         }
 
         private static List<CultureInfo> supportedCultures;
-        private static readonly string[] supportedCultureIndentifiers = new string[] {
-            "bg-BG",
+        private static readonly string[] supportedCultureIdentifiers = new string[] {
             "de-DE",
             "en-US",
             "en-GB",
@@ -60,7 +60,7 @@ namespace CoreStore.AppServices
             get
             {
                 if (supportedCultures == null)
-                    supportedCultures = supportedCultureIndentifiers.Select(x =>
+                    supportedCultures = supportedCultureIdentifiers.Select(x =>
                     {
                         try
                         {

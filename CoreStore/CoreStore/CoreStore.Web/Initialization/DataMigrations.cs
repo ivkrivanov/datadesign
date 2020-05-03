@@ -14,9 +14,8 @@
 
     public static class DataMigrations
     {
-        private static string[] databaseKeys = new[] {
+        private static readonly string[] databaseKeys = new[] {
             "Default"
-            , "Store"
         };
 
         public static void Initialize()
@@ -45,7 +44,7 @@
 
             if (isSqlite)
             {
-                var contentRoot = Serenity.Dependency.Resolve<IHostingEnvironment>().ContentRootPath;
+                var contentRoot = Serenity.Dependency.Resolve<IWebHostEnvironment>().ContentRootPath;
                 Directory.CreateDirectory(Path.Combine(contentRoot, "App_Data"));
                 return;
             }
@@ -145,7 +144,7 @@
                 if (isLocalServer)
                 {
                     string baseDirectory;
-                    var hostingEnvironment = Serenity.Dependency.TryResolve<IHostingEnvironment>();
+                    var hostingEnvironment = Serenity.Dependency.TryResolve<IWebHostEnvironment>();
                     if (hostingEnvironment != null)
                         baseDirectory = hostingEnvironment.ContentRootPath;
                     else
@@ -238,7 +237,7 @@
                     }
 
                     throw new Exception("Error executing migration:\r\n" +
-                        sw.ToString(), ex);
+                        output, ex);
                 }
                 finally
                 {

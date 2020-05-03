@@ -6,7 +6,7 @@ namespace CoreStore.Store.Forms
     using System;
 
     [FormScript("Store.CategoriesExcelImport")]
-    public class CategoryExcelImportForm
+    public class CategoriesExcelImportForm
     {
         [FileUploadEditor, Required]
         public String FileName { get; set; }

@@ -1,40 +1,32 @@
-﻿
-namespace CoreStore.Store {
-    export class CategoriesForm extends Serenity.PrefixedContext {
-        static formKey = 'Store.Categories';
-    }
-
+﻿namespace CoreStore.Store {
     export interface CategoriesForm {
-        CategoryTypeId: Serenity.IntegerEditor;
+        CategoryTypeId: Serenity.LookupEditor;
         CategoryCode: Serenity.StringEditor;
         CategoryName: Serenity.StringEditor;
         Description: Serenity.StringEditor;
-        Picture: Serenity.StringEditor;
-        InsertDate: Serenity.DateEditor;
-        InsertUserId: Serenity.IntegerEditor;
-        UpdateDate: Serenity.DateEditor;
-        UpdateUserId: Serenity.IntegerEditor;
-        IsActive: Serenity.IntegerEditor;
-        TenantId: Serenity.IntegerEditor;
     }
 
-    [,
-        ['CategoryTypeId', () => Serenity.IntegerEditor],
-        ['CategoryCode', () => Serenity.StringEditor],
-        ['CategoryName', () => Serenity.StringEditor],
-        ['Description', () => Serenity.StringEditor],
-        ['Picture', () => Serenity.StringEditor],
-        ['InsertDate', () => Serenity.DateEditor],
-        ['InsertUserId', () => Serenity.IntegerEditor],
-        ['UpdateDate', () => Serenity.DateEditor],
-        ['UpdateUserId', () => Serenity.IntegerEditor],
-        ['IsActive', () => Serenity.IntegerEditor],
-        ['TenantId', () => Serenity.IntegerEditor]
-    ].forEach(x => Object.defineProperty(CategoriesForm.prototype, <string>x[0], {
-        get: function () {
-            return this.w(x[0], (x[1] as any)());
-        },
-        enumerable: true,
-        configurable: true
-    }));
+    export class CategoriesForm extends Serenity.PrefixedContext {
+        static formKey = 'Store.Categories';
+        private static init: boolean;
+
+        constructor(prefix: string) {
+            super(prefix);
+
+            if (!CategoriesForm.init)  {
+                CategoriesForm.init = true;
+
+                var s = Serenity;
+                var w0 = s.LookupEditor;
+                var w1 = s.StringEditor;
+
+                Q.initFormType(CategoriesForm, [
+                    'CategoryTypeId', w0,
+                    'CategoryCode', w1,
+                    'CategoryName', w1,
+                    'Description', w1
+                ]);
+            }
+        }
+    }
 }

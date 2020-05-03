@@ -4,7 +4,7 @@ namespace CoreStore
     using Serenity;
     using Serenity.Data;
     using Serenity.Services;
-    using global::CoreStore.Administration;
+    using CoreStore.Administration;
 
     public class MultiTenantBehavior : IImplicitBehavior, 
         ISaveBehavior, IDeleteBehavior, 

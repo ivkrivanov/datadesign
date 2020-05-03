@@ -25,16 +25,14 @@
             });
         }
 
-        protected getToolbarButtons()
-        {
+        protected getToolbarButtons() {
             let buttons = super.getToolbarButtons();
 
             buttons.push({
                 title: Q.text('Site.UserDialog.EditRolesButton'),
                 cssClass: 'edit-roles-button',
                 icon: 'fa-users text-blue',
-                onClick: () =>
-                {
+                onClick: () => {
                     new UserRoleDialog({
                         userID: this.entity.UserId,
                         username: this.entity.Username
@@ -46,8 +44,7 @@
                 title: Q.text('Site.UserDialog.EditPermissionsButton'),
                 cssClass: 'edit-permissions-button',
                 icon: 'fa-lock text-green',
-                onClick: () =>
-                {
+                onClick: () => {
                     new UserPermissionDialog({
                         userID: this.entity.UserId,
                         username: this.entity.Username
@@ -75,8 +72,7 @@
                 .closest('.field').find('sup').toggle(this.isNew());
         }
 
-        protected getPropertyItems()
-        {
+        protected getPropertyItems() {
             var items = super.getPropertyItems();
             if (!Q.Authorization.hasPermission("Administration:Tenants"))
                 items = items.filter(x => x.name != UserRow.Fields.TenantId);

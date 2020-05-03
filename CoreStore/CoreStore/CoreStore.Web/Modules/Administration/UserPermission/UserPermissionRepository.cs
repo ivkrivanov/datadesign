@@ -30,9 +30,15 @@ namespace CoreStore.Administration.Repositories
             foreach (var p in GetExisting(uow.Connection, userID, request.Module, request.Submodule))
                 oldList[p.PermissionKey] = p.Granted.Value;
 
-            var newList = new Dictionary<string, bool>(StringComparer.OrdinalIgnoreCase);
+            var newList = new Dictionary<string, bool>(
+                StringComparer.OrdinalIgnoreCase);
             foreach (var p in request.Permissions)
                 newList[p.PermissionKey] = p.Granted ?? false;
+
+            var allowedKeys = ListPermissionKeys()
+                .Entities.ToDictionary(x => x);
+            if (newList.Keys.Any(x => !allowedKeys.ContainsKey(x)))
+                throw new AccessViolationException();
 
             if (oldList.Count == newList.Count &&
                 oldList.All(x => newList.ContainsKey(x.Key) && newList[x.Key] == x.Value))
@@ -242,7 +248,7 @@ namespace CoreStore.Administration.Repositories
                     }
                 }
 
-                result.Remove(Administration.PermissionKeys.Tenants);
+                result.Remove(PermissionKeys.Tenants);
                 result.Remove("*");
                 result.Remove("?");
 

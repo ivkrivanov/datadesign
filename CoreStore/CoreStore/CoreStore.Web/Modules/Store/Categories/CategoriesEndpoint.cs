@@ -1,22 +1,21 @@
 ﻿
 namespace CoreStore.Store.Endpoints
 {
-    using CoreStore.Store.Entities;
-
+    using Serenity.Web;
     using OfficeOpenXml;
     using Serenity;
+    using CoreStore.Store.Entities;
+    using CoreStore.Store.Repositories;
+    using Serenity.Reporting;
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using Microsoft.AspNetCore.Mvc;
     using Serenity.Data;
     using Serenity.Services;
-    using Serenity.Reporting;
-    using Serenity.Web;
     using System.Data;
-    using System;
-    using System.IO;
-    using System.Collections.Generic;
-    using Microsoft.AspNetCore.Mvc;
     using MyRepository = Repositories.CategoriesRepository;
     using MyRow = Entities.CategoriesRow;
-    using CoreStore.Store.Repositories;
 
     [Route("Services/Store/Categories/[action]")]
     [ConnectionKey(typeof(MyRow)), ServiceAuthorize(typeof(MyRow))]
@@ -52,12 +51,12 @@ namespace CoreStore.Store.Endpoints
         }
 
         [HttpPost]
-        public ListResponse<MyRow> List(IDbConnection connection, CaregoriesListRequest request)
+        public ListResponse<MyRow> List(IDbConnection connection, CategoriesListRequest request)
         {
             return new MyRepository().List(connection, request);
         }
 
-        public FileContentResult ListExcel(IDbConnection connection, CaregoriesListRequest request)
+        public FileContentResult ListExcel(IDbConnection connection, CategoriesListRequest request)
         {
             var data = List(connection, request).Entities;
             var report = new DynamicDataReport(data, request.IncludeColumns, typeof(Columns.CategoriesColumns));
@@ -65,6 +64,7 @@ namespace CoreStore.Store.Endpoints
             return ExcelContentResult.Create(bytes, "CategoryList_" +
                 DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".xlsx");
         }
+
         [HttpPost]
         public ExcelImportResponse ExcelImport(IUnitOfWork uow, ExcelImportRequest request)
         {

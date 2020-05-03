@@ -59,6 +59,7 @@ namespace CoreStore.Store.Entities
         {
             get { return Fields.CategoryName; }
         }
+
         public Field CultureIdField
         {
             get { return Fields.LanguageId; }

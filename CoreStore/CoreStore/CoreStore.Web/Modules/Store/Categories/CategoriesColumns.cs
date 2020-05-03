@@ -8,7 +8,7 @@ namespace CoreStore.Store.Columns
     [BasedOnRow(typeof(Entities.CategoriesRow), CheckNames = true)]
     public class CategoriesColumns
     {
-        [EditLink(ItemType = "Store.CategoriesType"), Width(100), AlignCenter, SortOrder(1, descending: true)]
+        [EditLink(ItemType = "Store.CategoryType"), Width(100), AlignCenter, SortOrder(1, descending: true)]
         [QuickFilter, QuickFilterOption("multiply", true)]
         public String CategoryType { get; set; }
         [EditLink, Width(100), AlignCenter]

@@ -18,22 +18,6 @@
             var filePath = UploadHelper.DbFilePath(pathInfo);
             var mimeType = UploadHelper.GetMimeType(filePath);
 
-            // can't create thumbnail in .NET CORE
-            if (filePath.EndsWith("_t.jpg", StringComparison.OrdinalIgnoreCase) &&
-                !System.IO.File.Exists(filePath))
-            {
-                var f = filePath.Substring(0, filePath.Length - 6);
-                foreach (var ext in new string[] { ".png", ".gif", ".jpg" })
-                {
-                    if (System.IO.File.Exists(f + ext))
-                    {
-                        filePath = f + ext;
-                        mimeType = UploadHelper.GetMimeType(filePath);
-                        return new PhysicalFileResult(f + ext, mimeType);
-                    }
-                }
-            }
-
             return new PhysicalFileResult(filePath, mimeType);
         }
 
@@ -65,6 +49,8 @@
 
             var processor = new UploadProcessor
             {
+                ThumbWidth = 128,
+                ThumbHeight = 96
             };
 
             if (processor.ProcessStream(file.OpenReadStream(), Path.GetExtension(file.FileName)))
@@ -78,6 +64,8 @@
                     TemporaryFile = temporaryFile,
                     Size = processor.FileSize,
                     IsImage = processor.IsImage,
+                    Width = processor.ImageWidth,
+                    Height = processor.ImageHeight
                 };
             }
             else

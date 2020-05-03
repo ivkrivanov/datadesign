@@ -1,7 +1,7 @@
 ﻿
 namespace CoreStore.Store.Entities
 {
-    using Administration.Entities;
+    using CoreStore.Administration.Entities;
     using Serenity.ComponentModel;
     using Serenity.Data;
     using Serenity.Data.Mapping;
@@ -10,10 +10,10 @@ namespace CoreStore.Store.Entities
 
     [ConnectionKey("Store"), Module("Store"), TableName("[dbo].[CategoriesType]")]
     [DisplayName("Categories Type"), InstanceName("Categories Type")]
-    [ReadPermission(StorePermissionKeys.General)]
-    [ModifyPermission(StorePermissionKeys.General)]
-    [LookupScript("Store.CategoryType", LookupType = typeof(Scripts.MultiTenantRowLookupScript<>))]
-
+    [ReadPermission(PermissionKeys.CategoriesType.View)]
+    [ModifyPermission(PermissionKeys.CategoriesType.Modify)]
+    [DeletePermission(PermissionKeys.CategoriesType.Delete)]
+    [LookupScript("Store.CategoriesType", LookupType = typeof(Scripts.MultiTenantRowLookupScript<>))]
     public sealed class CategoriesTypeRow : LoggingRow, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
     {
         [DisplayName("Category Type Id"), Column("CategoryTypeID"), Identity]
@@ -35,16 +35,6 @@ namespace CoreStore.Store.Entities
         {
             get { return Fields.CategoryType[this]; }
             set { Fields.CategoryType[this] = value; }
-        }
-
-        IIdField IIdRow.IdField
-        {
-            get { return Fields.CategoryTypeId; }
-        }
-
-        StringField INameRow.NameField
-        {
-            get { return Fields.CategoryType; }
         }
 
         #region Tenant & Activ
@@ -75,6 +65,16 @@ namespace CoreStore.Store.Entities
 
         #endregion Tenant & Activ
 
+        IIdField IIdRow.IdField
+        {
+            get { return Fields.CategoryTypeId; }
+        }
+
+        StringField INameRow.NameField
+        {
+            get { return Fields.CategoryType; }
+        }
+
         public static readonly RowFields Fields = new RowFields().Init();
 
         public CategoriesTypeRow()
@@ -87,7 +87,7 @@ namespace CoreStore.Store.Entities
             public Int32Field CategoryTypeId;
             public Int16Field Type;
             public StringField CategoryType;
-
+            
             public Int16Field IsActive;
             public Int32Field TenantId;
         }

@@ -116,6 +116,7 @@ namespace CoreStore.Administration.Entities
             set { Fields.TenantName[this] = value; }
         }
 
+
         IIdField IIdRow.IdField
         {
             get { return Fields.UserId; }

@@ -1,18 +1,16 @@
 ﻿
 namespace CoreStore.Administration.Entities
 {
-    using Serenity;
     using Serenity.ComponentModel;
     using Serenity.Data;
     using Serenity.Data.Mapping;
     using System;
     using System.ComponentModel;
-    using System.IO;
 
     [ConnectionKey("Default"), Module("Administration"), TableName("[dbo].[Tenants]")]
     [DisplayName("Tenants"), InstanceName("Tenant"), TwoLevelCached]
-    [ReadPermission("Administration:Tenants")]
-    [ModifyPermission("Administration:Tenants")]
+    [ReadPermission(PermissionKeys.Tenants)]
+    [ModifyPermission(PermissionKeys.Tenants)]
     [LookupScript("Administration.Tenant")]
     public sealed class TenantRow : Row, IIdRow, INameRow
     {

@@ -12,19 +12,79 @@
           "Tablename": "dbo.Categories",
           "Identifier": "Categories",
           "Module": "Store",
-          "PermissionKey": "Administration:General"
+          "PermissionKey": "Store:General"
         },
         {
           "Tablename": "dbo.CategoriesLang",
           "Identifier": "CategoriesLang",
           "Module": "Store",
-          "PermissionKey": "Administration:General"
+          "PermissionKey": "Store:General"
         },
         {
           "Tablename": "dbo.CategoriesType",
           "Identifier": "CategoriesType",
           "Module": "Store",
-          "PermissionKey": "Administration:General"
+          "PermissionKey": "Store:General"
+        },
+        {
+          "Tablename": "dbo.Counterparties",
+          "Identifier": "Counterparties",
+          "Module": "Store",
+          "PermissionKey": "Store:General"
+        },
+        {
+          "Tablename": "dbo.CounterpartyDetails",
+          "Identifier": "CounterpartyDetails",
+          "Module": "Store",
+          "PermissionKey": "Store:General"
+        },
+        {
+          "Tablename": "dbo.CounterpartyRepresentatives",
+          "Identifier": "CounterpartyRepresentatives",
+          "Module": "Store",
+          "PermissionKey": "Store:General"
+        },
+        {
+          "Tablename": "dbo.DocumentType",
+          "Identifier": "DocumentType",
+          "Module": "Store",
+          "PermissionKey": "Store:General"
+        },
+        {
+          "Tablename": "dbo.Measures",
+          "Identifier": "Measures",
+          "Module": "Store",
+          "PermissionKey": "Store:General"
+        },
+        {
+          "Tablename": "dbo.Notes",
+          "Identifier": "Notes",
+          "Module": "Store",
+          "PermissionKey": "Store:General"
+        },
+        {
+          "Tablename": "dbo.OperationType",
+          "Identifier": "OperationType",
+          "Module": "Store",
+          "PermissionKey": "Store:General"
+        },
+        {
+          "Tablename": "dbo.Shops",
+          "Identifier": "Shops",
+          "Module": "Store",
+          "PermissionKey": "Store:General"
+        },
+        {
+          "Tablename": "dbo.Wares",
+          "Identifier": "Wares",
+          "Module": "Store",
+          "PermissionKey": "Store:General"
+        },
+        {
+          "Tablename": "dbo.WaresLang",
+          "Identifier": "WaresLang",
+          "Module": "Store",
+          "PermissionKey": "Store:General"
         }
       ]
     }

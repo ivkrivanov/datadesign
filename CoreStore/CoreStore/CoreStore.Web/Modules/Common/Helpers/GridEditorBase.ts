@@ -70,17 +70,20 @@
         }
 
         protected getButtons(): Serenity.ToolButton[] {
-            return [{
-                title: this.getAddButtonCaption(),
-                cssClass: 'add-button',
-                onClick: () => {
+            var buttons = super.getButtons();
+            var addButton = Q.tryFirst(buttons, x => x.cssClass == 'add-button');
+            if (addButton != null) {
+                addButton.onClick = () => {
                     this.createEntityDialog(this.getItemType(), dlg => {
                         var dialog = dlg as GridEditorDialog<TEntity>;
                         dialog.onSave = (opt, callback) => this.save(opt, callback);
+                        this.transferDialogReadOnly(dialog);
                         dialog.loadEntityAndOpenDialog(this.getNewEntity());
                     });
                 }
-            }];
+            }
+
+            return buttons.filter(x => x.cssClass != "refresh-button");
         }
 
         protected editItem(entityOrId: any): void {
@@ -95,7 +98,7 @@
                     }
                     callback({});
                 };
-
+                this.transferDialogReadOnly(dialog);
                 dialog.onSave = (opt, callback) => this.save(opt, callback);
                 dialog.loadEntityAndOpenDialog(item);
             });;
@@ -143,6 +146,54 @@
         }
 
         protected createQuickSearchInput() {
+        }
+
+        protected enableDeleteColumn(): boolean {
+            return false;
+        }
+
+        protected getColumns() {
+            var columns = super.getColumns();
+
+            if (this.enableDeleteColumn()) {
+                columns.unshift({
+                    field: 'Delete Row',
+                    name: '',
+                    format: ctx => '<a class="inline-action delete-row" title="delete">' +
+                        '<i class="fa fa-trash-o text-red"></i></a>',
+                    width: 24,
+                    minWidth: 24,
+                    maxWidth: 24
+                });
+            }
+
+            return columns;
+        }
+
+        protected onClick(e: JQueryEventObject, row: number, cell: number) {
+            super.onClick(e, row, cell);
+
+            if (e.isDefaultPrevented())
+                return;
+
+            var item: TEntity = this.itemAt(row);
+            var target = $(e.target);
+
+            // if user clicks "i" element, e.g. icon
+            if (target.parent().hasClass('inline-action'))
+                target = target.parent();
+
+            if (target.hasClass('inline-action')) {
+                e.preventDefault();
+
+                if (this.enableDeleteColumn()) {
+                    if (target.hasClass('delete-row')) {
+                        Q.confirm(Q.text('Controls.EntityDialog.DeleteConfirmation'), () => {
+                            this.deleteEntity(item[this.getIdProperty()]);
+                        });
+                    }
+                }
+            }
         }
     }
 }
