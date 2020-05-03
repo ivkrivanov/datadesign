@@ -1,7 +1,6 @@
 ﻿
 namespace Store.Store.Repositories
 {
-    using global::Store.Store.Entities;
     using Serenity;
     using Serenity.Data;
     using Serenity.Services;

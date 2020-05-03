@@ -43,7 +43,8 @@ namespace Store
         public void OnSetInternalFields(ISaveRequestHandler handler)
         {
             if (handler.IsCreate)
-                fldTenantId[handler.Row] = ((UserDefinition)Authorization.UserDefinition).TenantId;
+                fldTenantId[handler.Row] = 
+                    ((UserDefinition)Authorization.UserDefinition).TenantId;
         }
 
         public void OnValidateRequest(ISaveRequestHandler handler)

@@ -58,6 +58,7 @@ namespace Store.Store.Repositories
                     }
             }
         }
+
         private class MyDeleteHandler : DeleteRequestHandler<MyRow> { }
         private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> { }
         private class MyListHandler : ListRequestHandler<MyRow>

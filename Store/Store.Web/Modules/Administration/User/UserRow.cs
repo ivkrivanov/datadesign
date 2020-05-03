@@ -98,6 +98,7 @@ namespace Store.Administration.Entities
             get { return Fields.LastDirectoryUpdate[this]; }
             set { Fields.LastDirectoryUpdate[this] = value; }
         }
+
         [DisplayName("Tenant"), ForeignKey("Tenants", "TenantId"), LeftJoin("tnt")]
         [ReadPermission(PermissionKeys.Tenants)]
         [LookupEditor(typeof(TenantRow))]

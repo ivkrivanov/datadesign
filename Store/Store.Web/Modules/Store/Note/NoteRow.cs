@@ -1,4 +1,5 @@
-﻿namespace Store.Store.Entities
+﻿
+namespace Store.Store.Entities
 {
     using Serenity.ComponentModel;
     using Serenity.Data;
@@ -73,18 +74,12 @@
 
         public IIdField InsertUserIdField
         {
-            get
-            {
-                return Fields.InsertUserId;
-            }
+            get { return Fields.InsertUserId; }
         }
 
         public DateTimeField InsertDateField
         {
-            get
-            {
-                return Fields.InsertDate;
-            }
+            get { return Fields.InsertDate; }
         }
 
         public static readonly RowFields Fields = new RowFields().Init();
