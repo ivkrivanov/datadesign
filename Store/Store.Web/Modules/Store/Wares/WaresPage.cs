@@ -1,7 +1,6 @@
 ﻿
 namespace Store.Store.Pages
 {
-    using Serenity;
     using Serenity.Web;
     using System.Web.Mvc;
 
