@@ -1,13 +1,11 @@
 ﻿
 namespace CoreStore.Store.Entities
 {
-    using Serenity;
     using Serenity.ComponentModel;
     using Serenity.Data;
     using Serenity.Data.Mapping;
     using System;
     using System.ComponentModel;
-    using System.IO;
 
     [ConnectionKey("Store"), Module("Store"), TableName("[dbo].[CategoriesLang]")]
     [DisplayName("Categories Lang"), InstanceName("Categories Lang")]

@@ -69,6 +69,30 @@
           "PermissionKey": "Store:General"
         },
         {
+          "Tablename": "dbo.Product Details",
+          "Identifier": "ProductDetails",
+          "Module": "Store",
+          "PermissionKey": "Store:General"
+        },
+        {
+          "Tablename": "dbo.ProductLang",
+          "Identifier": "ProductLang",
+          "Module": "Store",
+          "PermissionKey": "Store:General"
+        },
+        {
+          "Tablename": "dbo.ProductLog",
+          "Identifier": "ProductLog",
+          "Module": "Store",
+          "PermissionKey": "Store:General"
+        },
+        {
+          "Tablename": "dbo.Products",
+          "Identifier": "Products",
+          "Module": "Store",
+          "PermissionKey": "Store:General"
+        },
+        {
           "Tablename": "dbo.Shops",
           "Identifier": "Shops",
           "Module": "Store",
@@ -89,8 +113,23 @@
       ]
     }
   ],
-  "BaseRowClasses": [],
-  "RemoveForeignFields": [],
+  "BaseRowClasses": [
+    {
+      "ClassName": "CoreStore.Administration.LoggingRow",
+      "Fields": [
+        "InsertUserId",
+        "UpdateUserId",
+        "InsertDate",
+        "UpdateDate"
+      ]
+    }
+  ],
+  "RemoveForeignFields": [
+    "InsertUserId",
+    "UpdateUserId",
+    "InsertDate",
+    "UpdateDate"
+  ],
   "CustomGenerate": {},
   "CustomSettings": {}
 }
