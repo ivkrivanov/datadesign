@@ -6,121 +6,104 @@ namespace CoreStore.Store.Entities
     using Serenity.Data;
     using Serenity.Data.Mapping;
     using System;
-    using System.ComponentModel;
-    using System.IO;
 
     [ConnectionKey("Store"), Module("Store"), TableName("[dbo].[ProductLog]")]
-    [DisplayName("Product Log"), InstanceName("Product Log")]
-    [ReadPermission("Store:General")]
-    [ModifyPermission("Store:General")]
-    public sealed class ProductLogRow : Row, IIdRow, INameRow
+    public sealed class ProductsLogRow : Row, ICaptureLogRow
     {
-        [DisplayName("Product Log Id"), Column("ProductLogID"), Identity]
+        [Identity]
         public Int64? ProductLogId
         {
             get { return Fields.ProductLogId[this]; }
             set { Fields.ProductLogId[this] = value; }
         }
 
-        [DisplayName("Operation Type"), NotNull]
-        public Int16? OperationType
+        public CaptureOperationType? OperationType
         {
-            get { return Fields.OperationType[this]; }
-            set { Fields.OperationType[this] = value; }
+            get { return (CaptureOperationType?)Fields.OperationType[this]; }
+            set { Fields.OperationType[this] = (Int16?)value; }
         }
 
-        [DisplayName("Changing User Id")]
         public Int32? ChangingUserId
         {
             get { return Fields.ChangingUserId[this]; }
             set { Fields.ChangingUserId[this] = value; }
         }
 
-        [DisplayName("Valid From"), NotNull]
         public DateTime? ValidFrom
         {
             get { return Fields.ValidFrom[this]; }
             set { Fields.ValidFrom[this] = value; }
         }
 
-        [DisplayName("Valid Until"), NotNull]
         public DateTime? ValidUntil
         {
             get { return Fields.ValidUntil[this]; }
             set { Fields.ValidUntil[this] = value; }
         }
 
-        [DisplayName("Product Id"), Column("ProductID"), NotNull]
+        [NotNull]
         public Int32? ProductId
         {
             get { return Fields.ProductId[this]; }
             set { Fields.ProductId[this] = value; }
         }
 
-        [DisplayName("Product Name"), Size(40), QuickSearch]
+        [Size(40)]
         public String ProductName
         {
             get { return Fields.ProductName[this]; }
             set { Fields.ProductName[this] = value; }
         }
 
-        [DisplayName("Product Image"), Size(100)]
+        [Size(100)]
         public String ProductImage
         {
             get { return Fields.ProductImage[this]; }
             set { Fields.ProductImage[this] = value; }
         }
 
-        [DisplayName("Discontinued")]
         public Boolean? Discontinued
         {
             get { return Fields.Discontinued[this]; }
             set { Fields.Discontinued[this] = value; }
         }
 
-        [DisplayName("Supplier Id"), Column("SupplierID")]
-        public Int32? SupplierId
+        public Int32? CounterpartyId
         {
-            get { return Fields.SupplierId[this]; }
-            set { Fields.SupplierId[this] = value; }
+            get { return Fields.CounterpartyId[this]; }
+            set { Fields.CounterpartyId[this] = value; }
         }
 
-        [DisplayName("Category Id"), Column("CategoryID")]
         public Int32? CategoryId
         {
             get { return Fields.CategoryId[this]; }
             set { Fields.CategoryId[this] = value; }
         }
 
-        [DisplayName("Quantity Per Unit"), Size(20)]
         public String QuantityPerUnit
         {
             get { return Fields.QuantityPerUnit[this]; }
             set { Fields.QuantityPerUnit[this] = value; }
         }
 
-        [DisplayName("Unit Price"), Size(19), Scale(4)]
         public Decimal? UnitPrice
         {
             get { return Fields.UnitPrice[this]; }
             set { Fields.UnitPrice[this] = value; }
         }
 
-        [DisplayName("Units In Stock")]
         public Int16? UnitsInStock
         {
             get { return Fields.UnitsInStock[this]; }
             set { Fields.UnitsInStock[this] = value; }
         }
 
-        [DisplayName("Units On Order")]
         public Int16? UnitsOnOrder
         {
             get { return Fields.UnitsOnOrder[this]; }
             set { Fields.UnitsOnOrder[this] = value; }
         }
 
-        [DisplayName("Reorder Level")]
         public Int16? ReorderLevel
         {
             get { return Fields.ReorderLevel[this]; }
@@ -132,14 +115,29 @@ namespace CoreStore.Store.Entities
             get { return Fields.ProductLogId; }
         }
 
-        StringField INameRow.NameField
+        Int16Field ICaptureLogRow.OperationTypeField
         {
-            get { return Fields.ProductName; }
+            get { return Fields.OperationType; }
+        }
+
+        Field ICaptureLogRow.ChangingUserIdField
+        {
+            get { return Fields.ChangingUserId; }
+        }
+
+        DateTimeField ICaptureLogRow.ValidFromField
+        {
+            get { return Fields.ValidFrom; }
+        }
+
+        DateTimeField ICaptureLogRow.ValidUntilField
+        {
+            get { return Fields.ValidUntil; }
         }
 
         public static readonly RowFields Fields = new RowFields().Init();
 
-        public ProductLogRow()
+        public ProductsLogRow()
             : base(Fields)
         {
         }
@@ -151,11 +149,12 @@ namespace CoreStore.Store.Entities
             public Int32Field ChangingUserId;
             public DateTimeField ValidFrom;
             public DateTimeField ValidUntil;
+
             public Int32Field ProductId;
             public StringField ProductName;
             public StringField ProductImage;
             public BooleanField Discontinued;
-            public Int32Field SupplierId;
+            public Int32Field CounterpartyId;
             public Int32Field CategoryId;
             public StringField QuantityPerUnit;
             public DecimalField UnitPrice;

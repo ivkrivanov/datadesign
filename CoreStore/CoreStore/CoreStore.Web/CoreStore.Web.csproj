@@ -13,6 +13,10 @@
     <None Remove="Modules\Store\Counterparties\CounterpartiesEditor.ts" />
     <None Remove="Modules\Store\Employees\EmployeesFormatter.ts" />
     <None Remove="Modules\Store\Employees\EmployeesListFormatter.ts" />
+    <None Remove="Modules\Store\ProductDetails\ProductDetailsEditor.ts" />
+    <None Remove="Modules\Store\ProductDetails\ProductsDetailsEditor.ts" />
+    <None Remove="Modules\Store\Products\ProductsEditor.ts" />
+    <None Remove="Modules\Store\Products\ProductsExcelImportDialog.ts" />
     <None Remove="Modules\Store\Wares\WaresExcelImportDialog.ts" />
     <TypeScriptCompile Remove="Modules\Store\Categories\CategoriesExcelImportDialog.ts" />
     <TypeScriptCompile Remove="Modules\Store\Notes\NotesEditor.ts" />

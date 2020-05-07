@@ -1,5 +1,4 @@
-﻿
-namespace CoreStore.Store {
+﻿namespace CoreStore.Store {
     export interface ProductLangRow {
         Id?: number;
         ProductId?: number;
@@ -16,18 +15,11 @@ namespace CoreStore.Store {
         export const readPermission = 'Store:General';
         export const updatePermission = 'Store:General';
 
-        export namespace Fields {
-            export declare const Id;
-            export declare const ProductId;
-            export declare const LanguageId;
-            export declare const ProductName;
+        export declare const enum Fields {
+            Id = "Id",
+            ProductId = "ProductId",
+            LanguageId = "LanguageId",
+            ProductName = "ProductName"
         }
-
-        [
-            'Id',
-            'ProductId',
-            'LanguageId',
-            'ProductName'
-        ].forEach(x => (<any>Fields)[x] = x);
     }
 }

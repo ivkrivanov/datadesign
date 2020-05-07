@@ -10,6 +10,4 @@ using MyPages = CoreStore.Store.Pages;
 [assembly: NavigationLink(int.MaxValue, "Store/Wares", typeof(MyPages.WaresController), icon: null)]
 [assembly: NavigationLink(int.MaxValue, "Store/Counterparties", typeof(MyPages.CounterpartiesController), icon: null)]
 [assembly: NavigationLink(int.MaxValue, "Store/Product Details", typeof(MyPages.ProductDetailsController), icon: null)]
-[assembly: NavigationLink(int.MaxValue, "Store/Product Lang", typeof(MyPages.ProductLangController), icon: null)]
-[assembly: NavigationLink(int.MaxValue, "Store/Product Log", typeof(MyPages.ProductLogController), icon: null)]
 [assembly: NavigationLink(int.MaxValue, "Store/Products", typeof(MyPages.ProductsController), icon: null)]

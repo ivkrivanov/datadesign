@@ -110,15 +110,15 @@ namespace CoreStore.Store
             public const string Modify = "Store:Wares:Modify";
             public const string View = "Store:Wares:View";
         }
-        //[DisplayName("Product")]
-        //public class Product
-        //{
-        //    [ImplicitPermission(General), ImplicitPermission(View)]
-        //    public const string Delete = "Store:Product:Delete";
-        //    [Description("Create/Update"), ImplicitPermission(General), ImplicitPermission(View)]
-        //    public const string Modify = "Store:Product:Modify";
-        //    public const string View = "Store:Product:View";
-        //}
+        [DisplayName("Product")]
+        public class Product
+        {
+            [ImplicitPermission(General), ImplicitPermission(View)]
+            public const string Delete = "Store:Product:Delete";
+            [Description("Create/Update"), ImplicitPermission(General), ImplicitPermission(View)]
+            public const string Modify = "Store:Product:Modify";
+            public const string View = "Store:Product:View";
+        }
         [Description("[General]")]
         public const string General = "Store:General";
 

@@ -1,34 +1,34 @@
-﻿
-namespace CoreStore.Store {
-    export class ProductDetailsForm extends Serenity.PrefixedContext {
-        static formKey = 'Store.ProductDetails';
-    }
-
+﻿namespace CoreStore.Store {
     export interface ProductDetailsForm {
-        ProductId: Serenity.IntegerEditor;
         WaresId: Serenity.IntegerEditor;
-        PlanPrice: Serenity.DecimalEditor;
         Quantity: Serenity.DecimalEditor;
         ProductQuantity: Serenity.DecimalEditor;
+        PlanPrice: Serenity.DecimalEditor;
         Discount: Serenity.DecimalEditor;
-        IsActive: Serenity.IntegerEditor;
-        TenantId: Serenity.IntegerEditor;
     }
 
-    [
-        ['ProductId', () => Serenity.IntegerEditor],
-        ['WaresId', () => Serenity.IntegerEditor],
-        ['PlanPrice', () => Serenity.DecimalEditor],
-        ['Quantity', () => Serenity.DecimalEditor],
-        ['ProductQuantity', () => Serenity.DecimalEditor],
-        ['Discount', () => Serenity.DecimalEditor],
-        ['IsActive', () => Serenity.IntegerEditor],
-        ['TenantId', () => Serenity.IntegerEditor]
-    ].forEach(x => Object.defineProperty(ProductDetailsForm.prototype, <string>x[0], {
-        get: function () {
-            return this.w(x[0], (x[1] as any)());
-        },
-        enumerable: true,
-        configurable: true
-    }));
+    export class ProductDetailsForm extends Serenity.PrefixedContext {
+        static formKey = 'Store.ProductDetails';
+        private static init: boolean;
+
+        constructor(prefix: string) {
+            super(prefix);
+
+            if (!ProductDetailsForm.init)  {
+                ProductDetailsForm.init = true;
+
+                var s = Serenity;
+                var w0 = s.IntegerEditor;
+                var w1 = s.DecimalEditor;
+
+                Q.initFormType(ProductDetailsForm, [
+                    'WaresId', w0,
+                    'Quantity', w1,
+                    'ProductQuantity', w1,
+                    'PlanPrice', w1,
+                    'Discount', w1
+                ]);
+            }
+        }
+    }
 }

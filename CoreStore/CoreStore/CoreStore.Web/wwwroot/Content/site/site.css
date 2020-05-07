@@ -8152,3 +8152,27 @@ section.content > .s-DataGrid {
 .s-Store-CounterpartiesDialog .caption {
   width: 150px;
 }
+.s-Store-ProductDetailsDialog > .size {
+  width: 650px;
+}
+.s-Store-ProductDetailsDialog .caption {
+  width: 150px;
+}
+.s-Store-ProductLangDialog > .size {
+  width: 650px;
+}
+.s-Store-ProductLangDialog .caption {
+  width: 150px;
+}
+.s-Store-ProductLogDialog > .size {
+  width: 650px;
+}
+.s-Store-ProductLogDialog .caption {
+  width: 150px;
+}
+.s-Store-ProductsDialog > .size {
+  width: 650px;
+}
+.s-Store-ProductsDialog .caption {
+  width: 150px;
+}

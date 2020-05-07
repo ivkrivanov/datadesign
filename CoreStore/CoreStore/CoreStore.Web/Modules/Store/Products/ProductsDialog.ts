@@ -14,5 +14,15 @@ namespace CoreStore.Store {
 
         protected form = new ProductsForm(this.idPrefix);
 
+        constructor() {
+            super();
+        }
+
+        protected UpdateInterface() {
+            super.updateInterface();
+
+            Serenity.EditorUtils.setReadOnly(this.form.ProductCode, true);
+        }
+
     }
 }

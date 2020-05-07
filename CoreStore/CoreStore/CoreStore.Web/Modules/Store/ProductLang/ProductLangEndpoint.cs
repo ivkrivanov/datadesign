@@ -1,11 +1,10 @@
 ﻿
 namespace CoreStore.Store.Endpoints
 {
-    using Serenity;
+    using Microsoft.AspNetCore.Mvc;
     using Serenity.Data;
     using Serenity.Services;
     using System.Data;
-    using Microsoft.AspNetCore.Mvc;
     using MyRepository = Repositories.ProductLangRepository;
     using MyRow = Entities.ProductLangRow;
 

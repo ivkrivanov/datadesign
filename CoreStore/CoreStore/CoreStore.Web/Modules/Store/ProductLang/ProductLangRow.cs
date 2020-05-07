@@ -1,19 +1,17 @@
 ﻿
 namespace CoreStore.Store.Entities
 {
-    using Serenity;
     using Serenity.ComponentModel;
     using Serenity.Data;
     using Serenity.Data.Mapping;
     using System;
     using System.ComponentModel;
-    using System.IO;
 
     [ConnectionKey("Store"), Module("Store"), TableName("[dbo].[ProductLang]")]
     [DisplayName("Product Lang"), InstanceName("Product Lang")]
     [ReadPermission("Store:General")]
     [ModifyPermission("Store:General")]
-    public sealed class ProductLangRow : Row, IIdRow, INameRow
+    public sealed class ProductLangRow : Row, IIdRow, INameRow, ILocalizationRow
     {
         [DisplayName("Id"), Column("ID"), Identity]
         public Int32? Id
@@ -51,6 +49,11 @@ namespace CoreStore.Store.Entities
         StringField INameRow.NameField
         {
             get { return Fields.ProductName; }
+        }
+
+        public Field CultureIdField
+        {
+            get { return Fields.LanguageId; }
         }
 
         public static readonly RowFields Fields = new RowFields().Init();
