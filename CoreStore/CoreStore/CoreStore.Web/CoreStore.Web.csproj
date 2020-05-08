@@ -17,6 +17,9 @@
     <None Remove="Modules\Store\ProductDetails\ProductsDetailsEditor.ts" />
     <None Remove="Modules\Store\Products\ProductsEditor.ts" />
     <None Remove="Modules\Store\Products\ProductsExcelImportDialog.ts" />
+    <None Remove="Modules\Store\Shippers\ShippersFormatter.ts" />
+    <None Remove="Modules\Store\WaresMovementDetails\WaresMovementDetailsEditor.ts" />
+    <None Remove="Modules\Store\WaresMovement\StoreAverageDialog.ts" />
     <None Remove="Modules\Store\Wares\WaresExcelImportDialog.ts" />
     <TypeScriptCompile Remove="Modules\Store\Categories\CategoriesExcelImportDialog.ts" />
     <TypeScriptCompile Remove="Modules\Store\Notes\NotesEditor.ts" />

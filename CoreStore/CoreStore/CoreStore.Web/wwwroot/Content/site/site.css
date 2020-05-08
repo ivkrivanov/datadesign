@@ -8176,3 +8176,21 @@ section.content > .s-DataGrid {
 .s-Store-ProductsDialog .caption {
   width: 150px;
 }
+.s-Store-WaresMovementDetailsDialog > .size {
+  width: 650px;
+}
+.s-Store-WaresMovementDetailsDialog .caption {
+  width: 150px;
+}
+.s-Store-WaresMovementDialog > .size {
+  width: 650px;
+}
+.s-Store-WaresMovementDialog .caption {
+  width: 150px;
+}
+.s-Store-ShippersDialog > .size {
+  width: 650px;
+}
+.s-Store-ShippersDialog .caption {
+  width: 150px;
+}

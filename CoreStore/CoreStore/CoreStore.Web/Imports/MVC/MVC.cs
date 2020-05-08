@@ -144,6 +144,11 @@ namespace MVC
                 public const string ProductsIndex = "~/Modules/Store/Products/ProductsIndex.cshtml";
             }
 
+            public static class Shippers
+            {
+                public const string ShippersIndex = "~/Modules/Store/Shippers/ShippersIndex.cshtml";
+            }
+
             public static class Shops
             {
                 public const string ShopsIndex = "~/Modules/Store/Shops/ShopsIndex.cshtml";
@@ -152,6 +157,16 @@ namespace MVC
             public static class Wares
             {
                 public const string WaresIndex = "~/Modules/Store/Wares/WaresIndex.cshtml";
+            }
+
+            public static class WaresMovement
+            {
+                public const string WaresMovementIndex = "~/Modules/Store/WaresMovement/WaresMovementIndex.cshtml";
+            }
+
+            public static class WaresMovementDetails
+            {
+                public const string WaresMovementDetailsIndex = "~/Modules/Store/WaresMovementDetails/WaresMovementDetailsIndex.cshtml";
             }
 
         }
