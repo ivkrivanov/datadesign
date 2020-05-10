@@ -87,6 +87,30 @@
           "PermissionKey": "Store:General"
         },
         {
+          "Tablename": "dbo.ProductMovement",
+          "Identifier": "ProductMovement",
+          "Module": "Store",
+          "PermissionKey": "Store:General"
+        },
+        {
+          "Tablename": "dbo.ProductMovement Details",
+          "Identifier": "ProductMovementDetails",
+          "Module": "Store",
+          "PermissionKey": "Store:General"
+        },
+        {
+          "Tablename": "dbo.ProductMovement Doc",
+          "Identifier": "ProductMovementDoc",
+          "Module": "Store",
+          "PermissionKey": "Store:General"
+        },
+        {
+          "Tablename": "dbo.ProductMovementTotal",
+          "Identifier": "ProductMovementTotal",
+          "Module": "Store",
+          "PermissionKey": "Store:General"
+        },
+        {
           "Tablename": "dbo.Products",
           "Identifier": "Products",
           "Module": "Store",

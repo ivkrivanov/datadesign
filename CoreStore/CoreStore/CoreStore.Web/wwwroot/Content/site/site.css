@@ -8644,3 +8644,15 @@ s-Store-WaresGrid .slick-cell .dirty {
 .shipper-symbol.shipper-SpeedyExpress {
   background-image: url(../serenity/images/clock.png);
 }
+.s-Store-ProductMovementDetailsDialog > .size {
+  width: 650px;
+}
+.s-Store-ProductMovementDetailsDialog .caption {
+  width: 150px;
+}
+.s-Store-ProductMovementDialog > .size {
+  width: 650px;
+}
+.s-Store-ProductMovementDialog .caption {
+  width: 150px;
+}
