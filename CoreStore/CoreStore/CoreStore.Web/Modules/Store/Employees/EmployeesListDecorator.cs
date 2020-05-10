@@ -20,7 +20,7 @@ namespace CoreStore.Store
                 return;
             }
 
-            var byId = TwoLevelCache.GetLocalStoreOnly("EmployeeListDecorator:EmployeeById",
+            var byId = TwoLevelCache.GetLocalStoreOnly("EmployeesListDecorator:EmployeeById",
                 TimeSpan.Zero, EmployeesRow.Fields.GenerationKey, () =>
                 {
                     using (var connection = SqlConnections.NewFor<EmployeesRow>())

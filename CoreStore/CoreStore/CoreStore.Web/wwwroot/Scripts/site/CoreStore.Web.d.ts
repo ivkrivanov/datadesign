@@ -2521,6 +2521,11 @@ declare namespace CoreStore.Store {
         protected getInsertPermission(): string;
         protected getUpdatePermission(): string;
         protected form: CounterpartiesForm;
+        private loadedState;
+        constructor();
+        getSaveState(): string;
+        loadResponse(data: any): void;
+        onSaveSuccess(response: any): void;
     }
 }
 declare namespace CoreStore.Store {

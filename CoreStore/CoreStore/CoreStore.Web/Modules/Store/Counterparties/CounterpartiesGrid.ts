@@ -2,6 +2,7 @@
 namespace CoreStore.Store {
 
     @Serenity.Decorators.registerClass()
+    @Serenity.Decorators.filterable()
     export class CounterpartiesGrid extends Serenity.EntityGrid<CounterpartiesRow, any> {
         protected getColumnsKey() { return 'Store.Counterparties'; }
         protected getDialogType() { return CounterpartiesDialog; }

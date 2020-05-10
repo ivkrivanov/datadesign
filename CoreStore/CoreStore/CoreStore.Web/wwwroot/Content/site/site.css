@@ -8099,40 +8099,258 @@ section.content > .s-DataGrid {
   width: 150px;
 }
 .s-Store-CategoriesDialog > .size {
+  min-width: 650px;
   width: 650px;
+}
+.s-Store-CategoriesDialog .tab-pane {
+  height: auto;
+}
+.s-Store-CategoriesDialog .caption {
+  width: 150px;
+}
+.s-Store-CategoriesDialog .editor {
+  width: 400px;
+}
+.s-Store-CategoriesDialog input.editor[type=checkbox] {
+  width: auto;
+}
+.s-Store-CategoriesDialog .s-Form .editor.dateQ {
+  width: 376px;
+}
+.s-Store-CategoriesDialog .s-Form .editor.emailuser {
+  width: 170px;
+}
+.s-Store-CategoriesDialog .s-Form .editor.dateQ.s-DateTimeEditor {
+  width: 281px;
+}
+.s-Store-CategoriesDialog .s-Form .editor.s-DateTimeEditor.time {
+  width: 64px;
+  margin-left: 4px;
+}
+.s-Store-CategoriesDialog .s-Form .editor.has-inplace-button {
+  width: 374px;
+}
+.s-Store-CategoriesDialog .s-Form .emaildomain {
+  width: 215px;
+}
+.s-Store-CategoriesDialog .s-PropertyGrid .categories {
+  height: 260px;
 }
 .s-Store-CategoriesDialog .caption {
   width: 150px;
 }
 .s-Store-OperationTypeDialog > .size {
+  min-width: 650px;
   width: 650px;
+}
+.s-Store-OperationTypeDialog .tab-pane {
+  height: auto;
 }
 .s-Store-OperationTypeDialog .caption {
   width: 150px;
 }
-.s-Store-NotesDialog > .size {
-  width: 650px;
+.s-Store-OperationTypeDialog .editor {
+  width: 400px;
 }
-.s-Store-NotesDialog .caption {
+.s-Store-OperationTypeDialog input.editor[type=checkbox] {
+  width: auto;
+}
+.s-Store-OperationTypeDialog .s-Form .editor.dateQ {
+  width: 376px;
+}
+.s-Store-OperationTypeDialog .s-Form .editor.emailuser {
+  width: 170px;
+}
+.s-Store-OperationTypeDialog .s-Form .editor.dateQ.s-DateTimeEditor {
+  width: 281px;
+}
+.s-Store-OperationTypeDialog .s-Form .editor.s-DateTimeEditor.time {
+  width: 64px;
+  margin-left: 4px;
+}
+.s-Store-OperationTypeDialog .s-Form .editor.has-inplace-button {
+  width: 374px;
+}
+.s-Store-OperationTypeDialog .s-Form .emaildomain {
+  width: 215px;
+}
+.s-Store-OperationTypeDialog .s-PropertyGrid .categories {
+  height: 260px;
+}
+.s-Store-OperationTypeDialog .caption {
   width: 150px;
 }
+.s-NotesEditor {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.s-NotesEditor ul {
+  padding: 0;
+  min-height: 110px;
+  overflow-y: auto;
+  list-style: none;
+}
+.s-NotesEditor li {
+  margin: 10px;
+  border-radius: 4px;
+  border: 1px solid #C3C2C2;
+  background-color: #F5E7DC;
+  padding: 8px;
+  position: relative;
+}
+.s-NotesEditor .note-text {
+  padding-right: 24px;
+  display: block;
+}
+.s-NotesEditor .note-delete {
+  background-image: url('../serenity/images/delete2.png');
+  display: block;
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  right: 6px;
+  top: 6px;
+  opacity: 0.4;
+}
+.s-NotesEditor .note-delete:hover {
+  opacity: 1;
+}
+.s-NotesEditor .note-date {
+  margin-top: 6px;
+  display: block;
+  text-align: right;
+  color: #2a4084;
+  font-style: italic;
+}
+.s-NotesEditor .s-Toolbar {
+  background-color: #eee;
+  padding: 4px;
+}
+.s-NoteDialog > .size {
+  width: 465px;
+}
+.s-NoteDialog .ui-dialog-content {
+  padding-bottom: 10px;
+}
 .s-Store-MeasuresDialog > .size {
+  min-width: 650px;
   width: 650px;
+}
+.s-Store-MeasuresDialog .tab-pane {
+  height: auto;
+}
+.s-Store-MeasuresDialog .caption {
+  width: 150px;
+}
+.s-Store-MeasuresDialog .editor {
+  width: 400px;
+}
+.s-Store-MeasuresDialog input.editor[type=checkbox] {
+  width: auto;
+}
+.s-Store-MeasuresDialog .s-Form .editor.dateQ {
+  width: 376px;
+}
+.s-Store-MeasuresDialog .s-Form .editor.emailuser {
+  width: 170px;
+}
+.s-Store-MeasuresDialog .s-Form .editor.dateQ.s-DateTimeEditor {
+  width: 281px;
+}
+.s-Store-MeasuresDialog .s-Form .editor.s-DateTimeEditor.time {
+  width: 64px;
+  margin-left: 4px;
+}
+.s-Store-MeasuresDialog .s-Form .editor.has-inplace-button {
+  width: 374px;
+}
+.s-Store-MeasuresDialog .s-Form .emaildomain {
+  width: 215px;
+}
+.s-Store-MeasuresDialog .s-PropertyGrid .categories {
+  height: 260px;
 }
 .s-Store-MeasuresDialog .caption {
   width: 150px;
 }
 .s-Store-DocumentTypeDialog > .size {
+  min-width: 650px;
   width: 650px;
+}
+.s-Store-DocumentTypeDialog .tab-pane {
+  height: auto;
+}
+.s-Store-DocumentTypeDialog .caption {
+  width: 150px;
+}
+.s-Store-DocumentTypeDialog .editor {
+  width: 400px;
+}
+.s-Store-DocumentTypeDialog input.editor[type=checkbox] {
+  width: auto;
+}
+.s-Store-DocumentTypeDialog .s-Form .editor.dateQ {
+  width: 376px;
+}
+.s-Store-DocumentTypeDialog .s-Form .editor.emailuser {
+  width: 170px;
+}
+.s-Store-DocumentTypeDialog .s-Form .editor.dateQ.s-DateTimeEditor {
+  width: 281px;
+}
+.s-Store-DocumentTypeDialog .s-Form .editor.s-DateTimeEditor.time {
+  width: 64px;
+  margin-left: 4px;
+}
+.s-Store-DocumentTypeDialog .s-Form .editor.has-inplace-button {
+  width: 374px;
+}
+.s-Store-DocumentTypeDialog .s-Form .emaildomain {
+  width: 215px;
+}
+.s-Store-DocumentTypeDialog .s-PropertyGrid .categories {
+  height: 260px;
 }
 .s-Store-DocumentTypeDialog .caption {
   width: 150px;
 }
 .s-Store-ShopsDialog > .size {
+  min-width: 650px;
   width: 650px;
+}
+.s-Store-ShopsDialog .tab-pane {
+  height: auto;
 }
 .s-Store-ShopsDialog .caption {
   width: 150px;
+}
+.s-Store-ShopsDialog .editor {
+  width: 400px;
+}
+.s-Store-ShopsDialog input.editor[type=checkbox] {
+  width: auto;
+}
+.s-Store-ShopsDialog .s-Form .editor.dateQ {
+  width: 376px;
+}
+.s-Store-ShopsDialog .s-Form .editor.emailuser {
+  width: 170px;
+}
+.s-Store-ShopsDialog .s-Form .editor.dateQ.s-DateTimeEditor {
+  width: 281px;
+}
+.s-Store-ShopsDialog .s-Form .editor.s-DateTimeEditor.time {
+  width: 64px;
+  margin-left: 4px;
+}
+.s-Store-ShopsDialog .s-Form .editor.has-inplace-button {
+  width: 374px;
+}
+.s-Store-ShopsDialog .s-Form .emaildomain {
+  width: 215px;
+}
+.s-Store-ShopsDialog .s-PropertyGrid .categories {
+  height: 460px;
 }
 .s-Store-WaresLangDialog > .size {
   width: 650px;
@@ -8144,19 +8362,118 @@ section.content > .s-DataGrid {
   width: 650px;
 }
 .s-Store-WaresDialog .caption {
-  width: 150px;
+  width: 180px;
+}
+.s-Store-WaresDialog .s-PropertyGrid .categories {
+  height: 500px;
+}
+s-Store-WaresGrid .slick-cell input[type=text] {
+  text-align: right;
+  border-radius: 0;
+  width: 100%;
+  padding: 0 2px;
+  border: 1px solid #e7e7e7;
+}
+s-Store-WaresGrid .slick-cell .dirty {
+  background-color: #ffe0e0;
 }
 .s-Store-CounterpartiesDialog > .size {
-  width: 650px;
+  min-width: 850px;
+  width: 850px;
+  min-height: 580px;
+  height: 580px;
+}
+.s-Store-CounterpartiesDialog .ui-dialog-content {
+  overflow: hidden;
 }
 .s-Store-CounterpartiesDialog .caption {
-  width: 150px;
+  width: 130px;
+}
+.s-Store-CounterpartiesDialog .categories {
+  height: 380px;
+}
+.s-Store-CounterpartiesDialog .s-NotesEditor {
+  margin: 6px;
+  width: initial !important;
+  min-width: 100%;
+}
+.s-Store-CounterpartiesDialog.s-Panel {
+  min-height: 750px;
+}
+.s-Store-CounterpartiesDialog.s-Panel .categories {
+  height: auto;
 }
 .s-Store-ProductDetailsDialog > .size {
-  width: 650px;
+  min-width: 450px;
+  width: 450px;
+}
+.s-Store-ProductDetailsDialog .tab-pane {
+  height: auto;
 }
 .s-Store-ProductDetailsDialog .caption {
-  width: 150px;
+  width: 80px;
+}
+.s-Store-ProductDetailsDialog .editor {
+  width: 310px;
+}
+.s-Store-ProductDetailsDialog input.editor[type=checkbox] {
+  width: auto;
+}
+.s-Store-ProductDetailsDialog .s-Form .editor.dateQ {
+  width: 286px;
+}
+.s-Store-ProductDetailsDialog .s-Form .editor.emailuser {
+  width: 170px;
+}
+.s-Store-ProductDetailsDialog .s-Form .editor.dateQ.s-DateTimeEditor {
+  width: 191px;
+}
+.s-Store-ProductDetailsDialog .s-Form .editor.s-DateTimeEditor.time {
+  width: 64px;
+  margin-left: 4px;
+}
+.s-Store-ProductDetailsDialog .s-Form .editor.has-inplace-button {
+  width: 284px;
+}
+.s-Store-ProductDetailsDialog .s-Form .emaildomain {
+  width: 125px;
+}
+@media (max-width: 445px) {
+  .s-Store-ProductDetailsDialog > .size {
+    min-width: 320px;
+    width: 320px;
+  }
+  .s-Store-ProductDetailsDialog .tab-pane {
+    height: auto;
+  }
+  .s-Store-ProductDetailsDialog .caption {
+    width: 80px;
+  }
+  .s-Store-ProductDetailsDialog .editor {
+    width: 180px;
+  }
+  .s-Store-ProductDetailsDialog input.editor[type=checkbox] {
+    width: auto;
+  }
+  .s-Store-ProductDetailsDialog .s-Form .editor.dateQ {
+    width: 156px;
+  }
+  .s-Store-ProductDetailsDialog .s-Form .editor.emailuser {
+    width: 170px;
+  }
+  .s-Store-ProductDetailsDialog .s-Form .editor.dateQ.s-DateTimeEditor {
+    width: 61px;
+  }
+  .s-Store-ProductDetailsDialog .s-Form .editor.s-DateTimeEditor.time {
+    width: 64px;
+    margin-left: 4px;
+  }
+  .s-Store-ProductDetailsDialog .s-Form .editor.has-inplace-button {
+    width: 154px;
+  }
+  .s-Store-ProductDetailsDialog .s-Form .emaildomain {
+    width: -5px;
+  }
 }
 .s-Store-ProductLangDialog > .size {
   width: 650px;
@@ -8174,23 +8491,156 @@ section.content > .s-DataGrid {
   width: 650px;
 }
 .s-Store-ProductsDialog .caption {
-  width: 150px;
+  width: 180px;
+}
+.s-Store-ProductsDialog .s-PropertyGrid .categories {
+  height: 500px;
 }
 .s-Store-WaresMovementDetailsDialog > .size {
-  width: 650px;
+  min-width: 450px;
+  width: 450px;
+}
+.s-Store-WaresMovementDetailsDialog .tab-pane {
+  height: auto;
 }
 .s-Store-WaresMovementDetailsDialog .caption {
-  width: 150px;
+  width: 80px;
+}
+.s-Store-WaresMovementDetailsDialog .editor {
+  width: 310px;
+}
+.s-Store-WaresMovementDetailsDialog input.editor[type=checkbox] {
+  width: auto;
+}
+.s-Store-WaresMovementDetailsDialog .s-Form .editor.dateQ {
+  width: 286px;
+}
+.s-Store-WaresMovementDetailsDialog .s-Form .editor.emailuser {
+  width: 170px;
+}
+.s-Store-WaresMovementDetailsDialog .s-Form .editor.dateQ.s-DateTimeEditor {
+  width: 191px;
+}
+.s-Store-WaresMovementDetailsDialog .s-Form .editor.s-DateTimeEditor.time {
+  width: 64px;
+  margin-left: 4px;
+}
+.s-Store-WaresMovementDetailsDialog .s-Form .editor.has-inplace-button {
+  width: 284px;
+}
+.s-Store-WaresMovementDetailsDialog .s-Form .emaildomain {
+  width: 125px;
+}
+@media (max-width: 445px) {
+  .s-Store-WaresMovementDetailsDialog > .size {
+    min-width: 320px;
+    width: 320px;
+  }
+  .s-Store-WaresMovementDetailsDialog .tab-pane {
+    height: auto;
+  }
+  .s-Store-WaresMovementDetailsDialog .caption {
+    width: 80px;
+  }
+  .s-Store-WaresMovementDetailsDialog .editor {
+    width: 180px;
+  }
+  .s-Store-WaresMovementDetailsDialog input.editor[type=checkbox] {
+    width: auto;
+  }
+  .s-Store-WaresMovementDetailsDialog .s-Form .editor.dateQ {
+    width: 156px;
+  }
+  .s-Store-WaresMovementDetailsDialog .s-Form .editor.emailuser {
+    width: 170px;
+  }
+  .s-Store-WaresMovementDetailsDialog .s-Form .editor.dateQ.s-DateTimeEditor {
+    width: 61px;
+  }
+  .s-Store-WaresMovementDetailsDialog .s-Form .editor.s-DateTimeEditor.time {
+    width: 64px;
+    margin-left: 4px;
+  }
+  .s-Store-WaresMovementDetailsDialog .s-Form .editor.has-inplace-button {
+    width: 154px;
+  }
+  .s-Store-WaresMovementDetailsDialog .s-Form .emaildomain {
+    width: -5px;
+  }
 }
 .s-Store-WaresMovementDialog > .size {
-  width: 650px;
+  width: 850px;
 }
 .s-Store-WaresMovementDialog .caption {
-  width: 150px;
+  width: 130px;
+}
+.s-Store-WaresMovementDialog .s-PropertyGrid .categories {
+  height: 450px;
+}
+.s-Store-WaresMovementGrid .slick-cell input[type=text] {
+  text-align: right;
+  border-radius: 0;
+  width: 100%;
+  padding: 0 2px;
+  border: 1px solid #e7e7e7;
+}
+.s-Store-WaresMovementGrid .slick-cell .dirty {
+  background-color: #ffe0e0;
+}
+.s-Store-WaresMovementDialog.s-Panel {
+  min-height: 750px;
+}
+.s-Store-WaresMovementDialog.s-Panel .categories {
+  height: auto;
+}
+.s-Store-WaresMovementDialog.s-Panel .grid-container {
+  min-height: 300px;
 }
 .s-Store-ShippersDialog > .size {
+  min-width: 650px;
   width: 650px;
+}
+.s-Store-ShippersDialog .tab-pane {
+  height: auto;
 }
 .s-Store-ShippersDialog .caption {
   width: 150px;
+}
+.s-Store-ShippersDialog .editor {
+  width: 400px;
+}
+.s-Store-ShippersDialog input.editor[type=checkbox] {
+  width: auto;
+}
+.s-Store-ShippersDialog .s-Form .editor.dateQ {
+  width: 376px;
+}
+.s-Store-ShippersDialog .s-Form .editor.emailuser {
+  width: 170px;
+}
+.s-Store-ShippersDialog .s-Form .editor.dateQ.s-DateTimeEditor {
+  width: 281px;
+}
+.s-Store-ShippersDialog .s-Form .editor.s-DateTimeEditor.time {
+  width: 64px;
+  margin-left: 4px;
+}
+.s-Store-ShippersDialog .s-Form .editor.has-inplace-button {
+  width: 374px;
+}
+.s-Store-ShippersDialog .s-Form .emaildomain {
+  width: 215px;
+}
+.s-Store-ShippersDialog .s-PropertyGrid .categories {
+  height: 260px;
+}
+.shipper-symbol {
+  padding: 2px 0px 2px 20px;
+  background: url(../serenity/images/wheel.png) no-repeat center left;
+}
+.shipper-symbol.shipper-UnitedPackage {
+  background-image: url(../serenity/images/box.png);
+}
+.shipper-symbol.shipper-SpeedyExpress {
+  background-image: url(../serenity/images/clock.png);
 }

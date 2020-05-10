@@ -7,33 +7,143 @@
 }
 
 .s-Store-CategoriesDialog {
-    > .size { width: 650px; }
-    .caption { width: 150px; }
+    > .size {
+        .widthAndMin(650px);
+    }
+
+    .dialog-styles(@h: auto, @l: 150px, @e: 400px);
+
+    .s-PropertyGrid .categories {
+        height: 260px;
+    }
+
+    .caption {
+        width: 150px;
+    }
 }
 
 .s-Store-OperationTypeDialog {
-    > .size { width: 650px; }
-    .caption { width: 150px; }
+    > .size {
+        .widthAndMin(650px);
+    }
+
+    .dialog-styles(@h: auto, @l: 150px, @e: 400px);
+
+    .s-PropertyGrid .categories {
+        height: 260px;
+    }
+
+    .caption {
+        width: 150px;
+    }
 }
 
-.s-Store-NotesDialog {
-    > .size { width: 650px; }
-    .caption { width: 150px; }
+.s-NotesEditor {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+
+    ul {
+        padding: 0;
+        min-height: 110px;
+        overflow-y: auto;
+        list-style: none;
+    }
+
+    li {
+        margin: 10px;
+        border-radius: 4px;
+        border: 1px solid #C3C2C2;
+        background-color: #F5E7DC;
+        padding: 8px;
+        position: relative;
+    }
+
+    .note-text {
+        padding-right: 24px;
+        display: block;
+    }
+
+    .note-delete {
+        background-image: url('../serenity/images/delete2.png');
+        display: block;
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        right: 6px;
+        top: 6px;
+        opacity: 0.4;
+    }
+
+    .note-delete:hover {
+        opacity: 1;
+    }
+
+    .note-date {
+        margin-top: 6px;
+        display: block;
+        text-align: right;
+        color: rgb(42, 64, 132);
+        font-style: italic;
+    }
+
+    .s-Toolbar {
+        background-color: #eee;
+        padding: 4px;
+    }
+}
+
+.s-NoteDialog {
+    > .size {
+        width: 465px;
+    }
+
+    .ui-dialog-content {
+        padding-bottom: 10px;
+    }
 }
 
 .s-Store-MeasuresDialog {
-    > .size { width: 650px; }
-    .caption { width: 150px; }
+    > .size {
+        .widthAndMin(650px);
+    }
+
+    .dialog-styles(@h: auto, @l: 150px, @e: 400px);
+
+    .s-PropertyGrid .categories {
+        height: 260px;
+    }
+
+    .caption {
+        width: 150px;
+    }
 }
 
 .s-Store-DocumentTypeDialog {
-    > .size { width: 650px; }
-    .caption { width: 150px; }
+    > .size {
+        .widthAndMin(650px);
+    }
+
+    .dialog-styles(@h: auto, @l: 150px, @e: 400px);
+
+    .s-PropertyGrid .categories {
+        height: 260px;
+    }
+
+    .caption {
+        width: 150px;
+    }
 }
 
 .s-Store-ShopsDialog {
-    > .size { width: 650px; }
-    .caption { width: 150px; }
+    > .size {
+        .widthAndMin(650px);
+    }
+
+    .dialog-styles(@h: auto, @l: 150px, @e: 400px);
+
+    .s-PropertyGrid .categories {
+        height: 460px;
+    }
 }
 
 .s-Store-WaresLangDialog {
@@ -42,18 +152,82 @@
 }
 
 .s-Store-WaresDialog {
-    > .size { width: 650px; }
-    .caption { width: 150px; }
+    > .size {
+        width: 650px;
+    }
+
+    .caption {
+        width: 180px;
+    }
+
+    .s-PropertyGrid .categories {
+        height: 500px;
+    }
+}
+
+s-Store-WaresGrid {
+    .slick-cell {
+        input[type=text] {
+            text-align: right;
+            border-radius: 0;
+            width: 100%;
+            padding: 0 2px;
+            border: 1px solid #e7e7e7;
+        }
+
+        .dirty {
+            background-color: #ffe0e0;
+        }
+    }
 }
 
 .s-Store-CounterpartiesDialog {
-    > .size { width: 650px; }
-    .caption { width: 150px; }
+    > .size {
+        .widthAndMin(850px);
+        .heightAndMin(580px);
+    }
+
+    .ui-dialog-content {
+        overflow: hidden;
+    }
+
+    .caption {
+        width: 130px;
+    }
+
+    .categories {
+        height: 380px;
+    }
+
+    .s-NotesEditor {
+        margin: 6px;
+        width: initial !important;
+        min-width: 100%;
+    }
+}
+
+.s-Store-CounterpartiesDialog.s-Panel {
+    .categories {
+        height: auto;
+    }
+
+    min-height: 750px;
 }
 
 .s-Store-ProductDetailsDialog {
-    > .size { width: 650px; }
-    .caption { width: 150px; }
+    > .size {
+        .widthAndMin(450px);
+    }
+
+    .dialog-styles(@h: auto, @l: 80px, @e: 310px);
+
+    @media(max-width: 445px) {
+        > .size {
+            .widthAndMin(320px);
+        }
+
+        .dialog-styles(@h: auto, @l: 80px, @e: 180px);
+    }
 }
 
 .s-Store-ProductLangDialog {
@@ -67,21 +241,98 @@
 }
 
 .s-Store-ProductsDialog {
-    > .size { width: 650px; }
-    .caption { width: 150px; }
+    > .size {
+        width: 650px;
+    }
+
+    .caption {
+        width: 180px;
+    }
+
+    .s-PropertyGrid .categories {
+        height: 500px;
+    }
 }
 
 .s-Store-WaresMovementDetailsDialog {
-    > .size { width: 650px; }
-    .caption { width: 150px; }
+    > .size {
+        .widthAndMin(450px);
+    }
+
+    .dialog-styles(@h: auto, @l: 80px, @e: 310px);
+
+    @media(max-width: 445px) {
+        > .size {
+            .widthAndMin(320px);
+        }
+
+        .dialog-styles(@h: auto, @l: 80px, @e: 180px);
+    }
 }
 
 .s-Store-WaresMovementDialog {
-    > .size { width: 650px; }
-    .caption { width: 150px; }
+    > .size {
+        width: 850px;
+    }
+
+    .caption {
+        width: 130px;
+    }
+
+    .s-PropertyGrid .categories {
+        height: 450px;
+    }
+}
+
+.s-Store-WaresMovementGrid {
+    .slick-cell {
+        input[type=text] {
+            text-align: right;
+            border-radius: 0;
+            width: 100%;
+            padding: 0 2px;
+            border: 1px solid #e7e7e7;
+        }
+
+        .dirty {
+            background-color: #ffe0e0;
+        }
+    }
+}
+
+.s-Store-WaresMovementDialog.s-Panel {
+    .categories {
+        height: auto;
+    }
+
+    min-height: 750px;
+
+    .grid-container {
+        min-height: 300px;
+    }
 }
 
 .s-Store-ShippersDialog {
-    > .size { width: 650px; }
-    .caption { width: 150px; }
+    > .size {
+        .widthAndMin(650px);
+    }
+
+    .dialog-styles(@h: auto, @l: 150px, @e: 400px);
+
+    .s-PropertyGrid .categories {
+        height: 260px;
+    }
+}
+
+.shipper-symbol {
+    padding: 2px 0px 2px 20px;
+    background: url(../serenity/images/wheel.png) no-repeat center left;
+
+    &.shipper-UnitedPackage {
+        background-image: url(../serenity/images/box.png);
+    }
+
+    &.shipper-SpeedyExpress {
+        background-image: url(../serenity/images/clock.png);
+    }
 }

@@ -25,7 +25,7 @@ namespace CoreStore.Store.Entities
             set { Fields.EmployeeId[this] = value; }
         }
 
-        [DisplayName("Last Name"), Size(20), NotNull, QuickSearch]
+        [DisplayName("Last Name"), Size(20), NotNull]
         public String LastName
         {
             get { return Fields.LastName[this]; }
@@ -132,7 +132,7 @@ namespace CoreStore.Store.Entities
             set { Fields.Extension[this] = value; }
         }
 
-        [DisplayName("Photo"), Size(2147483647)]
+        [DisplayName("Photo")]
         public Stream Photo
         {
             get { return Fields.Photo[this]; }
@@ -146,7 +146,7 @@ namespace CoreStore.Store.Entities
             set { Fields.Notes[this] = value; }
         }
 
-        [DisplayName("Reports To"), ForeignKey(typeof(EmployeesRow)), LeftJoin("jReportsTo"), TextualField("ReportsToLastName")]
+        [DisplayName("Reports To"), ForeignKey(typeof(EmployeesRow)), LeftJoin("jReportsTo")]
         public Int32? ReportsTo
         {
             get { return Fields.ReportsTo[this]; }
@@ -160,126 +160,126 @@ namespace CoreStore.Store.Entities
             set { Fields.PhotoPath[this] = value; }
         }
 
-        [DisplayName("Reports To Last Name"), Expression("jReportsTo.[LastName]")]
+        [Origin("jReportsTo")]
         public String ReportsToLastName
         {
             get { return Fields.ReportsToLastName[this]; }
             set { Fields.ReportsToLastName[this] = value; }
         }
 
-        [DisplayName("Reports To First Name"), Expression("jReportsTo.[FirstName]")]
+        [Origin("jReportsTo")]
         public String ReportsToFirstName
         {
             get { return Fields.ReportsToFirstName[this]; }
             set { Fields.ReportsToFirstName[this] = value; }
         }
 
-        [DisplayName("Reports To Full Name"), Expression("jReportsTo.[FullName]")]
+        [Origin("jReportsTo")]
         public String ReportsToFullName
         {
             get { return Fields.ReportsToFullName[this]; }
             set { Fields.ReportsToFullName[this] = value; }
         }
 
-        [DisplayName("Reports To Title"), Expression("jReportsTo.[Title]")]
+        [Origin("jReportsTo")]
         public String ReportsToTitle
         {
             get { return Fields.ReportsToTitle[this]; }
             set { Fields.ReportsToTitle[this] = value; }
         }
 
-        [DisplayName("Reports To Title Of Courtesy"), Expression("jReportsTo.[TitleOfCourtesy]")]
+        [Origin("jReportsTo")]
         public String ReportsToTitleOfCourtesy
         {
             get { return Fields.ReportsToTitleOfCourtesy[this]; }
             set { Fields.ReportsToTitleOfCourtesy[this] = value; }
         }
 
-        [DisplayName("Reports To Birth Date"), Expression("jReportsTo.[BirthDate]")]
+        [Origin("jReportsTo")]
         public DateTime? ReportsToBirthDate
         {
             get { return Fields.ReportsToBirthDate[this]; }
             set { Fields.ReportsToBirthDate[this] = value; }
         }
 
-        [DisplayName("Reports To Hire Date"), Expression("jReportsTo.[HireDate]")]
+        [Origin("jReportsTo")]
         public DateTime? ReportsToHireDate
         {
             get { return Fields.ReportsToHireDate[this]; }
             set { Fields.ReportsToHireDate[this] = value; }
         }
 
-        [DisplayName("Reports To Address"), Expression("jReportsTo.[Address]")]
+        [Origin("jReportsTo")]
         public String ReportsToAddress
         {
             get { return Fields.ReportsToAddress[this]; }
             set { Fields.ReportsToAddress[this] = value; }
         }
 
-        [DisplayName("Reports To City"), Expression("jReportsTo.[City]")]
+        [Origin("jReportsTo")]
         public String ReportsToCity
         {
             get { return Fields.ReportsToCity[this]; }
             set { Fields.ReportsToCity[this] = value; }
         }
 
-        [DisplayName("Reports To Region"), Expression("jReportsTo.[Region]")]
+        [Origin("jReportsTo")]
         public String ReportsToRegion
         {
             get { return Fields.ReportsToRegion[this]; }
             set { Fields.ReportsToRegion[this] = value; }
         }
 
-        [DisplayName("Reports To Postal Code"), Expression("jReportsTo.[PostalCode]")]
+        [Origin("jReportsTo")]
         public String ReportsToPostalCode
         {
             get { return Fields.ReportsToPostalCode[this]; }
             set { Fields.ReportsToPostalCode[this] = value; }
         }
 
-        [DisplayName("Reports To Country"), Expression("jReportsTo.[Country]")]
+        [Origin("jReportsTo")]
         public String ReportsToCountry
         {
             get { return Fields.ReportsToCountry[this]; }
             set { Fields.ReportsToCountry[this] = value; }
         }
 
-        [DisplayName("Reports To Home Phone"), Expression("jReportsTo.[HomePhone]")]
+        [Origin("jReportsTo")]
         public String ReportsToHomePhone
         {
             get { return Fields.ReportsToHomePhone[this]; }
             set { Fields.ReportsToHomePhone[this] = value; }
         }
 
-        [DisplayName("Reports To Extension"), Expression("jReportsTo.[Extension]")]
+        [Origin("jReportsTo")]
         public String ReportsToExtension
         {
             get { return Fields.ReportsToExtension[this]; }
             set { Fields.ReportsToExtension[this] = value; }
         }
 
-        [DisplayName("Reports To Photo"), Expression("jReportsTo.[Photo]")]
+        [Origin("jReportsTo")]
         public Stream ReportsToPhoto
         {
             get { return Fields.ReportsToPhoto[this]; }
             set { Fields.ReportsToPhoto[this] = value; }
         }
 
-        [DisplayName("Reports To Notes"), Expression("jReportsTo.[Notes]")]
+        [Origin("jReportsTo")]
         public String ReportsToNotes
         {
             get { return Fields.ReportsToNotes[this]; }
             set { Fields.ReportsToNotes[this] = value; }
         }
 
-        [DisplayName("Reports To "), Expression("jReportsTo.[ReportsTo]")]
+        [Origin("jReportsTo")]
         public Int32? ReportsToReportsTo
         {
             get { return Fields.ReportsToReportsTo[this]; }
             set { Fields.ReportsToReportsTo[this] = value; }
         }
 
-        [DisplayName("Reports To Photo Path"), Expression("jReportsTo.[PhotoPath]")]
+        [Origin("jReportsTo")]
         public String ReportsToPhotoPath
         {
             get { return Fields.ReportsToPhotoPath[this]; }

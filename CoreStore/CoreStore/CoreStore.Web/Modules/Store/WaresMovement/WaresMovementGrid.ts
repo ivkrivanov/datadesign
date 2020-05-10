@@ -39,12 +39,13 @@ namespace CoreStore.Store {
             return filters;
         }
 
+
         protected createQuickFilters() {
             super.createQuickFilters();
 
             //this.findQuickFilter(Serenity.LookupEditor, fld.OperationTypeOperation).values = ["[102]Доставка на стоки"];
 
-            this.shippingStateFilter = this.findQuickFilter(Serenity.EnumEditor, fld.ShippingState);
+            //this.shippingStateFilter = this.findQuickFilter(Serenity.EnumEditor, fld.ShippingState);
         }
 
         protected getButtons() {
