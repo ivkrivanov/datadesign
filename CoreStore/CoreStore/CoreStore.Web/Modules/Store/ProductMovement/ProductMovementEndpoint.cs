@@ -1,11 +1,13 @@
 ﻿
 namespace CoreStore.Store.Endpoints
 {
-    using Serenity;
-    using Serenity.Data;
-    using Serenity.Services;
-    using System.Data;
     using Microsoft.AspNetCore.Mvc;
+    using Serenity.Data;
+    using Serenity.Reporting;
+    using Serenity.Services;
+    using Serenity.Web;
+    using System;
+    using System.Data;
     using MyRepository = Repositories.ProductMovementRepository;
     using MyRow = Entities.ProductMovementRow;
 
@@ -38,9 +40,18 @@ namespace CoreStore.Store.Endpoints
         }
 
         [HttpPost]
-        public ListResponse<MyRow> List(IDbConnection connection, ListRequest request)
+        public ListResponse<MyRow> List(IDbConnection connection, ProductMovementListRequest request)
         {
             return new MyRepository().List(connection, request);
+        }
+
+        public FileContentResult ListExcel(IDbConnection connection, ProductMovementListRequest request)
+        {
+            var data = List(connection, request).Entities;
+            var report = new DynamicDataReport(data, request.IncludeColumns, typeof(Columns.ProductMovementColumns));
+            var bytes = new ReportRepository().Render(report);
+            return ExcelContentResult.Create(bytes, "ProductMovementList_" +
+                DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".xlsx");
         }
     }
 }

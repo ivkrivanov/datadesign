@@ -89,6 +89,16 @@ namespace MVC
                     public const string AccountSignUp_AdminLTE = "~/Modules/Membership/Account/SignUp/AccountSignUp.AdminLTE.cshtml";
                 }
             }
+
+        }
+
+        public static class Reports
+        {
+            public static class Invoices
+            {
+                public const string ProductMovementDetailReport = "~/Modules/Reports/Invoices/ProductMovementDetailReport.cshtml";
+                public const string WaresMovementDetailReport = "~/Modules/Reports/Invoices/WaresMovementDetailReport.cshtml";
+            }
         }
 
         public static class Shared
@@ -162,6 +172,11 @@ namespace MVC
             public static class Shops
             {
                 public const string ShopsIndex = "~/Modules/Store/Shops/ShopsIndex.cshtml";
+            }
+
+            public static class Warehouse
+            {
+                public const string WarehouseIndex = "~/Modules/Store/Warehouse/WarehouseIndex.cshtml";
             }
 
             public static class Wares

@@ -8568,13 +8568,13 @@ s-Store-WaresGrid .slick-cell .dirty {
     width: -5px;
   }
 }
-.s-Store-WaresMovementDialog > .size {
+.s-Store-WaresMovementDialog s-Store-CounterpartiesWaresMovementDialog > .size {
   width: 850px;
 }
-.s-Store-WaresMovementDialog .caption {
+.s-Store-WaresMovementDialog s-Store-CounterpartiesWaresMovementDialog .caption {
   width: 130px;
 }
-.s-Store-WaresMovementDialog .s-PropertyGrid .categories {
+.s-Store-WaresMovementDialog s-Store-CounterpartiesWaresMovementDialog .s-PropertyGrid .categories {
   height: 450px;
 }
 .s-Store-WaresMovementGrid .slick-cell input[type=text] {
@@ -8587,13 +8587,16 @@ s-Store-WaresGrid .slick-cell .dirty {
 .s-Store-WaresMovementGrid .slick-cell .dirty {
   background-color: #ffe0e0;
 }
-.s-Store-WaresMovementDialog.s-Panel {
+.s-Store-WaresMovementDialog.s-Panel,
+s-Store-CounterpartiesWaresMovementDialog.s-Panel {
   min-height: 750px;
 }
-.s-Store-WaresMovementDialog.s-Panel .categories {
+.s-Store-WaresMovementDialog.s-Panel .categories,
+s-Store-CounterpartiesWaresMovementDialog.s-Panel .categories {
   height: auto;
 }
-.s-Store-WaresMovementDialog.s-Panel .grid-container {
+.s-Store-WaresMovementDialog.s-Panel .grid-container,
+s-Store-CounterpartiesWaresMovementDialog.s-Panel .grid-container {
   min-height: 300px;
 }
 .s-Store-ShippersDialog > .size {
@@ -8645,14 +8648,186 @@ s-Store-WaresGrid .slick-cell .dirty {
   background-image: url(../serenity/images/clock.png);
 }
 .s-Store-ProductMovementDetailsDialog > .size {
-  width: 650px;
+  min-width: 450px;
+  width: 450px;
+}
+.s-Store-ProductMovementDetailsDialog .tab-pane {
+  height: auto;
 }
 .s-Store-ProductMovementDetailsDialog .caption {
-  width: 150px;
+  width: 80px;
 }
-.s-Store-ProductMovementDialog > .size {
+.s-Store-ProductMovementDetailsDialog .editor {
+  width: 310px;
+}
+.s-Store-ProductMovementDetailsDialog input.editor[type=checkbox] {
+  width: auto;
+}
+.s-Store-ProductMovementDetailsDialog .s-Form .editor.dateQ {
+  width: 286px;
+}
+.s-Store-ProductMovementDetailsDialog .s-Form .editor.emailuser {
+  width: 170px;
+}
+.s-Store-ProductMovementDetailsDialog .s-Form .editor.dateQ.s-DateTimeEditor {
+  width: 191px;
+}
+.s-Store-ProductMovementDetailsDialog .s-Form .editor.s-DateTimeEditor.time {
+  width: 64px;
+  margin-left: 4px;
+}
+.s-Store-ProductMovementDetailsDialog .s-Form .editor.has-inplace-button {
+  width: 284px;
+}
+.s-Store-ProductMovementDetailsDialog .s-Form .emaildomain {
+  width: 125px;
+}
+@media (max-width: 445px) {
+  .s-Store-ProductMovementDetailsDialog > .size {
+    min-width: 320px;
+    width: 320px;
+  }
+  .s-Store-ProductMovementDetailsDialog .tab-pane {
+    height: auto;
+  }
+  .s-Store-ProductMovementDetailsDialog .caption {
+    width: 80px;
+  }
+  .s-Store-ProductMovementDetailsDialog .editor {
+    width: 180px;
+  }
+  .s-Store-ProductMovementDetailsDialog input.editor[type=checkbox] {
+    width: auto;
+  }
+  .s-Store-ProductMovementDetailsDialog .s-Form .editor.dateQ {
+    width: 156px;
+  }
+  .s-Store-ProductMovementDetailsDialog .s-Form .editor.emailuser {
+    width: 170px;
+  }
+  .s-Store-ProductMovementDetailsDialog .s-Form .editor.dateQ.s-DateTimeEditor {
+    width: 61px;
+  }
+  .s-Store-ProductMovementDetailsDialog .s-Form .editor.s-DateTimeEditor.time {
+    width: 64px;
+    margin-left: 4px;
+  }
+  .s-Store-ProductMovementDetailsDialog .s-Form .editor.has-inplace-button {
+    width: 154px;
+  }
+  .s-Store-ProductMovementDetailsDialog .s-Form .emaildomain {
+    width: -5px;
+  }
+}
+.s-Store-ProductMovementDialog > .size,
+s-Store-CounterpartiesProductMovementDialog > .size {
+  width: 850px;
+}
+.s-Store-ProductMovementDialog .caption,
+s-Store-CounterpartiesProductMovementDialog .caption {
+  width: 130px;
+}
+.s-Store-ProductMovementDialog .s-PropertyGrid .categories,
+s-Store-CounterpartiesProductMovementDialog .s-PropertyGrid .categories {
+  height: 450px;
+}
+.s-Store-ProductMovementDialog.s-Panel,
+s-Store-CounterpartiesProductMovementDialog.s-Panel {
+  min-height: 750px;
+}
+.s-Store-ProductMovementDialog.s-Panel .categories,
+s-Store-CounterpartiesProductMovementDialog.s-Panel .categories {
+  height: auto;
+}
+.s-Store-ProductMovementDialog.s-Panel .grid-container,
+s-Store-CounterpartiesProductMovementDialog.s-Panel .grid-container {
+  min-height: 300px;
+}
+.s-Store-ProductMovementDetailsDialog > .size {
+  min-width: 450px;
+  width: 450px;
+}
+.s-Store-ProductMovementDetailsDialog .tab-pane {
+  height: auto;
+}
+.s-Store-ProductMovementDetailsDialog .caption {
+  width: 80px;
+}
+.s-Store-ProductMovementDetailsDialog .editor {
+  width: 310px;
+}
+.s-Store-ProductMovementDetailsDialog input.editor[type=checkbox] {
+  width: auto;
+}
+.s-Store-ProductMovementDetailsDialog .s-Form .editor.dateQ {
+  width: 286px;
+}
+.s-Store-ProductMovementDetailsDialog .s-Form .editor.emailuser {
+  width: 170px;
+}
+.s-Store-ProductMovementDetailsDialog .s-Form .editor.dateQ.s-DateTimeEditor {
+  width: 191px;
+}
+.s-Store-ProductMovementDetailsDialog .s-Form .editor.s-DateTimeEditor.time {
+  width: 64px;
+  margin-left: 4px;
+}
+.s-Store-ProductMovementDetailsDialog .s-Form .editor.has-inplace-button {
+  width: 284px;
+}
+.s-Store-ProductMovementDetailsDialog .s-Form .emaildomain {
+  width: 125px;
+}
+@media (max-width: 445px) {
+  .s-Store-ProductMovementDetailsDialog > .size {
+    min-width: 320px;
+    width: 320px;
+  }
+  .s-Store-ProductMovementDetailsDialog .tab-pane {
+    height: auto;
+  }
+  .s-Store-ProductMovementDetailsDialog .caption {
+    width: 80px;
+  }
+  .s-Store-ProductMovementDetailsDialog .editor {
+    width: 180px;
+  }
+  .s-Store-ProductMovementDetailsDialog input.editor[type=checkbox] {
+    width: auto;
+  }
+  .s-Store-ProductMovementDetailsDialog .s-Form .editor.dateQ {
+    width: 156px;
+  }
+  .s-Store-ProductMovementDetailsDialog .s-Form .editor.emailuser {
+    width: 170px;
+  }
+  .s-Store-ProductMovementDetailsDialog .s-Form .editor.dateQ.s-DateTimeEditor {
+    width: 61px;
+  }
+  .s-Store-ProductMovementDetailsDialog .s-Form .editor.s-DateTimeEditor.time {
+    width: 64px;
+    margin-left: 4px;
+  }
+  .s-Store-ProductMovementDetailsDialog .s-Form .editor.has-inplace-button {
+    width: 154px;
+  }
+  .s-Store-ProductMovementDetailsDialog .s-Form .emaildomain {
+    width: -5px;
+  }
+}
+.s-Store-ProductMovementGrid .slick-cell input[type=text] {
+  text-align: right;
+  border-radius: 0;
+  width: 100%;
+  padding: 0 2px;
+  border: 1px solid #e7e7e7;
+}
+.s-Store-ProductMovementGrid .slick-cell .dirty {
+  background-color: #ffe0e0;
+}
+.s-Store-WarehouseDialog > .size {
   width: 650px;
 }
-.s-Store-ProductMovementDialog .caption {
+.s-Store-WarehouseDialog .caption {
   width: 150px;
 }

@@ -1,9 +1,8 @@
 ﻿
 namespace CoreStore.Store.Pages
 {
-    using Serenity;
-    using Serenity.Web;
     using Microsoft.AspNetCore.Mvc;
+    using Serenity.Web;
 
     [PageAuthorize(typeof(Entities.ProductMovementRow))]
     public class ProductMovementController : Controller

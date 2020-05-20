@@ -11,6 +11,10 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\**\*.sql" Exclude="bin\**;obj\**;**\*.xproj;packages\**;@(EmbeddedResource)" />
     <None Remove="Modules\Store\Counterparties\CounterpartiesEditor.ts" />
+    <None Remove="Modules\Store\Counterparties\CounterpartiesProductMovementDialog.ts" />
+    <None Remove="Modules\Store\Counterparties\CounterpartiesProductMovementGrid.ts" />
+    <None Remove="Modules\Store\Counterparties\CounterpartyWaresMovementDialog.ts" />
+    <None Remove="Modules\Store\Counterparties\CounterpartyWaresMovementGrid.ts" />
     <None Remove="Modules\Store\Employees\EmployeesFormatter.ts" />
     <None Remove="Modules\Store\Employees\EmployeesListFormatter.ts" />
     <None Remove="Modules\Store\ProductDetails\ProductDetailsEditor.ts" />
@@ -27,6 +31,14 @@
     <TypeScriptCompile Remove="Modules\Store\OperationType\OperationTypeEditor.ts" />
     <TypeScriptCompile Remove="Modules\Store\Shops\ShopsEditor.ts" />
     <TypeScriptCompile Remove="Modules\Store\Wares\WaresEditor.ts" />
+    <Content Include="App_Data\Reporting\wkhtmltopdf.exe" />
+    <Content Include="App_Data\upload\temporary\.temporary" />
+    <Content Include="App_Data\upload\temporary\204382fa5bb84d0bb2ddd4761bd93406.orig" />
+    <Content Include="App_Data\upload\temporary\204382fa5bb84d0bb2ddd4761bd93406.xlsx" />
+    <Content Include="App_Data\upload\temporary\75ae9a2b5beb4d14b8266633bde7ec4c.orig" />
+    <Content Include="App_Data\upload\temporary\75ae9a2b5beb4d14b8266633bde7ec4c.xlsx" />
+    <Content Include="App_Data\upload\temporary\f4352fd42da14bcc8b1f68b8ee49b577.orig" />
+    <Content Include="App_Data\upload\temporary\f4352fd42da14bcc8b1f68b8ee49b577.xlsx" />
     <None Update="wwwroot\**\*">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </None>
@@ -51,6 +63,14 @@
     <PackageReference Include="Serenity.Scripts" Version="3.12.6" />
     <PackageReference Include="Serenity.Web" Version="3.12.6" />
     <PackageReference Include="Serenity.Web.Assets" Version="3.9.2" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
+    <PackageReference Include="Wkhtmltopdf.NetCore" Version="3.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Update="App_Data\texts\user.texts.bg.json">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <DefineConstants>$(DefineConstants);COREFX;ASPNETCORE</DefineConstants>

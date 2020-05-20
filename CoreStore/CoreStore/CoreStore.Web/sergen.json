@@ -129,6 +129,12 @@
           "PermissionKey": "Store:General"
         },
         {
+          "Tablename": "dbo.Store",
+          "Identifier": "Warehouse",
+          "Module": "Store",
+          "PermissionKey": "Store:General"
+        },
+        {
           "Tablename": "dbo.Wares",
           "Identifier": "Wares",
           "Module": "Store",

@@ -93,31 +93,11 @@ namespace CoreStore.Store.Entities
         #region Products
 
         [DisplayName("Product"), PrimaryKey, ForeignKey(typeof(ProductsRow)), LeftJoin("p"), LookupInclude]
+        [LookupEditor(typeof(ProductsRow), InplaceAdd = true)]
         public Int32? ProductId
         {
             get { return Fields.ProductId[this]; }
             set { Fields.ProductId[this] = value; }
-        }
-
-        [DisplayName("Quantity"), NotNull]
-        public Single? Quantity
-        {
-            get { return Fields.Quantity[this]; }
-            set { Fields.Quantity[this] = value; }
-        }
-
-        [DisplayName("Single Price"), Size(15), Scale(4), NotNull]
-        public Decimal? SinglePrice
-        {
-            get { return Fields.SinglePrice[this]; }
-            set { Fields.SinglePrice[this] = value; }
-        }
-
-        [DisplayName("Discount"), Size(15), Scale(4), NotNull]
-        public Decimal? Discount
-        {
-            get { return Fields.Discount[this]; }
-            set { Fields.Discount[this] = value; }
         }
 
         [Origin("p"), MinSelectLevel(SelectLevel.List)]
@@ -129,6 +109,7 @@ namespace CoreStore.Store.Entities
         }
 
         [Origin("p"), MinSelectLevel(SelectLevel.List)]
+        [Column("ProductName")]
         public String ProductName
         {
             get { return Fields.ProductName[this]; }
@@ -136,10 +117,10 @@ namespace CoreStore.Store.Entities
         }
 
         [Origin("p")]
-        public Int32? ProductSupplierId
+        public Int32? ProductCounterpartyId
         {
-            get { return Fields.ProductSupplierId[this]; }
-            set { Fields.ProductSupplierId[this] = value; }
+            get { return Fields.ProductCounterpartyId[this]; }
+            set { Fields.ProductCounterpartyId[this] = value; }
         }
 
         [Origin("p")]
@@ -193,6 +174,39 @@ namespace CoreStore.Store.Entities
 
         #endregion Products
 
+
+        [DisplayName("Quantity"), Scale(4), NotNull]
+        [AlignRight, DisplayFormat("#,##0.0000")]
+        public Decimal? Quantity
+        {
+            get { return Fields.Quantity[this]; }
+            set { Fields.Quantity[this] = value; }
+        }
+
+        [DisplayName("Single Price"), Scale(4), NotNull]
+        [AlignRight, DisplayFormat("#,##0.0000")]
+        public Decimal? SinglePrice
+        {
+            get { return Fields.SinglePrice[this]; }
+            set { Fields.SinglePrice[this] = value; }
+        }
+
+        [DisplayName("Discount"), NotNull, DefaultValue(0)]
+        [AlignRight, DisplayFormat("#,##0.0000")]
+        public Single? Discount
+        {
+            get { return Fields.Discount[this]; }
+            set { Fields.Discount[this] = value; }
+        }
+
+        [DisplayName("Line Total"), Scale(4)]
+        [Expression("(t0.[SinglePrice] * t0.[Quantity] - t0.[Discount])")]
+        [AlignRight, DisplayFormat("#,##0.0000"), MinSelectLevel(SelectLevel.List)]
+        public Decimal? LineTotal
+        {
+            get { return Fields.LineTotal[this]; }
+            set { Fields.LineTotal[this] = value; }
+        }
         #region Tenant & Activ
 
         [Insertable(false), Updatable(false)]
@@ -237,9 +251,9 @@ namespace CoreStore.Store.Entities
         {
             public Int32Field ProductMoveId;
             public Int32Field ProductId;
-            public SingleField Quantity;
+            public DecimalField Quantity;
             public DecimalField SinglePrice;
-            public DecimalField Discount;
+            public SingleField Discount;
             public Int32Field DetailId;
 
             public Int16Field IsActive;
@@ -256,7 +270,7 @@ namespace CoreStore.Store.Entities
 
             public StringField ProductCode;
             public StringField ProductName;
-            public Int32Field ProductSupplierId;
+            public Int32Field ProductCounterpartyId;
             public Int32Field ProductCategoryId;
             public StringField ProductQuantityPerUnit;
             public DecimalField ProductUnitPrice;

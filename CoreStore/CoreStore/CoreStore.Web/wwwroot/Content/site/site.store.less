@@ -270,7 +270,7 @@ s-Store-WaresGrid {
     }
 }
 
-.s-Store-WaresMovementDialog {
+.s-Store-WaresMovementDialog s-Store-CounterpartiesWaresMovementDialog {
     > .size {
         width: 850px;
     }
@@ -300,7 +300,7 @@ s-Store-WaresGrid {
     }
 }
 
-.s-Store-WaresMovementDialog.s-Panel {
+.s-Store-WaresMovementDialog.s-Panel, s-Store-CounterpartiesWaresMovementDialog.s-Panel {
     .categories {
         height: auto;
     }
@@ -338,11 +338,80 @@ s-Store-WaresGrid {
 }
 
 .s-Store-ProductMovementDetailsDialog {
-    > .size { width: 650px; }
-    .caption { width: 150px; }
+    > .size {
+        .widthAndMin(450px);
+    }
+
+    .dialog-styles(@h: auto, @l: 80px, @e: 310px);
+
+    @media(max-width: 445px) {
+        > .size {
+            .widthAndMin(320px);
+        }
+
+        .dialog-styles(@h: auto, @l: 80px, @e: 180px);
+    }
 }
 
-.s-Store-ProductMovementDialog {
+.s-Store-ProductMovementDialog, s-Store-CounterpartiesProductMovementDialog {
+    > .size {
+        width: 850px;
+    }
+
+    .caption {
+        width: 130px;
+    }
+
+    .s-PropertyGrid .categories {
+        height: 450px;
+    }
+}
+
+.s-Store-ProductMovementDialog.s-Panel, s-Store-CounterpartiesProductMovementDialog.s-Panel {
+    .categories {
+        height: auto;
+    }
+
+    min-height: 750px;
+
+    .grid-container {
+        min-height: 300px;
+    }
+}
+
+.s-Store-ProductMovementDetailsDialog {
+    > .size {
+        .widthAndMin(450px);
+    }
+
+    .dialog-styles(@h: auto, @l: 80px, @e: 310px);
+
+    @media(max-width: 445px) {
+        > .size {
+            .widthAndMin(320px);
+        }
+
+        .dialog-styles(@h: auto, @l: 80px, @e: 180px);
+    }
+}
+
+.s-Store-ProductMovementGrid {
+    .slick-cell {
+        input[type=text] {
+            text-align: right;
+            border-radius: 0;
+            width: 100%;
+            padding: 0 2px;
+            border: 1px solid #e7e7e7;
+        }
+
+        .dirty {
+            background-color: #ffe0e0;
+        }
+    }
+}
+
+.s-Store-WarehouseDialog {
     > .size { width: 650px; }
     .caption { width: 150px; }
 }

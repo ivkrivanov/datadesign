@@ -6,7 +6,7 @@ namespace Store.Store.Lookups
     using Serenity.Web;
 
     [LookupScript]
-    public class ProductMovementLookup : RowLookupScript<WaresMovementRow>
+    public class ProductMovementLookup : RowLookupScript<ProductMovementRow>
     {
         public ProductMovementLookup()
         {

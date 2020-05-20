@@ -1,27 +1,45 @@
 ﻿
 namespace CoreStore.Store.Forms
 {
-    using Serenity;
     using Serenity.ComponentModel;
-    using Serenity.Data;
     using System;
-    using System.ComponentModel;
     using System.Collections.Generic;
-    using System.IO;
+    using System.ComponentModel;
 
     [FormScript("Store.ProductMovement")]
     [BasedOnRow(typeof(Entities.ProductMovementRow), CheckNames = true)]
     public class ProductMovementForm
     {
-        public String ShopId { get; set; }
-        public String CounterpartyId { get; set; }
-        public Int32 EmployeeId { get; set; }
-        public Int32 ShipperId { get; set; }
-        public Int32 OperationTypeId { get; set; }
+        [Tab("General")]
+        [Category("Order")]
+        [HalfWidth]
+        public ProductMovementOperations? OperationTypeId { get; set; }
+        [DefaultValue("now")]
+        [HalfWidth]
         public DateTime OrderDate { get; set; }
+        [HalfWidth]
+        public String ShopId { get; set; }
+        [HalfWidth]
+        public String CounterpartyId { get; set; }
+        [HalfWidth]
+        public Int32 EmployeeId { get; set; }
+        [HalfWidth]
         public DateTime RequiredDate { get; set; }
+        [HalfWidth]
+        public Int32 ShipperId { get; set; }
+        [HalfWidth]
         public DateTime ShippedDate { get; set; }
-        public Int32 IsActive { get; set; }
-        public Int32 TenantId { get; set; }
+        [OneThirdWidth]
+        public Int32 DocumentTypeId { get; set; }
+        [OneThirdWidth]
+        public String DocumentNumber { get; set; }
+        [OneThirdWidth]
+        public DateTime DocumentDate { get; set; }
+        [OneThirdWidth]
+        public Decimal Total { get; set; }
+
+        [Category("ProductMovementDetailsRow")]
+        [ProductMovementDetailsEditor]
+        public List<Entities.ProductMovementRow> DetailList { get; set; }
     }
 }

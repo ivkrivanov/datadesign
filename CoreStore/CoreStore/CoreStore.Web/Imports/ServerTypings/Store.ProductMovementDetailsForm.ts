@@ -1,6 +1,6 @@
 ﻿namespace CoreStore.Store {
     export interface ProductMovementDetailsForm {
-        ProductId: Serenity.IntegerEditor;
+        ProductId: Serenity.LookupEditor;
         Quantity: Serenity.DecimalEditor;
         SinglePrice: Serenity.DecimalEditor;
         Discount: Serenity.DecimalEditor;
@@ -17,7 +17,7 @@
                 ProductMovementDetailsForm.init = true;
 
                 var s = Serenity;
-                var w0 = s.IntegerEditor;
+                var w0 = s.LookupEditor;
                 var w1 = s.DecimalEditor;
 
                 Q.initFormType(ProductMovementDetailsForm, [

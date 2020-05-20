@@ -18,7 +18,7 @@
         ProductMoveShippedDate?: string;
         ProductCode?: string;
         ProductName?: string;
-        ProductSupplierId?: number;
+        ProductCounterpartyId?: number;
         ProductCategoryId?: number;
         ProductQuantityPerUnit?: string;
         ProductUnitPrice?: number;
@@ -26,6 +26,7 @@
         ProductUnitsOnOrder?: number;
         ProductReorderLevel?: number;
         ProductDiscontinued?: boolean;
+        LineTotal?: number;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -60,7 +61,7 @@
             ProductMoveShippedDate = "ProductMoveShippedDate",
             ProductCode = "ProductCode",
             ProductName = "ProductName",
-            ProductSupplierId = "ProductSupplierId",
+            ProductCounterpartyId = "ProductCounterpartyId",
             ProductCategoryId = "ProductCategoryId",
             ProductQuantityPerUnit = "ProductQuantityPerUnit",
             ProductUnitPrice = "ProductUnitPrice",
@@ -68,6 +69,7 @@
             ProductUnitsOnOrder = "ProductUnitsOnOrder",
             ProductReorderLevel = "ProductReorderLevel",
             ProductDiscontinued = "ProductDiscontinued",
+            LineTotal = "LineTotal",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",

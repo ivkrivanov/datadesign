@@ -15,6 +15,11 @@
   </PropertyGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\**\*.sql" Exclude="bin\**;obj\**;**\*.xproj;packages\**;@(EmbeddedResource)" />
+    <Compile Remove="App_Data\NewFolder\**" />
+    <Content Remove="App_Data\NewFolder\**" />
+    <EmbeddedResource Remove="App_Data\NewFolder\**" />
+    <None Remove="App_Data\NewFolder\**" />
+    <TypeScriptCompile Remove="App_Data\NewFolder\**" />
     <None Update="wwwroot\**\*">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </None>

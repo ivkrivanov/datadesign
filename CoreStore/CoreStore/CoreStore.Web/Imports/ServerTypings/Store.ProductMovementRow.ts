@@ -9,9 +9,11 @@
         OrderDate?: string;
         RequiredDate?: string;
         ShippedDate?: string;
+        DocumentTypeId?: number;
+        DocumentNumber?: string;
+        DocumentDate?: string;
         IsActive?: number;
         TenantId?: number;
-        ShopId1?: number;
         ShopShopName?: string;
         ShopContactName?: string;
         ShopContactTitle?: string;
@@ -21,47 +23,23 @@
         ShopPostalCode?: string;
         ShopCountry?: string;
         ShopPhone?: string;
-        ShopIsActive?: number;
-        ShopTenantId?: number;
-        CounterpartyId1?: number;
         CounterpartyCompanyName?: string;
         CounterpartyContactName?: string;
         CounterpartyContactTitle?: string;
-        CounterpartyAddress?: string;
         CounterpartyCity?: string;
         CounterpartyRegion?: string;
-        CounterpartyPostalCode?: string;
         CounterpartyCountry?: string;
         CounterpartyPhone?: string;
-        CounterpartyIsActive?: number;
-        CounterpartyTenantId?: number;
-        EmployeeLastName?: string;
-        EmployeeFirstName?: string;
-        EmployeeTitle?: string;
-        EmployeeTitleOfCourtesy?: string;
-        EmployeeBirthDate?: string;
-        EmployeeHireDate?: string;
-        EmployeeAddress?: string;
-        EmployeeCity?: string;
-        EmployeeRegion?: string;
-        EmployeePostalCode?: string;
-        EmployeeCountry?: string;
-        EmployeeHomePhone?: string;
-        EmployeeExtension?: string;
-        EmployeePhoto?: number[];
-        EmployeeNotes?: string;
-        EmployeeReportsTo?: number;
-        EmployeePhotoPath?: string;
-        EmployeeIsActive?: number;
-        EmployeeTenantId?: number;
+        EmployeeFullName?: string;
+        EmployeeGender?: Gender;
+        EmployeeReportsToFullName?: string;
         ShipperCompanyName?: string;
         ShipperPhone?: string;
-        ShipperIsActive?: number;
-        ShipperTenantId?: number;
-        OperationTypeOpCode?: number;
+        ShippingState?: ShippingState;
+        OperationTypeOpCode?: ProductMovementOperations;
         OperationTypeOperation?: string;
-        OperationTypeIsActive?: number;
-        OperationTypeTenantId?: number;
+        Total?: number;
+        DetailList?: ProductMovementDetailsRow[];
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -70,12 +48,18 @@
 
     export namespace ProductMovementRow {
         export const idProperty = 'ProductMoveId';
+        export const isActiveProperty = 'IsActive';
         export const nameProperty = 'ShopId';
         export const localTextPrefix = 'Store.ProductMovement';
-        export const deletePermission = 'Store:General';
-        export const insertPermission = 'Store:General';
-        export const readPermission = 'Store:General';
-        export const updatePermission = 'Store:General';
+        export const lookupKey = 'Store.ProductMovement';
+
+        export function getLookup(): Q.Lookup<ProductMovementRow> {
+            return Q.getLookup<ProductMovementRow>('Store.ProductMovement');
+        }
+        export const deletePermission = 'Store:Product:Delete';
+        export const insertPermission = 'Store:Product:Modify';
+        export const readPermission = 'Store:Product:View';
+        export const updatePermission = 'Store:Product:Modify';
 
         export declare const enum Fields {
             ProductMoveId = "ProductMoveId",
@@ -87,9 +71,11 @@
             OrderDate = "OrderDate",
             RequiredDate = "RequiredDate",
             ShippedDate = "ShippedDate",
+            DocumentTypeId = "DocumentTypeId",
+            DocumentNumber = "DocumentNumber",
+            DocumentDate = "DocumentDate",
             IsActive = "IsActive",
             TenantId = "TenantId",
-            ShopId1 = "ShopId1",
             ShopShopName = "ShopShopName",
             ShopContactName = "ShopContactName",
             ShopContactTitle = "ShopContactTitle",
@@ -99,47 +85,23 @@
             ShopPostalCode = "ShopPostalCode",
             ShopCountry = "ShopCountry",
             ShopPhone = "ShopPhone",
-            ShopIsActive = "ShopIsActive",
-            ShopTenantId = "ShopTenantId",
-            CounterpartyId1 = "CounterpartyId1",
             CounterpartyCompanyName = "CounterpartyCompanyName",
             CounterpartyContactName = "CounterpartyContactName",
             CounterpartyContactTitle = "CounterpartyContactTitle",
-            CounterpartyAddress = "CounterpartyAddress",
             CounterpartyCity = "CounterpartyCity",
             CounterpartyRegion = "CounterpartyRegion",
-            CounterpartyPostalCode = "CounterpartyPostalCode",
             CounterpartyCountry = "CounterpartyCountry",
             CounterpartyPhone = "CounterpartyPhone",
-            CounterpartyIsActive = "CounterpartyIsActive",
-            CounterpartyTenantId = "CounterpartyTenantId",
-            EmployeeLastName = "EmployeeLastName",
-            EmployeeFirstName = "EmployeeFirstName",
-            EmployeeTitle = "EmployeeTitle",
-            EmployeeTitleOfCourtesy = "EmployeeTitleOfCourtesy",
-            EmployeeBirthDate = "EmployeeBirthDate",
-            EmployeeHireDate = "EmployeeHireDate",
-            EmployeeAddress = "EmployeeAddress",
-            EmployeeCity = "EmployeeCity",
-            EmployeeRegion = "EmployeeRegion",
-            EmployeePostalCode = "EmployeePostalCode",
-            EmployeeCountry = "EmployeeCountry",
-            EmployeeHomePhone = "EmployeeHomePhone",
-            EmployeeExtension = "EmployeeExtension",
-            EmployeePhoto = "EmployeePhoto",
-            EmployeeNotes = "EmployeeNotes",
-            EmployeeReportsTo = "EmployeeReportsTo",
-            EmployeePhotoPath = "EmployeePhotoPath",
-            EmployeeIsActive = "EmployeeIsActive",
-            EmployeeTenantId = "EmployeeTenantId",
+            EmployeeFullName = "EmployeeFullName",
+            EmployeeGender = "EmployeeGender",
+            EmployeeReportsToFullName = "EmployeeReportsToFullName",
             ShipperCompanyName = "ShipperCompanyName",
             ShipperPhone = "ShipperPhone",
-            ShipperIsActive = "ShipperIsActive",
-            ShipperTenantId = "ShipperTenantId",
+            ShippingState = "ShippingState",
             OperationTypeOpCode = "OperationTypeOpCode",
             OperationTypeOperation = "OperationTypeOperation",
-            OperationTypeIsActive = "OperationTypeIsActive",
-            OperationTypeTenantId = "OperationTypeTenantId",
+            Total = "Total",
+            DetailList = "DetailList",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",
