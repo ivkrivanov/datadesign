@@ -2,7 +2,7 @@
 namespace Store.Store
 {
     using Serenity.Services;
-    public class CaregoryListRequest : ListRequest
+    public class CategoryListRequest : ListRequest
     {
         public int? CategoryID { get; set; }
     }

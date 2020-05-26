@@ -49,12 +49,12 @@ namespace Store.Store.Endpoints
             return new MyRepository().Retrieve(connection, request);
         }
 
-        public ListResponse<MyRow> List(IDbConnection connection, CaregoryListRequest request)
+        public ListResponse<MyRow> List(IDbConnection connection, CategoryListRequest request)
         {
             return new MyRepository().List(connection, request);
         }
 
-        public FileContentResult ListExcel(IDbConnection connection, CaregoryListRequest request)
+        public FileContentResult ListExcel(IDbConnection connection, CategoryListRequest request)
         {
             var data = List(connection, request).Entities;
             var report = new DynamicDataReport(data, request.IncludeColumns, typeof(Columns.CategoryColumns));

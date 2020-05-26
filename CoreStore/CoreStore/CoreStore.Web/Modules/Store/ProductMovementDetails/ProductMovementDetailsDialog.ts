@@ -12,7 +12,7 @@ namespace CoreStore.Store {
         protected getInsertPermission() { return ProductMovementDetailsRow.insertPermission; }
         protected getUpdatePermission() { return ProductMovementDetailsRow.updatePermission; }
 
-        protected form = new ProductMovementDetailsForm(this.idPrefix);
+        protected form : ProductMovementDetailsForm;
 
         constructor() {
             super();

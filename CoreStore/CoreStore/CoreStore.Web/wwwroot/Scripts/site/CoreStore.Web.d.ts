@@ -3428,10 +3428,13 @@ declare namespace CoreStore.Store {
         protected getInsertPermission(): string;
         protected getUpdatePermission(): string;
         protected form: CounterpartiesForm;
+        private ProductMoveGrid;
+        private WaresMoveGrid;
         private loadedState;
         constructor();
         getSaveState(): string;
         loadResponse(data: any): void;
+        loadEntity(entity: CounterpartiesRow): void;
         onSaveSuccess(response: any): void;
     }
 }
@@ -4005,7 +4008,12 @@ declare namespace CoreStore.Store {
 declare namespace CoreStore.Store {
     class WaresMovementDetailsDialog extends Common.GridEditorDialog<WaresMovementDetailsRow> {
         protected getFormKey(): string;
+        protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
+        protected getService(): any;
+        protected getDeletePermission(): string;
+        protected getInsertPermission(): string;
+        protected getUpdatePermission(): string;
         protected form: WaresMovementDetailsForm;
         constructor();
     }

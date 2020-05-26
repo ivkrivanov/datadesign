@@ -38,7 +38,7 @@ namespace Store.Store.Repositories
             return new LocalizationRowHandler<MyRow>().Retrieve(connection, request);
         }
 
-        public ListResponse<MyRow> List(IDbConnection connection, CaregoryListRequest request)
+        public ListResponse<MyRow> List(IDbConnection connection, CategoryListRequest request)
         {
             return new MyListHandler().Process(connection, request);
         }

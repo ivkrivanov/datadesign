@@ -5,7 +5,12 @@ namespace CoreStore.Store {
     @Serenity.Decorators.registerClass()
     export class WaresMovementDetailsDialog extends Common.GridEditorDialog<WaresMovementDetailsRow> {
         protected getFormKey() { return WaresMovementDetailsForm.formKey; }
+        protected getIdProperty() { return ProductMovementDetailsRow.idProperty; }
         protected getLocalTextPrefix() { return WaresMovementDetailsRow.localTextPrefix; }
+        protected getService() { return WaresMovementDetailsRow.baseUrl; }
+        protected getDeletePermission() { return WaresMovementDetailsRow.deletePermission; }
+        protected getInsertPermission() { return WaresMovementDetailsRow.insertPermission; }
+        protected getUpdatePermission() { return WaresMovementDetailsRow.updatePermission; }
 
         protected form: WaresMovementDetailsForm;
 

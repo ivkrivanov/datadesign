@@ -15,19 +15,19 @@ namespace CoreStore.Store {
 
         protected form = new CounterpartiesForm(this.idPrefix);
 
-        //private ProductMoveGrid: CounterpartyProductMovementGrid;
-        //private WaresMoveGrid: CounterpartyWaresMovementGrid;
+        private ProductMoveGrid: CounterpartiesProductMovementGrid;
+        private WaresMoveGrid: CounterpartiesWaresMovementGrid;
         private loadedState: string;
 
         constructor() {
             super();
 
-            //this.ProductMoveGrid = new CounterpartyProductMovementGrid(this.byId('ProductMovementGrid'));
-            //this.WaresMoveGrid = new CounterpartyWaresMovementGrid(this.byId('WaresMovementGrid'));
+            this.ProductMoveGrid = new CounterpartiesProductMovementGrid(this.byId('ProductMovementGrid'));
+            this.WaresMoveGrid = new CounterpartiesWaresMovementGrid(this.byId('WaresMovementGrid'));
             /// force order dialog to open in Dialog mode instead of Panel mode
             /// which is set as default on OrderDialog with @panelAttribute
-            //this.ProductMoveGrid.openDialogsAsPanel = false;
-            //this.WaresMoveGrid.openDialogsAsPanel = false;
+            this.ProductMoveGrid.openDialogsAsPanel = false;
+            this.WaresMoveGrid.openDialogsAsPanel = false;
 
             this.byId('NotesList').closest('.field').hide().end().appendTo(this.byId('TabNotes'));
             DialogUtils.pendingChangesConfirmation(this.element, () => this.getSaveState() != this.loadedState);
@@ -47,15 +47,15 @@ namespace CoreStore.Store {
             this.loadedState = this.getSaveState();
         }
 
-        //loadEntity(entity: CounterpartiesRow) {
-        //    super.loadEntity(entity);
+        loadEntity(entity: CounterpartiesRow) {
+            super.loadEntity(entity);
 
-        //    Serenity.TabsExtensions.setDisabled(this.tabs, 'Product Movement', this.isNewOrDeleted());
-        //    Serenity.TabsExtensions.setDisabled(this.tabs, 'Wares Movement', this.isNewOrDeleted());
+            Serenity.TabsExtensions.setDisabled(this.tabs, 'Product Movement', this.isNewOrDeleted());
+            Serenity.TabsExtensions.setDisabled(this.tabs, 'Wares Movement', this.isNewOrDeleted());
 
-        //    this.ProductMoveGrid.counterpartyID = entity.CounterpartyID;
-        //    this.WaresMoveGrid.counterpartyID = entity.CounterpartyID;
-        //}
+            this.ProductMoveGrid.counterpartyId = entity.CounterpartyId;
+            this.WaresMoveGrid.counterpartyId = entity.CounterpartyId;
+        }
 
         onSaveSuccess(response) {
             super.onSaveSuccess(response);

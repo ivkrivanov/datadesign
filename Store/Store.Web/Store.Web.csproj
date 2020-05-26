@@ -2135,7 +2135,7 @@
     <Compile Include="Modules\Common\Navigation\NavigationModel.cs" />
     <Compile Include="Modules\Common\Reporting\DynamicDataReport.cs" />
     <Compile Include="Modules\Common\Reporting\ExcelReportGenerator.cs" />
-    <Compile Include="Modules\Store\Category\CaregoryListRequest.cs" />
+    <Compile Include="Modules\Store\Category\CategoryListRequest.cs" />
     <Compile Include="Modules\Store\Category\CategoryExcelImportForm.cs" />
     <Compile Include="Modules\Store\ProductCosts\ProductCostsEndpoint.cs" />
     <Compile Include="Modules\Store\ProductCosts\ProductCostsRepository.cs" />
