@@ -251,6 +251,24 @@ namespace CoreStore.Store.Entities
 
         #region Total
 
+        //[DisplayName("Value"), NotNull]
+        [Origin("wmt")]
+        [AlignRight, DisplayFormat("#,##0.0000")]
+        public Decimal? Value
+        {
+            get { return Fields.Value[this]; }
+            set { Fields.Value[this] = value; }
+        }
+
+        //[DisplayName("VAT"), NotNull]
+        [Origin("wmt")]
+        [AlignRight, DisplayFormat("#,##0.0000")]
+        public Decimal? VAT
+        {
+            get { return Fields.VAT[this]; }
+            set { Fields.VAT[this] = value; }
+        }
+
         [Origin("wmt")]
         [AlignRight, DisplayFormat("#,##0.0000")]
         public Decimal? Total
@@ -413,6 +431,8 @@ namespace CoreStore.Store.Entities
             public Int16Field OperationTypeOpCode;
             public StringField OperationTypeOperation;
 
+            public DecimalField Value;
+            public DecimalField VAT;
             public DecimalField Total;
 
             public RowListField<WaresMovementDetailsRow> DetailList;

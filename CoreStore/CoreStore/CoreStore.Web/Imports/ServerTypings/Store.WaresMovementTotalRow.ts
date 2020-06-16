@@ -1,6 +1,8 @@
 ﻿namespace CoreStore.Store {
     export interface WaresMovementTotalRow {
         WaresMoveId?: number;
+        Value?: number;
+        VAT?: number;
         Total?: number;
     }
 
@@ -14,6 +16,8 @@
 
         export declare const enum Fields {
             WaresMoveId = "WaresMoveId",
+            Value = "Value",
+            VAT = "VAT",
             Total = "Total"
         }
     }
