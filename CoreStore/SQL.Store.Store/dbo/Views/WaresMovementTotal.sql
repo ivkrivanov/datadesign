@@ -3,8 +3,7 @@ AS
 SELECT  WaresMoveID, 
     SUM(SinglePrice * Quantity - Discount) AS Total, 
     SUM(((SinglePrice * Quantity - Discount) * 0.2) / (1 + 0.2)) AS VAT, 
-    SUM((SinglePrice * Quantity - Discount) - ((SinglePrice * Quantity - Discount) * 0.2) / (1 + 0.2)) 
-                         AS Value
+    SUM((SinglePrice * Quantity - Discount) - ((SinglePrice * Quantity - Discount) * 0.2) / (1 + 0.2)) AS Value
 FROM  dbo.[WaresMovement Details]
 GROUP BY WaresMoveID
 

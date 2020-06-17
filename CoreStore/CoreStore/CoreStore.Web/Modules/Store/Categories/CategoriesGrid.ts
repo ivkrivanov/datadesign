@@ -33,6 +33,10 @@ namespace CoreStore.Store {
             return flt;
         }
 
+        protected getDefaultSortBy() {
+            return [CategoriesRow.Fields.CategoryName];
+        }
+
         protected getButtons() {
             var buttons = super.getButtons();
 

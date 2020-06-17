@@ -3395,6 +3395,7 @@ declare namespace CoreStore.Store {
     }
 }
 declare namespace CoreStore.Store {
+    import fld = CategoriesRow.Fields;
     class CategoriesGrid extends Serenity.EntityGrid<CategoriesRow, any> {
         protected getColumnsKey(): string;
         protected getDialogType(): typeof CategoriesDialog;
@@ -3404,6 +3405,7 @@ declare namespace CoreStore.Store {
         protected getService(): string;
         constructor(container: JQuery);
         protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
+        protected getDefaultSortBy(): fld[];
         protected getButtons(): Serenity.ToolButton[];
     }
 }
