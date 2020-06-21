@@ -163,12 +163,19 @@
   ],
   "BaseRowClasses": [
     {
-      "ClassName": "CoreStore.Administration.LoggingRow",
+      "ClassName": "LoggingRow",
       "Fields": [
         "InsertUserId",
         "UpdateUserId",
         "InsertDate",
         "UpdateDate"
+      ]
+    },
+    {
+      "ClassName": "IMultiTenantRow",
+      "Fields": [
+        "TenantId",
+        "TenantIdField"
       ]
     }
   ],

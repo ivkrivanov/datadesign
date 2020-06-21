@@ -36,6 +36,10 @@ namespace CoreStore.Store.Forms
         [OneThirdWidth]
         public DateTime DocumentDate { get; set; }
         [OneThirdWidth]
+        public Decimal Value { get; set; }
+        [OneThirdWidth]
+        public Decimal VAT { get; set; }
+        [OneThirdWidth]
         public Decimal Total { get; set; }
 
         [Category("WaresMovementDetailsRow")]

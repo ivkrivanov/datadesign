@@ -225,6 +225,22 @@ namespace CoreStore.Store.Entities
             set { Fields.LineTotal[this] = value; }
         }
 
+        [DisplayName("Line VAT"), Expression("(t0.[SinglePrice] * t0.[Quantity] - t0.[Discount]) * (0.2) / (1 + 0.2)")]
+        [AlignRight, DisplayFormat("#,##0.0000"), MinSelectLevel(SelectLevel.List)]
+        public Decimal? LineVAT
+        {
+            get { return Fields.LineTotal[this]; }
+            set { Fields.LineTotal[this] = value; }
+        }
+
+        [DisplayName("Line Value"), Expression("(t0.[SinglePrice] * t0.[Quantity] - t0.[Discount]) + (t0.[SinglePrice] * t0.[Quantity] - t0.[Discount]) * (0.2) / (1 + 0.2)")]
+        [AlignRight, DisplayFormat("#,##0.0000"), MinSelectLevel(SelectLevel.List)]
+        public Decimal? LineValue
+        {
+            get { return Fields.LineTotal[this]; }
+            set { Fields.LineTotal[this] = value; }
+        }
+
         #region Tenant & Activ
 
         [Insertable(false), Updatable(false)]
@@ -298,6 +314,8 @@ namespace CoreStore.Store.Entities
             public DecimalField WaresUnitPrice;
             //public BooleanField WaresDiscontinued;
             public DecimalField LineTotal;
+            public DecimalField LineVAT;
+            public DecimalField LineValue;
         }
     }
 }

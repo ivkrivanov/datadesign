@@ -21,6 +21,22 @@ namespace CoreStore.Store.Entities
             set { Fields.WaresMoveId[this] = value; }
         }
 
+        [DisplayName("Value"), NotNull]
+        [AlignRight, DisplayFormat("#,##0.0000")]
+        public Decimal? Value
+        {
+            get { return Fields.Value[this]; }
+            set { Fields.Value[this] = value; }
+        }
+
+        [DisplayName("VAT"), NotNull]
+        [AlignRight, DisplayFormat("#,##0.0000")]
+        public Decimal? VAT
+        {
+            get { return Fields.VAT[this]; }
+            set { Fields.VAT[this] = value; }
+        }
+
         [DisplayName("Total"), NotNull]
         [AlignRight, DisplayFormat("#,##0.0000")]
         public Decimal? Total
@@ -28,6 +44,7 @@ namespace CoreStore.Store.Entities
             get { return Fields.Total[this]; }
             set { Fields.Total[this] = value; }
         }
+
         IIdField IIdRow.IdField
         {
             get { return Fields.WaresMoveId; }
@@ -42,6 +59,8 @@ namespace CoreStore.Store.Entities
         public class RowFields : RowFieldsBase
         {
             public Int32Field WaresMoveId;
+            public DecimalField Value;
+            public DecimalField VAT;
             public DecimalField Total;
         }
     }

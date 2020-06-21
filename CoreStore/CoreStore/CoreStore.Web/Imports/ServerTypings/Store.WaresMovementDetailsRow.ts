@@ -24,6 +24,8 @@
         WaresQuantityPerUnit?: string;
         WaresUnitPrice?: number;
         LineTotal?: number;
+        LineVAT?: number;
+        LineValue?: number;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -64,6 +66,8 @@
             WaresQuantityPerUnit = "WaresQuantityPerUnit",
             WaresUnitPrice = "WaresUnitPrice",
             LineTotal = "LineTotal",
+            LineVAT = "LineVAT",
+            LineValue = "LineValue",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",

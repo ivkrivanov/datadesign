@@ -2485,6 +2485,8 @@ declare namespace CoreStore.Store {
         WaresQuantityPerUnit?: string;
         WaresUnitPrice?: number;
         LineTotal?: number;
+        LineVAT?: number;
+        LineValue?: number;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -2523,6 +2525,8 @@ declare namespace CoreStore.Store {
             WaresQuantityPerUnit = "WaresQuantityPerUnit",
             WaresUnitPrice = "WaresUnitPrice",
             LineTotal = "LineTotal",
+            LineVAT = "LineVAT",
+            LineValue = "LineValue",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",
@@ -2579,6 +2583,8 @@ declare namespace CoreStore.Store {
         DocumentTypeId: Serenity.LookupEditor;
         DocumentNumber: Serenity.StringEditor;
         DocumentDate: Serenity.DateEditor;
+        Value: Serenity.DecimalEditor;
+        VAT: Serenity.DecimalEditor;
         Total: Serenity.DecimalEditor;
         DetailList: WaresMovementDetailsEditor;
     }
@@ -2648,6 +2654,8 @@ declare namespace CoreStore.Store {
         ShippingState?: ShippingState;
         OperationTypeOpCode?: WaresMovementOperations;
         OperationTypeOperation?: string;
+        Value?: number;
+        VAT?: number;
         Total?: number;
         DetailList?: WaresMovementDetailsRow[];
         InsertUserId?: number;
@@ -2705,6 +2713,8 @@ declare namespace CoreStore.Store {
             ShippingState = "ShippingState",
             OperationTypeOpCode = "OperationTypeOpCode",
             OperationTypeOperation = "OperationTypeOperation",
+            Value = "Value",
+            VAT = "VAT",
             Total = "Total",
             DetailList = "DetailList",
             InsertUserId = "InsertUserId",
@@ -2734,6 +2744,8 @@ declare namespace CoreStore.Store {
 declare namespace CoreStore.Store {
     interface WaresMovementTotalRow {
         WaresMoveId?: number;
+        Value?: number;
+        VAT?: number;
         Total?: number;
     }
     namespace WaresMovementTotalRow {
@@ -2745,6 +2757,8 @@ declare namespace CoreStore.Store {
         const updatePermission = "Store:Wares:Modify";
         const enum Fields {
             WaresMoveId = "WaresMoveId",
+            Value = "Value",
+            VAT = "VAT",
             Total = "Total"
         }
     }
@@ -3381,6 +3395,7 @@ declare namespace CoreStore.Store {
     }
 }
 declare namespace CoreStore.Store {
+    import fld = CategoriesRow.Fields;
     class CategoriesGrid extends Serenity.EntityGrid<CategoriesRow, any> {
         protected getColumnsKey(): string;
         protected getDialogType(): typeof CategoriesDialog;
@@ -3390,6 +3405,7 @@ declare namespace CoreStore.Store {
         protected getService(): string;
         constructor(container: JQuery);
         protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
+        protected getDefaultSortBy(): fld[];
         protected getButtons(): Serenity.ToolButton[];
     }
 }

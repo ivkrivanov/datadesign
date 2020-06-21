@@ -19,6 +19,10 @@ namespace CoreStore.Store.Columns
         [Width(80), AlignRight]
         public Single Discount { get; set; }
         [Width(100), AlignRight]
+        public Decimal LineValue { get; set; } 
+        [Width(100), AlignRight]
+        public Decimal LineVAT { get; set; }
+        [Width(100), AlignRight]
         public Decimal LineTotal { get; set; }
     }
 }
