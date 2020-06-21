@@ -9,6 +9,8 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "SQL.Store_Default_v1", "SQL
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "SQL.Store_Store_v1", "SQL.Store.Store\SQL.Store_Store_v1.sqlproj", "{E26C17B5-DA5B-4330-BAE3-E6EC14B473CF}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{A0934992-9032-4FB2-8685-E76225ED9DB8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{E26C17B5-DA5B-4330-BAE3-E6EC14B473CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E26C17B5-DA5B-4330-BAE3-E6EC14B473CF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E26C17B5-DA5B-4330-BAE3-E6EC14B473CF}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{A0934992-9032-4FB2-8685-E76225ED9DB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0934992-9032-4FB2-8685-E76225ED9DB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0934992-9032-4FB2-8685-E76225ED9DB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0934992-9032-4FB2-8685-E76225ED9DB8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

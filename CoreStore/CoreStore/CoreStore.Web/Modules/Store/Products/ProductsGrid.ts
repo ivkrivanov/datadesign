@@ -5,6 +5,7 @@ namespace CoreStore.Store {
 
     @Serenity.Decorators.registerClass()
     @Serenity.Decorators.filterable()
+    @Serenity.Decorators.panel()
     export class ProductsGrid extends Serenity.EntityGrid<ProductsRow, any> {
 
         protected getColumnsKey() { return 'Store.Products'; }

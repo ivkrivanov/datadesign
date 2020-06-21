@@ -1415,7 +1415,7 @@ declare namespace CoreStore.Store {
 }
 declare namespace CoreStore.Store {
     interface ProductDetailsForm {
-        WaresId: Serenity.IntegerEditor;
+        WaresId: Serenity.LookupEditor;
         Quantity: Serenity.DecimalEditor;
         ProductQuantity: Serenity.DecimalEditor;
         PlanPrice: Serenity.DecimalEditor;
@@ -1991,7 +1991,7 @@ declare namespace CoreStore.Store {
     namespace ProductsRow {
         const idProperty = "ProductId";
         const isActiveProperty = "IsActive";
-        const nameProperty = "ProductCode";
+        const nameProperty = "ProductName";
         const localTextPrefix = "Store.Products";
         const lookupKey = "Store.Product";
         function getLookup(): Q.Lookup<ProductsRow>;
@@ -2801,7 +2801,7 @@ declare namespace CoreStore.Store {
     namespace WaresRow {
         const idProperty = "WaresId";
         const isActiveProperty = "IsActive";
-        const nameProperty = "WaresCode";
+        const nameProperty = "WaresName";
         const localTextPrefix = "Store.Wares";
         const lookupKey = "Store.Wares";
         function getLookup(): Q.Lookup<WaresRow>;

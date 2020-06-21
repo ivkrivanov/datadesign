@@ -1,0 +1,23 @@
+version: '3.4'
+
+services:
+  corestore.web:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionString=${Default:-Server=sqldata;Database=Store_Default_v1;User Id=SA;Password=<DryRiver#958>}
+      - ConnectionString=${Store:-Server=sqldata;Database=Store_Store_v1;User Id=SA;Password=<DryRiver#958>}
+    ports:
+      - "80"
+  sqldata:
+    environment:
+      - SA_PASSWORD=<DryRiver#958>
+      - ACCEPT_EULA=Y
+      - attach_dbs='[{"dbName":"MyDBNAME","dbFiles":["d:\\sqldata\\Store_Default_v1.mdf","c:\\sqldata\\Store_Default_v1.ldf"]}]'
+      - attach_dbs='[{"dbName":"MyDBNAME","dbFiles":["d:\\sqldata\\Store_Store_v1.mdf","c:\\sqldata\\Store_Store_v1.ldf"]}]'
+    ports:
+      - "1433:1433"
+    #volumes:
+      #- corestore-data:/var/opt/mssql
+#volumes:
+  #corestore-sqldata:
+    #external: false

@@ -69,109 +69,6 @@ namespace CoreStore.Store.Entities
             set { Fields.Discontinued[this] = value; }
         }
 
-        //#region Supplier
-
-        //[DisplayName("Supplier"), ForeignKey(typeof(SupplierRow)), LeftJoin("sup")]
-        //[LookupEditor(typeof(SupplierRow), InplaceAdd = true)]
-        //public Int32? SupplierID
-        //{
-        //    get { return Fields.SupplierID[this]; }
-        //    set { Fields.SupplierID[this] = value; }
-        //}
-
-        //[Origin("sup"), DisplayName("STAT"), LookupInclude]
-        //public String SupplierSupplierStat
-        //{
-        //    get { return Fields.SupplierSupplierStat[this]; }
-        //    set { Fields.SupplierSupplierStat[this] = value; }
-        //}
-
-        //[Origin("sup"), DisplayName("Supplier"), LookupInclude]
-        //public String SupplierCompanyName
-        //{
-        //    get { return Fields.SupplierCompanyName[this]; }
-        //    set { Fields.SupplierCompanyName[this] = value; }
-        //}
-
-        //[Origin("sup")]
-        //public String SupplierContactName
-        //{
-        //    get { return Fields.SupplierContactName[this]; }
-        //    set { Fields.SupplierContactName[this] = value; }
-        //}
-
-        //[Origin("sup")]
-        //public String SupplierContactTitle
-        //{
-        //    get { return Fields.SupplierContactTitle[this]; }
-        //    set { Fields.SupplierContactTitle[this] = value; }
-        //}
-
-        //[Origin("sup")]
-        //public String SupplierAddress
-        //{
-        //    get { return Fields.SupplierAddress[this]; }
-        //    set { Fields.SupplierAddress[this] = value; }
-        //}
-
-        //[Origin("sup")]
-        //public String SupplierCity
-        //{
-        //    get { return Fields.SupplierCity[this]; }
-        //    set { Fields.SupplierCity[this] = value; }
-        //}
-
-        //[Origin("sup")]
-        //public String SupplierRegion
-        //{
-        //    get { return Fields.SupplierRegion[this]; }
-        //    set { Fields.SupplierRegion[this] = value; }
-        //}
-
-        //[Origin("sup")]
-        //public String SupplierPostalCode
-        //{
-        //    get { return Fields.SupplierPostalCode[this]; }
-        //    set { Fields.SupplierPostalCode[this] = value; }
-        //}
-
-        //[Origin("sup")]
-        //public String SupplierCountry
-        //{
-        //    get { return Fields.SupplierCountry[this]; }
-        //    set { Fields.SupplierCountry[this] = value; }
-        //}
-
-        //[Origin("sup")]
-        //public String SupplierPhone
-        //{
-        //    get { return Fields.SupplierPhone[this]; }
-        //    set { Fields.SupplierPhone[this] = value; }
-        //}
-
-        //[Origin("sup")]
-        //public String SupplierFax
-        //{
-        //    get { return Fields.SupplierFax[this]; }
-        //    set { Fields.SupplierFax[this] = value; }
-        //}
-
-        //[Origin("sup")]
-        //public String SupplierEmail
-        //{
-        //    get { return Fields.SupplierEmail[this]; }
-        //    set { Fields.SupplierEmail[this] = value; }
-        //}
-
-        //[Origin("sup")]
-        //public String SupplierHomePage
-        //{
-        //    get { return Fields.SupplierHomePage[this]; }
-        //    set { Fields.SupplierHomePage[this] = value; }
-        //}
-
-        //#endregion Supplier
-
         #region Counterparty
 
         [DisplayName("Counterparty ID"), NotNull, ForeignKey(typeof(CounterpartiesRow), "CounterpartyID"), LeftJoin("c")]
@@ -362,7 +259,7 @@ namespace CoreStore.Store.Entities
 
         StringField INameRow.NameField
         {
-            get { return Fields.ProductCode; }
+            get { return Fields.ProductName; }
         }
 
         public static readonly RowFields Fields = new RowFields().Init();
@@ -381,7 +278,6 @@ namespace CoreStore.Store.Entities
             public StringField ProductName;
             public StringField ProductImage;
             public StringField CounterpartyId;
-            //public Int32Field SupplierId;
             public Int32Field CategoryId;
             public Int32Field MeasureId;
             public StringField QuantityPerUnit;
@@ -393,20 +289,6 @@ namespace CoreStore.Store.Entities
 
             public Int16Field IsActive;
             public Int32Field TenantId;
-
-            //public StringField SupplierSupplierStat;
-            //public StringField SupplierCompanyName;
-            //public StringField SupplierContactName;
-            //public StringField SupplierContactTitle;
-            //public StringField SupplierAddress;
-            //public StringField SupplierCity;
-            //public StringField SupplierRegion;
-            //public StringField SupplierPostalCode;
-            //public StringField SupplierCountry;
-            //public StringField SupplierPhone;
-            //public StringField SupplierFax;
-            //public StringField SupplierEmail;
-            //public StringField SupplierHomePage;
 
             public StringField CounterpartyCompanyName;
             public StringField CounterpartyContactName;

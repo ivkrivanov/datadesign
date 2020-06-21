@@ -19,7 +19,7 @@ namespace CoreStore.Store.Entities
     [LocalizationRow(typeof(WaresLangRow))]
     public sealed class WaresRow : LoggingRow, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
     {
-        [DisplayName("Wares Id"), Column("WaresID"), Identity, LookupInclude]
+        [DisplayName("Wares Id"), Identity, LookupInclude]
         public Int32? WaresId
         {
             get { return Fields.WaresId[this]; }
@@ -61,13 +61,6 @@ namespace CoreStore.Store.Entities
             get { return Fields.WaresImage[this]; }
             set { Fields.WaresImage[this] = value; }
         }
-
-        //[DisplayName("Supplier"), Column("SupplierID"), ForeignKey(typeof(SupplierRow)), LeftJoin("sup"), TextualField("SupplierCompanyName")]
-        //public Int32? SupplierId
-        //{
-        //    get { return Fields.SupplierId[this]; }
-        //    set { Fields.SupplierId[this] = value; }
-        //}
 
         [DisplayName("Quantity Per Unit"), Size(15), Scale(4), DefaultValue(1)]
         public Decimal? QuantityPerUnit
@@ -112,7 +105,6 @@ namespace CoreStore.Store.Entities
         }
 
         #region Counterparty
-        //[DisplayName("Counterparty ID"), NotNull, ForeignKey("dbo.Counterparties", "CounterpartyID"), LeftJoin("c")]
         [DisplayName("Counterparty ID"), NotNull, ForeignKey(typeof(CounterpartiesRow), "CounterpartyID"), LeftJoin("c")]
         [QuickSearch, CounterpartiesEditor, LookupInclude]
         public String CounterpartyId
@@ -121,16 +113,16 @@ namespace CoreStore.Store.Entities
             set { Fields.CounterpartyId[this] = value; }
         }
 
-        //[Origin("c")]
-        [DisplayName("Counterparty Contact Name"), Expression("c.[ContactName]")]
+        [Origin("c")]
+        //[DisplayName("Counterparty Contact Name"), Expression("c.[ContactName]")]
         public String CounterpartyContactName
         {
             get { return Fields.CounterpartyContactName[this]; }
             set { Fields.CounterpartyContactName[this] = value; }
         }
 
-        //[Origin("c"), DisplayName("Counterparty")]
-        [DisplayName("Counterparty Company Name"), Expression("c.[CompanyName]")]
+        [Origin("c"), DisplayName("Counterparty")]
+        //[DisplayName("Counterparty Company Name"), Expression("c.[CompanyName]")]
         [LookupInclude, MinSelectLevel(SelectLevel.List)]
         public String CounterpartyCompanyName
         {
@@ -138,40 +130,40 @@ namespace CoreStore.Store.Entities
             set { Fields.CounterpartyCompanyName[this] = value; }
         }
 
-        //[Origin("c")]
-        [DisplayName("Counterparty Contact Title"), Expression("c.[ContactTitle]")]
+        [Origin("c")]
+        //[DisplayName("Counterparty Contact Title"), Expression("c.[ContactTitle]")]
         public String CounterpartyContactTitle
         {
             get { return Fields.CounterpartyContactTitle[this]; }
             set { Fields.CounterpartyContactTitle[this] = value; }
         }
 
-        //[Origin("c")]
-        [DisplayName("Counterparty City"), Expression("c.[City]")]
+        [Origin("c")]
+        //[DisplayName("Counterparty City"), Expression("c.[City]")]
         public String CounterpartyCity
         {
             get { return Fields.CounterpartyCity[this]; }
             set { Fields.CounterpartyCity[this] = value; }
         }
 
-        //[Origin("c")]
-        [DisplayName("Counterparty Region"), Expression("c.[Region]")]
+        [Origin("c")]
+        //[DisplayName("Counterparty Region"), Expression("c.[Region]")]
         public String CounterpartyRegion
         {
             get { return Fields.CounterpartyRegion[this]; }
             set { Fields.CounterpartyRegion[this] = value; }
         }
 
-        //[Origin("c")]
-        [DisplayName("Counterparty Country"), Expression("c.[Country]")]
+        [Origin("c")]
+        //[DisplayName("Counterparty Country"), Expression("c.[Country]")]
         public String CounterpartyCountry
         {
             get { return Fields.CounterpartyCountry[this]; }
             set { Fields.CounterpartyCountry[this] = value; }
         }
 
-        //[Origin("c")]
-        [DisplayName("Counterparty Phone"), Expression("c.[Phone]")]
+        [Origin("c")]
+        //[DisplayName("Counterparty Phone"), Expression("c.[Phone]")]
         public String CounterpartyPhone
         {
             get { return Fields.CounterpartyPhone[this]; }
@@ -267,7 +259,7 @@ namespace CoreStore.Store.Entities
 
         StringField INameRow.NameField
         {
-            get { return Fields.WaresCode; }
+            get { return Fields.WaresName; }
         }
 
         public static readonly RowFields Fields = new RowFields().Init();

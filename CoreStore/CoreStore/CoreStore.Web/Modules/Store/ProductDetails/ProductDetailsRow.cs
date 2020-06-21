@@ -24,7 +24,7 @@ namespace CoreStore.Store.Entities
 
         #region Product
 
-        [DisplayName("Product"), Column("ProductId"), PrimaryKey, ForeignKey(typeof(ProductsRow)), LeftJoin("p"), Updatable(false)]
+        [DisplayName("Product"), PrimaryKey, ForeignKey(typeof(ProductsRow)), LeftJoin("p"), Updatable(false)]
         public Int32? ProductId
         {
             get { return Fields.ProductId[this]; }
@@ -37,13 +37,6 @@ namespace CoreStore.Store.Entities
             get { return Fields.ProductName[this]; }
             set { Fields.ProductName[this] = value; }
         }
-
-        //[Origin("p")]
-        //public Int32? ProductSupplierId
-        //{
-        //    get { return Fields.ProductSupplierId[this]; }
-        //    set { Fields.ProductSupplierId[this] = value; }
-        //}
 
         [Origin("p")]
         public Int32? ProductCategoryId
@@ -99,6 +92,7 @@ namespace CoreStore.Store.Entities
         #region Wares
 
         [DisplayName("Wares"), ForeignKey(typeof(WaresRow)), LeftJoin("w"), LookupInclude]
+        [LookupEditor(typeof(WaresRow), InplaceAdd = true)]
         public Int32? WaresId
         {
             get { return Fields.WaresId[this]; }
@@ -184,14 +178,14 @@ namespace CoreStore.Store.Entities
 
         #endregion Wares
 
-        [DisplayName("Quantity"), NotNull]
+        [DisplayName("Quantity"), NotNull, DefaultValue(1), AlignRight]
         public Single? Quantity
         {
             get { return Fields.Quantity[this]; }
             set { Fields.Quantity[this] = value; }
         }
 
-        [DisplayName("Product Quantity"), NotNull]
+        [DisplayName("Product Quantity"), NotNull, DefaultValue(1), AlignRight]
         public Double? ProductQuantity
         {
             get { return Fields.ProductQuantity[this]; }
@@ -205,7 +199,7 @@ namespace CoreStore.Store.Entities
             set { Fields.PlanPrice[this] = value; }
         }
 
-        [DisplayName("Discount"), NotNull]
+        [DisplayName("Discount"), NotNull, DefaultValue(0)]
         public Single? Discount
         {
             get { return Fields.Discount[this]; }
@@ -274,7 +268,6 @@ namespace CoreStore.Store.Entities
             public Int32Field TenantId;
 
             public StringField ProductName;
-            //public Int32Field ProductSupplierId;
             public Int32Field ProductCategoryId;
             public StringField ProductQuantityPerUnit;
             public DecimalField ProductUnitPrice;
