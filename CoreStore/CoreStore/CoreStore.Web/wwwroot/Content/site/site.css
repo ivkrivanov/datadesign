@@ -8735,6 +8735,10 @@ s-Store-CounterpartiesProductMovementDialog .s-PropertyGrid .categories {
 s-Store-CounterpartiesProductMovementDialog.s-Panel {
   min-height: 750px;
 }
+.s-Store-ProductMovementDialog.s-Panel > .size,
+s-Store-CounterpartiesProductMovementDialog.s-Panel > .size {
+  width: 850px;
+}
 .s-Store-ProductMovementDialog.s-Panel .categories,
 s-Store-CounterpartiesProductMovementDialog.s-Panel .categories {
   height: auto;
