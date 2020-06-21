@@ -6,13 +6,13 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
-COPY ["CoreStore/CoreStore.Web/CoreStore.Web.csproj", "CoreStore/CoreStore.Web/"]
-RUN dotnet restore "CoreStore/CoreStore.Web/CoreStore.Web.csproj"
+COPY ["CoreStore.Web/CoreStore.Web.csproj", "CoreStore.Web/"]
+RUN dotnet restore "CoreStore.Web/CoreStore.Web.csproj"
 COPY . .
-WORKDIR "/src/CoreStore/CoreStore.Web"
-#RUN dotnet build "CoreStore.Web.csproj" -c Release -o /app/build
+WORKDIR "/src/CoreStore.Web"
+RUN dotnet build "CoreStore.Web.csproj" -c Release -o /app/build
 
-#FROM build AS publish
+FROM build AS publish
 RUN dotnet publish "CoreStore.Web.csproj" -c Release -o /app/publish
 
 FROM base AS final

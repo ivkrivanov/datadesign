@@ -5,6 +5,6 @@ services:
     image: ${DOCKER_REGISTRY-}corestoreweb
     build:
       context: .
-      dockerfile: CoreStore/CoreStore.Web/Dockerfile
+      dockerfile: CoreStore.Web/Dockerfile
   sqldata:
     image: "mcr.microsoft.com/mssql/server:2019-CU3-ubuntu-18.04"

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreStore.Web", "CoreStore\CoreStore.Web\CoreStore.Web.csproj", "{C2F820C0-D2EA-4F19-9586-6D2B4262726F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreStore.Web", "CoreStore.Web\CoreStore.Web.csproj", "{C2F820C0-D2EA-4F19-9586-6D2B4262726F}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "SQL.Store_Default_v1", "SQL.Store.Default\SQL.Store_Default_v1.sqlproj", "{DC8978A7-7A14-4EFC-A126-E0EADDACA8E2}"
 EndProject
