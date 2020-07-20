@@ -4026,7 +4026,7 @@ declare namespace CoreStore.Store {
         protected getFormKey(): string;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
-        protected getService(): any;
+        protected getService(): string;
         protected getDeletePermission(): string;
         protected getInsertPermission(): string;
         protected getUpdatePermission(): string;

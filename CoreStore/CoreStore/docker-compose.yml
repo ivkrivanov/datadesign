@@ -2,9 +2,11 @@ version: '3.4'
 
 services:
   corestore.web:
-    image: ${DOCKER_REGISTRY-}corestoreweb
+    image: hub.docker.local:8888/corestoree.web:dev
+
     build:
       context: .
       dockerfile: CoreStore.Web/Dockerfile
+
   sqldata:
     image: "mcr.microsoft.com/mssql/server:2019-CU3-ubuntu-18.04"
