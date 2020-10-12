@@ -10,6 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\**\*.sql" Exclude="bin\**;obj\**;**\*.xproj;packages\**;@(EmbeddedResource)" />
+    <None Remove="Migrations\DefaultDB\DefaultDBScript_SQLServer.sql" />
     <None Remove="Modules\Store\Counterparties\CounterpartiesEditor.ts" />
     <None Remove="Modules\Store\Counterparties\CounterpartiesProductMovementDialog.ts" />
     <None Remove="Modules\Store\Counterparties\CounterpartiesProductMovementGrid.ts" />
