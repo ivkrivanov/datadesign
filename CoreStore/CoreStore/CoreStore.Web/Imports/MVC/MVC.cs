@@ -100,16 +100,16 @@ namespace MVC
                 public const string WaresMovementDetailReport = "~/Modules/Reports/Invoices/WaresMovementDetailReport.cshtml";
             }
 
-            public static class Warehause
+            public static class Warehouse
             {
                 public static class StoreMove
                 {
-                    public const string Index = "~/Modules/Reports/Warehause/StoreMove/Index.cshtml";
+                    public const string Index = "~/Modules/Reports/Warehouse/StoreMove/Index.cshtml";
                 }
 
                 public static class WaresFile
                 {
-                    public const string Index = "~/Modules/Reports/Warehause/WaresFile/Index.cshtml";
+                    public const string Index = "~/Modules/Reports/Warehouse/WaresFile/Index.cshtml";
                 }
             }
         }

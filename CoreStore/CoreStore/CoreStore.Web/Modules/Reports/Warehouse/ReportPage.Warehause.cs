@@ -2,7 +2,7 @@
 namespace CoreStore.Reports.Pages
 {
     using Microsoft.AspNetCore.Mvc;
-    using Views = MVC.Views.Reports.Warehause;
+    using Views = MVC.Views.Reports.Warehouse;
 
     public partial class ReportsController : Controller
     {
