@@ -20,6 +20,10 @@
     "less": "^2.7.2",
     "vue": "^2.5.2"
   },
+  "engines": {
+    "node": "8.1.4",
+    "npm": "5.0.3"
+  },
   "devDependencies": {},
   "scripts": {
     "less": "lessc ./wwwroot/Content/site/site.less ./wwwroot/content/site/site.css"

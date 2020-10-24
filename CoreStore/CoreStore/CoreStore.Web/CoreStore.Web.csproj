@@ -76,7 +76,7 @@
   <PropertyGroup>
     <DefineConstants>$(DefineConstants);COREFX;ASPNETCORE</DefineConstants>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-    <DockerfileContext>..\..</DockerfileContext>
+    <DockerfileContext>.</DockerfileContext>
     <DockerComposeProjectPath>..\..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
   <Import Project="$(SolutionDir)Serenity\tools\Submodule\Serenity.Submodule.AspNetCore.targets" Condition="Exists('$(SolutionDir)Serenity\tools\Submodule\Serenity.Submodule.AspNetCore.targets')" />
