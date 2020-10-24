@@ -43,6 +43,12 @@ namespace CoreStore.Migrations.DefaultDB
 
             Insert.IntoTable("Languages").Row(new
             {
+                LanguageId = "bg",
+                LanguageName = "Bulgarian"
+            });
+
+            Insert.IntoTable("Languages").Row(new
+            {
                 LanguageId = "en",
                 LanguageName = "English"
             });

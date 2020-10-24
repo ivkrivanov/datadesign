@@ -6,29 +6,20 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
-COPY ["CoreStore.Web.csproj", "CoreStore.Web/"]
-RUN dotnet restore "CoreStore.Web/CoreStore.Web.csproj"
-COPY . CoreStore.Web/
+
+COPY "./CoreStore.Web.csproj", "./CoreStore.Web.csproj"
+COPY "./package.json", "./package.json"
+
+RUN dotnet restore "./CoreStore.Web.csproj"
+
+COPY . .
 WORKDIR "/src/CoreStore.Web"
 #RUN dotnet build "CoreStore.Web.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "CoreStore.Web.csproj" -c Release -o /app
-
-#FROM node as nodebuilder
-
-#RUN mkdir /usr/src/app
-#WORKDIR /usr/src/app
-
-#ENV PATH /usr/src/app/node_modules/.bin:$PATH
-#COPY package.json /usr/src/app/package.json
-#RUN npm install
-
-
+RUN dotnet publish "CoreStore.Web.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
-COPY --from=publish /app .
-#RUN mkdir -p /app/ClientApp/dist
-#COPY --from=nodebuilder /usr/src/app/dist/. /app/ClientApp/dist/
+COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "CoreStore.Web.dll"]
