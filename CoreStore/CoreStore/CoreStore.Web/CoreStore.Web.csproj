@@ -10,6 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\**\*.sql" Exclude="bin\**;obj\**;**\*.xproj;packages\**;@(EmbeddedResource)" />
+    <None Remove="Migrations\DefaultDB\DefaultDBScript_SQLServer.sql" />
     <None Remove="Modules\Store\Counterparties\CounterpartiesEditor.ts" />
     <None Remove="Modules\Store\Counterparties\CounterpartiesProductMovementDialog.ts" />
     <None Remove="Modules\Store\Counterparties\CounterpartiesProductMovementGrid.ts" />
@@ -76,7 +77,7 @@
   <PropertyGroup>
     <DefineConstants>$(DefineConstants);COREFX;ASPNETCORE</DefineConstants>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-    <DockerfileContext>..\..</DockerfileContext>
+    <DockerfileContext>.</DockerfileContext>
     <DockerComposeProjectPath>..\..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
   <Import Project="$(SolutionDir)Serenity\tools\Submodule\Serenity.Submodule.AspNetCore.targets" Condition="Exists('$(SolutionDir)Serenity\tools\Submodule\Serenity.Submodule.AspNetCore.targets')" />

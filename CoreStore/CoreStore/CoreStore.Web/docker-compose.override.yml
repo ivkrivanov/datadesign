@@ -8,6 +8,7 @@ services:
       - ConnectionString=${Store:-Server='127.0.0.1,1433';Database=Store_Store_v1;User Id=SA;Password=<DryRiver#958>}
     ports:
       - "80"
+
   sqldata:
     environment:
       - SA_PASSWORD=<DryRiver#958>
@@ -16,9 +17,10 @@ services:
         [{"dbName":"MyDBNAME","dbFiles":["c:\\SQLServer\\Store_Default_v1.mdf","c:\\SQLServer\\Store_Default_v1.ldf"]},
         [{"dbName":"MyDBNAME","dbFiles":["c:\\SQLServer\\Store_Store_v1.mdf","c:\\SQLServer\\Store_Store_v1.ldf"]}]
     ports:
-      - "1433:1433"
+      - "5433:1433"
     volumes:
-      - corestore-sqldata:/var/opt/mssql
+      - store-sqldata:/var/opt/mssql
+
 volumes:
-  corestore-sqldata:
+  store-sqldata:
     external: false

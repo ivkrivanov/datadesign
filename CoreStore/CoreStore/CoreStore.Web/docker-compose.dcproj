@@ -3,7 +3,7 @@
   <PropertyGroup Label="Globals">
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Linux</DockerTargetOS>
-    <ProjectGuid>a0934992-9032-4fb2-8685-e76225ed9db8</ProjectGuid>
+    <ProjectGuid>2955ceb4-ec41-472b-895f-31fbd3d38c23</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}</DockerServiceUrl>
     <DockerServiceName>corestore.web</DockerServiceName>

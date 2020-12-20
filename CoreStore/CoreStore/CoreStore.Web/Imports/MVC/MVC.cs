@@ -99,6 +99,19 @@ namespace MVC
                 public const string ProductMovementDetailReport = "~/Modules/Reports/Invoices/ProductMovementDetailReport.cshtml";
                 public const string WaresMovementDetailReport = "~/Modules/Reports/Invoices/WaresMovementDetailReport.cshtml";
             }
+
+            public static class Warehouse
+            {
+                public static class StoreMove
+                {
+                    public const string Index = "~/Modules/Reports/Warehouse/StoreMove/Index.cshtml";
+                }
+
+                public static class WaresFile
+                {
+                    public const string Index = "~/Modules/Reports/Warehouse/WaresFile/Index.cshtml";
+                }
+            }
         }
 
         public static class Shared
