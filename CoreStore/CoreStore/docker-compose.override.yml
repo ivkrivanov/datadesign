@@ -4,8 +4,8 @@ services:
   corestore.web:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionString=${Default:-Server=sqldata;Database=Store_Default_v1;User Id=SA;Password=<DryRiver#958>}
-      - ConnectionString=${Store:-Server=sqldata;Database=Store_Store_v1;User Id=SA;Password=<DryRiver#958>}
+      - ConnectionString=${Default:-Server='127.0.0.1,1433';Database=Store_Default_v1;User Id=SA;Password=<DryRiver#958>}
+      - ConnectionString=${Store:-Server='127.0.0.1,1433';Database=Store_Store_v1;User Id=SA;Password=<DryRiver#958>}
     ports:
       - "80"
   sqldata:
@@ -13,8 +13,8 @@ services:
       - SA_PASSWORD=<DryRiver#958>
       - ACCEPT_EULA=Y
       - attach_dbs=
-        [{"dbName":"MyDBNAME","dbFiles"["d:\\sqldata\\Store_Default_v1.mdf","c:\\sqldata\\Store_Default_v1.ldf"]},
-        [{"dbName":"MyDBNAME","dbFiles":["d:\\sqldata\\Store_Store_v1.mdf","c:\\sqldata\\Store_Store_v1.ldf"]}]
+        [{"dbName":"MyDBNAME","dbFiles":["c:\\SQLServer\\Store_Default_v1.mdf","c:\\SQLServer\\Store_Default_v1.ldf"]},
+        [{"dbName":"MyDBNAME","dbFiles":["c:\\SQLServer\\Store_Store_v1.mdf","c:\\SQLServer\\Store_Store_v1.ldf"]}]
     ports:
       - "1433:1433"
     volumes:
