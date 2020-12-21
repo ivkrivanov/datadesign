@@ -8,12 +8,12 @@
     },
     "iisExpress": {
       "applicationUrl": "http://localhost:59950/",
-      "sslPort": 0
+      "sslPort": 44386
     }
   },
   "profiles": {
     "IIS Express": {
-      "commandName": "IIS",
+      "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
@@ -21,8 +21,8 @@
     },
     "IIS": {
       "commandName": "IIS",
-      "launchBrowser": "true",
-      "launchUrl": "http://localhost/WebApplication2",
+      "launchBrowser": true,
+      "launchUrl": "http://localhost/CoreStore.Web",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -40,6 +40,14 @@
       "launchBrowser": true,
       "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
       "publishAllPorts": true
+    },
+    "CoreStore.Web": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:5001;http://localhost:5000"
     }
   }
 }

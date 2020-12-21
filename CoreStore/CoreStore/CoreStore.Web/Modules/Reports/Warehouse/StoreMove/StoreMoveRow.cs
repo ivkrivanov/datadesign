@@ -13,13 +13,14 @@
     public sealed class StoreMoveRow : Row, INameRow
     {
         [DisplayName("Shop ID"), Column("ShopID"), PrimaryKey]
-        public Int32? ShopID
+        public Int32? ShopId
         {
-            get { return Fields.ShopID[this]; }
-            set { Fields.ShopID[this] = value; }
+            get { return Fields.ShopId[this]; }
+            set { Fields.ShopId[this] = value; }
         }
 
-        [DisplayName("Shop"), Expression("shop.ShopName")]
+        //[DisplayName("Shop"), Expression("shops.ShopName")]
+        [DisplayName("Shop"), ForeignKey(typeof(ShopsRow)), LeftJoin("ShopId"), LookupInclude]
         [LookupEditor(typeof(ShopsRow))]
         public String ShopName
         {
@@ -166,7 +167,7 @@
 
         public class RowFields : RowFieldsBase
         {
-            public Int32Field ShopID;
+            public Int32Field ShopId;
 
             public Int32Field WaresID;
             public StringField WaresCode;
