@@ -229,16 +229,16 @@ namespace CoreStore.Store.Entities
         [AlignRight, DisplayFormat("#,##0.0000"), MinSelectLevel(SelectLevel.List)]
         public Decimal? LineVAT
         {
-            get { return Fields.LineTotal[this]; }
-            set { Fields.LineTotal[this] = value; }
+            get { return Fields.LineVAT[this]; }
+            set { Fields.LineVAT[this] = value; }
         }
 
         [DisplayName("Line Value"), Expression("(t0.[SinglePrice] * t0.[Quantity] - t0.[Discount]) + (t0.[SinglePrice] * t0.[Quantity] - t0.[Discount]) * (0.2) / (1 + 0.2)")]
         [AlignRight, DisplayFormat("#,##0.0000"), MinSelectLevel(SelectLevel.List)]
         public Decimal? LineValue
         {
-            get { return Fields.LineTotal[this]; }
-            set { Fields.LineTotal[this] = value; }
+            get { return Fields.LineValue[this]; }
+            set { Fields.LineValue[this] = value; }
         }
 
         #region Tenant & Activ

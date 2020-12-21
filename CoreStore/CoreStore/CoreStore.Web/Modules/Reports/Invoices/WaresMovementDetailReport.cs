@@ -34,6 +34,8 @@ namespace CoreStore.Store
                     .Select(wmd.WaresName)
                     .Select(wmd.WaresMeasureName)
                     .Select(wmd.LineTotal)
+                    .Select(wmd.LineVAT)
+                    .Select(wmd.LineValue)
                     .Where(wmd.WaresMoveId == this.WaresMoveId));
 
                 var c = CounterpartiesRow.Fields;

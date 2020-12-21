@@ -59,6 +59,8 @@
                         <th align="right">Unit Price</th>
                         <th align="right">Quantity</th>
                         <th align="right">Discount</th>
+                        <th align="right">Line Value</th>
+                        <th align="right">Line VAT</th>
                         <th align="right">Line Total</th>
                     </tr>
                 </thead>
@@ -67,25 +69,29 @@
                     {
                         if (@Model.Operation.OpCode == 102)
                         {
-                            <tr>
-                                <td align="Left">@d.WaresName</td>
-                                <td align="center">@d.WaresMeasureName</td>
-                                <td align="right">@(d.SinglePrice.ToStringDefault("#,##0.00"))</td>
-                                <td align="right">@(d.Quantity.ToStringDefault())</td>
-                                <td align="right">@(d.Discount.ToStringDefault("#,##0.00"))</td>
-                                <td align="right">@(d.LineTotal.ToStringDefault("#,##0.00"))</td>
-                            </tr>
+                    <tr>
+                        <td align="Left">@d.WaresName</td>
+                        <td align="center">@d.WaresMeasureName</td>
+                        <td align="right">@(d.SinglePrice.ToStringDefault("#,##0.00"))</td>
+                        <td align="right">@(d.Quantity.ToStringDefault())</td>
+                        <td align="right">@(d.Discount.ToStringDefault("#,##0.00"))</td>
+                        <td align="right">@(d.LineValue.ToStringDefault("#,##0.00"))</td>
+                        <td align="right">@(d.LineVAT.ToStringDefault("#,##0.00"))</td>
+                        <td align="right">@(d.LineTotal.ToStringDefault("#,##0.00"))</td>
+                    </tr>
                         }
                         if (@Model.Operation.OpCode == 201)
                         {
-                            <tr>
-                                <td align="Left">@d.WaresName</td>
-                                <td align="center">@d.WaresMeasureName</td>
-                                <td align="right">@(d.SinglePrice.ToStringDefault("#,##0.00"))</td>
-                                <td align="right">@(d.Quantity.ToStringDefault())</td>
-                                <td align="right">@(d.Discount.ToStringDefault("#,##0.00"))</td>
-                                <td align="right">@(d.LineTotal.ToStringDefault("#,##0.00"))</td>
-                            </tr>
+                    <tr>
+                        <td align="Left">@d.WaresName</td>
+                        <td align="center">@d.WaresMeasureName</td>
+                        <td align="right">@(d.SinglePrice.ToStringDefault("#,##0.00"))</td>
+                        <td align="right">@(d.Quantity.ToStringDefault())</td>
+                        <td align="right">@(d.Discount.ToStringDefault("#,##0.00"))</td>
+                        <td align="right">@(d.LineValue.ToStringDefault("#,##0.00"))</td>
+                        <td align="right">@(d.LineVAT.ToStringDefault("#,##0.00"))</td>
+                        <td align="right">@(d.LineTotal.ToStringDefault("#,##0.00"))</td>
+                    </tr>
                         }
                     }
                 </tbody>
