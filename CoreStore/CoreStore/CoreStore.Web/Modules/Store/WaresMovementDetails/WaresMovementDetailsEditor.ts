@@ -23,7 +23,7 @@ namespace CoreStore.Store {
 
             row.WaresName = WaresRow.getLookup().itemById[row.WaresId].WaresName;
 
-            row.LineTotal = (row.Quantity || 0) * (row.SinglePrice || 0) - (row.Discount || 0);
+            row.LineValue = (row.Quantity || 0) * (row.SinglePrice || 0) - (row.Discount || 0);
 
             //switch (row.WaresMoveOperationTypeOpCode) {
             //    case 102: {

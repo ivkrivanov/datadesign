@@ -217,15 +217,16 @@ namespace CoreStore.Store.Entities
             set { Fields.Discount[this] = value; }
         }
 
-        [DisplayName("Line Total"), Expression("(t0.[SinglePrice] * t0.[Quantity] - t0.[Discount])")]
+        //[DisplayName("Line Value"), Expression("(t0.[SinglePrice] * t0.[Quantity] - t0.[Discount]) + (t0.[SinglePrice] * t0.[Quantity] - t0.[Discount]) * (0.2) / (1 + 0.2)")]
+        [DisplayName("Value"), Expression("(t0.[SinglePrice] * t0.[Quantity] - t0.[Discount])")]
         [AlignRight, DisplayFormat("#,##0.0000"), MinSelectLevel(SelectLevel.List)]
-        public Decimal? LineTotal
+        public Decimal? LineValue
         {
-            get { return Fields.LineTotal[this]; }
-            set { Fields.LineTotal[this] = value; }
+            get { return Fields.LineValue[this]; }
+            set { Fields.LineValue[this] = value; }
         }
 
-        [DisplayName("Line VAT"), Expression("(t0.[SinglePrice] * t0.[Quantity] - t0.[Discount]) * (0.2) / (1 + 0.2)")]
+        [DisplayName("VAT"), Expression("(t0.[SinglePrice] * t0.[Quantity] - t0.[Discount]) * (0.2)")]
         [AlignRight, DisplayFormat("#,##0.0000"), MinSelectLevel(SelectLevel.List)]
         public Decimal? LineVAT
         {
@@ -233,12 +234,13 @@ namespace CoreStore.Store.Entities
             set { Fields.LineVAT[this] = value; }
         }
 
-        [DisplayName("Line Value"), Expression("(t0.[SinglePrice] * t0.[Quantity] - t0.[Discount]) + (t0.[SinglePrice] * t0.[Quantity] - t0.[Discount]) * (0.2) / (1 + 0.2)")]
+        //[DisplayName("Line Total"), Expression("(t0.[SinglePrice] * t0.[Quantity] - t0.[Discount])")]
+        [DisplayName("Total"), Expression("(t0.[SinglePrice] * t0.[Quantity] - t0.[Discount]) * (1.2)")]
         [AlignRight, DisplayFormat("#,##0.0000"), MinSelectLevel(SelectLevel.List)]
-        public Decimal? LineValue
+        public Decimal? LineTotal
         {
-            get { return Fields.LineValue[this]; }
-            set { Fields.LineValue[this] = value; }
+            get { return Fields.LineTotal[this]; }
+            set { Fields.LineTotal[this] = value; }
         }
 
         #region Tenant & Activ
@@ -313,9 +315,9 @@ namespace CoreStore.Store.Entities
             public StringField WaresQuantityPerUnit;
             public DecimalField WaresUnitPrice;
             //public BooleanField WaresDiscontinued;
-            public DecimalField LineTotal;
-            public DecimalField LineVAT;
             public DecimalField LineValue;
+            public DecimalField LineVAT;
+            public DecimalField LineTotal;
         }
     }
 }
