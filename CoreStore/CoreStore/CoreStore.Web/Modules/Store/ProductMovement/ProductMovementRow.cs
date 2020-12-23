@@ -16,7 +16,7 @@ namespace CoreStore.Store.Entities
     [DeletePermission(PermissionKeys.Product.Delete)]
     [LeftJoin("pmd", "[dbo].[ProductMovement Doc]", "pmd.[ProductMoveID] = t0.[ProductMoveID]", RowType = typeof(ProductMovementDocRow), TitlePrefix = "")]
     [UpdatableExtension("pmd", typeof(ProductMovementDocRow), CascadeDelete = true)]
-    [LeftJoin("wmt", "dbo.ProductMovementTotal", "wmt.[ProductMoveID] = t0.[ProductMoveID]", RowType = typeof(ProductMovementTotalRow), TitlePrefix = "")]
+    [LeftJoin("pmt", "dbo.ProductMovementTotal", "pmt.[ProductMoveID] = t0.[ProductMoveID]", RowType = typeof(ProductMovementTotalRow), TitlePrefix = "")]
     [LookupScript(typeof(Lookups.ProductMovementLookup))]
     public sealed class ProductMovementRow : LoggingRow, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
     {
@@ -120,6 +120,7 @@ namespace CoreStore.Store.Entities
         }
 
         #endregion Employee
+
         #region Shops
 
         [DisplayName("Shop"), Size(14), NotNull, ForeignKey(typeof(ShopsRow), "ShopId"), LeftJoin("shop")]
@@ -249,7 +250,23 @@ namespace CoreStore.Store.Entities
 
         #region Total
 
-        [Origin("wmt")]
+        [Origin("pmt")]
+        [AlignRight, DisplayFormat("#,##0.0000")]
+        public Decimal? Value
+        {
+            get { return Fields.Value[this]; }
+            set { Fields.Value[this] = value; }
+        }
+
+        [Origin("pmt")]
+        [AlignRight, DisplayFormat("#,##0.0000")]
+        public Decimal? VAT
+        {
+            get { return Fields.VAT[this]; }
+            set { Fields.VAT[this] = value; }
+        }
+
+        [Origin("pmt")]
         [AlignRight, DisplayFormat("#,##0.0000")]
         public Decimal? Total
         {
@@ -410,6 +427,8 @@ namespace CoreStore.Store.Entities
             public Int16Field OperationTypeOpCode;
             public StringField OperationTypeOperation;
 
+            public DecimalField Value;
+            public DecimalField VAT;
             public DecimalField Total;
 
             public RowListField<ProductMovementDetailsRow> DetailList;

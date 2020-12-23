@@ -11,6 +11,8 @@
         DocumentTypeId: Serenity.LookupEditor;
         DocumentNumber: Serenity.StringEditor;
         DocumentDate: Serenity.DateEditor;
+        Value: Serenity.DecimalEditor;
+        VAT: Serenity.DecimalEditor;
         Total: Serenity.DecimalEditor;
         DetailList: ProductMovementDetailsEditor;
     }
@@ -47,6 +49,8 @@
                     'DocumentTypeId', w4,
                     'DocumentNumber', w5,
                     'DocumentDate', w1,
+                    'Value', w6,
+                    'VAT', w6,
                     'Total', w6,
                     'DetailList', w7
                 ]);

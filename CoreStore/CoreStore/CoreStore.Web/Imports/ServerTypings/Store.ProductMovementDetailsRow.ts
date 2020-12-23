@@ -26,6 +26,8 @@
         ProductUnitsOnOrder?: number;
         ProductReorderLevel?: number;
         ProductDiscontinued?: boolean;
+        LineValue?: number;
+        LineVAT?: number;
         LineTotal?: number;
         InsertUserId?: number;
         InsertDate?: string;
@@ -69,6 +71,8 @@
             ProductUnitsOnOrder = "ProductUnitsOnOrder",
             ProductReorderLevel = "ProductReorderLevel",
             ProductDiscontinued = "ProductDiscontinued",
+            LineValue = "LineValue",
+            LineVAT = "LineVAT",
             LineTotal = "LineTotal",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",

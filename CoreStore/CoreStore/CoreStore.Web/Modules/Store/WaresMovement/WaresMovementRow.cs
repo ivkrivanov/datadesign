@@ -251,7 +251,6 @@ namespace CoreStore.Store.Entities
 
         #region Total
 
-        //[DisplayName("Value"), NotNull]
         [Origin("wmt")]
         [AlignRight, DisplayFormat("#,##0.0000")]
         public Decimal? Value

@@ -199,14 +199,31 @@ namespace CoreStore.Store.Entities
             set { Fields.Discount[this] = value; }
         }
 
-        [DisplayName("Line Total"), Scale(4)]
-        [Expression("(t0.[SinglePrice] * t0.[Quantity] - t0.[Discount])")]
+        [DisplayName("Value"), Expression("(t0.[SinglePrice] * t0.[Quantity] - t0.[Discount])")]
+        [AlignRight, DisplayFormat("#,##0.0000"), MinSelectLevel(SelectLevel.List)]
+        public Decimal? LineValue
+        {
+            get { return Fields.LineValue[this]; }
+            set { Fields.LineValue[this] = value; }
+        }
+
+        [DisplayName("VAT"), Expression("(t0.[SinglePrice] * t0.[Quantity] - t0.[Discount]) * (0.2)")]
+        [AlignRight, DisplayFormat("#,##0.0000"), MinSelectLevel(SelectLevel.List)]
+        public Decimal? LineVAT
+        {
+            get { return Fields.LineVAT[this]; }
+            set { Fields.LineVAT[this] = value; }
+        }
+
+        //[DisplayName("Line Total"), Expression("(t0.[SinglePrice] * t0.[Quantity] - t0.[Discount])")]
+        [DisplayName("Total"), Expression("(t0.[SinglePrice] * t0.[Quantity] - t0.[Discount]) * (1.2)")]
         [AlignRight, DisplayFormat("#,##0.0000"), MinSelectLevel(SelectLevel.List)]
         public Decimal? LineTotal
         {
             get { return Fields.LineTotal[this]; }
             set { Fields.LineTotal[this] = value; }
         }
+
         #region Tenant & Activ
 
         [Insertable(false), Updatable(false)]
@@ -279,6 +296,8 @@ namespace CoreStore.Store.Entities
             public Int16Field ProductReorderLevel;
             public BooleanField ProductDiscontinued;
 
+            public DecimalField LineValue;
+            public DecimalField LineVAT;
             public DecimalField LineTotal;
         }
     }

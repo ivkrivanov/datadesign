@@ -22,7 +22,10 @@ namespace CoreStore.Store {
             grid.registerPlugin(new Slick.Data.GroupItemMetadataProvider());
 
             this.view.setSummaryOptions({
-                aggregators: [new Slick.Aggregators.Sum(fld.LineValue)]
+                aggregators:
+                    [new Slick.Aggregators.Sum(fld.LineValue)]
+                    [new Slick.Aggregators.Sum(fld.LineVAT)]
+                    [new Slick.Aggregators.Sum(fld.LineTotal)]
             });
 
             return grid;

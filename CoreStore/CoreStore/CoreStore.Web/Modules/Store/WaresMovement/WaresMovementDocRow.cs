@@ -74,8 +74,6 @@ namespace CoreStore.Store.Entities
             public DateTimeField DocumentDate;
 
             public StringField DocumentTypeDocumentName;
-            //public Int32Field DocumentTypeIsActive;
-            //public Int32Field DocumentTypeTenantId;
         }
     }
 }

@@ -1643,6 +1643,8 @@ declare namespace CoreStore.Store {
         ProductUnitsOnOrder?: number;
         ProductReorderLevel?: number;
         ProductDiscontinued?: boolean;
+        LineValue?: number;
+        LineVAT?: number;
         LineTotal?: number;
         InsertUserId?: number;
         InsertDate?: string;
@@ -1684,6 +1686,8 @@ declare namespace CoreStore.Store {
             ProductUnitsOnOrder = "ProductUnitsOnOrder",
             ProductReorderLevel = "ProductReorderLevel",
             ProductDiscontinued = "ProductDiscontinued",
+            LineValue = "LineValue",
+            LineVAT = "LineVAT",
             LineTotal = "LineTotal",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
@@ -1741,6 +1745,8 @@ declare namespace CoreStore.Store {
         DocumentTypeId: Serenity.LookupEditor;
         DocumentNumber: Serenity.StringEditor;
         DocumentDate: Serenity.DateEditor;
+        Value: Serenity.DecimalEditor;
+        VAT: Serenity.DecimalEditor;
         Total: Serenity.DecimalEditor;
         DetailList: ProductMovementDetailsEditor;
     }
@@ -1805,6 +1811,8 @@ declare namespace CoreStore.Store {
         ShippingState?: ShippingState;
         OperationTypeOpCode?: ProductMovementOperations;
         OperationTypeOperation?: string;
+        Value?: number;
+        VAT?: number;
         Total?: number;
         DetailList?: ProductMovementDetailsRow[];
         InsertUserId?: number;
@@ -1862,6 +1870,8 @@ declare namespace CoreStore.Store {
             ShippingState = "ShippingState",
             OperationTypeOpCode = "OperationTypeOpCode",
             OperationTypeOperation = "OperationTypeOperation",
+            Value = "Value",
+            VAT = "VAT",
             Total = "Total",
             DetailList = "DetailList",
             InsertUserId = "InsertUserId",
@@ -1891,6 +1901,8 @@ declare namespace CoreStore.Store {
 declare namespace CoreStore.Store {
     interface ProductMovementTotalRow {
         ProductMoveId?: number;
+        Value?: number;
+        VAT?: number;
         Total?: number;
     }
     namespace ProductMovementTotalRow {
@@ -1902,6 +1914,8 @@ declare namespace CoreStore.Store {
         const updatePermission = "Store:Product:Modify";
         const enum Fields {
             ProductMoveId = "ProductMoveId",
+            Value = "Value",
+            VAT = "VAT",
             Total = "Total"
         }
     }
@@ -2271,7 +2285,7 @@ declare namespace CoreStore.Store {
 }
 declare namespace CoreStore.Store {
     interface StoreMoveRow {
-        ShopID?: number;
+        ShopId?: number;
         WaresID?: number;
         WaresCode?: string;
         WaresName?: string;
@@ -2300,7 +2314,7 @@ declare namespace CoreStore.Store {
         const readPermission = "Store:Wares:View";
         const updatePermission = "Store:Wares:Modify";
         const enum Fields {
-            ShopID = "ShopID",
+            ShopId = "ShopId",
             WaresID = "WaresID",
             WaresCode = "WaresCode",
             WaresName = "WaresName",
@@ -2633,9 +2647,9 @@ declare namespace CoreStore.Store {
         WaresMeasureName?: string;
         WaresQuantityPerUnit?: string;
         WaresUnitPrice?: number;
-        LineTotal?: number;
-        LineVAT?: number;
         LineValue?: number;
+        LineVAT?: number;
+        LineTotal?: number;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -2673,9 +2687,9 @@ declare namespace CoreStore.Store {
             WaresMeasureName = "WaresMeasureName",
             WaresQuantityPerUnit = "WaresQuantityPerUnit",
             WaresUnitPrice = "WaresUnitPrice",
-            LineTotal = "LineTotal",
-            LineVAT = "LineVAT",
             LineValue = "LineValue",
+            LineVAT = "LineVAT",
+            LineTotal = "LineTotal",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",
@@ -3973,6 +3987,10 @@ declare namespace CoreStore.Store {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        protected createSlickGrid(): Slick.Grid;
+        protected getColumns(): Slick.Column[];
+        protected getSlickOptions(): Slick.GridOptions;
+        protected usePager(): boolean;
     }
 }
 declare namespace CoreStore.Store {
