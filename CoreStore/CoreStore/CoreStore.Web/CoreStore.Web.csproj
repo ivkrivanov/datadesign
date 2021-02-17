@@ -10,6 +10,16 @@
   </PropertyGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\**\*.sql" Exclude="bin\**;obj\**;**\*.xproj;packages\**;@(EmbeddedResource)" />
+    <Compile Remove="SQL.Store.Default\**" />
+    <Compile Remove="SQL.Store.Store\**" />
+    <Content Remove="SQL.Store.Default\**" />
+    <Content Remove="SQL.Store.Store\**" />
+    <EmbeddedResource Remove="SQL.Store.Default\**" />
+    <EmbeddedResource Remove="SQL.Store.Store\**" />
+    <None Remove="SQL.Store.Default\**" />
+    <None Remove="SQL.Store.Store\**" />
+    <TypeScriptCompile Remove="SQL.Store.Default\**" />
+    <TypeScriptCompile Remove="SQL.Store.Store\**" />
     <None Remove="Migrations\DefaultDB\DefaultDBScript_SQLServer.sql" />
     <None Remove="Modules\Store\Counterparties\CounterpartiesEditor.ts" />
     <None Remove="Modules\Store\Counterparties\CounterpartiesProductMovementDialog.ts" />
@@ -79,6 +89,7 @@
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>.</DockerfileContext>
     <DockerComposeProjectPath>..\..\docker-compose.dcproj</DockerComposeProjectPath>
+    <StartupObject>CoreStore.Program</StartupObject>
   </PropertyGroup>
   <Import Project="$(SolutionDir)Serenity\tools\Submodule\Serenity.Submodule.AspNetCore.targets" Condition="Exists('$(SolutionDir)Serenity\tools\Submodule\Serenity.Submodule.AspNetCore.targets')" />
   <Target Name="CreateInputsOutputs" BeforeTargets="BeforeBuild">
