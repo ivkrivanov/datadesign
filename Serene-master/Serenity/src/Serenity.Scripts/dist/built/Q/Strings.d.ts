@@ -1,0 +1,13 @@
+export declare function endsWith(s: string, suffix: string): boolean;
+export declare function isEmptyOrNull(s: string): boolean;
+export declare function isTrimmedEmpty(s: string): boolean;
+export declare function padLeft(s: string | number, len: number, ch?: string): any;
+export declare function startsWith(s: string, prefix: string): boolean;
+export declare function toSingleLine(str: string): string;
+export declare var trimEnd: (s: string) => string;
+export declare var trimStart: (s: string) => string;
+export declare function trim(s: string): string;
+export declare function trimToEmpty(s: string): string;
+export declare function trimToNull(s: string): string;
+export declare function replaceAll(s: string, f: string, r: string): string;
+export declare function zeroPad(n: number, digits: number): string;
