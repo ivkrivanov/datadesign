@@ -658,6 +658,8 @@ declare namespace CoreStore.Membership {
 declare namespace CoreStore.Reports {
 }
 declare namespace CoreStore.Reports {
+}
+declare namespace CoreStore.Reports {
     interface StoreMoveListRequest extends Serenity.ListRequest {
         ShopID?: number;
         TenantID?: number;
