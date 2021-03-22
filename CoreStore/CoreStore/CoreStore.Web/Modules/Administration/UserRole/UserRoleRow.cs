@@ -16,41 +16,41 @@ namespace CoreStore.Administration.Entities
         [DisplayName("User Role Id"), Identity]
         public Int64? UserRoleId
         {
-            get { return Fields.UserRoleId[this]; }
-            set { Fields.UserRoleId[this] = value; }
+            get => Fields.UserRoleId[this]; 
+            set => Fields.UserRoleId[this] = value; 
         }
 
         [DisplayName("User Id"), NotNull, ForeignKey("Users", "UserId"), LeftJoin("jUser")]
         public Int32? UserId
         {
-            get { return Fields.UserId[this]; }
-            set { Fields.UserId[this] = value; }
+            get => Fields.UserId[this]; 
+            set => Fields.UserId[this] = value; 
         }
 
         [DisplayName("Role Id"), NotNull]
         public Int32? RoleId
         {
-            get { return Fields.RoleId[this]; }
-            set { Fields.RoleId[this] = value; }
+            get => Fields.RoleId[this]; 
+            set => Fields.RoleId[this] = value; 
         }
 
         [DisplayName("User Username"), Expression("jUser.[Username]")]
         public String Username
         {
-            get { return Fields.Username[this]; }
-            set { Fields.Username[this] = value; }
+            get => Fields.Username[this]; 
+            set => Fields.Username[this] = value; 
         }
 
         [DisplayName("User Display Name"), Expression("jUser.[DisplayName]")]
         public String User
         {
-            get { return Fields.User[this]; }
-            set { Fields.User[this] = value; }
+            get => Fields.User[this]; 
+            set => Fields.User[this] = value; 
         }
 
         IIdField IIdRow.IdField
         {
-            get { return Fields.UserRoleId; }
+            get => Fields.UserRoleId; 
         }
 
         public static readonly RowFields Fields = new RowFields().Init();

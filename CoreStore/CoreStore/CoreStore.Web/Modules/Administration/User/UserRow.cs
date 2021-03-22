@@ -17,86 +17,86 @@ namespace CoreStore.Administration.Entities
         [DisplayName("User Id"), Identity]
         public Int32? UserId
         {
-            get { return Fields.UserId[this]; }
-            set { Fields.UserId[this] = value; }
+            get => Fields.UserId[this]; 
+            set => Fields.UserId[this] = value; 
         }
 
         [DisplayName("Username"), Size(100), NotNull, QuickSearch, LookupInclude]
         public String Username
         {
-            get { return Fields.Username[this]; }
-            set { Fields.Username[this] = value; }
+            get => Fields.Username[this]; 
+            set => Fields.Username[this] = value; 
         }
 
         [DisplayName("Source"), Size(4), NotNull, Insertable(false), Updatable(false), DefaultValue("site")]
         public String Source
         {
-            get { return Fields.Source[this]; }
-            set { Fields.Source[this] = value; }
+            get => Fields.Source[this]; 
+            set => Fields.Source[this] = value; 
         }
 
         [DisplayName("Password Hash"), Size(86), NotNull, Insertable(false), Updatable(false), MinSelectLevel(SelectLevel.Never)]
         public String PasswordHash
         {
-            get { return Fields.PasswordHash[this]; }
-            set { Fields.PasswordHash[this] = value; }
+            get => Fields.PasswordHash[this]; 
+            set => Fields.PasswordHash[this] = value;
         }
-
+        
         [DisplayName("Password Salt"), Size(10), NotNull, Insertable(false), Updatable(false), MinSelectLevel(SelectLevel.Never)]
         public String PasswordSalt
         {
-            get { return Fields.PasswordSalt[this]; }
-            set { Fields.PasswordSalt[this] = value; }
+            get => Fields.PasswordSalt[this]; 
+            set => Fields.PasswordSalt[this] = value; 
         }
 
         [DisplayName("Display Name"), Size(100), NotNull, LookupInclude]
         public String DisplayName
         {
-            get { return Fields.DisplayName[this]; }
-            set { Fields.DisplayName[this] = value; }
+            get => Fields.DisplayName[this]; 
+            set => Fields.DisplayName[this] = value; 
         }
 
         [DisplayName("Email"), Size(100)]
         public String Email
         {
-            get { return Fields.Email[this]; }
-            set { Fields.Email[this] = value; }
+            get => Fields.Email[this]; 
+            set => Fields.Email[this] = value; 
         }
 
         [DisplayName("User Image"), Size(100)]
         [ImageUploadEditor(FilenameFormat = "UserImage/~", CopyToHistory = true)]
         public String UserImage
         {
-            get { return Fields.UserImage[this]; }
-            set { Fields.UserImage[this] = value; }
+            get => Fields.UserImage[this]; 
+            set => Fields.UserImage[this] = value; 
         }
 
         [DisplayName("Password"), Size(50), NotMapped]
         public String Password
         {
-            get { return Fields.Password[this]; }
-            set { Fields.Password[this] = value; }
+            get => Fields.Password[this]; 
+            set => Fields.Password[this] = value; 
         }
 
         [NotNull, Insertable(false), Updatable(true)]
         public Int16? IsActive
         {
-            get { return Fields.IsActive[this]; }
-            set { Fields.IsActive[this] = value; }
+            get => Fields.IsActive[this]; 
+            set => Fields.IsActive[this] = value; 
         }
 
         [DisplayName("Confirm Password"), Size(50), NotMapped]
         public String PasswordConfirm
         {
-            get { return Fields.PasswordConfirm[this]; }
-            set { Fields.PasswordConfirm[this] = value; }
+            get => Fields.PasswordConfirm[this]; 
+            set => Fields.PasswordConfirm[this] = value; 
         }
 
         [DisplayName("Last Directory Update"), Insertable(false), Updatable(false)]
         public DateTime? LastDirectoryUpdate
         {
-            get { return Fields.LastDirectoryUpdate[this]; }
-            set { Fields.LastDirectoryUpdate[this] = value; }
+            get => Fields.LastDirectoryUpdate[this]; 
+            set => Fields.LastDirectoryUpdate[this] = value; 
         }
 
         [DisplayName("Tenant"), ForeignKey("Tenants", "TenantId"), LeftJoin("tnt")]
@@ -104,32 +104,31 @@ namespace CoreStore.Administration.Entities
         [LookupEditor(typeof(TenantRow))]
         public Int32? TenantId
         {
-            get { return Fields.TenantId[this]; }
-            set { Fields.TenantId[this] = value; }
+            get => Fields.TenantId[this]; 
+            set => Fields.TenantId[this] = value; 
         }
 
         [DisplayName("Tenant"), Expression("tnt.TenantName")]
         public String TenantName
         {
-            get
-            { return Fields.TenantName[this]; }
-            set { Fields.TenantName[this] = value; }
+            get => Fields.TenantName[this]; 
+            set => Fields.TenantName[this] = value; 
         }
 
 
         IIdField IIdRow.IdField
         {
-            get { return Fields.UserId; }
+            get => Fields.UserId; 
         }
 
         StringField INameRow.NameField
         {
-            get { return Fields.Username; }
+            get => Fields.Username; 
         }
 
         Int16Field IIsActiveRow.IsActiveField
         {
-            get { return Fields.IsActive; }
+            get => Fields.IsActive; 
         }
 
         public static readonly RowFields Fields = new RowFields().Init();

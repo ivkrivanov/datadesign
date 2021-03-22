@@ -15,8 +15,8 @@
         [DisplayName("Shop ID"), Column("ShopID"), PrimaryKey]
         public Int32? ShopId
         {
-            get { return Fields.ShopId[this]; }
-            set { Fields.ShopId[this] = value; }
+            get =>Fields.ShopId[this]; 
+            set => Fields.ShopId[this] = value; 
         }
 
         //[DisplayName("Shop"), Expression("shops.ShopName")]
@@ -24,140 +24,140 @@
         [LookupEditor(typeof(ShopsRow))]
         public String ShopName
         {
-            get { return Fields.ShopName[this]; }
-            set { Fields.ShopName[this] = value; }
+            get =>Fields.ShopName[this]; 
+            set => Fields.ShopName[this] = value; 
         }
 
         [DisplayName("Wares ID"), Column("WaresID"), PrimaryKey]
         public Int32? WaresID
         {
-            get { return Fields.WaresID[this]; }
-            set { Fields.WaresID[this] = value; }
+            get =>Fields.WaresID[this]; 
+            set => Fields.WaresID[this] = value; 
         }
 
         [DisplayName("Key"), QuickSearch]
         public String WaresCode
         {
-            get { return Fields.WaresCode[this]; }
-            set { Fields.WaresCode[this] = value; }
+            get =>Fields.WaresCode[this]; 
+            set => Fields.WaresCode[this] = value; 
         }
 
         [DisplayName("Name"), QuickSearch]
         public String WaresName
         {
-            get { return Fields.WaresName[this]; }
-            set { Fields.WaresName[this] = value; }
+            get =>Fields.WaresName[this]; 
+            set => Fields.WaresName[this] = value; 
         }
 
         [DisplayName("Date"), PrimaryKey]
         public DateTime? Date
         {
-            get { return Fields.Date[this]; }
-            set { Fields.Date[this] = value; }
+            get =>Fields.Date[this]; 
+            set => Fields.Date[this] = value; 
         }
 
         [DisplayName("Init Q-ty"), Size(15), Scale(4)]
         [AlignRight, DisplayFormat("#,##0.00"), MinSelectLevel(SelectLevel.List)]
         public Decimal? InitialQuantity
         {
-            get { return Fields.InitialQuantity[this]; }
-            set { Fields.InitialQuantity[this] = value; }
+            get =>Fields.InitialQuantity[this]; 
+            set => Fields.InitialQuantity[this] = value; 
         }
 
         [DisplayName("Init Price"), Size(15), Scale(4)]
         public Decimal? InitialSinglePrice
         {
-            get { return Fields.InitialSinglePrice[this]; }
-            set { Fields.InitialSinglePrice[this] = value; }
+            get =>Fields.InitialSinglePrice[this]; 
+            set => Fields.InitialSinglePrice[this] = value; 
         }
 
         [DisplayName("Init Value"), Size(15), Scale(4)]
         public Decimal? InitialValue
         {
-            get { return Fields.InitialValue[this]; }
-            set { Fields.InitialValue[this] = value; }
+            get =>Fields.InitialValue[this]; 
+            set => Fields.InitialValue[this] = value; 
         }
 
         [DisplayName("Income Q-ty"), Size(15), Scale(4)]
         public Decimal? IncomeQuantity
         {
-            get { return Fields.IncomeQuantity[this]; }
-            set { Fields.IncomeQuantity[this] = value; }
+            get =>Fields.IncomeQuantity[this]; 
+            set => Fields.IncomeQuantity[this] = value; 
         }
 
         [DisplayName("Income Price"), Size(15), Scale(4)]
         public Decimal? IncomeSinglePrice
         {
-            get { return Fields.IncomeSinglePrice[this]; }
-            set { Fields.IncomeSinglePrice[this] = value; }
+            get =>Fields.IncomeSinglePrice[this]; 
+            set => Fields.IncomeSinglePrice[this] = value; 
         }
 
         [DisplayName("Income Value"), Size(15), Scale(4)]
         public Decimal? IncomeValue
         {
-            get { return Fields.IncomeValue[this]; }
-            set { Fields.IncomeValue[this] = value; }
+            get =>Fields.IncomeValue[this]; 
+            set => Fields.IncomeValue[this] = value; 
         }
 
         [DisplayName("Exp. Q-ty"), Size(15), Scale(4)]
         public Decimal? ExpenceQuantity
         {
-            get { return Fields.ExpenceQuantity[this]; }
-            set { Fields.ExpenceQuantity[this] = value; }
+            get =>Fields.ExpenceQuantity[this]; 
+            set => Fields.ExpenceQuantity[this] = value; 
         }
 
         [DisplayName("Exp. Price"), Size(15), Scale(4)]
         public Decimal? ExpenceSinglePrice
         {
-            get { return Fields.ExpenceSinglePrice[this]; }
-            set { Fields.ExpenceSinglePrice[this] = value; }
+            get =>Fields.ExpenceSinglePrice[this]; 
+            set => Fields.ExpenceSinglePrice[this] = value; 
         }
 
         [DisplayName("Exp. Value"), Size(15), Scale(4)]
         public Decimal? ExpenceValue
         {
-            get { return Fields.ExpenceValue[this]; }
-            set { Fields.ExpenceValue[this] = value; }
+            get =>Fields.ExpenceValue[this]; 
+            set => Fields.ExpenceValue[this] = value; 
         }
 
         [DisplayName("Rest Q-ty"), Size(15), Scale(4)]
         public Decimal? RestQuantity
         {
-            get { return Fields.RestQuantity[this]; }
-            set { Fields.RestQuantity[this] = value; }
+            get =>Fields.RestQuantity[this]; 
+            set => Fields.RestQuantity[this] = value; 
         }
 
         [DisplayName("Rest Price"), Size(15), Scale(4)]
         public Decimal? RestSinglePrice
         {
-            get { return Fields.RestSinglePrice[this]; }
-            set { Fields.RestSinglePrice[this] = value; }
+            get =>Fields.RestSinglePrice[this]; 
+            set => Fields.RestSinglePrice[this] = value; 
         }
 
         [DisplayName("Rest Value"), Size(15), Scale(4)]
         public Decimal? RestValue
         {
-            get { return Fields.RestValue[this]; }
-            set { Fields.RestValue[this] = value; }
+            get =>Fields.RestValue[this]; 
+            set => Fields.RestValue[this] = value; 
         }
 
         [DisplayName("Re Cost"), Size(15), Scale(4)]
         public Decimal? ReCost
         {
-            get { return Fields.ReCost[this]; }
-            set { Fields.ReCost[this] = value; }
+            get =>Fields.ReCost[this]; 
+            set => Fields.ReCost[this] = value; 
         }
 
         [DisplayName("Mistake")]
         public Boolean? Mistake
         {
-            get { return Fields.Mistake[this]; }
-            set { Fields.Mistake[this] = value; }
+            get =>Fields.Mistake[this]; 
+            set => Fields.Mistake[this] = value; 
         }
 
         StringField INameRow.NameField
         {
-            get { return Fields.WaresCode; }
+            get =>Fields.WaresCode; 
         }
 
         public static readonly RowFields Fields = new RowFields().Init();

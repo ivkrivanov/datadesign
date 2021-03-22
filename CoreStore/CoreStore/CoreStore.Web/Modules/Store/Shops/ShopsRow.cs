@@ -19,88 +19,88 @@ namespace CoreStore.Store.Entities
         [DisplayName("Id"), Column("ID"), Identity]
         public Int32? Id
         {
-            get { return Fields.Id[this]; }
-            set { Fields.Id[this] = value; }
+            get => Fields.Id[this]; 
+            set => Fields.Id[this] = value; 
         }
 
         [DisplayName("Shop Id"), Column("ShopID"), Size(14), PrimaryKey, QuickSearch]
         public String ShopId
         {
-            get { return Fields.ShopId[this]; }
-            set { Fields.ShopId[this] = value; }
+            get => Fields.ShopId[this]; 
+            set => Fields.ShopId[this] = value; 
         }
 
         [DisplayName("Shop Name"), Size(40), NotNull, QuickSearch]
         public String ShopName
         {
-            get { return Fields.ShopName[this]; }
-            set { Fields.ShopName[this] = value; }
+            get => Fields.ShopName[this]; 
+            set => Fields.ShopName[this] = value; 
         }
 
         [DisplayName("Contact Name"), Size(30)]
         public String ContactName
         {
-            get { return Fields.ContactName[this]; }
-            set { Fields.ContactName[this] = value; }
+            get => Fields.ContactName[this]; 
+            set => Fields.ContactName[this] = value; 
         }
 
         [DisplayName("Contact Title"), Size(30)]
         public String ContactTitle
         {
-            get { return Fields.ContactTitle[this]; }
-            set { Fields.ContactTitle[this] = value; }
+            get => Fields.ContactTitle[this]; 
+            set => Fields.ContactTitle[this] = value; 
         }
 
         [DisplayName("Address"), Size(60)]
         public String Address
         {
-            get { return Fields.Address[this]; }
-            set { Fields.Address[this] = value; }
+            get => Fields.Address[this]; 
+            set => Fields.Address[this] = value; 
         }
 
         [DisplayName("City"), Size(15)]
         public String City
         {
-            get { return Fields.City[this]; }
-            set { Fields.City[this] = value; }
+            get => Fields.City[this]; 
+            set => Fields.City[this] = value; 
         }
 
         [DisplayName("Region"), Size(15)]
         public String Region
         {
-            get { return Fields.Region[this]; }
-            set { Fields.Region[this] = value; }
+            get => Fields.Region[this]; 
+            set => Fields.Region[this] = value; 
         }
 
         [DisplayName("Postal Code"), Size(10)]
         public String PostalCode
         {
-            get { return Fields.PostalCode[this]; }
-            set { Fields.PostalCode[this] = value; }
+            get => Fields.PostalCode[this]; 
+            set => Fields.PostalCode[this] = value; 
         }
 
         [DisplayName("Country"), Size(15)]
         public String Country
         {
-            get { return Fields.Country[this]; }
-            set { Fields.Country[this] = value; }
+            get => Fields.Country[this]; 
+            set => Fields.Country[this] = value; 
         }
 
         [DisplayName("Phone"), Size(24)]
         public String Phone
         {
-            get { return Fields.Phone[this]; }
-            set { Fields.Phone[this] = value; }
+            get => Fields.Phone[this]; 
+            set => Fields.Phone[this] = value; 
         }
 
         IIdField IIdRow.IdField
         {
-            get { return Fields.Id; }
+            get => Fields.Id; 
         }
 
         StringField INameRow.NameField
         {
-            get { return Fields.ShopId; }
+            get => Fields.ShopId; 
         }
 
         #region Tenant & Activ
@@ -108,25 +108,25 @@ namespace CoreStore.Store.Entities
         [Insertable(false), Updatable(false)]
         public Int32? TenantId
         {
-            get { return Fields.TenantId[this]; }
-            set { Fields.TenantId[this] = value; }
+            get => Fields.TenantId[this]; 
+            set => Fields.TenantId[this] = value; 
         }
 
         public Int32Field TenantIdField
         {
-            get { return Fields.TenantId; }
+            get => Fields.TenantId; 
         }
 
         [NotNull, Insertable(false), Updatable(true)]
         public Int16? IsActive
         {
-            get { return Fields.IsActive[this]; }
-            set { Fields.IsActive[this] = value; }
+            get => Fields.IsActive[this]; 
+            set => Fields.IsActive[this] = value; 
         }
 
         Int16Field IIsActiveRow.IsActiveField
         {
-            get { return Fields.IsActive; }
+            get => Fields.IsActive; 
         }
 
         #endregion Tenant & Activ

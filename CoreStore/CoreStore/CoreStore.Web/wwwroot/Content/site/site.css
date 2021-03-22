@@ -8365,7 +8365,7 @@ section.content > .s-DataGrid {
   width: 180px;
 }
 .s-Store-WaresDialog .s-PropertyGrid .categories {
-  height: 500px;
+  height: 620px;
 }
 s-Store-WaresGrid .slick-cell input[type=text] {
   text-align: right;
@@ -8569,7 +8569,7 @@ s-Store-WaresGrid .slick-cell .dirty {
   }
 }
 .s-Store-WaresMovementDialog s-Store-CounterpartiesWaresMovementDialog > .size {
-  width: 850px;
+  width: 1000px;
 }
 .s-Store-WaresMovementDialog s-Store-CounterpartiesWaresMovementDialog .caption {
   width: 130px;
@@ -8589,7 +8589,7 @@ s-Store-WaresGrid .slick-cell .dirty {
 }
 .s-Store-WaresMovementDialog.s-Panel,
 s-Store-CounterpartiesWaresMovementDialog.s-Panel {
-  min-height: 750px;
+  min-height: 850px;
 }
 .s-Store-WaresMovementDialog.s-Panel .categories,
 s-Store-CounterpartiesWaresMovementDialog.s-Panel .categories {
@@ -8721,7 +8721,7 @@ s-Store-CounterpartiesWaresMovementDialog.s-Panel .grid-container {
 }
 .s-Store-ProductMovementDialog > .size,
 s-Store-CounterpartiesProductMovementDialog > .size {
-  width: 850px;
+  width: 1000px;
 }
 .s-Store-ProductMovementDialog .caption,
 s-Store-CounterpartiesProductMovementDialog .caption {

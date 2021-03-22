@@ -16,51 +16,51 @@ namespace CoreStore.Store.Entities
         [DisplayName("Id"), Column("ID"), Identity]
         public Int32? Id
         {
-            get { return Fields.Id[this]; }
-            set { Fields.Id[this] = value; }
+            get => Fields.Id[this]; 
+            set => Fields.Id[this] = value; 
         }
 
         [DisplayName("Wares Id"), Column("WaresID"), NotNull]
         public Int32? WaresId
         {
-            get { return Fields.WaresId[this]; }
-            set { Fields.WaresId[this] = value; }
+            get => Fields.WaresId[this]; 
+            set => Fields.WaresId[this] = value; 
         }
 
         [DisplayName("Language Id"), Column("LanguageID"), NotNull]
         public Int32? LanguageId
         {
-            get { return Fields.LanguageId[this]; }
-            set { Fields.LanguageId[this] = value; }
+            get => Fields.LanguageId[this]; 
+            set => Fields.LanguageId[this] = value; 
         }
 
         [DisplayName("Wares Name"), Size(60), QuickSearch]
         public String WaresName
         {
-            get { return Fields.WaresName[this]; }
-            set { Fields.WaresName[this] = value; }
+            get => Fields.WaresName[this]; 
+            set => Fields.WaresName[this] = value; 
         }
 
         [DisplayName("Description")]
         public String Description
         {
-            get { return Fields.Description[this]; }
-            set { Fields.Description[this] = value; }
+            get => Fields.Description[this]; 
+            set => Fields.Description[this] = value; 
         }
 
         IIdField IIdRow.IdField
         {
-            get { return Fields.Id; }
+            get => Fields.Id; 
         }
 
         StringField INameRow.NameField
         {
-            get { return Fields.WaresName; }
+            get => Fields.WaresName; 
         }
 
         public Field CultureIdField
         {
-            get { return Fields.LanguageId; }
+            get => Fields.LanguageId; 
         }
 
         public static readonly RowFields Fields = new RowFields().Init();

@@ -22,86 +22,86 @@ namespace CoreStore.Store.Entities
         [DisplayName("Wares Id"), Identity, LookupInclude]
         public Int32? WaresId
         {
-            get { return Fields.WaresId[this]; }
-            set { Fields.WaresId[this] = value; }
+            get => Fields.WaresId[this]; 
+            set => Fields.WaresId[this] = value; 
         }
 
         [DisplayName("Wares Code"), Size(15), NotNull, QuickSearch, LookupInclude]
         public String WaresCode
         {
-            get { return Fields.WaresCode[this]; }
-            set { Fields.WaresCode[this] = value; }
+            get => Fields.WaresCode[this]; 
+            set => Fields.WaresCode[this] = value; 
         }
 
         [DisplayName("Wares Barcode"), Size(15), QuickSearch, LookupInclude]
         public String WaresBarcode
         {
-            get { return Fields.WaresBarcode[this]; }
-            set { Fields.WaresBarcode[this] = value; }
+            get => Fields.WaresBarcode[this]; 
+            set => Fields.WaresBarcode[this] = value; 
         }
 
         [DisplayName("Wares Label"), Size(20)]
         public String WaresLabel
         {
-            get { return Fields.WaresLabel[this]; }
-            set { Fields.WaresLabel[this] = value; }
+            get => Fields.WaresLabel[this]; 
+            set => Fields.WaresLabel[this] = value; 
         }
 
         [DisplayName("Wares Name"), Size(60), QuickSearch, LookupInclude]
         public String WaresName
         {
-            get { return Fields.WaresName[this]; }
-            set { Fields.WaresName[this] = value; }
+            get => Fields.WaresName[this]; 
+            set => Fields.WaresName[this] = value; 
         }
 
         [DisplayName("Wares Image"), Size(100)]
         [ImageUploadEditor(FilenameFormat = "WaresImage/~", CopyToHistory = true)]
         public String WaresImage
         {
-            get { return Fields.WaresImage[this]; }
-            set { Fields.WaresImage[this] = value; }
+            get => Fields.WaresImage[this]; 
+            set => Fields.WaresImage[this] = value; 
         }
 
         [DisplayName("Quantity Per Unit"), Size(15), Scale(4), DefaultValue(1)]
         public Decimal? QuantityPerUnit
         {
-            get { return Fields.QuantityPerUnit[this]; }
-            set { Fields.QuantityPerUnit[this] = value; }
+            get => Fields.QuantityPerUnit[this]; 
+            set => Fields.QuantityPerUnit[this] = value; 
         }
 
         [DisplayName("Unit Price"), Size(15), Scale(4), LookupInclude]
         public Decimal? UnitPrice
         {
-            get { return Fields.UnitPrice[this]; }
-            set { Fields.UnitPrice[this] = value; }
+            get => Fields.UnitPrice[this]; 
+            set => Fields.UnitPrice[this] = value; 
         }
 
         [DisplayName("Units In Stock"), Size(15), Scale(4), DefaultValue(0), LookupInclude]
         public Decimal? UnitsInStock
         {
-            get { return Fields.UnitsInStock[this]; }
-            set { Fields.UnitsInStock[this] = value; }
+            get => Fields.UnitsInStock[this]; 
+            set => Fields.UnitsInStock[this] = value; 
         }
 
         [DisplayName("Units On Order"), Size(15), Scale(4), DefaultValue(0), LookupInclude]
         public Decimal? UnitsOnOrder
         {
-            get { return Fields.UnitsOnOrder[this]; }
-            set { Fields.UnitsOnOrder[this] = value; }
+            get => Fields.UnitsOnOrder[this]; 
+            set => Fields.UnitsOnOrder[this] = value; 
         }
 
         [DisplayName("Discontinued"), NotNull]
         public Boolean? Discontinued
         {
-            get { return Fields.Discontinued[this]; }
-            set { Fields.Discontinued[this] = value; }
+            get => Fields.Discontinued[this]; 
+            set => Fields.Discontinued[this] = value; 
         }
 
         [DisplayName("Account Id"), Column("AccountID")]
         public Int32? AccountId
         {
-            get { return Fields.AccountId[this]; }
-            set { Fields.AccountId[this] = value; }
+            get => Fields.AccountId[this]; 
+            set => Fields.AccountId[this] = value; 
         }
 
         #region Counterparty
@@ -109,16 +109,16 @@ namespace CoreStore.Store.Entities
         [QuickSearch, CounterpartiesEditor, LookupInclude]
         public String CounterpartyId
         {
-            get { return Fields.CounterpartyId[this]; }
-            set { Fields.CounterpartyId[this] = value; }
+            get => Fields.CounterpartyId[this]; 
+            set => Fields.CounterpartyId[this] = value; 
         }
 
         [Origin("c")]
         //[DisplayName("Counterparty Contact Name"), Expression("c.[ContactName]")]
         public String CounterpartyContactName
         {
-            get { return Fields.CounterpartyContactName[this]; }
-            set { Fields.CounterpartyContactName[this] = value; }
+            get => Fields.CounterpartyContactName[this]; 
+            set => Fields.CounterpartyContactName[this] = value; 
         }
 
         [Origin("c"), DisplayName("Counterparty")]
@@ -126,48 +126,48 @@ namespace CoreStore.Store.Entities
         [LookupInclude, MinSelectLevel(SelectLevel.List)]
         public String CounterpartyCompanyName
         {
-            get { return Fields.CounterpartyCompanyName[this]; }
-            set { Fields.CounterpartyCompanyName[this] = value; }
+            get => Fields.CounterpartyCompanyName[this]; 
+            set => Fields.CounterpartyCompanyName[this] = value; 
         }
 
         [Origin("c")]
         //[DisplayName("Counterparty Contact Title"), Expression("c.[ContactTitle]")]
         public String CounterpartyContactTitle
         {
-            get { return Fields.CounterpartyContactTitle[this]; }
-            set { Fields.CounterpartyContactTitle[this] = value; }
+            get => Fields.CounterpartyContactTitle[this]; 
+            set => Fields.CounterpartyContactTitle[this] = value; 
         }
 
         [Origin("c")]
         //[DisplayName("Counterparty City"), Expression("c.[City]")]
         public String CounterpartyCity
         {
-            get { return Fields.CounterpartyCity[this]; }
-            set { Fields.CounterpartyCity[this] = value; }
+            get => Fields.CounterpartyCity[this]; 
+            set => Fields.CounterpartyCity[this] = value; 
         }
 
         [Origin("c")]
         //[DisplayName("Counterparty Region"), Expression("c.[Region]")]
         public String CounterpartyRegion
         {
-            get { return Fields.CounterpartyRegion[this]; }
-            set { Fields.CounterpartyRegion[this] = value; }
+            get => Fields.CounterpartyRegion[this]; 
+            set => Fields.CounterpartyRegion[this] = value; 
         }
 
         [Origin("c")]
         //[DisplayName("Counterparty Country"), Expression("c.[Country]")]
         public String CounterpartyCountry
         {
-            get { return Fields.CounterpartyCountry[this]; }
-            set { Fields.CounterpartyCountry[this] = value; }
+            get => Fields.CounterpartyCountry[this]; 
+            set => Fields.CounterpartyCountry[this] = value; 
         }
 
         [Origin("c")]
         //[DisplayName("Counterparty Phone"), Expression("c.[Phone]")]
         public String CounterpartyPhone
         {
-            get { return Fields.CounterpartyPhone[this]; }
-            set { Fields.CounterpartyPhone[this] = value; }
+            get => Fields.CounterpartyPhone[this]; 
+            set => Fields.CounterpartyPhone[this] = value; 
         }
 
         #endregion Counterparty
@@ -178,29 +178,29 @@ namespace CoreStore.Store.Entities
         [LookupEditor(typeof(CategoriesRow), FilterField = "Type", FilterValue = 100, InplaceAdd = true)]
         public Int32? CategoryId
         {
-            get { return Fields.CategoryId[this]; }
-            set { Fields.CategoryId[this] = value; }
+            get => Fields.CategoryId[this]; 
+            set => Fields.CategoryId[this] = value; 
         }
 
         [Origin("cat"), DisplayName("Type"), LookupFiltering("Store.WaresCategory")]
         public Int16? Type
         {
-            get { return Fields.Type[this]; }
-            set { Fields.Type[this] = value; }
+            get => Fields.Type[this]; 
+            set => Fields.Type[this] = value; 
         }
 
         [Origin("cat"), DisplayName("Category Name")]
         public String CategoryCategoryName
         {
-            get { return Fields.CategoryCategoryName[this]; }
-            set { Fields.CategoryCategoryName[this] = value; }
+            get => Fields.CategoryCategoryName[this]; 
+            set => Fields.CategoryCategoryName[this] = value; 
         }
 
         [Origin("cat")]
         public String CategoryDescription
         {
-            get { return Fields.CategoryDescription[this]; }
-            set { Fields.CategoryDescription[this] = value; }
+            get => Fields.CategoryDescription[this]; 
+            set => Fields.CategoryDescription[this] = value; 
         }
 
         #endregion Category
@@ -211,15 +211,15 @@ namespace CoreStore.Store.Entities
         [LookupEditor(typeof(MeasuresRow), InplaceAdd = true)]
         public Int32? MeasureId
         {
-            get { return Fields.MeasureId[this]; }
-            set { Fields.MeasureId[this] = value; }
+            get => Fields.MeasureId[this]; 
+            set => Fields.MeasureId[this] = value; 
         }
 
         [Origin("meas")]
         public String MeasureName
         {
-            get { return Fields.MeasureName[this]; }
-            set { Fields.MeasureName[this] = value; }
+            get => Fields.MeasureName[this]; 
+            set => Fields.MeasureName[this] = value; 
         }
 
         #endregion Measure
@@ -229,37 +229,37 @@ namespace CoreStore.Store.Entities
         [Insertable(false), Updatable(false)]
         public Int32? TenantId
         {
-            get { return Fields.TenantId[this]; }
-            set { Fields.TenantId[this] = value; }
+            get => Fields.TenantId[this]; 
+            set => Fields.TenantId[this] = value; 
         }
 
         public Int32Field TenantIdField
         {
-            get { return Fields.TenantId; }
+            get => Fields.TenantId; 
         }
 
         [NotNull, Insertable(false), Updatable(true)]
         public Int16? IsActive
         {
-            get { return Fields.IsActive[this]; }
-            set { Fields.IsActive[this] = value; }
+            get => Fields.IsActive[this]; 
+            set => Fields.IsActive[this] = value; 
         }
 
         Int16Field IIsActiveRow.IsActiveField
         {
-            get { return Fields.IsActive; }
+            get => Fields.IsActive; 
         }
 
         #endregion Tenant & Activ
 
         IIdField IIdRow.IdField
         {
-            get { return Fields.WaresId; }
+            get => Fields.WaresId; 
         }
 
         StringField INameRow.NameField
         {
-            get { return Fields.WaresName; }
+            get => Fields.WaresName; 
         }
 
         public static readonly RowFields Fields = new RowFields().Init();

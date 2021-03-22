@@ -17,27 +17,27 @@ namespace CoreStore.Store.Entities
         [DisplayName("Representative Id"), Column("RepresentativeID"), Identity]
         public Int32? RepresentativeId
         {
-            get { return Fields.RepresentativeId[this]; }
-            set { Fields.RepresentativeId[this] = value; }
+            get => Fields.RepresentativeId[this]; 
+            set =>Fields.RepresentativeId[this] = value; 
         }
 
         [DisplayName("Counterparty Id"), Column("CounterpartyID"), NotNull]
         public Int32? CounterpartyId
         {
-            get { return Fields.CounterpartyId[this]; }
-            set { Fields.CounterpartyId[this] = value; }
+            get => Fields.CounterpartyId[this]; 
+            set =>Fields.CounterpartyId[this] = value; 
         }
 
         [DisplayName("Employee Id"), Column("EmployeeID"), NotNull]
         public Int32? EmployeeId
         {
-            get { return Fields.EmployeeId[this]; }
-            set { Fields.EmployeeId[this] = value; }
+            get => Fields.EmployeeId[this]; 
+            set =>Fields.EmployeeId[this] = value; 
         }
 
         IIdField IIdRow.IdField
         {
-            get { return Fields.RepresentativeId; }
+            get => Fields.RepresentativeId; 
         }
 
         public static readonly RowFields Fields = new RowFields().Init();
