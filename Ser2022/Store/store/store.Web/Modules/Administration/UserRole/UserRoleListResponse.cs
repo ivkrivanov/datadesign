@@ -1,7 +1,7 @@
 ﻿using Serenity.Services;
 using System;
 
-namespace store.Administration
+namespace Store.Administration
 {
     public class UserRoleListResponse : ListResponse<Int32>
     {

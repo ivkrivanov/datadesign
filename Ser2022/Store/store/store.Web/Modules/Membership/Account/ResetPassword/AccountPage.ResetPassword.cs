@@ -4,12 +4,12 @@ using Serenity;
 using Serenity.Data;
 using Serenity.Services;
 using Serenity.Web.Providers;
-using store.Administration.Entities;
-using store.Administration.Repositories;
+using Store.Administration.Entities;
+using Store.Administration.Repositories;
 using System;
 using System.IO;
 
-namespace store.Membership.Pages
+namespace Store.Membership.Pages
 {
     public partial class AccountController : Controller
     {

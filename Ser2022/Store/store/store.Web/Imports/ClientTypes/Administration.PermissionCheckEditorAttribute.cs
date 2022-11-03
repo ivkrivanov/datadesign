@@ -5,11 +5,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 
-namespace store.Administration
+namespace Store.Administration
 {
     public partial class PermissionCheckEditorAttribute : CustomEditorAttribute
     {
-        public const string Key = "store.Administration.PermissionCheckEditor";
+        public const string Key = "Store.Administration.PermissionCheckEditor";
 
         public PermissionCheckEditorAttribute()
             : base(Key)

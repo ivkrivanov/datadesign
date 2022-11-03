@@ -1,10 +1,10 @@
 ﻿using Serenity.Data;
 using Serenity.Services;
 using System.Data;
-using MyRow = store.Administration.Entities.RoleRow;
+using MyRow = Store.Administration.Entities.RoleRow;
 
 
-namespace store.Administration.Repositories
+namespace Store.Administration.Repositories
 {
     public class RoleRepository : BaseRepository
     {

@@ -3,7 +3,7 @@ using Serenity.Data;
 using Serenity.Services;
 using System;
 
-namespace store
+namespace Store
 {
     public class HumanizeSqlExceptionBehavior : BaseSaveDeleteBehavior, IImplicitBehavior
     {

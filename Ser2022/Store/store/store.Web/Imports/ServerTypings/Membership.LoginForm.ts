@@ -1,4 +1,4 @@
-﻿namespace store.Membership {
+﻿namespace Store.Membership {
     export interface LoginForm {
         Username: Serenity.StringEditor;
         Password: Serenity.PasswordEditor;

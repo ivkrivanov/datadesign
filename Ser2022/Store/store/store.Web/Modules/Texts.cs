@@ -1,7 +1,7 @@
 ﻿using Serenity;
 using Serenity.ComponentModel;
 
-namespace store
+namespace Store
 {
     [NestedLocalTexts]
     public static partial class Texts
@@ -47,7 +47,7 @@ namespace store
 
                 public static class ResetPassword
                 {
-                    public static LocalText EmailSubject = "Reset Your store Password";
+                    public static LocalText EmailSubject = "Reset Your Store Password";
                     public static LocalText FormTitle = "Reset Password";
                     public static LocalText SubmitButton = "Reset Password";
                     public static LocalText Success = "Your password is changed. Please login with your new password.";
@@ -68,7 +68,7 @@ namespace store
 
                 public static class SignUp
                 {
-                    public static LocalText ActivateEmailSubject = "Activate Your store Account";
+                    public static LocalText ActivateEmailSubject = "Activate Your Store Account";
                     public static LocalText ActivationCompleteMessage = "Your account is now activated. " +
                         "Use the e-mail and password you used while signing up to login.";
                     public static LocalText FormInfo = "Enter your details to create a free account.";
@@ -92,7 +92,7 @@ namespace store
         public static class Navigation
         {
             public static LocalText LogoutLink = "Logout";
-            public static LocalText SiteTitle = "store";
+            public static LocalText SiteTitle = "Store";
         }
 
         public static class Site

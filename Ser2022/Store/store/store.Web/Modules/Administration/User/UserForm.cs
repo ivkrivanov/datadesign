@@ -1,7 +1,7 @@
 ﻿using Serenity.ComponentModel;
 using System;
 
-namespace store.Administration.Forms
+namespace Store.Administration.Forms
 {
     [FormScript("Administration.User")]
     [BasedOnRow(typeof(Entities.UserRow), CheckNames = true)]

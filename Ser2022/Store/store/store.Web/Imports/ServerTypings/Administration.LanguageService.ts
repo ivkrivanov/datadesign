@@ -1,4 +1,4 @@
-﻿namespace store.Administration {
+﻿namespace Store.Administration {
     export namespace LanguageService {
         export const baseUrl = 'Administration/Language';
 

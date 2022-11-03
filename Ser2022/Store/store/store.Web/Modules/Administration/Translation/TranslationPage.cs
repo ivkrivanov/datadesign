@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Serenity.Web;
 
-namespace store.Administration.Pages
+namespace Store.Administration.Pages
 {
     [PageAuthorize(PermissionKeys.Translation)]
     public class TranslationController : Controller

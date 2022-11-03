@@ -1,7 +1,7 @@
 ﻿using Serenity.Services;
 using System.Collections.Generic;
 
-namespace store.Administration
+namespace Store.Administration
 {
     public class TranslationUpdateRequest : ServiceRequest
     {

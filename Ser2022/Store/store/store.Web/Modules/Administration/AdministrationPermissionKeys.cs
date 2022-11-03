@@ -2,7 +2,7 @@
 using Serenity.ComponentModel;
 using System.ComponentModel;
 
-namespace store.Administration
+namespace Store.Administration
 {
     [NestedPermissionKeys]
     [DisplayName("Administration")]

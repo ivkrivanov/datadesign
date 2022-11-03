@@ -1,7 +1,7 @@
 ﻿{
   "name": "serene.aspnetcore",
   "version": "1.0.0",
-  "description": "store ASP.NET Core",
+  "description": "Store ASP.NET Core",
   "main": "index.js",
   "repository": {
     "type": "git",

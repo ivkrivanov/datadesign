@@ -1,4 +1,4 @@
-﻿namespace store.Administration {
+﻿namespace Store.Administration {
     export namespace UserPermissionService {
         export const baseUrl = 'Administration/UserPermission';
 

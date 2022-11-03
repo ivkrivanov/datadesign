@@ -1,7 +1,7 @@
 ﻿using FluentMigrator;
 using Serenity.Extensions;
 
-namespace store.Migrations.DefaultDB
+namespace Store.Migrations.DefaultDB
 {
     [Migration(20160515072600)]
     public class DefaultDB_20160515_072600_UserPreferences : AutoReversingMigration

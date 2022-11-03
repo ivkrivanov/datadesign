@@ -1,4 +1,4 @@
-﻿namespace store {
+﻿namespace Store {
     export interface ScriptUserDefinition {
         Username?: string;
         DisplayName?: string;

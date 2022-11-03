@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace store.Migrations
+namespace Store.Migrations
 {
     public class MigrationAttribute : FluentMigrator.MigrationAttribute
     {

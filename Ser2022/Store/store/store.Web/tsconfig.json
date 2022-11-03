@@ -9,7 +9,7 @@
     "noEmitHelpers": true,
     "inlineSourceMap": true,
     "inlineSources": true,
-    "outFile": "wwwroot/Scripts/site/store.Web.js",
+    "outFile": "wwwroot/Scripts/site/Store.Web.js",
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "target": "ES5",

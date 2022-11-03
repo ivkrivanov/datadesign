@@ -1,5 +1,5 @@
 ﻿
-namespace store
+namespace Store
 {
     public interface IDataMigrations
     {

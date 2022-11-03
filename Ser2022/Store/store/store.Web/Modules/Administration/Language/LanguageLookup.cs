@@ -1,9 +1,9 @@
 ﻿using Serenity.ComponentModel;
 using Serenity.Data;
 using Serenity.Web;
-using store.Administration.Entities;
+using Store.Administration.Entities;
 
-namespace store.Administration.Lookups
+namespace Store.Administration.Lookups
 {
     [LookupScript]
     public sealed class LanguageLookup : RowLookupScript<LanguageRow>

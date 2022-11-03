@@ -1,5 +1,5 @@
 ﻿
-namespace store.Common
+namespace Store.Common
 {
     public class DashboardPageModel
     {

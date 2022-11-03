@@ -1,5 +1,5 @@
 ﻿
-namespace store.Membership
+namespace Store.Membership
 {
     public class ResetPasswordEmailModel
     {

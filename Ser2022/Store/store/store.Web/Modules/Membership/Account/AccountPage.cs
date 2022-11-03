@@ -6,10 +6,10 @@ using Serenity;
 using Serenity.Abstractions;
 using Serenity.Extensions;
 using Serenity.Services;
-using store.Administration;
+using Store.Administration;
 using System;
 
-namespace store.Membership.Pages
+namespace Store.Membership.Pages
 {
     [Route("Account/[action]")]
     public partial class AccountController : Controller

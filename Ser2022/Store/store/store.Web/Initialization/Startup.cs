@@ -20,12 +20,12 @@ using Serenity.Navigation;
 using Serenity.Reporting;
 using Serenity.Services;
 using Serenity.Web;
-using store.AppServices;
+using Store.AppServices;
 using System;
 using System.Data.Common;
 using System.IO;
 
-namespace store
+namespace Store
 {
     public partial class Startup
     {
@@ -51,8 +51,6 @@ namespace store
                 typeof(IDynamicScriptManager).Assembly,
                 typeof(Startup).Assembly,
                 typeof(Serenity.Extensions.EnvironmentSettings).Assembly,
-                typeof(Serenity.Demo.Northwind.CustomerController).Assembly,
-                typeof(Serenity.Demo.BasicSamples.BasicSamplesController).Assembly,
             }));
 
             services.Configure<ConnectionStringOptions>(Configuration.GetSection(ConnectionStringOptions.SectionKey));

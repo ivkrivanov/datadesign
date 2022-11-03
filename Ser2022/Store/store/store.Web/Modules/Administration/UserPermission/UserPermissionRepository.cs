@@ -6,15 +6,15 @@ using Serenity.Data;
 using Serenity.Localization;
 using Serenity.Services;
 using Serenity.Web;
-using store.Administration.Entities;
+using Store.Administration.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Reflection;
-using MyRow = store.Administration.Entities.UserPermissionRow;
+using MyRow = Store.Administration.Entities.UserPermissionRow;
 
-namespace store.Administration.Repositories
+namespace Store.Administration.Repositories
 {
     public class UserPermissionRepository : BaseRepository
     {

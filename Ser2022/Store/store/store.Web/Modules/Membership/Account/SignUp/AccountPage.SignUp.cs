@@ -6,14 +6,14 @@ using Serenity.Data;
 using Serenity.Extensions;
 using Serenity.Services;
 using Serenity.Web;
-using store.Administration;
-using store.Administration.Entities;
-using store.Administration.Repositories;
-using store.Common;
+using Store.Administration;
+using Store.Administration.Entities;
+using Store.Administration.Repositories;
+using Store.Common;
 using System;
 using System.IO;
 
-namespace store.Membership.Pages
+namespace Store.Membership.Pages
 {
     public partial class AccountController : Controller
     {

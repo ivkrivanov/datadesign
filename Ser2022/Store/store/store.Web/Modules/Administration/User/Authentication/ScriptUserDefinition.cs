@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace store
+namespace Store
 {
     /// <summary>
     /// This data will be available from script code using a dynamic script.

@@ -1,4 +1,4 @@
-﻿namespace store.Membership {
+﻿namespace Store.Membership {
     export interface ResetPasswordRequest extends Serenity.ServiceRequest {
         Token?: string;
         NewPassword?: string;

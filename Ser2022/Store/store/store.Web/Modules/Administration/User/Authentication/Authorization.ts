@@ -1,4 +1,4 @@
-﻿namespace store.Authorization {
+﻿namespace Store.Authorization {
     export declare let userDefinition: ScriptUserDefinition;
 
     Object.defineProperty(Authorization, 'userDefinition', {

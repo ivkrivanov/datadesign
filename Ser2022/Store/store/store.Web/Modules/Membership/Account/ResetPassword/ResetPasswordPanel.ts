@@ -1,4 +1,4 @@
-﻿namespace store.Membership {
+﻿namespace Store.Membership {
 
     @Serenity.Decorators.registerClass()
     export class ResetPasswordPanel extends Serenity.PropertyPanel<ResetPasswordRequest, any> {

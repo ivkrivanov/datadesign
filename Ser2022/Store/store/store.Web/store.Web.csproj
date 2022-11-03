@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <PreserveCompilationContext>true</PreserveCompilationContext>
-    <AssemblyName>store.Web</AssemblyName>
+    <AssemblyName>Store.Web</AssemblyName>
     <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
     <SerenitySrc>..\..\Serenity\src\</SerenitySrc>
     <DotNetSergen>dotnet sergen</DotNetSergen>
@@ -45,8 +45,6 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Serenity.Extensions" Version="5.2.2" />
-    <PackageReference Include="Serenity.Demo.Northwind" Version="5.2.2" />
-    <PackageReference Include="Serenity.Demo.BasicSamples" Version="5.2.2" />
   </ItemGroup>
   <Import Project="$(SolutionDir)Serenity\build\submodule.targets" Condition="Exists('$(SolutionDir)Serenity\build\submodule.targets')" />
   <Target Name="CreateInputsOutputs" BeforeTargets="BeforeBuild">
@@ -66,7 +64,7 @@
   <Target Name="TransformServerTypings" AfterTargets="AfterBuild">
     <Exec Command="$(DotNetSergen) servertypings" ContinueOnError="true" />
   </Target>
-  <Target Name="CompileTSC" AfterTargets="AfterBuild" Inputs="@(CompileTSCInputs)" Outputs="wwwroot\Scripts\site\store.Web.js">
+  <Target Name="CompileTSC" AfterTargets="AfterBuild" Inputs="@(CompileTSCInputs)" Outputs="wwwroot\Scripts\site\Store.Web.js">
     <Message Text="Executing TypeScript compiler..." Importance="high"></Message>
     <Exec Command="node &quot;$(TSJavaScriptFile.Replace('build\\..\tools\', 'tools\'))&quot; -p ./tsconfig.json" ContinueOnError="true" />
   </Target>

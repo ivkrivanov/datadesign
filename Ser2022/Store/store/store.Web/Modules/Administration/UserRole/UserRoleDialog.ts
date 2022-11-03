@@ -1,4 +1,4 @@
-﻿namespace store.Administration {
+﻿namespace Store.Administration {
 
     @Serenity.Decorators.registerClass()
     export class UserRoleDialog extends Serenity.TemplatedDialog<UserRoleDialogOptions> {

@@ -1,7 +1,7 @@
 ﻿using Serenity;
 using System;
 
-namespace store
+namespace Store
 {
     [Serializable]
     public class UserDefinition : IUserDefinition

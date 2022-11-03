@@ -2,7 +2,7 @@
 using System;
 using System.ComponentModel;
 
-namespace store.Administration.Forms
+namespace Store.Administration.Forms
 {
     [ColumnsScript("Administration.Role")]
     [BasedOnRow(typeof(Entities.RoleRow), CheckNames = true)]

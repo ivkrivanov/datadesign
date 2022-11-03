@@ -1,6 +1,6 @@
 ﻿using Serenity.Services;
 
-namespace store.Administration
+namespace Store.Administration
 {
     public class RolePermissionListRequest : ServiceRequest
     {

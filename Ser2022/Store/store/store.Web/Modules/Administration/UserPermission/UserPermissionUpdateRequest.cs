@@ -3,7 +3,7 @@ using Serenity.Services;
 using System;
 using System.Collections.Generic;
 
-namespace store.Administration
+namespace Store.Administration
 {
     public class UserPermissionUpdateRequest : ServiceRequest
     {

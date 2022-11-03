@@ -3,7 +3,7 @@ using Serenity.Abstractions;
 using Serenity.Web;
 using System.Security.Claims;
 
-namespace store.Administration
+namespace Store.Administration
 {
     public class UserAccessor : IUserAccessor, IImpersonator
     {

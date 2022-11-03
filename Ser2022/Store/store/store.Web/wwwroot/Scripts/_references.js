@@ -3,4 +3,4 @@
 /// <autosync enabled="false" />
 /// <reference path="serenity/Serenity.CoreLib.js" />
 /// <reference path="serenity/Serenity.Script.UI.js" />
-/// <reference path="site/store.Web.js" />
+/// <reference path="site/Store.Web.js" />

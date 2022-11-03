@@ -1,7 +1,7 @@
 ﻿using Serenity.Services;
 using System;
 
-namespace store.Membership
+namespace Store.Membership
 {
     public class SignUpRequest : ServiceRequest
     {

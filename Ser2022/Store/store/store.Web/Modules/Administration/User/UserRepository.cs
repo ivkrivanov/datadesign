@@ -13,9 +13,9 @@ using System.Data;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
-using MyRow = store.Administration.Entities.UserRow;
+using MyRow = Store.Administration.Entities.UserRow;
 
-namespace store.Administration.Repositories
+namespace Store.Administration.Repositories
 {
     public partial class UserRepository : BaseRepository
     {

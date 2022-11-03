@@ -4,10 +4,10 @@ using Serenity.Data;
 using Serenity.Services;
 using System.Data;
 using System.Linq;
-using MyRepository = store.Administration.Repositories.UserPermissionRepository;
-using MyRow = store.Administration.Entities.UserPermissionRow;
+using MyRepository = Store.Administration.Repositories.UserPermissionRepository;
+using MyRow = Store.Administration.Entities.UserPermissionRow;
 
-namespace store.Administration.Endpoints
+namespace Store.Administration.Endpoints
 {
     [Route("Services/Administration/UserPermission/[action]")]
     [ConnectionKey(typeof(MyRow)), ServiceAuthorize(typeof(MyRow))]

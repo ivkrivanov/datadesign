@@ -5,9 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using MyRow = store.Administration.Entities.RolePermissionRow;
+using MyRow = Store.Administration.Entities.RolePermissionRow;
 
-namespace store.Administration.Repositories
+namespace Store.Administration.Repositories
 {
     public class RolePermissionRepository : BaseRepository
     {

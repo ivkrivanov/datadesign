@@ -1,5 +1,5 @@
 ﻿using Serenity.Navigation;
-using Administration = store.Administration.Pages;
+using Administration = Store.Administration.Pages;
 
 [assembly: NavigationMenu(9000, "Administration", icon: "fa-wrench")]
 [assembly: NavigationLink(9100, "Administration/Languages", typeof(Administration.LanguageController), icon: "fa-comments")]

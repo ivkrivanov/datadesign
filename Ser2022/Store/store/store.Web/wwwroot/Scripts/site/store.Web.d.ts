@@ -5,12 +5,12 @@
 /// <reference types="jqueryui" />
 /// <reference types="serenity.pro.ui" />
 /// <reference types="serenity.pro.extensions" />
-declare namespace store.Administration {
+declare namespace Store.Administration {
     class LanguageColumns {
         static columnsKey: string;
     }
 }
-declare namespace store.Administration {
+declare namespace Store.Administration {
     interface LanguageForm {
         LanguageId: Serenity.StringEditor;
         LanguageName: Serenity.StringEditor;
@@ -21,7 +21,7 @@ declare namespace store.Administration {
         constructor(prefix: string);
     }
 }
-declare namespace store.Administration {
+declare namespace Store.Administration {
     interface LanguageRow {
         Id?: number;
         LanguageId?: string;
@@ -44,7 +44,7 @@ declare namespace store.Administration {
         }
     }
 }
-declare namespace store.Administration {
+declare namespace Store.Administration {
     namespace LanguageService {
         const baseUrl = "Administration/Language";
         function Create(request: Serenity.SaveRequest<LanguageRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -61,18 +61,18 @@ declare namespace store.Administration {
         }
     }
 }
-declare namespace store.Administration {
+declare namespace Store.Administration {
     namespace PermissionKeys {
         const Security = "Administration:Security";
         const Translation = "Administration:Translation";
     }
 }
-declare namespace store.Administration {
+declare namespace Store.Administration {
     class RoleColumns {
         static columnsKey: string;
     }
 }
-declare namespace store.Administration {
+declare namespace Store.Administration {
     interface RoleForm {
         RoleName: Serenity.StringEditor;
     }
@@ -82,18 +82,18 @@ declare namespace store.Administration {
         constructor(prefix: string);
     }
 }
-declare namespace store.Administration {
+declare namespace Store.Administration {
     interface RolePermissionListRequest extends Serenity.ServiceRequest {
         RoleID?: number;
         Module?: string;
         Submodule?: string;
     }
 }
-declare namespace store.Administration {
+declare namespace Store.Administration {
     interface RolePermissionListResponse extends Serenity.ListResponse<string> {
     }
 }
-declare namespace store.Administration {
+declare namespace Store.Administration {
     interface RolePermissionRow {
         RolePermissionId?: number;
         RoleId?: number;
@@ -116,7 +116,7 @@ declare namespace store.Administration {
         }
     }
 }
-declare namespace store.Administration {
+declare namespace Store.Administration {
     namespace RolePermissionService {
         const baseUrl = "Administration/RolePermission";
         function Update(request: RolePermissionUpdateRequest, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -127,7 +127,7 @@ declare namespace store.Administration {
         }
     }
 }
-declare namespace store.Administration {
+declare namespace Store.Administration {
     interface RolePermissionUpdateRequest extends Serenity.ServiceRequest {
         RoleID?: number;
         Module?: string;
@@ -135,7 +135,7 @@ declare namespace store.Administration {
         Permissions?: string[];
     }
 }
-declare namespace store.Administration {
+declare namespace Store.Administration {
     interface RoleRow {
         RoleId?: number;
         RoleName?: string;
@@ -156,7 +156,7 @@ declare namespace store.Administration {
         }
     }
 }
-declare namespace store.Administration {
+declare namespace Store.Administration {
     namespace RoleService {
         const baseUrl = "Administration/Role";
         function Create(request: Serenity.SaveRequest<RoleRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -173,7 +173,7 @@ declare namespace store.Administration {
         }
     }
 }
-declare namespace store.Administration {
+declare namespace Store.Administration {
     interface TranslationItem {
         Key?: string;
         SourceText?: string;
@@ -181,13 +181,13 @@ declare namespace store.Administration {
         CustomText?: string;
     }
 }
-declare namespace store.Administration {
+declare namespace Store.Administration {
     interface TranslationListRequest extends Serenity.ListRequest {
         SourceLanguageID?: string;
         TargetLanguageID?: string;
     }
 }
-declare namespace store.Administration {
+declare namespace Store.Administration {
     namespace TranslationService {
         const baseUrl = "Administration/Translation";
         function List(request: TranslationListRequest, onSuccess?: (response: Serenity.ListResponse<TranslationItem>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -198,7 +198,7 @@ declare namespace store.Administration {
         }
     }
 }
-declare namespace store.Administration {
+declare namespace Store.Administration {
     interface TranslationUpdateRequest extends Serenity.ServiceRequest {
         TargetLanguageID?: string;
         Translations?: {
@@ -206,12 +206,12 @@ declare namespace store.Administration {
         };
     }
 }
-declare namespace store.Administration {
+declare namespace Store.Administration {
     class UserColumns {
         static columnsKey: string;
     }
 }
-declare namespace store.Administration {
+declare namespace Store.Administration {
     interface UserForm {
         Username: Serenity.StringEditor;
         DisplayName: Serenity.StringEditor;
@@ -227,14 +227,14 @@ declare namespace store.Administration {
         constructor(prefix: string);
     }
 }
-declare namespace store.Administration {
+declare namespace Store.Administration {
     interface UserPermissionListRequest extends Serenity.ServiceRequest {
         UserID?: number;
         Module?: string;
         Submodule?: string;
     }
 }
-declare namespace store.Administration {
+declare namespace Store.Administration {
     interface UserPermissionRow {
         UserPermissionId?: number;
         UserId?: number;
@@ -261,7 +261,7 @@ declare namespace store.Administration {
         }
     }
 }
-declare namespace store.Administration {
+declare namespace Store.Administration {
     namespace UserPermissionService {
         const baseUrl = "Administration/UserPermission";
         function Update(request: UserPermissionUpdateRequest, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -276,7 +276,7 @@ declare namespace store.Administration {
         }
     }
 }
-declare namespace store.Administration {
+declare namespace Store.Administration {
     interface UserPermissionUpdateRequest extends Serenity.ServiceRequest {
         UserID?: number;
         Module?: string;
@@ -284,16 +284,16 @@ declare namespace store.Administration {
         Permissions?: UserPermissionRow[];
     }
 }
-declare namespace store.Administration {
+declare namespace Store.Administration {
     interface UserRoleListRequest extends Serenity.ServiceRequest {
         UserID?: number;
     }
 }
-declare namespace store.Administration {
+declare namespace Store.Administration {
     interface UserRoleListResponse extends Serenity.ListResponse<number> {
     }
 }
-declare namespace store.Administration {
+declare namespace Store.Administration {
     interface UserRoleRow {
         UserRoleId?: number;
         UserId?: number;
@@ -317,7 +317,7 @@ declare namespace store.Administration {
         }
     }
 }
-declare namespace store.Administration {
+declare namespace Store.Administration {
     namespace UserRoleService {
         const baseUrl = "Administration/UserRole";
         function Update(request: UserRoleUpdateRequest, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -328,13 +328,13 @@ declare namespace store.Administration {
         }
     }
 }
-declare namespace store.Administration {
+declare namespace Store.Administration {
     interface UserRoleUpdateRequest extends Serenity.ServiceRequest {
         UserID?: number;
         Roles?: number[];
     }
 }
-declare namespace store.Administration {
+declare namespace Store.Administration {
     interface UserRow {
         UserId?: number;
         Username?: string;
@@ -384,7 +384,7 @@ declare namespace store.Administration {
         }
     }
 }
-declare namespace store.Administration {
+declare namespace Store.Administration {
     namespace UserService {
         const baseUrl = "Administration/User";
         function Create(request: Serenity.SaveRequest<UserRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -403,7 +403,7 @@ declare namespace store.Administration {
         }
     }
 }
-declare namespace store.Membership {
+declare namespace Store.Membership {
     interface ChangePasswordForm {
         OldPassword: Serenity.PasswordEditor;
         NewPassword: Serenity.PasswordEditor;
@@ -415,14 +415,14 @@ declare namespace store.Membership {
         constructor(prefix: string);
     }
 }
-declare namespace store.Membership {
+declare namespace Store.Membership {
     interface ChangePasswordRequest extends Serenity.ServiceRequest {
         OldPassword?: string;
         NewPassword?: string;
         ConfirmPassword?: string;
     }
 }
-declare namespace store.Membership {
+declare namespace Store.Membership {
     interface ForgotPasswordForm {
         Email: Serenity.EmailAddressEditor;
     }
@@ -432,12 +432,12 @@ declare namespace store.Membership {
         constructor(prefix: string);
     }
 }
-declare namespace store.Membership {
+declare namespace Store.Membership {
     interface ForgotPasswordRequest extends Serenity.ServiceRequest {
         Email?: string;
     }
 }
-declare namespace store.Membership {
+declare namespace Store.Membership {
     interface LoginForm {
         Username: Serenity.StringEditor;
         Password: Serenity.PasswordEditor;
@@ -448,13 +448,13 @@ declare namespace store.Membership {
         constructor(prefix: string);
     }
 }
-declare namespace store.Membership {
+declare namespace Store.Membership {
     interface LoginRequest extends Serenity.ServiceRequest {
         Username?: string;
         Password?: string;
     }
 }
-declare namespace store.Membership {
+declare namespace Store.Membership {
     interface ResetPasswordForm {
         NewPassword: Serenity.PasswordEditor;
         ConfirmPassword: Serenity.PasswordEditor;
@@ -465,14 +465,14 @@ declare namespace store.Membership {
         constructor(prefix: string);
     }
 }
-declare namespace store.Membership {
+declare namespace Store.Membership {
     interface ResetPasswordRequest extends Serenity.ServiceRequest {
         Token?: string;
         NewPassword?: string;
         ConfirmPassword?: string;
     }
 }
-declare namespace store.Membership {
+declare namespace Store.Membership {
     interface SignUpForm {
         DisplayName: Serenity.StringEditor;
         Email: Serenity.EmailAddressEditor;
@@ -486,14 +486,14 @@ declare namespace store.Membership {
         constructor(prefix: string);
     }
 }
-declare namespace store.Membership {
+declare namespace Store.Membership {
     interface SignUpRequest extends Serenity.ServiceRequest {
         DisplayName?: string;
         Email?: string;
         Password?: string;
     }
 }
-declare namespace store {
+declare namespace Store {
     interface ScriptUserDefinition {
         Username?: string;
         DisplayName?: string;
@@ -503,9 +503,9 @@ declare namespace store {
         };
     }
 }
-declare namespace store.Texts {
+declare namespace Store.Texts {
 }
-declare namespace store.Administration {
+declare namespace Store.Administration {
     class LanguageDialog extends Serenity.EntityDialog<LanguageRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
@@ -515,7 +515,7 @@ declare namespace store.Administration {
         protected form: LanguageForm;
     }
 }
-declare namespace store.Administration {
+declare namespace Store.Administration {
     class LanguageGrid extends Serenity.EntityGrid<LanguageRow, any> {
         protected getColumnsKey(): string;
         protected getDialogType(): typeof LanguageDialog;
@@ -526,7 +526,7 @@ declare namespace store.Administration {
         protected getDefaultSortBy(): LanguageRow.Fields[];
     }
 }
-declare namespace store.Administration {
+declare namespace Store.Administration {
     class RoleDialog extends Serenity.EntityDialog<RoleRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
@@ -538,7 +538,7 @@ declare namespace store.Administration {
         protected updateInterface(): void;
     }
 }
-declare namespace store.Administration {
+declare namespace Store.Administration {
     class RoleGrid extends Serenity.EntityGrid<RoleRow, any> {
         protected getColumnsKey(): string;
         protected getDialogType(): typeof RoleDialog;
@@ -549,7 +549,7 @@ declare namespace store.Administration {
         protected getDefaultSortBy(): RoleRow.Fields[];
     }
 }
-declare namespace store.Administration {
+declare namespace Store.Administration {
     class RolePermissionDialog extends Serenity.TemplatedDialog<RolePermissionDialogOptions> {
         private permissions;
         constructor(opt: RolePermissionDialogOptions);
@@ -561,7 +561,7 @@ declare namespace store.Administration {
         title?: string;
     }
 }
-declare namespace store.Administration {
+declare namespace Store.Administration {
     class TranslationGrid extends Serenity.EntityGrid<TranslationItem, any> {
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
@@ -583,7 +583,7 @@ declare namespace store.Administration {
         protected usePager(): boolean;
     }
 }
-declare namespace store.Administration {
+declare namespace Store.Administration {
     class UserDialog extends Serenity.EntityDialog<UserRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
@@ -598,7 +598,7 @@ declare namespace store.Administration {
         protected afterLoadEntity(): void;
     }
 }
-declare namespace store.Administration {
+declare namespace Store.Administration {
     class UserGrid extends Serenity.EntityGrid<UserRow, any> {
         protected getColumnsKey(): string;
         protected getDialogType(): typeof UserDialog;
@@ -610,11 +610,11 @@ declare namespace store.Administration {
         protected getDefaultSortBy(): UserRow.Fields[];
     }
 }
-declare namespace store.Authorization {
+declare namespace Store.Authorization {
     let userDefinition: ScriptUserDefinition;
     function hasPermission(permissionKey: string): boolean;
 }
-declare namespace store.Administration {
+declare namespace Store.Administration {
     class PermissionCheckEditor extends Serenity.DataGrid<PermissionCheckItem, PermissionCheckEditorOptions> {
         protected getIdProperty(): string;
         private searchText;
@@ -653,7 +653,7 @@ declare namespace store.Administration {
         GrantRevoke?: boolean;
     }
 }
-declare namespace store.Administration {
+declare namespace Store.Administration {
     class UserPermissionDialog extends Serenity.TemplatedDialog<UserPermissionDialogOptions> {
         private permissions;
         constructor(opt: UserPermissionDialogOptions);
@@ -665,7 +665,7 @@ declare namespace store.Administration {
         username?: string;
     }
 }
-declare namespace store.Administration {
+declare namespace Store.Administration {
     class RoleCheckEditor extends Serenity.CheckTreeEditor<Serenity.CheckTreeItem<any>, any> {
         private searchText;
         constructor(div: JQuery);
@@ -675,7 +675,7 @@ declare namespace store.Administration {
         protected onViewFilter(item: any): boolean;
     }
 }
-declare namespace store.Administration {
+declare namespace Store.Administration {
     class UserRoleDialog extends Serenity.TemplatedDialog<UserRoleDialogOptions> {
         private permissions;
         constructor(opt: UserRoleDialogOptions);
@@ -687,19 +687,19 @@ declare namespace store.Administration {
         username: string;
     }
 }
-declare namespace store.LanguageList {
+declare namespace Store.LanguageList {
     function getValue(): string[][];
 }
-declare namespace store.ScriptInitialization {
+declare namespace Store.ScriptInitialization {
 }
-declare namespace store.Common {
+declare namespace Store.Common {
     class SidebarSearch extends Serenity.Widget<any> {
         private menuUL;
         constructor(input: JQuery, menuUL: JQuery);
         protected updateMatchFlags(text: string): void;
     }
 }
-declare namespace store.Membership {
+declare namespace Store.Membership {
     class LoginPanel extends Serenity.PropertyPanel<LoginRequest, any> {
         protected getFormKey(): string;
         constructor(container: JQuery);
@@ -707,7 +707,7 @@ declare namespace store.Membership {
         protected getTemplate(): string;
     }
 }
-declare namespace store.Membership {
+declare namespace Store.Membership {
     class ChangePasswordPanel extends Serenity.PropertyPanel<ChangePasswordRequest, any> {
         protected getFormKey(): string;
         private form;
@@ -715,21 +715,21 @@ declare namespace store.Membership {
         getTemplate(): string;
     }
 }
-declare namespace store.Membership {
+declare namespace Store.Membership {
     class ForgotPasswordPanel extends Serenity.PropertyPanel<ForgotPasswordRequest, any> {
         protected getFormKey(): string;
         private form;
         constructor(container: JQuery);
     }
 }
-declare namespace store.Membership {
+declare namespace Store.Membership {
     class ResetPasswordPanel extends Serenity.PropertyPanel<ResetPasswordRequest, any> {
         protected getFormKey(): string;
         private form;
         constructor(container: JQuery);
     }
 }
-declare namespace store.Membership {
+declare namespace Store.Membership {
     class SignUpPanel extends Serenity.PropertyPanel<SignUpRequest, any> {
         protected getFormKey(): string;
         private form;

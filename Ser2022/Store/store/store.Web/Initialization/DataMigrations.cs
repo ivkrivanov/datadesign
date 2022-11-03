@@ -14,13 +14,12 @@ using System.Linq;
 using System.Reflection;
 using System.Threading;
 
-namespace store
+namespace Store
 {
     public class DataMigrations : IDataMigrations
     {
         private static readonly string[] databaseKeys = new[] {
             "Default"
-            , "Northwind"
         };
 
         protected ISqlConnections SqlConnections { get; }
@@ -202,7 +201,7 @@ namespace store
             bool isFirebird = serverType.StartsWith("Firebird", StringComparison.OrdinalIgnoreCase);
 
             // safety check to ensure that we are not modifying an arbitrary database.
-            // remove these lines if you want store migrations to run on your DB.
+            // remove these lines if you want Store migrations to run on your DB.
             if (!isOracle && cs.ConnectionString.IndexOf(typeof(DataMigrations).Namespace +
                     @"_" + databaseKey + "_v1", StringComparison.OrdinalIgnoreCase) < 0)
             {
@@ -214,7 +213,7 @@ namespace store
 
             var conventionSet = new DefaultConventionSet(defaultSchemaName: null,
                 Path.GetDirectoryName(typeof(DataMigrations).Assembly.Location));
-            var migrationNamespace = "store.Migrations." + databaseKey + "DB";
+            var migrationNamespace = "Store.Migrations." + databaseKey + "DB";
             var migrationAssemblies = new[] { typeof(DataMigrations).Assembly };
             if (databaseKey.Equals("Northwind", StringComparison.OrdinalIgnoreCase))
             {

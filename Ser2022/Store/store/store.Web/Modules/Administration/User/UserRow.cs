@@ -4,7 +4,7 @@ using Serenity.Data.Mapping;
 using System;
 using System.ComponentModel;
 
-namespace store.Administration.Entities
+namespace Store.Administration.Entities
 {
     [ConnectionKey("Default"), Module("Administration"), TableName("Users")]
     [DisplayName("Users"), InstanceName("User")]

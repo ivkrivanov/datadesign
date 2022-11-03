@@ -1,7 +1,7 @@
 ﻿using Serenity.ComponentModel;
 using System;
 
-namespace store.Membership
+namespace Store.Membership
 {
     [FormScript("Membership.SignUp")]
     public class SignUpForm

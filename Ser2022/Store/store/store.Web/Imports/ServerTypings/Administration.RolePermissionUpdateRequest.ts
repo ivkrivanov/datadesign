@@ -1,4 +1,4 @@
-﻿namespace store.Administration {
+﻿namespace Store.Administration {
     export interface RolePermissionUpdateRequest extends Serenity.ServiceRequest {
         RoleID?: number;
         Module?: string;

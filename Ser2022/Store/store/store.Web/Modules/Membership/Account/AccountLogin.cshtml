@@ -16,7 +16,7 @@
     <div class="alert alert-error alert-dismissible">
         <button type="button" class="close btn-close" data-dismiss="alert" data-bs-dismiss="alert" aria-hidden="true">×</button>
         <h4><i class="icon fa fa-warning"></i> Warning!</h4>
-        store skipped running migrations to avoid modifying an arbitrary database.
+        Store skipped running migrations to avoid modifying an arbitrary database.
         If you'd like to run migrations on this database, remove the safety check
         in SiteInitialization.RunMigrations method.
     </div>
@@ -40,7 +40,7 @@
 <script type="text/javascript">
 
 jQuery(function() {
-    var loginPanel = new store.Membership.LoginPanel($('#LoginPanel')).init();
+    var loginPanel = new Store.Membership.LoginPanel($('#LoginPanel')).init();
     loginPanel.element.find('.forgot-password').appendTo('.field.Password');
 
     @if (EnvironmentOptions.Value.IsPublicDemo)

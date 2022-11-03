@@ -3,13 +3,13 @@ using Serenity.Abstractions;
 using Serenity.ComponentModel;
 using Serenity.Data;
 using Serenity.Web;
-using store.Administration.Entities;
-using store.Administration.Repositories;
+using Store.Administration.Entities;
+using Store.Administration.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace store.Administration
+namespace Store.Administration
 {
     /// <summary>
     /// This declares a dynamic script with key 'UserData' that will be available from client side.

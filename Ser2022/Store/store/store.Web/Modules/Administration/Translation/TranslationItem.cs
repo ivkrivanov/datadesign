@@ -1,7 +1,7 @@
 ﻿using Serenity.ComponentModel;
 
 
-namespace store.Administration
+namespace Store.Administration
 {
     [ScriptInclude]
     public class TranslationItem

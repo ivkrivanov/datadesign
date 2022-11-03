@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using Serenity.Abstractions;
 using Serenity.Services;
 using System;
-using MyRepository = store.Administration.Repositories.TranslationRepository;
+using MyRepository = Store.Administration.Repositories.TranslationRepository;
 
-namespace store.Administration.Endpoints
+namespace Store.Administration.Endpoints
 {
     [Route("Services/Administration/Translation/[action]")]
     [ServiceAuthorize(PermissionKeys.Translation)]

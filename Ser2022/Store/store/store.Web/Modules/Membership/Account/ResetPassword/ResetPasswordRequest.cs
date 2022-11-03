@@ -3,7 +3,7 @@ using Serenity.Services;
 using System;
 using System.ComponentModel;
 
-namespace store.Membership
+namespace Store.Membership
 {
     [FormScript("Membership.ResetPassword")]
     public class ResetPasswordRequest : ServiceRequest

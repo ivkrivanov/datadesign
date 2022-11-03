@@ -6,7 +6,7 @@ using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace store.AppServices
+namespace Store.AppServices
 {
     public class UserCultureProvider : IRequestCultureProvider
     {

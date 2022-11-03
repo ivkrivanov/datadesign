@@ -8,7 +8,7 @@ using Serenity.Localization;
 using Serenity.Navigation;
 using Serenity.Services;
 using Serenity.Web;
-using store.Administration.Entities;
+using Store.Administration.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,7 +16,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 
-namespace store.Administration.Repositories
+namespace Store.Administration.Repositories
 {
     public class TranslationRepository : BaseRepository
     {

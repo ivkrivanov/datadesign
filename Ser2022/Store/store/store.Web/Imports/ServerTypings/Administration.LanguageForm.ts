@@ -1,4 +1,4 @@
-﻿namespace store.Administration {
+﻿namespace Store.Administration {
     export interface LanguageForm {
         LanguageId: Serenity.StringEditor;
         LanguageName: Serenity.StringEditor;

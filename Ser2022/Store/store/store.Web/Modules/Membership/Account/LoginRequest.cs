@@ -1,7 +1,7 @@
 ﻿using Serenity.ComponentModel;
 using Serenity.Services;
 
-namespace store.Membership
+namespace Store.Membership
 {
     [FormScript("Membership.Login")]
     [BasedOnRow(typeof(Administration.Entities.UserRow), CheckNames = true)]

@@ -1,4 +1,4 @@
-﻿namespace store.Administration {
+﻿namespace Store.Administration {
     export interface LanguageRow {
         Id?: number;
         LanguageId?: string;

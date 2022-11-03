@@ -5,9 +5,9 @@ using System;
 using System.Data;
 using System.Security.Claims;
 using System.Security.Principal;
-using MyRow = store.Administration.Entities.UserRow;
+using MyRow = Store.Administration.Entities.UserRow;
 
-namespace store.Administration
+namespace Store.Administration
 {
     public class UserRetrieveService : IUserRetrieveService
     {

@@ -1,8 +1,8 @@
 ﻿/// <reference path="../Common/Helpers/LanguageList.ts" />
 
-namespace store.ScriptInitialization {
+namespace Store.ScriptInitialization {
     Q.Config.responsiveDialogs = true;
-    Q.Config.rootNamespaces.push('store');
+    Q.Config.rootNamespaces.push('Store');
     Serenity.EntityDialog.defaultLanguageList = LanguageList.getValue;
     Serenity.HtmlContentEditor.CKEditorBasePath = "~/Serenity.Assets/Scripts/ckeditor/";
 

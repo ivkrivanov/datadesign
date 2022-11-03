@@ -1,7 +1,7 @@
 ﻿using Serenity.ComponentModel;
 using System;
 
-namespace store.Administration.Columns
+namespace Store.Administration.Columns
 {
     [ColumnsScript("Administration.User")]
     [BasedOnRow(typeof(Entities.UserRow), CheckNames = true)]

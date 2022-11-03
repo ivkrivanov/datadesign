@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace store.Administration
+namespace Store.Administration
 {
     public class UserRoleUpdateRequest : ServiceRequest
     {

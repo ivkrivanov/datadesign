@@ -1,4 +1,4 @@
-﻿namespace store.Administration {
+﻿namespace Store.Administration {
     export interface UserRow {
         UserId?: number;
         Username?: string;

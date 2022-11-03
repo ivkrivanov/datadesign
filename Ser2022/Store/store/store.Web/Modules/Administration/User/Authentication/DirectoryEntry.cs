@@ -1,5 +1,5 @@
 ﻿
-namespace store.Administration
+namespace Store.Administration
 {
     public class DirectoryEntry
     {

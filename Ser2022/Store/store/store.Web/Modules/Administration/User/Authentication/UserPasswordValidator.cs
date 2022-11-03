@@ -3,11 +3,11 @@ using Microsoft.Extensions.Logging;
 using Serenity;
 using Serenity.Abstractions;
 using Serenity.Data;
-using store.Administration.Entities;
-using store.Administration.Repositories;
+using Store.Administration.Entities;
+using Store.Administration.Repositories;
 using System;
 
-namespace store.Administration
+namespace Store.Administration
 {
     public class UserPasswordValidator : IUserPasswordValidator
     {

@@ -6,7 +6,7 @@ using Serenity.Navigation;
 using Serenity.Web;
 using System;
 
-namespace store.Common
+namespace Store.Common
 {
     public class NavigationModelFactory : INavigationModelFactory
     {

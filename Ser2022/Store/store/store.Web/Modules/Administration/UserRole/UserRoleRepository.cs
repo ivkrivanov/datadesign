@@ -6,9 +6,9 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Reflection;
-using MyRow = store.Administration.Entities.UserRoleRow;
+using MyRow = Store.Administration.Entities.UserRoleRow;
 
-namespace store.Administration.Repositories
+namespace Store.Administration.Repositories
 {
     public class UserRoleRepository : BaseRepository
     {

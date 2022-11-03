@@ -8,7 +8,7 @@ using System;
 using System.IO;
 using HttpContextBase = Microsoft.AspNetCore.Http.HttpContext;
 
-namespace store.Common.Pages
+namespace Store.Common.Pages
 {
     public class FileController : Controller
     {

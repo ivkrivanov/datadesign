@@ -3,7 +3,7 @@ using Serenity;
 using Serenity.Services;
 using System;
 
-namespace store
+namespace Store
 {
     public class ForeignKeyExceptionInfo
     {

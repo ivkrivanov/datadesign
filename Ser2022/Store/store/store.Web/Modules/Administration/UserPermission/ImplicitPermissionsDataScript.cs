@@ -2,11 +2,11 @@
 using Serenity.Abstractions;
 using Serenity.ComponentModel;
 using Serenity.Web;
-using store.Administration.Repositories;
+using Store.Administration.Repositories;
 using System;
 using System.Collections.Generic;
 
-namespace store.Administration
+namespace Store.Administration
 {
     [DataScript("Administration.ImplicitPermissions", Permission = PermissionKeys.Security)]
     public class ImplicitPermissionsDataScript : DataScript<IDictionary<string, HashSet<string>>>

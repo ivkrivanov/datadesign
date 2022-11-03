@@ -2,10 +2,10 @@
 using Serenity.Data;
 using Serenity.Services;
 using System.Data;
-using MyRepository = store.Administration.Repositories.LanguageRepository;
-using MyRow = store.Administration.Entities.LanguageRow;
+using MyRepository = Store.Administration.Repositories.LanguageRepository;
+using MyRow = Store.Administration.Entities.LanguageRow;
 
-namespace store.Administration.Endpoints
+namespace Store.Administration.Endpoints
 {
     [Route("Services/Administration/Language/[action]")]
     [ConnectionKey(typeof(MyRow)), ServiceAuthorize(typeof(MyRow))]
