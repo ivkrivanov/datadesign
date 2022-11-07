@@ -20,6 +20,7 @@ namespace Store
     {
         private static readonly string[] databaseKeys = new[] {
             "Default"
+            , "Store"
         };
 
         protected ISqlConnections SqlConnections { get; }
@@ -202,12 +203,12 @@ namespace Store
 
             // safety check to ensure that we are not modifying an arbitrary database.
             // remove these lines if you want Store migrations to run on your DB.
-            if (!isOracle && cs.ConnectionString.IndexOf(typeof(DataMigrations).Namespace +
-                    @"_" + databaseKey + "_v1", StringComparison.OrdinalIgnoreCase) < 0)
-            {
+            //if (!isOracle && cs.ConnectionString.IndexOf(typeof(DataMigrations).Namespace +
+                   // @"_" + databaseKey + "_v1", StringComparison.OrdinalIgnoreCase) < 0)
+            //{
                 SkippedMigrations = true;
                 return;
-            }
+            //}
 
             string databaseType = isOracle ? "OracleManaged" : serverType;
 
@@ -215,11 +216,11 @@ namespace Store
                 Path.GetDirectoryName(typeof(DataMigrations).Assembly.Location));
             var migrationNamespace = "Store.Migrations." + databaseKey + "DB";
             var migrationAssemblies = new[] { typeof(DataMigrations).Assembly };
-            if (databaseKey.Equals("Northwind", StringComparison.OrdinalIgnoreCase))
-            {
-                migrationNamespace = typeof(Serenity.Demo.Northwind.Migrations.MigrationAttribute).Namespace;
-                migrationAssemblies = new[] { typeof(Serenity.Demo.Northwind.Migrations.MigrationAttribute).Assembly };
-            }
+            //if (databaseKey.Equals("Northwind", StringComparison.OrdinalIgnoreCase))
+            //{
+                //migrationNamespace = typeof(Serenity.Demo.Northwind.Migrations.MigrationAttribute).Namespace;
+                //migrationAssemblies = new[] { typeof(Serenity.Demo.Northwind.Migrations.MigrationAttribute).Assembly };
+            //}
 
             var serviceProvider = new ServiceCollection()
                 .AddLogging(lb => lb.AddFluentMigratorConsole())

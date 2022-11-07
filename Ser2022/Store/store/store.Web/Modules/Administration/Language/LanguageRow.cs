@@ -1,11 +1,12 @@
-﻿using Serenity.ComponentModel;
-using Serenity.Data;
-using Serenity.Data.Mapping;
-using System;
-using System.ComponentModel;
-
+﻿
 namespace Store.Administration.Entities
 {
+    using Serenity.ComponentModel;
+    using Serenity.Data;
+    using Serenity.Data.Mapping;
+    using System;
+    using System.ComponentModel;
+
     [ConnectionKey("Default"), Module("Administration"), TableName("Languages")]
     [DisplayName("Languages"), InstanceName("Language")]
     [ReadPermission(PermissionKeys.Translation)]
