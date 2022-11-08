@@ -1,22 +1,23 @@
-﻿using Microsoft.AspNetCore.DataProtection;
-using Microsoft.Extensions.Caching.Memory;
-using Serenity;
-using Serenity.Abstractions;
-using Serenity.Data;
-using Serenity.Extensions.Entities;
-using Serenity.Services;
-using Serenity.Web.Providers;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Data;
-using System.IO;
-using System.Security.Cryptography;
-using System.Text;
-using MyRow = Store.Administration.Entities.UserRow;
-
+﻿
 namespace Store.Administration.Repositories
 {
+    using Microsoft.AspNetCore.DataProtection;
+    using Microsoft.Extensions.Caching.Memory;
+    using Serenity;
+    using Serenity.Abstractions;
+    using Serenity.Data;
+    using Serenity.Extensions.Entities;
+    using Serenity.Services;
+    using Serenity.Web.Providers;
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.Data;
+    using System.IO;
+    using System.Security.Cryptography;
+    using System.Text;
+    using MyRow = Store.Administration.Entities.UserRow;
+
     public partial class UserRepository : BaseRepository
     {
         public UserRepository(IRequestContext context)
@@ -113,6 +114,7 @@ namespace Store.Administration.Repositories
                         fld.DisplayName,
                         fld.PasswordHash,
                         fld.PasswordSalt,
+                        fld.TenantId,
                         fld.IsActive)
                     .Where(filter)
                     .GetFirst(connection))
@@ -213,6 +215,9 @@ namespace Store.Administration.Repositories
 
                     if (Row.DisplayName != Old.DisplayName)
                         Row.DisplayName = ValidateDisplayName(Row.DisplayName, Localizer);
+
+                    if (Old.TenantId != User.GetTenantId())
+                        Permissions.ValidatePermission(PermissionKeys.Tenants, Context.Localizer);
                 }
 
                 if (IsCreate)
@@ -231,6 +236,11 @@ namespace Store.Administration.Repositories
                 {
                     Row.Source = "site";
                     Row.IsActive = Row.IsActive ?? 1;
+                    if (!Permissions.HasPermission(PermissionKeys.Tenants) ||
+                        Row.TenantId == null)
+                    {
+                        Row.TenantId = User.GetTenantId();
+                    }
                 }
 
                 if (IsCreate || !Row.Password.IsEmptyOrNull())
@@ -271,7 +281,9 @@ namespace Store.Administration.Repositories
             {
                 base.ValidateRequest();
 
-                CheckPublicDemo(Row.UserId);
+                //CheckPublicDemo(Row.UserId);
+                if (Row.TenantId != User.GetTenantId())
+                    Permissions.ValidatePermission(PermissionKeys.Tenants, Context.Localizer);
             }
 
             protected override void OnBeforeDelete()
@@ -298,6 +310,14 @@ namespace Store.Administration.Repositories
                  : base(context)
             {
             }
+
+            protected override void ValidateRequest()
+            {
+                base.ValidateRequest();
+
+                if (Row.TenantId != User.GetTenantId())
+                    Permissions.ValidatePermission(PermissionKeys.Tenants, Context.Localizer);
+            }
         }
 
         private class MyRetrieveHandler : RetrieveRequestHandler<MyRow>
@@ -306,6 +326,14 @@ namespace Store.Administration.Repositories
                  : base(context)
             {
             }
+
+            protected override void PrepareQuery(SqlQuery query)
+            {
+                base.PrepareQuery(query);
+
+                if (!Permissions.HasPermission(PermissionKeys.Tenants))
+                    query.Where(fld.TenantId == User.GetTenantId());
+            }
         }
 
         private class MyListHandler : ListRequestHandler<MyRow>
@@ -313,6 +341,24 @@ namespace Store.Administration.Repositories
             public MyListHandler(IRequestContext context)
                  : base(context)
             {
+            }
+
+            protected override void PrepareQuery(SqlQuery query)
+            {
+                base.PrepareQuery(query);
+
+                if (!Permissions.HasPermission(PermissionKeys.Tenants))
+                    query.Where(fld.TenantId == User.GetTenantId());
+            }
+
+            protected override void ApplyFilters(SqlQuery query)
+            {
+                base.ApplyFilters(query);
+
+                if (Permissions.HasPermission(PermissionKeys.Tenants))
+                    return;
+
+                query.Where(fld.TenantId == User.GetTenantId());
             }
         }
     }

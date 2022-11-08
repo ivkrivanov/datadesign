@@ -38,7 +38,8 @@ namespace Store.Administration
                     PasswordHash = user.PasswordHash,
                     PasswordSalt = user.PasswordSalt,
                     UpdateDate = user.UpdateDate,
-                    LastDirectoryUpdate = user.LastDirectoryUpdate
+                    LastDirectoryUpdate = user.LastDirectoryUpdate,
+                    TenantId = user.TenantId.Value
                 };
 
             return null;
@@ -84,7 +85,7 @@ namespace Store.Administration
             if (username is null)
                 throw new ArgumentNullException(nameof(username));
 
-            var user = userRetriever.ByUsername(username);
+            var user = (UserDefinition)userRetriever.ByUsername(username);
             if (user == null)
                 throw new ArgumentOutOfRangeException(nameof(username));
 
@@ -93,6 +94,7 @@ namespace Store.Administration
 
             var identity = new GenericIdentity(username, authType);
             identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, user.Id));
+            identity.AddClaim(new Claim("TenantId", user.TenantId.ToInvariant())); // add tenant id claim
 
             return new ClaimsPrincipal(identity);
         }

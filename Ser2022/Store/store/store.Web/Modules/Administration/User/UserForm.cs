@@ -1,8 +1,9 @@
-﻿using Serenity.ComponentModel;
-using System;
-
+﻿
 namespace Store.Administration.Forms
 {
+    using Serenity.ComponentModel;
+    using System;
+
     [FormScript("Administration.User")]
     [BasedOnRow(typeof(Entities.UserRow), CheckNames = true)]
     public class UserForm
@@ -18,5 +19,6 @@ namespace Store.Administration.Forms
         public String PasswordConfirm { get; set; }
         [OneWay]
         public string Source { get; set; }
+        public Int32? TenantId { get; set; }
     }
 }

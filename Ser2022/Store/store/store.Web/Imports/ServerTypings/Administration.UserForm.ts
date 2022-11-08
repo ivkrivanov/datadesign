@@ -7,6 +7,7 @@
         Password: Serenity.PasswordEditor;
         PasswordConfirm: Serenity.PasswordEditor;
         Source: Serenity.StringEditor;
+        TenantId: Serenity.LookupEditor;
     }
 
     export class UserForm extends Serenity.PrefixedContext {
@@ -24,6 +25,7 @@
                 var w1 = s.EmailEditor;
                 var w2 = s.ImageUploadEditor;
                 var w3 = s.PasswordEditor;
+                var w4 = s.LookupEditor;
 
                 Q.initFormType(UserForm, [
                     'Username', w0,
@@ -32,7 +34,8 @@
                     'UserImage', w2,
                     'Password', w3,
                     'PasswordConfirm', w3,
-                    'Source', w0
+                    'Source', w0,
+                    'TenantId', w4
                 ]);
             }
         }

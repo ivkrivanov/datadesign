@@ -15,6 +15,11 @@
   </PropertyGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\**\*.sql" Exclude="bin\**;obj\**;**\*.xproj;packages\**;@(EmbeddedResource)" />
+    <Compile Remove="Modules\Common\UserPreference\**" />
+    <Content Remove="Modules\Common\UserPreference\**" />
+    <EmbeddedResource Remove="Modules\Common\UserPreference\**" />
+    <None Remove="Modules\Common\UserPreference\**" />
+    <TypeScriptCompile Remove="Modules\Common\UserPreference\**" />
     <None Update="wwwroot\**\*">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </None>

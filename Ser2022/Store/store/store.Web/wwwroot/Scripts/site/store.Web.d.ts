@@ -65,6 +65,7 @@ declare namespace Store.Administration {
     namespace PermissionKeys {
         const Security = "Administration:Security";
         const Translation = "Administration:Translation";
+        const Tenants = "Administration:Tenants";
     }
 }
 declare namespace Store.Administration {
@@ -139,6 +140,7 @@ declare namespace Store.Administration {
     interface RoleRow {
         RoleId?: number;
         RoleName?: string;
+        TenantId?: number;
     }
     namespace RoleRow {
         const idProperty = "RoleId";
@@ -152,7 +154,8 @@ declare namespace Store.Administration {
         const updatePermission = "Administration:Security";
         const enum Fields {
             RoleId = "RoleId",
-            RoleName = "RoleName"
+            RoleName = "RoleName",
+            TenantId = "TenantId"
         }
     }
 }
@@ -170,6 +173,59 @@ declare namespace Store.Administration {
             Delete = "Administration/Role/Delete",
             Retrieve = "Administration/Role/Retrieve",
             List = "Administration/Role/List"
+        }
+    }
+}
+declare namespace Store.Administration {
+    class TenantColumns {
+        static columnsKey: string;
+    }
+}
+declare namespace Store.Administration {
+    interface TenantForm {
+        TenantName: Serenity.StringEditor;
+    }
+    class TenantForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace Store.Administration {
+    interface TenantRow {
+        TenantId?: number;
+        TenantName?: string;
+    }
+    namespace TenantRow {
+        const idProperty = "TenantId";
+        const nameProperty = "TenantName";
+        const localTextPrefix = "Administration.Tenant";
+        const lookupKey = "Administration.Tenant";
+        function getLookup(): Q.Lookup<TenantRow>;
+        const deletePermission = "Administration:Tenants";
+        const insertPermission = "Administration:Tenants";
+        const readPermission = "Administration:Tenants";
+        const updatePermission = "Administration:Tenants";
+        const enum Fields {
+            TenantId = "TenantId",
+            TenantName = "TenantName"
+        }
+    }
+}
+declare namespace Store.Administration {
+    namespace TenantService {
+        const baseUrl = "Administration/Tenant";
+        function Create(request: Serenity.SaveRequest<TenantRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<TenantRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<TenantRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<TenantRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Administration/Tenant/Create",
+            Update = "Administration/Tenant/Update",
+            Delete = "Administration/Tenant/Delete",
+            Retrieve = "Administration/Tenant/Retrieve",
+            List = "Administration/Tenant/List"
         }
     }
 }
@@ -220,6 +276,7 @@ declare namespace Store.Administration {
         Password: Serenity.PasswordEditor;
         PasswordConfirm: Serenity.PasswordEditor;
         Source: Serenity.StringEditor;
+        TenantId: Serenity.LookupEditor;
     }
     class UserForm extends Serenity.PrefixedContext {
         static formKey: string;
@@ -345,6 +402,8 @@ declare namespace Store.Administration {
         Email?: string;
         UserImage?: string;
         LastDirectoryUpdate?: string;
+        TenantId?: number;
+        TenantName?: string;
         IsActive?: number;
         Password?: string;
         PasswordConfirm?: string;
@@ -374,6 +433,8 @@ declare namespace Store.Administration {
             Email = "Email",
             UserImage = "UserImage",
             LastDirectoryUpdate = "LastDirectoryUpdate",
+            TenantId = "TenantId",
+            TenantName = "TenantName",
             IsActive = "IsActive",
             Password = "Password",
             PasswordConfirm = "PasswordConfirm",
@@ -562,6 +623,27 @@ declare namespace Store.Administration {
     }
 }
 declare namespace Store.Administration {
+    class TenantDialog extends Serenity.EntityDialog<TenantRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: TenantForm;
+    }
+}
+declare namespace Store.Administration {
+    class TenantGrid extends Serenity.EntityGrid<TenantRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof TenantDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+        protected getDefaultSortBy(): TenantRow.Fields[];
+    }
+}
+declare namespace Store.Administration {
     class TranslationGrid extends Serenity.EntityGrid<TranslationItem, any> {
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
@@ -596,6 +678,7 @@ declare namespace Store.Administration {
         protected getToolbarButtons(): Serenity.ToolButton[];
         protected updateInterface(): void;
         protected afterLoadEntity(): void;
+        protected getPropertyItems(): Serenity.PropertyItem[];
     }
 }
 declare namespace Store.Administration {

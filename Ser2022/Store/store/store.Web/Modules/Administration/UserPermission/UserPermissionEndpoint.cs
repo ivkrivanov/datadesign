@@ -14,19 +14,21 @@ namespace Store.Administration.Endpoints
     public class UserPermissionController : ServiceEndpoint
     {
         [HttpPost, AuthorizeUpdate(typeof(MyRow))]
-        public SaveResponse Update(IUnitOfWork uow, UserPermissionUpdateRequest request)
+        public SaveResponse Update(IUnitOfWork uow, UserPermissionUpdateRequest request, [FromServices] ITypeSource typeSource)
         {
-            return new MyRepository(Context).Update(uow, request);
+            return new MyRepository(Context, typeSource).Update(uow, request);
         }
 
-        public ListResponse<MyRow> List(IDbConnection connection, UserPermissionListRequest request)
+        public ListResponse<MyRow> List(IDbConnection connection, UserPermissionListRequest request,
+           [FromServices] ITypeSource typeSource)
         {
-            return new MyRepository(Context).List(connection, request);
+            return new MyRepository(Context, typeSource).List(connection, request);
         }
 
-        public ListResponse<string> ListRolePermissions(IDbConnection connection, UserPermissionListRequest request)
+        public ListResponse<string> ListRolePermissions(IDbConnection connection, UserPermissionListRequest request,
+            [FromServices] ITypeSource typeSource)
         {
-            return new MyRepository(Context).ListRolePermissions(connection, request);
+            return new MyRepository(Context, typeSource).ListRolePermissions(connection, request);
         }
 
         public ListResponse<string> ListPermissionKeys(

@@ -1,15 +1,17 @@
 ﻿
 namespace Store.Administration.Repositories
 {
+    using Serenity;
     using Serenity.Data;
     using Serenity.Services;
+    using System;
     using System.Data;
-    using MyRow = Store.Administration.Entities.RoleRow;
+    using MyRow = Entities.TenantRow;
 
-    public class RoleRepository : BaseRepository
+    public class TenantRepository : BaseRepository
     {
-        public RoleRepository(IRequestContext context)
-             : base(context)
+        public TenantRepository(IRequestContext content)
+            : base(content)
         {
         }
 
@@ -40,34 +42,34 @@ namespace Store.Administration.Repositories
             return new MyListHandler(Context).Process(connection, request);
         }
 
-        private class MySaveHandler : SaveRequestHandler<MyRow>
+        private class MySaveHandler : SaveRequestHandler<MyRow> 
         {
             public MySaveHandler(IRequestContext context)
-                 : base(context)
+                : base(context)
             {
             }
-        }
+         }
 
         private class MyDeleteHandler : DeleteRequestHandler<MyRow>
         {
             public MyDeleteHandler(IRequestContext context)
-                 : base(context)
+                : base(context) 
             {
             }
         }
 
         private class MyRetrieveHandler : RetrieveRequestHandler<MyRow>
-        {
+        {   
             public MyRetrieveHandler(IRequestContext context)
-                 : base(context)
+                : base(context)
             {
             }
         }
 
-        private class MyListHandler : ListRequestHandler<MyRow>
+        private class MyListHandler : ListRequestHandler<MyRow> 
         {
             public MyListHandler(IRequestContext context)
-                 : base(context)
+                : base(context)
             {
             }
         }

@@ -1,25 +1,28 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Serenity.Data;
-using Serenity.Services;
-using System.Data;
-using MyRepository = Store.Administration.Repositories.RolePermissionRepository;
-using MyRow = Store.Administration.Entities.RolePermissionRow;
-
+﻿
 namespace Store.Administration.Endpoints
 {
+    using Microsoft.AspNetCore.Mvc;
+    using Serenity.Data;
+    using Serenity.Services;
+    using Serenity.Abstractions;
+    using System.Data;
+    using MyRepository = Store.Administration.Repositories.RolePermissionRepository;
+    using MyRow = Store.Administration.Entities.RolePermissionRow;
+
     [Route("Services/Administration/RolePermission/[action]")]
     [ConnectionKey(typeof(MyRow)), ServiceAuthorize(typeof(MyRow))]
     public class RolePermissionController : ServiceEndpoint
     {
         [HttpPost, AuthorizeUpdate(typeof(MyRow))]
-        public SaveResponse Update(IUnitOfWork uow, RolePermissionUpdateRequest request)
+        public SaveResponse Update(IUnitOfWork uow, RolePermissionUpdateRequest request, [FromServices] ITypeSource typeSource)
         {
-            return new MyRepository(Context).Update(uow, request);
+            return new MyRepository(Context, typeSource).Update(uow, request);
         }
 
-        public RolePermissionListResponse List(IDbConnection connection, RolePermissionListRequest request)
+        public RolePermissionListResponse List(IDbConnection connection, RolePermissionListRequest request,
+            [FromServices] ITypeSource typeSource)
         {
-            return new MyRepository(Context).List(connection, request);
+            return new MyRepository(Context, typeSource).List(connection, request);
         }
     }
 }

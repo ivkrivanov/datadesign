@@ -98,6 +98,22 @@ namespace Store.Administration.Entities
             set => fields.LastDirectoryUpdate[this] = value;
         }
 
+        [DisplayName("Tenant"), ForeignKey("Tenants", "TenantId"), LeftJoin("tnt")]
+        [LookupEditor(typeof(TenantRow))]
+        [ReadPermission(PermissionKeys.Tenants)]
+        public Int32? TenantId
+        {
+            get => Fields.TenantId[this];
+            set => Fields.TenantId[this] = value;
+        }
+
+        [DisplayName("Tenant"), Expression("tnt.TenantName")]
+        public String TenantName
+        {
+            get => Fields.TenantName[this];
+            set => Fields.TenantName[this] = value;
+        }
+
         Int16Field IIsActiveRow.IsActiveField
         {
             get => fields.IsActive;
@@ -123,6 +139,8 @@ namespace Store.Administration.Entities
             public StringField Email;
             public StringField UserImage;
             public DateTimeField LastDirectoryUpdate;
+            public Int32Field TenantId;
+            public StringField TenantName;
             public Int16Field IsActive;
 
             public StringField Password;

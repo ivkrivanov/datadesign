@@ -1,6 +1,7 @@
 ﻿using Serenity;
 using Serenity.Data;
 using Serenity.Services;
+using Serenity.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,7 +12,7 @@ namespace Store.Administration.Repositories
 {
     public class RolePermissionRepository : BaseRepository
     {
-        public RolePermissionRepository(IRequestContext context)
+        public RolePermissionRepository(IRequestContext context, ITypeSource typeSource)
              : base(context)
         {
         }

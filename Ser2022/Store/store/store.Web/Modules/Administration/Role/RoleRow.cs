@@ -11,7 +11,7 @@ namespace Store.Administration.Entities
     [ReadPermission(PermissionKeys.Security)]
     [ModifyPermission(PermissionKeys.Security)]
     [LookupScript]
-    public sealed class RoleRow : Row<RoleRow.RowFields>, IIdRow, INameRow
+    public sealed class RoleRow : Row<RoleRow.RowFields>, IIdRow, INameRow, IMultiTenantRow
     {
         [DisplayName("Role Id"), Identity, ForeignKey("Roles", "RoleId"), LeftJoin("jRole"), IdProperty]
         public Int32? RoleId
@@ -27,6 +27,17 @@ namespace Store.Administration.Entities
             set => fields.RoleName[this] = value;
         }
 
+        [Insertable(false), Updatable(false)]
+        public Int32? TenantId
+        {
+            get => Fields.TenantId[this];
+            set => Fields.TenantId[this] = value;
+        }
+
+        public Int32Field TenantIdField
+        {
+            get => Fields.TenantId;
+        }
 
         public RoleRow()
         {
@@ -41,6 +52,7 @@ namespace Store.Administration.Entities
         {
             public Int32Field RoleId;
             public StringField RoleName;
+            public Int32Field TenantId;
         }
     }
 }
