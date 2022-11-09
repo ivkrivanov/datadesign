@@ -5,8 +5,9 @@ namespace Store
     using Serenity.Data;
     using Serenity.Services;
     using Serenity.Abstractions;
-    using Store.Administration;
+    //using Store.Administration;
     using System;
+    using Store;
 
     public class MultiTenantBehavior : IImplicitBehavior,
         ISaveBehavior, IDeleteBehavior,
@@ -26,14 +27,14 @@ namespace Store
         public void OnPrepareQuery(IRetrieveRequestHandler handler,
             SqlQuery query)
         {
-            if (!handler.Context.Permissions.HasPermission(PermissionKeys.Tenants))
+            if (!handler.Context.Permissions.HasPermission(Administration.PermissionKeys.Tenants))
                 query.Where(fldTenantId == handler.Context.User.GetTenantId());
         }
 
         public void OnPrepareQuery(IListRequestHandler handler,
             SqlQuery query)
         {
-            if (!handler.Context.Permissions.HasPermission(PermissionKeys.Tenants))
+            if (!handler.Context.Permissions.HasPermission(Administration.PermissionKeys.Tenants))
                 query.Where(fldTenantId == handler.Context.User.GetTenantId());
         }
 
@@ -48,14 +49,14 @@ namespace Store
             if (handler.IsUpdate)
             {
                 if (fldTenantId[handler.Old] != fldTenantId[handler.Row])
-                    handler.Context.Permissions.ValidatePermission(PermissionKeys.Tenants, handler.Context.Localizer);
+                    handler.Context.Permissions.ValidatePermission(Administration.PermissionKeys.Tenants, handler.Context.Localizer);
             }
         }
 
         public void OnValidateRequest(IDeleteRequestHandler handler)
         {
             if (fldTenantId[handler.Row] != handler.Context.User.GetTenantId())
-                handler.Context.Permissions.ValidatePermission(PermissionKeys.Tenants, handler.Context.Localizer);
+                handler.Context.Permissions.ValidatePermission(Administration.PermissionKeys.Tenants, handler.Context.Localizer);
         }
 
         public void OnAfterDelete(IDeleteRequestHandler handler) { }

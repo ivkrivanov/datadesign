@@ -1,23 +1,22 @@
-﻿
+﻿using Microsoft.AspNetCore.DataProtection;
+using Microsoft.Extensions.Caching.Memory;
+using Serenity;
+using Serenity.Abstractions;
+using Serenity.Data;
+using Serenity.Extensions.Entities;
+using Serenity.Services;
+using Serenity.Web.Providers;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Data;
+using System.IO;
+using System.Security.Cryptography;
+using System.Text;
+using MyRow = Store.Administration.Entities.UserRow;
+
 namespace Store.Administration.Repositories
 {
-    using Microsoft.AspNetCore.DataProtection;
-    using Microsoft.Extensions.Caching.Memory;
-    using Serenity;
-    using Serenity.Abstractions;
-    using Serenity.Data;
-    using Serenity.Extensions.Entities;
-    using Serenity.Services;
-    using Serenity.Web.Providers;
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.Data;
-    using System.IO;
-    using System.Security.Cryptography;
-    using System.Text;
-    using MyRow = Store.Administration.Entities.UserRow;
-
     public partial class UserRepository : BaseRepository
     {
         public UserRepository(IRequestContext context)

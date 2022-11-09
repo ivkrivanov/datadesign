@@ -1,13 +1,13 @@
-﻿
+﻿using Serenity.Data;
+using Serenity.Services;
+using System.Data;
+using MyRow = Store.Administration.Entities.RoleRow;
+
 namespace Store.Administration.Repositories
 {
-    using Serenity.Data;
-    using Serenity.Services;
-    using System.Data;
-    using MyRow = Store.Administration.Entities.RoleRow;
-
     public class RoleRepository : BaseRepository
     {
+
         public RoleRepository(IRequestContext context)
              : base(context)
         {
