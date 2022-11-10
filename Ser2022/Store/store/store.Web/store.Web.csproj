@@ -20,6 +20,13 @@
     <EmbeddedResource Remove="Modules\Common\UserPreference\**" />
     <None Remove="Modules\Common\UserPreference\**" />
     <TypeScriptCompile Remove="Modules\Common\UserPreference\**" />
+    <Compile Remove="Modules\Store\Employees\EmployeesListDecorator.cs" />
+    <None Remove="Modules\Store\Employees\EmployeesFormatter.ts" />
+    <None Remove="Modules\Store\Employees\EmployeesListFormatter.ts" />
+    <TypeScriptCompile Remove="Modules\Store\Employees\EmployeesFormatter.ts" />
+    <TypeScriptCompile Remove="Modules\Store\Employees\EmployeesListFormatter.ts" />
+    <None Include="Modules\Store\CategoriesType\CategoriesTypeIndex.cshtml" />
+    <None Include="Modules\Store\Measures\MeasuresIndex.cshtml" />
     <None Update="wwwroot\**\*">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </None>

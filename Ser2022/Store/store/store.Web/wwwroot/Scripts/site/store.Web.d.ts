@@ -564,6 +564,80 @@ declare namespace Store {
         };
     }
 }
+declare namespace Store.Store {
+    class CategoriesTypeColumns {
+        static columnsKey: string;
+    }
+}
+declare namespace Store.Store {
+    interface CategoriesTypeForm {
+        Type: Serenity.IntegerEditor;
+        CategoryType: Serenity.StringEditor;
+    }
+    class CategoriesTypeForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace Store.Store {
+    interface CategoriesTypeRow {
+        CategoryTypeId?: number;
+        Type?: number;
+        CategoryType?: string;
+        IsActive?: number;
+        TenantId?: number;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+    }
+    namespace CategoriesTypeRow {
+        const idProperty = "CategoryTypeId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "Type";
+        const localTextPrefix = "Store.CategoriesType";
+        const lookupKey = "Store.CategoriesType";
+        function getLookup(): Q.Lookup<CategoriesTypeRow>;
+        const deletePermission = "Store:CategoriesType:Delete";
+        const insertPermission = "Store:CategoriesType:Modify";
+        const readPermission = "Store:CategoriesType:View";
+        const updatePermission = "Store:CategoriesType:Modify";
+        const enum Fields {
+            CategoryTypeId = "CategoryTypeId",
+            Type = "Type",
+            CategoryType = "CategoryType",
+            IsActive = "IsActive",
+            TenantId = "TenantId",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate"
+        }
+    }
+}
+declare namespace Store.Store {
+    namespace CategoriesTypeService {
+        const baseUrl = "Store/CategoriesType";
+        function Create(request: Serenity.SaveRequest<CategoriesTypeRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<CategoriesTypeRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<CategoriesTypeRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<CategoriesTypeRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Store/CategoriesType/Create",
+            Update = "Store/CategoriesType/Update",
+            Delete = "Store/CategoriesType/Delete",
+            Retrieve = "Store/CategoriesType/Retrieve",
+            List = "Store/CategoriesType/List"
+        }
+    }
+}
+declare namespace Store.Store {
+    namespace PermissionKeys {
+        const General = "Store:General";
+    }
+}
 declare namespace Store.Texts {
 }
 declare namespace Store.Administration {
@@ -817,5 +891,262 @@ declare namespace Store.Membership {
         protected getFormKey(): string;
         private form;
         constructor(container: JQuery);
+    }
+}
+declare namespace Store.Store {
+    class CategoriesTypeDialog extends Serenity.EntityDialog<CategoriesTypeRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected getDeletePermission(): string;
+        protected getInsertPermission(): string;
+        protected getUpdatePermission(): string;
+        protected form: CategoriesTypeForm;
+    }
+}
+declare namespace Store.Store {
+    class CategoriesTypeGrid extends Serenity.EntityGrid<CategoriesTypeRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof CategoriesTypeDialog;
+        protected getIdProperty(): string;
+        protected getInsertPermission(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+        protected getDefaultSortBy(): CategoriesTypeRow.Fields[];
+    }
+}
+declare namespace Store.Store {
+    class MeasuresDialog extends Serenity.EntityDialog<MeasuresRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected getDeletePermission(): string;
+        protected getInsertPermission(): string;
+        protected getUpdatePermission(): string;
+        protected form: MeasuresForm;
+    }
+}
+declare namespace Store.Store {
+    class MeasuresGrid extends Serenity.EntityGrid<MeasuresRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof MeasuresDialog;
+        protected getIdProperty(): string;
+        protected getInsertPermission(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+        protected getDefaultSortBy(): MeasuresRow.Fields[];
+    }
+}
+declare namespace Store.Store {
+    class MeasuresColumns {
+        static columnsKey: string;
+    }
+}
+declare namespace Store.Store {
+    interface MeasuresForm {
+        MeasureName: Serenity.StringEditor;
+    }
+    class MeasuresForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace Store.Store {
+    interface MeasuresRow {
+        MeasureId?: number;
+        MeasureName?: string;
+        IsActive?: number;
+        TenantId?: number;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+    }
+    namespace MeasuresRow {
+        const idProperty = "MeasureId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "MeasureName";
+        const localTextPrefix = "Store.Measures";
+        const lookupKey = "Store.Measures";
+        function getLookup(): Q.Lookup<MeasuresRow>;
+        const deletePermission = "Store:Measures:Delete";
+        const insertPermission = "Store:Measures:Modify";
+        const readPermission = "Store:Measures:View";
+        const updatePermission = "Store:Measures:Modify";
+        const enum Fields {
+            MeasureId = "MeasureId",
+            MeasureName = "MeasureName",
+            IsActive = "IsActive",
+            TenantId = "TenantId",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate"
+        }
+    }
+}
+declare namespace Store.Store {
+    namespace MeasuresService {
+        const baseUrl = "Store/Measures";
+        function Create(request: Serenity.SaveRequest<MeasuresRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<MeasuresRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<MeasuresRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<MeasuresRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Store/Measures/Create",
+            Update = "Store/Measures/Update",
+            Delete = "Store/Measures/Delete",
+            Retrieve = "Store/Measures/Retrieve",
+            List = "Store/Measures/List"
+        }
+    }
+}
+declare namespace Store.Store {
+    class EmployeesFormatter implements Slick.Formatter {
+        format(ctx: Slick.FormatterContext): string;
+        genderProperty: string;
+        initializeColumn(column: Slick.Column): void;
+    }
+}
+declare namespace Store.Store {
+    class EmployeesListFormatter implements Slick.Formatter {
+        format(ctx: Slick.FormatterContext): string;
+    }
+}
+declare namespace Store.Store {
+    interface EmployeesRow {
+        EmployeeId?: number;
+        LastName?: string;
+        FirstName?: string;
+        FullName?: string;
+        Title?: string;
+        TitleOfCourtesy?: string;
+        BirthDate?: string;
+        HireDate?: string;
+        Address?: string;
+        City?: string;
+        Region?: string;
+        PostalCode?: string;
+        Country?: string;
+        HomePhone?: string;
+        Extension?: string;
+        Photo?: number[];
+        Notes?: string;
+        ReportsTo?: number;
+        PhotoPath?: string;
+        IsActive?: number;
+        TenantId?: number;
+        ReportsToFullName?: string;
+        ReportsToLastName?: string;
+        ReportsToFirstName?: string;
+        ReportsToTitle?: string;
+        ReportsToTitleOfCourtesy?: string;
+        ReportsToBirthDate?: string;
+        ReportsToHireDate?: string;
+        ReportsToAddress?: string;
+        ReportsToCity?: string;
+        ReportsToRegion?: string;
+        ReportsToPostalCode?: string;
+        ReportsToCountry?: string;
+        ReportsToHomePhone?: string;
+        ReportsToExtension?: string;
+        ReportsToPhoto?: number[];
+        ReportsToNotes?: string;
+        ReportsToReportsTo?: number;
+        ReportsToPhotoPath?: string;
+        Gender?: Gender;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+    }
+    namespace EmployeesRow {
+        const idProperty = "EmployeeId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "LastName";
+        const localTextPrefix = "Store.Employees";
+        const lookupKey = "Store.Employees";
+        function getLookup(): Q.Lookup<EmployeesRow>;
+        const deletePermission = "Store:General";
+        const insertPermission = "Store:General";
+        const readPermission = "Store:General";
+        const updatePermission = "Store:General";
+        const enum Fields {
+            EmployeeId = "EmployeeId",
+            LastName = "LastName",
+            FirstName = "FirstName",
+            FullName = "FullName",
+            Title = "Title",
+            TitleOfCourtesy = "TitleOfCourtesy",
+            BirthDate = "BirthDate",
+            HireDate = "HireDate",
+            Address = "Address",
+            City = "City",
+            Region = "Region",
+            PostalCode = "PostalCode",
+            Country = "Country",
+            HomePhone = "HomePhone",
+            Extension = "Extension",
+            Photo = "Photo",
+            Notes = "Notes",
+            ReportsTo = "ReportsTo",
+            PhotoPath = "PhotoPath",
+            IsActive = "IsActive",
+            TenantId = "TenantId",
+            ReportsToFullName = "ReportsToFullName",
+            ReportsToLastName = "ReportsToLastName",
+            ReportsToFirstName = "ReportsToFirstName",
+            ReportsToTitle = "ReportsToTitle",
+            ReportsToTitleOfCourtesy = "ReportsToTitleOfCourtesy",
+            ReportsToBirthDate = "ReportsToBirthDate",
+            ReportsToHireDate = "ReportsToHireDate",
+            ReportsToAddress = "ReportsToAddress",
+            ReportsToCity = "ReportsToCity",
+            ReportsToRegion = "ReportsToRegion",
+            ReportsToPostalCode = "ReportsToPostalCode",
+            ReportsToCountry = "ReportsToCountry",
+            ReportsToHomePhone = "ReportsToHomePhone",
+            ReportsToExtension = "ReportsToExtension",
+            ReportsToPhoto = "ReportsToPhoto",
+            ReportsToNotes = "ReportsToNotes",
+            ReportsToReportsTo = "ReportsToReportsTo",
+            ReportsToPhotoPath = "ReportsToPhotoPath",
+            Gender = "Gender",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate"
+        }
+    }
+}
+declare namespace Store.Store {
+    namespace EmployeesService {
+        const baseUrl = "Store/Employees";
+        function Create(request: Serenity.SaveRequest<EmployeesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<EmployeesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<EmployeesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<EmployeesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Store/Employees/Create",
+            Update = "Store/Employees/Update",
+            Delete = "Store/Employees/Delete",
+            Retrieve = "Store/Employees/Retrieve",
+            List = "Store/Employees/List"
+        }
+    }
+}
+declare namespace Store.Store {
+    enum Gender {
+        Male = 1,
+        Female = 2
     }
 }

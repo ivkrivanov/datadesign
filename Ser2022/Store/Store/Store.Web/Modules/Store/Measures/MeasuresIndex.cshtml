@@ -1,14 +1,14 @@
 ﻿@inject Serenity.ITextLocalizer Localizer
 
 @{
-    ViewData["Title"] = Localizer.Get("Db.Administration.Tenant.EntityPlural");
+    ViewData["Title"] = Localizer.Get("Db.Store.Measures.EntityPlural");
 }
 
 <div id="GridDiv"></div>
 
 <script type="text/javascript">
     jQuery(function () {
-        new Store.Administration.TenantGrid($('#GridDiv'), {}).init();
+        new Store.Store.MeasuresGrid($('#GridDiv'), {}).init();
 
         Q.initFullHeightGridPage($('#GridDiv'));
     });

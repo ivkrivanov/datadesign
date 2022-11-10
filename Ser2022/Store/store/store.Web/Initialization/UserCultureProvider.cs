@@ -40,6 +40,7 @@ namespace Store.AppServices
 
         private static List<CultureInfo> supportedCultures;
         private static readonly string[] supportedCultureIdentifiers = new string[] {
+            "bg-BG",
             "de-DE",
             "en-US",
             "en-GB",

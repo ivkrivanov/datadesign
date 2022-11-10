@@ -1,0 +1,22 @@
+SELECT  SERVERPROPERTY('MachineName') AS MachineName,
+        SERVERPROPERTY('ServerName') AS InstanceName, 
+        SERVERPROPERTY('Edition') AS SQLEdition,
+        SERVERPROPERTY('ProductVersion') AS ProductVersion,
+        SERVERPROPERTY('ProductLevel') AS ProductLevel;
+SELECT  host_platform, 
+        host_distribution, 
+        host_release
+FROM    sys.dm_os_host_info;
+
+RESTORE FILELISTONLY FROM DISK = '/var/opt/mssql/backup/Store_Default_v1.bak';
+RESTORE FILELISTONLY FROM DISK = '/var/opt/mssql/backup/Store_Store_v1.bak';
+
+RESTORE DATABASE Store_Default_v1 
+    FROM DISK='/var/opt/mssql/backup/Store_Default_v1.bak' 
+    WITH MOVE 'Store_Default_v1' TO '/var/opt/mssql/data/Store_Default_v1.mdf', 
+    MOVE 'Store_Default_v1_log' TO '/var/opt/mssql/data/Store_Default_v1_log.ldf';
+
+RESTORE DATABASE Store_Store_v1 
+    FROM DISK='/var/opt/mssql/backup/Store_Store_v1.bak' 
+    WITH MOVE 'Store_Store_v1' TO '/var/opt/mssql/data/Store_Store_v1.mdf', 
+    MOVE 'Store_Store_v1_log' TO '/var/opt/mssql/data/Store_Store_v1_log.ldf';

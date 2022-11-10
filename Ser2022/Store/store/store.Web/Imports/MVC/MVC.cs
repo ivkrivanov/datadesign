@@ -84,5 +84,19 @@ namespace MVC
             public const string Error = "~/Views/Shared/Error.cshtml";
         }
 
+        public static class Store
+        {
+            public static class CategoriesType
+            {
+                public const string CategoriesTypeIndex = "~/Modules/Store/CategoriesType/CategoriesTypeIndex.cshtml";
+            }
+
+            public static class Measures
+            {
+                public const string MeasuresIndex = "~/Modules/Store/Measures/MeasuresIndex.cshtml";
+            }
+
+        }
+
     }
 }
