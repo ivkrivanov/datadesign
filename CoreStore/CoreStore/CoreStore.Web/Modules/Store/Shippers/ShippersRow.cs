@@ -19,22 +19,22 @@ namespace CoreStore.Store.Entities
         [DisplayName("Shipper Id"), Column("ShipperID"), Identity]
         public Int32? ShipperId
         {
-            get { return Fields.ShipperId[this]; }
-            set { Fields.ShipperId[this] = value; }
+            get => Fields.ShipperId[this]; 
+            set => Fields.ShipperId[this] = value; 
         }
 
         [DisplayName("Company Name"), Size(40), NotNull, QuickSearch]
         public String CompanyName
         {
-            get { return Fields.CompanyName[this]; }
-            set { Fields.CompanyName[this] = value; }
+            get => Fields.CompanyName[this]; 
+            set => Fields.CompanyName[this] = value; 
         }
 
         [DisplayName("Phone"), Size(24)]
         public String Phone
         {
-            get { return Fields.Phone[this]; }
-            set { Fields.Phone[this] = value; }
+            get => Fields.Phone[this]; 
+            set => Fields.Phone[this] = value; 
         }
 
         #region Tenant & Activ
@@ -42,37 +42,37 @@ namespace CoreStore.Store.Entities
         [Insertable(false), Updatable(false)]
         public Int32? TenantId
         {
-            get { return Fields.TenantId[this]; }
-            set { Fields.TenantId[this] = value; }
+            get => Fields.TenantId[this]; 
+            set => Fields.TenantId[this] = value; 
         }
 
         public Int32Field TenantIdField
         {
-            get { return Fields.TenantId; }
+            get => Fields.TenantId; 
         }
 
         [NotNull, Insertable(false), Updatable(true)]
         public Int16? IsActive
         {
-            get { return Fields.IsActive[this]; }
-            set { Fields.IsActive[this] = value; }
+            get => Fields.IsActive[this]; 
+            set => Fields.IsActive[this] = value; 
         }
 
         Int16Field IIsActiveRow.IsActiveField
         {
-            get { return Fields.IsActive; }
+            get => Fields.IsActive; 
         }
 
         #endregion Tenant & Activ
 
         IIdField IIdRow.IdField
         {
-            get { return Fields.ShipperId; }
+            get => Fields.ShipperId; 
         }
 
         StringField INameRow.NameField
         {
-            get { return Fields.CompanyName; }
+            get => Fields.CompanyName; 
         }
 
         public static readonly RowFields Fields = new RowFields().Init();

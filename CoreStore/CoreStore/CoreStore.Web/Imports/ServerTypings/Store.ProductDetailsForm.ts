@@ -1,6 +1,6 @@
 ﻿namespace CoreStore.Store {
     export interface ProductDetailsForm {
-        WaresId: Serenity.IntegerEditor;
+        WaresId: Serenity.LookupEditor;
         Quantity: Serenity.DecimalEditor;
         ProductQuantity: Serenity.DecimalEditor;
         PlanPrice: Serenity.DecimalEditor;
@@ -18,7 +18,7 @@
                 ProductDetailsForm.init = true;
 
                 var s = Serenity;
-                var w0 = s.IntegerEditor;
+                var w0 = s.LookupEditor;
                 var w1 = s.DecimalEditor;
 
                 Q.initFormType(ProductDetailsForm, [

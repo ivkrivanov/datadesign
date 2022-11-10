@@ -33,6 +33,12 @@ namespace CoreStore.Store.Endpoints
             return new MyRepository().Delete(uow, request);
         }
 
+        [HttpPost, AuthorizeDelete(typeof(MyRow))]
+        public UndeleteResponse Delete(IUnitOfWork uow, UndeleteRequest request)
+        {
+            return new MyRepository().Undelete(uow, request);
+        }
+
         [HttpPost]
         public RetrieveResponse<MyRow> Retrieve(IDbConnection connection, RetrieveRequest request)
         {

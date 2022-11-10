@@ -17,37 +17,37 @@ namespace CoreStore.Administration.Entities
         [DisplayName("Role Id"), Identity, ForeignKey("Roles", "RoleId"), LeftJoin("jRole")]
         public Int32? RoleId
         {
-            get { return Fields.RoleId[this]; }
-            set { Fields.RoleId[this] = value; }
+            get => Fields.RoleId[this]; 
+            set =>Fields.RoleId[this] = value; 
         }
 
         [DisplayName("Role Name"), Size(100), NotNull, QuickSearch]
         public String RoleName
         {
-            get { return Fields.RoleName[this]; }
-            set { Fields.RoleName[this] = value; }
+            get => Fields.RoleName[this]; 
+            set =>Fields.RoleName[this] = value; 
         }
 
         [Insertable(false), Updatable(false)]
         public Int32? TenantId
         {
-            get { return Fields.TenantId[this]; }
-            set { Fields.TenantId[this] = value; }
+            get => Fields.TenantId[this]; 
+            set =>Fields.TenantId[this] = value; 
         }
 
         IIdField IIdRow.IdField
         {
-            get { return Fields.RoleId; }
+            get => Fields.RoleId; 
         }
 
         StringField INameRow.NameField
         {
-            get { return Fields.RoleName; }
+            get => Fields.RoleName; 
         }
 
         public Int32Field TenantIdField
         {
-            get { return Fields.TenantId; }
+            get => Fields.TenantId; 
         }
 
         public static readonly RowFields Fields = new RowFields().Init();

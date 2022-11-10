@@ -16,15 +16,15 @@ namespace CoreStore.Store.Entities
     [DeletePermission(PermissionKeys.Product.Delete)]
     [LeftJoin("pmd", "[dbo].[ProductMovement Doc]", "pmd.[ProductMoveID] = t0.[ProductMoveID]", RowType = typeof(ProductMovementDocRow), TitlePrefix = "")]
     [UpdatableExtension("pmd", typeof(ProductMovementDocRow), CascadeDelete = true)]
-    [LeftJoin("wmt", "dbo.ProductMovementTotal", "wmt.[ProductMoveID] = t0.[ProductMoveID]", RowType = typeof(ProductMovementTotalRow), TitlePrefix = "")]
+    [LeftJoin("pmt", "dbo.ProductMovementTotal", "pmt.[ProductMoveID] = t0.[ProductMoveID]", RowType = typeof(ProductMovementTotalRow), TitlePrefix = "")]
     [LookupScript(typeof(Lookups.ProductMovementLookup))]
     public sealed class ProductMovementRow : LoggingRow, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
     {
         [DisplayName("Move Id"), NotNull, Identity, QuickSearch]
         public Int32? ProductMoveId
         {
-            get { return Fields.ProductMoveId[this]; }
-            set { Fields.ProductMoveId[this] = value; }
+            get =>Fields.ProductMoveId[this]; 
+            set =>Fields.ProductMoveId[this] = value; 
         }
 
         #region Counterparty
@@ -33,57 +33,58 @@ namespace CoreStore.Store.Entities
         [QuickSearch, CounterpartiesEditor]
         public String CounterpartyId
         {
-            get { return Fields.CounterpartyId[this]; }
-            set { Fields.CounterpartyId[this] = value; }
+            get =>Fields.CounterpartyId[this]; 
+            set =>Fields.CounterpartyId[this] = value; 
         }
+        
 
         [Origin("c"), DisplayName("Counterparty"), QuickSearch]
         public String CounterpartyCompanyName
         {
-            get { return Fields.CounterpartyCompanyName[this]; }
-            set { Fields.CounterpartyCompanyName[this] = value; }
+            get =>Fields.CounterpartyCompanyName[this]; 
+            set =>Fields.CounterpartyCompanyName[this] = value; 
         }
 
         [Origin("c")]
         public String CounterpartyContactName
         {
-            get { return Fields.CounterpartyContactName[this]; }
-            set { Fields.CounterpartyContactName[this] = value; }
+            get =>Fields.CounterpartyContactName[this]; 
+            set =>Fields.CounterpartyContactName[this] = value; 
         }
 
         [Origin("c")]
         public String CounterpartyContactTitle
         {
-            get { return Fields.CounterpartyContactTitle[this]; }
-            set { Fields.CounterpartyContactTitle[this] = value; }
+            get =>Fields.CounterpartyContactTitle[this]; 
+            set =>Fields.CounterpartyContactTitle[this] = value; 
         }
 
         [Origin("c")]
         public String CounterpartyCity
         {
-            get { return Fields.CounterpartyCity[this]; }
-            set { Fields.CounterpartyCity[this] = value; }
+            get =>Fields.CounterpartyCity[this]; 
+            set =>Fields.CounterpartyCity[this] = value; 
         }
 
         [Origin("c")]
         public String CounterpartyRegion
         {
-            get { return Fields.CounterpartyRegion[this]; }
-            set { Fields.CounterpartyRegion[this] = value; }
+            get =>Fields.CounterpartyRegion[this]; 
+            set =>Fields.CounterpartyRegion[this] = value; 
         }
 
         [Origin("c")]
         public String CounterpartyCountry
         {
-            get { return Fields.CounterpartyCountry[this]; }
-            set { Fields.CounterpartyCountry[this] = value; }
+            get =>Fields.CounterpartyCountry[this]; 
+            set =>Fields.CounterpartyCountry[this] = value; 
         }
 
         [Origin("c")]
         public String CounterpartyPhone
         {
-            get { return Fields.CounterpartyPhone[this]; }
-            set { Fields.CounterpartyPhone[this] = value; }
+            get =>Fields.CounterpartyPhone[this]; 
+            set =>Fields.CounterpartyPhone[this] = value; 
         }
 
         #endregion Counterparty
@@ -94,103 +95,104 @@ namespace CoreStore.Store.Entities
         [LookupEditor(typeof(EmployeesRow)), TextualField("EmployeeFullName")]
         public Int32? EmployeeId
         {
-            get { return Fields.EmployeeId[this]; }
-            set { Fields.EmployeeId[this] = value; }
+            get =>Fields.EmployeeId[this]; 
+            set =>Fields.EmployeeId[this] = value; 
         }
 
         [Origin("e"), DisplayName("Employee")]
         public String EmployeeFullName
         {
-            get { return Fields.EmployeeFullName[this]; }
-            set { Fields.EmployeeFullName[this] = value; }
+            get =>Fields.EmployeeFullName[this]; 
+            set =>Fields.EmployeeFullName[this] = value; 
         }
 
         [Origin("e")]
         public Gender? EmployeeGender
         {
-            get { return (Gender?)Fields.EmployeeGender[this]; }
-            set { Fields.EmployeeGender[this] = (Int32?)value; }
+            get =>(Gender?)Fields.EmployeeGender[this]; 
+            set =>Fields.EmployeeGender[this] = (Int32?)value; 
         }
 
         [Origin("e")]
         public String EmployeeReportsToFullName
         {
-            get { return Fields.EmployeeReportsToFullName[this]; }
-            set { Fields.EmployeeReportsToFullName[this] = value; }
+            get =>Fields.EmployeeReportsToFullName[this]; 
+            set =>Fields.EmployeeReportsToFullName[this] = value; 
         }
 
         #endregion Employee
+
         #region Shops
 
         [DisplayName("Shop"), Size(14), NotNull, ForeignKey(typeof(ShopsRow), "ShopId"), LeftJoin("shop")]
         [QuickSearch, ShopsEditor]
         public String ShopId
         {
-            get { return Fields.ShopId[this]; }
-            set { Fields.ShopId[this] = value; }
+            get =>Fields.ShopId[this]; 
+            set =>Fields.ShopId[this] = value; 
         }
 
         [Origin("shop")]
         public String ShopShopName
         {
-            get { return Fields.ShopShopName[this]; }
-            set { Fields.ShopShopName[this] = value; }
+            get =>Fields.ShopShopName[this]; 
+            set =>Fields.ShopShopName[this] = value; 
         }
 
         [Origin("shop")]
         public String ShopContactName
         {
-            get { return Fields.ShopContactName[this]; }
-            set { Fields.ShopContactName[this] = value; }
+            get =>Fields.ShopContactName[this]; 
+            set =>Fields.ShopContactName[this] = value; 
         }
 
         [Origin("shop")]
         public String ShopContactTitle
         {
-            get { return Fields.ShopContactTitle[this]; }
-            set { Fields.ShopContactTitle[this] = value; }
+            get =>Fields.ShopContactTitle[this]; 
+            set =>Fields.ShopContactTitle[this] = value; 
         }
 
         [Origin("shop")]
         public String ShopAddress
         {
-            get { return Fields.ShopAddress[this]; }
-            set { Fields.ShopAddress[this] = value; }
+            get =>Fields.ShopAddress[this]; 
+            set =>Fields.ShopAddress[this] = value; 
         }
 
         [Origin("shop")]
         public String ShopCity
         {
-            get { return Fields.ShopCity[this]; }
-            set { Fields.ShopCity[this] = value; }
+            get =>Fields.ShopCity[this]; 
+            set =>Fields.ShopCity[this] = value; 
         }
 
         [Origin("shop")]
         public String ShopRegion
         {
-            get { return Fields.ShopRegion[this]; }
-            set { Fields.ShopRegion[this] = value; }
+            get =>Fields.ShopRegion[this]; 
+            set =>Fields.ShopRegion[this] = value; 
         }
 
         [Origin("shop")]
         public String ShopPostalCode
         {
-            get { return Fields.ShopPostalCode[this]; }
-            set { Fields.ShopPostalCode[this] = value; }
+            get =>Fields.ShopPostalCode[this]; 
+            set =>Fields.ShopPostalCode[this] = value; 
         }
 
         [Origin("shop")]
         public String ShopCountry
         {
-            get { return Fields.ShopCountry[this]; }
-            set { Fields.ShopCountry[this] = value; }
+            get =>Fields.ShopCountry[this]; 
+            set =>Fields.ShopCountry[this] = value; 
         }
 
         [Origin("shop")]
         public String ShopPhone
         {
-            get { return Fields.ShopPhone[this]; }
-            set { Fields.ShopPhone[this] = value; }
+            get =>Fields.ShopPhone[this]; 
+            set =>Fields.ShopPhone[this] = value; 
         }
 
         #endregion Shops
@@ -200,22 +202,22 @@ namespace CoreStore.Store.Entities
         [DisplayName("Ship Via"), ForeignKey(typeof(ShippersRow)), LeftJoin("via"), LookupEditor(typeof(ShippersRow))]
         public Int32? ShipperId
         {
-            get { return Fields.ShipperId[this]; }
-            set { Fields.ShipperId[this] = value; }
+            get =>Fields.ShipperId[this]; 
+            set =>Fields.ShipperId[this] = value; 
         }
 
         [Origin("via")]
         public String ShipperCompanyName
         {
-            get { return Fields.ShipperCompanyName[this]; }
-            set { Fields.ShipperCompanyName[this] = value; }
+            get =>Fields.ShipperCompanyName[this]; 
+            set =>Fields.ShipperCompanyName[this] = value; 
         }
 
         [Origin("via")]
         public String ShipperPhone
         {
-            get { return Fields.ShipperPhone[this]; }
-            set { Fields.ShipperPhone[this] = value; }
+            get =>Fields.ShipperPhone[this]; 
+            set =>Fields.ShipperPhone[this] = value; 
         }
 
         #endregion Shipper
@@ -227,34 +229,50 @@ namespace CoreStore.Store.Entities
         [LookupEditor(typeof(OperationTypeRow), FilterField = "OperationTypeOpCode", FilterValue = 102)]
         public Int32? OperationTypeId
         {
-            get { return Fields.OperationTypeId[this]; }
-            set { Fields.OperationTypeId[this] = value; }
+            get =>Fields.OperationTypeId[this]; 
+            set =>Fields.OperationTypeId[this] = value; 
         }
 
         [Origin("o")]
         public ProductMovementOperations? OperationTypeOpCode
         {
-            get { return (ProductMovementOperations)Fields.OperationTypeOpCode[this]; }
-            set { Fields.OperationTypeOpCode[this] = (Int16?)value; }
+            get =>(ProductMovementOperations)Fields.OperationTypeOpCode[this]; 
+            set =>Fields.OperationTypeOpCode[this] = (Int16?)value; 
         }
 
         [Origin("o")]
         public String OperationTypeOperation
         {
-            get { return Fields.OperationTypeOperation[this]; }
-            set { Fields.OperationTypeOperation[this] = value; }
+            get =>Fields.OperationTypeOperation[this]; 
+            set =>Fields.OperationTypeOperation[this] = value; 
         }
 
         #endregion Operation
 
         #region Total
 
-        [Origin("wmt")]
+        [Origin("pmt")]
+        [AlignRight, DisplayFormat("#,##0.0000")]
+        public Decimal? Value
+        {
+            get =>Fields.Value[this]; 
+            set =>Fields.Value[this] = value; 
+        }
+
+        [Origin("pmt")]
+        [AlignRight, DisplayFormat("#,##0.0000")]
+        public Decimal? VAT
+        {
+            get =>Fields.VAT[this]; 
+            set =>Fields.VAT[this] = value; 
+        }
+
+        [Origin("pmt")]
         [AlignRight, DisplayFormat("#,##0.0000")]
         public Decimal? Total
         {
-            get { return Fields.Total[this]; }
-            set { Fields.Total[this] = value; }
+            get =>Fields.Total[this]; 
+            set =>Fields.Total[this] = value; 
         }
 
         #endregion Total
@@ -262,59 +280,59 @@ namespace CoreStore.Store.Entities
         [DisplayName("Order Date")]
         public DateTime? OrderDate
         {
-            get { return Fields.OrderDate[this]; }
-            set { Fields.OrderDate[this] = value; }
+            get =>Fields.OrderDate[this]; 
+            set =>Fields.OrderDate[this] = value; 
         }
 
         [DisplayName("Required Date")]
         public DateTime? RequiredDate
         {
-            get { return Fields.RequiredDate[this]; }
-            set { Fields.RequiredDate[this] = value; }
+            get =>Fields.RequiredDate[this]; 
+            set =>Fields.RequiredDate[this] = value; 
         }
 
         [DisplayName("Shipped Date")]
         public DateTime? ShippedDate
         {
-            get { return Fields.ShippedDate[this]; }
-            set { Fields.ShippedDate[this] = value; }
+            get =>Fields.ShippedDate[this]; 
+            set =>Fields.ShippedDate[this] = value; 
         }
 
         [DisplayName("Shipping State"), Expression("(CASE WHEN T0.[ShippedDate] IS NULL THEN 0 ELSE 1 END)")]
         public ShippingState? ShippingState
         {
-            get { return (ShippingState?)Fields.ShippingState[this]; }
-            set { Fields.ShippingState[this] = (Int32?)value; }
+            get =>(ShippingState?)Fields.ShippingState[this]; 
+            set =>Fields.ShippingState[this] = (Int32?)value; 
         }
 
         [Origin("pmd"), LookupEditor(typeof(DocumentTypeRow))]
         public Int32? DocumentTypeId
         {
-            get { return Fields.DocumentTypeId[this]; }
-            set { Fields.DocumentTypeId[this] = value; }
+            get =>Fields.DocumentTypeId[this]; 
+            set =>Fields.DocumentTypeId[this] = value; 
         }
 
         //[DisplayName("Document Number"), Size(10), QuickSearch]
         [Origin("pmd")]
         public String DocumentNumber
         {
-            get { return Fields.DocumentNumber[this]; }
-            set { Fields.DocumentNumber[this] = value; }
+            get =>Fields.DocumentNumber[this]; 
+            set =>Fields.DocumentNumber[this] = value; 
         }
 
         //[DisplayName("Document Date")]
         [Origin("pmd")]
         public DateTime? DocumentDate
         {
-            get { return Fields.DocumentDate[this]; }
-            set { Fields.DocumentDate[this] = value; }
+            get =>Fields.DocumentDate[this]; 
+            set =>Fields.DocumentDate[this] = value; 
         }
 
         [DisplayName("Details"), MasterDetailRelation(foreignKey: "ProductMoveID"), NotMapped]
         public List<ProductMovementDetailsRow> DetailList
         {
-            get { return Fields.DetailList[this]; }
-            set { Fields.DetailList[this] = value; }
+            get =>Fields.DetailList[this]; 
+            set =>Fields.DetailList[this] = value; 
         }
 
         #region Tenant & Activ
@@ -322,37 +340,37 @@ namespace CoreStore.Store.Entities
         [Insertable(false), Updatable(false)]
         public Int32? TenantId
         {
-            get { return Fields.TenantId[this]; }
-            set { Fields.TenantId[this] = value; }
+            get =>Fields.TenantId[this]; 
+            set =>Fields.TenantId[this] = value; 
         }
 
         public Int32Field TenantIdField
         {
-            get { return Fields.TenantId; }
+            get =>Fields.TenantId; 
         }
 
         [NotNull, Insertable(false), Updatable(true)]
         public Int16? IsActive
         {
-            get { return Fields.IsActive[this]; }
-            set { Fields.IsActive[this] = value; }
+            get =>Fields.IsActive[this]; 
+            set =>Fields.IsActive[this] = value; 
         }
 
         Int16Field IIsActiveRow.IsActiveField
         {
-            get { return Fields.IsActive; }
+            get =>Fields.IsActive; 
         }
 
         #endregion Tenant & Activ
 
         IIdField IIdRow.IdField
         {
-            get { return Fields.ProductMoveId; }
+            get =>Fields.ProductMoveId; 
         }
 
         StringField INameRow.NameField
         {
-            get { return Fields.ShopId; }
+            get =>Fields.ShopId; 
         }
 
         public static readonly RowFields Fields = new RowFields().Init();
@@ -410,6 +428,8 @@ namespace CoreStore.Store.Entities
             public Int16Field OperationTypeOpCode;
             public StringField OperationTypeOperation;
 
+            public DecimalField Value;
+            public DecimalField VAT;
             public DecimalField Total;
 
             public RowListField<ProductMovementDetailsRow> DetailList;

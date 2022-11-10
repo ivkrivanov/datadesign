@@ -38,6 +38,8 @@
         ShippingState?: ShippingState;
         OperationTypeOpCode?: WaresMovementOperations;
         OperationTypeOperation?: string;
+        Value?: number;
+        VAT?: number;
         Total?: number;
         DetailList?: WaresMovementDetailsRow[];
         InsertUserId?: number;
@@ -100,6 +102,8 @@
             ShippingState = "ShippingState",
             OperationTypeOpCode = "OperationTypeOpCode",
             OperationTypeOperation = "OperationTypeOperation",
+            Value = "Value",
+            VAT = "VAT",
             Total = "Total",
             DetailList = "DetailList",
             InsertUserId = "InsertUserId",

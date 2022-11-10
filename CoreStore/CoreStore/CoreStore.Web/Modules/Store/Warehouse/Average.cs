@@ -11,6 +11,7 @@ namespace CoreStore.Web.Modules.Store.Warehouse
     public class WarehouseAverage
     {
         public Int32? Tenant { get; set; }
+        public double ScaleVAT = 0.2;
 
         public object GetData()
         {

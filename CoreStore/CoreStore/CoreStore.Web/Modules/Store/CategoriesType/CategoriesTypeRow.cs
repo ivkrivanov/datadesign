@@ -19,22 +19,22 @@ namespace CoreStore.Store.Entities
         [DisplayName("Category Type Id"), Column("CategoryTypeID"), Identity]
         public Int32? CategoryTypeId
         {
-            get { return Fields.CategoryTypeId[this]; }
-            set { Fields.CategoryTypeId[this] = value; }
+            get => Fields.CategoryTypeId[this]; 
+            set => Fields.CategoryTypeId[this] = value; 
         }
 
         [DisplayName("Type"), NotNull]
         public Int16? Type
         {
-            get { return Fields.Type[this]; }
-            set { Fields.Type[this] = value; }
+            get => Fields.Type[this]; 
+            set => Fields.Type[this] = value; 
         }
 
         [DisplayName("Category Type"), Size(30), NotNull, QuickSearch]
         public String CategoryType
         {
-            get { return Fields.CategoryType[this]; }
-            set { Fields.CategoryType[this] = value; }
+            get => Fields.CategoryType[this]; 
+            set => Fields.CategoryType[this] = value; 
         }
 
         #region Tenant & Activ
@@ -42,37 +42,37 @@ namespace CoreStore.Store.Entities
         [Insertable(false), Updatable(false)]
         public Int32? TenantId
         {
-            get { return Fields.TenantId[this]; }
-            set { Fields.TenantId[this] = value; }
+            get => Fields.TenantId[this]; 
+            set => Fields.TenantId[this] = value; 
         }
 
         public Int32Field TenantIdField
         {
-            get { return Fields.TenantId; }
+            get => Fields.TenantId; 
         }
 
         [NotNull, Insertable(false), Updatable(true)]
         public Int16? IsActive
         {
-            get { return Fields.IsActive[this]; }
-            set { Fields.IsActive[this] = value; }
+            get => Fields.IsActive[this]; 
+            set => Fields.IsActive[this] = value; 
         }
 
         Int16Field IIsActiveRow.IsActiveField
         {
-            get { return Fields.IsActive; }
+            get => Fields.IsActive; 
         }
 
         #endregion Tenant & Activ
 
         IIdField IIdRow.IdField
         {
-            get { return Fields.CategoryTypeId; }
+            get => Fields.CategoryTypeId; 
         }
 
         StringField INameRow.NameField
         {
-            get { return Fields.CategoryType; }
+            get => Fields.CategoryType; 
         }
 
         public static readonly RowFields Fields = new RowFields().Init();

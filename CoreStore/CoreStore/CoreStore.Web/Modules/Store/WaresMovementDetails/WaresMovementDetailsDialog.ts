@@ -7,7 +7,7 @@ namespace CoreStore.Store {
         protected getFormKey() { return WaresMovementDetailsForm.formKey; }
         protected getIdProperty() { return ProductMovementDetailsRow.idProperty; }
         protected getLocalTextPrefix() { return WaresMovementDetailsRow.localTextPrefix; }
-        protected getService() { return WaresMovementDetailsRow.baseUrl; }
+        protected getService() { return WaresMovementDetailsService.baseUrl; }
         protected getDeletePermission() { return WaresMovementDetailsRow.deletePermission; }
         protected getInsertPermission() { return WaresMovementDetailsRow.insertPermission; }
         protected getUpdatePermission() { return WaresMovementDetailsRow.updatePermission; }

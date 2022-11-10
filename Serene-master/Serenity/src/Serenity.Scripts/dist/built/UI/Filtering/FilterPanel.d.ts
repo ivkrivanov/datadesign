@@ -1,0 +1,40 @@
+/// <reference types="jquery" />
+import { IFiltering } from "./Filtering";
+import { FilterWidgetBase } from "./FilterWidgetBase";
+export declare class FilterPanel extends FilterWidgetBase<any> {
+    private rowsDiv;
+    constructor(div: JQuery);
+    private showInitialLine;
+    get_showInitialLine(): boolean;
+    set_showInitialLine(value: boolean): void;
+    protected filterStoreChanged(): void;
+    updateRowsFromStore(): void;
+    private showSearchButton;
+    get_showSearchButton(): boolean;
+    set_showSearchButton(value: boolean): void;
+    private updateStoreOnReset;
+    get_updateStoreOnReset(): boolean;
+    set_updateStoreOnReset(value: boolean): void;
+    protected getTemplate(): string;
+    protected initButtons(): void;
+    protected searchButtonClick(e: JQueryEventObject): void;
+    get_hasErrors(): boolean;
+    search(): void;
+    protected addButtonClick(e: JQueryEventObject): void;
+    protected resetButtonClick(e: JQueryEventObject): void;
+    protected findEmptyRow(): JQuery;
+    protected addEmptyRow(popupField: boolean): JQuery;
+    protected onRowFieldChange(e: JQueryEventObject): void;
+    protected rowFieldChange(row: JQuery): void;
+    protected removeFiltering(row: JQuery): void;
+    protected populateOperatorList(row: JQuery): void;
+    protected getFieldFor(row: JQuery): Serenity.PropertyItem;
+    protected getFilteringFor(row: JQuery): IFiltering;
+    protected onRowOperatorChange(e: JQueryEventObject): void;
+    protected rowOperatorChange(row: JQuery): void;
+    protected deleteRowClick(e: JQueryEventObject): void;
+    protected updateButtons(): void;
+    protected andOrClick(e: JQueryEventObject): void;
+    protected leftRightParenClick(e: JQueryEventObject): void;
+    protected updateParens(): void;
+}

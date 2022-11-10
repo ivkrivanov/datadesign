@@ -37,7 +37,7 @@
     export namespace ProductsRow {
         export const idProperty = 'ProductId';
         export const isActiveProperty = 'IsActive';
-        export const nameProperty = 'ProductCode';
+        export const nameProperty = 'ProductName';
         export const localTextPrefix = 'Store.Products';
         export const lookupKey = 'Store.Product';
 

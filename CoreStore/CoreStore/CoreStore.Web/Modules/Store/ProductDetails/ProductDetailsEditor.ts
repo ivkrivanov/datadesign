@@ -1,4 +1,5 @@
-﻿namespace CoreStore.Store {
+﻿
+namespace CoreStore.Store {
     @Serenity.Decorators.registerEditor()
     export class ProductDetailEditor extends Serenity.LookupEditorBase<Serenity.LookupEditorOptions, Store.WaresRow> {
 

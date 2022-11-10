@@ -15,7 +15,8 @@
     public static class DataMigrations
     {
         private static readonly string[] databaseKeys = new[] {
-            "Default"
+            "Default",
+            "Store"
         };
 
         public static void Initialize()
@@ -23,7 +24,7 @@
             foreach (var databaseKey in databaseKeys)
             {
                 EnsureDatabase(databaseKey);
-                RunMigrations(databaseKey);
+                //RunMigrations(databaseKey);
             }
         }
 

@@ -16,53 +16,53 @@ namespace CoreStore.Administration.Entities
         [DisplayName("User Permission Id"), Identity]
         public Int64? UserPermissionId
         {
-            get { return Fields.UserPermissionId[this]; }
-            set { Fields.UserPermissionId[this] = value; }
+            get => Fields.UserPermissionId[this];
+            set => Fields.UserPermissionId[this] = value; 
         }
 
         [DisplayName("User Id"), NotNull, ForeignKey("Users", "UserId"), LeftJoin("jUser")]
         public Int32? UserId
         {
-            get { return Fields.UserId[this]; }
-            set { Fields.UserId[this] = value; }
+            get => Fields.UserId[this]; 
+            set => Fields.UserId[this] = value; 
         }
 
         [DisplayName("Permission Key"), Size(100), NotNull, QuickSearch]
         public String PermissionKey
         {
-            get { return Fields.PermissionKey[this]; }
-            set { Fields.PermissionKey[this] = value; }
+            get => Fields.PermissionKey[this]; 
+            set => Fields.PermissionKey[this] = value; 
         }
 
         [DisplayName("Grant")]
         public Boolean? Granted
         {
-            get { return Fields.Granted[this]; }
-            set { Fields.Granted[this] = value; }
+            get => Fields.Granted[this]; 
+            set => Fields.Granted[this] = value; 
         }
 
         [DisplayName("User Username"), Expression("jUser.[Username]")]
         public String Username
         {
-            get { return Fields.Username[this]; }
-            set { Fields.Username[this] = value; }
+            get => Fields.Username[this]; 
+            set => Fields.Username[this] = value; 
         }
 
         [DisplayName("User Display Name"), Expression("jUser.[DisplayName]")]
         public String User
         {
-            get { return Fields.User[this]; }
-            set { Fields.User[this] = value; }
+            get => Fields.User[this]; 
+            set => Fields.User[this] = value; 
         }
 
         IIdField IIdRow.IdField
         {
-            get { return Fields.UserPermissionId; }
+            get => Fields.UserPermissionId; 
         }
 
         StringField INameRow.NameField
         {
-            get { return Fields.PermissionKey; }
+            get => Fields.PermissionKey; 
         }
 
         public static readonly RowFields Fields = new RowFields().Init();

@@ -14,6 +14,7 @@ namespace CoreStore.Store.Endpoints
     using MyRow = Entities.WarehouseRow;
     using CoreStore;
     using System.Configuration;
+
     [Route("Services/Store/Warehouse/[action]")]
     [ConnectionKey(typeof(MyRow)), ServiceAuthorize(typeof(MyRow))]
     public class WarehouseController : ServiceEndpoint

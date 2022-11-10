@@ -2,6 +2,7 @@
 namespace CoreStore.Store {
 
     @Serenity.Decorators.registerClass()
+    @Serenity.Decorators.panel()
     export class ProductsDialog extends Serenity.EntityDialog<ProductsRow, any> {
         protected getFormKey() { return ProductsForm.formKey; }
         protected getIdProperty() { return ProductsRow.idProperty; }

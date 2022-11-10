@@ -39,13 +39,10 @@ namespace CoreStore.Store {
             return filters;
         }
 
-
         protected createQuickFilters() {
             super.createQuickFilters();
-
             //this.findQuickFilter(Serenity.LookupEditor, fld.OperationTypeOperation).values = ["[102]Доставка на стоки"];
-
-            //this.shippingStateFilter = this.findQuickFilter(Serenity.EnumEditor, fld.ShippingState);
+            this.shippingStateFilter = this.findQuickFilter(Serenity.EnumEditor, fld.ShippingState);
         }
 
         protected getButtons() {
@@ -103,7 +100,6 @@ namespace CoreStore.Store {
 
             var item = this.itemAt(row);
             var target = $(e.target);
-
             // if user clicks "i" element, e.g. icon
             if (target.parent().hasClass('inline-action'))
                 target = target.parent();

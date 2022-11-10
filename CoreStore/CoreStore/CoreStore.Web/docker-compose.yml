@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+
+  sqldata:
+    image: "mcr.microsoft.com/mssql/server:2019-latest"
+
+  corestore.web:
+    image: ${DOCKER_REGISTRY-}corestoreweb
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - sqldata
+
+
