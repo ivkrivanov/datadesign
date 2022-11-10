@@ -565,6 +565,48 @@ declare namespace Store {
     }
 }
 declare namespace Store.Store {
+    interface CategoriesLangRow {
+        Id?: number;
+        CategoryId?: number;
+        LanguageId?: number;
+        CategoryName?: string;
+        Description?: string;
+    }
+    namespace CategoriesLangRow {
+        const idProperty = "Id";
+        const nameProperty = "CategoryName";
+        const localTextPrefix = "Store.CategoriesLang";
+        const deletePermission = "Store:General";
+        const insertPermission = "Store:General";
+        const readPermission = "Store:General";
+        const updatePermission = "Store:General";
+        const enum Fields {
+            Id = "Id",
+            CategoryId = "CategoryId",
+            LanguageId = "LanguageId",
+            CategoryName = "CategoryName",
+            Description = "Description"
+        }
+    }
+}
+declare namespace Store.Store {
+    namespace CategoriesLangService {
+        const baseUrl = "Store/CategoriesLang";
+        function Create(request: Serenity.SaveRequest<CategoriesLangRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<CategoriesLangRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<CategoriesLangRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<CategoriesLangRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Store/CategoriesLang/Create",
+            Update = "Store/CategoriesLang/Update",
+            Delete = "Store/CategoriesLang/Delete",
+            Retrieve = "Store/CategoriesLang/Retrieve",
+            List = "Store/CategoriesLang/List"
+        }
+    }
+}
+declare namespace Store.Store {
     class CategoriesTypeColumns {
         static columnsKey: string;
     }
