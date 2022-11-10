@@ -38,6 +38,11 @@ namespace MVC
             {
                 public const string DashboardIndex = "~/Modules/Common/Dashboard/DashboardIndex.cshtml";
             }
+
+            public static class Reporting
+            {
+                public const string ReportPage = "~/Modules/Common/Reporting/ReportPage.cshtml";
+            }
         }
 
         public static class Errors
@@ -86,6 +91,11 @@ namespace MVC
 
         public static class Store
         {
+            public static class Categories
+            {
+                public const string CategoriesIndex = "~/Modules/Store/Categories/CategoriesIndex.cshtml";
+            }
+
             public static class CategoriesType
             {
                 public const string CategoriesTypeIndex = "~/Modules/Store/CategoriesType/CategoriesTypeIndex.cshtml";

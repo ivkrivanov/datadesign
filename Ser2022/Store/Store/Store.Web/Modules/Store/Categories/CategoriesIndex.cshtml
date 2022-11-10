@@ -1,0 +1,19 @@
+﻿@inject Serenity.ITextLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer.Get("Db.Store.Categories.EntityPlural");
+}
+
+@section Head{
+    @Html.Script("dynamic://Lookup.Store.CategoriesType")
+}
+
+<div id="GridDiv"></div>
+
+<script type="text/javascript">
+    jQuery(function () {
+        new Store.Store.CategoriesGrid($('#GridDiv'), {}).init();
+
+        Q.initFullHeightGridPage($('#GridDiv'));
+    });
+</script>
