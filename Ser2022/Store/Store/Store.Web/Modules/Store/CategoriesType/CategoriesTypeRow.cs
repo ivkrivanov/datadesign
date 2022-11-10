@@ -5,9 +5,9 @@ namespace Store.Store.Entities
     using Serenity.ComponentModel;
     using Serenity.Data;
     using Serenity.Data.Mapping;
+    using Store;
     using System;
     using System.ComponentModel;
-    using Store;
 
     [ConnectionKey("Store"), Module("Store"), TableName("[dbo].[CategoriesType]")]
     [DisplayName("Categories Type"), InstanceName("Categories Type")]

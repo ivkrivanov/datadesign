@@ -8,7 +8,8 @@ namespace Store
     using Serenity.Web;
     using System;
 
-    public class MultiTenantRowLookupScript<TRow> : RowLookupScript<TRow>
+    public class MultiTenantRowLookupScript<TRow> : 
+            RowLookupScript<TRow>
             where TRow : class, IRow, IMultiTenantRow, new()
     {
         public ITwoLevelCache TwoLevelCache { get; }

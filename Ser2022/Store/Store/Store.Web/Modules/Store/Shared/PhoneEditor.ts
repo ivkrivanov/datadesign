@@ -1,5 +1,5 @@
 ﻿
-namespace CoreStore.Store {
+namespace Store.Store {
     @Serenity.Decorators.registerEditor()
     export class PhoneEditor extends Serenity.StringEditor {
         constructor(input: JQuery) {

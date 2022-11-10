@@ -27,6 +27,7 @@
     <TypeScriptCompile Remove="Modules\Store\Employees\EmployeesListFormatter.ts" />
     <None Include="Modules\Store\CategoriesType\CategoriesTypeIndex.cshtml" />
     <None Include="Modules\Store\Measures\MeasuresIndex.cshtml" />
+    <None Include="Modules\Store\Shops\ShopsIndex.cshtml" />
     <None Update="wwwroot\**\*">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </None>
