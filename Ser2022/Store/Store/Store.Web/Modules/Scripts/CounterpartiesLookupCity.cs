@@ -1,22 +1,23 @@
 ﻿
 namespace Store.Store.Scripts
 {
+    using Store.Entities;
     using Serenity.ComponentModel;
     using Serenity.Data;
-    using Serenity.Web;
     using Serenity.Abstractions;
 
-    [LookupScript("Store.ShopsCity")]
-    public class ShopsLookupCity : MultiTenantRowLookupScript<Entities.ShopsRow>
+    [LookupScript]
+    public class CounterpartiesLookupCity : MultiTenantRowLookupScript<CounterpartiesRow>
     {
-        public ShopsLookupCity(ISqlConnections sqlConnections, ITwoLevelCache twoLevelCache, IUserAccessor userAccessor) : base(sqlConnections, twoLevelCache, userAccessor)
+        public CounterpartiesLookupCity(ISqlConnections sqlConnections, ITwoLevelCache twoLevelCache, IUserAccessor userAccessor)
+            : base(sqlConnections, twoLevelCache, userAccessor)
         {
-            IdField = TextField = Store.Entities.ShopsRow.Fields.City.PropertyName;
+            IdField = TextField = CounterpartiesRow.Fields.City.PropertyName;
         }
 
         protected override void PrepareQuery(SqlQuery query)
         {
-            var fld = Entities.ShopsRow.Fields;
+            var fld = CounterpartiesRow.Fields;
             query.Distinct(true)
                 .Select(fld.Country)
                 .Select(fld.City)

@@ -19,6 +19,8 @@
     ]
   },
   "include": [
+    "./typings/serenity/Serenity.CoreLib.d.ts",
+    "./typings/jspdf/jspdf.autotable.d.ts",
     "./Imports/**/*",
     "./Modules/**/*"
   ]
