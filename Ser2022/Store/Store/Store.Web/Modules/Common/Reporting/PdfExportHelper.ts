@@ -174,6 +174,7 @@ namespace Store.Common {
                                 });
                         };
                         autoOptions.beforePageContent = beforePage;
+                        
                     }
 
                     doc.autoTable(columns, data, autoOptions);

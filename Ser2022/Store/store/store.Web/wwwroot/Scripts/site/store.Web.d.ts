@@ -958,6 +958,77 @@ declare namespace Store.Store {
     }
 }
 declare namespace Store.Store {
+    class ShippersColumns {
+        static columnsKey: string;
+    }
+}
+declare namespace Store.Store {
+    interface ShippersForm {
+        CompanyName: Serenity.StringEditor;
+        Phone: Serenity.StringEditor;
+    }
+    class ShippersForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace Store.Store {
+    interface ShippersRow {
+        ShipperId?: number;
+        CompanyName?: string;
+        Phone?: string;
+        IsActive?: number;
+        TenantId?: number;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+    }
+    namespace ShippersRow {
+        const idProperty = "ShipperId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "CompanyName";
+        const localTextPrefix = "Store.Shippers";
+        const lookupKey = "Store.Shipper";
+        function getLookup(): Q.Lookup<ShippersRow>;
+        const deletePermission = "Store:General";
+        const insertPermission = "Store:General";
+        const readPermission = "Store:General";
+        const updatePermission = "Store:General";
+        const enum Fields {
+            ShipperId = "ShipperId",
+            CompanyName = "CompanyName",
+            Phone = "Phone",
+            IsActive = "IsActive",
+            TenantId = "TenantId",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate"
+        }
+    }
+}
+declare namespace Store.Store {
+    namespace ShippersService {
+        const baseUrl = "Store/Shippers";
+        function Create(request: Serenity.SaveRequest<ShippersRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<ShippersRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Undelete(request: Serenity.UndeleteRequest, onSuccess?: (response: Serenity.UndeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<ShippersRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<ShippersRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Store/Shippers/Create",
+            Update = "Store/Shippers/Update",
+            Delete = "Store/Shippers/Delete",
+            Undelete = "Store/Shippers/Undelete",
+            Retrieve = "Store/Shippers/Retrieve",
+            List = "Store/Shippers/List"
+        }
+    }
+}
+declare namespace Store.Store {
     class ShopsColumns {
         static columnsKey: string;
     }
@@ -1511,6 +1582,35 @@ declare namespace Store.Store {
         static formatPhone(phone: any): any;
         static formatMulti(phone: string, format: (s: string) => string): string;
         static isValidMulti(phone: string, check: (s: string) => boolean): boolean;
+    }
+}
+declare namespace Store.Store {
+    class ShippersDialog extends Serenity.EntityDialog<ShippersRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected getDeletePermission(): string;
+        protected getInsertPermission(): string;
+        protected getUpdatePermission(): string;
+        protected form: ShippersForm;
+    }
+}
+declare namespace Store.Store {
+    class ShippersFormatter implements Slick.Formatter {
+        format(ctx: Slick.FormatterContext): string;
+    }
+}
+declare namespace Store.Store {
+    class ShippersGrid extends Serenity.EntityGrid<ShippersRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof ShippersDialog;
+        protected getIdProperty(): string;
+        protected getInsertPermission(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
     }
 }
 declare namespace Store.Store {
