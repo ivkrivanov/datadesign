@@ -11,7 +11,8 @@ namespace Store.Store.Scripts
     {
         public ShopsLookupCountry(ISqlConnections sqlConnections, ITwoLevelCache twoLevelCache, IUserAccessor userAccessor) : base(sqlConnections, twoLevelCache, userAccessor)
         {
-            IdField = TextField = "Country";
+            //IdField = TextField = "Country";
+            IdField = TextField = Entities.ShopsRow.Fields.Country.PropertyName;
         }
 
         protected override void PrepareQuery(SqlQuery query)

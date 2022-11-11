@@ -1,5 +1,6 @@
 ﻿/// <reference types="serenity.corelib" />
 /// <reference types="jquery" />
+/// <reference types="serenity.extensions" />
 /// <reference types="jquery.blockui" />
 /// <reference types="jquery.validation" />
 /// <reference types="jqueryui" />
@@ -565,6 +566,146 @@ declare namespace Store {
     }
 }
 declare namespace Store.Store {
+    class CategoriesColumns {
+        static columnsKey: string;
+    }
+}
+declare namespace Store.Store {
+    interface CategoriesExcelImportForm {
+        FileName: Serenity.ImageUploadEditor;
+    }
+    class CategoriesExcelImportForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace Store.Store {
+    interface CategoriesForm {
+        CategoryTypeId: Serenity.LookupEditor;
+        CategoryCode: Serenity.StringEditor;
+        CategoryName: Serenity.StringEditor;
+        Description: Serenity.StringEditor;
+    }
+    class CategoriesForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace Store.Store {
+    interface CategoriesLangRow {
+        Id?: number;
+        CategoryId?: number;
+        LanguageId?: number;
+        CategoryName?: string;
+        Description?: string;
+    }
+    namespace CategoriesLangRow {
+        const idProperty = "Id";
+        const nameProperty = "CategoryName";
+        const localTextPrefix = "Store.CategoriesLang";
+        const deletePermission = "Store:General";
+        const insertPermission = "Store:General";
+        const readPermission = "Store:General";
+        const updatePermission = "Store:General";
+        const enum Fields {
+            Id = "Id",
+            CategoryId = "CategoryId",
+            LanguageId = "LanguageId",
+            CategoryName = "CategoryName",
+            Description = "Description"
+        }
+    }
+}
+declare namespace Store.Store {
+    namespace CategoriesLangService {
+        const baseUrl = "Store/CategoriesLang";
+        function Create(request: Serenity.SaveRequest<CategoriesLangRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<CategoriesLangRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<CategoriesLangRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<CategoriesLangRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Store/CategoriesLang/Create",
+            Update = "Store/CategoriesLang/Update",
+            Delete = "Store/CategoriesLang/Delete",
+            Retrieve = "Store/CategoriesLang/Retrieve",
+            List = "Store/CategoriesLang/List"
+        }
+    }
+}
+declare namespace Store.Store {
+    interface CategoriesListRequest extends Serenity.ListRequest {
+        CategoryId?: number;
+    }
+}
+declare namespace Store.Store {
+    interface CategoriesRow {
+        CategoryId?: number;
+        CategoryTypeId?: number;
+        CategoryCode?: string;
+        CategoryName?: string;
+        Description?: string;
+        Picture?: number[];
+        IsActive?: number;
+        TenantId?: number;
+        Type?: number;
+        CategoryType?: string;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+    }
+    namespace CategoriesRow {
+        const idProperty = "CategoryId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "CategoryName";
+        const localTextPrefix = "Store.Categories";
+        const lookupKey = "Store.Categories";
+        function getLookup(): Q.Lookup<CategoriesRow>;
+        const deletePermission = "Store:Categories:Delete";
+        const insertPermission = "Store:Categories:Modify";
+        const readPermission = "Store:Categories:View";
+        const updatePermission = "Store:Categories:Modify";
+        const enum Fields {
+            CategoryId = "CategoryId",
+            CategoryTypeId = "CategoryTypeId",
+            CategoryCode = "CategoryCode",
+            CategoryName = "CategoryName",
+            Description = "Description",
+            Picture = "Picture",
+            IsActive = "IsActive",
+            TenantId = "TenantId",
+            Type = "Type",
+            CategoryType = "CategoryType",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate"
+        }
+    }
+}
+declare namespace Store.Store {
+    namespace CategoriesService {
+        const baseUrl = "Store/Categories";
+        function Create(request: Serenity.SaveWithLocalizationRequest<CategoriesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveWithLocalizationRequest<CategoriesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<CategoriesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: CategoriesListRequest, onSuccess?: (response: Serenity.ListResponse<CategoriesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function ExcelImport(request: Serenity.Extensions.ExcelImportRequest, onSuccess?: (response: Serenity.Extensions.ExcelImportResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Store/Categories/Create",
+            Update = "Store/Categories/Update",
+            Delete = "Store/Categories/Delete",
+            Retrieve = "Store/Categories/Retrieve",
+            List = "Store/Categories/List",
+            ExcelImport = "Store/Categories/ExcelImport"
+        }
+    }
+}
+declare namespace Store.Store {
     class CategoriesTypeColumns {
         static columnsKey: string;
     }
@@ -630,6 +771,72 @@ declare namespace Store.Store {
             Delete = "Store/CategoriesType/Delete",
             Retrieve = "Store/CategoriesType/Retrieve",
             List = "Store/CategoriesType/List"
+        }
+    }
+}
+declare namespace Store.Store {
+    class DocumentTypeColumns {
+        static columnsKey: string;
+    }
+}
+declare namespace Store.Store {
+    interface DocumentTypeForm {
+        DocumentName: Serenity.StringEditor;
+    }
+    class DocumentTypeForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace Store.Store {
+    interface DocumentTypeRow {
+        DocumentTypeId?: number;
+        DocumentName?: string;
+        IsActive?: number;
+        TenantId?: number;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+    }
+    namespace DocumentTypeRow {
+        const idProperty = "DocumentTypeId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "DocumentName";
+        const localTextPrefix = "Store.DocumentType";
+        const lookupKey = "Store.DocumentType";
+        function getLookup(): Q.Lookup<DocumentTypeRow>;
+        const deletePermission = "Store:DocumentType:Delete";
+        const insertPermission = "Store:DocumentType:Modify";
+        const readPermission = "Store:DocumentType:View";
+        const updatePermission = "Store:DocumentType:Modify";
+        const enum Fields {
+            DocumentTypeId = "DocumentTypeId",
+            DocumentName = "DocumentName",
+            IsActive = "IsActive",
+            TenantId = "TenantId",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate"
+        }
+    }
+}
+declare namespace Store.Store {
+    namespace DocumentTypeService {
+        const baseUrl = "Store/DocumentType";
+        function Create(request: Serenity.SaveRequest<DocumentTypeRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<DocumentTypeRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<DocumentTypeRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<DocumentTypeRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Store/DocumentType/Create",
+            Update = "Store/DocumentType/Update",
+            Delete = "Store/DocumentType/Delete",
+            Retrieve = "Store/DocumentType/Retrieve",
+            List = "Store/DocumentType/List"
         }
     }
 }
@@ -740,23 +947,6 @@ declare namespace Store.Store {
     }
 }
 declare namespace Store.Store {
-    namespace EmployeesService {
-        const baseUrl = "Store/Employees";
-        function Create(request: Serenity.SaveRequest<EmployeesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Update(request: Serenity.SaveRequest<EmployeesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<EmployeesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<EmployeesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        const enum Methods {
-            Create = "Store/Employees/Create",
-            Update = "Store/Employees/Update",
-            Delete = "Store/Employees/Delete",
-            Retrieve = "Store/Employees/Retrieve",
-            List = "Store/Employees/List"
-        }
-    }
-}
-declare namespace Store.Store {
     enum Gender {
         Male = 1,
         Female = 2
@@ -831,6 +1021,77 @@ declare namespace Store.Store {
 declare namespace Store.Store {
     namespace PermissionKeys {
         const General = "Store:General";
+    }
+}
+declare namespace Store.Store {
+    class ShippersColumns {
+        static columnsKey: string;
+    }
+}
+declare namespace Store.Store {
+    interface ShippersForm {
+        CompanyName: Serenity.StringEditor;
+        Phone: Serenity.StringEditor;
+    }
+    class ShippersForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace Store.Store {
+    interface ShippersRow {
+        ShipperId?: number;
+        CompanyName?: string;
+        Phone?: string;
+        IsActive?: number;
+        TenantId?: number;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+    }
+    namespace ShippersRow {
+        const idProperty = "ShipperId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "CompanyName";
+        const localTextPrefix = "Store.Shippers";
+        const lookupKey = "Store.Shipper";
+        function getLookup(): Q.Lookup<ShippersRow>;
+        const deletePermission = "Store:General";
+        const insertPermission = "Store:General";
+        const readPermission = "Store:General";
+        const updatePermission = "Store:General";
+        const enum Fields {
+            ShipperId = "ShipperId",
+            CompanyName = "CompanyName",
+            Phone = "Phone",
+            IsActive = "IsActive",
+            TenantId = "TenantId",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate"
+        }
+    }
+}
+declare namespace Store.Store {
+    namespace ShippersService {
+        const baseUrl = "Store/Shippers";
+        function Create(request: Serenity.SaveRequest<ShippersRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<ShippersRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Undelete(request: Serenity.UndeleteRequest, onSuccess?: (response: Serenity.UndeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<ShippersRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<ShippersRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Store/Shippers/Create",
+            Update = "Store/Shippers/Update",
+            Delete = "Store/Shippers/Delete",
+            Undelete = "Store/Shippers/Undelete",
+            Retrieve = "Store/Shippers/Retrieve",
+            List = "Store/Shippers/List"
+        }
     }
 }
 declare namespace Store.Store {
@@ -1138,10 +1399,103 @@ declare namespace Store.LanguageList {
 declare namespace Store.ScriptInitialization {
 }
 declare namespace Store.Common {
+    interface ExcelExportOptions {
+        grid: Serenity.DataGrid<any, any>;
+        service: string;
+        onViewSubmit: () => boolean;
+        title?: string;
+        hint?: string;
+        separator?: boolean;
+    }
+    namespace ExcelExportHelper {
+        function createToolButton(options: ExcelExportOptions): Serenity.ToolButton;
+    }
+}
+declare namespace Store.Common {
     class SidebarSearch extends Serenity.Widget<any> {
         private menuUL;
         constructor(input: JQuery, menuUL: JQuery);
         protected updateMatchFlags(text: string): void;
+    }
+}
+declare var jsPDF: any;
+declare namespace Store.Common {
+    interface PdfExportOptions {
+        grid: Serenity.DataGrid<any, any>;
+        onViewSubmit: () => boolean;
+        title?: string;
+        hint?: string;
+        separator?: boolean;
+        reportTitle?: string;
+        titleTop?: number;
+        titleFontSize?: number;
+        fileName?: string;
+        pageNumbers?: boolean;
+        columnTitles?: {
+            [key: string]: string;
+        };
+        tableOptions?: jsPDF.AutoTableOptions;
+        output?: string;
+        autoPrint?: boolean;
+        printDateTimeHeader?: boolean;
+    }
+    namespace PdfExportHelper {
+        function exportToPdf(options: PdfExportOptions): void;
+        function createToolButton(options: PdfExportOptions): Serenity.ToolButton;
+    }
+}
+declare var jsPDF: any;
+declare namespace Store.Common {
+    class ReportDialog extends Serenity.TemplatedDialog<ReportDialogOptions> {
+        private report;
+        private propertyGrid;
+        constructor(options: ReportDialogOptions);
+        protected getDialogButtons(): any;
+        protected createPropertyGrid(): void;
+        protected loadReport(reportKey: string): void;
+        protected updateInterface(): void;
+        executeReport(target: string, ext: string, download: boolean): void;
+        getToolbarButtons(): {
+            title: string;
+            cssClass: string;
+            onClick: () => void;
+        }[];
+    }
+    interface ReportDialogOptions {
+        reportKey: string;
+    }
+}
+declare namespace Store.Common {
+    interface ReportExecuteOptions {
+        reportKey: string;
+        download?: boolean;
+        extension?: 'pdf' | 'htm' | 'html' | 'xlsx' | 'docx';
+        getParams?: () => any;
+        params?: {
+            [key: string]: any;
+        };
+        target?: string;
+    }
+    interface ReportButtonOptions extends ReportExecuteOptions {
+        title?: string;
+        cssClass?: string;
+        icon?: string;
+    }
+    namespace ReportHelper {
+        function createToolButton(options: ReportButtonOptions): Serenity.ToolButton;
+        function execute(options: ReportExecuteOptions): void;
+    }
+}
+declare var jsPDF: any;
+declare namespace Store.Common {
+    class ReportPage extends Serenity.Widget<any> {
+        private reportKey;
+        private propertyItems;
+        private propertyGrid;
+        constructor(element: JQuery);
+        protected updateMatchFlags(text: string): void;
+        protected categoryClick(e: any): void;
+        protected reportLinkClick(e: any): void;
     }
 }
 declare namespace Store.Membership {
@@ -1182,6 +1536,42 @@ declare namespace Store.Membership {
     }
 }
 declare namespace Store.Store {
+    class CategoriesDialog extends Serenity.EntityDialog<CategoriesRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected getDeletePermission(): string;
+        protected getInsertPermission(): string;
+        protected getUpdatePermission(): string;
+        protected form: CategoriesForm;
+    }
+}
+declare namespace Store.Store {
+    class CategoriesExcelImportDialog extends Serenity.PropertyDialog<any, any> {
+        private form;
+        constructor();
+        protected getDialogTitle(): string;
+        protected getDialogButtons(): Serenity.DialogButton[];
+    }
+}
+declare namespace Store.Store {
+    import fld = CategoriesRow.Fields;
+    class CategoriesGrid extends Serenity.EntityGrid<CategoriesRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof CategoriesDialog;
+        protected getIdProperty(): string;
+        protected getInsertPermission(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
+        protected getDefaultSortBy(): fld[];
+        protected getButtons(): Serenity.ToolButton[];
+    }
+}
+declare namespace Store.Store {
     class CategoriesTypeDialog extends Serenity.EntityDialog<CategoriesTypeRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
@@ -1207,6 +1597,30 @@ declare namespace Store.Store {
     }
 }
 declare namespace Store.Store {
+    class DocumentTypeDialog extends Serenity.EntityDialog<DocumentTypeRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected getDeletePermission(): string;
+        protected getInsertPermission(): string;
+        protected getUpdatePermission(): string;
+        protected form: DocumentTypeForm;
+    }
+}
+declare namespace Store.Store {
+    class DocumentTypeGrid extends Serenity.EntityGrid<DocumentTypeRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof DocumentTypeDialog;
+        protected getIdProperty(): string;
+        protected getInsertPermission(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Store.Store {
     class EmployeesFormatter implements Slick.Formatter {
         format(ctx: Slick.FormatterContext): string;
         genderProperty: string;
@@ -1214,8 +1628,10 @@ declare namespace Store.Store {
     }
 }
 declare namespace Store.Store {
-    class EmployeesListFormatter implements Slick.Formatter {
+    class EmployeeFormatter implements Slick.Formatter {
         format(ctx: Slick.FormatterContext): string;
+        genderProperty: string;
+        initializeColumn(column: Slick.Column): void;
     }
 }
 declare namespace Store.Store {
@@ -1256,6 +1672,35 @@ declare namespace Store.Store {
         static formatPhone(phone: any): any;
         static formatMulti(phone: string, format: (s: string) => string): string;
         static isValidMulti(phone: string, check: (s: string) => boolean): boolean;
+    }
+}
+declare namespace Store.Store {
+    class ShippersDialog extends Serenity.EntityDialog<ShippersRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected getDeletePermission(): string;
+        protected getInsertPermission(): string;
+        protected getUpdatePermission(): string;
+        protected form: ShippersForm;
+    }
+}
+declare namespace Store.Store {
+    class ShippersFormatter implements Slick.Formatter {
+        format(ctx: Slick.FormatterContext): string;
+    }
+}
+declare namespace Store.Store {
+    class ShippersGrid extends Serenity.EntityGrid<ShippersRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof ShippersDialog;
+        protected getIdProperty(): string;
+        protected getInsertPermission(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
     }
 }
 declare namespace Store.Store {

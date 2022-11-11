@@ -38,6 +38,11 @@ namespace MVC
             {
                 public const string DashboardIndex = "~/Modules/Common/Dashboard/DashboardIndex.cshtml";
             }
+
+            public static class Reporting
+            {
+                public const string ReportPage = "~/Modules/Common/Reporting/ReportPage.cshtml";
+            }
         }
 
         public static class Errors
@@ -86,14 +91,29 @@ namespace MVC
 
         public static class Store
         {
+            public static class Categories
+            {
+                public const string CategoriesIndex = "~/Modules/Store/Categories/CategoriesIndex.cshtml";
+            }
+
             public static class CategoriesType
             {
                 public const string CategoriesTypeIndex = "~/Modules/Store/CategoriesType/CategoriesTypeIndex.cshtml";
             }
 
+            public static class DocumentType
+            {
+                public const string DocumentTypeIndex = "~/Modules/Store/DocumentType/DocumentTypeIndex.cshtml";
+            }
+
             public static class Measures
             {
                 public const string MeasuresIndex = "~/Modules/Store/Measures/MeasuresIndex.cshtml";
+            }
+
+            public static class Shippers
+            {
+                public const string ShippersIndex = "~/Modules/Store/Shippers/ShippersIndex.cshtml";
             }
 
             public static class Shops

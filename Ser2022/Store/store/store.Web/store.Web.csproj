@@ -20,13 +20,19 @@
     <EmbeddedResource Remove="Modules\Common\UserPreference\**" />
     <None Remove="Modules\Common\UserPreference\**" />
     <TypeScriptCompile Remove="Modules\Common\UserPreference\**" />
+    <Compile Remove="Modules\Common\Helpers\PdfExportHelper.cs" />
+    <Compile Remove="Modules\Store\Employees\EmployeesEndpoint.cs" />
     <Compile Remove="Modules\Store\Employees\EmployeesListDecorator.cs" />
     <None Remove="Modules\Store\Employees\EmployeesFormatter.ts" />
-    <None Remove="Modules\Store\Employees\EmployeesListFormatter.ts" />
+    <TypeScriptCompile Remove="Modules\Common\Helpers\ExcelExportHelper.ts" />
     <TypeScriptCompile Remove="Modules\Store\Employees\EmployeesFormatter.ts" />
     <TypeScriptCompile Remove="Modules\Store\Employees\EmployeesListFormatter.ts" />
+    <None Include="Modules\Common\Reporting\ReportPage.cshtml" />
     <None Include="Modules\Store\CategoriesType\CategoriesTypeIndex.cshtml" />
+    <None Include="Modules\Store\Categories\CategoriesIndex.cshtml" />
+    <None Include="Modules\Store\DocumentType\DocumentTypeIndex.cshtml" />
     <None Include="Modules\Store\Measures\MeasuresIndex.cshtml" />
+    <None Include="Modules\Store\Shippers\ShippersIndex.cshtml" />
     <None Include="Modules\Store\Shops\ShopsIndex.cshtml" />
     <None Update="wwwroot\**\*">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
