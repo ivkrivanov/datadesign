@@ -30,6 +30,7 @@
     <None Include="Modules\Common\Reporting\ReportPage.cshtml" />
     <None Include="Modules\Store\CategoriesType\CategoriesTypeIndex.cshtml" />
     <None Include="Modules\Store\Categories\CategoriesIndex.cshtml" />
+    <None Include="Modules\Store\DocumentType\DocumentTypeIndex.cshtml" />
     <None Include="Modules\Store\Measures\MeasuresIndex.cshtml" />
     <None Include="Modules\Store\Shippers\ShippersIndex.cshtml" />
     <None Include="Modules\Store\Shops\ShopsIndex.cshtml" />

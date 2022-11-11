@@ -101,6 +101,11 @@ namespace MVC
                 public const string CategoriesTypeIndex = "~/Modules/Store/CategoriesType/CategoriesTypeIndex.cshtml";
             }
 
+            public static class DocumentType
+            {
+                public const string DocumentTypeIndex = "~/Modules/Store/DocumentType/DocumentTypeIndex.cshtml";
+            }
+
             public static class Measures
             {
                 public const string MeasuresIndex = "~/Modules/Store/Measures/MeasuresIndex.cshtml";
