@@ -2,27 +2,26 @@
 namespace Store.Store.Scripts
 {
     using Store.Entities;
-    //using Store.Scripts;
     using Serenity.ComponentModel;
     using Serenity.Data;
     using Serenity.Abstractions;
 
     [LookupScript]
-    public class ShopsLookup : MultiTenantRowLookupScript<ShopsRow>
+    public class CounterpartiesLookup : MultiTenantRowLookupScript<CounterpartiesRow>
     {
-        public ShopsLookup(ISqlConnections sqlConnections, ITwoLevelCache twoLevelCache, IUserAccessor userAccessor) 
+        public CounterpartiesLookup(ISqlConnections sqlConnections, ITwoLevelCache twoLevelCache, IUserAccessor userAccessor)
             : base(sqlConnections, twoLevelCache, userAccessor)
         {
-            IdField = ShopsRow.Fields.ShopId.PropertyName;
-            TextField = ShopsRow.Fields.ShopName.PropertyName;
+            IdField = CounterpartiesRow.Fields.CounterpartyId.PropertyName;
+            TextField = CounterpartiesRow.Fields.CompanyName.PropertyName;
         }
 
         protected override void PrepareQuery(SqlQuery query)
         {
-            var fld = ShopsRow.Fields;
+            var fld = CounterpartiesRow.Fields;
             query.Distinct(true)
-                .Select(fld.ShopId)
-                .Select(fld.ShopName);
+                .Select(fld.CounterpartyId)
+                .Select(fld.CompanyName);
 
             AddTenantFilter(query);
         }

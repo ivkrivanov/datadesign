@@ -21,10 +21,11 @@
     <None Remove="Modules\Common\UserPreference\**" />
     <TypeScriptCompile Remove="Modules\Common\UserPreference\**" />
     <Compile Remove="Modules\Common\Helpers\PdfExportHelper.cs" />
-    <Compile Remove="Modules\Store\Employees\EmployeesEndpoint.cs" />
-    <Compile Remove="Modules\Store\Employees\EmployeesListDecorator.cs" />
-    <None Remove="Modules\Store\Employees\EmployeesFormatter.ts" />
+    <TypeScriptCompile Remove="Modules\Common\Helpers\DialogUtils.ts" />
     <TypeScriptCompile Remove="Modules\Common\Helpers\ExcelExportHelper.ts" />
+    <TypeScriptCompile Remove="Modules\Store\Counterparties\CounterpartiesDialog.ts" />
+    <TypeScriptCompile Remove="Modules\Store\Counterparties\CounterpartiesEditor.ts" />
+    <TypeScriptCompile Remove="Modules\Store\Counterparties\CounterpartiesGrid.ts" />
     <TypeScriptCompile Remove="Modules\Store\Employees\EmployeesFormatter.ts" />
     <TypeScriptCompile Remove="Modules\Store\Employees\EmployeesListFormatter.ts" />
     <None Include="Modules\Common\Reporting\ReportPage.cshtml" />
