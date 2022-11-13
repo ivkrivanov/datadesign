@@ -2041,3 +2041,252 @@ declare namespace Store.Store {
         }
     }
 }
+declare namespace Store.Store {
+    interface WaresLangRow {
+        Id?: number;
+        WaresId?: number;
+        LanguageId?: number;
+        WaresName?: string;
+        Description?: string;
+    }
+    namespace WaresLangRow {
+        const idProperty = "Id";
+        const nameProperty = "WaresName";
+        const localTextPrefix = "Store.WaresLang";
+        const deletePermission = "Store:General";
+        const insertPermission = "Store:General";
+        const readPermission = "Store:General";
+        const updatePermission = "Store:General";
+        const enum Fields {
+            Id = "Id",
+            WaresId = "WaresId",
+            LanguageId = "LanguageId",
+            WaresName = "WaresName",
+            Description = "Description"
+        }
+    }
+}
+declare namespace Store.Store {
+    namespace WaresLangService {
+        const baseUrl = "Store/WaresLang";
+        function Create(request: Serenity.SaveRequest<WaresLangRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<WaresLangRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<WaresLangRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<WaresLangRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Store/WaresLang/Create",
+            Update = "Store/WaresLang/Update",
+            Delete = "Store/WaresLang/Delete",
+            Retrieve = "Store/WaresLang/Retrieve",
+            List = "Store/WaresLang/List"
+        }
+    }
+}
+declare namespace Store.Store {
+    interface WaresRow {
+        WaresId?: number;
+        WaresCode?: string;
+        WaresBarcode?: string;
+        WaresLabel?: string;
+        WaresName?: string;
+        WaresImage?: string;
+        CounterpartyId?: string;
+        CategoryId?: number;
+        MeasureId?: number;
+        QuantityPerUnit?: number;
+        UnitPrice?: number;
+        UnitsInStock?: number;
+        UnitsOnOrder?: number;
+        Discontinued?: boolean;
+        AccountId?: number;
+        IsActive?: number;
+        TenantId?: number;
+        CounterpartyCompanyName?: string;
+        CounterpartyContactName?: string;
+        CounterpartyContactTitle?: string;
+        CounterpartyCity?: string;
+        CounterpartyRegion?: string;
+        CounterpartyCountry?: string;
+        CounterpartyPhone?: string;
+        Type?: number;
+        CategoryCategoryName?: string;
+        CategoryDescription?: string;
+        MeasureName?: string;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+    }
+    namespace WaresRow {
+        const idProperty = "WaresId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "WaresName";
+        const localTextPrefix = "Store.Wares";
+        const lookupKey = "Store.Wares";
+        function getLookup(): Q.Lookup<WaresRow>;
+        const deletePermission = "Store:Wares:Delete";
+        const insertPermission = "Store:Wares:Modify";
+        const readPermission = "Store:Wares:View";
+        const updatePermission = "Store:Wares:Modify";
+        const enum Fields {
+            WaresId = "WaresId",
+            WaresCode = "WaresCode",
+            WaresBarcode = "WaresBarcode",
+            WaresLabel = "WaresLabel",
+            WaresName = "WaresName",
+            WaresImage = "WaresImage",
+            CounterpartyId = "CounterpartyId",
+            CategoryId = "CategoryId",
+            MeasureId = "MeasureId",
+            QuantityPerUnit = "QuantityPerUnit",
+            UnitPrice = "UnitPrice",
+            UnitsInStock = "UnitsInStock",
+            UnitsOnOrder = "UnitsOnOrder",
+            Discontinued = "Discontinued",
+            AccountId = "AccountId",
+            IsActive = "IsActive",
+            TenantId = "TenantId",
+            CounterpartyCompanyName = "CounterpartyCompanyName",
+            CounterpartyContactName = "CounterpartyContactName",
+            CounterpartyContactTitle = "CounterpartyContactTitle",
+            CounterpartyCity = "CounterpartyCity",
+            CounterpartyRegion = "CounterpartyRegion",
+            CounterpartyCountry = "CounterpartyCountry",
+            CounterpartyPhone = "CounterpartyPhone",
+            Type = "Type",
+            CategoryCategoryName = "CategoryCategoryName",
+            CategoryDescription = "CategoryDescription",
+            MeasureName = "MeasureName",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate"
+        }
+    }
+}
+declare namespace Store.Store {
+    interface WaresListRequest extends Serenity.ListRequest {
+        WaresId?: number;
+    }
+}
+declare namespace Store {
+    interface ExcelImportRequest extends Serenity.ServiceRequest {
+        FileName?: string;
+    }
+}
+declare namespace Store {
+    interface ExcelImportResponse extends Serenity.ServiceResponse {
+        Inserted?: number;
+        Updated?: number;
+        ErrorList?: string[];
+    }
+}
+declare namespace Store.Store {
+    class WaresColumns {
+        static columnsKey: string;
+    }
+}
+declare namespace Store.Store {
+    interface WaresForm {
+        CategoryId: Serenity.LookupEditor;
+        WaresCode: Serenity.StringEditor;
+        WaresBarcode: Serenity.StringEditor;
+        WaresLabel: Serenity.StringEditor;
+        WaresName: Serenity.StringEditor;
+        MeasureId: Serenity.LookupEditor;
+        WaresImage: Serenity.ImageUploadEditor;
+        Discontinued: Serenity.BooleanEditor;
+        CounterpartyId: CounterpartiesEditor;
+        QuantityPerUnit: Serenity.DecimalEditor;
+        UnitPrice: Serenity.DecimalEditor;
+        AccountId: Serenity.IntegerEditor;
+    }
+    class WaresForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace Store.Store {
+    namespace WaresService {
+        const baseUrl = "Store/Wares";
+        function Create(request: Serenity.SaveRequest<WaresRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<WaresRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<WaresRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<WaresRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function ExcelImport(request: Serenity.Extensions.ExcelImportRequest, onSuccess?: (response: Serenity.Extensions.ExcelImportResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Store/Wares/Create",
+            Update = "Store/Wares/Update",
+            Delete = "Store/Wares/Delete",
+            Retrieve = "Store/Wares/Retrieve",
+            List = "Store/Wares/List",
+            ExcelImport = "Store/Wares/ExcelImport"
+        }
+    }
+}
+declare namespace Store.Store {
+    class WaresGrid extends Serenity.EntityGrid<WaresRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof WaresDialog;
+        protected getIdProperty(): string;
+        protected getInsertPermission(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        private pendingChanges;
+        constructor(container: JQuery);
+        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
+        protected getButtons(): Serenity.ToolButton[];
+        protected onViewProcessData(response: any): Serenity.ListResponse<WaresRow>;
+        private numericInputFormatter;
+        private moneyInputFormatter;
+        private stringInputFormatter;
+        private selectFormatter;
+        private getEffectiveValue;
+        protected getColumns(): Slick.Column[];
+        /**
+        * This method is called for all rows
+        * @param item Data item for current row
+        * @param index Index of the row in grid
+        */
+        protected getItemCssClass(item: Store.WaresRow, index: number): string;
+        private inputsChange;
+        private setSaveButtonState;
+        private saveClick;
+    }
+}
+declare namespace Store.Store {
+    class WaresDialog extends Serenity.EntityDialog<WaresRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected getDeletePermission(): string;
+        protected getInsertPermission(): string;
+        protected getUpdatePermission(): string;
+        protected form: WaresForm;
+        constructor();
+        protected UpdateInterface(): void;
+    }
+}
+declare namespace Store.Store {
+    class WaresExcelImportDialog extends Serenity.PropertyDialog<any, any> {
+        private form;
+        constructor();
+        protected getDialogTitle(): string;
+        protected getDialogButtons(): Serenity.DialogButton[];
+    }
+}
+declare namespace Store.Store {
+    interface WaresExcelImportForm {
+        FileName: Serenity.ImageUploadEditor;
+    }
+    class WaresExcelImportForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}

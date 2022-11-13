@@ -21,6 +21,8 @@
     <None Remove="Modules\Common\UserPreference\**" />
     <TypeScriptCompile Remove="Modules\Common\UserPreference\**" />
     <Compile Remove="Modules\Common\Helpers\PdfExportHelper.cs" />
+    <None Remove="App_Data\Reporting\wkhtmltopdf.exe" />
+    <None Remove="typings\jspdf\jspdf.d.ts" />
     <TypeScriptCompile Remove="Modules\Common\Helpers\DialogUtils.ts" />
     <TypeScriptCompile Remove="Modules\Common\Helpers\ExcelExportHelper.ts" />
     <TypeScriptCompile Remove="Modules\Store\Counterparties\CounterpartiesDialog.ts" />
@@ -28,6 +30,10 @@
     <TypeScriptCompile Remove="Modules\Store\Counterparties\CounterpartiesGrid.ts" />
     <TypeScriptCompile Remove="Modules\Store\Employees\EmployeesFormatter.ts" />
     <TypeScriptCompile Remove="Modules\Store\Employees\EmployeesListFormatter.ts" />
+    <TypeScriptCompile Remove="Modules\Store\Wares\WaresDialog.ts" />
+    <TypeScriptCompile Remove="Modules\Store\Wares\WaresExcelImportDialog.ts" />
+    <TypeScriptCompile Remove="Modules\Store\Wares\WaresGrid.ts" />
+    <Content Include="App_Data\Reporting\wkhtmltopdf.exe" />
     <None Include="Modules\Common\Reporting\ReportPage.cshtml" />
     <None Include="Modules\Store\CategoriesType\CategoriesTypeIndex.cshtml" />
     <None Include="Modules\Store\Categories\CategoriesIndex.cshtml" />
@@ -65,6 +71,9 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Serenity.Extensions" Version="5.2.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="node_modules\%40types\" />
   </ItemGroup>
   <Import Project="$(SolutionDir)Serenity\build\submodule.targets" Condition="Exists('$(SolutionDir)Serenity\build\submodule.targets')" />
   <Target Name="CreateInputsOutputs" BeforeTargets="BeforeBuild">
