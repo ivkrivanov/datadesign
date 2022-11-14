@@ -25,6 +25,8 @@
     <None Remove="typings\jspdf\jspdf.d.ts" />
     <TypeScriptCompile Remove="Modules\Common\Helpers\DialogUtils.ts" />
     <TypeScriptCompile Remove="Modules\Common\Helpers\ExcelExportHelper.ts" />
+    <TypeScriptCompile Remove="Modules\Common\Helpers\GridEditorBase.ts" />
+    <TypeScriptCompile Remove="Modules\Common\Helpers\GridEditorDialog.ts" />
     <TypeScriptCompile Remove="Modules\Store\Counterparties\CounterpartiesDialog.ts" />
     <TypeScriptCompile Remove="Modules\Store\Counterparties\CounterpartiesEditor.ts" />
     <TypeScriptCompile Remove="Modules\Store\Counterparties\CounterpartiesGrid.ts" />
@@ -39,8 +41,11 @@
     <None Include="Modules\Store\Categories\CategoriesIndex.cshtml" />
     <None Include="Modules\Store\DocumentType\DocumentTypeIndex.cshtml" />
     <None Include="Modules\Store\Measures\MeasuresIndex.cshtml" />
+    <None Include="Modules\Store\OperationType\OperationTypeIndex.cshtml" />
     <None Include="Modules\Store\Shippers\ShippersIndex.cshtml" />
     <None Include="Modules\Store\Shops\ShopsIndex.cshtml" />
+    <None Include="Modules\Store\WaresMovementDetails\WaresMovementDetailsIndex.cshtml" />
+    <None Include="Modules\Store\WaresMovement\WaresMovementIndex.cshtml" />
     <None Update="wwwroot\**\*">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </None>
