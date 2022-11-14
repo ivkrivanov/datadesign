@@ -94,5 +94,10 @@ namespace Store
             pk = null;
             return false;
         }
+
+        internal static void HandleDeleteForeignKeyException(Exception e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

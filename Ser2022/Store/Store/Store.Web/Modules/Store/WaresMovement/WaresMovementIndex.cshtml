@@ -1,0 +1,32 @@
+﻿@inject Serenity.ITextLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer.Get("Db.Store.WaresMovement.EntityPlural");
+}
+
+@section Head {
+    @Html.Script("dynamic://Lookup.Store.OperationType")
+    @Html.Script("dynamic://Lookup.Store.Counterparty")
+    @Html.Script("dynamic://Lookup.Store.CounterpartyCountry")
+    @Html.Script("dynamic://Lookup.Store.CounterpartyCity")
+    @Html.Script("dynamic://Lookup.Store.Employee")
+    @Html.Script("dynamic://Lookup.Store.Wares")
+
+}
+
+<div id="GridDiv"></div>
+
+<script type="text/javascript">
+    jQuery(function () {
+        //new CoreStore.Store.WaresMovementGrid($('#GridDiv'), {}).init();
+        var waresmoveGrid = new Store.Store.WaresMovementGrid($('#GridDiv'), {
+        });
+
+        var q = Q.parseQueryString();
+        if (q.shippingState != null && q.shippingState.length) {
+            WaresMovementGrid.set_shippingState(parseInt(q.shippingState, 10));
+        }
+
+        Q.initFullHeightGridPage($('#GridDiv'));
+    });
+</script>

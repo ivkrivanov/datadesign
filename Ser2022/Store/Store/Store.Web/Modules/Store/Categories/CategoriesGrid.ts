@@ -24,7 +24,7 @@ namespace Store.Store {
 
             var q = Q.parseQueryString();
             if (q["cattype"]) {
-                var cattype = Q.tryFirst(flt, x => x.field == "CategoriesTypeID");
+                var cattype = Q.tryFirst(flt, x => x.field == "CategoriesType");
                 cattype.init = e => {
                     e.element.getWidget(Serenity.LookupEditor).value = q["cattype"];
                 };
@@ -32,6 +32,12 @@ namespace Store.Store {
 
             return flt;
         }
+
+        //protected getQuickFilters(): Serenity.QuickSearchField[] {
+        //    return [
+        //        { name: "CategoriesTypeID", title: "cattype" }];
+
+        //}
 
         protected getDefaultSortBy() {
             return [CategoriesRow.Fields.CategoryName];

@@ -20,7 +20,7 @@ namespace Store.Common {
     }
 
     export namespace PdfExportHelper {
-
+        
         function toAutoTableColumns(srcColumns: Slick.Column[], columnStyles: { [dataKey: string]: jsPDF.AutoTableStyles; },
                 columnTitles: { [key: string]: string }) {
             return srcColumns.map(src => {

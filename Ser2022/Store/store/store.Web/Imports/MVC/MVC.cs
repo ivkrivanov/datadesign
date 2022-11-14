@@ -116,6 +116,11 @@ namespace MVC
                 public const string MeasuresIndex = "~/Modules/Store/Measures/MeasuresIndex.cshtml";
             }
 
+            public static class OperationType
+            {
+                public const string OperationTypeIndex = "~/Modules/Store/OperationType/OperationTypeIndex.cshtml";
+            }
+
             public static class Shippers
             {
                 public const string ShippersIndex = "~/Modules/Store/Shippers/ShippersIndex.cshtml";
@@ -124,6 +129,21 @@ namespace MVC
             public static class Shops
             {
                 public const string ShopsIndex = "~/Modules/Store/Shops/ShopsIndex.cshtml";
+            }
+
+            public static class Wares
+            {
+                public const string WaresIndex = "~/Modules/Store/Wares/WaresIndex.cshtml";
+            }
+
+            public static class WaresMovement
+            {
+                public const string WaresMovementIndex = "~/Modules/Store/WaresMovement/WaresMovementIndex.cshtml";
+            }
+
+            public static class WaresMovementDetails
+            {
+                public const string WaresMovementDetailsIndex = "~/Modules/Store/WaresMovementDetails/WaresMovementDetailsIndex.cshtml";
             }
 
         }
