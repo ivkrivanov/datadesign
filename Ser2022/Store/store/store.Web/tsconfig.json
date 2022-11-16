@@ -22,6 +22,6 @@
     "./typings/serenity/Serenity.CoreLib.d.ts",
     "./typings/jspdf/jspdf.autotable.d.ts",
     "./Imports/**/*",
-    "./Modules/**/*", "Modules/Store/Categories/CategoriesIndex.cshtml", "Modules/Store/CategoriesType/CategoriesTypeIndex.cshtml"
+    "./Modules/**/*", "Modules/Store/Categories/CategoriesIndex.cshtml", "Areas/Store/CategoriesType/CategoriesTypeIndex.cshtml", "Areas/Store/Measures/MeasuresIndex.cshtml", "Areas/Store/OperationType/OperationTypeIndex.cshtml", "Areas/Store/ProductDetails/ProductDetailsIndex.cshtml", "Areas/Store/Products/ProductsIndex.cshtml", "Areas/Store/Shippers/ShippersIndex.cshtml", "Areas/Store/Shops/ShopsIndex.cshtml", "Areas/Store/Wares/WaresIndex.cshtml", "Areas/Store/WaresMovement/WaresMovementIndex.cshtml", "Areas/Store/WaresMovementDetails/WaresMovementDetailsIndex.cshtml"
   ]
 }

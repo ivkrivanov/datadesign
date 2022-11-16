@@ -91,69 +91,9 @@ namespace MVC
 
         public static class Store
         {
-            public static class Categories
-            {
-                public const string CategoriesIndex = "~/Modules/Store/Categories/CategoriesIndex.cshtml";
-            }
-
-            public static class CategoriesType
-            {
-                public const string CategoriesTypeIndex = "~/Modules/Store/CategoriesType/CategoriesTypeIndex.cshtml";
-            }
-
             public static class Counterparties
             {
                 public const string CounterpartiesIndex = "~/Modules/Store/Counterparties/CounterpartiesIndex.cshtml";
-            }
-
-            public static class DocumentType
-            {
-                public const string DocumentTypeIndex = "~/Modules/Store/DocumentType/DocumentTypeIndex.cshtml";
-            }
-
-            public static class Measures
-            {
-                public const string MeasuresIndex = "~/Modules/Store/Measures/MeasuresIndex.cshtml";
-            }
-
-            public static class OperationType
-            {
-                public const string OperationTypeIndex = "~/Modules/Store/OperationType/OperationTypeIndex.cshtml";
-            }
-
-            public static class ProductDetails
-            {
-                public const string ProductDetailsIndex = "~/Modules/Store/ProductDetails/ProductDetailsIndex.cshtml";
-            }
-
-            public static class Products
-            {
-                public const string ProductsIndex = "~/Modules/Store/Products/ProductsIndex.cshtml";
-            }
-
-            public static class Shippers
-            {
-                public const string ShippersIndex = "~/Modules/Store/Shippers/ShippersIndex.cshtml";
-            }
-
-            public static class Shops
-            {
-                public const string ShopsIndex = "~/Modules/Store/Shops/ShopsIndex.cshtml";
-            }
-
-            public static class Wares
-            {
-                public const string WaresIndex = "~/Modules/Store/Wares/WaresIndex.cshtml";
-            }
-
-            public static class WaresMovement
-            {
-                public const string WaresMovementIndex = "~/Modules/Store/WaresMovement/WaresMovementIndex.cshtml";
-            }
-
-            public static class WaresMovementDetails
-            {
-                public const string WaresMovementDetailsIndex = "~/Modules/Store/WaresMovementDetails/WaresMovementDetailsIndex.cshtml";
             }
 
         }
