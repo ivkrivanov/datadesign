@@ -6,13 +6,12 @@ namespace Store.Store.Scripts
     using Serenity.Web;
     using Serenity.Abstractions;
 
-    [LookupScript("Store.ShopsCountry")]
-    public class ShopsLookupCountry : MultiTenantRowLookupScript<Entities.ShopsRow>
+    [LookupScript("Store.ShopsCity")]
+    public class ShopsCityLookup : MultiTenantRowLookupScript<Entities.ShopsRow>
     {
-        public ShopsLookupCountry(ISqlConnections sqlConnections, ITwoLevelCache twoLevelCache, IUserAccessor userAccessor) : base(sqlConnections, twoLevelCache, userAccessor)
+        public ShopsCityLookup(ISqlConnections sqlConnections, ITwoLevelCache twoLevelCache, IUserAccessor userAccessor) : base(sqlConnections, twoLevelCache, userAccessor)
         {
-            //IdField = TextField = "Country";
-            IdField = TextField = Entities.ShopsRow.Fields.Country.PropertyName;
+            IdField = TextField = Store.Entities.ShopsRow.Fields.City.PropertyName;
         }
 
         protected override void PrepareQuery(SqlQuery query)
@@ -20,9 +19,13 @@ namespace Store.Store.Scripts
             var fld = Entities.ShopsRow.Fields;
             query.Distinct(true)
                 .Select(fld.Country)
+                .Select(fld.City)
                 .Where(
                     new Criteria(fld.Country) != "" &
-                    new Criteria(fld.Country).IsNotNull());
+                    new Criteria(fld.Country).IsNotNull() &
+                    new Criteria(fld.City) != "" &
+                    new Criteria(fld.City).IsNotNull());
+
             AddTenantFilter(query);
         }
 

@@ -2,16 +2,15 @@
 namespace Store.Store.Scripts
 {
     using Entities;
-    using Store.Scripts;
+    using Serenity.Abstractions;
     using Serenity.ComponentModel;
     using Serenity.Data;
     using Serenity.Web;
-    using Serenity.Abstractions;
 
     [LookupScript]
-    public class WaresLookupCategories : MultiTenantRowLookupScript<Entities.WaresRow>
+    public class WaresCategoriesLookup : MultiTenantRowLookupScript<WaresRow>
     {
-        public WaresLookupCategories(ISqlConnections sqlConnections, ITwoLevelCache twoLevelCache, IUserAccessor userAccessor) : base(sqlConnections, twoLevelCache, userAccessor)
+        public WaresCategoriesLookup(ISqlConnections sqlConnections, ITwoLevelCache twoLevelCache, IUserAccessor userAccessor) : base(sqlConnections, twoLevelCache, userAccessor)
         {
             IdField = TextField = WaresRow.Fields.Type.PropertyName;
         }
@@ -24,6 +23,10 @@ namespace Store.Store.Scripts
                 .Where(new Criteria(fld.Type) < 400);
 
             AddTenantFilter(query);
+        }
+
+        protected override void ApplyOrder(SqlQuery query)
+        {
         }
     }
 }

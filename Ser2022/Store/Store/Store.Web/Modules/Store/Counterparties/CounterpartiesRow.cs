@@ -62,7 +62,7 @@ namespace Store.Store.Entities
             set =>Fields.Address[this] = value; 
         }
 
-        [DisplayName("City"), Size(15), LookupEditor(typeof(Scripts.CounterpartiesLookupCity), CascadeFrom = "Country", AutoComplete = true)]
+        [DisplayName("City"), Size(15), LookupEditor(typeof(Scripts.CounterpartiesCityLookup), CascadeFrom = "Country", AutoComplete = true)]
         public String City
         {
             get => Fields.City[this]; 
@@ -83,7 +83,7 @@ namespace Store.Store.Entities
             set =>Fields.PostalCode[this] = value; 
         }
 
-        [DisplayName("Country"), Size(15), LookupEditor(typeof(Scripts.CounterpartiesLookupCountry), AutoComplete = true)]
+        [DisplayName("Country"), Size(15), LookupEditor(typeof(Scripts.CounterpartiesCountryLookup), AutoComplete = true)]
         public String Country
         {
             get => Fields.Country[this]; 

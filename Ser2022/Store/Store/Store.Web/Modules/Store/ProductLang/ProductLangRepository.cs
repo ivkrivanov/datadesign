@@ -4,13 +4,13 @@ namespace Store.Store.Repositories
     using Serenity.Data;
     using Serenity.Services;
     using System.Data;
-    using MyRow = Entities.NoteRow;
+    using MyRow = Entities.ProductLangRow;
 
-    public class NoteRepository : BaseRepository
+    public class ProductLangRepository : BaseRepository
     {
-        public NoteRepository(IRequestContext context)
-             : base(context)
-        {
+        public ProductLangRepository(IRequestContext context)
+            : base(context)
+        { 
         }
 
         private static MyRow.RowFields fld { get { return MyRow.Fields; } }
@@ -40,33 +40,32 @@ namespace Store.Store.Repositories
             return new MyListHandler(Context).Process(connection, request);
         }
 
-        private class MySaveHandler : SaveRequestHandler<MyRow>
+        private class MySaveHandler : SaveRequestHandler<MyRow> 
         {
-            public MySaveHandler(IRequestContext context)
-                : base(context)
-            {
+            public MySaveHandler(IRequestContext context) 
+                : base(context) 
+            { 
             }
         }
-
-        private class MyDeleteHandler : DeleteRequestHandler<MyRow>
+        private class MyDeleteHandler : DeleteRequestHandler<MyRow> 
         {
             public MyDeleteHandler(IRequestContext context)
                 : base(context)
-            {
+            { 
             }
         }
-        private class MyRetrieveHandler : RetrieveRequestHandler<MyRow>
+        private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> 
         {
             public MyRetrieveHandler(IRequestContext context)
                 : base(context)
             {
             }
         }
-        private class MyListHandler : ListRequestHandler<MyRow>
+        private class MyListHandler : ListRequestHandler<MyRow> 
         {
             public MyListHandler(IRequestContext context)
                 : base(context)
-            {
+            { 
             }
         }
     }

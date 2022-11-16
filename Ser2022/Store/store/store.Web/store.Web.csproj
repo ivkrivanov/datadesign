@@ -21,6 +21,8 @@
     <None Remove="Modules\Common\UserPreference\**" />
     <TypeScriptCompile Remove="Modules\Common\UserPreference\**" />
     <Compile Remove="Modules\Common\Helpers\PdfExportHelper.cs" />
+    <Content Remove="Areas\Store\_ViewImports - Copy.cshtml" />
+    <Content Remove="Areas\Store\_ViewStart.cshtml" />
     <None Remove="App_Data\Reporting\wkhtmltopdf.exe" />
     <None Remove="typings\jspdf\jspdf.d.ts" />
     <TypeScriptCompile Remove="Modules\Common\Helpers\DialogUtils.ts" />
@@ -36,12 +38,16 @@
     <TypeScriptCompile Remove="Modules\Store\Wares\WaresExcelImportDialog.ts" />
     <TypeScriptCompile Remove="Modules\Store\Wares\WaresGrid.ts" />
     <Content Include="App_Data\Reporting\wkhtmltopdf.exe" />
+    <None Include="Areas\Store\_ViewImports - Copy.cshtml" />
+    <None Include="Areas\Store\_ViewStart.cshtml" />
     <None Include="Modules\Common\Reporting\ReportPage.cshtml" />
     <None Include="Modules\Store\CategoriesType\CategoriesTypeIndex.cshtml" />
     <None Include="Modules\Store\Categories\CategoriesIndex.cshtml" />
     <None Include="Modules\Store\DocumentType\DocumentTypeIndex.cshtml" />
     <None Include="Modules\Store\Measures\MeasuresIndex.cshtml" />
     <None Include="Modules\Store\OperationType\OperationTypeIndex.cshtml" />
+    <None Include="Modules\Store\ProductDetails\ProductDetailsIndex.cshtml" />
+    <None Include="Modules\Store\Products\ProductsIndex.cshtml" />
     <None Include="Modules\Store\Shippers\ShippersIndex.cshtml" />
     <None Include="Modules\Store\Shops\ShopsIndex.cshtml" />
     <None Include="Modules\Store\WaresMovementDetails\WaresMovementDetailsIndex.cshtml" />
@@ -78,6 +84,8 @@
     <PackageReference Include="Serenity.Extensions" Version="5.2.2" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Areas\Store\CategoriesType\" />
+    <Folder Include="Areas\Store\Categories\" />
     <Folder Include="node_modules\%40types\" />
   </ItemGroup>
   <Import Project="$(SolutionDir)Serenity\build\submodule.targets" Condition="Exists('$(SolutionDir)Serenity\build\submodule.targets')" />
