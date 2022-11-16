@@ -11,9 +11,6 @@
         DocumentTypeId: Serenity.LookupEditor;
         DocumentNumber: Serenity.StringEditor;
         DocumentDate: Serenity.DateEditor;
-        Value: Serenity.DecimalEditor;
-        VAT: Serenity.DecimalEditor;
-        Total: Serenity.DecimalEditor;
         DetailList: WaresMovementDetailsEditor;
     }
 
@@ -34,8 +31,7 @@
                 var w3 = CounterpartiesEditor;
                 var w4 = s.LookupEditor;
                 var w5 = s.StringEditor;
-                var w6 = s.DecimalEditor;
-                var w7 = WaresMovementDetailsEditor;
+                var w6 = WaresMovementDetailsEditor;
 
                 Q.initFormType(WaresMovementForm, [
                     'OperationTypeId', w0,
@@ -49,10 +45,7 @@
                     'DocumentTypeId', w4,
                     'DocumentNumber', w5,
                     'DocumentDate', w1,
-                    'Value', w6,
-                    'VAT', w6,
-                    'Total', w6,
-                    'DetailList', w7
+                    'DetailList', w6
                 ]);
             }
         }

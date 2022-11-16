@@ -1,7 +1,6 @@
 ﻿
 namespace Store
 {
-
     using Serenity;
     using Serenity.Abstractions;
     using Serenity.Data;

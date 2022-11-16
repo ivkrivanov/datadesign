@@ -35,12 +35,12 @@ namespace Store.Store.Forms
         public String DocumentNumber { get; set; }
         [OneThirdWidth]
         public DateTime DocumentDate { get; set; }
-        [OneThirdWidth]
-        public Decimal Value { get; set; }
-        [OneThirdWidth]
-        public Decimal VAT { get; set; }
-        [OneThirdWidth]
-        public Decimal Total { get; set; }
+        //[OneThirdWidth]
+        //public Decimal Value { get; set; }
+        //[OneThirdWidth]
+        //public Decimal VAT { get; set; }
+        //[OneThirdWidth]
+        //public Decimal Total { get; set; }
 
         [Category("WaresMovementDetailsRow")]
         [WaresMovementDetailsEditor]

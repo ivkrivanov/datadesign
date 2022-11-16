@@ -7,9 +7,9 @@ namespace Store.Store.Scripts
     using Serenity.Abstractions;
 
     [LookupScript]
-    public class CounterpartiesLookupCity : MultiTenantRowLookupScript<CounterpartiesRow>
+    public class CounterpartiesCityLookup : MultiTenantRowLookupScript<CounterpartiesRow>
     {
-        public CounterpartiesLookupCity(ISqlConnections sqlConnections, ITwoLevelCache twoLevelCache, IUserAccessor userAccessor)
+        public CounterpartiesCityLookup(ISqlConnections sqlConnections, ITwoLevelCache twoLevelCache, IUserAccessor userAccessor)
             : base(sqlConnections, twoLevelCache, userAccessor)
         {
             IdField = TextField = CounterpartiesRow.Fields.City.PropertyName;

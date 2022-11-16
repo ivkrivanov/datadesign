@@ -7,7 +7,7 @@ namespace Store.Store.Scripts
     using Serenity.Data;
     using Serenity.Abstractions;
 
-    [LookupScript]
+    [LookupScript("Store.Shops")]
     public class ShopsLookup : MultiTenantRowLookupScript<ShopsRow>
     {
         public ShopsLookup(ISqlConnections sqlConnections, ITwoLevelCache twoLevelCache, IUserAccessor userAccessor) 
@@ -22,7 +22,10 @@ namespace Store.Store.Scripts
             var fld = ShopsRow.Fields;
             query.Distinct(true)
                 .Select(fld.ShopId)
-                .Select(fld.ShopName);
+                .Select(fld.ShopName)
+                    .Where(
+                        new Criteria(fld.ShopName) != "" &
+                        new Criteria(fld.ShopName).IsNotNull());
 
             AddTenantFilter(query);
         }

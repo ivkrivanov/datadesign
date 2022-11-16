@@ -19,10 +19,10 @@ namespace Store.Store.Columns
         [Width(120)]
         public String Phone { get; set; }
         [Width(100), QuickFilter(CssClass = "hidden-xs")]
-        [LookupEditor(typeof(Scripts.ShopsLookupCountry))]
+        [LookupEditor(typeof(Scripts.ShopsCountryLookup))]
         public String Country { get; set; }
         [Width(130), QuickFilter(CssClass = "hidden-xs")]
-        [LookupEditor(typeof(Scripts.ShopsLookupCity)), QuickFilterOption("CascadeFrom", "Country")]
+        [LookupEditor(typeof(Scripts.ShopsCityLookup)), QuickFilterOption("CascadeFrom", "Country")]
         public String City { get; set; }
     }
 }

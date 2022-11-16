@@ -22,9 +22,9 @@ namespace Store.Store.Columns
         public String Region { get; set; }
         [Width(100)]
         public String PostalCode { get; set; }
-        [Width(130), LookupEditor(typeof(Scripts.CounterpartiesLookupCountry)), QuickFilter(CssClass = "hidden-xs")]
+        [Width(130), LookupEditor(typeof(Scripts.CounterpartiesCountryLookup)), QuickFilter(CssClass = "hidden-xs")]
         public String Country { get; set; }
-        [Width(120), LookupEditor(typeof(Scripts.CounterpartiesLookupCity))]
+        [Width(120), LookupEditor(typeof(Scripts.CounterpartiesCityLookup))]
         [QuickFilter(CssClass = "hidden-xs"), QuickFilterOption("cascadeFrom", "Country")]
         public String City { get; set; }
         [Width(120)]

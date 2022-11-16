@@ -1,15 +1,14 @@
 ﻿
 namespace Store.Store.Scripts
 {
-    using Store.Entities;
+    using Serenity.Abstractions;
     using Serenity.ComponentModel;
     using Serenity.Data;
-    using Serenity.Abstractions;
 
-    [LookupScript]
-    public class CounterpartiesLookupCountry : MultiTenantRowLookupScript<Entities.CounterpartiesRow>
+    [LookupScript("Store.CounterpartiesCountry")]
+    public class CounterpartiesCountryLookup : MultiTenantRowLookupScript<Entities.CounterpartiesRow>
     {
-        public CounterpartiesLookupCountry(ISqlConnections sqlConnections, ITwoLevelCache twoLevelCache, IUserAccessor userAccessor)
+        public CounterpartiesCountryLookup(ISqlConnections sqlConnections, ITwoLevelCache twoLevelCache, IUserAccessor userAccessor)
             : base(sqlConnections, twoLevelCache, userAccessor)
         {
             IdField = TextField = "Country";
@@ -26,6 +25,7 @@ namespace Store.Store.Scripts
 
             AddTenantFilter(query);
         }
+
         protected override void ApplyOrder(SqlQuery query)
         {
         }

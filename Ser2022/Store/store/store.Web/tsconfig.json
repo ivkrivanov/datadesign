@@ -22,6 +22,6 @@
     "./typings/serenity/Serenity.CoreLib.d.ts",
     "./typings/jspdf/jspdf.autotable.d.ts",
     "./Imports/**/*",
-    "./Modules/**/*"
+    "./Modules/**/*", "Modules/Store/Categories/CategoriesIndex.cshtml", "Modules/Store/CategoriesType/CategoriesTypeIndex.cshtml"
   ]
 }
