@@ -10,7 +10,7 @@ namespace Store.Store.Pages
         [Route("Store/Counterparties")]
         public ActionResult Index()
         {
-            return View("~/Modules/Store/Counterparties/CounterpartiesIndex.cshtml");
+            return View("~/Areas/Store/Counterparties/CounterpartiesIndex.cshtml");
         }
     }
 }

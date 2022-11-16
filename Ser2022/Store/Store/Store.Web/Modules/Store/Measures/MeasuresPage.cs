@@ -11,7 +11,7 @@ namespace Store.Store.Pages
         [Route("Store/Measures")]
         public ActionResult Index()
         {
-            return View("~/Modules/Store/Measures/MeasuresIndex.cshtml");
+            return View("~/Areas/Store/Measures/MeasuresIndex.cshtml");
         }
     }
 }
