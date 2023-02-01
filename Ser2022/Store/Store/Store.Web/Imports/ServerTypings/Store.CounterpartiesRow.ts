@@ -13,7 +13,7 @@
         Phone?: string;
         IsActive?: number;
         TenantId?: number;
-        NotesList?: NoteRow[];
+        NotesList?: NotesRow[];
         Representatives?: number[];
         LastContactDate?: string;
         LastContactedBy?: number;

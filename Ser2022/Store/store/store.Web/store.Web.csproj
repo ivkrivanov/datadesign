@@ -38,6 +38,10 @@
     <TypeScriptCompile Remove="Modules\Store\Counterparties\CounterpartiesDialog.ts" />
     <TypeScriptCompile Remove="Modules\Store\Counterparties\CounterpartiesEditor.ts" />
     <TypeScriptCompile Remove="Modules\Store\Counterparties\CounterpartiesGrid.ts" />
+    <TypeScriptCompile Remove="Modules\Store\Counterparties\CounterpartiesProductMovementDialog.ts" />
+    <TypeScriptCompile Remove="Modules\Store\Counterparties\CounterpartiesProductMovementGrid.ts" />
+    <TypeScriptCompile Remove="Modules\Store\Counterparties\CounterpartyWaresMovementDialog.ts" />
+    <TypeScriptCompile Remove="Modules\Store\Counterparties\CounterpartyWaresMovementGrid.ts" />
     <TypeScriptCompile Remove="Modules\Store\Employees\EmployeesFormatter.ts" />
     <TypeScriptCompile Remove="Modules\Store\Employees\EmployeesListFormatter.ts" />
     <TypeScriptCompile Remove="Modules\Store\Wares\WaresDialog.ts" />
@@ -90,6 +94,13 @@
     <None Include="Areas\Store\WaresMovement\WaresMovementIndex.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Areas\Store\ProductMovementDetails\ProductMovementDetailsIndex.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Areas\Store\ProductMovement\ProductMovementIndex.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Areas\Store\Warehouse\WarehouseIndex.cshtml" />
     <None Update="wwwroot\**\*">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </None>
@@ -120,6 +131,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Serenity.Extensions" Version="5.2.2" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="7.0.0" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="node_modules\%40types\" />

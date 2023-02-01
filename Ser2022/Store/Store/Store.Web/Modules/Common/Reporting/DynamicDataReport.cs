@@ -1,5 +1,4 @@
 ﻿
-
 namespace Store.Reporting
 {
     using Microsoft.Extensions.DependencyInjection;
@@ -61,21 +60,27 @@ namespace Store.Reporting
             IRow basedOnRow = null;
             if (columnsType != null)
             {
-              var cache = serviceProvider.GetRequiredService<ITwoLevelCache>();
-              propertyItems = cache.GetLocalStoreOnly("DynamicDataReport: Columns:" + columnsType.FullName,
-                  TimeSpan.Zero, CacheGroupKey, () =>
-                  {
-                      var propertyItemProvider = serviceProvider.GetRequiredService<IPropertyItemProvider>();
-                      var items = propertyItemProvider.GetPropertyItemsFor(columnsType).ToList();
+                var cache = serviceProvider.GetRequiredService<ITwoLevelCache>();
+                propertyItems = cache.GetLocalStoreOnly("DynamicDataReport: Columns:" + columnsType.FullName,
+                TimeSpan.Zero, CacheGroupKey, () =>
+                {
+                    var propertyItemProvider = serviceProvider.GetRequiredService<IPropertyItemProvider>();
+                    var items = propertyItemProvider.GetPropertyItemsFor(columnsType).ToList();
 
-            			if (typeof(ICustomizedFormScript).IsAssignableFrom(columnsType))
-            			{
-                        	var instance = ActivatorUtilities.CreateInstance(serviceProvider, columnsType) as ICustomizedFormScript;
-                        	instance.Customize(items);
-            			}
+            		//if (typeof(ICustomizedFormScript).IsAssignableFrom(columnsType))
+            		//{
+            //         	var instance = ActivatorUtilities.CreateInstance(serviceProvider, columnsType) as ICustomizedFormScript;
+            //         	instance.Customize(items);
+            		//}
 
-            			return items;
-            		});
+
+                    if (typeof(ICustomAttributeProvider).IsAssignableFrom(columnsType))
+                    {
+                        var instance = ActivatorUtilities.CreateInstance(serviceProvider, columnsType) as ICustomAttributeProvider;
+                    }
+
+            		return items;
+            	});
 
                 propertyItemByName = propertyItems.ToDictionary(x => x.Name);
                 propertyInfos = columnsType.GetProperties().ToDictionary(x => x.Name);

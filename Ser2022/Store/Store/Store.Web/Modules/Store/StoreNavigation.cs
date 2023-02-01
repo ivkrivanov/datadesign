@@ -15,5 +15,5 @@ using MyPages = Store.Store.Pages;
 //[assembly: NavigationLink(int.MaxValue, "Store/Wares Movement Details", typeof(MyPages.WaresMovementDetailsController), icon: null)]
 [assembly: NavigationLink(int.MaxValue, "Store/WaresMovement", typeof(MyPages.WaresMovementController), icon: null)]
 //[assembly: NavigationLink(int.MaxValue, "Store/Product Movement Details", typeof(MyPages.ProductMovementDetailsController), icon: null)]
-//[assembly: NavigationLink(int.MaxValue, "Store/ProductMovement", typeof(MyPages.ProductMovementController), icon: null)]
-//[assembly: NavigationLink(int.MaxValue, "Store/Warehouse", typeof(MyPages.WarehouseController), icon: null)]
+[assembly: NavigationLink(int.MaxValue, "Store/ProductMovement", typeof(MyPages.ProductMovementController), icon: null)]
+[assembly: NavigationLink(int.MaxValue, "Store/Warehouse", typeof(MyPages.WarehouseController), icon: null)]

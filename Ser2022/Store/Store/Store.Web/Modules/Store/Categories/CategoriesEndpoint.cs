@@ -83,13 +83,13 @@ namespace Store.Store.Endpoints
 
                 ep.Load(fs);    
             
-            var c = CategoriesRow.Fields;
+            var c = MyRow.Fields;
             var t = CategoriesTypeRow.Fields;
 
             var response = new ExcelImportResponse();
             response.ErrorList = new List<string>();
 
-            var worksheet = ep.Workbook.Worksheets[1];
+            var worksheet = ep.Workbook.Worksheets[0];
             for (var row = 2; row <= worksheet.Dimension.End.Row; row++)
             {
                 try
