@@ -17,32 +17,32 @@ namespace CoreStore.Administration.Entities
         [DisplayName("Id"), Identity]
         public Int32? Id
         {
-            get { return Fields.Id[this]; }
-            set { Fields.Id[this] = value; }
+            get => Fields.Id[this]; 
+            set => Fields.Id[this] = value; 
         }
 
         [DisplayName("Language Id"), Size(10), NotNull, QuickSearch]
         public String LanguageId
         {
-            get { return Fields.LanguageId[this]; }
-            set { Fields.LanguageId[this] = value; }
+            get => Fields.LanguageId[this]; 
+            set => Fields.LanguageId[this] = value; 
         }
 
         [DisplayName("Language Name"), Size(50), NotNull, QuickSearch]
         public String LanguageName
         {
-            get { return Fields.LanguageName[this]; }
-            set { Fields.LanguageName[this] = value; }
+            get => Fields.LanguageName[this]; 
+            set => Fields.LanguageName[this] = value; 
         }
 
         IIdField IIdRow.IdField
         {
-            get { return Fields.Id; }
+            get => Fields.Id; 
         }
 
         StringField INameRow.NameField
         {
-            get { return Fields.LanguageName; }
+            get => Fields.LanguageName; 
         }
 
         public static readonly RowFields Fields = new RowFields().Init();

@@ -16,39 +16,39 @@ namespace CoreStore.Administration.Entities
         [DisplayName("Role Permission Id"), Identity]
         public Int64? RolePermissionId
         {
-            get { return Fields.RolePermissionId[this]; }
-            set { Fields.RolePermissionId[this] = value; }
+            get => Fields.RolePermissionId[this]; 
+            set => Fields.RolePermissionId[this] = value; 
         }
 
         [DisplayName("Role Id"), NotNull, ForeignKey("Roles", "RoleId"), LeftJoin("jRole")]
         public Int32? RoleId
         {
-            get { return Fields.RoleId[this]; }
-            set { Fields.RoleId[this] = value; }
+            get => Fields.RoleId[this]; 
+            set => Fields.RoleId[this] = value; 
         }
 
         [DisplayName("Permission Key"), Size(100), NotNull, QuickSearch]
         public String PermissionKey
         {
-            get { return Fields.PermissionKey[this]; }
-            set { Fields.PermissionKey[this] = value; }
+            get => Fields.PermissionKey[this]; 
+            set => Fields.PermissionKey[this] = value; 
         }
 
         [DisplayName("Role Role Name"), Expression("jRole.[RoleName]")]
         public String RoleRoleName
         {
-            get { return Fields.RoleRoleName[this]; }
-            set { Fields.RoleRoleName[this] = value; }
+            get => Fields.RoleRoleName[this]; 
+            set => Fields.RoleRoleName[this] = value; 
         }
 
         IIdField IIdRow.IdField
         {
-            get { return Fields.RolePermissionId; }
+            get => Fields.RolePermissionId; 
         }
 
         StringField INameRow.NameField
         {
-            get { return Fields.PermissionKey; }
+            get => Fields.PermissionKey; 
         }
 
         public static readonly RowFields Fields = new RowFields().Init();

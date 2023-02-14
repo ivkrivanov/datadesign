@@ -10,7 +10,6 @@ namespace CoreStore.Store.Forms
     {
         [EditLink, Width(200)]
         public Int32 WaresId { get; set; }
-
         [Width(100)]
         public Decimal SinglePrice { get; set; }
         [Width(100)]

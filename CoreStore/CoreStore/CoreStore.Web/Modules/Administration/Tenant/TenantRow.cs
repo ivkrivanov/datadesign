@@ -17,25 +17,25 @@ namespace CoreStore.Administration.Entities
         [DisplayName("Tenant Id"), Identity]
         public Int32? TenantId
         {
-            get { return Fields.TenantId[this]; }
-            set { Fields.TenantId[this] = value; }
+            get => Fields.TenantId[this]; 
+            set => Fields.TenantId[this] = value; 
         }
 
         [DisplayName("Tenant Name"), Size(100), NotNull, QuickSearch]
         public String TenantName
         {
-            get { return Fields.TenantName[this]; }
-            set { Fields.TenantName[this] = value; }
+            get => Fields.TenantName[this]; 
+            set => Fields.TenantName[this] = value; 
         }
 
         IIdField IIdRow.IdField
         {
-            get { return Fields.TenantId; }
+            get => Fields.TenantId; 
         }
 
         StringField INameRow.NameField
         {
-            get { return Fields.TenantName; }
+            get => Fields.TenantName; 
         }
 
         public static readonly RowFields Fields = new RowFields().Init();

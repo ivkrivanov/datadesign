@@ -18,8 +18,8 @@ namespace CoreStore.Store.Entities
         [DisplayName("ID"), Identity]
         public Int32? DetailId
         {
-            get { return Fields.DetailId[this]; }
-            set { Fields.DetailId[this] = value; }
+            get => Fields.DetailId[this]; 
+            set => Fields.DetailId[this] = value; 
         }
 
         #region WaresMove
@@ -27,71 +27,71 @@ namespace CoreStore.Store.Entities
         [DisplayName("Wares Move"), PrimaryKey, ForeignKey(typeof(WaresMovementRow)), LeftJoin("wm"), Updatable(false)]
         public Int32? WaresMoveId
         {
-            get { return Fields.WaresMoveId[this]; }
-            set { Fields.WaresMoveId[this] = value; }
+            get => Fields.WaresMoveId[this];
+            set => Fields.WaresMoveId[this] = value; 
         }
 
         [Origin("wm")]
         public String WaresMoveShopId
         {
-            get { return Fields.WaresMoveShopId[this]; }
-            set { Fields.WaresMoveShopId[this] = value; }
+            get => Fields.WaresMoveShopId[this];
+            set => Fields.WaresMoveShopId[this] = value; 
         }
 
         [Origin("wm")]
         public String WaresMoveCounterpartyId
         {
-            get { return Fields.WaresMoveCounterpartyId[this]; }
-            set { Fields.WaresMoveCounterpartyId[this] = value; }
+            get => Fields.WaresMoveCounterpartyId[this];
+            set => Fields.WaresMoveCounterpartyId[this] = value; 
         }
 
         [Origin("wm")]
         public Int32? WaresMoveEmployeeId
         {
-            get { return Fields.WaresMoveEmployeeId[this]; }
-            set { Fields.WaresMoveEmployeeId[this] = value; }
+            get => Fields.WaresMoveEmployeeId[this];
+            set => Fields.WaresMoveEmployeeId[this] = value;
         }
 
         //[Origin("wm")]
         //public Int32? WaresMoveShipperId
         //{
-        //    get { return Fields.WaresMoveShipperId[this]; }
-        //    set { Fields.WaresMoveShipperId[this] = value; }
+        //     get => Fields.WaresMoveShipperId[this]; }
+        //    set => Fields.WaresMoveShipperId[this] = value; }
         //}
 
         [Origin("wm")]
         public Int32? WaresMoveOperationTypeId
         {
-            get { return Fields.WaresMoveOperationTypeId[this]; }
-            set { Fields.WaresMoveOperationTypeId[this] = value; }
+            get => Fields.WaresMoveOperationTypeId[this];
+            set => Fields.WaresMoveOperationTypeId[this] = value;
         }
 
         //[Origin("wm")]
         //public Int16? WaresMoveOperationTypeOpCode
         //{
-        //    get { return Fields.WaresMoveOperationTypeOpCode[this]; }
-        //    set { Fields.WaresMoveOperationTypeOpCode[this] = value; }
+        //     get => Fields.WaresMoveOperationTypeOpCode[this]; }
+        //    set => Fields.WaresMoveOperationTypeOpCode[this] = value; }
         //}
 
         [Origin("wm")]
         public DateTime? WaresMoveOrderDate
         {
-            get { return Fields.WaresMoveOrderDate[this]; }
-            set { Fields.WaresMoveOrderDate[this] = value; }
+            get => Fields.WaresMoveOrderDate[this]; 
+            set => Fields.WaresMoveOrderDate[this] = value; 
         }
 
         [Origin("wm")]
         public DateTime? WaresMoveRequiredDate
         {
-            get { return Fields.WaresMoveRequiredDate[this]; }
-            set { Fields.WaresMoveRequiredDate[this] = value; }
+            get => Fields.WaresMoveRequiredDate[this]; 
+            set => Fields.WaresMoveRequiredDate[this] = value; 
         }
 
         [Origin("wm")]
         public DateTime? WaresMoveShippedDate
         {
-            get { return Fields.WaresMoveShippedDate[this]; }
-            set { Fields.WaresMoveShippedDate[this] = value; }
+             get => Fields.WaresMoveShippedDate[this]; 
+            set => Fields.WaresMoveShippedDate[this] = value; 
         }
 
         #endregion WaresMove
@@ -102,93 +102,93 @@ namespace CoreStore.Store.Entities
         [LookupEditor(typeof(WaresRow), InplaceAdd = true)]
         public Int32? WaresId
         {
-            get { return Fields.WaresId[this]; }
-            set { Fields.WaresId[this] = value; }
+            get => Fields.WaresId[this]; 
+            set => Fields.WaresId[this] = value; 
         }
 
         [Origin("w"), SortOrder(1)]
         [Column("WaresCode"), LookupInclude, MinSelectLevel(SelectLevel.List)]
         public String WaresCode
         {
-            get { return Fields.WaresCode[this]; }
-            set { Fields.WaresCode[this] = value; }
+            get => Fields.WaresCode[this]; 
+            set => Fields.WaresCode[this] = value; 
         }
 
         //[DisplayName("Wares Wares Barcode"), Expression("jWares.[WaresBarcode]")]
         //public String WaresWaresBarcode
         //{
-        //    get { return Fields.WaresWaresBarcode[this]; }
-        //    set { Fields.WaresWaresBarcode[this] = value; }
+        //     get => Fields.WaresWaresBarcode[this]; }
+        //    set => Fields.WaresWaresBarcode[this] = value; }
         //}
 
         //[DisplayName("Wares Wares Label"), Expression("jWares.[WaresLabel]")]
         //public String WaresWaresLabel
         //{
-        //    get { return Fields.WaresWaresLabel[this]; }
-        //    set { Fields.WaresWaresLabel[this] = value; }
+        //     get => Fields.WaresWaresLabel[this]; }
+        //    set => Fields.WaresWaresLabel[this] = value; }
         //}
 
         [Origin("w"), MinSelectLevel(SelectLevel.List)]
         [Column("WaresName")]
         public String WaresName
         {
-            get { return Fields.WaresName[this]; }
-            set { Fields.WaresName[this] = value; }
+            get => Fields.WaresName[this]; 
+            set => Fields.WaresName[this] = value; 
         }
 
         //[Origin("w")]
         //public Int32? WaresSupplierID
         //{
-        //    get { return Fields.WaresSupplierID[this]; }
-        //    set { Fields.WaresSupplierID[this] = value; }
+        //     get => Fields.WaresSupplierID[this]; }
+        //    set => Fields.WaresSupplierID[this] = value; }
         //}
 
         [Origin("w")]
         public String WaresCounterpartyId
         {
-            get { return Fields.WaresCounterpartyId[this]; }
-            set { Fields.WaresCounterpartyId[this] = value; }
+            get => Fields.WaresCounterpartyId[this]; 
+            set => Fields.WaresCounterpartyId[this] = value; 
         }
 
         [Origin("w")]
         public Int32? WaresCategoryId
         {
-            get { return Fields.WaresCategoryId[this]; }
-            set { Fields.WaresCategoryId[this] = value; }
+            get => Fields.WaresCategoryId[this]; 
+            set => Fields.WaresCategoryId[this] = value; 
         }
 
         [Origin("w")]
         public Int32? WaresMeasureId
         {
-            get { return Fields.WaresMeasureId[this]; }
-            set { Fields.WaresMeasureId[this] = value; }
+            get => Fields.WaresMeasureId[this]; 
+            set => Fields.WaresMeasureId[this] = value; 
         }
         [Origin("w")]
         public String WaresMeasureName
         {
-            get { return Fields.WaresMeasureName[this]; }
-            set { Fields.WaresMeasureName[this] = value; }
+            get => Fields.WaresMeasureName[this]; 
+            set => Fields.WaresMeasureName[this] = value; 
         }
 
         [Origin("w")]
         public String WaresQuantityPerUnit
         {
-            get { return Fields.WaresQuantityPerUnit[this]; }
-            set { Fields.WaresQuantityPerUnit[this] = value; }
+            get => Fields.WaresQuantityPerUnit[this]; 
+            set => Fields.WaresQuantityPerUnit[this] = value; 
         }
 
         [Origin("w")]
         public Decimal? WaresUnitPrice
         {
-            get { return Fields.WaresUnitPrice[this]; }
-            set { Fields.WaresUnitPrice[this] = value; }
+            get => Fields.WaresUnitPrice[this]; 
+            set => Fields.WaresUnitPrice[this] = value; 
         }
 
         //[Origin("w")]
         //public Boolean? WaresDiscontinued
         //{
-        //    get { return Fields.WaresDiscontinued[this]; }
-        //    set { Fields.WaresDiscontinued[this] = value; }
+        //     get => Fields.WaresDiscontinued[this]; }
+        //    set => Fields.WaresDiscontinued[this] = value; }
         //}
 
         #endregion Wares
@@ -197,48 +197,50 @@ namespace CoreStore.Store.Entities
         [AlignRight, DisplayFormat("#,##0.0000")]
         public Decimal? SinglePrice
         {
-            get { return Fields.SinglePrice[this]; }
-            set { Fields.SinglePrice[this] = value; }
+            get => Fields.SinglePrice[this]; 
+            set => Fields.SinglePrice[this] = value; 
         }
 
         [DisplayName("Quantity"), NotNull, DefaultValue(1)]
         [AlignRight, DisplayFormat("#,##0.000")]
         public Decimal? Quantity
         {
-            get { return Fields.Quantity[this]; }
-            set { Fields.Quantity[this] = value; }
+            get => Fields.Quantity[this]; 
+            set => Fields.Quantity[this] = value; 
         }
 
         [DisplayName("Discount"), NotNull, DefaultValue(0)]
         [AlignRight, DisplayFormat("#,##0.0000")]
         public Decimal? Discount
         {
-            get { return Fields.Discount[this]; }
-            set { Fields.Discount[this] = value; }
+            get => Fields.Discount[this]; 
+            set => Fields.Discount[this] = value; 
         }
 
-        [DisplayName("Line Total"), Expression("(t0.[SinglePrice] * t0.[Quantity] - t0.[Discount])")]
-        [AlignRight, DisplayFormat("#,##0.0000"), MinSelectLevel(SelectLevel.List)]
-        public Decimal? LineTotal
-        {
-            get { return Fields.LineTotal[this]; }
-            set { Fields.LineTotal[this] = value; }
-        }
-
-        [DisplayName("Line VAT"), Expression("(t0.[SinglePrice] * t0.[Quantity] - t0.[Discount]) * (0.2) / (1 + 0.2)")]
-        [AlignRight, DisplayFormat("#,##0.0000"), MinSelectLevel(SelectLevel.List)]
-        public Decimal? LineVAT
-        {
-            get { return Fields.LineTotal[this]; }
-            set { Fields.LineTotal[this] = value; }
-        }
-
-        [DisplayName("Line Value"), Expression("(t0.[SinglePrice] * t0.[Quantity] - t0.[Discount]) + (t0.[SinglePrice] * t0.[Quantity] - t0.[Discount]) * (0.2) / (1 + 0.2)")]
+        //[DisplayName("Line Value"), Expression("(t0.[SinglePrice] * t0.[Quantity] - t0.[Discount]) + (t0.[SinglePrice] * t0.[Quantity] - t0.[Discount]) * (0.2) / (1 + 0.2)")]
+        [DisplayName("Value"), Expression("(t0.[SinglePrice] * t0.[Quantity] - t0.[Discount])")]
         [AlignRight, DisplayFormat("#,##0.0000"), MinSelectLevel(SelectLevel.List)]
         public Decimal? LineValue
         {
-            get { return Fields.LineTotal[this]; }
-            set { Fields.LineTotal[this] = value; }
+            get => Fields.LineValue[this];
+            set => Fields.LineValue[this] = value; 
+        }
+
+        [DisplayName("VAT"), Expression("(t0.[SinglePrice] * t0.[Quantity] - t0.[Discount]) * (0.2)")]
+        [AlignRight, DisplayFormat("#,##0.0000"), MinSelectLevel(SelectLevel.List)]
+        public Decimal? LineVAT
+        {
+            get => Fields.LineVAT[this]; 
+            set => Fields.LineVAT[this] = value; 
+        }
+
+        //[DisplayName("Line Total"), Expression("(t0.[SinglePrice] * t0.[Quantity] - t0.[Discount])")]
+        [DisplayName("Total"), Expression("(t0.[SinglePrice] * t0.[Quantity] - t0.[Discount]) * (1.2)")]
+        [AlignRight, DisplayFormat("#,##0.0000"), MinSelectLevel(SelectLevel.List)]
+        public Decimal? LineTotal
+        {
+            get => Fields.LineTotal[this]; 
+            set => Fields.LineTotal[this] = value; 
         }
 
         #region Tenant & Activ
@@ -246,32 +248,32 @@ namespace CoreStore.Store.Entities
         [Insertable(false), Updatable(false)]
         public Int32? TenantId
         {
-            get { return Fields.TenantId[this]; }
-            set { Fields.TenantId[this] = value; }
+            get => Fields.TenantId[this]; 
+            set => Fields.TenantId[this] = value; 
         }
 
         public Int32Field TenantIdField
         {
-            get { return Fields.TenantId; }
+             get => Fields.TenantId; 
         }
 
         [NotNull, Insertable(false), Updatable(true)]
         public Int16? IsActive
         {
-            get { return Fields.IsActive[this]; }
-            set { Fields.IsActive[this] = value; }
+            get => Fields.IsActive[this]; 
+            set => Fields.IsActive[this] = value; 
         }
 
         Int16Field IIsActiveRow.IsActiveField
         {
-            get { return Fields.IsActive; }
+             get => Fields.IsActive; 
         }
 
         #endregion Tenant & Activ
 
         IIdField IIdRow.IdField
         {
-            get { return Fields.DetailId; }
+             get => Fields.DetailId; 
         }
 
         public static readonly RowFields Fields = new RowFields().Init();
@@ -313,9 +315,9 @@ namespace CoreStore.Store.Entities
             public StringField WaresQuantityPerUnit;
             public DecimalField WaresUnitPrice;
             //public BooleanField WaresDiscontinued;
-            public DecimalField LineTotal;
-            public DecimalField LineVAT;
             public DecimalField LineValue;
+            public DecimalField LineVAT;
+            public DecimalField LineTotal;
         }
     }
 }

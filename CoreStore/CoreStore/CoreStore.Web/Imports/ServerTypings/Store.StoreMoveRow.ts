@@ -1,6 +1,6 @@
 ﻿namespace CoreStore.Store {
     export interface StoreMoveRow {
-        ShopID?: number;
+        ShopId?: number;
         WaresID?: number;
         WaresCode?: string;
         WaresName?: string;
@@ -31,7 +31,7 @@
         export const updatePermission = 'Store:Wares:Modify';
 
         export declare const enum Fields {
-            ShopID = "ShopID",
+            ShopId = "ShopId",
             WaresID = "WaresID",
             WaresCode = "WaresCode",
             WaresName = "WaresName",

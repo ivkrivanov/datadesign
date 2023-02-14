@@ -10,13 +10,15 @@ services:
 
 
   corestore.web:
-    image: hub.docker.local:8888/corestore.web:dev
+    image: http://192.168.1.47:5000/corestore.web:dev
 
     build:
       context: .
       dockerfile: CoreStore.Web/Dockerfile
 
-networks:
- serene_net:
-    external:
-      name: serene
+  sqldata:
+    image: http://192.168.1.47:5000/sqldata:dev
+
+    build:
+      context: .
+      dockerfile: sqldata/Dockerfile

@@ -5,11 +5,12 @@ namespace CoreStore.Reports.Columns
     using System;
 
     [ColumnsScript("BasicReports.StoreMove")]
-    [BasedOnRow(typeof(Store.Entities.StoreMoveRow), CheckNames = true)]
+    [BasedOnRow(typeof(Store.Entities.WarehouseRow), CheckNames = false)]
     public class StoreMoveColumns
-    {
-        //public Int32 ShopID { get; set; }
+    { 
         [Width(100)]
+        //public Int32 ShopID { get; set; }
+ 
         public String ShopName { get; set; }
         //public Int32 WaresID { get; set; }
         [Width(60), SortOrder(1)]

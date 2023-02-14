@@ -20,25 +20,25 @@ namespace CoreStore.Store.Entities
         [DisplayName("Document Type Id"), Column("DocumentTypeID"), Identity]
         public Int32? DocumentTypeId
         {
-            get { return Fields.DocumentTypeId[this]; }
-            set { Fields.DocumentTypeId[this] = value; }
+            get => Fields.DocumentTypeId[this]; 
+            set =>Fields.DocumentTypeId[this] = value; 
         }
 
         [DisplayName("Document Name"), Size(50), NotNull, QuickSearch]
         public String DocumentName
         {
-            get { return Fields.DocumentName[this]; }
-            set { Fields.DocumentName[this] = value; }
+            get => Fields.DocumentName[this]; 
+            set =>Fields.DocumentName[this] = value; 
         }
 
         IIdField IIdRow.IdField
         {
-            get { return Fields.DocumentTypeId; }
+            get => Fields.DocumentTypeId; 
         }
 
         StringField INameRow.NameField
         {
-            get { return Fields.DocumentName; }
+            get => Fields.DocumentName; 
         }
 
         #region Tenant & Activ
@@ -46,25 +46,25 @@ namespace CoreStore.Store.Entities
         [Insertable(false), Updatable(false)]
         public Int32? TenantId
         {
-            get { return Fields.TenantId[this]; }
-            set { Fields.TenantId[this] = value; }
+            get => Fields.TenantId[this]; 
+            set =>Fields.TenantId[this] = value; 
         }
 
         public Int32Field TenantIdField
         {
-            get { return Fields.TenantId; }
+            get => Fields.TenantId; 
         }
 
         [NotNull, Insertable(false), Updatable(true)]
         public Int16? IsActive
         {
-            get { return Fields.IsActive[this]; }
-            set { Fields.IsActive[this] = value; }
+            get => Fields.IsActive[this]; 
+            set =>Fields.IsActive[this] = value; 
         }
 
         Int16Field IIsActiveRow.IsActiveField
         {
-            get { return Fields.IsActive; }
+            get => Fields.IsActive; 
         }
 
         #endregion Tenant & Activ

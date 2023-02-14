@@ -22,67 +22,67 @@ namespace CoreStore.Store.Entities
         [DisplayName("Category Id"), Column("CategoryID"), Identity]
         public Int32? CategoryId
         {
-            get { return Fields.CategoryId[this]; }
-            set { Fields.CategoryId[this] = value; }
+            get => Fields.CategoryId[this]; 
+            set => Fields.CategoryId[this] = value; 
         }
 
         [DisplayName("Category Type"), ForeignKey(typeof(CategoriesTypeRow)), LeftJoin("type"), LookupInclude]
         [LookupEditor(typeof(CategoriesTypeRow), InplaceAdd = true)]
         public Int16? CategoryTypeId
         {
-            get { return Fields.CategoryTypeId[this]; }
-            set { Fields.CategoryTypeId[this] = value; }
+            get => Fields.CategoryTypeId[this]; 
+            set => Fields.CategoryTypeId[this] = value; 
         }
 
         [DisplayName("Category Name"), Size(15), NotNull, QuickSearch]
         public String CategoryName
         {
-            get { return Fields.CategoryName[this]; }
-            set { Fields.CategoryName[this] = value; }
+            get => Fields.CategoryName[this]; 
+            set => Fields.CategoryName[this] = value; 
         }
 
         [DisplayName("Category Code"), Size(15), NotNull, QuickSearch]
         public String CategoryCode
         {
-            get { return Fields.CategoryCode[this]; }
-            set { Fields.CategoryCode[this] = value; }
+            get => Fields.CategoryCode[this]; 
+            set => Fields.CategoryCode[this] = value; 
         }
 
         [DisplayName("Description"), QuickSearch]
         public String Description
         {
-            get { return Fields.Description[this]; }
-            set { Fields.Description[this] = value; }
+            get => Fields.Description[this]; 
+            set => Fields.Description[this] = value; 
         }
 
         [DisplayName("Picture")]
         public Stream Picture
         {
-            get { return Fields.Picture[this]; }
-            set { Fields.Picture[this] = value; }
+            get => Fields.Picture[this]; 
+            set => Fields.Picture[this] = value; 
         }
 
         [Origin("type"), LookupInclude]
         public Int16? Type
         {
-            get { return Fields.Type[this]; }
-            set { Fields.Type[this] = value; }
+            get => Fields.Type[this]; 
+            set => Fields.Type[this] = value; 
         }
 
         [Origin("type"), LookupInclude]
         public String CategoryType
         {
-            get { return Fields.CategoryType[this]; }
-            set { Fields.CategoryType[this] = value; }
+            get => Fields.CategoryType[this]; 
+            set => Fields.CategoryType[this] = value; 
         }
         IIdField IIdRow.IdField
         {
-            get { return Fields.CategoryId; }
+            get => Fields.CategoryId; 
         }
 
         StringField INameRow.NameField
         {
-            get { return Fields.CategoryName; }
+            get => Fields.CategoryName; 
         }
 
         #region Tenant & Activ
@@ -90,25 +90,25 @@ namespace CoreStore.Store.Entities
         [Insertable(false), Updatable(false)]
         public Int32? TenantId
         {
-            get { return Fields.TenantId[this]; }
-            set { Fields.TenantId[this] = value; }
+            get => Fields.TenantId[this]; 
+            set => Fields.TenantId[this] = value; 
         }
 
         public Int32Field TenantIdField
         {
-            get { return Fields.TenantId; }
+            get => Fields.TenantId; 
         }
 
         [NotNull, Insertable(false), Updatable(true)]
         public Int16? IsActive
         {
-            get { return Fields.IsActive[this]; }
-            set { Fields.IsActive[this] = value; }
+            get => Fields.IsActive[this]; 
+            set => Fields.IsActive[this] = value; 
         }
 
         Int16Field IIsActiveRow.IsActiveField
         {
-            get { return Fields.IsActive; }
+            get => Fields.IsActive; 
         }
 
         #endregion Tenant & Activ

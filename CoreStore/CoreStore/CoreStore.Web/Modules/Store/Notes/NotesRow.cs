@@ -16,70 +16,70 @@ namespace CoreStore.Store.Entities
         [DisplayName("Note Id"), Column("NoteID"), Identity]
         public Int64? NoteId
         {
-            get { return Fields.NoteId[this]; }
-            set { Fields.NoteId[this] = value; }
+            get => Fields.NoteId[this]; 
+            set =>Fields.NoteId[this] = value; 
         }
 
         [DisplayName("Entity Type"), Size(100), NotNull, Updatable(false)]
         public String EntityType
         {
-            get { return Fields.EntityType[this]; }
-            set { Fields.EntityType[this] = value; }
+            get => Fields.EntityType[this]; 
+            set =>Fields.EntityType[this] = value; 
         }
 
         [DisplayName("Entity Id"), Column("EntityID"), Size(100), NotNull, Updatable(false)]
         public Int64? EntityId
         {
-            get { return Fields.EntityId[this]; }
-            set { Fields.EntityId[this] = value; }
+            get => Fields.EntityId[this]; 
+            set =>Fields.EntityId[this] = value; 
         }
 
         [DisplayName("Text"), NotNull, QuickSearch]
         public String Text
         {
-            get { return Fields.Text[this]; }
-            set { Fields.Text[this] = value; }
+            get => Fields.Text[this]; 
+            set =>Fields.Text[this] = value; 
         }
 
         [DisplayName("Insert User Id"), NotNull, Insertable(false), Updatable(false)]
         public Int32? InsertUserId
         {
-            get { return Fields.InsertUserId[this]; }
-            set { Fields.InsertUserId[this] = value; }
+            get => Fields.InsertUserId[this]; 
+            set =>Fields.InsertUserId[this] = value; 
         }
 
         [DisplayName("Insert User"), NotMapped]
         public String InsertUserDisplayName
         {
-            get { return Fields.InsertUserDisplayName[this]; }
-            set { Fields.InsertUserDisplayName[this] = value; }
+            get => Fields.InsertUserDisplayName[this]; 
+            set =>Fields.InsertUserDisplayName[this] = value; 
         }
 
         [DisplayName("Insert Date"), NotNull, Insertable(false), Updatable(false)]
         public DateTime? InsertDate
         {
-            get { return Fields.InsertDate[this]; }
-            set { Fields.InsertDate[this] = value; }
+            get => Fields.InsertDate[this]; 
+            set =>Fields.InsertDate[this] = value; 
         }
 
         IIdField IIdRow.IdField
         {
-            get { return Fields.NoteId; }
+            get => Fields.NoteId; 
         }
 
         StringField INameRow.NameField
         {
-            get { return Fields.EntityType; }
+            get => Fields.EntityType; 
         }
 
         public IIdField InsertUserIdField
         {
-            get { return Fields.InsertUserId; }
+            get => Fields.InsertUserId; 
         }
 
         public DateTimeField InsertDateField
         {
-            get { return Fields.InsertDate; }
+            get => Fields.InsertDate; 
         }
 
         public static readonly RowFields Fields = new RowFields().Init();

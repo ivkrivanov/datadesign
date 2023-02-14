@@ -10,7 +10,7 @@ namespace CoreStore.Store.Columns
     {
         [EditLink, Width(60), AlignRight]
         public String ProductCode { get; set; }
-        [EditLink, Width(200)]
+        [EditLink, Width(160)]
         public String ProductName { get; set; }
         [Width(100)]
         public Single Quantity { get; set; }
@@ -18,6 +18,10 @@ namespace CoreStore.Store.Columns
         public Decimal SinglePrice { get; set; }
         [Width(80)]
         public Single Discount { get; set; }
+        [Width(100)]
+        public Decimal LineValue { get; set; }
+        [Width(100)]
+        public Decimal LineVAT { get; set; }
         [Width(100)]
         public Decimal LineTotal { get; set; }
     }

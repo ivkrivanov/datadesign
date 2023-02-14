@@ -19,32 +19,32 @@ namespace CoreStore.Store.Entities
         [DisplayName("Operation Type Id"), Column("OperationTypeID"), Identity]
         public Int32? OperationTypeId
         {
-            get { return Fields.OperationTypeId[this]; }
-            set { Fields.OperationTypeId[this] = value; }
+            get => Fields.OperationTypeId[this]; 
+            set =>Fields.OperationTypeId[this] = value; 
         }
 
         [DisplayName("Op Code"), NotNull]
         public Int16? OpCode
         {
-            get { return Fields.OpCode[this]; }
-            set { Fields.OpCode[this] = value; }
+            get => Fields.OpCode[this]; 
+            set =>Fields.OpCode[this] = value; 
         }
 
         [DisplayName("Operation"), Size(30), NotNull, QuickSearch]
         public String Operation
         {
-            get { return Fields.Operation[this]; }
-            set { Fields.Operation[this] = value; }
+            get => Fields.Operation[this]; 
+            set =>Fields.Operation[this] = value; 
         }
 
         IIdField IIdRow.IdField
         {
-            get { return Fields.OperationTypeId; }
+            get => Fields.OperationTypeId; 
         }
 
         StringField INameRow.NameField
         {
-            get { return Fields.Operation; }
+            get => Fields.Operation; 
         }
 
         #region Tenant & Activ
@@ -52,25 +52,25 @@ namespace CoreStore.Store.Entities
         [Insertable(false), Updatable(false)]
         public Int32? TenantId
         {
-            get { return Fields.TenantId[this]; }
-            set { Fields.TenantId[this] = value; }
+            get => Fields.TenantId[this]; 
+            set =>Fields.TenantId[this] = value; 
         }
 
         public Int32Field TenantIdField
         {
-            get { return Fields.TenantId; }
+            get => Fields.TenantId; 
         }
 
         [NotNull, Insertable(false), Updatable(true)]
         public Int16? IsActive
         {
-            get { return Fields.IsActive[this]; }
-            set { Fields.IsActive[this] = value; }
+            get => Fields.IsActive[this]; 
+            set =>Fields.IsActive[this] = value; 
         }
 
         Int16Field IIsActiveRow.IsActiveField
         {
-            get { return Fields.IsActive; }
+            get => Fields.IsActive; 
         }
 
         #endregion Tenant & Activ

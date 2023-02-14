@@ -17,37 +17,37 @@ namespace CoreStore.Store.Entities
         [DisplayName("Wares Move ID"), Column("WaresMoveID"), PrimaryKey]
         public Int32? WaresMoveId
         {
-            get { return Fields.WaresMoveId[this]; }
-            set { Fields.WaresMoveId[this] = value; }
+            get => Fields.WaresMoveId[this]; 
+            set => Fields.WaresMoveId[this] = value; 
         }
 
         [DisplayName("Value"), NotNull]
         [AlignRight, DisplayFormat("#,##0.0000")]
         public Decimal? Value
         {
-            get { return Fields.Value[this]; }
-            set { Fields.Value[this] = value; }
+            get => Fields.Value[this]; 
+            set => Fields.Value[this] = value; 
         }
 
         [DisplayName("VAT"), NotNull]
         [AlignRight, DisplayFormat("#,##0.0000")]
         public Decimal? VAT
         {
-            get { return Fields.VAT[this]; }
-            set { Fields.VAT[this] = value; }
+            get => Fields.VAT[this]; 
+            set => Fields.VAT[this] = value; 
         }
 
         [DisplayName("Total"), NotNull]
         [AlignRight, DisplayFormat("#,##0.0000")]
         public Decimal? Total
         {
-            get { return Fields.Total[this]; }
-            set { Fields.Total[this] = value; }
+            get => Fields.Total[this]; 
+            set => Fields.Total[this] = value; 
         }
 
         IIdField IIdRow.IdField
         {
-            get { return Fields.WaresMoveId; }
+            get => Fields.WaresMoveId; 
         }
 
         public static readonly RowFields Fields = new RowFields().Init();

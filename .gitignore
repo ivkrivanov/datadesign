@@ -282,3 +282,5 @@ Build_Artifacts/Logs/*.*
 /Store/Store/Store.Web/web.config
 /Store/Default/Default.jfm
 /Store/Store/Store.jfm
+/Serene-master
+/AdvStore/AdvStore/AdvStore.Web/App_Data/texts

@@ -20,25 +20,25 @@ namespace CoreStore.Store.Entities
         [DisplayName("Measure Id"), Column("MeasureID"), Identity]
         public Int32? MeasureId
         {
-            get { return Fields.MeasureId[this]; }
-            set { Fields.MeasureId[this] = value; }
+            get => Fields.MeasureId[this]; 
+            set =>Fields.MeasureId[this] = value; 
         }
 
         [DisplayName("Measure Name"), Size(20), NotNull, QuickSearch]
         public String MeasureName
         {
-            get { return Fields.MeasureName[this]; }
-            set { Fields.MeasureName[this] = value; }
+            get => Fields.MeasureName[this]; 
+            set =>Fields.MeasureName[this] = value; 
         }
 
         IIdField IIdRow.IdField
         {
-            get { return Fields.MeasureId; }
+            get => Fields.MeasureId; 
         }
 
         StringField INameRow.NameField
         {
-            get { return Fields.MeasureName; }
+            get => Fields.MeasureName; 
         }
 
         #region Tenant & Activ
@@ -46,25 +46,25 @@ namespace CoreStore.Store.Entities
         [Insertable(false), Updatable(false)]
         public Int32? TenantId
         {
-            get { return Fields.TenantId[this]; }
-            set { Fields.TenantId[this] = value; }
+            get => Fields.TenantId[this]; 
+            set =>Fields.TenantId[this] = value; 
         }
 
         public Int32Field TenantIdField
         {
-            get { return Fields.TenantId; }
+            get => Fields.TenantId; 
         }
 
         [NotNull, Insertable(false), Updatable(true)]
         public Int16? IsActive
         {
-            get { return Fields.IsActive[this]; }
-            set { Fields.IsActive[this] = value; }
+            get => Fields.IsActive[this]; 
+            set =>Fields.IsActive[this] = value; 
         }
 
         Int16Field IIsActiveRow.IsActiveField
         {
-            get { return Fields.IsActive; }
+            get => Fields.IsActive; 
         }
 
         #endregion Tenant & Activ

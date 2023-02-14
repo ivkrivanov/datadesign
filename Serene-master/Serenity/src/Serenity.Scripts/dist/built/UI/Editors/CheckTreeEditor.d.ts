@@ -1,0 +1,105 @@
+/// <reference types="jquery" />
+import { IGetEditValue, IReadOnly, ISetEditValue } from "../../Interfaces";
+import { DataGrid } from "../DataGrid/DataGrid";
+import { ToolButton } from "../Widgets/Toolbar";
+import { Widget } from "../Widgets/Widget";
+import { CascadedWidgetLink } from "./CascadedWidgetLink";
+export interface CheckTreeItem<TSource> {
+    isSelected?: boolean;
+    hideCheckBox?: boolean;
+    isAllDescendantsSelected?: boolean;
+    id?: string;
+    text?: string;
+    parentId?: string;
+    children?: CheckTreeItem<TSource>[];
+    source?: TSource;
+}
+export declare class CheckTreeEditor<TItem extends CheckTreeItem<any>, TOptions> extends DataGrid<TItem, TOptions> implements IGetEditValue, ISetEditValue, IReadOnly {
+    private byId;
+    constructor(div: JQuery, opt?: TOptions);
+    protected getIdProperty(): string;
+    protected getTreeItems(): TItem[];
+    protected updateItems(): void;
+    getEditValue(property: Serenity.PropertyItem, target: any): void;
+    setEditValue(source: any, property: Serenity.PropertyItem): void;
+    protected getButtons(): ToolButton[];
+    protected itemSelectedChanged(item: TItem): void;
+    protected getSelectAllText(): string;
+    protected isThreeStateHierarchy(): boolean;
+    protected createSlickGrid(): Slick.Grid;
+    protected onViewFilter(item: TItem): boolean;
+    protected getInitialCollapse(): boolean;
+    protected onViewProcessData(response: Serenity.ListResponse<TItem>): Serenity.ListResponse<TItem>;
+    protected onClick(e: JQueryEventObject, row: number, cell: number): void;
+    protected updateSelectAll(): void;
+    protected updateFlags(): void;
+    protected getDescendantsSelected(item: TItem): boolean;
+    protected setAllSubTreeSelected(item: TItem, selected: boolean): boolean;
+    protected allItemsSelected(): boolean;
+    protected allDescendantsSelected(item: TItem): boolean;
+    protected getDelimited(): boolean;
+    protected anyDescendantsSelected(item: TItem): boolean;
+    protected getColumns(): Slick.Column[];
+    protected getItemText(ctx: Slick.FormatterContext): string;
+    protected getSlickOptions(): Slick.GridOptions;
+    protected sortItems(): void;
+    protected moveSelectedUp(): boolean;
+    private _readOnly;
+    get_readOnly(): boolean;
+    set_readOnly(value: boolean): void;
+    private get_value;
+    get value(): string[];
+    private set_value;
+    set value(v: string[]);
+}
+export interface CheckLookupEditorOptions {
+    lookupKey?: string;
+    checkedOnTop?: boolean;
+    showSelectAll?: boolean;
+    hideSearch?: boolean;
+    delimited?: boolean;
+    cascadeFrom?: string;
+    cascadeField?: string;
+    cascadeValue?: any;
+    filterField?: string;
+    filterValue?: any;
+}
+export declare class CheckLookupEditor<TItem = any> extends CheckTreeEditor<CheckTreeItem<TItem>, CheckLookupEditorOptions> {
+    private searchText;
+    private enableUpdateItems;
+    constructor(div: JQuery, options: CheckLookupEditorOptions);
+    protected updateItems(): void;
+    protected getLookupKey(): string;
+    protected getButtons(): ToolButton[];
+    protected createToolbarExtensions(): void;
+    protected getSelectAllText(): string;
+    protected cascadeItems(items: TItem[]): TItem[];
+    protected filterItems(items: TItem[]): TItem[];
+    protected getLookupItems(lookup: Q.Lookup<TItem>): TItem[];
+    protected getTreeItems(): CheckTreeItem<TItem>[];
+    protected onViewFilter(item: CheckTreeItem<TItem>): boolean;
+    protected moveSelectedUp(): boolean;
+    protected get_cascadeFrom(): string;
+    get cascadeFrom(): string;
+    protected getCascadeFromValue(parent: Widget<any>): any;
+    protected cascadeLink: CascadedWidgetLink<Widget<any>>;
+    protected setCascadeFrom(value: string): void;
+    protected set_cascadeFrom(value: string): void;
+    set cascadeFrom(value: string);
+    protected get_cascadeField(): string;
+    get cascadeField(): string;
+    protected set_cascadeField(value: string): void;
+    set cascadeField(value: string);
+    protected get_cascadeValue(): any;
+    get cascadeValue(): any;
+    protected set_cascadeValue(value: any): void;
+    set cascadeValue(value: any);
+    protected get_filterField(): string;
+    get filterField(): string;
+    protected set_filterField(value: string): void;
+    set filterField(value: string);
+    protected get_filterValue(): any;
+    get filterValue(): any;
+    protected set_filterValue(value: any): void;
+    set filterValue(value: any);
+}

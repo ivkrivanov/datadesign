@@ -16,44 +16,44 @@ namespace CoreStore.Store.Entities
         [DisplayName("Id"), Column("ID"), Identity]
         public Int32? Id
         {
-            get { return Fields.Id[this]; }
-            set { Fields.Id[this] = value; }
+            get =>Fields.Id[this]; 
+            set => Fields.Id[this] = value; 
         }
 
         [DisplayName("Product Id"), Column("ProductID"), NotNull]
         public Int32? ProductId
         {
-            get { return Fields.ProductId[this]; }
-            set { Fields.ProductId[this] = value; }
+            get =>Fields.ProductId[this]; 
+            set => Fields.ProductId[this] = value; 
         }
 
         [DisplayName("Language Id"), Column("LanguageID"), NotNull]
         public Int32? LanguageId
         {
-            get { return Fields.LanguageId[this]; }
-            set { Fields.LanguageId[this] = value; }
+            get =>Fields.LanguageId[this]; 
+            set => Fields.LanguageId[this] = value; 
         }
 
         [DisplayName("Product Name"), Size(40), QuickSearch]
         public String ProductName
         {
-            get { return Fields.ProductName[this]; }
-            set { Fields.ProductName[this] = value; }
+            get =>Fields.ProductName[this]; 
+            set => Fields.ProductName[this] = value; 
         }
 
         IIdField IIdRow.IdField
         {
-            get { return Fields.Id; }
+            get =>Fields.Id; 
         }
 
         StringField INameRow.NameField
         {
-            get { return Fields.ProductName; }
+            get =>Fields.ProductName; 
         }
 
         public Field CultureIdField
         {
-            get { return Fields.LanguageId; }
+            get =>Fields.LanguageId; 
         }
 
         public static readonly RowFields Fields = new RowFields().Init();

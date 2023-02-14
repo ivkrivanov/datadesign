@@ -22,7 +22,10 @@ namespace CoreStore.Store {
             grid.registerPlugin(new Slick.Data.GroupItemMetadataProvider());
 
             this.view.setSummaryOptions({
-                aggregators: [new Slick.Aggregators.Sum(fld.LineTotal)]
+                aggregators:
+                    [new Slick.Aggregators.Sum(fld.LineValue)]
+                    [new Slick.Aggregators.Sum(fld.LineVAT)]
+                    [new Slick.Aggregators.Sum(fld.LineTotal)]
             });
 
             return grid;
@@ -31,7 +34,7 @@ namespace CoreStore.Store {
         protected getColumns() {
             var columns = super.getColumns();
 
-            Q.first(columns, x => x.field === fld.LineTotal)
+            Q.first(columns, x => x.field === fld.LineValue)
                 .groupTotalsFormatter = (totals, col) =>
                     (totals.sum ? ('sum: ' + Q.coalesce(totals.sum[col.field], '')) : '');
 

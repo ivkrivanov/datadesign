@@ -1,0 +1,190 @@
+{
+  "RootNamespace": "CoreStore",
+  "ServerTypings": {
+    "Assemblies": [],
+    "LocalTexts": true
+  },
+  "Connections": [
+    {
+      "Key": "Store",
+      "Tables": [
+        {
+          "Tablename": "dbo.Categories",
+          "Identifier": "Categories",
+          "Module": "Store",
+          "PermissionKey": "Store:General"
+        },
+        {
+          "Tablename": "dbo.CategoriesLang",
+          "Identifier": "CategoriesLang",
+          "Module": "Store",
+          "PermissionKey": "Store:General"
+        },
+        {
+          "Tablename": "dbo.CategoriesType",
+          "Identifier": "CategoriesType",
+          "Module": "Store",
+          "PermissionKey": "Store:General"
+        },
+        {
+          "Tablename": "dbo.Counterparties",
+          "Identifier": "Counterparties",
+          "Module": "Store",
+          "PermissionKey": "Store:General"
+        },
+        {
+          "Tablename": "dbo.CounterpartyDetails",
+          "Identifier": "CounterpartyDetails",
+          "Module": "Store",
+          "PermissionKey": "Store:General"
+        },
+        {
+          "Tablename": "dbo.CounterpartyRepresentatives",
+          "Identifier": "CounterpartyRepresentatives",
+          "Module": "Store",
+          "PermissionKey": "Store:General"
+        },
+        {
+          "Tablename": "dbo.DocumentType",
+          "Identifier": "DocumentType",
+          "Module": "Store",
+          "PermissionKey": "Store:General"
+        },
+        {
+          "Tablename": "dbo.Measures",
+          "Identifier": "Measures",
+          "Module": "Store",
+          "PermissionKey": "Store:General"
+        },
+        {
+          "Tablename": "dbo.Notes",
+          "Identifier": "Notes",
+          "Module": "Store",
+          "PermissionKey": "Store:General"
+        },
+        {
+          "Tablename": "dbo.OperationType",
+          "Identifier": "OperationType",
+          "Module": "Store",
+          "PermissionKey": "Store:General"
+        },
+        {
+          "Tablename": "dbo.Product Details",
+          "Identifier": "ProductDetails",
+          "Module": "Store",
+          "PermissionKey": "Store:General"
+        },
+        {
+          "Tablename": "dbo.ProductLang",
+          "Identifier": "ProductLang",
+          "Module": "Store",
+          "PermissionKey": "Store:General"
+        },
+        {
+          "Tablename": "dbo.ProductLog",
+          "Identifier": "ProductLog",
+          "Module": "Store",
+          "PermissionKey": "Store:General"
+        },
+        {
+          "Tablename": "dbo.ProductMovement",
+          "Identifier": "ProductMovement",
+          "Module": "Store",
+          "PermissionKey": "Store:General"
+        },
+        {
+          "Tablename": "dbo.ProductMovement Details",
+          "Identifier": "ProductMovementDetails",
+          "Module": "Store",
+          "PermissionKey": "Store:General"
+        },
+        {
+          "Tablename": "dbo.ProductMovement Doc",
+          "Identifier": "ProductMovementDoc",
+          "Module": "Store",
+          "PermissionKey": "Store:General"
+        },
+        {
+          "Tablename": "dbo.ProductMovementTotal",
+          "Identifier": "ProductMovementTotal",
+          "Module": "Store",
+          "PermissionKey": "Store:General"
+        },
+        {
+          "Tablename": "dbo.Products",
+          "Identifier": "Products",
+          "Module": "Store",
+          "PermissionKey": "Store:General"
+        },
+        {
+          "Tablename": "dbo.Shippers",
+          "Identifier": "Shippers",
+          "Module": "Store",
+          "PermissionKey": "Store:General"
+        },
+        {
+          "Tablename": "dbo.Shops",
+          "Identifier": "Shops",
+          "Module": "Store",
+          "PermissionKey": "Store:General"
+        },
+        {
+          "Tablename": "dbo.Store",
+          "Identifier": "Warehouse",
+          "Module": "Store",
+          "PermissionKey": "Store:General"
+        },
+        {
+          "Tablename": "dbo.Wares",
+          "Identifier": "Wares",
+          "Module": "Store",
+          "PermissionKey": "Store:General"
+        },
+        {
+          "Tablename": "dbo.WaresLang",
+          "Identifier": "WaresLang",
+          "Module": "Store",
+          "PermissionKey": "Store:General"
+        },
+        {
+          "Tablename": "dbo.WaresMovement",
+          "Identifier": "WaresMovement",
+          "Module": "Store",
+          "PermissionKey": "Store:General"
+        },
+        {
+          "Tablename": "dbo.WaresMovement Details",
+          "Identifier": "WaresMovementDetails",
+          "Module": "Store",
+          "PermissionKey": "Store:General"
+        }
+      ]
+    }
+  ],
+  "BaseRowClasses": [
+    {
+      "ClassName": "LoggingRow",
+      "Fields": [
+        "InsertUserId",
+        "UpdateUserId",
+        "InsertDate",
+        "UpdateDate"
+      ]
+    },
+    {
+      "ClassName": "IMultiTenantRow",
+      "Fields": [
+        "TenantId",
+        "TenantIdField"
+      ]
+    }
+  ],
+  "RemoveForeignFields": [
+    "InsertUserId",
+    "UpdateUserId",
+    "InsertDate",
+    "UpdateDate"
+  ],
+  "CustomGenerate": {},
+  "CustomSettings": {}
+}
