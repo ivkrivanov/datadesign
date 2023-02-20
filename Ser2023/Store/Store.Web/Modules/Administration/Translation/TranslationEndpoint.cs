@@ -6,7 +6,7 @@ namespace Store.Administration.Endpoints
     using Serenity.Abstractions;
     using Serenity.Services;
     using System;
-    using MyRepository = Store.Administration.Repositories.TranslationRepository;
+    using MyRepository = Repositories.TranslationRepository;
 
     [Route("Services/Administration/Translation/[action]")]
     [ServiceAuthorize(PermissionKeys.Translation)]

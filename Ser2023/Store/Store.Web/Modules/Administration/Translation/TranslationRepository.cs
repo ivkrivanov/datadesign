@@ -17,7 +17,7 @@ namespace Store.Administration.Repositories
     using System.IO;
     using System.Linq;
     using System.Reflection;
-    using Store.Administration.Entities;
+    using Entities;
 
     public class TranslationRepository : BaseRepository
     {

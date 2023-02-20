@@ -5,7 +5,7 @@ namespace Store.Administration.Endpoints
     using Serenity.Data;
     using Serenity.Services;
     using System.Data;
-    using MyRow = Store.Administration.LanguageRow;
+    using MyRow = Administration.LanguageRow;
 
     [Route("Services/Administration/Language/[action]")]
     [ConnectionKey(typeof(MyRow)), ServiceAuthorize(typeof(MyRow))]

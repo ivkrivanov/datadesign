@@ -4,7 +4,6 @@ namespace Store.Administration.Lookups
     using Serenity.ComponentModel;
     using Serenity.Data;
     using Serenity.Web;
-    using Store.Administration;
 
     [LookupScript]
     public sealed class LanguageLookup : RowLookupScript<LanguageRow>

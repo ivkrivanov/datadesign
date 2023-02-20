@@ -8,7 +8,7 @@ namespace Store.Administration.Repositories
     using System.Collections.Generic;
     using System.Data;
     using System.Linq;
-    using MyRow = Store.Administration.RolePermissionRow;
+    using MyRow = RolePermissionRow;
 
     public class RolePermissionRepository : BaseRepository
     {

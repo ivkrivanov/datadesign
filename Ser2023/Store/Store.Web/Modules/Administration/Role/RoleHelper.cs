@@ -7,7 +7,7 @@ namespace Store.Administration
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using MyRow = Store.Administration.RoleRow;
+    using MyRow = RoleRow;
 
     public static class RoleHelper
     {

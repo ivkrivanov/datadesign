@@ -5,7 +5,7 @@ namespace Store.Administration.Endpoints
     using Serenity.Data;
     using Serenity.Services;
     using System.Data;
-    using MyRow = Store.Administration.Entities.UserRow;
+    using MyRow = Entities.UserRow;
 
     [Route("Services/Administration/User/[action]")]
     [ConnectionKey(typeof(MyRow)), ServiceAuthorize(typeof(MyRow))]

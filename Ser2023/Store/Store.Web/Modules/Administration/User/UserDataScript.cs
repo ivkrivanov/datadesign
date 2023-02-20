@@ -10,8 +10,10 @@ namespace Store.Administration
     using Serenity.ComponentModel;
     using Serenity.Data;
     using Serenity.Web;
-    using Store.Administration;
-    using Store.Administration.Repositories;
+    using Entities;
+    using Repositories;
+    //using Store.Administration.Role;
+
     using System;
     using System.Collections.Generic;
     using System.Linq;

@@ -4,9 +4,9 @@ namespace Store.Administration.Endpoints
     using Microsoft.AspNetCore.Mvc;
     using Serenity.Data;
     using Serenity.Services;
-    using Store.Administration.Repositories;
+    using Repositories;
     using System.Data;
-    using MyRow = Store.Administration.RoleRow;
+    using MyRow = RoleRow;
 
     [Route("Services/Administration/Role/[action]")]
     [ConnectionKey(typeof(MyRow)), ServiceAuthorize(typeof(MyRow))]

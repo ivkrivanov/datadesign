@@ -4,7 +4,6 @@ namespace Store.Administration.Entities
     using Serenity.ComponentModel;
     using Serenity.Data;
     using Serenity.Data.Mapping;
-    using Store.Administration.Entities;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;

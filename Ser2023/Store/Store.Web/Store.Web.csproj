@@ -19,7 +19,9 @@
     <TypeScriptCompile Remove="node_modules\**" />
     <EmbeddedResource Include="Migrations\**\*.sql" />
     <Compile Remove="Modules\Administration\Tenant\TenantRepository.cs" />
+    <Compile Remove="Modules\Store\CategoriesType\CategoriesTypeRepository.cs" />
     <Content Remove="Modules\Administration\Tenant\TenantIndex.cshtml" />
+    <None Include="Areas\Store\Categories\CategoriesIndex.cshtml" />
     <Content Update=".eslintrc.json;libman.json;package.json;package-lock.json;sergen.json;tsconfig.json;tslint.json;Modules\tsconfig.json" CopyToOutputDirectory="Never" CopyToPublishDirectory="Never" />
   </ItemGroup>
   <ItemGroup>

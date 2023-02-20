@@ -3,10 +3,10 @@ namespace Store.Administration.Pages
 {
     using Serenity.Web;
     using Microsoft.AspNetCore.Mvc;
-    using Store.Administration.Entities;
+    using Entities;
 
     //[Route("Services/Administration/Tenant/[action]")]
-    [PageAuthorize(typeof(Entities.TenantRow))]
+    [PageAuthorize(typeof(TenantRow))]
     public class TenantController : Controller
     {
         [Route("Administration/Tenant")]

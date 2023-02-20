@@ -9,13 +9,13 @@ namespace Store.Administration.Repositories
     using Serenity.Localization;
     using Serenity.Services;
     using Serenity.Web;
-    using Store.Administration;
+    using Administration;
     using System;
     using System.Collections.Generic;
     using System.Data;
     using System.Linq;
     using System.Reflection;
-    using MyRow = Store.Administration.UserPermissionRow;
+    using MyRow = UserPermissionRow;
 
     public class UserPermissionRepository : BaseRepository
     {

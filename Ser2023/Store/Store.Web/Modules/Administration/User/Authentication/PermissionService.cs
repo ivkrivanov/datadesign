@@ -4,7 +4,7 @@ namespace Store.Administration
     using Serenity;
     using Serenity.Abstractions;
     using Serenity.Data;
-    using Store.Administration.Repositories;
+    using Repositories;
     using System;
     using System.Collections.Generic;
     using System.Globalization;
