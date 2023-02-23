@@ -42,6 +42,18 @@
           "Identifier": "OperationType",
           "Module": "Store",
           "PermissionKey": "Store:OperationType"
+        },
+        {
+          "Tablename": "dbo.Shippers",
+          "Identifier": "Shippers",
+          "Module": "Store",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.Shops",
+          "Identifier": "Shops",
+          "Module": "Store",
+          "PermissionKey": "Administration:General"
         }
       ]
     }
