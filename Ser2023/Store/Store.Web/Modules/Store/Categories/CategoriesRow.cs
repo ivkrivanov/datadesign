@@ -42,6 +42,7 @@ namespace Store.Store.Entities
         }
 
         [DisplayName("Category Code"), Size(20), NotNull, QuickSearch]
+        [LookupEditor(typeof(CategoriesTypeRow), InplaceAdd = true)]
         public string CategoryCode
         {
             get => fields.CategoryCode[this];

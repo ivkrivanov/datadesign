@@ -30,6 +30,18 @@
           "Identifier": "DocumentType",
           "Module": "Store",
           "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.Measures",
+          "Identifier": "Measures",
+          "Module": "Store",
+          "PermissionKey": "Store:Measures"
+        },
+        {
+          "Tablename": "dbo.OperationType",
+          "Identifier": "OperationType",
+          "Module": "Store",
+          "PermissionKey": "Store:OperationType"
         }
       ]
     }

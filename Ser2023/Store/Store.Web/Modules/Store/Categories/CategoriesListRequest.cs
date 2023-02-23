@@ -1,9 +1,9 @@
-﻿
+
 namespace Store.Store
 {
     using Serenity.Services;
     public class CategoriesListRequest : ListRequest
     {
-        public int? CategoryId { get; set; }
+        public int? CategoryCode { get; set; }
     }
 }

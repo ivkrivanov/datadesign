@@ -14,7 +14,5 @@ namespace Store.Store.Forms
         public string CategoryName { get; set; }
         public string Description { get; set; }
         public Stream Picture { get; set; }
-        public int IsActive { get; set; }
-        public int TenantId { get; set; }
     }
 }

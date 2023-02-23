@@ -12,8 +12,6 @@ namespace Store.Store.Columns
         [EditLink(ItemType = "Store.CategoriesType"), Width(100), AlignCenter, SortOrder(1, descending: true)]
         [QuickFilter, QuickFilterOption("multiply", true)]
         public string CategoryType { get; set; }
-        [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
-        public String CategoryId { get; set; }
         [EditLink, Width(100), AlignCenter]
         public String CategoryCode { get; set; }
         [EditLink, Width(200)]

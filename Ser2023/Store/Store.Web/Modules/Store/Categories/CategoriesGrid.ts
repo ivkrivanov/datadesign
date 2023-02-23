@@ -38,7 +38,7 @@ export class CategoriesGrid extends EntityGrid<CategoriesRow, any> {
     //}
 
     protected getDefaultSortBy() {
-        return [CategoriesRow.Fields.CategoryName];
+        return [CategoriesRow.Fields.CategoryCode];
     }
 
     protected getButtons() {

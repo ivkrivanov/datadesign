@@ -1,18 +1,17 @@
-using Microsoft.AspNetCore.Mvc;
-using Serenity.Web;
-using Store.Store.Entities;
 
 namespace Store.Store.Pages 
 {
+    using Microsoft.AspNetCore.Mvc;
+    using Serenity.Web;
 
-    [PageAuthorize(typeof(CategoriesRow))]
+    [PageAuthorize(typeof(Entities.CategoriesRow))]
     public class CategoriesController : Controller
     {
         [Route("Store/Categories")]
         public ActionResult Index()
         {
             return this.GridPage("@/Store/Categories/CategoriesPage",
-                CategoriesRow.Fields.PageTitle());
+                Entities.CategoriesRow.Fields.PageTitle());
         }
     }
 }
