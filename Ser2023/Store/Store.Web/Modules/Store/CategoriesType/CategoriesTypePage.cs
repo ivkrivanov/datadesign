@@ -10,7 +10,9 @@ namespace Store.Store.Pages
         [Route("Store/CategoriesType")]
         public ActionResult Index()
         {
-            return View("~/Areas/Store/CategoriesType/CategoriesTypeIndex.cshtml");
+            //return View("~/Areas/Store/CategoriesType/CategoriesTypeIndex.cshtml");
+            return this.GridPage("@/Store/CategoriesType/CategoriesTypePage",
+                Entities.CategoriesTypeRow.Fields.PageTitle());
         }
     }
 }

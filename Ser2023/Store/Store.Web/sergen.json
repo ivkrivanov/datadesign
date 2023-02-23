@@ -1,14 +1,56 @@
-﻿{
+{
   "RootNamespace": "Store",
-  "EndOfLine": "LF",
   "ServerTypings": {
     "LocalTexts": true
   },
+  "EndOfLine": "LF",
   "Restore": {
     "Exclude": [
       "/**/*"
     ]
   },
+  "Connections": [
+    {
+      "Key": "Store",
+      "Tables": [
+        {
+          "Tablename": "dbo.Categories",
+          "Identifier": "Categories",
+          "Module": "Store",
+          "PermissionKey": "Store.Categories"
+        },
+        {
+          "Tablename": "dbo.CategoriesLang",
+          "Identifier": "CategoriesLang",
+          "Module": "Store",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.DocumentType",
+          "Identifier": "DocumentType",
+          "Module": "Store",
+          "PermissionKey": "Administration:General"
+        }
+      ]
+    }
+  ],
+  "BaseRowClasses": [
+    {
+      "ClassName": "Serene.Administration.LoggingRow",
+      "Fields": [
+        "InsertUserId",
+        "UpdateUserId",
+        "InsertDate",
+        "UpdateDate"
+      ]
+    }
+  ],
+  "RemoveForeignFields": [
+    "InsertUserId",
+    "UpdateUserId",
+    "InsertDate",
+    "UpdateDate"
+  ],
   "UpgradeInfo": {
     "InitialType": "Community",
     "InitialVersion": "6.5.1.0"

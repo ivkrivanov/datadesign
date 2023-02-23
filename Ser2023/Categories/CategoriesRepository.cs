@@ -1,17 +1,18 @@
 ﻿
-namespace Store.Administration.Repositories
+namespace Store.Store.Repositories
 {
     using Serenity;
     using Serenity.Data;
     using Serenity.Services;
     using System;
     using System.Data;
-    using MyRow = Entities.TenantRow;
+    using Serenity.Abstractions;
+    using MyRow = Entities.CategoriesRow;
 
-    public class TenantRepository : BaseRepository
+    public class CategoriesRepository : BaseRepository
     {
-        public TenantRepository(IRequestContext content)
-            : base(content)
+        public CategoriesRepository(IRequestContext context)
+            : base(context)
         {
         }
 
@@ -32,6 +33,11 @@ namespace Store.Administration.Repositories
             return new MyDeleteHandler(Context).Process(uow, request);
         }
 
+        public UndeleteResponse Undelete(IUnitOfWork uow, UndeleteRequest request)
+        {
+            return new MyUndeleteHandler(Context).Process(uow, request);
+        }
+
         public RetrieveResponse<MyRow> Retrieve(IDbConnection connection, RetrieveRequest request)
         {
             return new MyRetrieveHandler(Context).Process(connection, request);
@@ -42,34 +48,42 @@ namespace Store.Administration.Repositories
             return new MyListHandler(Context).Process(connection, request);
         }
 
-        private class MySaveHandler : SaveRequestHandler<MyRow> 
+        private class MySaveHandler : SaveRequestHandler<MyRow, SaveRequest<MyRow>, SaveResponse>
         {
             public MySaveHandler(IRequestContext context)
                 : base(context)
             {
             }
-         }
+        }
 
         private class MyDeleteHandler : DeleteRequestHandler<MyRow>
         {
             public MyDeleteHandler(IRequestContext context)
-                : base(context) 
+                 : base(context)
+            {
+            }
+        }
+
+        private class MyUndeleteHandler : UndeleteRequestHandler<MyRow>
+        {
+            public MyUndeleteHandler(IRequestContext context)
+                 : base(context)
             {
             }
         }
 
         private class MyRetrieveHandler : RetrieveRequestHandler<MyRow>
-        {   
+        {
             public MyRetrieveHandler(IRequestContext context)
-                : base(context)
+                 : base(context)
             {
             }
         }
 
-        private class MyListHandler : ListRequestHandler<MyRow> 
+        private class MyListHandler : ListRequestHandler<MyRow>
         {
             public MyListHandler(IRequestContext context)
-                : base(context)
+                 : base(context)
             {
             }
         }

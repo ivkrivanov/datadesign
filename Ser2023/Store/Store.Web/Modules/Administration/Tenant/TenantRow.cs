@@ -1,4 +1,5 @@
-﻿
+
+
 namespace Store.Administration.Entities
 {
     using Serenity.ComponentModel;

@@ -9,10 +9,9 @@ import { CategoriesTypeForm, CategoriesTypeRow, CategoriesTypeService } from "..
         protected getLocalTextPrefix() { return CategoriesTypeRow.localTextPrefix; }
         protected getNameProperty() { return CategoriesTypeRow.nameProperty; }
         protected getService() { return CategoriesTypeService.baseUrl; }
-        //protected getDeletePermission() { return CategoriesTypeRow.deletePermission; }
-        //protected getInsertPermission() { return CategoriesTypeRow.insertPermission; }
-        //protected getUpdatePermission() { return CategoriesTypeRow.updatePermission; }
+        protected getDeletePermission() { return CategoriesTypeRow.deletePermission; }
+        protected getInsertPermission() { return CategoriesTypeRow.insertPermission; }
+        protected getUpdatePermission() { return CategoriesTypeRow.updatePermission; }
 
         protected form = new CategoriesTypeForm(this.idPrefix);
-
     }

@@ -20,7 +20,10 @@
     <EmbeddedResource Include="Migrations\**\*.sql" />
     <Compile Remove="Modules\Administration\Tenant\TenantRepository.cs" />
     <Compile Remove="Modules\Store\CategoriesType\CategoriesTypeRepository.cs" />
+    <Compile Remove="Modules\Store\Categories\CategoriesExcelImportForm.cs" />
+    <Compile Remove="Modules\Store\Categories\CategoriesRepository.cs" />
     <Content Remove="Modules\Administration\Tenant\TenantIndex.cshtml" />
+    <TypeScriptCompile Remove="Modules\Store\Categories\CategoriesExcelImportDialog.ts" />
     <None Include="Areas\Store\Categories\CategoriesIndex.cshtml" />
     <Content Update=".eslintrc.json;libman.json;package.json;package-lock.json;sergen.json;tsconfig.json;tslint.json;Modules\tsconfig.json" CopyToOutputDirectory="Never" CopyToPublishDirectory="Never" />
   </ItemGroup>

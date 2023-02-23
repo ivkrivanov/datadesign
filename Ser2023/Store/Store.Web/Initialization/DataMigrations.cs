@@ -18,7 +18,8 @@ namespace Store
     public class DataMigrations : IDataMigrations
     {
         private static readonly string[] databaseKeys = new[] {
-            "Default"
+            "Default",
+            "Store"
         };
 
         public bool SkippedMigrations { get; private set; }

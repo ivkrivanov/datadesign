@@ -7,8 +7,9 @@
 
 <div id="GridDiv"></div>
 
+@*<script src="https://code.jquery.com/jquery.min.js"></script>*@
 <script type="text/javascript">
-    jQuery(function () {
+    JQuery(document).ready(function () {
         new Store.Store.CategoriesTypeGrid($('#GridDiv'), {}).init();
 
         Q.initFullHeightGridPage($('#GridDiv'));
