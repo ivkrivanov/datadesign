@@ -9,9 +9,10 @@ namespace Store.Store.Scripts
     [LookupScript("Store.ShopsCountry")]
     public class ShopsCountryLookup : MultiTenantRowLookupScript<Entities.ShopsRow>
     {
-        public ShopsCountryLookup(ISqlConnections sqlConnections, ITwoLevelCache twoLevelCache, IUserAccessor userAccessor) : base(sqlConnections, twoLevelCache, userAccessor)
+        public ShopsCountryLookup(ISqlConnections sqlConnections, ITwoLevelCache twoLevelCache, IUserAccessor userAccessor)
+            : base(sqlConnections, twoLevelCache, userAccessor)
         {
-            IdField = TextField = Entities.ShopsRow.Fields.Country.PropertyName;
+            IdField = TextField = "Country"; //Entities.ShopsRow.Fields.Country.PropertyName;
         }
 
         protected override void PrepareQuery(SqlQuery query)

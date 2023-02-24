@@ -9,7 +9,8 @@ namespace Store.Store.Scripts
     [LookupScript("Store.ShopsCity")]
     public class ShopsCityLookup : MultiTenantRowLookupScript<Entities.ShopsRow>
     {
-        public ShopsCityLookup(ISqlConnections sqlConnections, ITwoLevelCache twoLevelCache, IUserAccessor userAccessor) : base(sqlConnections, twoLevelCache, userAccessor)
+        public ShopsCityLookup(ISqlConnections sqlConnections, ITwoLevelCache twoLevelCache, IUserAccessor userAccessor)
+            : base(sqlConnections, twoLevelCache, userAccessor)
         {
             IdField = TextField = Entities.ShopsRow.Fields.City.PropertyName;
         }
