@@ -18,7 +18,8 @@ export class CounterpartiesDialog extends EntityDialog<CounterpartiesRow, any> {
 
     protected form = new CounterpartiesForm(this.idPrefix);
 
-    private ordersGrid: CounterpartiesGrid;
+    //private ProductMoveGrid: CounterpartiesProductMovementGrid;
+    //private WaresMoveGrid: CounterpartiesWaresMovementGrid;
     private loadedState: string;
 
     constructor() {
@@ -64,4 +65,29 @@ export class CounterpartiesDialog extends EntityDialog<CounterpartiesRow, any> {
 
         reloadLookup('Store.Counterparties');
     }
+
+    getTemplate() {
+        return `<div id="~_Tabs" class="s-DialogContent">
+    <ul>
+        <li><a href="#~_TabInfo"><span>{{text:"Db.Store.Counterparties.EntitySingular"}}</span></a></li>
+        <li><a href="#~_TabNotes"><span>{{text:"Db.Store.Notes.EntityPlural"}}</span></a></li>
+    </ul>
+    <div id="~_TabInfo" class="tab-pane s-TabInfo">
+        <div id="~_Toolbar" class="s-DialogToolbar">
+        </div>
+        <div class="s-Form">
+            <form id="~_Form" action="">
+                <div class="fieldset ui-widget ui-widget-content ui-corner-all">
+                    <div id="~_PropertyGrid"></div>
+                    <div class="clear"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="~_TabNotes" class="tab-pane s-TabNotes">
+    </div>
+</div>`;
+
+    }
+
 }
