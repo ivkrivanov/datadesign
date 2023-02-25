@@ -5,7 +5,6 @@ namespace Store.Store.Entities
     using Serenity.ComponentModel;
     using Serenity.Data;
     using Serenity.Data.Mapping;
-    using Serenity.Demo.Northwind;
     using System;
     using System.ComponentModel;
     using System.IO;

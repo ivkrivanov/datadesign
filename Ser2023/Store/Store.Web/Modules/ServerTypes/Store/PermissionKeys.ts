@@ -38,9 +38,9 @@
     }
 
     export namespace Counterparties {
-        export const Delete = "Store:Counterparty:Delete";
-        export const Modify = "Store:Counterparty:Modify";
-        export const View = "Store:Counterparty:View";
+        export const Delete = "Store:Counterparties:Delete";
+        export const Modify = "Store:Counterparties:Modify";
+        export const View = "Store:Counterparties:View";
     }
 
     export namespace Wares {

@@ -26,6 +26,24 @@
           "PermissionKey": "Administration:General"
         },
         {
+          "Tablename": "dbo.Counterparties",
+          "Identifier": "Counterparties",
+          "Module": "Store",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.CounterpartyDetails",
+          "Identifier": "CounterpartyDetails",
+          "Module": "Store",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.CounterpartyRepresentatives",
+          "Identifier": "CounterpartyRepresentatives",
+          "Module": "Store",
+          "PermissionKey": "Administration:General"
+        },
+        {
           "Tablename": "dbo.DocumentType",
           "Identifier": "DocumentType",
           "Module": "Store",
@@ -44,6 +62,12 @@
           "PermissionKey": "Store:Measures"
         },
         {
+          "Tablename": "dbo.Notes",
+          "Identifier": "Notes",
+          "Module": "Store",
+          "PermissionKey": "Administration:General"
+        },
+        {
           "Tablename": "dbo.OperationType",
           "Identifier": "OperationType",
           "Module": "Store",
@@ -58,6 +82,18 @@
         {
           "Tablename": "dbo.Shops",
           "Identifier": "Shops",
+          "Module": "Store",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.Wares",
+          "Identifier": "Wares",
+          "Module": "Store",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.WaresLang",
+          "Identifier": "WaresLang",
           "Module": "Store",
           "PermissionKey": "Administration:General"
         }

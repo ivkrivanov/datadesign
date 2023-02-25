@@ -1,9 +1,9 @@
 import { Decorators, Formatter, IInitializeColumn, ISlickFormatter } from "@serenity-is/corelib";
 import { htmlEncode, isTrimmedEmpty } from "@serenity-is/corelib/q";
 import { Column, FormatterContext } from "@serenity-is/sleekgrid";
-import { Gender } from "../ServerTypes/Demo";
+import { Gender } from "../../ServerTypes/Store";
 
-@Decorators.registerFormatter('Serenity.Demo.Northwind.EmployeeFormatter', [ISlickFormatter, IInitializeColumn])
+@Decorators.registerFormatter('Store.EmployeeFormatter', [ISlickFormatter, IInitializeColumn])
 export class EmployeeFormatter implements Formatter {
     format(ctx: FormatterContext) {
         var text = htmlEncode(ctx.value);

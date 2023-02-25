@@ -1,4 +1,4 @@
-﻿
+
 namespace Store.Store
 {
     //using Serenity.Extensibility;
@@ -93,14 +93,14 @@ namespace Store.Store
         //    public const string Modify = "Store:Supplier:Modify";
         //    public const string View = "Store:Supplier:View";
         //}
-        [DisplayName("Counterparty")]
+        [DisplayName("Counterparties")]
         public class Counterparties
         {
             [Description("Delete"), ImplicitPermission(General), ImplicitPermission(View)]
-            public const string Delete = "Store:Counterparty:Delete";
+            public const string Delete = "Store:Counterparties:Delete";
             [Description("Create/Update"), ImplicitPermission(General), ImplicitPermission(View)]
-            public const string Modify = "Store:Counterparty:Modify";
-            public const string View = "Store:Counterparty:View";
+            public const string Modify = "Store:Counterparties:Modify";
+            public const string View = "Store:Counterparties:View";
         }
         [DisplayName("Wares")]
         public class Wares

@@ -14,7 +14,7 @@ namespace Store.Store.Entities
     [ReadPermission(PermissionKeys.Shops.View)]
     [ModifyPermission(PermissionKeys.Shops.Modify)]
     [DeletePermission(PermissionKeys.Shops.Delete)]
-    [LookupScript(typeof(Scripts.ShopsLookup))]
+    [LookupScript(typeof(Lookups.ShopsLookup))]
     //[LookupScript("Store.Shops", LookupType = typeof(MultiTenantRowLookupScript<>))]
     public sealed class ShopsRow : LoggingRow<ShopsRow.RowFields>, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
     {

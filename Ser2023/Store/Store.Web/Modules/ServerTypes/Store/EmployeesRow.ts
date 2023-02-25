@@ -59,10 +59,10 @@ export abstract class EmployeesRow {
     static getLookup() { return getLookup<EmployeesRow>('Store.Employees') }
     static async getLookupAsync() { return getLookupAsync<EmployeesRow>('Store.Employees') }
 
-    static readonly deletePermission = 'Northwind:General';
-    static readonly insertPermission = 'Northwind:General';
-    static readonly readPermission = 'Northwind:General';
-    static readonly updatePermission = 'Northwind:General';
+    static readonly deletePermission = 'Store:General';
+    static readonly insertPermission = 'Store:General';
+    static readonly readPermission = 'Store:General';
+    static readonly updatePermission = 'Store:General';
 
     static readonly Fields = fieldsProxy<EmployeesRow>();
 }

@@ -1,11 +1,11 @@
-﻿using Serenity;
+using Serenity;
 using Serenity.ComponentModel;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 
-namespace Serenity.Demo.Northwind
+namespace Store.Store
 {
     public partial class EmployeeFormatterAttribute : CustomFormatterAttribute
     {
