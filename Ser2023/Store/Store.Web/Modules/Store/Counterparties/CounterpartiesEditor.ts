@@ -10,7 +10,7 @@ export class CounterpartiesEditor extends LookupEditorBase<LookupEditorOptions, 
     }
 
     protected getLookupKey() {
-        return 'Store.Counterparties';
+        return CounterpartiesRow.lookupKey;
     }
 
     protected getItemText(item, lookup) {

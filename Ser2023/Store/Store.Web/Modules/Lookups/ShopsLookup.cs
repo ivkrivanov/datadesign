@@ -1,5 +1,5 @@
 
-namespace Store.Lookups
+namespace Store.Store.Lookups
 {
     using Store.Entities;
     using Serenity.ComponentModel;

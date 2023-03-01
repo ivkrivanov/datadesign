@@ -74,6 +74,24 @@
           "PermissionKey": "Store:OperationType"
         },
         {
+          "Tablename": "dbo.Product Details",
+          "Identifier": "ProductDetails",
+          "Module": "Store",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.ProductLang",
+          "Identifier": "ProductLang",
+          "Module": "Store",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.Products",
+          "Identifier": "Products",
+          "Module": "Store",
+          "PermissionKey": "Administration:General"
+        },
+        {
           "Tablename": "dbo.Shippers",
           "Identifier": "Shippers",
           "Module": "Store",
