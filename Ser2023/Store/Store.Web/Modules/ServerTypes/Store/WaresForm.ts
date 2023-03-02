@@ -1,5 +1,6 @@
 ﻿import { CategoriesDialog } from "@/Store/Categories/CategoriesDialog";
 import { LookupEditor, StringEditor, IntegerEditor, ImageUploadEditor, BooleanEditor, DecimalEditor, PrefixedContext } from "@serenity-is/corelib";
+import { CounterpartiesDialog } from "@/Store/Counterparties/CounterpartiesDialog";
 import { initFormType } from "@serenity-is/corelib/q";
 
 export interface WaresForm {
@@ -11,7 +12,7 @@ export interface WaresForm {
     MeasureId: IntegerEditor;
     WaresImage: ImageUploadEditor;
     Discontinued: BooleanEditor;
-    CounterpartyId: StringEditor;
+    CounterpartyId: LookupEditor;
     QuantityPerUnit: DecimalEditor;
     UnitPrice: DecimalEditor;
     AccountId: IntegerEditor;
@@ -43,7 +44,7 @@ export class WaresForm extends PrefixedContext {
                 'MeasureId', w2,
                 'WaresImage', w3,
                 'Discontinued', w4,
-                'CounterpartyId', w1,
+                'CounterpartyId', w0,
                 'QuantityPerUnit', w5,
                 'UnitPrice', w5,
                 'AccountId', w2
@@ -52,4 +53,4 @@ export class WaresForm extends PrefixedContext {
     }
 }
 
-[CategoriesDialog]; // referenced types
+[CategoriesDialog, CounterpartiesDialog]; // referenced types

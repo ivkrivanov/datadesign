@@ -105,7 +105,10 @@ namespace Store.Store.Entities
         }
 
         #region Counterparty
-        [DisplayName("Counterparty"), Column("CounterpartyID"), NotNull, Size(14), ForeignKey(typeof(CounterpartiesRow), "CounterpartyID"), LeftJoin("jCounterparty"), TextualField("CounterpartyCompanyName")]
+
+        [DisplayName("Counterparty"), NotNull, Size(14), ForeignKey(typeof(CounterpartiesRow)), LeftJoin("jCounterparty")]
+        //[QuickSearch, Store.CounterpartiesEditor, LookupInclude]
+        [LookupEditor(typeof(CounterpartiesRow), InplaceAdd = false, DialogType = "Store.Store.CounterpartiesDialog")]
         public string CounterpartyId
         {
             get => fields.CounterpartyId[this];
@@ -179,8 +182,8 @@ namespace Store.Store.Entities
 
         #region Category
 
-        [DisplayName("Category"), Column("CategoryID"), ForeignKey(typeof(CategoriesRow), "CategoryID"), LeftJoin("jCategory"), LookupInclude, TextualField("CategoryCategoryCode")]
-        [LookupEditor(typeof(CategoriesRow), FilterField = "Type", FilterValue = 100, InplaceAdd = true)]
+        [DisplayName("Category"), ForeignKey(typeof(CategoriesRow)), LeftJoin("jCategory"), LookupInclude]
+        [LookupEditor(typeof(CategoriesRow), InplaceAdd = true, FilterField = "Type", FilterValue = 100)] //, DialogType = "Store.Store.CategoriesDialog"
         public int? CategoryId
         {
             get => fields.CategoryId[this];

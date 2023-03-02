@@ -6,8 +6,7 @@ namespace Store.Store.Lookups
     using Serenity.Data;
     using Serenity.Abstractions;
 
-    //[LookupScript("Store.Counterparties")]
-    [LookupScript]
+    [LookupScript("Store.Counterparties")]
     public class CounterpartiesLookup : MultiTenantRowLookupScript<CounterpartiesRow>
     {
         public CounterpartiesLookup(ISqlConnections sqlConnections, ITwoLevelCache twoLevelCache, IUserAccessor userAccessor)
