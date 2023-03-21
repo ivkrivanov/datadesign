@@ -1,4 +1,5 @@
 ﻿export * from "./Store/CategoriesColumns"
+export * from "./Store/CategoriesExcelImportForm"
 export * from "./Store/CategoriesForm"
 export * from "./Store/CategoriesLangRow"
 export * from "./Store/CategoriesLangService"
