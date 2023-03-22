@@ -17,12 +17,12 @@ namespace Address.Administration
         {
         }
 
-        protected override void PrepareQuery(SqlQuery query)
-        {
-            base.PrepareQuery(query);
+        //protected override void PrepareQuery(SqlQuery query)
+        //{
+        //    base.PrepareQuery(query);
 
-            if (!Permissions.HasPermission(PermissionKeys.Tenants))
-                query.Where(Fld.TenantId == User.GetTenantId());
-        }
+        //    if (!Permissions.HasPermission(PermissionKeys.Tenants))
+        //        query.Where(Fld.TenantId == User.GetTenantId());
+        //}
     }
 }

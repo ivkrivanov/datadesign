@@ -4,10 +4,7 @@ namespace Address
     using Serenity;
     using Serenity.Data;
     using Serenity.Services;
-    using Serenity.Abstractions;
-    //using Store.Administration;
-    using System;
-    
+
     public class MultiTenantBehavior : IImplicitBehavior,
         ISaveBehavior, IDeleteBehavior,
         IListBehavior, IRetrieveBehavior

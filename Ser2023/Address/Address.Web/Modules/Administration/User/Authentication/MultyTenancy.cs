@@ -12,10 +12,7 @@ namespace Address
                 throw new ArgumentNullException(nameof(user));
 
             var tenantClaim = user.Claims.FirstOrDefault(x => x.Type == "TenantId");
-            if (tenantClaim is null)
-                throw new NullReferenceException("TenantId claim not found");
-
-            return int.Parse(tenantClaim.Value);
+            return tenantClaim is null ? throw new NullReferenceException("TenantId claim not found") : int.Parse(tenantClaim.Value);
         }
     }
 }

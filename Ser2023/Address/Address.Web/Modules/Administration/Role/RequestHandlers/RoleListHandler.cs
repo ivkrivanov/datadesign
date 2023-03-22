@@ -17,12 +17,13 @@ namespace Address.Administration
              : base(context)
         {
         }
-        protected override void ApplyFilters(SqlQuery query)
-        {
-            base.ApplyFilters(query);
 
-            if (!Permissions.HasPermission(PermissionKeys.Tenants))
-                query.Where(Fld.TenantId == User.GetTenantId());
-        }
+        //protected override void ApplyFilters(SqlQuery query)
+        //{
+        //    base.ApplyFilters(query);
+
+        //    if (!Permissions.HasPermission(PermissionKeys.Tenants))
+        //        query.Where(Fld.TenantId == User.GetTenantId());
+        //}
     }
 }

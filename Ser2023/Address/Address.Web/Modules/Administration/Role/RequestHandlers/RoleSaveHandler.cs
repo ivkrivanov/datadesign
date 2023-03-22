@@ -23,23 +23,23 @@ namespace Address.Administration
             Cache.InvalidateOnCommit(UnitOfWork, RolePermissionRow.Fields);
         }
 
-        protected override void SetInternalFields()
-        {
-            base.SetInternalFields();
+        //protected override void SetInternalFields()
+        //{
+        //    base.SetInternalFields();
 
-            if (IsCreate)
-                Row.TenantId = User.GetTenantId();
-        }
+        //    if (IsCreate)
+        //        Row.TenantId = User.GetTenantId();
+        //}
 
-        protected override void ValidateRequest()
-        {
-            base.ValidateRequest();
+        //protected override void ValidateRequest()
+        //{
+        //    base.ValidateRequest();
 
-            if (IsUpdate)
-            {
-                if (Old.TenantId != User.GetTenantId())
-                    Permissions.ValidatePermission(PermissionKeys.Tenants, Localizer);
-            }
-        }
+        //    if (IsUpdate)
+        //    {
+        //        if (Old.TenantId != User.GetTenantId())
+        //            Permissions.ValidatePermission(PermissionKeys.Tenants, Localizer);
+        //    }
+        //}
     }
 }

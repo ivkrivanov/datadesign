@@ -15,12 +15,12 @@ namespace Address.Administration
         {
         }
 
-        protected override void ValidateRequest()
-        {
-            base.ValidateRequest();
+        //protected override void ValidateRequest()
+        //{
+        //    base.ValidateRequest();
 
-            if (Row.TenantId != User.GetTenantId())
-                Permissions.ValidatePermission(PermissionKeys.Tenants, Localizer);
-        }
+        //    if (Row.TenantId != User.GetTenantId())
+        //        Permissions.ValidatePermission(PermissionKeys.Tenants, Localizer);
+        //}
     }
 }
