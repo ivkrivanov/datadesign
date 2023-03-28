@@ -1,4 +1,4 @@
-﻿using FluentMigrator.Runner;
+using FluentMigrator.Runner;
 using FluentMigrator.Runner.Conventions;
 using FluentMigrator.Runner.Initialization;
 using FluentMigrator.Runner.Processors;
@@ -19,6 +19,7 @@ namespace Address
     {
         private static readonly string[] databaseKeys = new[] {
             "Default"
+            , "Address"
         };
 
         public bool SkippedMigrations { get; private set; }
