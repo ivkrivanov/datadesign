@@ -1,8 +1,9 @@
-﻿using Serenity.ComponentModel;
-using System;
 
 namespace Address.Membership
 {
+    using Serenity.ComponentModel;
+    using System;
+
     [FormScript("Membership.SignUp")]
     public class SignUpForm
     {

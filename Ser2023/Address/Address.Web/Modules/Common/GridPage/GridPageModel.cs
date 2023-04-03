@@ -1,7 +1,8 @@
-﻿using Serenity;
 
 namespace Address
 {
+    using Serenity;
+
     public class GridPageModel
     {
         public string Module { get; set; }

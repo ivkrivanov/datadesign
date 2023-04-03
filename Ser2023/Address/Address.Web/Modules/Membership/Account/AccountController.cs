@@ -1,14 +1,15 @@
-﻿using Address.Administration;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Mvc;
-using Serenity;
-using Serenity.Abstractions;
-using Serenity.Services;
-using System;
 
 namespace Address.Membership.Pages
 {
+    using global::Address.Administration;
+    using Microsoft.AspNetCore.Authentication;
+    using Microsoft.AspNetCore.Authentication.Cookies;
+    using Microsoft.AspNetCore.Mvc;
+    using Serenity;
+    using Serenity.Abstractions;
+    using Serenity.Services;
+    using System;
+
     [Route("Account/[action]")]
     public partial class AccountController : Controller
     {

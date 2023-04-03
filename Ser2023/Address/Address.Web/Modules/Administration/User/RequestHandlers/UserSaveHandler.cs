@@ -1,16 +1,17 @@
-using Microsoft.Extensions.Options;
-using Serenity;
-using Serenity.Data;
-using Serenity.Extensions;
-using Serenity.Services;
-using System.Collections.Generic;
-using System.Data;
-using MyRequest = Serenity.Services.SaveRequest<Address.Administration.UserRow>;
-using MyResponse = Serenity.Services.SaveResponse;
-using MyRow = Address.Administration.UserRow;
 
 namespace Address.Administration
 {
+    using Microsoft.Extensions.Options;
+    using Serenity;
+    using Serenity.Data;
+    using Serenity.Extensions;
+    using Serenity.Services;
+    using System.Collections.Generic;
+    using System.Data;
+    using MyRequest = Serenity.Services.SaveRequest<UserRow>;
+    using MyResponse = Serenity.Services.SaveResponse;
+    using MyRow = UserRow;
+
     public interface IUserSaveHandler : ISaveHandler<MyRow, MyRequest, MyResponse> { }
     public class UserSaveHandler : SaveRequestHandler<MyRow, MyRequest, MyResponse>, IUserSaveHandler
     {

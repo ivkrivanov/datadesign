@@ -1,9 +1,10 @@
-using Serenity.ComponentModel;
-using System;
-using System.Collections.Generic;
 
 namespace Address.Administration.Forms
 {
+    using Serenity.ComponentModel;
+    using System;
+    using System.Collections.Generic;
+
     [FormScript("Administration.User")]
     [BasedOnRow(typeof(UserRow), CheckNames = true)]
     public class UserForm

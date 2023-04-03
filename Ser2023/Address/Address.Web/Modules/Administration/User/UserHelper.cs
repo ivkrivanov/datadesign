@@ -1,19 +1,21 @@
-﻿using Microsoft.AspNetCore.DataProtection;
-using Microsoft.Extensions.Caching.Memory;
-using Microsoft.Extensions.Options;
-using Serenity;
-using Serenity.Data;
-using Serenity.Extensions;
-using Serenity.Services;
-using Serenity.Web.Providers;
-using System;
-using System.Data;
-using System.Globalization;
-using System.IO;
-using MyRow = Address.Administration.UserRow;
+    using Microsoft.AspNetCore.DataProtection;
+    using Microsoft.Extensions.Caching.Memory;
+    using Microsoft.Extensions.Options;
+    using Serenity;
+    using Serenity.Data;
+    using Serenity.Extensions;
+    using Serenity.Services;
+    using Serenity.Web.Providers;
+    using System;
+    using System.Data;
+    using System.Globalization;
+    using System.IO;
+    using MyRow = Address.Administration.UserRow;
 
 namespace Address.Administration
 {
+
+
     public static class UserHelper
     {
         private static MyRow.RowFields Fld { get { return MyRow.Fields; } }
@@ -99,6 +101,7 @@ namespace Address.Administration
                     Fld.DisplayName,
                     Fld.PasswordHash,
                     Fld.PasswordSalt,
+                    Fld.TenantId,
                     Fld.IsActive)
                 .Where(filter)
                 .GetFirst(connection))

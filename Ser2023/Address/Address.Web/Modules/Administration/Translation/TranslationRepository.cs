@@ -1,22 +1,23 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.DependencyInjection;
-using Newtonsoft.Json.Linq;
-using Serenity;
-using Serenity.Abstractions;
-using Serenity.ComponentModel;
-using Serenity.Localization;
-using Serenity.Navigation;
-using Serenity.Services;
-using Serenity.Web;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.IO;
-using System.Linq;
-using System.Reflection;
 
 namespace Address.Administration.Repositories
 {
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.Extensions.DependencyInjection;
+    using Newtonsoft.Json.Linq;
+    using Serenity;
+    using Serenity.Abstractions;
+    using Serenity.ComponentModel;
+    using Serenity.Localization;
+    using Serenity.Navigation;
+    using Serenity.Services;
+    using Serenity.Web;
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.IO;
+    using System.Linq;
+    using System.Reflection;
+
     public class TranslationRepository : BaseRepository
     {
         protected IWebHostEnvironment HostEnvironment { get; }

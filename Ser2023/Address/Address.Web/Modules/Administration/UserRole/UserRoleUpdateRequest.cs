@@ -1,9 +1,10 @@
-﻿using Serenity.Services;
-using System;
-using System.Collections.Generic;
 
 namespace Address.Administration
 {
+    using Serenity.Services;
+    using System;
+    using System.Collections.Generic;
+
     public class UserRoleUpdateRequest : ServiceRequest
     {
         public Int32? UserID { get; set; }

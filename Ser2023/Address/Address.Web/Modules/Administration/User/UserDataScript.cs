@@ -1,8 +1,7 @@
 
 namespace Address.Administration
 {
-    using Address.Administration;
-    using Address.Administration.Repositories;
+    using global::Address.Administration.Repositories;
     using Serenity;
     using Serenity.Abstractions;
     using Serenity.ComponentModel;
@@ -11,9 +10,6 @@ namespace Address.Administration
     using System;
     using System.Collections.Generic;
     using System.Linq;
-
-
-
 
     /// <summary>
     /// This declares a dynamic script with key 'UserData' that will be available from client side.

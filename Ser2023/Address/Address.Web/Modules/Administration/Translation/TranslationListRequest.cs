@@ -1,7 +1,8 @@
-﻿using Serenity.Services;
 
 namespace Address.Administration
 {
+    using Serenity.Services;
+
     public class TranslationListRequest : ListRequest
     {
         public string SourceLanguageID { get; set; }

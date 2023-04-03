@@ -1,14 +1,13 @@
-﻿using Address.Administration;
-using Address.Administration.Repositories;
-using Microsoft.Extensions.Caching.Memory;
-using Microsoft.Extensions.Logging;
-using Serenity;
-using Serenity.Abstractions;
-using Serenity.Data;
-using System;
 
 namespace Address.Administration
 {
+    using Microsoft.Extensions.Caching.Memory;
+    using Microsoft.Extensions.Logging;
+    using Serenity;
+    using Serenity.Abstractions;
+    using Serenity.Data;
+    using System;
+
     public class UserPasswordValidator : IUserPasswordValidator
     {
         public UserPasswordValidator(ITwoLevelCache cache, ISqlConnections sqlConnections, IUserRetrieveService userRetriever,

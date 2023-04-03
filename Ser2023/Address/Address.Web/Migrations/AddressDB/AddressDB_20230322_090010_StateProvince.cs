@@ -20,7 +20,7 @@ namespace Address.Migrations.AddressDB
                 .WithColumn("TerritoryId").AsInt32().NotNullable()
                 .WithColumn("rowguid").AsGuid().NotNullable().WithDefaultValue(new Guid())
                 .WithColumn("InsertDate").AsDateTime().NotNullable().WithDefaultValue(new DateTime(2020, 1, 1))
-                .WithColumn("InsertUserId").AsInt32().NotNullable()
+                .WithColumn("InsertUserId").AsInt32().NotNullable().WithDefaultValue(0)
                 .WithColumn("UpdateDate").AsDateTime().Nullable()
                 .WithColumn("UpdateUserId").AsInt32().Nullable()
                 .WithColumn("IsActive").AsInt16().NotNullable().WithDefaultValue(1);

@@ -1,8 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Serenity.Web;
 
 namespace Address.Administration.Pages
 {
+    using Microsoft.AspNetCore.Mvc;
+    using Serenity.Web;
+
     [PageAuthorize(typeof(RoleRow))]
     public class RoleController : Controller
     {

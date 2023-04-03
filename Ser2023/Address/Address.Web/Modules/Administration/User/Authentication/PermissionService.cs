@@ -1,7 +1,7 @@
 
 namespace Address.Administration
 {
-    using Address.Administration.Repositories;
+    using Repositories;
     using Serenity;
     using Serenity.Abstractions;
     using Serenity.Data;

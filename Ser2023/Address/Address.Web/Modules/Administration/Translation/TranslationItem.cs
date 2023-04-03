@@ -1,8 +1,8 @@
-﻿using Serenity.ComponentModel;
-
 
 namespace Address.Administration
 {
+    using Serenity.ComponentModel;
+
     [ScriptInclude]
     public class TranslationItem
     {

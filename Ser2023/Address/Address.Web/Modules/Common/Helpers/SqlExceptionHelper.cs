@@ -1,11 +1,12 @@
-﻿using Microsoft.Data.SqlClient;
-using Serenity;
-using Serenity.Services;
-using System;
-using System.Globalization;
 
 namespace Address
 {
+    using Microsoft.Data.SqlClient;
+    using Serenity;
+    using Serenity.Services;
+    using System;
+    using System.Globalization;
+
     public class ForeignKeyExceptionInfo
     {
         public string TableName { get; set; }

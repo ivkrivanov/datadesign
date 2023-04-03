@@ -1,8 +1,9 @@
-﻿using Serenity.Services;
-using System;
 
 namespace Address.Membership
 {
+    using Serenity.Services;
+    using System;
+
     public class SignUpRequest : ServiceRequest
     {
         public String DisplayName { get; set; }

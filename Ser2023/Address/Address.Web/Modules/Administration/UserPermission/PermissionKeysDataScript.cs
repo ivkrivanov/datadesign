@@ -1,13 +1,14 @@
-﻿using Address.Administration.Repositories;
-using Serenity.Abstractions;
-using Serenity.ComponentModel;
-using Serenity.Data;
-using Serenity.Web;
-using System;
-using System.Collections.Generic;
 
 namespace Address.Administration
 {
+    using global::Address.Administration.Repositories;
+    using Serenity.Abstractions;
+    using Serenity.ComponentModel;
+    using Serenity.Data;
+    using Serenity.Web;
+    using System;
+    using System.Collections.Generic;
+
     [DataScript("Administration.PermissionKeys", Permission = PermissionKeys.Security)]
     public class PermissionKeysDataScript : DataScript<IEnumerable<string>>
     {

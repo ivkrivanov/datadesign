@@ -1,13 +1,14 @@
-﻿using Serenity.Data;
-using Serenity.Services;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using MyRow = Address.Administration.UserRoleRow;
 
 namespace Address.Administration.Repositories
 {
+    using Serenity.Data;
+    using Serenity.Services;
+    using System;
+    using System.Collections.Generic;
+    using System.Data;
+    using System.Linq;
+    using MyRow = UserRoleRow;
+
     public class UserRoleRepository : BaseRepository
     {
         public UserRoleRepository(IRequestContext context)

@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Serenity;
-using Serenity.Data;
-using System;
 
 namespace Address
 {
+    using Microsoft.AspNetCore.Mvc;
+    using Serenity;
+    using Serenity.Data;
+    using System;
+
     public static class GridPageExtensions
     {
         public static string PageTitle(this RowFieldsBase fields)

@@ -1,16 +1,17 @@
-using Microsoft.Extensions.Options;
-using Serenity;
-using Serenity.Data;
-using Serenity.Extensions;
-using Serenity.Extensions.Entities;
-using Serenity.Services;
-using System.Data;
-using MyRequest = Serenity.Services.DeleteRequest;
-using MyResponse = Serenity.Services.DeleteResponse;
-using MyRow = Address.Administration.UserRow;
 
 namespace Address.Administration
 {
+    using Microsoft.Extensions.Options;
+    using Serenity;
+    using Serenity.Data;
+    using Serenity.Extensions;
+    using Serenity.Extensions.Entities;
+    using Serenity.Services;
+    using System.Data;
+    using MyRequest = Serenity.Services.DeleteRequest;
+    using MyResponse = Serenity.Services.DeleteResponse;
+    using MyRow = UserRow;
+
     public interface IUserDeleteHandler : IDeleteHandler<MyRow, MyRequest, MyResponse> { }
     public class UserDeleteHandler : DeleteRequestHandler<MyRow, MyRequest, MyResponse>, IUserDeleteHandler
     {

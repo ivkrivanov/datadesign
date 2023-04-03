@@ -1,11 +1,12 @@
-﻿using Serenity.ComponentModel;
-using Serenity.Data;
-using Serenity.Data.Mapping;
-using System;
-using System.ComponentModel;
 
 namespace Address.Administration
 {
+    using Serenity.ComponentModel;
+    using Serenity.Data;
+    using Serenity.Data.Mapping;
+    using System;
+    using System.ComponentModel;
+
     [ConnectionKey("Default"), Module("Administration"), TableName("UserRoles")]
     [DisplayName("UserRoles"), InstanceName("UserRoles")]
     [ReadPermission(PermissionKeys.Security)]

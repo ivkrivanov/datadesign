@@ -1,5 +1,6 @@
-﻿using Serenity;
+using Serenity;
 using Serenity.ComponentModel;
+using Serenity.Extensions;
 
 namespace Address
 {

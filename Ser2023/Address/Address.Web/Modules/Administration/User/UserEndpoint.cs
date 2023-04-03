@@ -1,14 +1,12 @@
-﻿using Microsoft.AspNetCore.DataProtection;
-using Microsoft.AspNetCore.Mvc;
-using Serenity.Data;
-using Serenity.Services;
-using System.Data;
-using System.Security.Cryptography;
-using System.Text;
-using MyRow = Address.Administration.UserRow;
 
 namespace Address.Administration.Endpoints
 {
+    using Microsoft.AspNetCore.Mvc;
+    using Serenity.Data;
+    using Serenity.Services;
+    using System.Data;
+    using MyRow = UserRow;
+
     [Route("Services/Administration/User/[action]")]
     [ConnectionKey(typeof(MyRow)), ServiceAuthorize(typeof(MyRow))]
     public class UserController : ServiceEndpoint

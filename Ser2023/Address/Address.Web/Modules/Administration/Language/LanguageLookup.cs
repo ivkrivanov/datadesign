@@ -1,10 +1,10 @@
-﻿using Address.Administration;
-using Serenity.ComponentModel;
-using Serenity.Data;
-using Serenity.Web;
 
 namespace Address.Administration.Lookups
 {
+    using Serenity.ComponentModel;
+    using Serenity.Data;
+    using Serenity.Web;
+
     [LookupScript]
     public sealed class LanguageLookup : RowLookupScript<LanguageRow>
     {

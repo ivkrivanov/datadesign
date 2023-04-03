@@ -1,13 +1,14 @@
-﻿using Serenity;
-using Serenity.Abstractions;
-using Serenity.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using MyRow = Address.Administration.RoleRow;
 
 namespace Address.Administration
 {
+    using Serenity;
+    using Serenity.Abstractions;
+    using Serenity.Data;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using MyRow = RoleRow;
+
     public static class RoleHelper
     {
         private static MyRow.RowFields Fld { get { return MyRow.Fields; } }

@@ -1,21 +1,21 @@
-﻿using Address.Administration;
-using Microsoft.Extensions.Caching.Memory;
-using Serenity;
-using Serenity.Abstractions;
-using Serenity.ComponentModel;
-using Serenity.Data;
-using Serenity.Localization;
-using Serenity.Services;
-using Serenity.Web;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Reflection;
-using MyRow = Address.Administration.UserPermissionRow;
 
 namespace Address.Administration.Repositories
 {
+    using Microsoft.Extensions.Caching.Memory;
+    using Serenity;
+    using Serenity.Abstractions;
+    using Serenity.ComponentModel;
+    using Serenity.Data;
+    using Serenity.Localization;
+    using Serenity.Services;
+    using Serenity.Web;
+    using System;
+    using System.Collections.Generic;
+    using System.Data;
+    using System.Linq;
+    using System.Reflection;
+    using MyRow = UserPermissionRow;
+
     public class UserPermissionRepository : BaseRepository
     {
         public UserPermissionRepository(IRequestContext context)

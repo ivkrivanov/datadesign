@@ -1,8 +1,9 @@
-﻿using Serenity.ComponentModel;
-using System;
 
 namespace Address.Administration.Columns
 {
+    using Serenity.ComponentModel;
+    using System;
+
     [ColumnsScript("Administration.User")]
     [BasedOnRow(typeof(UserRow), CheckNames = true)]
     public class UserColumns

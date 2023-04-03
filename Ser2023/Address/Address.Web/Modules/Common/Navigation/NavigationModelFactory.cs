@@ -1,13 +1,14 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.Extensions;
-using Serenity;
-using Serenity.Abstractions;
-using Serenity.Navigation;
-using Serenity.Web;
-using System;
 
 namespace Address.Common
 {
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Http.Extensions;
+    using Serenity;
+    using Serenity.Abstractions;
+    using Serenity.Navigation;
+    using Serenity.Web;
+    using System;
+
     public class NavigationModelFactory : INavigationModelFactory
     {
         private readonly ITwoLevelCache cache;

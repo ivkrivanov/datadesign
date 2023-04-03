@@ -1,13 +1,14 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Serenity;
-using Serenity.ComponentModel;
-using Serenity.Services;
-using Serenity.Web;
-using System;
 
 namespace Address.Common.Pages
 {
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Mvc;
+    using Serenity;
+    using Serenity.ComponentModel;
+    using Serenity.Services;
+    using Serenity.Web;
+    using System;
+
     public class FileController : Controller
     {
         private readonly IUploadStorage uploadStorage;

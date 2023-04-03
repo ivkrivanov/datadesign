@@ -1,8 +1,9 @@
-﻿using Serenity.ComponentModel;
-using Serenity.Services;
 
 namespace Address.Membership
 {
+    using Serenity.ComponentModel;
+    using Serenity.Services;
+
     [FormScript("Membership.Login")]
     [BasedOnRow(typeof(Administration.UserRow), CheckNames = true)]
     public class LoginRequest : ServiceRequest

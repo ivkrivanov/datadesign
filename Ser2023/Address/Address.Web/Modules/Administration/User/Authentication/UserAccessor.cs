@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
-using Serenity.Abstractions;
-using Serenity.Web;
-using System.Security.Claims;
 
 namespace Address.Administration
 {
+    using Microsoft.AspNetCore.Http;
+    using Serenity.Abstractions;
+    using Serenity.Web;
+    using System.Security.Claims;
+
     public class UserAccessor : IUserAccessor, IImpersonator
     {
         private readonly ImpersonatingUserAccessor impersonator;

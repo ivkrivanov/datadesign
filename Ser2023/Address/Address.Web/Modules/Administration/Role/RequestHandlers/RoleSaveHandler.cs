@@ -1,12 +1,12 @@
-using Serenity;
-using Serenity.Services;
-using MyRequest = Serenity.Services.SaveRequest<Address.Administration.RoleRow>;
-using MyResponse = Serenity.Services.SaveResponse;
-using MyRow = Address.Administration.RoleRow;
-
 
 namespace Address.Administration
 {
+    using Serenity;
+    using Serenity.Services;
+    using MyRequest = Serenity.Services.SaveRequest<RoleRow>;
+    using MyResponse = Serenity.Services.SaveResponse;
+    using MyRow = RoleRow;
+
     public interface IRoleSaveHandler : ISaveHandler<MyRow, MyRequest, MyResponse> { }
     public class RoleSaveHandler : SaveRequestHandler<MyRow, MyRequest, MyResponse>, IRoleSaveHandler
     {
@@ -22,24 +22,5 @@ namespace Address.Administration
             Cache.InvalidateOnCommit(UnitOfWork, UserPermissionRow.Fields);
             Cache.InvalidateOnCommit(UnitOfWork, RolePermissionRow.Fields);
         }
-
-        //protected override void SetInternalFields()
-        //{
-        //    base.SetInternalFields();
-
-        //    if (IsCreate)
-        //        Row.TenantId = User.GetTenantId();
-        //}
-
-        //protected override void ValidateRequest()
-        //{
-        //    base.ValidateRequest();
-
-        //    if (IsUpdate)
-        //    {
-        //        if (Old.TenantId != User.GetTenantId())
-        //            Permissions.ValidatePermission(PermissionKeys.Tenants, Localizer);
-        //    }
-        //}
     }
 }

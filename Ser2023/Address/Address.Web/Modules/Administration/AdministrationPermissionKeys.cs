@@ -1,9 +1,10 @@
 
-using Serenity.ComponentModel;
-using System.ComponentModel;
-
 namespace Address.Administration
 {
+
+    using Serenity.ComponentModel;
+    using System.ComponentModel;
+
     [NestedPermissionKeys]
     [DisplayName("Administration")]
     public class PermissionKeys

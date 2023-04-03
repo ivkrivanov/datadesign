@@ -1,10 +1,12 @@
-﻿using Serenity.ComponentModel;
-using Serenity.Data;
-using Serenity.Data.Mapping;
-using System;
+
 
 namespace Address.Administration.Entities
 {
+    using Serenity.ComponentModel;
+    using Serenity.Data;
+    using Serenity.Data.Mapping;
+    using System;
+
     /// <summary>
     /// This is a sample base class for rows that does insert/update date and user audit logging automatically.
     /// It is recommended to create your own base class, if your auditing field names are different than these.

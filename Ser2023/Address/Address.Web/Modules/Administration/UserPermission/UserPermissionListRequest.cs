@@ -1,7 +1,8 @@
-﻿using Serenity.Services;
 
 namespace Address.Administration
 {
+    using Serenity.Services;
+
     public class UserPermissionListRequest : ServiceRequest
     {
         public int? UserID { get; set; }

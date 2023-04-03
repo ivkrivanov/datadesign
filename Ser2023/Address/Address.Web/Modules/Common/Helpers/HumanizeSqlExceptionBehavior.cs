@@ -1,10 +1,11 @@
-﻿using Microsoft.Data.SqlClient;
-using Serenity.Data;
-using Serenity.Services;
-using System;
 
 namespace Address
 {
+    using Microsoft.Data.SqlClient;
+    using Serenity.Data;
+    using Serenity.Services;
+    using System;
+
     public class HumanizeSqlExceptionBehavior : BaseSaveDeleteBehavior, IImplicitBehavior
     {
         public bool ActivateFor(IRow row)

@@ -1,12 +1,11 @@
 
 namespace Address.Administration.Endpoints
 {
-    using Address.Administration.Repositories;
     using Microsoft.AspNetCore.Mvc;
     using Serenity.Data;
     using Serenity.Services;
     using System.Data;
-    using MyRow = Address.Administration.RoleRow;
+    using MyRow = RoleRow;
 
     [Route("Services/Administration/Role/[action]")]
     [ConnectionKey(typeof(MyRow)), ServiceAuthorize(typeof(MyRow))]

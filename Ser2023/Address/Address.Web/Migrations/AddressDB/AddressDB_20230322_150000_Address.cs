@@ -90,11 +90,11 @@ namespace Address.Migrations.AddressDB
             //    Name = "Argentina"
             //});
 
-            //Insert.IntoTable("Country").InSchema("Address").Row(new
-            //{
-            //    CountryCode = "",
-            //    Name = ""
-            //});
+            Insert.IntoTable("Country").InSchema("Address").Row(new
+            {
+                CountryCode = "",
+                Name = ""
+            });
 
 
             Create.Table("StateProvince").InSchema("address")

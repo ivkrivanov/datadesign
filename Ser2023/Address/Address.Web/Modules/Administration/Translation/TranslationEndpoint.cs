@@ -1,12 +1,13 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
-using Serenity.Abstractions;
-using Serenity.Services;
-using System;
-using MyRepository = Address.Administration.Repositories.TranslationRepository;
 
 namespace Address.Administration.Endpoints
 {
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Mvc;
+    using Serenity.Abstractions;
+    using Serenity.Services;
+    using System;
+    using MyRepository = Repositories.TranslationRepository;
+
     [Route("Services/Administration/Translation/[action]")]
     [ServiceAuthorize(PermissionKeys.Translation)]
     public class TranslationController : ServiceEndpoint

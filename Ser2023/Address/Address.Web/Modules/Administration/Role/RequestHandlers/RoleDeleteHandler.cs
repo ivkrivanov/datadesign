@@ -1,12 +1,12 @@
-using Serenity;
-using Serenity.Services;
-using MyRequest = Serenity.Services.DeleteRequest;
-using MyResponse = Serenity.Services.DeleteResponse;
-using MyRow = Address.Administration.RoleRow;
-
 
 namespace Address.Administration
 {
+    using Serenity;
+    using Serenity.Services;
+    using MyRequest = Serenity.Services.DeleteRequest;
+    using MyResponse = Serenity.Services.DeleteResponse;
+    using MyRow = RoleRow;
+
     public interface IRoleDeleteHandler : IDeleteHandler<MyRow, MyRequest, MyResponse> { }
     public class RoleDeleteHandler : DeleteRequestHandler<MyRow, MyRequest, MyResponse>, IRoleDeleteHandler
     {
@@ -14,13 +14,5 @@ namespace Address.Administration
              : base(context)
         {
         }
-
-        //protected override void ValidateRequest()
-        //{
-        //    base.ValidateRequest();
-
-        //    if (Row.TenantId != User.GetTenantId())
-        //        Permissions.ValidatePermission(PermissionKeys.Tenants, Localizer);
-        //}
     }
 }

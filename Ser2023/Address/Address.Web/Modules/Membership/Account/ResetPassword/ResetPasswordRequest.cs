@@ -1,10 +1,11 @@
-﻿using Serenity.ComponentModel;
-using Serenity.Services;
-using System;
-using System.ComponentModel;
 
 namespace Address.Membership
 {
+    using Serenity.ComponentModel;
+    using Serenity.Services;
+    using System;
+    using System.ComponentModel;
+
     [FormScript("Membership.ResetPassword")]
     public class ResetPasswordRequest : ServiceRequest
     {

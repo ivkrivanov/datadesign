@@ -1,11 +1,12 @@
-using Serenity.Data;
-using Serenity.Services;
-using MyRequest = Address.Administration.UserListRequest;
-using MyResponse = Serenity.Services.ListResponse<Address.Administration.UserRow>;
-using MyRow = Address.Administration.UserRow;
 
 namespace Address.Administration
 {
+    using Serenity.Data;
+    using Serenity.Services;
+    using MyRequest = UserListRequest;
+    using MyResponse = Serenity.Services.ListResponse<UserRow>;
+    using MyRow = UserRow;
+
     public interface IUserListHandler : IListHandler<MyRow, MyRequest, MyResponse> { }
 
     public class UserListHandler : ListRequestHandler<MyRow, MyRequest, MyResponse>, IUserListHandler

@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
 
 namespace Serenity.Navigation
 {
+    using System.Collections.Generic;
+
     public class NavigationModel : INavigationModel
     {
         private NavigationItem activeItem;

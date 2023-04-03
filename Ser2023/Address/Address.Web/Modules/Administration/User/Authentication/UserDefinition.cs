@@ -1,8 +1,9 @@
-﻿using Serenity;
-using System;
 
 namespace Address
 {
+    using Serenity;
+    using System;
+
     [Serializable]
     public class UserDefinition : IUserDefinition
     {
