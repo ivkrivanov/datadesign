@@ -52,6 +52,71 @@ namespace Company.Company
             public const string View = "Company:StateProvince:View";
         }
 
+        [DisplayName("BusinessEntity")]
+        public class BusinessEntity
+        {
+            [Description("Delete"), ImplicitPermission(General), ImplicitPermission(View)]
+            public const string Delete = "Company:BusinessEntity:Delete";
+
+            [Description("Create/Update"), ImplicitPermission(General), ImplicitPermission(View)]
+            public const string Modify = "Company:BusinessEntity:Modify";
+            public const string View = "Company:BusinessEntity:View";
+        }
+
+        [DisplayName("BusinessEntityAddress")]
+        public class BusinessEntityAddress
+        {
+            [Description("Delete"), ImplicitPermission(General), ImplicitPermission(View)]
+            public const string Delete = "Company:BusinessEntityAddress:Delete";
+
+            [Description("Create/Update"), ImplicitPermission(General), ImplicitPermission(View)]
+            public const string Modify = "Company:BusinessEntityAddress:Modify";
+            public const string View = "Company:BusinessEntityAddress:View";
+        }
+
+        [DisplayName("BusinessEntityContact")]
+        public class BusinessEntityContact
+        {
+            [Description("Delete"), ImplicitPermission(General), ImplicitPermission(View)]
+            public const string Delete = "Company:BusinessEntityContact:Delete";
+
+            [Description("Create/Update"), ImplicitPermission(General), ImplicitPermission(View)]
+            public const string Modify = "Company:BusinessEntityContact:Modify";
+            public const string View = "Company:BusinessEntityContact:View";
+        }
+
+        [DisplayName("ContactType")]
+        public class ContactType
+        {
+            [Description("Delete"), ImplicitPermission(General), ImplicitPermission(View)]
+            public const string Delete = "Company:ContactType:Delete";
+
+            [Description("Create/Update"), ImplicitPermission(General), ImplicitPermission(View)]
+            public const string Modify = "Company:ContactType:Modify";
+            public const string View = "Company:ContactType:View";
+        }
+
+        [DisplayName("Person")]
+        public class Person
+        {
+            [Description("Delete"), ImplicitPermission(General), ImplicitPermission(View)]
+            public const string Delete = "Company:Person:Delete";
+
+            [Description("Create/Update"), ImplicitPermission(General), ImplicitPermission(View)]
+            public const string Modify = "Company:Person:Modify";
+            public const string View = "Company:Person:View";
+        }
+
+        [DisplayName("PhoneNumberType")]
+        public class PhoneNumberType
+        {
+            [Description("Delete"), ImplicitPermission(General), ImplicitPermission(View)]
+            public const string Delete = "Company:PhoneNumberType:Delete";
+
+            [Description("Create/Update"), ImplicitPermission(General), ImplicitPermission(View)]
+            public const string Modify = "Company:PhoneNumberType:Modify";
+            public const string View = "Company:PhoneNumberType:View";
+        }
 
         [Description("[General]")]
         public const string General = "Company:General";

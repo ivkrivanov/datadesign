@@ -24,4 +24,40 @@
         export const Modify = "Company:StateProvince:Modify";
         export const View = "Company:StateProvince:View";
     }
+
+    export namespace BusinessEntity {
+        export const Delete = "Company:BusinessEntity:Delete";
+        export const Modify = "Company:BusinessEntity:Modify";
+        export const View = "Company:BusinessEntity:View";
+    }
+
+    export namespace BusinessEntityAddress {
+        export const Delete = "Company:BusinessEntityAddress:Delete";
+        export const Modify = "Company:BusinessEntityAddress:Modify";
+        export const View = "Company:BusinessEntityAddress:View";
+    }
+
+    export namespace BusinessEntityContact {
+        export const Delete = "Company:BusinessEntityContact:Delete";
+        export const Modify = "Company:BusinessEntityContact:Modify";
+        export const View = "Company:BusinessEntityContact:View";
+    }
+
+    export namespace ContactType {
+        export const Delete = "Company:ContactType:Delete";
+        export const Modify = "Company:ContactType:Modify";
+        export const View = "Company:ContactType:View";
+    }
+
+    export namespace Person {
+        export const Delete = "Company:Person:Delete";
+        export const Modify = "Company:Person:Modify";
+        export const View = "Company:Person:View";
+    }
+
+    export namespace PhoneNumberType {
+        export const Delete = "Company:PhoneNumberType:Delete";
+        export const Modify = "Company:PhoneNumberType:Modify";
+        export const View = "Company:PhoneNumberType:View";
+    }
 }

@@ -1,4 +1,5 @@
 
+using Company.Administration.Entities;
 using Serenity.ComponentModel;
 using Serenity.Data;
 using Serenity.Data.Mapping;
@@ -13,7 +14,7 @@ namespace Company.Administration
     [ReadPermission(PermissionKeys.Security)]
     [ModifyPermission(PermissionKeys.Security)]
     [LookupScript(Permission = PermissionKeys.Security)]
-    public sealed class UserRow : Serenity.Extensions.Entities.LoggingRow<UserRow.RowFields>, IIdRow, INameRow, IIsActiveRow
+    public sealed class UserRow : LoggingRow<UserRow.RowFields>, IIdRow, INameRow, IIsActiveRow
     {
         [DisplayName("User Id"), Identity, IdProperty]
         public int? UserId
@@ -138,7 +139,7 @@ namespace Company.Administration
         {
         }
 
-        public class RowFields : Serenity.Extensions.Entities.LoggingRowFields
+        public class RowFields : LoggingRowFields
         {
             public Int32Field UserId;
             public StringField Username;

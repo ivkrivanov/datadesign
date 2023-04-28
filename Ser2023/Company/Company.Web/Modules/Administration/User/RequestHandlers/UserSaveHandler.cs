@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Options;
 using Serenity;
 using Serenity.Data;
 using Serenity.Extensions;
@@ -99,6 +99,10 @@ namespace Company.Administration
             {
                 Row.Source = "site";
                 Row.IsActive = Row.IsActive ?? 1;
+                if (!Permissions.HasPermission(PermissionKeys.Tenants) || Row.TenantId == null)
+                {
+                    Row.TenantId = User.GetTenantId();
+                }
             }
 
             if (IsCreate || !Row.Password.IsEmptyOrNull())
