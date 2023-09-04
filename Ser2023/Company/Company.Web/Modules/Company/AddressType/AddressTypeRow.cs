@@ -8,7 +8,7 @@ using System.ComponentModel;
 
 namespace Company.Company;
 
-[ConnectionKey("Company"), Module("Company"), TableName("[address].[AddressType]")]
+[ConnectionKey("Company"), Module("Company"), TableName("[person].[AddressType]")]
 [DisplayName("Address Type"), InstanceName("Address Type")]
 [ReadPermission(PermissionKeys.AddressType.View)]
 [ModifyPermission(PermissionKeys.AddressType.Modify)]

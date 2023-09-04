@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace Company.Company;
 
-[ConnectionKey("Company"), Module("Company"), TableName("[address].[Country]")]
+[ConnectionKey("Company"), Module("Company"), TableName("[person].[Country]")]
 [DisplayName("Country"), InstanceName("Country")]
 [ReadPermission(PermissionKeys.Country.View)]
 [ModifyPermission(PermissionKeys.Country.Modify)]
