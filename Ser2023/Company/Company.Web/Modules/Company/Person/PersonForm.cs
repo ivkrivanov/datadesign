@@ -7,7 +7,7 @@ namespace Company.Company.Forms;
 [BasedOnRow(typeof(PersonRow), CheckNames = true)]
 public class PersonForm
 {
-    public string PersonType { get; set; }
+    //public string PersonType { get; set; }
     public string Title { get; set; }
     public string FirstName { get; set; }
     public string MiddleName { get; set; }

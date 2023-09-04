@@ -1,9 +1,10 @@
 import { Decorators, EntityDialog } from '@serenity-is/corelib';
-import { AddressTypeForm, AddressTypeRow, AddressTypeService } from '../../ServerTypes/Address';
+import { AddressTypeForm, AddressTypeRow, AddressTypeService } from "@/ServerTypes/Address";
 
 @Decorators.registerClass('Address.Address.AddressTypeDialog')
 export class AddressTypeDialog extends EntityDialog<AddressTypeRow, any> {
     protected getFormKey() { return AddressTypeForm.formKey; }
+    protected getRowDefinition() { return AddressTypeRow; }
     protected getIdProperty() { return AddressTypeRow.idProperty; }
     protected getLocalTextPrefix() { return AddressTypeRow.localTextPrefix; }
     protected getNameProperty() { return AddressTypeRow.nameProperty; }

@@ -13,6 +13,7 @@ namespace Address.Address
     [ModifyPermission(PermissionKeys.Address.Modify)]
     [DeletePermission(PermissionKeys.Address.Delete)]
     [LookupScript("Address.Address", LookupType = typeof(MultiTenantRowLookupScript<>))]
+
     public sealed class AddressRow : LoggingRow<AddressRow.RowFields>, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
     {
         [DisplayName("Address Id"), Identity, IdProperty]

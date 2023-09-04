@@ -1,5 +1,4 @@
 
-
 namespace Address.Administration.Entities
 {
     using Serenity.ComponentModel;

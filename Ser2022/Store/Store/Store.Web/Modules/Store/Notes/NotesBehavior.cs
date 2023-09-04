@@ -1,6 +1,6 @@
 ﻿
-namespace Store.Store
-{ 
+namespace Store.Store.Entities
+{
     using Administration.Entities;
     using Store.Entities;
     using Store.Repositories;
@@ -10,22 +10,32 @@ namespace Store.Store
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using Serenity.Abstractions;
+    using System.Globalization;
+
     public class NotesBehavior : BaseSaveDeleteBehavior, IImplicitBehavior, IRetrieveBehavior, IFieldBehavior
     {
-        public IRequestContext Context { get; }
-        public ISqlConnections SqlConnections { get; }
-
-        public NotesBehavior(IRequestContext context, ISqlConnections sqlConnections)
-        {
-            Context = context ?? throw new ArgumentNullException(nameof(context));
-            SqlConnections = sqlConnections ?? throw new ArgumentNullException(nameof(sqlConnections));
-        }
-
         public Field Target { get; set; }
+
+        private readonly IUserRetrieveService userRetriever;
+        private readonly IServiceResolver<INoteListHandler> listHandlerResolver;
+        private readonly IServiceResolver<INoteSaveHandler> saveHandlerResolver;
+        private readonly IServiceResolver<INoteDeleteHandler> deleteHandlerResolver;
+
+        public NotesBehavior(IUserRetrieveService userRetriever,
+            IServiceResolver<INoteListHandler> listHandlerResolver,
+            IServiceResolver<INoteSaveHandler> saveHandlerResolver,
+            IServiceResolver<INoteDeleteHandler> deleteHandlerResolver)
+        {
+            this.userRetriever = userRetriever ?? throw new ArgumentNullException(nameof(userRetriever));
+            this.listHandlerResolver = listHandlerResolver ?? throw new ArgumentNullException(nameof(listHandlerResolver));
+            this.saveHandlerResolver = saveHandlerResolver ?? throw new ArgumentNullException(nameof(saveHandlerResolver));
+            this.deleteHandlerResolver = deleteHandlerResolver ?? throw new ArgumentNullException(nameof(deleteHandlerResolver));
+        }
 
         public bool ActivateFor(IRow row)
         {
-            if (ReferenceEquals(null, Target))
+            if (Target is null)
                 return false;
 
             var attr = Target.GetAttribute<NotesEditorAttribute>();
@@ -34,7 +44,8 @@ namespace Store.Store
 
             if (Target.ValueType != typeof(List<NotesRow>))
             {
-                throw new ArgumentException(String.Format("Field '{0}' in row type '{1}' has a NotesEditorAttribute " +
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                    "Field '{0}' in row type '{1}' has a NotesEditorAttribute " +
                     "but its property type is not a List<NoteRow>!",
                     Target.PropertyName ?? Target.Name, row.GetType().FullName));
             }
@@ -49,7 +60,7 @@ namespace Store.Store
 
         public void OnReturn(IRetrieveRequestHandler handler)
         {
-            if (ReferenceEquals(null, Target) ||
+            if (Target is null ||
                 !handler.AllowSelectField(Target) ||
                 !handler.ShouldSelectField(Target))
                 return;
@@ -61,38 +72,34 @@ namespace Store.Store
             {
                 ColumnSelection = ColumnSelection.List,
                 EqualityFilter = new Dictionary<string, object>
-                {
-                    { fld.EntityType.PropertyName, handler.Row.Table },
-                    { fld.EntityId.PropertyName, idField.AsObject(handler.Row) ?? -1 }
-                }
+            {
+                { fld.EntityType.PropertyName, handler.Row.Table },
+                { fld.EntityId.PropertyName, idField.AsObject(handler.Row) ?? -1 }
+            }
             };
 
-            var notes = new NotesRepository(Context).List(handler.Connection, listRequest).Entities;
+            var notes = listHandlerResolver.Resolve().List(handler.Connection, listRequest).Entities;
 
-            // users might be in another database, in another db server, so we can't simply use a join here
-            var userIdList = notes.Where(x => x.InsertUserId != null).Select(x => x.InsertUserId.Value).Distinct();
+            var userIdList = notes.Where(x => x.InsertUserId != null)
+                .Select(x => x.InsertUserId.Value).Distinct();
+
             if (userIdList.Any())
             {
-                var u = UserRow.Fields;
-                IDictionary<int, string> userDisplayNames;
-                using (var connection = SqlConnections.NewFor<UserRow>())
-                    userDisplayNames = connection.Query(new SqlQuery()
-                            .From(u)
-                            .Select(u.UserId)
-                            .Select(u.DisplayName)
-                            .Where(u.UserId.In(userIdList)))
-                        .ToDictionary(x => (int)(x.UserId ?? x.USERID), x => (string)x.DisplayName);
+                var userDisplayNames = userIdList.ToDictionary(x => x,
+                    x => userRetriever.ById(x.ToString(
+                        CultureInfo.InvariantCulture))?.DisplayName);
 
-                string s;
                 foreach (var x in notes)
-                    if (x.InsertUserId != null && userDisplayNames.TryGetValue(x.InsertUserId.Value, out s))
+                    if (x.InsertUserId != null &&
+                        userDisplayNames.TryGetValue(x.InsertUserId.Value, out string s))
                         x.InsertUserDisplayName = s;
             }
 
             Target.AsObject(handler.Row, notes);
         }
 
-        private void SaveNote(IUnitOfWork uow, NotesRow note, string entityType, Int64 entityId, Int64? noteId)
+        private void SaveNote(IUnitOfWork uow, NotesRow note, string entityType,
+            long entityId, long? noteId)
         {
             note = note.Clone();
             note.NoteId = noteId;
@@ -104,17 +111,18 @@ namespace Store.Store
             var saveRequest = new SaveRequest<NotesRow> { Entity = note };
 
             if (noteId == null)
-                new NotesRepository(Context).Create(uow, saveRequest);
+                saveHandlerResolver.Resolve().Create(uow, saveRequest);
             else
-                new NotesRepository(Context).Update(uow, saveRequest);
+                saveHandlerResolver.Resolve().Update(uow, saveRequest);
         }
 
-        private void DeleteNote(IUnitOfWork uow, Int64 noteId)
+        private void DeleteNote(IUnitOfWork uow, long noteId)
         {
-            new NotesRepository(Context).Delete(uow, new DeleteRequest { EntityId = noteId });
+            deleteHandlerResolver.Resolve().Delete(uow, new DeleteRequest { EntityId = noteId });
         }
 
-        private void NoteListSave(IUnitOfWork uow, string entityType, Int64 entityId, List<NotesRow> oldList, List<NotesRow> newList)
+        private void NoteListSave(IUnitOfWork uow, string entityType, long entityId,
+            List<NotesRow> oldList, List<NotesRow> newList)
         {
             var row = oldList.Count > 0 ? oldList[0] :
                 (newList.Count > 0) ? newList[0] : null;
@@ -135,26 +143,27 @@ namespace Store.Store
             if (newList.Count == 0)
             {
                 foreach (var note in oldList)
-                    DeleteNote(uow, Convert.ToInt64(rowIdField.AsObject(note)));
+                    DeleteNote(uow, Convert.ToInt64(rowIdField.AsObject(note),
+                        CultureInfo.InvariantCulture));
 
                 return;
             }
 
-            var oldById = new Dictionary<Int64, NotesRow>(oldList.Count);
+            var oldById = new Dictionary<long, NotesRow>(oldList.Count);
             foreach (var item in oldList)
-                oldById[Convert.ToInt64(rowIdField.AsObject(item))] = item;
+                oldById[Convert.ToInt64(rowIdField.AsObject(item), CultureInfo.InvariantCulture)] = item;
 
-            var newById = new Dictionary<Int64, NotesRow>(newList.Count);
+            var newById = new Dictionary<long, NotesRow>(newList.Count);
             foreach (var item in newList)
             {
                 var id = rowIdField.AsObject(item);
                 if (id != null)
-                    newById[Convert.ToInt64(id)] = item;
+                    newById[Convert.ToInt64(id, CultureInfo.InvariantCulture)] = item;
             }
 
             foreach (var item in oldList)
             {
-                var id = Convert.ToInt64(rowIdField.AsObject(item));
+                var id = Convert.ToInt64(rowIdField.AsObject(item), CultureInfo.InvariantCulture);
                 if (!newById.ContainsKey(id))
                     DeleteNote(uow, id);
             }
@@ -163,8 +172,8 @@ namespace Store.Store
             {
                 var id = rowIdField.AsObject(item);
 
-                NotesRow old;
-                if (id == null || !oldById.TryGetValue(Convert.ToInt64(id), out old))
+                if (id == null || !oldById.TryGetValue(Convert.ToInt64(id,
+                    CultureInfo.InvariantCulture), out NotesRow old))
                     continue;
 
                 bool anyChanges = false;
@@ -182,25 +191,27 @@ namespace Store.Store
                 if (!anyChanges)
                     continue;
 
-                SaveNote(uow, item, entityType, entityId, Convert.ToInt64(id));
+                SaveNote(uow, item, entityType, entityId, Convert.ToInt64(id,
+                    CultureInfo.InvariantCulture));
             }
 
             foreach (var item in newList)
             {
                 var id = rowIdField.AsObject(item);
-                if (id == null || !oldById.ContainsKey(Convert.ToInt64(id)))
+                if (id == null || !oldById.ContainsKey(Convert.ToInt64(id,
+                    CultureInfo.InvariantCulture)))
                     SaveNote(uow, item, entityType, entityId, null);
             }
         }
 
         public override void OnAfterSave(ISaveRequestHandler handler)
         {
-            var newList = Target.AsObject(handler.Row) as List<NotesRow>;
-            if (newList == null)
+            if (Target.AsObject(handler.Row) is not List<NotesRow> newList)
                 return;
 
             var idField = (handler.Row as IIdRow).IdField;
-            var entityId = Convert.ToInt64(idField.AsObject(handler.Row));
+            var entityId = Convert.ToInt64(idField.AsObject(handler.Row),
+                CultureInfo.InvariantCulture);
 
             if (handler.IsCreate)
             {
@@ -215,19 +226,19 @@ namespace Store.Store
             {
                 ColumnSelection = ColumnSelection.List,
                 EqualityFilter = new Dictionary<string, object>
-                {
-                    { fld.EntityType.PropertyName, handler.Row.Table },
-                    { fld.EntityId.PropertyName, entityId }
-                }
+            {
+                { fld.EntityType.PropertyName, handler.Row.Table },
+                { fld.EntityId.PropertyName, entityId }
+            }
             };
 
-            var oldList = new NotesRepository(Context).List(handler.Connection, listRequest).Entities;
+            var oldList = listHandlerResolver.Resolve().List(handler.Connection, listRequest).Entities;
             NoteListSave(handler.UnitOfWork, handler.Row.Table, entityId, oldList, newList);
         }
 
         public override void OnBeforeDelete(IDeleteRequestHandler handler)
         {
-            if (ReferenceEquals(null, Target) ||
+            if (Target is null ||
                 (Target.Flags & FieldFlags.Updatable) != FieldFlags.Updatable)
                 return;
 
@@ -235,13 +246,14 @@ namespace Store.Store
             var row = new NotesRow();
             var fld = NotesRow.Fields;
 
-            var deleteList = new List<Int64>();
+            var deleteList = new List<long>();
             new SqlQuery()
                     .From(row)
                     .Select(fld.NoteId)
                     .Where(
                         fld.EntityType == handler.Row.Table &
-                        fld.EntityId == Convert.ToInt64(idField.AsObject(handler.Row)))
+                        fld.EntityId == Convert.ToInt64(idField.AsObject(handler.Row),
+                            CultureInfo.InvariantCulture))
                     .ForEach(handler.Connection, () =>
                     {
                         deleteList.Add(row.NoteId.Value);

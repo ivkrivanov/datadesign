@@ -8,10 +8,11 @@ namespace Company.Company.Columns;
 [BasedOnRow(typeof(PersonRow), CheckNames = true)]
 public class PersonColumns
 {
-    [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
-    public long BusinessEntityId { get; set; }
+    //[EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
+    //public long BusinessEntityId { get; set; }
+    //public long PersonId { get; set; }
     [EditLink]
-    public string PersonType { get; set; }
+    //public string PersonType { get; set; }
     public string Title { get; set; }
     public string FirstName { get; set; }
     public string MiddleName { get; set; }

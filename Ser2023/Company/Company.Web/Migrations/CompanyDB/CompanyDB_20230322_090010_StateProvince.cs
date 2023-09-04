@@ -9,12 +9,11 @@ namespace Company.Migrations.CompanyDB
         public override void Up()
         {
 
-            Create.Table("StateProvince").InSchema("address")
-                .WithColumn("StateProvinceId").AsInt32().Identity()
-                    .PrimaryKey().NotNullable()
+            Create.Table("StateProvince").InSchema("person")
+                .WithColumn("StateProvinceId").AsInt64().Identity().PrimaryKey().Identity().NotNullable()
                 .WithColumn("StateProvinceCode").AsString(5).NotNullable()
-                .WithColumn("CountryCode").AsString(3).NotNullable()
-                    .ForeignKey("FK_StateProvince_Country", "address", "Country", "CountryCode")
+                .WithColumn("CountryCode").AsString(3).NotNullable().Indexed()
+                    .ForeignKey("FK_StateProvince_Country", "person", "Country", "CountryCode")
                 .WithColumn("Name").AsString(50).NotNullable()
                 .WithColumn("TerritoryId").AsInt32().NotNullable()
                 .WithColumn("rowguid").AsGuid().Nullable().WithDefaultValue(SystemMethods.NewGuid)

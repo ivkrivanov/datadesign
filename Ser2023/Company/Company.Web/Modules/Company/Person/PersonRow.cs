@@ -16,6 +16,7 @@ namespace Company.Company;
 public sealed class PersonRow : LoggingRow<PersonRow.RowFields>, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
 {
     const string jBusinessEntity = nameof(jBusinessEntity);
+    const string jContactType = nameof(jContactType);
 
     [DisplayName("Business Entity"), NotNull, ForeignKey("[person].[BusinessEntity]", "BusinessEntityId"), LeftJoin(jBusinessEntity), IdProperty]
     public long? BusinessEntityId
@@ -24,12 +25,21 @@ public sealed class PersonRow : LoggingRow<PersonRow.RowFields>, IIdRow, INameRo
         set => fields.BusinessEntityId[this] = value;
     }
 
-    [DisplayName("Person Type"), Size(2), NotNull, QuickSearch, NameProperty]
-    public string PersonType
-    {
-        get => fields.PersonType[this];
-        set => fields.PersonType[this] = value;
-    }
+    //[DisplayName("Person Id"), NotNull]
+    //public long? PersonId
+    //{
+    //    get => fields.PersonId[this];
+    //    set => fields.PersonId[this] = value;
+    //}
+
+    //[DisplayName("Person Type"), Size(2), NotNull, QuickSearch, NameProperty]
+    //[ForeignKey("[person].[ContactType", "ContactTypeId"), LeftJoin(jContactType), LookupInclude]
+    //[LookupEditor(typeof(ContactTypeRow), InplaceAdd = true)]   
+    //public string PersonType
+    //{
+    //    get => fields.PersonType[this];
+    //    set => fields.PersonType[this] = value;
+    //}
 
     [DisplayName("Title"), Size(8)]
     public string Title
@@ -57,6 +67,12 @@ public sealed class PersonRow : LoggingRow<PersonRow.RowFields>, IIdRow, INameRo
     {
         get => fields.LastName[this];
         set => fields.LastName[this] = value;
+    }
+
+    [DisplayName("FullName"), Concat("t0.FirstName", "' '", "t0.MiddleName", "' '", "t0.LastName"), Size(100), QuickSearch, NameProperty]
+    public string FullName
+    {
+        get => Fields.FullName[this];
     }
 
     [DisplayName("Suffix"), Size(10)]
@@ -114,11 +130,13 @@ public sealed class PersonRow : LoggingRow<PersonRow.RowFields>, IIdRow, INameRo
     public class RowFields : LoggingRowFields
     {
         public Int64Field BusinessEntityId;
-        public StringField PersonType;
+        //public Int64Field PersonId;
+        //public StringField PersonType;
         public StringField Title;
         public StringField FirstName;
         public StringField MiddleName;
         public StringField LastName;
+        public StringField FullName;
         public StringField Suffix;
         public GuidField Rowguid;
 

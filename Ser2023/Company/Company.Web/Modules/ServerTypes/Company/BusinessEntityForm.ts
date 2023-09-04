@@ -2,7 +2,12 @@
 import { initFormType } from "@serenity-is/corelib/q";
 
 export interface BusinessEntityForm {
-    Rowguid: StringEditor;
+    Title: StringEditor;
+    FirstName: StringEditor;
+    MiddleName: StringEditor;
+    LastName: StringEditor;
+    FullName: StringEditor;
+    Suffix: StringEditor;
 }
 
 export class BusinessEntityForm extends PrefixedContext {
@@ -18,7 +23,12 @@ export class BusinessEntityForm extends PrefixedContext {
             var w0 = StringEditor;
 
             initFormType(BusinessEntityForm, [
-                'Rowguid', w0
+                'Title', w0,
+                'FirstName', w0,
+                'MiddleName', w0,
+                'LastName', w0,
+                'FullName', w0,
+                'Suffix', w0
             ]);
         }
     }

@@ -14,8 +14,6 @@
 
 namespace Address.Administration
 {
-
-
     public static class UserHelper
     {
         private static MyRow.RowFields Fld { get { return MyRow.Fields; } }

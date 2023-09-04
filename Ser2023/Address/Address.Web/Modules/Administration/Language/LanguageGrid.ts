@@ -1,5 +1,5 @@
 ﻿import { LanguageDialog } from "./LanguageDialog";
-import { LanguageColumns, LanguageRow, LanguageService } from "../";
+import { LanguageColumns, LanguageRow, LanguageService } from "@/ServerTypes/Administration";
 import { Decorators, EntityGrid } from "@serenity-is/corelib"
 
 @Decorators.registerClass('Address.Administration.LanguageGrid')

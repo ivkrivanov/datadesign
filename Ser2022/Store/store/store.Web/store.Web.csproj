@@ -12,6 +12,8 @@
     <CommonSrc>..\..\common-features\src\</CommonSrc>
     <ProSrc>..\..\pro-features\src\</ProSrc>
     <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+    <UserSecretsId>0f0c94f2-6d5f-4da7-835e-f27d4e5a3a00</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\**\*.sql" Exclude="bin\**;obj\**;**\*.xproj;packages\**;@(EmbeddedResource)" />
@@ -21,6 +23,8 @@
     <None Remove="Modules\Common\UserPreference\**" />
     <TypeScriptCompile Remove="Modules\Common\UserPreference\**" />
     <Compile Remove="Modules\Common\Helpers\PdfExportHelper.cs" />
+    <Compile Remove="Modules\Store\Notes\NotesRepository.cs" />
+    <Compile Remove="Modules\Store\Notes\_NotesBehavior.cs" />
     <Content Remove="Areas\Store\Categories\CategoriesIndex.cshtml" />
     <Content Remove="Areas\Store\Counterparties\CounterpartiesIndex.cshtml" />
     <Content Remove="Areas\Store\DocumentType\DocumentTypeIndex.cshtml" />
@@ -44,6 +48,7 @@
     <TypeScriptCompile Remove="Modules\Store\Counterparties\CounterpartyWaresMovementGrid.ts" />
     <TypeScriptCompile Remove="Modules\Store\Employees\EmployeesFormatter.ts" />
     <TypeScriptCompile Remove="Modules\Store\Employees\EmployeesListFormatter.ts" />
+    <TypeScriptCompile Remove="Modules\Store\ProductDetails\ProductDetailsGrid.ts" />
     <TypeScriptCompile Remove="Modules\Store\Wares\WaresDialog.ts" />
     <TypeScriptCompile Remove="Modules\Store\Wares\WaresExcelImportDialog.ts" />
     <TypeScriptCompile Remove="Modules\Store\Wares\WaresGrid.ts" />
@@ -119,6 +124,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.11.1" />
     <PackageReference Include="Serenity.Assets" Version="5.2.2" />
     <PackageReference Include="Serenity.Extensions" Version="5.2.2" />
     <PackageReference Include="Serenity.Scripts" Version="5.2.4" />

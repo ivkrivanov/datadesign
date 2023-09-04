@@ -11,9 +11,10 @@ namespace Company.Migrations.CompanyDB
         {
 
             Create.Table("Person").InSchema("person")
-                .WithColumn("BusinessEntityId").AsInt64().NotNullable()
-                    .ForeignKey("FK_Person_BusinessEntity", "person", "BusinessEntity", "BusinessEntityId")
-                .WithColumn("PersonType").AsString(2).NotNullable()
+                //.WithColumn("PersonId").AsInt64().PrimaryKey().Identity().NotNullable()
+                .WithColumn("BusinessEntityId").AsInt64().PrimaryKey().NotNullable()
+                    .ForeignKey("FK_Person_BusinessEntity_BusinessEntityID", "person", "BusinessEntity", "BusinessEntityId")
+                //.WithColumn("PersonType").AsString(50).NotNullable()
                 .WithColumn("Title").AsString(8).Nullable()
                 .WithColumn("FirstName").AsString(50).NotNullable()
                 .WithColumn("MiddleName").AsString(50).Nullable()

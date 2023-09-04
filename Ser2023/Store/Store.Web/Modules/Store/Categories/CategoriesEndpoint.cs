@@ -171,13 +171,5 @@ namespace Store.Store.Endpoints
 
             return response;
         }
-
-
-
-
-
-
-
-
     }
 }

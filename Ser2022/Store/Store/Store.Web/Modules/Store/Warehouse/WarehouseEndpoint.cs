@@ -1,7 +1,6 @@
 ﻿
 namespace Store.Store.Endpoints
 {
-    using CoreStore;
     using Entities;
     using Microsoft.AspNetCore.Mvc;
     using Serenity.Abstractions;

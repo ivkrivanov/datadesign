@@ -2,7 +2,6 @@
 import { initFormType } from "@serenity-is/corelib/q";
 
 export interface PersonForm {
-    PersonType: StringEditor;
     Title: StringEditor;
     FirstName: StringEditor;
     MiddleName: StringEditor;
@@ -23,7 +22,6 @@ export class PersonForm extends PrefixedContext {
             var w0 = StringEditor;
 
             initFormType(PersonForm, [
-                'PersonType', w0,
                 'Title', w0,
                 'FirstName', w0,
                 'MiddleName', w0,

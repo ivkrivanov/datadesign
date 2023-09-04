@@ -3,6 +3,12 @@
 export interface BusinessEntityRow {
     BusinessEntityId?: number;
     Rowguid?: string;
+    Title?: string;
+    FirstName?: string;
+    MiddleName?: string;
+    LastName?: string;
+    FullName?: string;
+    Suffix?: string;
     IsActive?: number;
     TenantId?: number;
     InsertUserId?: number;

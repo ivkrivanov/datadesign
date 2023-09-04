@@ -11,12 +11,12 @@ namespace Company.Migrations.CompanyDB
         {
 
             Create.Table("BusinessEntityContact").InSchema("person")
-                .WithColumn("[BusinessEntityID]").AsInt64().NotNullable()
-                    .ForeignKey("FK_BusinessEntityContact_BusinessEntity", "person", "BusinessEntity", "BusinessEntityId")
-                .WithColumn("PersonId").AsInt64().NotNullable()
-                    //.ForeignKey("FK_BusinessEntityContact_Person", "person", "Person", "BusinessEntityId")
-                .WithColumn("ContactTypeId").AsInt64().NotNullable()
-                    .ForeignKey("FK_BusinesEntityContact_ContactType", "person", "ContactType", "ContactTypeId")
+                .WithColumn("[BusinessEntityID]").AsInt64().PrimaryKey().NotNullable()
+                    .ForeignKey("FK_BusinessEntityContact_BusinessEntity_BusinessEntityID", "person", "BusinessEntity", "BusinessEntityId")
+                .WithColumn("PersonId").AsInt64().PrimaryKey().NotNullable()
+                    //.ForeignKey("FK_BusinessEntityContact_Person_PersonID", "person", "Person", "BusinessEntityId")
+                .WithColumn("ContactTypeId").AsInt64().PrimaryKey().NotNullable()
+                    .ForeignKey("FK_BusinessEntityContact_ContactType_ContactTypeID", "person", "ContactType", "ContactTypeId")
                 .WithColumn("rowguid").AsGuid().Nullable().WithDefaultValue(SystemMethods.NewGuid)
                 .WithColumn("InsertDate").AsDateTime().NotNullable().WithDefaultValue(SystemMethods.CurrentDateTime)
                 .WithColumn("InsertUserId").AsInt32().NotNullable().WithDefaultValue(0)
