@@ -1,4 +1,4 @@
-﻿import { ServiceResponse } from "@serenity-is/corelib/q";
+﻿import { ServiceResponse } from "../Services/ServiceResponse";
 
 export interface SignUpResponse extends ServiceResponse {
     DemoActivationLink?: string;

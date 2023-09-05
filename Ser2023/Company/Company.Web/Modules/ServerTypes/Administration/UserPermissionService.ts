@@ -1,6 +1,8 @@
 ﻿import { UserPermissionUpdateRequest } from "./UserPermissionUpdateRequest";
-import { SaveResponse, ServiceOptions, ListResponse, ServiceRequest, serviceRequest } from "@serenity-is/corelib/q";
+import { SaveResponse } from "../Services/SaveResponse";
+import { ServiceOptions, ServiceRequest, serviceRequest } from "@serenity-is/corelib/q";
 import { UserPermissionListRequest } from "./UserPermissionListRequest";
+import { ListResponse } from "../Services/ListResponse";
 import { UserPermissionRow } from "./UserPermissionRow";
 
 export namespace UserPermissionService {

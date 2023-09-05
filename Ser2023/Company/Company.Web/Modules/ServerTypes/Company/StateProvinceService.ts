@@ -1,5 +1,13 @@
-﻿import { SaveRequest, SaveResponse, ServiceOptions, DeleteRequest, DeleteResponse, RetrieveRequest, RetrieveResponse, ListRequest, ListResponse, serviceRequest } from "@serenity-is/corelib/q";
+﻿import { SaveRequest } from "../Services/SaveRequest";
 import { StateProvinceRow } from "./StateProvinceRow";
+import { SaveResponse } from "../Services/SaveResponse";
+import { ServiceOptions, serviceRequest } from "@serenity-is/corelib/q";
+import { DeleteRequest } from "../Services/DeleteRequest";
+import { DeleteResponse } from "../Services/DeleteResponse";
+import { RetrieveRequest } from "../Services/RetrieveRequest";
+import { RetrieveResponse } from "../Services/RetrieveResponse";
+import { ListRequest } from "../Services/ListRequest";
+import { ListResponse } from "../Services/ListResponse";
 
 export namespace StateProvinceService {
     export const baseUrl = 'Company/StateProvince';

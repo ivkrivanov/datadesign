@@ -1,4 +1,4 @@
-﻿import { ServiceRequest } from "@serenity-is/corelib/q";
+﻿import { ServiceRequest } from "../Services/ServiceRequest";
 
 export interface UserRoleUpdateRequest extends ServiceRequest {
     UserID?: number;
