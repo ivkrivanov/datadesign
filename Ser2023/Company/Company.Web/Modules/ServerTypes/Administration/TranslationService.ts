@@ -1,9 +1,7 @@
 ﻿import { TranslationListRequest } from "./TranslationListRequest";
-import { ListResponse } from "../Services/ListResponse";
+import { ListResponse, ServiceOptions, SaveResponse, serviceRequest } from "@serenity-is/corelib/q";
 import { TranslationItem } from "./TranslationItem";
-import { ServiceOptions, serviceRequest } from "@serenity-is/corelib/q";
 import { TranslationUpdateRequest } from "./TranslationUpdateRequest";
-import { SaveResponse } from "../Services/SaveResponse";
 
 export namespace TranslationService {
     export const baseUrl = 'Administration/Translation';

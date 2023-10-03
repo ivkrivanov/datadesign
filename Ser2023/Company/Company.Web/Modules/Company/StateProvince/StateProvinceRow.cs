@@ -118,6 +118,7 @@ public sealed class StateProvinceRow : LoggingRow<StateProvinceRow.RowFields>, I
         public StringField Name;
         public Int32Field TerritoryId;
         public GuidField Rowguid;
+
         public Int16Field IsActive;
         public Int32Field TenantId;
     }

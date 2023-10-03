@@ -1,4 +1,4 @@
-﻿import { ServiceRequest } from "../Services/ServiceRequest";
+﻿import { ServiceRequest } from "@serenity-is/corelib/q";
 
 export interface ForgotPasswordRequest extends ServiceRequest {
     Email?: string;
