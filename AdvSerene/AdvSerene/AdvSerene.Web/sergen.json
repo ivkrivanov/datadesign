@@ -1,0 +1,14 @@
+﻿{
+  "RootNamespace": "AdvSerene",
+  "ServerTypings": {
+    "Assemblies": [],
+    "LocalTexts": true
+  },
+  "Connections": [],
+  "BaseRowClasses": [],
+  "RemoveForeignFields": [],
+  "UpgradeInfo": {
+    "InitialType": "Community",
+    "InitialVersion": "5.0.20.1"
+  }
+}
