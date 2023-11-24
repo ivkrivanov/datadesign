@@ -38,7 +38,6 @@
     <None Remove="Modules\Store\WaresMovement\StoreAverageDialog.ts" />
     <None Remove="Modules\Store\Wares\WaresExcelImportDialog.ts" />
     <TypeScriptCompile Remove="Modules\Store\Categories\CategoriesExcelImportDialog.ts" />
-    <TypeScriptCompile Remove="Modules\Store\Notes\NotesEditor.ts" />
     <TypeScriptCompile Remove="Modules\Store\OperationType\OperationTypeEditor.ts" />
     <TypeScriptCompile Remove="Modules\Store\Shops\ShopsEditor.ts" />
     <TypeScriptCompile Remove="Modules\Store\Wares\WaresEditor.ts" />

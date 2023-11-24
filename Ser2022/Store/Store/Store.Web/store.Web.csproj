@@ -1,0 +1,167 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <PreserveCompilationContext>true</PreserveCompilationContext>
+    <AssemblyName>Store.Web</AssemblyName>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    <SerenitySrc>..\..\Serenity\src\</SerenitySrc>
+    <DotNetSergen>dotnet sergen</DotNetSergen>
+    <DotNetSergenDir>$(SerenitySrc)Serenity.Net.CodeGenerator\bin"</DotNetSergenDir>
+    <DotNetSergen Condition="Exists('$(DotNetSergenDir)sergen')">$(DotNetSergenDir)sergen</DotNetSergen>
+    <DotNetSergen Condition="Exists('$(DotNetSergenDir)sergen.exe')">$(DotNetSergenDir)sergen.exe</DotNetSergen>
+    <CommonSrc>..\..\common-features\src\</CommonSrc>
+    <ProSrc>..\..\pro-features\src\</ProSrc>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+    <UserSecretsId>0f0c94f2-6d5f-4da7-835e-f27d4e5a3a00</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+  </PropertyGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\**\*.sql" Exclude="bin\**;obj\**;**\*.xproj;packages\**;@(EmbeddedResource)" />
+    <Compile Remove="Modules\Common\UserPreference\**" />
+    <Content Remove="Modules\Common\UserPreference\**" />
+    <EmbeddedResource Remove="Modules\Common\UserPreference\**" />
+    <None Remove="Modules\Common\UserPreference\**" />
+    <TypeScriptCompile Remove="Modules\Common\UserPreference\**" />
+    <Compile Remove="Modules\Common\Helpers\PdfExportHelper.cs" />
+    <Compile Remove="Modules\Store\Notes\NotesRepository.cs" />
+    <Compile Remove="Modules\Store\Notes\_NotesBehavior.cs" />
+    <Content Remove="Areas\Store\Categories\CategoriesIndex.cshtml" />
+    <Content Remove="Areas\Store\Counterparties\CounterpartiesIndex.cshtml" />
+    <Content Remove="Areas\Store\DocumentType\DocumentTypeIndex.cshtml" />
+    <Content Remove="Areas\Store\Products\ProductsIndex.cshtml" />
+    <Content Remove="Areas\Store\Wares\WaresIndex.cshtml" />
+    <Content Remove="Areas\Store\_ViewImports.cshtml" />
+    <Content Remove="Areas\Store\_ViewStart.cshtml" />
+    <Content Remove="Modules\Store\Categories\CategoriesIndex.cshtml" />
+    <None Remove="App_Data\Reporting\wkhtmltopdf.exe" />
+    <None Remove="typings\jspdf\jspdf.d.ts" />
+    <TypeScriptCompile Remove="Modules\Common\Helpers\DialogUtils.ts" />
+    <TypeScriptCompile Remove="Modules\Common\Helpers\ExcelExportHelper.ts" />
+    <TypeScriptCompile Remove="Modules\Common\Helpers\GridEditorBase.ts" />
+    <TypeScriptCompile Remove="Modules\Common\Helpers\GridEditorDialog.ts" />
+    <TypeScriptCompile Remove="Modules\Store\Counterparties\CounterpartiesDialog.ts" />
+    <TypeScriptCompile Remove="Modules\Store\Counterparties\CounterpartiesEditor.ts" />
+    <TypeScriptCompile Remove="Modules\Store\Counterparties\CounterpartiesGrid.ts" />
+    <TypeScriptCompile Remove="Modules\Store\Counterparties\CounterpartiesProductMovementDialog.ts" />
+    <TypeScriptCompile Remove="Modules\Store\Counterparties\CounterpartiesProductMovementGrid.ts" />
+    <TypeScriptCompile Remove="Modules\Store\Counterparties\CounterpartyWaresMovementDialog.ts" />
+    <TypeScriptCompile Remove="Modules\Store\Counterparties\CounterpartyWaresMovementGrid.ts" />
+    <TypeScriptCompile Remove="Modules\Store\Employees\EmployeesFormatter.ts" />
+    <TypeScriptCompile Remove="Modules\Store\Employees\EmployeesListFormatter.ts" />
+    <TypeScriptCompile Remove="Modules\Store\ProductDetails\ProductDetailsGrid.ts" />
+    <TypeScriptCompile Remove="Modules\Store\Wares\WaresDialog.ts" />
+    <TypeScriptCompile Remove="Modules\Store\Wares\WaresExcelImportDialog.ts" />
+    <TypeScriptCompile Remove="Modules\Store\Wares\WaresGrid.ts" />
+    <Content Include="App_Data\Reporting\wkhtmltopdf.exe" />
+    <None Include="Areas\Store\Categories\CategoriesIndex.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Areas\Store\Counterparties\CounterpartiesIndex.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Areas\Store\DocumentType\DocumentTypeIndex.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Areas\Store\Products\ProductsIndex.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Areas\Store\Wares\WaresIndex.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Areas\Store\_ViewImports.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Areas\Store\_ViewStart.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Modules\Common\Reporting\ReportPage.cshtml" />
+    <None Include="Areas\Store\CategoriesType\CategoriesTypeIndex.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Areas\Store\Measures\MeasuresIndex.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Areas\Store\OperationType\OperationTypeIndex.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Areas\Store\ProductDetails\ProductDetailsIndex.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Areas\Store\Shippers\ShippersIndex.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Areas\Store\Shops\ShopsIndex.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Areas\Store\WaresMovementDetails\WaresMovementDetailsIndex.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Areas\Store\WaresMovement\WaresMovementIndex.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Areas\Store\ProductMovementDetails\ProductMovementDetailsIndex.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Areas\Store\ProductMovement\ProductMovementIndex.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Areas\Store\Warehouse\WarehouseIndex.cshtml" />
+    <None Update="wwwroot\**\*">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </None>
+    <None Update="Modules\**\*.Template.html;Modules\**\*.ts.html">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="EPPlus" Version="4.5.3.2" />
+    <PackageReference Include="FastMember" Version="1.5.0" />
+    <PackageReference Include="FluentMigrator.Runner" Version="3.2.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.0" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="3.1.0" />
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="3.7.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.11.1" />
+    <PackageReference Include="Serenity.Assets" Version="5.2.2" />
+    <PackageReference Include="Serenity.Extensions" Version="5.2.2" />
+    <PackageReference Include="Serenity.Scripts" Version="5.2.4" />
+    <PackageReference Include="Serenity.Net.Web" Version="5.2.4" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Serenity.Assets" Version="5.2.2" />
+    <PackageReference Include="Serenity.Scripts" Version="5.2.4" />
+    <PackageReference Include="Serenity.Net.Web" Version="5.2.4" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Serenity.Extensions" Version="5.2.2" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="7.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="node_modules\%40types\" />
+  </ItemGroup>
+  <Import Project="$(SolutionDir)Serenity\build\submodule.targets" Condition="Exists('$(SolutionDir)Serenity\build\submodule.targets')" />
+  <Target Name="CreateInputsOutputs" BeforeTargets="BeforeBuild">
+    <CreateItem Include="Modules\**\*.ts;Imports\**\*.ts;tsconfig.json">
+      <Output TaskParameter="Include" ItemName="CompileTSCInputs" />
+    </CreateItem>
+  </Target>
+  <Target Name="NpmInstall" BeforeTargets="BeforeBuild" Condition="!Exists('node_modules\@types\jquery\index.d.ts')">
+    <Message Text="Installing NPM packages..." Importance="high"></Message>
+    <Exec Command="npm install" />
+  </Target>
+  <Target Name="TransformMvcClientTypes" BeforeTargets="BeforeBuild">
+    <Exec Command="dotnet tool restore" ContinueOnError="true" />
+    <Exec Command="$(DotNetSergen) restore" ContinueOnError="true" />
+    <Exec Command="$(DotNetSergen) mvct" ContinueOnError="true" />
+  </Target>
+  <Target Name="TransformServerTypings" AfterTargets="AfterBuild">
+    <Exec Command="$(DotNetSergen) servertypings" ContinueOnError="true" />
+  </Target>
+  <Target Name="CompileTSC" AfterTargets="AfterBuild" Inputs="@(CompileTSCInputs)" Outputs="wwwroot\Scripts\site\Store.Web.js">
+    <Message Text="Executing TypeScript compiler..." Importance="high"></Message>
+    <Exec Command="node &quot;$(TSJavaScriptFile.Replace('build\\..\tools\', 'tools\'))&quot; -p ./tsconfig.json" ContinueOnError="true" />
+  </Target>
+</Project>
