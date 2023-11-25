@@ -1,6 +1,7 @@
 namespace Company.Migrations.CompanyDB
 { 
     using FluentMigrator;
+    using FluentMigrator.SqlServer;
     using Serenity.Extensions;
     using System;
 
@@ -11,9 +12,9 @@ namespace Company.Migrations.CompanyDB
         {
 
             Create.Table("PhoneNumberType").InSchema("person")
-                .WithColumn("[PhoneNumberTypeID]").AsInt64().Identity().PrimaryKey().NotNullable()
+                .WithColumn("[PhoneNumberTypeID]").AsInt64().Identity(1,1).PrimaryKey().NotNullable()
                 .WithColumn("Name").AsString(50).NotNullable()
-                .WithColumn("rowguid").AsGuid().Nullable().WithDefaultValue(SystemMethods.NewGuid)
+
                 .WithColumn("InsertDate").AsDateTime().NotNullable().WithDefaultValue(SystemMethods.CurrentDateTime)
                 .WithColumn("InsertUserId").AsInt32().NotNullable().WithDefaultValue(0)
                 .WithColumn("UpdateDate").AsDateTime().Nullable()
@@ -33,14 +34,6 @@ namespace Company.Migrations.CompanyDB
             {
                 Name = "Work"
             });
-
-
-
-
-
-
-
-
 
         }
     }

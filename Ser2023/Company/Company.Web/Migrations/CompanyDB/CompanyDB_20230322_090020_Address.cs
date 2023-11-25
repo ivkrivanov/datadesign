@@ -1,6 +1,7 @@
 namespace Company.Migrations.CompanyDB
 { 
     using FluentMigrator;
+    using FluentMigrator.SqlServer;
     using FluentMigrator.Infrastructure;
     using Serenity.Extensions;
     using System;
@@ -11,13 +12,13 @@ namespace Company.Migrations.CompanyDB
         public override void Up()
         {
 
-            this.Create.Table("Address").InSchema("address")
-                .WithColumn("AddressId").AsInt64().Identity().PrimaryKey().NotNullable()
+            this.Create.Table("Address").InSchema("person")
+                .WithColumn("AddressId").AsInt64().Identity(1,1).PrimaryKey().NotNullable()
                 .WithColumn("AddressLine1").AsString(60).NotNullable()
                 .WithColumn("AddressLine2").AsString(60).Nullable()
                 .WithColumn("City").AsString(30).NotNullable()
-                .WithColumn("StateProvinceId").AsInt32().NotNullable()
-                    .ForeignKey("FK_Address_StateProvince", "address", "StateProvince", "StateProvinceId")
+                .WithColumn("StateProvinceId").AsInt64().NotNullable()
+                    .ForeignKey("FK_Address_StateProvince", "person", "StateProvince", "StateProvinceId")
                 .WithColumn("PostalCode").AsString(15).NotNullable()
                 .WithColumn("rowguid").AsGuid().Nullable().WithDefaultValue(SystemMethods.NewGuid)
                 .WithColumn("InsertDate").AsDateTime().NotNullable().WithDefaultValue(SystemMethods.CurrentDateTime)
@@ -28,7 +29,7 @@ namespace Company.Migrations.CompanyDB
                 .WithColumn("TenantId").AsInt32().NotNullable().WithDefaultValue(1);
 
             Create.Index("IX_AddressId_rowguid_AddressId")
-               .OnTable("Address").InSchema("address")
+               .OnTable("Address").InSchema("person")
                .OnColumn("rowguid").Ascending()
                .OnColumn("AddressId").Ascending()
                .WithOptions().Unique();

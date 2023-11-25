@@ -1,6 +1,7 @@
 namespace Company.Migrations.CompanyDB
 { 
     using FluentMigrator;
+    using FluentMigrator.SqlServer;
     using Serenity.Extensions;
     using System;
 
@@ -9,10 +10,11 @@ namespace Company.Migrations.CompanyDB
     {
         public override void Up()
         {
-            this.Create.Schema("person");
+            //this.Create.Schema("person");
 
             Create.Table("BusinessEntity").InSchema("person")
-                .WithColumn("BusinessEntityId").AsInt64().PrimaryKey().NotNullable()
+                .WithColumn("BusinessEntityId").AsInt64().Identity(1,1).NotNullable().PrimaryKey()
+
                 .WithColumn("rowguid").AsGuid().Nullable().WithDefaultValue(SystemMethods.NewGuid)
                 .WithColumn("InsertDate").AsDateTime().NotNullable().WithDefaultValue(SystemMethods.CurrentDateTime)
                 .WithColumn("InsertUserId").AsInt32().NotNullable().WithDefaultValue(0)

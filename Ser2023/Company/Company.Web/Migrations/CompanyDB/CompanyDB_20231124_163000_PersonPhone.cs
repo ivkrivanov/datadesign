@@ -1,26 +1,20 @@
 namespace Company.Migrations.CompanyDB
-{ 
+{
     using FluentMigrator;
     using FluentMigrator.SqlServer;
     using Serenity.Extensions;
     using System;
 
-    [Migration(20230322090027)]
-    public class CompanyDB_20230322_090027_Person : AutoReversingMigration
+    [Migration(20231124163000)]
+    public class CompanyDB_20231124_163000_PersonPhone : AutoReversingMigration
     {
         public override void Up()
         {
-
-            Create.Table("Person").InSchema("person")
+            Create.Table("PersonPhone").InSchema("person")
                 .WithColumn("BusinessEntityId").AsInt64().NotNullable().PrimaryKey()
-                .WithColumn("PersonType").AsString(2).NotNullable()
-                .WithColumn("Title").AsString(8).Nullable()
-                .WithColumn("FirstName").AsString(50).NotNullable()
-                .WithColumn("MiddleName").AsString(50).Nullable()
-                .WithColumn("LastName").AsString(50).NotNullable()
-                .WithColumn("Suffix").AsString(10).Nullable()
+                .WithColumn("PhoneNumber").AsString(15).NotNullable().PrimaryKey()
+                .WithColumn("PhoneNumberTypeId").AsInt64().NotNullable().PrimaryKey()
 
-                .WithColumn("rowguid").AsGuid().Nullable().WithDefaultValue(SystemMethods.NewGuid)
                 .WithColumn("InsertDate").AsDateTime().NotNullable().WithDefaultValue(SystemMethods.CurrentDateTime)
                 .WithColumn("InsertUserId").AsInt32().NotNullable().WithDefaultValue(0)
                 .WithColumn("UpdateDate").AsDateTime().Nullable()
@@ -29,4 +23,4 @@ namespace Company.Migrations.CompanyDB
                 .WithColumn("TenantId").AsInt32().NotNullable().WithDefaultValue(1);
         }
     }
-} 
+}

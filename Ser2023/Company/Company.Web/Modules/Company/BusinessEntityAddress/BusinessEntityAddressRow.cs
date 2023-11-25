@@ -26,14 +26,14 @@ public sealed class BusinessEntityAddressRow : LoggingRow<BusinessEntityAddressR
         set => fields.BusinessEntityId[this] = value;
     }
 
-    [DisplayName("Address"), NotNull, ForeignKey("[address].[Address]", "AddressId"), LeftJoin(jAddress), TextualField(nameof(AddressLine1))]
+    [DisplayName("Address"), NotNull, ForeignKey("[person].[Address]", "AddressId"), LeftJoin(jAddress), TextualField(nameof(AddressLine1))]
     public long? AddressId
     {
         get => fields.AddressId[this];
         set => fields.AddressId[this] = value;
     }
 
-    [DisplayName("Address Type"), NotNull, ForeignKey("[address].[AddressType]", "AddressTypeId"), LeftJoin(jAddressType), TextualField(nameof(AddressTypeName)), NameProperty]
+    [DisplayName("Address Type"), NotNull, ForeignKey("[person].[AddressType]", "AddressTypeId"), LeftJoin(jAddressType), TextualField(nameof(AddressTypeName)), NameProperty]
     public long? AddressTypeId
     {
         get => fields.AddressTypeId[this];

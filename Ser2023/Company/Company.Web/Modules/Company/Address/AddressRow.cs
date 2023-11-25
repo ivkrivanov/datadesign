@@ -8,7 +8,7 @@ using System.ComponentModel;
 
 namespace Company.Company;
 
-[ConnectionKey("Company"), Module("Company"), TableName("[address].[Address]")]
+[ConnectionKey("Company"), Module("Company"), TableName("[person].[Address]")]
 [DisplayName("Address"), InstanceName("Address")]
 [ReadPermission("Administration:General")]
 [ModifyPermission("Administration:General")]
@@ -46,7 +46,7 @@ public sealed class AddressRow : LoggingRow<AddressRow.RowFields>, IIdRow, IName
 
     #region Province
 
-    [DisplayName("State Province"), NotNull, ForeignKey("[address].[StateProvince]", "StateProvinceId"), LeftJoin(jStateProvince), TextualField(nameof(StateProvinceName)), LookupInclude]
+    [DisplayName("State Province"), NotNull, ForeignKey("[person].[StateProvince]", "StateProvinceId"), LeftJoin(jStateProvince), TextualField(nameof(StateProvinceName)), LookupInclude]
     [LookupEditor(typeof(StateProvinceRow), InplaceAdd = true)]
     public int? StateProvinceId
     {

@@ -5,6 +5,7 @@
     <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
     <TypeScriptNoEmitOnError>false</TypeScriptNoEmitOnError>
     <DotNetSergen>dotnet sergen</DotNetSergen>
+    <UserSecretsId>85564263-629f-4df4-8145-632530326c67</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
     <TypeScriptCompile Remove="node_modules\**" />
@@ -13,6 +14,7 @@
     <Compile Remove="Migrations\CompanyDB\CompanyDB_20230407_100000_MultiTenantPatch.cs" />
     <Compile Remove="Migrations\CompanyDB\CompanyDB_20230407_100005_GUID_Patchy.cs" />
     <Compile Remove="Migrations\CompanyDB\CompanyDB_20230407_100010_GUID_Patchy.cs" />
+    <None Remove="Migrations\CompanyDB\CompanyDBScript_SqlServer.sql" />
     <None Include="Modules\Administration\Tenant\TenantIndex.cshtml" />
     <Content Update=".eslintrc.json;libman.json;package.json;package-lock.json;sergen.json;tsconfig.json;tslint.json;Modules\tsconfig.json" CopyToOutputDirectory="Never" CopyToPublishDirectory="Never" />
   </ItemGroup>

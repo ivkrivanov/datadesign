@@ -1,6 +1,7 @@
 namespace Company.Migrations.CompanyDB
 { 
     using FluentMigrator;
+    using FluentMigrator.SqlServer;
     using Serenity.Extensions;
     using System;
 
@@ -11,12 +12,10 @@ namespace Company.Migrations.CompanyDB
         {
 
             Create.Table("BusinessEntityContact").InSchema("person")
-                .WithColumn("[BusinessEntityID]").AsInt64().NotNullable()
-                    .ForeignKey("FK_BusinessEntityContact_BusinessEntity", "person", "BusinessEntity", "BusinessEntityId")
-                .WithColumn("PersonId").AsInt64().NotNullable()
-                    //.ForeignKey("FK_BusinessEntityContact_Person", "person", "Person", "BusinessEntityId")
-                .WithColumn("ContactTypeId").AsInt64().NotNullable()
-                    .ForeignKey("FK_BusinesEntityContact_ContactType", "person", "ContactType", "ContactTypeId")
+                .WithColumn("[BusinessEntityID]").AsInt64().NotNullable().PrimaryKey()
+                .WithColumn("PersonId").AsInt64().NotNullable().PrimaryKey()
+                .WithColumn("ContactTypeId").AsInt64().NotNullable().PrimaryKey()
+
                 .WithColumn("rowguid").AsGuid().Nullable().WithDefaultValue(SystemMethods.NewGuid)
                 .WithColumn("InsertDate").AsDateTime().NotNullable().WithDefaultValue(SystemMethods.CurrentDateTime)
                 .WithColumn("InsertUserId").AsInt32().NotNullable().WithDefaultValue(0)
@@ -24,6 +23,7 @@ namespace Company.Migrations.CompanyDB
                 .WithColumn("UpdateUserId").AsInt32().Nullable()
                 .WithColumn("IsActive").AsInt16().NotNullable().WithDefaultValue(1)
                 .WithColumn("TenantId").AsInt32().NotNullable().WithDefaultValue(1);
+
         }
     }
 } 
