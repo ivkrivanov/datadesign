@@ -18,6 +18,6 @@ public class StateProvinceColumns
     public string Name { get; set; }
     [EditLink, Width(50)]
     public int TerritoryId { get; set; }
-    [Width(450)]
-    public Guid Rowguid { get; set; }
+    //[Width(450)]
+    //public Guid Rowguid { get; set; }
 }

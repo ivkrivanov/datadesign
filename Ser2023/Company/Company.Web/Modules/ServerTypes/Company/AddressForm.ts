@@ -5,7 +5,8 @@ import { initFormType } from "@serenity-is/corelib/q";
 export interface AddressForm {
     AddressLine1: StringEditor;
     AddressLine2: StringEditor;
-    City: StringEditor;
+    Name: StringEditor;
+    City: LookupEditor;
     StateProvinceId: LookupEditor;
     PostalCode: StringEditor;
 }
@@ -26,7 +27,8 @@ export class AddressForm extends PrefixedContext {
             initFormType(AddressForm, [
                 'AddressLine1', w0,
                 'AddressLine2', w0,
-                'City', w0,
+                'Name', w0,
+                'City', w1,
                 'StateProvinceId', w1,
                 'PostalCode', w0
             ]);

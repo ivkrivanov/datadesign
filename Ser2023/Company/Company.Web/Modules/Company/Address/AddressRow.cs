@@ -12,11 +12,13 @@ namespace Company.Company;
 [DisplayName("Address"), InstanceName("Address")]
 [ReadPermission("Administration:General")]
 [ModifyPermission("Administration:General")]
+[LookupScript("Company.Address", LookupType = typeof(MultiTenantRowLookupScript<>))]
 public sealed class AddressRow : LoggingRow<AddressRow.RowFields>, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
 {
     const string jStateProvince = nameof(jStateProvince);
+    const string jCountryCode = nameof(jCountryCode);
 
-    [DisplayName("Address Id"), Identity, IdProperty]
+[DisplayName("Address Id"), Identity, IdProperty]
     public long? AddressId
     {
         get => fields.AddressId[this];
@@ -37,14 +39,31 @@ public sealed class AddressRow : LoggingRow<AddressRow.RowFields>, IIdRow, IName
         set => fields.AddressLine2[this] = value;
     }
 
-    [DisplayName("City"), Size(30), NotNull]
+    [DisplayName("City"), Size(30), LookupEditor(typeof(Lookups.AddressCityLookup), CascadeFrom = "StateProvince", AutoComplete = true), NotNull]
     public string City
     {
         get => fields.City[this];
         set => fields.City[this] = value;
     }
 
+    //[DisplayName("CountryCode"), Size(3), ForeignKey(typeof(Lookups.AddressCountryLookup)), LeftJoin(jCountryCode), TextualField(nameof(CountryCode)), LookupInclude]
+    [DisplayName("Country Code"), NotNull, ForeignKey("[person].[Country]", "CountryCode"), LeftJoin(jCountryCode), TextualField(nameof(Name)), LookupInclude]
+    [LookupEditor(typeof(CountryRow), InplaceAdd = true)]
+    public string CountryCode
+    {
+        get => fields.CountryCode[this];
+        set => fields.CountryCode[this] = value;
+    }
+
+    [DisplayName("Country"), Expression($"{jCountryCode}.[Name]"), Column("Name"), LookupInclude]
+    public string Name
+    {
+        get => fields.Name[this];
+        set => fields.Name[this] = value;
+    }
+
     #region Province
+
 
     [DisplayName("State Province"), NotNull, ForeignKey("[person].[StateProvince]", "StateProvinceId"), LeftJoin(jStateProvince), TextualField(nameof(StateProvinceName)), LookupInclude]
     [LookupEditor(typeof(StateProvinceRow), InplaceAdd = true)]
@@ -77,12 +96,12 @@ public sealed class AddressRow : LoggingRow<AddressRow.RowFields>, IIdRow, IName
         set => fields.PostalCode[this] = value;
     }
 
-    [DisplayName("Rowguid"), Column("rowguid"), NotNull, DefaultValue(SystemMethods.NewGuid)]
-    public Guid? Rowguid
-    {
-        get => fields.Rowguid[this];
-        set => fields.Rowguid[this] = value;
-    }
+    //[DisplayName("Rowguid"), Column("rowguid"), NotNull, DefaultValue(SystemMethods.NewGuid)]
+    //public Guid? Rowguid
+    //{
+    //    get => fields.Rowguid[this];
+    //    set => fields.Rowguid[this] = value;
+    //}
 
     #region Tenant & Activ
 
@@ -120,13 +139,16 @@ public sealed class AddressRow : LoggingRow<AddressRow.RowFields>, IIdRow, IName
         public StringField AddressLine1;
         public StringField AddressLine2;
         public StringField City;
+        //Country
+        public StringField CountryCode;
+        public StringField Name;
+        //Province
         public Int32Field StateProvinceId;
-        public StringField PostalCode;
-        public GuidField Rowguid;
-        public Int16Field IsActive;
-        public Int32Field TenantId;
-
         public StringField StateProvinceCode;
         public StringField StateProvinceName;
+        public StringField PostalCode;
+        //public GuidField Rowguid;
+        public Int16Field IsActive;
+        public Int32Field TenantId;
     }
 }

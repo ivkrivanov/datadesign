@@ -10,10 +10,22 @@
   <ItemGroup>
     <TypeScriptCompile Remove="node_modules\**" />
     <EmbeddedResource Include="Migrations\**\*.sql" />
+    <Compile Remove="Migrations\CompanyDB\CompanyDB_20230322_090000_Country.cs" />
+    <Compile Remove="Migrations\CompanyDB\CompanyDB_20230322_090010_StateProvince.cs" />
+    <Compile Remove="Migrations\CompanyDB\CompanyDB_20230322_090015_AddressType.cs" />
+    <Compile Remove="Migrations\CompanyDB\CompanyDB_20230322_090020_Address.cs" />
+    <Compile Remove="Migrations\CompanyDB\CompanyDB_20230322_090025_BusinessEntity.cs" />
+    <Compile Remove="Migrations\CompanyDB\CompanyDB_20230322_090027_Person.cs" />
+    <Compile Remove="Migrations\CompanyDB\CompanyDB_20230322_090030_BusinessEntityAddress.cs" />
+    <Compile Remove="Migrations\CompanyDB\CompanyDB_20230322_090035_ContactType.cs" />
+    <Compile Remove="Migrations\CompanyDB\CompanyDB_20230322_090040_PhoneNumberType.cs" />
+    <Compile Remove="Migrations\CompanyDB\CompanyDB_20230322_090045_BusinessEntityContact.cs" />
     <Compile Remove="Migrations\CompanyDB\CompanyDB_20230322_150000_Address.cs" />
     <Compile Remove="Migrations\CompanyDB\CompanyDB_20230407_100000_MultiTenantPatch.cs" />
     <Compile Remove="Migrations\CompanyDB\CompanyDB_20230407_100005_GUID_Patchy.cs" />
     <Compile Remove="Migrations\CompanyDB\CompanyDB_20230407_100010_GUID_Patchy.cs" />
+    <Compile Remove="Migrations\CompanyDB\CompanyDB_20231124_163000_PersonPhone.cs" />
+    <Compile Remove="Migrations\CompanyDB\CompanyDB_20231125_153000_EmailAddress.cs" />
     <None Remove="Migrations\CompanyDB\CompanyDBScript_SqlServer.sql" />
     <None Include="Modules\Administration\Tenant\TenantIndex.cshtml" />
     <Content Update=".eslintrc.json;libman.json;package.json;package-lock.json;sergen.json;tsconfig.json;tslint.json;Modules\tsconfig.json" CopyToOutputDirectory="Never" CopyToPublishDirectory="Never" />

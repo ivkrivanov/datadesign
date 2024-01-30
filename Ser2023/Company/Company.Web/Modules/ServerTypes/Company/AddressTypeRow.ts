@@ -3,7 +3,6 @@
 export interface AddressTypeRow {
     AddressTypeId?: number;
     Name?: string;
-    Rowguid?: string;
     IsActive?: number;
     TenantId?: number;
     InsertUserId?: number;

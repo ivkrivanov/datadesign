@@ -12,5 +12,5 @@ public class AddressTypeColumns
     public long AddressTypeId { get; set; }
     [EditLink]
     public string Name { get; set; }
-    public Guid Rowguid { get; set; }
+    //public Guid Rowguid { get; set; }
 }

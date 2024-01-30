@@ -29,12 +29,12 @@ public sealed class PhoneNumberTypeRow : LoggingRow<PhoneNumberTypeRow.RowFields
         set => fields.Name[this] = value;
     }
 
-    [DisplayName("Rowguid"), Column("rowguid")]
-    public Guid? Rowguid
-    {
-        get => fields.Rowguid[this];
-        set => fields.Rowguid[this] = value;
-    }
+    //[DisplayName("Rowguid"), Column("rowguid")]
+    //public Guid? Rowguid
+    //{
+    //    get => fields.Rowguid[this];
+    //    set => fields.Rowguid[this] = value;
+    //}
 
     #region Tenant & Activ
 
@@ -78,7 +78,7 @@ public sealed class PhoneNumberTypeRow : LoggingRow<PhoneNumberTypeRow.RowFields
     {
         public Int64Field PhoneNumberTypeId;
         public StringField Name;
-        public GuidField Rowguid;
+        //public GuidField Rowguid;
 
         public Int16Field IsActive;
         public Int32Field TenantId;

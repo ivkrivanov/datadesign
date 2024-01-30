@@ -8,5 +8,5 @@ namespace Company.Company.Forms;
 public class AddressTypeForm
 {
     public string Name { get; set; }
-    public Guid Rowguid { get; set; }
+    //public Guid Rowguid { get; set; }
 }

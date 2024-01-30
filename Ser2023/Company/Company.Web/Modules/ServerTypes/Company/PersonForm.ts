@@ -11,7 +11,7 @@ export interface PersonForm {
 }
 
 export class PersonForm extends PrefixedContext {
-    static formKey = 'Company.Person';
+    static formKey = 'Person.Person';
     private static init: boolean;
 
     constructor(prefix: string) {

@@ -1,5 +1,6 @@
 using Serenity.ComponentModel;
-using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace Company.Company.Forms;
 
@@ -7,7 +8,14 @@ namespace Company.Company.Forms;
 [BasedOnRow(typeof(BusinessEntityRow), CheckNames = true)]
 public class BusinessEntityForm
 {
-    public Guid Rowguid { get; set; }
-    //public short IsActive { get; set; }
-    //public int TenantId { get; set; }
+    [Category("Person")]
+    public string PersonType { get; set; }
+    public string Title { get; set; }
+    public string FirstName { get; set; }
+    public string MiddleName { get; set; }
+    public string LastName { get; set; }
+    public string Suffix { get; set; }
+
+    [Category("Addresses")]
+    public List<int> BusinessEntityAddresses { get; set; }
 }

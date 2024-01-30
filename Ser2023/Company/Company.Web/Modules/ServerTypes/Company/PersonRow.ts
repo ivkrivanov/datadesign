@@ -8,7 +8,6 @@ export interface PersonRow {
     MiddleName?: string;
     LastName?: string;
     Suffix?: string;
-    Rowguid?: string;
     IsActive?: number;
     TenantId?: number;
     InsertUserId?: number;
@@ -20,8 +19,8 @@ export interface PersonRow {
 export abstract class PersonRow {
     static readonly idProperty = 'BusinessEntityId';
     static readonly isActiveProperty = 'IsActive';
-    static readonly nameProperty = 'PersonType';
-    static readonly localTextPrefix = 'Company.Person';
+    static readonly nameProperty = 'LastName';
+    static readonly localTextPrefix = 'Person.Person';
     static readonly lookupKey = 'Company.Person';
 
     /** @deprecated use getLookupAsync instead */

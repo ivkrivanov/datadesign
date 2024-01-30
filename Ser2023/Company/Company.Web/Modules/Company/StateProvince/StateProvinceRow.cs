@@ -62,12 +62,12 @@ public sealed class StateProvinceRow : LoggingRow<StateProvinceRow.RowFields>, I
         set => fields.TerritoryId[this] = value;
     }
 
-    [DisplayName("Rowguid"), Column("rowguid")] //NotNull, DefaultValue(SystemMethods.NewGuid)]
-    public Guid? Rowguid
-    {
-        get => fields.Rowguid[this];
-        set => fields.Rowguid[this] = value;
-    }
+    //[DisplayName("Rowguid"), Column("rowguid")] //NotNull, DefaultValue(SystemMethods.NewGuid)]
+    //public Guid? Rowguid
+    //{
+    //    get => fields.Rowguid[this];
+    //    set => fields.Rowguid[this] = value;
+    //}
 
     #region Tenant & Activ
 
@@ -117,7 +117,7 @@ public sealed class StateProvinceRow : LoggingRow<StateProvinceRow.RowFields>, I
         public StringField CountryName;
         public StringField Name;
         public Int32Field TerritoryId;
-        public GuidField Rowguid;
+        //public GuidField Rowguid;
         public Int16Field IsActive;
         public Int32Field TenantId;
     }

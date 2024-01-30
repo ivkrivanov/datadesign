@@ -7,24 +7,24 @@ using System.ComponentModel;
 
 namespace Company.Company;
 
-[ConnectionKey("Company"), Module("Company"), TableName("[person].[Person]")]
+[ConnectionKey("Company"), Module("Person"), TableName("[person].[Person]")]
 [DisplayName("Person"), InstanceName("Person")]
 [ReadPermission(PermissionKeys.Person.View)]
 [ModifyPermission(PermissionKeys.Person.Modify)]
 [DeletePermission(PermissionKeys.Person.Delete)]
-[LookupScript("Company.Person", LookupType = typeof(MultiTenantRowLookupScript<>))]
+[LookupScript("Company.Person", LookupType = typeof(Lookups.PersonLookup))]
 public sealed class PersonRow : LoggingRow<PersonRow.RowFields>, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
 {
     const string jBusinessEntity = nameof(jBusinessEntity);
 
-    [DisplayName("Business Entity"), NotNull, ForeignKey("[person].[BusinessEntity]", "BusinessEntityId"), LeftJoin(jBusinessEntity), IdProperty]
-    public long? BusinessEntityId
+    [DisplayName("Business Entity"), Column("BusinessEntityId"), PrimaryKey] //, NotNull, ForeignKey("[person].[BusinessEntity]", "BusinessEntityId"), LeftJoin(jBusinessEntity), IdProperty]
+    public int? BusinessEntityId
     {
         get => fields.BusinessEntityId[this];
         set => fields.BusinessEntityId[this] = value;
     }
 
-    [DisplayName("Person Type"), Size(2), NotNull, QuickSearch, NameProperty]
+    [DisplayName("Person Type"), Size(2), NotNull, QuickSearch]
     public string PersonType
     {
         get => fields.PersonType[this];
@@ -45,14 +45,14 @@ public sealed class PersonRow : LoggingRow<PersonRow.RowFields>, IIdRow, INameRo
         set => fields.FirstName[this] = value;
     }
 
-    [DisplayName("Middle Name"), Size(50)]
+    [DisplayName("Middle Name"), Size(50), NotNull]
     public string MiddleName
     {
         get => fields.MiddleName[this];
         set => fields.MiddleName[this] = value;
     }
 
-    [DisplayName("Last Name"), Size(50), NotNull]
+    [DisplayName("Last Name"), Size(50), NotNull, NameProperty]
     public string LastName
     {
         get => fields.LastName[this];
@@ -66,12 +66,13 @@ public sealed class PersonRow : LoggingRow<PersonRow.RowFields>, IIdRow, INameRo
         set => fields.Suffix[this] = value;
     }
 
-    [DisplayName("Rowguid"), Column("rowguid")]
-    public Guid? Rowguid
-    {
-        get => fields.Rowguid[this];
-        set => fields.Rowguid[this] = value;
-    }
+    //[DisplayName("FullName"), Size(100), QuickSearch, NameProperty]
+    //[Expression("CONCAT(T0.[Title], CONCAT(' ', T0.[FirstName], CONCAT(' ', T0.[MiddleName], CONCAT(' ', T0.[LastName], CONCAT(' ', T0.[Suffix],")]
+    //public string FullName
+    //{
+    //    get => Fields.FullName[this];
+    //    set => Fields.FullName[this] = value;
+    //}
 
     #region Tenant & Activ
 
@@ -113,14 +114,14 @@ public sealed class PersonRow : LoggingRow<PersonRow.RowFields>, IIdRow, INameRo
 
     public class RowFields : LoggingRowFields
     {
-        public Int64Field BusinessEntityId;
+        public Int32Field BusinessEntityId;
         public StringField PersonType;
         public StringField Title;
         public StringField FirstName;
         public StringField MiddleName;
         public StringField LastName;
         public StringField Suffix;
-        public GuidField Rowguid;
+        //public StringField FullName;
 
         public Int16Field IsActive;
         public Int32Field TenantId;
