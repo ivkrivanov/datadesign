@@ -12,8 +12,7 @@ public class BusinessEntityAddressForm
 
     public long AddressId { get; set; }
     public long AddressTypeId { get; set; }
-
-
+    //public string AddressTypeName {  get; set; }
     //[Category("Address Type")]
     //public string AddressTypeName { get; set; }
     //[Category("Addresses")]

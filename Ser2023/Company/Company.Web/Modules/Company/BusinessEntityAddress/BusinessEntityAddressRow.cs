@@ -1,4 +1,5 @@
 using Company.Administration.Entities;
+using Company.Company.Pages;
 using Serenity.ComponentModel;
 using Serenity.Data;
 using Serenity.Data.Mapping;
@@ -35,11 +36,21 @@ public sealed class BusinessEntityAddressRow : LoggingRow<BusinessEntityAddressR
     }
 
     [DisplayName("Address Type"), NotNull, ForeignKey("[person].[AddressType]", "AddressTypeId"), LeftJoin(jAddressType)] //, TextualField(nameof(AddressTypeName)), NameProperty]
+    [LookupEditor(typeof(AddressTypeRow), InplaceAdd = true)]
     public long? AddressTypeId
     {
         get => fields.AddressTypeId[this];
         set => fields.AddressTypeId[this] = value;
     }
+
+    //[DisplayName("AddressTypeName"), Expression($"{jAddressType}.[Name]"), Column("Name"), LookupInclude]
+    //[LookupEditor(typeof(AddressTypeRow), InplaceAdd = true)]
+    //public string AddressTypeName
+    //{
+    //    get => fields.AddressTypeName[this];
+    //    set => fields.AddressTypeName[this] = value;
+    //}
+
 
     //[DisplayName("Addresses"), LookupEditor(typeof(AddressRow), Multiple = true), NotMapped]
     //[LinkingSetRelation(typeof(BusinessEntityAddressRow), "BusinessEntity", "AddressId")]

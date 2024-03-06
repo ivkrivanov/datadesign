@@ -14,8 +14,8 @@ namespace Company.Company;
 [ReadPermission(PermissionKeys.BusinessEntity.View)]
 [ModifyPermission(PermissionKeys.BusinessEntity.Modify)]
 [DeletePermission(PermissionKeys.BusinessEntity.Delete)]
-//[LeftJoin("per", "[person].[Person]", "per.[BusinessEntityId = T0[BusinessEntityId]", RowType = typeof(PersonRow), TitlePrefix = "")]
 [LeftJoin("per", "[person].[Person]", "per.[BusinessEntityId] = T0.[BusinessEntityId]", RowType = typeof(PersonRow), TitlePrefix = "")]
+[LeftJoin("adr", "[person].[BusinessEntityAddress]", "adr.[BusinessEntityId] = T0.[BusinessEntityId]", RowType = typeof(BusinessEntityAddressRow), TitlePrefix = "")]
 [UpdatableExtension("per", typeof(PersonRow), CascadeDelete = true)]
 [LookupScript("Company.BusinessEntity", LookupType = typeof(MultiTenantRowLookupScript<>))]
 
@@ -23,7 +23,7 @@ public sealed class BusinessEntityRow : LoggingRow<BusinessEntityRow.RowFields>,
 {
     const string jPerson = nameof(jPerson);
 
-    [DisplayName("Business Entity Id"), System.ComponentModel.DataAnnotations.Schema.Column("BusinessEntityId"), Identity, IdProperty]
+    [DisplayName("Business Entity Id"), Column("BusinessEntityId"), Identity, IdProperty]
     public int? BusinessEntityId
     {
         get => fields.BusinessEntityId[this];
@@ -32,7 +32,7 @@ public sealed class BusinessEntityRow : LoggingRow<BusinessEntityRow.RowFields>,
 
     #region Person
 
-    [Origin("per"), DisplayName("PersonType"), LookupInclude]
+    [Origin("per"), DisplayName("Person Type"), LookupInclude]
     //[DisplayName("PersonType"), Expression($"{jPerson}.[PersonType]"), LookupInclude]
     public String PersonType
     {
@@ -79,7 +79,7 @@ public sealed class BusinessEntityRow : LoggingRow<BusinessEntityRow.RowFields>,
     #endregion Person
 
     #region EntityAddress
-    [DisplayName("Addresses"), LookupEditor(typeof(AddressRow), Multiple = true), System.ComponentModel.DataAnnotations.Schema.NotMapped]
+    [DisplayName("Addresses"), LookupEditor(typeof(AddressRow), Multiple = true), NotMapped]
     [LinkingSetRelation(typeof(BusinessEntityAddressRow), "BusinessEntityId", "AddressId")]
     [MinSelectLevel(SelectLevel.Details), QuickFilter(CssClass = "hidden-xs")]
     public List<int> BusinessEntityAddresses
