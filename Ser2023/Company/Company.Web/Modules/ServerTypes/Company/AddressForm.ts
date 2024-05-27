@@ -1,10 +1,12 @@
 ﻿import { StringEditor, LookupEditor, PrefixedContext } from "@serenity-is/corelib";
+import { CountryDialog } from "@/Company/Country/CountryDialog";
 import { StateProvinceDialog } from "@/Company/StateProvince/StateProvinceDialog";
 import { initFormType } from "@serenity-is/corelib/q";
 
 export interface AddressForm {
     AddressLine1: StringEditor;
     AddressLine2: StringEditor;
+    CountryCode: LookupEditor;
     Name: StringEditor;
     City: LookupEditor;
     StateProvinceId: LookupEditor;
@@ -27,6 +29,7 @@ export class AddressForm extends PrefixedContext {
             initFormType(AddressForm, [
                 'AddressLine1', w0,
                 'AddressLine2', w0,
+                'CountryCode', w1,
                 'Name', w0,
                 'City', w1,
                 'StateProvinceId', w1,
@@ -36,4 +39,4 @@ export class AddressForm extends PrefixedContext {
     }
 }
 
-[StateProvinceDialog]; // referenced types
+[CountryDialog, StateProvinceDialog]; // referenced types

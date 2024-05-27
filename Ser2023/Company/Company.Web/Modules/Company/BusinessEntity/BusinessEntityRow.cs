@@ -79,6 +79,15 @@ public sealed class BusinessEntityRow : LoggingRow<BusinessEntityRow.RowFields>,
     #endregion Person
 
     #region EntityAddress
+    [DisplayName("AddressType"), LookupEditor(typeof(AddressTypeRow), Multiple = true), NotMapped]
+    public string Name
+    {
+        get=> fields.Name[this];
+        set=> fields.Name[this] = value;
+    }
+
+
+
     [DisplayName("Addresses"), LookupEditor(typeof(AddressRow), Multiple = true), NotMapped]
     [LinkingSetRelation(typeof(BusinessEntityAddressRow), "BusinessEntityId", "AddressId")]
     [MinSelectLevel(SelectLevel.Details), QuickFilter(CssClass = "hidden-xs")]
@@ -88,7 +97,6 @@ public sealed class BusinessEntityRow : LoggingRow<BusinessEntityRow.RowFields>,
         set => fields.BusinessEntityAddresses[this] = value;
     }
     #endregion
-
 
     #region Tenant & Activ
 
@@ -142,6 +150,7 @@ public sealed class BusinessEntityRow : LoggingRow<BusinessEntityRow.RowFields>,
         public StringField LastName;
         //public StringField FullName;
         public StringField Suffix;
+        public StringField Name;
 
         public ListField<int> BusinessEntityAddresses;
 

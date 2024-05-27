@@ -18,7 +18,7 @@ public sealed class AddressRow : LoggingRow<AddressRow.RowFields>, IIdRow, IName
     const string jStateProvince = nameof(jStateProvince);
     const string jCountryCode = nameof(jCountryCode);
 
-[DisplayName("Address Id"), Identity, IdProperty]
+    [DisplayName("Address Id"), Identity, IdProperty]
     public long? AddressId
     {
         get => fields.AddressId[this];

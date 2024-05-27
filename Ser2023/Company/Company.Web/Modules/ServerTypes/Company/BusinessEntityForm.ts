@@ -8,6 +8,7 @@ export interface BusinessEntityForm {
     MiddleName: StringEditor;
     LastName: StringEditor;
     Suffix: StringEditor;
+    Name: LookupEditor;
     BusinessEntityAddresses: LookupEditor;
 }
 
@@ -31,6 +32,7 @@ export class BusinessEntityForm extends PrefixedContext {
                 'MiddleName', w0,
                 'LastName', w0,
                 'Suffix', w0,
+                'Name', w1,
                 'BusinessEntityAddresses', w1
             ]);
         }

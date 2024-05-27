@@ -15,6 +15,7 @@ public class BusinessEntityForm
     public string MiddleName { get; set; }
     public string LastName { get; set; }
     public string Suffix { get; set; }
+    public string Name {  get; set; }   
 
     [Category("Addresses")]
     public List<int> BusinessEntityAddresses { get; set; }
