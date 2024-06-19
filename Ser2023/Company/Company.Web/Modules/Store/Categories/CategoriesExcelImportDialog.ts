@@ -4,7 +4,7 @@ import { toId } from '@serenity-is/corelib/q';
 import { CategoriesExcelImportForm, CategoriesService } from "../../ServerTypes/Store";
 
 
-@Decorators.registerClass('Store.Store.CategoriesExcelImportDialog')
+@Decorators.registerClass('Company.Store.CategoriesExcelImportDialog')
 export class CategoriesExcelImportDialog extends PropertyDialog<any, any>{
 
     protected form: CategoriesExcelImportForm;

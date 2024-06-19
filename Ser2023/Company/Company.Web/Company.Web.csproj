@@ -13,6 +13,7 @@
     <Compile Remove="Imports\ClientTypes\Com.Store.NotesEditorAttribute.cs" />
     <Compile Remove="Imports\ClientTypes\Store.EmployeeFormatterAttribute.cs" />
     <Compile Remove="Imports\ClientTypes\Store.EmployeeListFormatterAttribute.cs" />
+    <Compile Remove="Imports\ClientTypes\Store.NotesEditorAttribute.cs" />
     <Compile Remove="Imports\ClientTypes\Store.Store.EmployeeListFormatterAttribute.cs" />
     <Compile Remove="Imports\ClientTypes\Store.Store.NotesEditorAttribute.cs" />
     <Compile Remove="Imports\ClientTypes\Store.Store.PhoneEditorAttribute.cs" />

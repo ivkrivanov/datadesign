@@ -1,4 +1,5 @@
-﻿import { LookupEditor, StringEditor, PrefixedContext } from "@serenity-is/corelib";
+﻿import { CategoriesTypeDialog } from "@/Store/CategoriesType/CategoriesTypeDialog";
+import { LookupEditor, StringEditor, PrefixedContext } from "@serenity-is/corelib";
 import { initFormType } from "@serenity-is/corelib/q";
 
 export interface CategoriesForm {
@@ -32,3 +33,5 @@ export class CategoriesForm extends PrefixedContext {
         }
     }
 }
+
+[CategoriesTypeDialog]; // referenced types

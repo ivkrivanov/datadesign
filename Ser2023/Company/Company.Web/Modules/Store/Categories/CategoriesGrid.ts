@@ -6,7 +6,7 @@ import { CategoriesListRequest } from '../../ServerTypes/Store/CategoriesListReq
 import { CategoriesDialog } from './CategoriesDialog';
 import { CategoriesExcelImportDialog } from './CategoriesExcelImportDialog';
 
-@Decorators.registerClass('Store.Store.CategoriesGrid')
+@Decorators.registerClass('Company.Store.CategoriesGrid')
 export class CategoriesGrid extends EntityGrid<CategoriesRow, any> {
     protected getColumnsKey() { return CategoriesColumns.columnsKey; }
     protected getDialogType() { return CategoriesDialog; }
@@ -30,7 +30,7 @@ export class CategoriesGrid extends EntityGrid<CategoriesRow, any> {
     //        //field: 'CategoriesID',
     //        //title: 'CategoriesType',
     //        field: 'CategoryID',
-    //        title: 'CategorySType',
+    //        title: 'CategoryType',
     //        handler: w => {
     //            (this.view.params as CategoriesListRequest).CategoryName = toId(w.value);
     //        },

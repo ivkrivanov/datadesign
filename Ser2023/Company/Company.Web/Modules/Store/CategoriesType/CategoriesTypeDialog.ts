@@ -2,7 +2,7 @@
 import { Decorators, EntityDialog } from "@serenity-is/corelib";
 import { CategoriesTypeForm, CategoriesTypeRow, CategoriesTypeService } from "../../ServerTypes/Store";
 
-    @Decorators.registerClass('Store.Store.CategoriesTypeDialog')
+    @Decorators.registerClass('Company.Store.CategoriesTypeDialog')
     export class CategoriesTypeDialog extends EntityDialog<CategoriesTypeRow, any> {
         protected getFormKey() { return CategoriesTypeForm.formKey; }
         protected getIdProperty() { return CategoriesTypeRow.idProperty; }
