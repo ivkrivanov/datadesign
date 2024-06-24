@@ -21,9 +21,9 @@ public class ProductsColumns
     public Boolean Discontinued { get; set; }
 
     [EditLink(ItemType = "Store.Category"), Width(150), QuickFilter, QuickFilterOption("multiple", true)]
-    public String CategoryCategoryName { get; set; }
+    public String CategoryName { get; set; }
     [Width(60), AlignCenter]
-    public String MeasureMeasureName { get; set; }
+    public String MeasureName { get; set; }
     [Width(80), AlignRight]
     public String QuantityPerUnit { get; set; }
     [Width(80), AlignRight]

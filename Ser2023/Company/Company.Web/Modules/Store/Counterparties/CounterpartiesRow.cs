@@ -1,5 +1,4 @@
 using Company.Administration.Entities;
-using Org.BouncyCastle.Crypto.Generators;
 using Serenity.ComponentModel;
 using Serenity.Data;
 using Serenity.Data.Mapping;
@@ -20,163 +19,81 @@ namespace Company.Store;
 public sealed class CounterpartiesRow : LoggingRow<CounterpartiesRow.RowFields>, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
 {
     [DisplayName("Id"), Column("ID"), Identity, IdProperty]
-    public int? Id
-    {
-        get => fields.Id[this];
-        set => fields.Id[this] = value;
-    }
+    public int? Id { get => fields.Id[this]; set => fields.Id[this] = value; }
 
     [DisplayName("Counterparty Id"), Column("CounterpartyID"), Size(14), PrimaryKey, NotNull, QuickSearch, NameProperty]
-    public string CounterpartyId
-    {
-        get => fields.CounterpartyId[this];
-        set => fields.CounterpartyId[this] = value;
-    }
+    public string CounterpartyId { get => fields.CounterpartyId[this]; set => fields.CounterpartyId[this] = value; }
 
     [DisplayName("Company Name"), Size(40), NotNull]
-    public string CompanyName
-    {
-        get => fields.CompanyName[this];
-        set => fields.CompanyName[this] = value;
-    }
+    public string CompanyName { get => fields.CompanyName[this]; set => fields.CompanyName[this] = value; }
 
     [DisplayName("Contact Name"), Size(40)]
-    public string ContactName
-    {
-        get => fields.ContactName[this];
-        set => fields.ContactName[this] = value;
-    }
+    public string ContactName { get => fields.ContactName[this]; set => fields.ContactName[this] = value; }
 
     [DisplayName("Contact Title"), Size(30)]
-    public string ContactTitle
-    {
-        get => fields.ContactTitle[this];
-        set => fields.ContactTitle[this] = value;
-    }
+    public string ContactTitle { get => fields.ContactTitle[this]; set => fields.ContactTitle[this] = value; }
 
     [DisplayName("Address"), Size(60)]
-    public string Address
-    {
-        get => fields.Address[this];
-        set => fields.Address[this] = value;
-    }
+    public string Address { get => fields.Address[this]; set => fields.Address[this] = value; }
 
     [DisplayName("City"), Size(15), LookupEditor(typeof(Lookups.CounterpartiesCityLookup), CascadeFrom = "Country", AutoComplete = true)]
-    public string City
-    {
-        get => fields.City[this];
-        set => fields.City[this] = value;
-    }
+    public string City { get => fields.City[this]; set => fields.City[this] = value; }
 
     [DisplayName("Region"), Size(15)]
-    public string Region
-    {
-        get => fields.Region[this];
-        set => fields.Region[this] = value;
-    }
+    public string Region { get => fields.Region[this]; set => fields.Region[this] = value; }
 
     [DisplayName("Postal Code"), Size(10)]
-    public string PostalCode
-    {
-        get => fields.PostalCode[this];
-        set => fields.PostalCode[this] = value;
-    }
+    public string PostalCode { get => fields.PostalCode[this]; set => fields.PostalCode[this] = value;}
 
     [DisplayName("Country"), Size(20), LookupEditor(typeof(Lookups.CounterpartiesCountryLookup), AutoComplete = true)]
-    public string Country
-    {
-        get => fields.Country[this];
-        set => fields.Country[this] = value;
-    }
+    public string Country { get => fields.Country[this]; set => fields.Country[this] = value; }
 
     [DisplayName("Phone"), Size(24)]
-    public string Phone
-    {
-        get => fields.Phone[this];
-        set => fields.Phone[this] = value;
-    }
+    public string Phone { get => fields.Phone[this]; set => fields.Phone[this] = value; }
 
     [Origin("cd")]
-    public DateTime? LastContactDate
-    {
-        get => Fields.LastContactDate[this];
-        set => Fields.LastContactDate[this] = value;
-    }
+    public DateTime? LastContactDate { get => Fields.LastContactDate[this]; set => Fields.LastContactDate[this] = value; }
 
     [Origin("cd"), LookupEditor(typeof(EmployeesRow))]
-    public Int32? LastContactedBy
-    {
-        get => Fields.LastContactedBy[this];
-        set => Fields.LastContactedBy[this] = value;
-    }
+    public Int32? LastContactedBy { get => Fields.LastContactedBy[this]; set => Fields.LastContactedBy[this] = value; }
 
     [Origin("cd"), EmailEditor]
-    public String Email
-    {
-        get => Fields.Email[this];
-        set => Fields.Email[this] = value;
-    }
+    public String Email { get => Fields.Email[this]; set => Fields.Email[this] = value; }
 
     [Origin("cd"), DefaultValue(false)]
-    public Boolean? SendBulletin
-    {
-        get => Fields.SendBulletin[this];
-        set => Fields.SendBulletin[this] = value;
-    }
+    public Boolean? SendBulletin { get => Fields.SendBulletin[this]; set => Fields.SendBulletin[this] = value; }
 
     [NotesEditor, NotMapped]
-    public List<NotesRow> NotesList
-    {
-        get => Fields.NotesList[this];
-        set => Fields.NotesList[this] = value;
-    }
+    public List<NotesRow> NotesList { get => Fields.NotesList[this]; set => Fields.NotesList[this] = value; }
 
     [LookupEditor(typeof(EmployeesRow), Multiple = true), NotMapped]
     [LinkingSetRelation(typeof(CounterpartyRepresentativesRow), "CounterpartyID", "EmployeeID")]
     [MinSelectLevel(SelectLevel.Details), QuickFilter(CssClass = "hidden-xs")]
-    public List<Int32> Representatives
-    {
-        get => Fields.Representatives[this];
-        set => Fields.Representatives[this] = value;
-    }
+    public List<Int32> Representatives { get => Fields.Representatives[this]; set => Fields.Representatives[this] = value; }
 
     #region Tenant & Activ
 
     [Insertable(false), Updatable(false)]
-    public Int32? TenantId
-    {
-        get => Fields.TenantId[this];
-        set => Fields.TenantId[this] = value;
-    }
+    public Int32? TenantId { get => Fields.TenantId[this]; set => Fields.TenantId[this] = value; }
 
-    public Int32Field TenantIdField
-    {
-        get => Fields.TenantId;
-    }
+    public Int32Field TenantIdField { get => Fields.TenantId; }
 
     [NotNull, Insertable(false), Updatable(true)]
-    public Int16? IsActive
-    {
-        get => Fields.IsActive[this];
-        set => Fields.IsActive[this] = value;
-    }
+    public Int16? IsActive { get => Fields.IsActive[this]; set => Fields.IsActive[this] = value; }
 
-    Int16Field IIsActiveRow.IsActiveField
-    {
-        get => Fields.IsActive;
-    }
+    Int16Field IIsActiveRow.IsActiveField { get => Fields.IsActive; }
 
     #endregion Tenant & Activ
 
-    public CounterpartiesRow()
-        : base()
-    {
-    }
+    //public CounterpartiesRow()
+    //    : base()
+    //{
+    //}
 
-    public CounterpartiesRow(RowFields fields)
-        : base(fields)
-    {
-    }
+    //public CounterpartiesRow(RowFields fields)
+    //    : base(fields)
+    //{
+    //}
 
     public class RowFields : LoggingRowFields
     {

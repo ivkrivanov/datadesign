@@ -10,7 +10,7 @@ export interface ProductsRow {
     ProductImage?: string;
     CategoryId?: number;
     MeasureId?: number;
-    MeasureMeasureName?: string;
+    MeasureName?: string;
     QuantityPerUnit?: string;
     UnitPrice?: number;
     UnitsInStock?: number;
@@ -19,8 +19,8 @@ export interface ProductsRow {
     Discontinued?: boolean;
     IsActive?: number;
     TenantId?: number;
-    CategoryCategoryName?: string;
-    CategoryDescription?: string;
+    CategoryName?: string;
+    Description?: string;
     DetailList?: ProductDetailsRow[];
     InsertUserId?: number;
     InsertDate?: string;

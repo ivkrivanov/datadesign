@@ -16,6 +16,11 @@ namespace Company.Store;
 [LocalizationRow(typeof(WaresLangRow))]
 public sealed class WaresRow : LoggingRow<WaresRow.RowFields>, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
 {
+    const string jCounterparty = nameof(jCounterparty);
+    const string jCategory = nameof(jCategory);
+    const string jMeasure = nameof(jMeasure);
+
+
     [DisplayName("Wares Id"), Column("WaresID"), Identity, IdProperty]
     public int? WaresId { get => fields.WaresId[this]; set => fields.WaresId[this] = value;}
 
@@ -55,63 +60,62 @@ public sealed class WaresRow : LoggingRow<WaresRow.RowFields>, IIdRow, INameRow,
 
     #region Counterparty
 
-    [DisplayName("Counterparty"), NotNull, Size(14), ForeignKey(typeof(CounterpartiesRow)), LeftJoin("jCounterparty")]
+    [DisplayName("Counterparty"), NotNull, Size(14), ForeignKey(typeof(CounterpartiesRow)), LeftJoin(jCounterparty)]
     //[QuickSearch, Store.CounterpartiesEditor, LookupInclude]
-    [LookupEditor(typeof(CounterpartiesRow), InplaceAdd = false, DialogType = "Store.Store.CounterpartiesDialog")]
+    [LookupEditor(typeof(CounterpartiesRow), InplaceAdd = false, DialogType = "Company.Store.CounterpartiesDialog")]
     public string CounterpartyId { get => fields.CounterpartyId[this]; set => fields.CounterpartyId[this] = value; }
 
-    [DisplayName("Counterparty Company Name"), Expression("jCounterparty.[CompanyName]")]
-    public string CounterpartyCompanyName { get => fields.CounterpartyCompanyName[this]; set => fields.CounterpartyCompanyName[this] = value; }
+    [DisplayName("Counterparty Company Name"), Origin(jCounterparty, nameof(CounterpartiesRow.CompanyName))] // Expression("jCounterparty.[CompanyName]")]
+    public string CompanyName { get => fields.CompanyName[this]; set => fields.CompanyName[this] = value; }
 
-    [DisplayName("Counterparty Contact Name"), Expression("jCounterparty.[ContactName]")]
-    public string CounterpartyContactName { get => fields.CounterpartyContactName[this]; set => fields.CounterpartyContactName[this] = value; }
+    [DisplayName("Counterparty Contact Name"), Origin(jCounterparty, nameof(CounterpartiesRow.ContactName))] //Expression("jCounterparty.[ContactName]")]
+    public string ContactName { get => fields.ContactName[this]; set => fields.ContactName[this] = value; }
 
-    [DisplayName("Counterparty Contact Title"), Expression("jCounterparty.[ContactTitle]")]
-    public string CounterpartyContactTitle {
-        get => fields.CounterpartyContactTitle[this]; set => fields.CounterpartyContactTitle[this] = value; }
+    [DisplayName("Counterparty Contact Title"), Origin(jCounterparty, nameof(CounterpartiesRow.ContactTitle))] //Expression("jCounterparty.[ContactTitle]")]
+    public string ContactTitle { get => fields.ContactTitle[this]; set => fields.ContactTitle[this] = value; }
 
-    [DisplayName("Counterparty Address"), Expression("jCounterparty.[Address]")]
-    public string CounterpartyAddress { get => fields.CounterpartyAddress[this]; set => fields.CounterpartyAddress[this] = value; }
+    [DisplayName("Counterparty Address"), Origin(jCounterparty, nameof(CounterpartiesRow.Address))] //Expression("jCounterparty.[Address]")]
+    public string Address { get => fields.Address[this]; set => fields.Address[this] = value; }
 
-    [DisplayName("Counterparty City"), Expression("jCounterparty.[City]")]
-    public string CounterpartyCity { get => fields.CounterpartyCity[this]; set => fields.CounterpartyCity[this] = value; }
+    [DisplayName("Counterparty City"), Origin(jCounterparty, nameof(CounterpartiesRow.City))] //Expression("jCounterparty.[City]")]
+    public string City { get => fields.City[this]; set => fields.City[this] = value; }
 
-    [DisplayName("Counterparty Region"), Expression("jCounterparty.[Region]")]
-    public string CounterpartyRegion { get => fields.CounterpartyRegion[this]; set => fields.CounterpartyRegion[this] = value; }
+    [DisplayName("Counterparty Region"), Origin(jCounterparty, nameof(CounterpartiesRow.Region))] // Expression("jCounterparty.[Region]")]
+    public string Region { get => fields.Region[this]; set => fields.Region[this] = value; }
 
-    [DisplayName("Counterparty Postal Code"), Expression("jCounterparty.[PostalCode]")]
-    public string CounterpartyPostalCode { get => fields.CounterpartyPostalCode[this]; set => fields.CounterpartyPostalCode[this] = value; }
+    [DisplayName("Counterparty Postal Code"), Origin(jCounterparty, nameof(CounterpartiesRow.PostalCode))] //Expression("jCounterparty.[PostalCode]")]
+    public string PostalCode { get => fields.PostalCode[this]; set => fields.PostalCode[this] = value; }
 
-    [DisplayName("Counterparty Country"), Expression("jCounterparty.[Country]")]
-    public string CounterpartyCountry { get => fields.CounterpartyCountry[this]; set => fields.CounterpartyCountry[this] = value; }
+    [DisplayName("Counterparty Country"), Origin(jCounterparty, nameof(CounterpartiesRow.Country))] //Expression("jCounterparty.[Country]")]
+    public string Country { get => fields.Country[this]; set => fields.Country[this] = value; }
 
-    [DisplayName("Counterparty Phone"), Expression("jCounterparty.[Phone]")]
-    public string CounterpartyPhone { get => fields.CounterpartyPhone[this]; set => fields.CounterpartyPhone[this] = value; }
+    [DisplayName("Counterparty Phone"), Origin(jCounterparty, nameof(CounterpartiesRow.Phone))] // Expression("jCounterparty.[Phone]")]
+    public string Phone { get => fields.Phone[this]; set => fields.Phone[this] = value; }
 
     #endregion Counterparty
 
     #region Category
 
-    [DisplayName("Category"), ForeignKey(typeof(CategoriesRow)), LeftJoin("jCategory"), LookupInclude]
+    [DisplayName("Category"), ForeignKey(typeof(CategoriesRow)), LeftJoin(jCategory), LookupInclude]
     [LookupEditor(typeof(CategoriesRow), InplaceAdd = true, FilterField = "Type", FilterValue = 100)] //, DialogType = "Store.Store.CategoriesDialog"
     public int? CategoryId { get => fields.CategoryId[this]; set => fields.CategoryId[this] = value; }
 
-    [DisplayName("Category Category Type Id"), Expression("jCategory.[CategoryTypeID]")]
+    [DisplayName("Category Category Type Id"), Origin(jCategory, nameof(CategoriesRow.Type))]  // Expression("jCategory.[CategoryTypeID]")]
     public Int16? Type { get => Fields.Type[this]; set => Fields.Type[this] = value; }
 
-    [DisplayName("Category Category Name"), Expression("jCategory.[CategoryName]")]
-    public string CategoryCategoryName { get => fields.CategoryCategoryName[this]; set => fields.CategoryCategoryName[this] = value; }
+    [DisplayName("Category Category Name"), Origin(jCategory, nameof(CategoriesRow.CategoryName))] //Expression("jCategory.[CategoryName]")]
+    public string CategoryName { get => fields.CategoryName[this]; set => fields.CategoryName[this] = value; }
 
-    [DisplayName("Category Description"), Expression("jCategory.[Description]")]
-    public string CategoryDescription { get => fields.CategoryDescription[this]; set => fields.CategoryDescription[this] = value; }
+    [DisplayName("Category Description"), Origin(jCategory, nameof(CategoriesRow.Description))] //Expression("jCategory.[Description]")]
+    public string Description { get => fields.Description[this]; set => fields.Description[this] = value; }
 
     #endregion Category
 
     #region Measure
 
-    [DisplayName("Measure"), Column("MeasureID"), NotNull, ForeignKey("[dbo].[Measures]", "MeasureID"), LeftJoin("jMeasure"), TextualField("MeasureMeasureName")]
+    [DisplayName("Measure"), Column("MeasureID"), NotNull, ForeignKey(typeof(MeasuresRow)), LeftJoin(jMeasure), TextualField("MeasureName")]
     public int? MeasureId { get => fields.MeasureId[this]; set => fields.MeasureId[this] = value; }
-    [DisplayName("Measure Measure Name"), Expression("jMeasure.[MeasureName]")]
+    [DisplayName("Measure Measure Name"), Origin(jMeasure, nameof(MeasuresRow.MeasureName))] //Expression("jMeasure.[MeasureName]")]
     public string MeasureName { get => fields.MeasureName[this]; set => fields.MeasureName[this] = value; }
 
     #endregion Measure
@@ -144,15 +148,15 @@ public sealed class WaresRow : LoggingRow<WaresRow.RowFields>, IIdRow, INameRow,
 
     #endregion Tenant & Activ
 
-    public WaresRow()
-        : base()
-    {
-    }
+    //public WaresRow()
+    //    : base()
+    //{
+    //}
 
-    public WaresRow(RowFields fields)
-        : base(fields)
-    {
-    }
+    //public WaresRow(RowFields fields)
+    //    : base(fields)
+    //{
+    //}
 
     public class RowFields : LoggingRowFields
     {
@@ -175,19 +179,19 @@ public sealed class WaresRow : LoggingRow<WaresRow.RowFields>, IIdRow, INameRow,
         public Int16Field IsActive;
         public Int32Field TenantId;
 
-        public StringField CounterpartyCompanyName;
-        public StringField CounterpartyContactName;
-        public StringField CounterpartyContactTitle;
-        public StringField CounterpartyAddress;
-        public StringField CounterpartyCity;
-        public StringField CounterpartyRegion;
-        public StringField CounterpartyPostalCode;
-        public StringField CounterpartyCountry;
-        public StringField CounterpartyPhone;
+        public StringField CompanyName;
+        public StringField ContactName;
+        public StringField ContactTitle;
+        public StringField Address;
+        public StringField City;
+        public StringField Region;
+        public StringField PostalCode;
+        public StringField Country;
+        public StringField Phone;
 
         public Int16Field Type;
-        public StringField CategoryCategoryName;
-        public StringField CategoryDescription;
+        public StringField CategoryName;
+        public StringField Description;
 
         public StringField MeasureName;
 

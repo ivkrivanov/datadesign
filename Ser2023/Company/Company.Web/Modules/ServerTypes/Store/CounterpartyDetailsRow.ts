@@ -6,8 +6,7 @@ export interface CounterpartyDetailsRow {
     LastContactedBy?: number;
     Email?: string;
     SendBulletin?: boolean;
-    LastContactedByLastName?: string;
-    LastContactedByFirstName?: string;
+    LastContactedByFullName?: string;
     LastContactedByTitle?: string;
     LastContactedByTitleOfCourtesy?: string;
     LastContactedByBirthDate?: string;

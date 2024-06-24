@@ -7,7 +7,7 @@ import { ProductsDialog } from './ProductsDialog';
 
 const fld = ProductsRow.Fields;
 
-@Decorators.registerClass('Store.Store.ProductsGrid')
+@Decorators.registerClass('Company.Store.ProductsGrid')
 @Decorators.filterable()
 export class ProductsGrid extends EntityGrid<ProductsRow, any> {
     protected getColumnsKey() { return ProductsColumns.columnsKey; }
@@ -206,7 +206,7 @@ export class ProductsGrid extends EntityGrid<ProductsRow, any> {
 
         first(columns, x => x.field === 'QuantityPerUnit').format = str;
 
-        var category = first(columns, x => x.field === fld.CategoryCategoryName);
+        var category = first(columns, x => x.field === fld.CategoryName);
         category.referencedFields = [fld.CategoryId];
         category.format = ctx => this.selectFormatter(ctx, fld.CategoryId, CategoriesRow.getLookup());
 

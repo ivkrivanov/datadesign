@@ -1,4 +1,5 @@
 ﻿import { LookupEditor, StringEditor, IntegerEditor, ImageUploadEditor, BooleanEditor, DecimalEditor, PrefixedContext } from "@serenity-is/corelib";
+import { CounterpartiesDialog } from "@/Store/Counterparties/CounterpartiesDialog";
 import { initFormType } from "@serenity-is/corelib/q";
 
 export interface WaresForm {
@@ -50,3 +51,5 @@ export class WaresForm extends PrefixedContext {
         }
     }
 }
+
+[CounterpartiesDialog]; // referenced types

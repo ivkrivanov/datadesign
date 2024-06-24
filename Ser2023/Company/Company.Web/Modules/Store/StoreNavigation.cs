@@ -9,7 +9,7 @@ using MyPages = Company.Store.Pages;
 [assembly: NavigationLink(int.MaxValue, "Store/Shops", typeof(MyPages.ShopsController), icon: null)]
 //[assembly: NavigationLink(int.MaxValue, "Store/Shippers", typeof(MyPages.ShippersController), icon: null)]
 [assembly: NavigationLink(int.MaxValue, "Store/Counterparties", typeof(MyPages.CounterpartiesController), icon: null)]
-[assembly: NavigationLink(int.MaxValue, "Store/Product Details", typeof(MyPages.ProductDetailsController), icon: null)]
+//[assembly: NavigationLink(int.MaxValue, "Store/Product Details", typeof(MyPages.ProductDetailsController), icon: null)]
 [assembly: NavigationLink(int.MaxValue, "Store/Wares", typeof(MyPages.WaresController), icon: null)]
 [assembly: NavigationLink(int.MaxValue, "Store/Products", typeof(MyPages.ProductsController), icon: null)]
 ////[assembly: NavigationLink(int.MaxValue, "Store/Wares Movement Details", typeof(MyPages.WaresMovementDetailsController), icon: null)]

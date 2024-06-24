@@ -22,7 +22,7 @@ public class WaresColumns
     public Boolean Discontinued { get; set; }
 
     [EditLink(ItemType = "Store.Category"), Width(150), QuickFilter, QuickFilterOption("multiple", true)]
-    public Int32 CategoryCategoryName { get; set; }
+    public Int32 CategoryName { get; set; }
     [Width(60), AlignCenter]
     public String MeasureName { get; set; }
     [Width(80), AlignRight]
@@ -37,7 +37,7 @@ public class WaresColumns
     [EditLink(ItemType = "Store.Counterparty"), QuickFilter]
     public string CounterpartyId { get; set; }
     [Width(200)]
-    public String CounterpartyCompanyName { get; set; }
+    public String CompanyName { get; set; }
     //[Width(100), AlignRight]
     //public Int32 AccountID { get; set; }
 }

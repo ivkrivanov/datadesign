@@ -20,55 +20,31 @@ namespace Company.Store;
 
 public sealed class ProductsRow : LoggingRow<ProductsRow.RowFields>, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
 {
-    [DisplayName("Product Id"), Column("ProductID"), Identity, IdProperty]
-    public int? ProductId
-    {
-        get => fields.ProductId[this];
-        set => fields.ProductId[this] = value;
-    }
+    const string jCategory = nameof(jCategory);
+    const string jMeasure = nameof(jMeasure);
 
-    [DisplayName("Product Code"), Size(15), NotNull, QuickSearch]
-    public string ProductCode
-    {
-        get => fields.ProductCode[this];
-        set => fields.ProductCode[this] = value;
-    }
+
+    [DisplayName("Product Id"), Column("ProductID"), Identity, LookupInclude, IdProperty]
+    public int? ProductId { get => fields.ProductId[this]; set => fields.ProductId[this] = value; }
+
+    [DisplayName("Product Code"), Size(15), NotNull, QuickSearch, LookupInclude]
+    public string ProductCode { get => fields.ProductCode[this]; set => fields.ProductCode[this] = value; }
 
     [DisplayName("Product Barcode"), Size(15)]
-    public string ProductBarcode
-    {
-        get => fields.ProductBarcode[this];
-        set => fields.ProductBarcode[this] = value;
-    }
+    public string ProductBarcode { get => fields.ProductBarcode[this]; set => fields.ProductBarcode[this] = value; }
 
     [DisplayName("Product Label"), Size(20)]
-    public string ProductLabel
-    {
-        get => fields.ProductLabel[this];
-        set => fields.ProductLabel[this] = value;
-    }
+    public string ProductLabel { get => fields.ProductLabel[this]; set => fields.ProductLabel[this] = value; }
 
-    [DisplayName("Product Name"), Size(60), NotNull, NameProperty]
-    public string ProductName
-    {
-        get => fields.ProductName[this];
-        set => fields.ProductName[this] = value;
-    }
+    [DisplayName("Product Name"), Size(60), NotNull, LookupInclude, NameProperty]
+    public string ProductName { get => fields.ProductName[this]; set => fields.ProductName[this] = value; }
 
     [DisplayName("Product Image"), Size(100)]
     [ImageUploadEditor(FilenameFormat = "ProductImage/~", CopyToHistory = true)]
-    public string ProductImage
-    {
-        get => fields.ProductImage[this];
-        set => fields.ProductImage[this] = value;
-    }
+    public string ProductImage { get => fields.ProductImage[this]; set => fields.ProductImage[this] = value; }
 
-    [DisplayName("Discontinued"), NotNull]
-    public Boolean? Discontinued
-    {
-        get => Fields.Discontinued[this];
-        set => Fields.Discontinued[this] = value;
-    }
+    [DisplayName("Discontinued"), NotNull, DefaultValue(false)]
+    public Boolean? Discontinued { get => Fields.Discontinued[this]; set => Fields.Discontinued[this] = value; }
 
     //#region Counterparty
 
@@ -149,127 +125,69 @@ public sealed class ProductsRow : LoggingRow<ProductsRow.RowFields>, IIdRow, INa
 
     #region Category
 
-    [DisplayName("Category"), Column("CategoryID"), ForeignKey(typeof(CategoriesRow), "CategoryID"), LeftJoin("jCategory"), TextualField("CategoryCategoryCode")]
+    [DisplayName("Category"), Column("CategoryID"), ForeignKey(typeof(CategoriesRow), "CategoryID"), LeftJoin(jCategory), TextualField("CategoryCode")]
     [LookupEditor(typeof(CategoriesRow), FilterField = "Type", FilterValue = 200, InplaceAdd = true)]
-    public int? CategoryId
-    {
-        get => fields.CategoryId[this];
-        set => fields.CategoryId[this] = value;
-    }
+    public int? CategoryId { get => fields.CategoryId[this]; set => fields.CategoryId[this] = value; }
 
-    [DisplayName("Category Category Name"), Expression("jCategory.[CategoryName]")]
-    public string CategoryCategoryName
-    {
-        get => fields.CategoryCategoryName[this];
-        set => fields.CategoryCategoryName[this] = value;
-    }
+    [DisplayName("Category Category Name"), Origin(jCategory, nameof(CategoriesRow.CategoryName))] //Expression("jCategory.[CategoryName]")]
+    public string CategoryName { get => fields.CategoryName[this]; set => fields.CategoryName[this] = value; }
 
-    [DisplayName("Category Description"), Expression("jCategory.[Description]")]
-    public string CategoryDescription
-    {
-        get => fields.CategoryDescription[this];
-        set => fields.CategoryDescription[this] = value;
-    }
+    [DisplayName("Category Description"), Origin(jCategory, nameof(CategoriesRow.Description))] // Expression("jCategory.[Description]")]
+    public string Description { get => fields.Description[this]; set => fields.Description[this] = value;}
 
     #endregion Category
 
     #region Measure
 
-    [DisplayName("Measure"), Column("MeasureID"), NotNull, ForeignKey(typeof(MeasuresRow), "MeasureID"), LeftJoin("jMeasure"), TextualField("MeasureMeasureName")]
+    [DisplayName("Measure"), Column("MeasureID"), NotNull, ForeignKey(typeof(MeasuresRow), "MeasureID"), LeftJoin(jMeasure), TextualField("MeasureMeasureName")]
     [LookupEditor(typeof(MeasuresRow), FilterField = "Type", InplaceAdd = true)]
-    public int? MeasureId
-    {
-        get => fields.MeasureId[this];
-        set => fields.MeasureId[this] = value;
-    }
-    [DisplayName("Measure Measure Name"), Expression("jMeasure.[MeasureName]")]
-    public string MeasureMeasureName
-    {
-        get => fields.MeasureMeasureName[this];
-        set => fields.MeasureMeasureName[this] = value;
-    }
+    public int? MeasureId { get => fields.MeasureId[this]; set => fields.MeasureId[this] = value; }
+    [DisplayName("Measure Measure Name"), Origin(jMeasure, nameof(MeasuresRow.MeasureName))] // Expression("jMeasure.[MeasureName]")]
+    public string MeasureName { get => fields.MeasureName[this]; set => fields.MeasureName[this] = value; }
 
     #endregion Measure
 
     [DisplayName("Quantity Per Unit"), Size(20)]
-    public string QuantityPerUnit
-    {
-        get => fields.QuantityPerUnit[this];
-        set => fields.QuantityPerUnit[this] = value;
-    }
+    public string QuantityPerUnit { get => fields.QuantityPerUnit[this]; set => fields.QuantityPerUnit[this] = value; }
 
     [DisplayName("Unit Price"), Size(19), Scale(4)]
-    public decimal? UnitPrice
-    {
-        get => fields.UnitPrice[this];
-        set => fields.UnitPrice[this] = value;
-    }
+    public decimal? UnitPrice { get => fields.UnitPrice[this]; set => fields.UnitPrice[this] = value; }
 
     [DisplayName("Units In Stock")]
-    public short? UnitsInStock
-    {
-        get => fields.UnitsInStock[this];
-        set => fields.UnitsInStock[this] = value;
-    }
+    public short? UnitsInStock { get => fields.UnitsInStock[this]; set => fields.UnitsInStock[this] = value; }
 
     [DisplayName("Units On Order")]
-    public short? UnitsOnOrder
-    {
-        get => fields.UnitsOnOrder[this];
-        set => fields.UnitsOnOrder[this] = value;
-    }
+    public short? UnitsOnOrder { get => fields.UnitsOnOrder[this]; set => fields.UnitsOnOrder[this] = value; }
 
     [DisplayName("Reorder Level")]
-    public short? ReorderLevel
-    {
-        get => fields.ReorderLevel[this];
-        set => fields.ReorderLevel[this] = value;
-    }
+    public short? ReorderLevel { get => fields.ReorderLevel[this]; set => fields.ReorderLevel[this] = value; }
 
     [DisplayName("Details"), MasterDetailRelation(foreignKey: "ProductID"), NotMapped]
-    public List<ProductDetailsRow> DetailList
-    {
-        get => fields.DetailList[this];
-        set => fields.DetailList[this] = value;
-    }
+    public List<ProductDetailsRow> DetailList { get => fields.DetailList[this]; set => fields.DetailList[this] = value; }
 
     #region Tenant & Activ
 
     [Insertable(false), Updatable(false)]
-    public Int32? TenantId
-    {
-        get => Fields.TenantId[this];
-        set => Fields.TenantId[this] = value;
-    }
+    public Int32? TenantId { get => Fields.TenantId[this]; set => Fields.TenantId[this] = value; }
 
-    public Int32Field TenantIdField
-    {
-        get => Fields.TenantId;
-    }
+    public Int32Field TenantIdField { get => Fields.TenantId; }
 
     [NotNull, Insertable(false), Updatable(true)]
-    public Int16? IsActive
-    {
-        get => Fields.IsActive[this];
-        set => Fields.IsActive[this] = value;
-    }
+    public Int16? IsActive { get => Fields.IsActive[this]; set => Fields.IsActive[this] = value; }
 
-    Int16Field IIsActiveRow.IsActiveField
-    {
-        get => Fields.IsActive;
-    }
+    Int16Field IIsActiveRow.IsActiveField { get => Fields.IsActive; }
 
     #endregion Tenant & Activ
 
-    public ProductsRow()
-        : base()
-    {
-    }
+    //public ProductsRow()
+    //    : base()
+    //{
+    //}
 
-    public ProductsRow(RowFields fields)
-        : base(fields)
-    {
-    }
+    //public ProductsRow(RowFields fields)
+    //    : base(fields)
+    //{
+    //}
 
     public class RowFields : LoggingRowFields
     {
@@ -282,7 +200,7 @@ public sealed class ProductsRow : LoggingRow<ProductsRow.RowFields>, IIdRow, INa
         //public StringField CounterpartyId;
         public Int32Field CategoryId;
         public Int32Field MeasureId;
-        public StringField MeasureMeasureName;
+        public StringField MeasureName;
         public StringField QuantityPerUnit;
         public DecimalField UnitPrice;
         public Int16Field UnitsInStock;
@@ -303,8 +221,8 @@ public sealed class ProductsRow : LoggingRow<ProductsRow.RowFields>, IIdRow, INa
         //public StringField CounterpartyCountry;
         //public StringField CounterpartyPhone;
 
-        public StringField CategoryCategoryName;
-        public StringField CategoryDescription;
+        public StringField CategoryName;
+        public StringField Description;
 
         public RowListField<ProductDetailsRow> DetailList;
 

@@ -13,35 +13,23 @@ namespace Company.Store;
 public sealed class CounterpartyRepresentativesRow : Row<CounterpartyRepresentativesRow.RowFields>, IIdRow
 {
     [DisplayName("Representative Id"), Column("RepresentativeID"), Identity, IdProperty]
-    public int? RepresentativeId
-    {
-        get => fields.RepresentativeId[this];
-        set => fields.RepresentativeId[this] = value;
-    }
+    public int? RepresentativeId { get => fields.RepresentativeId[this]; set => fields.RepresentativeId[this] = value; }
 
     [DisplayName("Counterparty Id"), Column("CounterpartyID"), NotNull]
-    public int? CounterpartyId
-    {
-        get => fields.CounterpartyId[this];
-        set => fields.CounterpartyId[this] = value;
-    }
+    public int? CounterpartyId { get => fields.CounterpartyId[this]; set => fields.CounterpartyId[this] = value; }
 
     [DisplayName("Employee Id"), Column("EmployeeID"), NotNull]
-    public int? EmployeeId
-    {
-        get => fields.EmployeeId[this];
-        set => fields.EmployeeId[this] = value;
-    }
+    public int? EmployeeId { get => fields.EmployeeId[this]; set => fields.EmployeeId[this] = value;}
 
-    public CounterpartyRepresentativesRow()
-        : base()
-    {
-    }
+    //public CounterpartyRepresentativesRow()
+    //    : base()
+    //{
+    //}
 
-    public CounterpartyRepresentativesRow(RowFields fields)
-        : base(fields)
-    {
-    }
+    //public CounterpartyRepresentativesRow(RowFields fields)
+    //    : base(fields)
+    //{
+    //}
 
     public class RowFields : RowFieldsBase
     {

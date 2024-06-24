@@ -188,11 +188,11 @@ export class WaresGrid extends EntityGrid<WaresRow, any> {
 
         first(columns, x => x.field === 'QuantityPerUnit').format = str;
 
-        var category = first(columns, x => x.field === fld.CategoryCategoryName);
+        var category = first(columns, x => x.field === fld.CategoryName);
         category.referencedFields = [fld.CategoryId];
         category.format = ctx => this.selectFormatter(ctx, fld.CategoryId, CategoriesRow.getLookup());
 
-        var counterparty = first(columns, x => x.field === fld.CounterpartyCompanyName);
+        var counterparty = first(columns, x => x.field === fld.CompanyName);
         counterparty.referencedFields = [fld.CounterpartyId];
         counterparty.format = ctx => this.selectFormatter(ctx, fld.CounterpartyId, CounterpartiesRow.getLookup());
 
