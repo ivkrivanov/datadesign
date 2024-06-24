@@ -9,6 +9,8 @@ public class ProductDetailsForm
 {
     [EditLink, Width(200)]
     public int WaresId { get; set; }
+    [EditLink, Width(200)]
+    public string WaresName { get; set; }
     [Width(100), AlignRight, DisplayFormat("#,##0.0000")]
     public double Quantity { get; set; }
     [Width(100), AlignRight, DisplayFormat("#,##0.0000")]

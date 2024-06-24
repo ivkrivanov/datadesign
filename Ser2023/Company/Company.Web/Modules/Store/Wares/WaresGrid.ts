@@ -1,5 +1,5 @@
 import { Decorators, EntityGrid, LookupEditor } from "@serenity-is/corelib";
-import { deepClone, Dictionary, first, formatNumber, htmlEncode, notifyError, parseDecimal, parseInteger, parseQueryString, serviceRequest, localText, toId, trimToNull, tryFirst } from "@serenity-is/corelib/q";
+import { deepClone, Dictionary, Lookup, first, formatNumber, htmlEncode, notifyError, parseDecimal, parseInteger, parseQueryString, serviceRequest, localText, toId, trimToNull, tryFirst } from "@serenity-is/corelib/q";
 import { ExcelExportHelper, PdfExportHelper } from "@serenity-is/extensions";
 import { Column, FormatterContext, NonDataRow } from "@serenity-is/sleekgrid";
 import { WaresColumns, WaresRow, WaresService, CounterpartiesRow, CategoriesRow } from "../../ServerTypes/Store";
@@ -142,7 +142,7 @@ export class WaresGrid extends EntityGrid<WaresRow, any> {
     /**
     * Sorry but you cannot use LookupEditor, e.g. Select2 here, only possible is a SELECT element
     */
-    private selectFormatter(ctx: FormatterContext, idField: string, lookup: Q.Lookup<any>) {
+    private selectFormatter(ctx: FormatterContext, idField: string, lookup: Lookup<any>) {
         if ((ctx.item as NonDataRow).__nonDataRow)
             return htmlEncode(ctx.value);
 

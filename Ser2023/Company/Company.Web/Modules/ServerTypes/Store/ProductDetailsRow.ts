@@ -11,7 +11,6 @@ export interface ProductDetailsRow {
     IsActive?: number;
     TenantId?: number;
     ProductName?: string;
-    ProductCategoryId?: number;
     ProductQuantityPerUnit?: string;
     ProductUnitPrice?: number;
     ProductUnitsInStock?: number;
@@ -19,16 +18,7 @@ export interface ProductDetailsRow {
     ProductReorderLevel?: number;
     ProductDiscontinued?: boolean;
     WaresCode?: string;
-    WaresBarcode?: string;
-    WaresLabel?: string;
     WaresName?: string;
-    WaresImage?: string;
-    WaresCategoryId?: number;
-    WaresMeasureId?: number;
-    WaresQuantityPerUnit?: number;
-    WaresUnitPrice?: number;
-    WaresDiscontinued?: boolean;
-    WaresAccountId?: number;
     LineTotal?: number;
     InsertUserId?: number;
     InsertDate?: string;

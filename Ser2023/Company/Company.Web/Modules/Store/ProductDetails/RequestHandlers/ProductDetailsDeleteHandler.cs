@@ -7,10 +7,10 @@ namespace Company.Store;
 
 public interface IProductDetailsDeleteHandler : IDeleteHandler<MyRow, MyRequest, MyResponse> { }
 
-public class ProductDetailsDeleteHandler: DeleteRequestHandler<MyRow, MyRequest,MyResponse>, IProductDetailsDeleteHandler
+public class ProductDetailsDeleteHandler :
+    DeleteRequestHandler<MyRow, MyRequest,MyResponse>, IProductDetailsDeleteHandler
 {
-    public ProductDetailsDeleteHandler(IRequestContext context)
-        : base(context)
+    public ProductDetailsDeleteHandler(IRequestContext context) : base(context)
     {
     }
 }

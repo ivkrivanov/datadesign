@@ -12,52 +12,30 @@ namespace Company.Store;
 public sealed class CategoriesLangRow : Row<CategoriesLangRow.RowFields>, IIdRow, INameRow, ILocalizationRow
 {
     [DisplayName("Id"), Column("ID"), Identity, IdProperty]
-    public int? Id
-    {
-        get => fields.Id[this];
-        set => fields.Id[this] = value;
-    }
+    public int? Id { get => fields.Id[this]; set => fields.Id[this] = value; }
 
     [DisplayName("Category Id"), Column("CategoryID"), NotNull]
-    public int? CategoryId
-    {
-        get => fields.CategoryId[this];
-        set => fields.CategoryId[this] = value;
-    }
+    public int? CategoryId { get => fields.CategoryId[this]; set => fields.CategoryId[this] = value; }
 
     [DisplayName("Language Id"), Column("LanguageID"), NotNull]
-    public int? LanguageId
-    {
-        get => fields.LanguageId[this];
-        set => fields.LanguageId[this] = value;
-    }
+    public int? LanguageId { get => fields.LanguageId[this]; set => fields.LanguageId[this] = value; }
 
     [DisplayName("Category Name"), Size(40), QuickSearch, NameProperty]
-    public string CategoryName
-    {
-        get => fields.CategoryName[this];
-        set => fields.CategoryName[this] = value;
-    }
+    public string CategoryName { get => fields.CategoryName[this]; set => fields.CategoryName[this] = value; }
 
     [DisplayName("Description")]
-    public string Description
-    {
-        get => fields.Description[this];
-        set => fields.Description[this] = value;
-    }
-    public Field CultureIdField
-    {
-        get => Fields.LanguageId;
-    }
-    public CategoriesLangRow()
-        : base()
-    {
-    }
+    public string Description { get => fields.Description[this]; set => fields.Description[this] = value; }
+    public Field CultureIdField { get => Fields.LanguageId; }
 
-    public CategoriesLangRow(RowFields fields)
-        : base(fields)
-    {
-    }
+    //public CategoriesLangRow()
+    //    : base()
+    //{
+    //}
+
+    //public CategoriesLangRow(RowFields fields)
+    //    : base(fields)
+    //{
+    //}
 
     public class RowFields : RowFieldsBase
     {

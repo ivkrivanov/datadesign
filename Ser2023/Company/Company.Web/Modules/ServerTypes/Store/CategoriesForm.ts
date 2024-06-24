@@ -1,5 +1,5 @@
 ﻿import { CategoriesTypeDialog } from "@/Store/CategoriesType/CategoriesTypeDialog";
-import { LookupEditor, StringEditor, PrefixedContext } from "@serenity-is/corelib";
+import { LookupEditor, StringEditor, ImageUploadEditor, PrefixedContext } from "@serenity-is/corelib";
 import { initFormType } from "@serenity-is/corelib/q";
 
 export interface CategoriesForm {
@@ -7,7 +7,7 @@ export interface CategoriesForm {
     CategoryCode: StringEditor;
     CategoryName: StringEditor;
     Description: StringEditor;
-    Picture: StringEditor;
+    Picture: ImageUploadEditor;
 }
 
 export class CategoriesForm extends PrefixedContext {
@@ -22,13 +22,14 @@ export class CategoriesForm extends PrefixedContext {
 
             var w0 = LookupEditor;
             var w1 = StringEditor;
+            var w2 = ImageUploadEditor;
 
             initFormType(CategoriesForm, [
                 'CategoryTypeId', w0,
                 'CategoryCode', w1,
                 'CategoryName', w1,
                 'Description', w1,
-                'Picture', w1
+                'Picture', w2
             ]);
         }
     }

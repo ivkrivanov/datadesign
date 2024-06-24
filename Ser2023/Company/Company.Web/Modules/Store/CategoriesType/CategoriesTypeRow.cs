@@ -2,7 +2,6 @@ using Company.Administration.Entities;
 using Serenity.ComponentModel;
 using Serenity.Data;
 using Serenity.Data.Mapping;
-using Store;
 using System;
 using System.ComponentModel;
 
@@ -17,62 +16,36 @@ namespace Company.Store;
 public sealed class CategoriesTypeRow : LoggingRow<CategoriesTypeRow.RowFields>, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
 {
     [DisplayName("Category Type Id"), Column("CategoryTypeID"), Identity,IdProperty]
-    public Int32? CategoryTypeId
-    {
-        get => fields.CategoryTypeId[this]; 
-        set => fields.CategoryTypeId[this] = value; 
-    }
+    public Int32? CategoryTypeId { get => fields.CategoryTypeId[this]; set => fields.CategoryTypeId[this] = value; }
 
     [DisplayName("Type"), NotNull] //, NameProperty]
-    public Int16? Type
-    {
-        get => fields.Type[this]; 
-        set => fields.Type[this] = value; 
-    }
+    public Int16? Type { get => fields.Type[this]; set => fields.Type[this] = value; }
 
     [DisplayName("Category Type"), Size(30), NotNull, NameProperty, QuickSearch]
-    public String CategoryType
-    {
-        get => fields.CategoryType[this]; 
-        set => fields.CategoryType[this] = value; 
-    }
+    public String CategoryType { get => fields.CategoryType[this]; set => fields.CategoryType[this] = value; }
 
     #region Tenant & Activ
 
     [Insertable(false), Updatable(false)]
-    public Int32? TenantId
-    {
-        get => fields.TenantId[this]; 
-        set => fields.TenantId[this] = value; 
-    }
+    public Int32? TenantId { get => fields.TenantId[this]; set => fields.TenantId[this] = value; }
 
-    public Int32Field TenantIdField
-    {
-        get => fields.TenantId; 
-    }
+    public Int32Field TenantIdField { get => fields.TenantId; }
 
     [NotNull, Insertable(false), Updatable(true)]
-    public Int16? IsActive
-    {
-        get => fields.IsActive[this]; 
-        set => fields.IsActive[this] = value; 
-    }
+    public Int16? IsActive { get => fields.IsActive[this]; set => fields.IsActive[this] = value; }
 
-    Int16Field IIsActiveRow.IsActiveField
-    {
-        get => fields.IsActive; 
-    }
+    Int16Field IIsActiveRow.IsActiveField { get => fields.IsActive; }
 
     #endregion Tenant & Activ
 
-    public CategoriesTypeRow()
-    { 
-    }
+    //public CategoriesTypeRow()
+    //{ 
+    //}
 
-    public CategoriesTypeRow(RowFields fields)
-        : base(fields)
-    {
-    }
+    //public CategoriesTypeRow(RowFields fields)
+    //    : base(fields)
+    //{
+    //}
 
     public class RowFields : LoggingRowFields
     {

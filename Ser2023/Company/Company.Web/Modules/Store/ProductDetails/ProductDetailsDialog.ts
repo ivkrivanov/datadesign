@@ -8,7 +8,6 @@ export class ProductDetailsDialog extends GridEditorDialog<ProductDetailsRow> {
     protected getFormKey() { return ProductDetailsForm.formKey; }
     protected getLocalTextPrefix() { return ProductDetailsRow.localTextPrefix; }
 
-    //protected form = new ProductDetailsForm(this.idPrefix);
     protected form: ProductDetailsForm;
 
     constructor() {
@@ -17,9 +16,9 @@ export class ProductDetailsDialog extends GridEditorDialog<ProductDetailsRow> {
         this.form = new ProductDetailsForm(this.idPrefix);
 
         this.form.WaresId.changeSelect2(async e => {
-            var itemID = toId(this.form.WaresId.value);
-            if (itemID != null) {
-                this.form.PlanPrice.value = (await WaresRow.getLookupAsync()).itemById[itemID].UnitPrice;
+            var WaresId = toId(this.form.WaresId.value);
+            if (WaresId != null) {
+                this.form.PlanPrice.value = (await WaresRow.getLookupAsync()).itemById[WaresId].UnitPrice;
             }
         });
 

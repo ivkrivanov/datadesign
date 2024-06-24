@@ -34,6 +34,8 @@
     <Compile Remove="Migrations\CompanyDB\CompanyDB_20231124_163000_PersonPhone.cs" />
     <Compile Remove="Migrations\CompanyDB\CompanyDB_20231125_153000_EmailAddress.cs" />
     <None Remove="Migrations\CompanyDB\CompanyDBScript_SqlServer.sql" />
+    <None Remove="migrations\storedb\StoreDBScript_SQLServer.sql" />
+    <TypeScriptCompile Remove="Modules\Store\ProductDetails\ProductDetailsGrid.ts" />
     <None Include="Modules\Administration\Tenant\TenantIndex.cshtml" />
     <Content Update=".eslintrc.json;libman.json;package.json;package-lock.json;sergen.json;tsconfig.json;tslint.json;Modules\tsconfig.json" CopyToOutputDirectory="Never" CopyToPublishDirectory="Never" />
   </ItemGroup>

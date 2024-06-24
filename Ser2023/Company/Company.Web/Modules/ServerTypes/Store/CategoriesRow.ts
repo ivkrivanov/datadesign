@@ -6,7 +6,7 @@ export interface CategoriesRow {
     CategoryCode?: string;
     CategoryName?: string;
     Description?: string;
-    Picture?: number[];
+    Picture?: string;
     IsActive?: number;
     TenantId?: number;
     Type?: number;

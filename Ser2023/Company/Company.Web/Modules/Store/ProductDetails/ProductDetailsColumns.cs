@@ -7,9 +7,9 @@ namespace Company.Store.Columns;
 [BasedOnRow(typeof(ProductDetailsRow), CheckNames = true)]
 public class ProductDetailsColumns
 {
-    [Width(80)]
+    [EditLink, Width(80)]
     public String WaresCode { get; set; }
-    [EditLink, Width(150)]
+    [EditLink, Width(150), AlignRight]
     public String WaresName { get; set; }
     [Width(80), AlignRight]
     public Decimal PlanPrice { get; set; }
