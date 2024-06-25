@@ -5,7 +5,7 @@ export interface StateProvinceRow {
     StateProvinceCode?: string;
     CountryCode?: string;
     CountryName?: string;
-    Name?: string;
+    StateProvinceName?: string;
     TerritoryId?: number;
     IsActive?: number;
     TenantId?: number;

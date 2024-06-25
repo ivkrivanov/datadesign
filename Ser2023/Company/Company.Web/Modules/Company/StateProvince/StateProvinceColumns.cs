@@ -15,7 +15,7 @@ public class StateProvinceColumns
     [EditLink, Width(100)]
     public string CountryName { get; set; }
     [EditLink, Width(200)]
-    public string Name { get; set; }
+    public string StateProvinceName { get; set; }
     [EditLink, Width(50)]
     public int TerritoryId { get; set; }
     //[Width(450)]

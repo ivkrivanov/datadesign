@@ -15,4 +15,8 @@ export class AddressTypeGrid extends EntityGrid<AddressTypeRow, any> {
     constructor(container: JQuery) {
         super(container);
     }
+
+    protected getDefaultSortBy() {
+        return [AddressTypeRow.Fields.AddressTypeId];
+    }
 }

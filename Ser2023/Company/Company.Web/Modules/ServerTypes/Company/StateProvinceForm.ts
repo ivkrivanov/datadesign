@@ -5,7 +5,7 @@ import { initFormType } from "@serenity-is/corelib/q";
 export interface StateProvinceForm {
     StateProvinceCode: StringEditor;
     CountryCode: LookupEditor;
-    Name: StringEditor;
+    StateProvinceName: StringEditor;
     TerritoryId: IntegerEditor;
 }
 
@@ -26,7 +26,7 @@ export class StateProvinceForm extends PrefixedContext {
             initFormType(StateProvinceForm, [
                 'StateProvinceCode', w0,
                 'CountryCode', w1,
-                'Name', w0,
+                'StateProvinceName', w0,
                 'TerritoryId', w2
             ]);
         }

@@ -1,5 +1,4 @@
 using Company.Administration.Entities;
-using FluentMigrator;
 using Serenity.ComponentModel;
 using Serenity.Data;
 using Serenity.Data.Mapping;
@@ -17,18 +16,10 @@ namespace Company.Company;
 public sealed class AddressTypeRow : LoggingRow<AddressTypeRow.RowFields>, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
 {
     [DisplayName("Address Type Id"), Identity, IdProperty]
-    public long? AddressTypeId
-    {
-        get => fields.AddressTypeId[this];
-        set => fields.AddressTypeId[this] = value;
-    }
+    public long? AddressTypeId { get => fields.AddressTypeId[this]; set => fields.AddressTypeId[this] = value; }
 
     [DisplayName("Name"), Size(50), QuickSearch, NameProperty]
-    public string Name
-    {
-        get => fields.Name[this];
-        set => fields.Name[this] = value;
-    }
+    public string Name { get => fields.Name[this]; set => fields.Name[this] = value; }
 
     //[DisplayName("Rowguid"), Column("rowguid"), NotNull, DefaultValue(SystemMethods.NewGuid)]
     //public Guid? Rowguid
@@ -40,40 +31,26 @@ public sealed class AddressTypeRow : LoggingRow<AddressTypeRow.RowFields>, IIdRo
     #region Tenant & Activ
 
     [Insertable(false), Updatable(false)]
-    public Int32? TenantId
-    {
-        get => fields.TenantId[this];
-        set => fields.TenantId[this] = value;
-    }
+    public Int32? TenantId { get => fields.TenantId[this]; set => fields.TenantId[this] = value; }
 
-    public Int32Field TenantIdField
-    {
-        get => fields.TenantId;
-    }
+    public Int32Field TenantIdField { get => fields.TenantId; }
 
     [NotNull, Insertable(false), Updatable(true)]
-    public Int16? IsActive
-    {
-        get => fields.IsActive[this];
-        set => fields.IsActive[this] = value;
-    }
+    public Int16? IsActive { get => fields.IsActive[this]; set => fields.IsActive[this] = value; }
 
-    Int16Field IIsActiveRow.IsActiveField
-    {
-        get => fields.IsActive;
-    }
+    Int16Field IIsActiveRow.IsActiveField { get => fields.IsActive; }
 
     #endregion Tenant & Activ
 
-    public AddressTypeRow()
-    : base()
-    {
-    }
+    //public AddressTypeRow()
+    //: base()
+    //{
+    //}
 
-    public AddressTypeRow(RowFields fields)
-    : base(fields)
-    {
-    }
+    //public AddressTypeRow(RowFields fields)
+    //: base(fields)
+    //{
+    //}
 
     public class RowFields : LoggingRowFields
     {

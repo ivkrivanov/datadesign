@@ -6,7 +6,7 @@ export interface AddressRow {
     AddressLine2?: string;
     City?: string;
     CountryCode?: string;
-    Name?: string;
+    CountryName?: string;
     StateProvinceId?: number;
     StateProvinceCode?: string;
     StateProvinceName?: string;

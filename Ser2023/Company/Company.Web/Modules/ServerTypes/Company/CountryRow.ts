@@ -2,7 +2,7 @@
 
 export interface CountryRow {
     CountryCode?: string;
-    Name?: string;
+    CountryName?: string;
     IsActive?: number;
     TenantId?: number;
     InsertUserId?: number;
@@ -14,7 +14,7 @@ export interface CountryRow {
 export abstract class CountryRow {
     static readonly idProperty = 'CountryCode';
     static readonly isActiveProperty = 'IsActive';
-    static readonly nameProperty = 'CountryCode';
+    static readonly nameProperty = 'CountryName';
     static readonly localTextPrefix = 'Company.Country';
     static readonly lookupKey = 'Company.Country';
 

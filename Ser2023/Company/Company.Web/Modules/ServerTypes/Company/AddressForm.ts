@@ -7,7 +7,6 @@ export interface AddressForm {
     AddressLine1: StringEditor;
     AddressLine2: StringEditor;
     CountryCode: LookupEditor;
-    Name: StringEditor;
     City: LookupEditor;
     StateProvinceId: LookupEditor;
     PostalCode: StringEditor;
@@ -30,7 +29,6 @@ export class AddressForm extends PrefixedContext {
                 'AddressLine1', w0,
                 'AddressLine2', w0,
                 'CountryCode', w1,
-                'Name', w0,
                 'City', w1,
                 'StateProvinceId', w1,
                 'PostalCode', w0

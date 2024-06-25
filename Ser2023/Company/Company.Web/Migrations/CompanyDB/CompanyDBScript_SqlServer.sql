@@ -29,7 +29,7 @@ GO
 
 CREATE TABLE [person].[Country](
 	[CountryCode] [nvarchar](3) NOT NULL,
-	[Name] [dbo].[Name] NOT NULL,
+	[CountryName] [dbo].[Name] NOT NULL,
     [InsertDate] [datetime] NOT NULL,
 	[InsertUserId] [int] NOT NULL,
 	[UpdateDate] [datetime] NULL,
@@ -69,6 +69,38 @@ GO
 
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Lookup table containing the ISO standard codes for countries and regions.' , @level0type=N'SCHEMA',@level0name=N'person', @level1type=N'TABLE',@level1name=N'Country'
 GO
+
+INSERT [person].[Country] ([CountryCode],[CountryName]) VALUES (N'AD', N'Andora')
+INSERT [person].[Country] ([CountryCode],[CountryName]) VALUES (N'AE', N'United Arab Emirates')
+INSERT [person].[Country] ([CountryCode],[CountryName]) VALUES (N'AF', N'Afghanistan')
+INSERT [person].[Country] ([CountryCode],[CountryName]) VALUES (N'AG', N'Antigua and Barbuda')
+INSERT [person].[Country] ([CountryCode],[CountryName]) VALUES (N'AI', N'Anguilla')
+INSERT [person].[Country] ([CountryCode],[CountryName]) VALUES (N'AL', N'Albania')
+INSERT [person].[Country] ([CountryCode],[CountryName]) VALUES (N'AM', N'Armenia')
+INSERT [person].[Country] ([CountryCode],[CountryName]) VALUES (N'AN', N'Netherlands Antilles')
+INSERT [person].[Country] ([CountryCode],[CountryName]) VALUES (N'AO', N'Angola')
+INSERT [person].[Country] ([CountryCode],[CountryName]) VALUES (N'AQ', N'Antarctica')
+INSERT [person].[Country] ([CountryCode],[CountryName]) VALUES (N'AR', N'Argentina')
+INSERT [person].[Country] ([CountryCode],[CountryName]) VALUES (N'AS', N'American Samoa')
+INSERT [person].[Country] ([CountryCode],[CountryName]) VALUES (N'AT', N'Austria')
+INSERT [person].[Country] ([CountryCode],[CountryName]) VALUES (N'AU', N'Australia')
+INSERT [person].[Country] ([CountryCode],[CountryName]) VALUES (N'AW', N'Aruba')
+INSERT [person].[Country] ([CountryCode],[CountryName]) VALUES (N'AZ', N'Azerbaijan')
+INSERT [person].[Country] ([CountryCode],[CountryName]) VALUES (N'BA', N'Bosnia and Herzegovina')
+INSERT [person].[Country] ([CountryCode],[CountryName]) VALUES (N'BB', N'Barbados')
+INSERT [person].[Country] ([CountryCode],[CountryName]) VALUES (N'BD', N'Bangladesh')
+INSERT [person].[Country] ([CountryCode],[CountryName]) VALUES (N'BE', N'Belgium')
+INSERT [person].[Country] ([CountryCode],[CountryName]) VALUES (N'BF', N'Burkina Faso')
+INSERT [person].[Country] ([CountryCode],[CountryName]) VALUES (N'BG', N'Bulgaria')
+INSERT [person].[Country] ([CountryCode],[CountryName]) VALUES (N'BH', N'Bahrain')
+INSERT [person].[Country] ([CountryCode],[CountryName]) VALUES (N'BI', N'Burundi')
+INSERT [person].[Country] ([CountryCode],[CountryName]) VALUES (N'BJ', N'Benin')
+INSERT [person].[Country] ([CountryCode],[CountryName]) VALUES (N'BM', N'Bermuda')
+INSERT [person].[Country] ([CountryCode],[CountryName]) VALUES (N'BN', N'Brunei')
+INSERT [person].[Country] ([CountryCode],[CountryName]) VALUES (N'BO', N'Bolivia')
+INSERT [person].[Country] ([CountryCode],[CountryName]) VALUES (N'BR', N'Brazil')
+INSERT [person].[Country] ([CountryCode],[CountryName]) VALUES (N'BS', N'Bahamas, The')
+INSERT [person].[Country] ([CountryCode],[CountryName]) VALUES (N'BT', N'Bhutan')
 
 /****** Object:  Table [person].[StateProvince]    Script Date: 3.12.2023 г. 12:43:45 ******/
 SET ANSI_NULLS ON

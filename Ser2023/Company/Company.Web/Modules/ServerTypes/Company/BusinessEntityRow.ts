@@ -10,8 +10,6 @@ export interface BusinessEntityRow {
     MiddleName?: string;
     LastName?: string;
     Suffix?: string;
-    Name?: string;
-    BusinessEntityAddresses?: number[];
     InsertUserId?: number;
     InsertDate?: string;
     UpdateUserId?: number;

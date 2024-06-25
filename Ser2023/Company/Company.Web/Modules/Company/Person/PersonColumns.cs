@@ -1,4 +1,3 @@
-using Company.Company;
 using Serenity.ComponentModel;
 using System.ComponentModel;
 
@@ -17,6 +16,4 @@ public class PersonColumns
     public string MiddleName { get; set; }
     public string LastName { get; set; }
     public string Suffix { get; set; }
-    //public short IsActive { get; set; }
-    //public int TenantId { get; set; }
 }

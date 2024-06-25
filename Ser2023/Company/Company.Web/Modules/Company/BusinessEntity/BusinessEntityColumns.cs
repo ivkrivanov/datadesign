@@ -10,7 +10,6 @@ public class BusinessEntityColumns
     [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
     public int BusinessEntityId { get; set; }
 
-
     [EditLink]
     public string PersonType { get; set; }
     public string Title { get; set; }
@@ -20,12 +19,4 @@ public class BusinessEntityColumns
     public string Suffix { get; set; }
 
 
-
-
-
-
-
-
-    //public short IsActive { get; set; }
-    //public int TenantId { get; set; }
 }

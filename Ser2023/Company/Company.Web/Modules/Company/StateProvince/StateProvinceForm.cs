@@ -9,7 +9,7 @@ public class StateProvinceForm
 {
     public string StateProvinceCode { get; set; }
     public string CountryCode { get; set; }
-    public string Name { get; set; }
+    public string StateProvinceName { get; set; }
     public int TerritoryId { get; set; }
     //public Guid Rowguid { get; set; }
 }
