@@ -8,6 +8,7 @@ export interface PersonForm {
     MiddleName: StringEditor;
     LastName: StringEditor;
     Suffix: StringEditor;
+    Addresses: StringEditor;
 }
 
 export class PersonForm extends PrefixedContext {
@@ -28,7 +29,8 @@ export class PersonForm extends PrefixedContext {
                 'FirstName', w0,
                 'MiddleName', w0,
                 'LastName', w0,
-                'Suffix', w0
+                'Suffix', w0,
+                'Addresses', w0
             ]);
         }
     }

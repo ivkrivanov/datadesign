@@ -1,10 +1,8 @@
 using Company.Administration.Entities;
-using Company.Company.Pages;
 using Serenity.ComponentModel;
 using Serenity.Data;
 using Serenity.Data.Mapping;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace Company.Company;
@@ -21,45 +19,26 @@ public sealed class BusinessEntityAddressRow : LoggingRow<BusinessEntityAddressR
     const string jAddress = nameof(jAddress);
     const string jAddressType = nameof(jAddressType);
 
-    [DisplayName("Business Entity"), NotNull, ForeignKey("[person].[BusinessEntity]", "BusinessEntityId"), LeftJoin(jBusinessEntity), IdProperty]
-    public long? BusinessEntityId
-    {
-        get => fields.BusinessEntityId[this];
-        set => fields.BusinessEntityId[this] = value;
-    }
+    [DisplayName("Business Entity"), NotNull, ForeignKey(typeof(BusinessEntityRow)), LeftJoin(jBusinessEntity), IdProperty]
+    public long? BusinessEntityId { get => fields.BusinessEntityId[this]; set => fields.BusinessEntityId[this] = value; }
 
-    [DisplayName("Address"), NotNull, ForeignKey("[person].[Address]", "AddressId"), LeftJoin(jAddress)] //, TextualField(nameof(AddressLine1))]
-    public long? AddressId
-    {
-        get => fields.AddressId[this];
-        set => fields.AddressId[this] = value;
-    }
+    [DisplayName("Address"), NotNull, ForeignKey(typeof(AddressRow)), LeftJoin(jAddress)] //, TextualField(nameof(AddressLine1))]
+    public long? AddressId { get => fields.AddressId[this]; set => fields.AddressId[this] = value; }
 
-    [DisplayName("Address Type"), NotNull, ForeignKey("[person].[AddressType]", "AddressTypeId"), LeftJoin(jAddressType)] //, TextualField(nameof(AddressTypeName)), NameProperty]
+    [DisplayName("Address Type"), NotNull, ForeignKey(typeof(AddressTypeRow)), LeftJoin(jAddressType)] //, TextualField(nameof(AddressTypeName)), NameProperty]
     [LookupEditor(typeof(AddressTypeRow), InplaceAdd = true)]
-    public long? AddressTypeId
-    {
-        get => fields.AddressTypeId[this];
-        set => fields.AddressTypeId[this] = value;
-    }
+    public long? AddressTypeId { get => fields.AddressTypeId[this]; set => fields.AddressTypeId[this] = value; }
 
-    //[DisplayName("AddressTypeName"), Expression($"{jAddressType}.[Name]"), Column("Name"), LookupInclude]
-    //[LookupEditor(typeof(AddressTypeRow), InplaceAdd = true)]
-    //public string AddressTypeName
-    //{
-    //    get => fields.AddressTypeName[this];
-    //    set => fields.AddressTypeName[this] = value;
-    //}
+    [DisplayName("AddressTypeName"), Origin(jAddressType, nameof(AddressTypeRow.AddressTypeName)), LookupInclude]  // Expression($"{jAddressType}.[Name]"), Column("Name"), LookupInclude]
+    [LookupEditor(typeof(AddressTypeRow), InplaceAdd = true)]
+    public string AddressTypeName { get => fields.AddressTypeName[this]; set => fields.AddressTypeName[this] = value; }
 
 
     //[DisplayName("Addresses"), LookupEditor(typeof(AddressRow), Multiple = true), NotMapped]
-    //[LinkingSetRelation(typeof(BusinessEntityAddressRow), "BusinessEntity", "AddressId")]
+    //[MasterDetailRelation(foreignKey: nameof(AddressRow.AddressId))]
+    ////[LinkingSetRelation(typeof(AddressRow), "AddressId")]
     //[MinSelectLevel(SelectLevel.Details), QuickFilter(CssClass = "hidden-xs")]
-    //public List<int> Addresses
-    //{
-    //    get => fields.Addresses[this];
-    //    set => fields.Addresses[this] = value;
-    //}
+    //public List<AddressRow> Addresses { get => fields.Addresses[this]; set => fields.Addresses[this] = value; }
 
     //[DisplayName("Rowguid"), Column("rowguid")]
     //public Guid? Rowguid
@@ -85,28 +64,14 @@ public sealed class BusinessEntityAddressRow : LoggingRow<BusinessEntityAddressR
     #region Tenant & Activ
 
     [Insertable(false), Updatable(false)]
-    public Int32? TenantId
-    {
-        get => fields.TenantId[this];
-        set => fields.TenantId[this] = value;
-    }
+    public Int32? TenantId { get => fields.TenantId[this]; set => fields.TenantId[this] = value; }
 
-    public Int32Field TenantIdField
-    {
-        get => fields.TenantId;
-    }
+    public Int32Field TenantIdField { get => fields.TenantId; }
 
     [NotNull, Insertable(false), Updatable(true)]
-    public Int16? IsActive
-    {
-        get => fields.IsActive[this];
-        set => fields.IsActive[this] = value;
-    }
+    public Int16? IsActive { get => fields.IsActive[this]; set => fields.IsActive[this] = value; }
 
-    Int16Field IIsActiveRow.IsActiveField
-    {
-        get => fields.IsActive;
-    }
+    Int16Field IIsActiveRow.IsActiveField { get => fields.IsActive; }
 
     #endregion Tenant & Activ
 
@@ -115,12 +80,11 @@ public sealed class BusinessEntityAddressRow : LoggingRow<BusinessEntityAddressR
         public Int64Field BusinessEntityId;
         public Int64Field AddressId;
         public Int64Field AddressTypeId;
+        public StringField AddressTypeName;
         //public GuidField Rowguid;
-        //public ListField<int> Addresses;
-        //public StringField AddressTypeName;
+        //public ListField<AddressRow> Addresses;
+
         public Int16Field IsActive;
         public Int32Field TenantId;
-
-
     }
 }

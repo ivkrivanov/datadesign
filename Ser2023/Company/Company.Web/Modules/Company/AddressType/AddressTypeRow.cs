@@ -19,7 +19,7 @@ public sealed class AddressTypeRow : LoggingRow<AddressTypeRow.RowFields>, IIdRo
     public long? AddressTypeId { get => fields.AddressTypeId[this]; set => fields.AddressTypeId[this] = value; }
 
     [DisplayName("Name"), Size(50), QuickSearch, NameProperty]
-    public string Name { get => fields.Name[this]; set => fields.Name[this] = value; }
+    public string AddressTypeName { get => fields.AddressTypeName[this]; set => fields.AddressTypeName[this] = value; }
 
     //[DisplayName("Rowguid"), Column("rowguid"), NotNull, DefaultValue(SystemMethods.NewGuid)]
     //public Guid? Rowguid
@@ -42,20 +42,10 @@ public sealed class AddressTypeRow : LoggingRow<AddressTypeRow.RowFields>, IIdRo
 
     #endregion Tenant & Activ
 
-    //public AddressTypeRow()
-    //: base()
-    //{
-    //}
-
-    //public AddressTypeRow(RowFields fields)
-    //: base(fields)
-    //{
-    //}
-
     public class RowFields : LoggingRowFields
     {
         public Int64Field AddressTypeId;
-        public StringField Name;
+        public StringField AddressTypeName;
         //public GuidField Rowguid;
 
         public Int16Field IsActive;

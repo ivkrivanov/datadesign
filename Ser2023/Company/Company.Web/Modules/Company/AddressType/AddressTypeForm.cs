@@ -7,6 +7,6 @@ namespace Company.Company.Forms;
 [BasedOnRow(typeof(AddressTypeRow), CheckNames = true)]
 public class AddressTypeForm
 {
-    public string Name { get; set; }
+    public string AddressTypeName { get; set; }
     //public Guid Rowguid { get; set; }
 }

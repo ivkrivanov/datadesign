@@ -8,6 +8,7 @@ export interface PersonRow {
     MiddleName?: string;
     LastName?: string;
     Suffix?: string;
+    FullName?: string;
     IsActive?: number;
     TenantId?: number;
     InsertUserId?: number;
@@ -19,7 +20,7 @@ export interface PersonRow {
 export abstract class PersonRow {
     static readonly idProperty = 'BusinessEntityId';
     static readonly isActiveProperty = 'IsActive';
-    static readonly nameProperty = 'LastName';
+    static readonly nameProperty = 'FullName';
     static readonly localTextPrefix = 'Person.Person';
     static readonly lookupKey = 'Company.Person';
 

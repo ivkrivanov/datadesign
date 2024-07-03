@@ -5,6 +5,8 @@ using Serenity.Data.Mapping;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using static Company.Company.PermissionKeys;
+//using static Company.Company.PermissionKeys;
 //using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Company.Company;
@@ -17,13 +19,18 @@ namespace Company.Company;
 //[LeftJoin("per", "[person].[Person]", "per.[BusinessEntityId] = T0.[BusinessEntityId]", RowType = typeof(PersonRow), TitlePrefix = "")]
 [LeftJoin("adr", "[person].[BusinessEntityAddress]", "adr.[BusinessEntityId] = T0.[BusinessEntityId]", RowType = typeof(BusinessEntityAddressRow), TitlePrefix = "")]
 [UpdatableExtension(jPerson, typeof(PersonRow), CascadeDelete = true)]
+[UpdatableExtension(JAddressType, typeof(AddressTypeRow), CascadeDelete = true)]
 [LookupScript("Company.BusinessEntity", LookupType = typeof(MultiTenantRowLookupScript<>))]
 
 public sealed class BusinessEntityRow : LoggingRow<BusinessEntityRow.RowFields>, IIdRow, IIsActiveRow, IMultiTenantRow
 {
     const string jPerson = nameof(jPerson);
+    const string JAddressType = nameof(JAddressType);
+    const string JAddress = nameof(JAddress);
+    const string JBusinessEntityAddress = nameof(JBusinessEntityAddress);
 
     [DisplayName("Business Entity Id"), PrimaryKey, ForeignKey(typeof(PersonRow)), LeftJoin(jPerson), Updatable]
+    //[ForeignKey(typeof(AddressTypeRow)), LeftJoin(JAddressType), Updatable]
     [Column("BusinessEntityId"), Identity, IdProperty]
     public int? BusinessEntityId { get => fields.BusinessEntityId[this]; set => fields.BusinessEntityId[this] = value; }
 
@@ -47,19 +54,33 @@ public sealed class BusinessEntityRow : LoggingRow<BusinessEntityRow.RowFields>,
     [DisplayName("Suffix"), Origin(jPerson, nameof(PersonRow.Suffix))]
     public string Suffix { get => fields.Suffix[this]; set => fields.Suffix[this] = value; }
 
+    [DisplayName("FullName"), Origin(jPerson, nameof(PersonRow.FullName))]
+    public string FullName { get => fields.FullName[this]; set => fields.FullName[this] = value; }
+
     #endregion Person
 
-    #region EntityAddress
+    #region EntityAddressType
 
-    //[DisplayName("AddressType"), LookupEditor(typeof(AddressTypeRow), Multiple = true), NotMapped]
-    //public string Name { get=> fields.Name[this]; set=> fields.Name[this] = value; }
+    [DisplayName("AddressType"), LookupEditor(typeof(AddressTypeRow), Multiple = true), NotMapped]
+    public string Name { get => fields.Name[this]; set => fields.Name[this] = value; }
+
+    #endregion EntityAddressType
+
+    #region Address
+
+    //[DisplayName("EntityAddress"), Origin(JBusinessEntityAddress, nameof(BusinessEntityAddressRow.BusinessEntityId))]
+    //public int? BEAId { get => fields.BEAId[this]; set { fields.BEAId[this] = value; } }
+
 
     //[DisplayName("Addresses"), LookupEditor(typeof(AddressRow), Multiple = true), NotMapped]
-    //[LinkingSetRelation(typeof(BusinessEntityAddressRow), "BusinessEntityId", "AddressId")]
+    //[LinkingSetRelation(typeof(AddressRow), "BusinessEntityId", "AddressId")]
     //[MinSelectLevel(SelectLevel.Details), QuickFilter(CssClass = "hidden-xs")]
-    //public List<int> BusinessEntityAddresses { get => fields.BusinessEntityAddresses[this]; set => fields.BusinessEntityAddresses[this] = value; }
 
-    #endregion
+
+    [DisplayName("Addresses"), MasterDetailRelation(foreignKey: nameof(BusinessEntityAddressRow.BusinessEntityId)), NotMapped]
+    public List<BusinessEntityAddressRow> Addresses { get => fields.Addresses[this]; set => fields.Addresses[this] = value; }
+
+    #endregion Address
 
     #region Tenant & Activ
 
@@ -87,11 +108,12 @@ public sealed class BusinessEntityRow : LoggingRow<BusinessEntityRow.RowFields>,
         public StringField FirstName;
         public StringField MiddleName;
         public StringField LastName;
-        //public StringField FullName;
+        public StringField FullName;
         public StringField Suffix;
-        //public StringField Name;
+        public StringField Name;
 
-        //public ListField<int> BusinessEntityAddresses;
+        //public Int32Field BEAId;
+        public ListField<BusinessEntityAddressRow> Addresses;
 
 
 

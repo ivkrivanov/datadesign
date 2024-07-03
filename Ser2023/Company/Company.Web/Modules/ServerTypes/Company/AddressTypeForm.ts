@@ -2,7 +2,7 @@
 import { initFormType } from "@serenity-is/corelib/q";
 
 export interface AddressTypeForm {
-    Name: StringEditor;
+    AddressTypeName: StringEditor;
 }
 
 export class AddressTypeForm extends PrefixedContext {
@@ -18,7 +18,7 @@ export class AddressTypeForm extends PrefixedContext {
             var w0 = StringEditor;
 
             initFormType(AddressTypeForm, [
-                'Name', w0
+                'AddressTypeName', w0
             ]);
         }
     }

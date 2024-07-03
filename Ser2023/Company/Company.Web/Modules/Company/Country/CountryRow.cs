@@ -19,7 +19,7 @@ public sealed class CountryRow : LoggingRow<CountryRow.RowFields>, IIdRow, IName
     [DisplayName("Country Code"), Size(3), PrimaryKey, NotNull, IdProperty, QuickSearch]
     public string CountryCode { get => fields.CountryCode[this]; set => fields.CountryCode[this] = value; }
 
-    [DisplayName("Country Name"), Size(50), NotNull, NameProperty]
+    [DisplayName("Country Name"), Size(50), NotNull, NameProperty, QuickSearch]
     public string CountryName { get => fields.CountryName[this]; set => fields.CountryName[this] = value; }
 
     #region Tenant & Activ

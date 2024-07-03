@@ -20,18 +20,15 @@ public sealed class StateProvinceRow : LoggingRow<StateProvinceRow.RowFields>, I
     [DisplayName("State Province Id"), Identity, IdProperty]
     public int? StateProvinceId { get => fields.StateProvinceId[this]; set => fields.StateProvinceId[this] = value; }
 
-    [DisplayName("Province"), Size(5), NotNull, QuickSearch, NameProperty]
+    [DisplayName("Province Code"), Size(5), NotNull, QuickSearch]
     public string StateProvinceCode { get => fields.StateProvinceCode[this]; set => fields.StateProvinceCode[this] = value; }
 
-    [DisplayName("Name"), Size(50), NotNull]
+    [DisplayName("Province Name"), Size(50), NotNull, QuickSearch, NameProperty]
     public string StateProvinceName { get => fields.StateProvinceName[this]; set => fields.StateProvinceName[this] = value; }
-
-    [DisplayName("Territory Id"), NotNull]
-    public int? TerritoryId { get => fields.TerritoryId[this]; set => fields.TerritoryId[this] = value; }
 
     #region Country
 
-    [DisplayName("Country"), Size(3), NotNull, ForeignKey(typeof(CountryRow)), LeftJoin(jCountryCode), TextualField(nameof(CountryCode)), LookupInclude]
+    [DisplayName("Country"), Size(3), NotNull, ForeignKey(typeof(CountryRow)), LeftJoin(jCountryCode), TextualField(nameof(CountryName)), LookupInclude]
     [LookupEditor(typeof(CountryRow), InplaceAdd = true)]
     public string CountryCode { get => fields.CountryCode[this]; set => fields.CountryCode[this] = value; }
 
@@ -73,7 +70,6 @@ public sealed class StateProvinceRow : LoggingRow<StateProvinceRow.RowFields>, I
         public StringField CountryCode;
         public StringField CountryName;
         public StringField StateProvinceName;
-        public Int32Field TerritoryId;
         //public GuidField Rowguid;
         public Int16Field IsActive;
         public Int32Field TenantId;

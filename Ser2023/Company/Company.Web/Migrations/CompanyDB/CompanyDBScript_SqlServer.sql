@@ -216,7 +216,7 @@ GO
 
 CREATE TABLE [person].[AddressType](
 	[AddressTypeId] [int] IDENTITY(1,1) NOT NULL,
-	[Name] [dbo].[Name] NOT NULL,
+	[AddressTypeName] [dbo].[Name] NOT NULL,
 	--[rowguid] [uniqueidentifier] ROWGUIDCOL  NOT NULL,
     [InsertDate] [datetime] NOT NULL,
 	[InsertUserId] [int] NOT NULL,

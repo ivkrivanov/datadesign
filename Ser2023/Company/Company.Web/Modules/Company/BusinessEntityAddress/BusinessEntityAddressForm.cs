@@ -10,11 +10,11 @@ namespace Company.Company.Forms;
 public class BusinessEntityAddressForm
 {
 
-    public long AddressId { get; set; }
+    //public long AddressId { get; set; }
     public long AddressTypeId { get; set; }
     //public string AddressTypeName {  get; set; }
-    //[Category("Address Type")]
-    //public string AddressTypeName { get; set; }
+    [Category("Address Type")]
+    public string AddressTypeName { get; set; }
     //[Category("Addresses")]
     //public List<int> Addresses { get; set; }
     //public Guid Rowguid { get; set; }

@@ -1,5 +1,6 @@
 using Serenity.ComponentModel;
-using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace Company.Company.Forms;
 
@@ -7,9 +8,14 @@ namespace Company.Company.Forms;
 [BasedOnRow(typeof(StateProvinceRow), CheckNames = true)]
 public class StateProvinceForm
 {
+    [Category("Province Code")]
+    [HalfWidth]
     public string StateProvinceCode { get; set; }
-    public string CountryCode { get; set; }
+    [HalfWidth]
     public string StateProvinceName { get; set; }
-    public int TerritoryId { get; set; }
+
+    [Category("Country")]
+    public string CountryCode { get; set; }
+
     //public Guid Rowguid { get; set; }
 }

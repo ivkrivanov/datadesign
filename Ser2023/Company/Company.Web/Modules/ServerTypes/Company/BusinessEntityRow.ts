@@ -1,4 +1,5 @@
-﻿import { getLookup, getLookupAsync, fieldsProxy } from "@serenity-is/corelib/q";
+﻿import { BusinessEntityAddressRow } from "./BusinessEntityAddressRow";
+import { getLookup, getLookupAsync, fieldsProxy } from "@serenity-is/corelib/q";
 
 export interface BusinessEntityRow {
     BusinessEntityId?: number;
@@ -9,7 +10,10 @@ export interface BusinessEntityRow {
     FirstName?: string;
     MiddleName?: string;
     LastName?: string;
+    FullName?: string;
     Suffix?: string;
+    Name?: string;
+    Addresses?: BusinessEntityAddressRow[];
     InsertUserId?: number;
     InsertDate?: string;
     UpdateUserId?: number;

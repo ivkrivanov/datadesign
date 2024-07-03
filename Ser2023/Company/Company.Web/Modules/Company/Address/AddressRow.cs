@@ -7,6 +7,7 @@ using System.ComponentModel;
 
 namespace Company.Company;
 
+
 [ConnectionKey("Company"), Module("Company"), TableName("[person].[Address]")]
 [DisplayName("Address"), InstanceName("Address")]
 [ReadPermission("Administration:General")]
@@ -26,13 +27,18 @@ public sealed class AddressRow : LoggingRow<AddressRow.RowFields>, IIdRow, IName
     [DisplayName("Address Line2"), Size(60)]
     public string AddressLine2 { get => fields.AddressLine2[this]; set => fields.AddressLine2[this] = value; }
 
-    [DisplayName("City"), Size(30), LookupEditor(typeof(Lookups.AddressCityLookup), CascadeFrom = "StateProvince", AutoComplete = true), NotNull]
+    [DisplayName("City"), Size(30), LookupEditor(typeof(Lookups.AddressCityLookup), InplaceAdd = true, AutoComplete = true), NotNull] //CascadeFrom = "StateProvince"
     public string City { get => fields.City[this]; set => fields.City[this] = value; }
+
+    [DisplayName("Postal Code"), Size(15), NotNull]
+    public string PostalCode { get => fields.PostalCode[this]; set => fields.PostalCode[this] = value; }
 
     #region Country
 
-    [DisplayName("Country"), NotNull, ForeignKey(typeof(CountryRow)), LeftJoin(jCountryCode), TextualField(nameof(CountryCode)), LookupInclude]
-    [LookupEditor(typeof(CountryRow), InplaceAdd = true)]
+    [DisplayName("Country"), NotNull, TextualField(nameof(CountryCode)), LookupInclude]
+    [ForeignKey(typeof(CountryRow), nameof(CountryRow.CountryCode)), LeftJoin(jCountryCode)]
+    //[LookupEditor(typeof(CountryRow), InplaceAdd = true)]
+    [AsyncLookupEditor(typeof(Lookups.AddressCountryLookup), AutoComplete = true, InplaceAdd = true)]
     public string CountryCode { get => fields.CountryCode[this]; set => fields.CountryCode[this] = value; }
 
     [DisplayName("Country"), Origin(jCountryCode, nameof(CountryRow.CountryName)), LookupInclude]
@@ -42,8 +48,9 @@ public sealed class AddressRow : LoggingRow<AddressRow.RowFields>, IIdRow, IName
 
     #region Province
 
-    [DisplayName("State Province"), NotNull, ForeignKey(typeof(StateProvinceRow)), LeftJoin(jStateProvince), TextualField(nameof(StateProvinceName)), LookupInclude]
-    [LookupEditor(typeof(StateProvinceRow), InplaceAdd = true)]
+    [DisplayName("State Province"), NotNull, LookupInclude, TextualField(nameof(StateProvinceName))]
+    [ForeignKey(typeof(StateProvinceRow), nameof(StateProvinceRow.StateProvinceId)), LeftJoin(jStateProvince)] // )]
+    [LookupEditor(typeof(StateProvinceRow), AutoComplete = true, InplaceAdd = true)] //CascadeFrom = "Country", 
     public int? StateProvinceId { get => fields.StateProvinceId[this]; set => fields.StateProvinceId[this] = value; }
 
     [DisplayName("State Province Code"), Origin(jStateProvince, nameof(StateProvinceRow.StateProvinceCode)), LookupInclude, MinSelectLevel(SelectLevel.List)]
@@ -53,9 +60,6 @@ public sealed class AddressRow : LoggingRow<AddressRow.RowFields>, IIdRow, IName
     public string StateProvinceName { get => fields.StateProvinceName[this]; set => fields.StateProvinceName[this] = value; }
 
     #endregion Province
-
-    [DisplayName("Postal Code"), Size(15), NotNull]
-    public string PostalCode { get => fields.PostalCode[this]; set => fields.PostalCode[this] = value; }
 
     //[DisplayName("Rowguid"), Column("rowguid"), NotNull, DefaultValue(SystemMethods.NewGuid)]
     //public Guid? Rowguid
@@ -78,8 +82,6 @@ public sealed class AddressRow : LoggingRow<AddressRow.RowFields>, IIdRow, IName
 
     #endregion Tenant & Activ
 
-    //public AddressRow() : base() { }
-    //public AddressRow(RowFields fields) : base() { }
     public class RowFields : LoggingRowFields
     {
         public Int64Field AddressId;
