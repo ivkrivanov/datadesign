@@ -41,7 +41,8 @@ namespace Serene.Northwind.Entities
         {
             get => fields.Picture[this];
             set => fields.Picture[this] = value;
-        }
+        }
+
         public CategoryRow()
         {
         }

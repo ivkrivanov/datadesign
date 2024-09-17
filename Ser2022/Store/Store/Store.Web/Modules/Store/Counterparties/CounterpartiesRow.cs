@@ -126,7 +126,7 @@ namespace Store.Store.Entities
         }
 
         [NotesEditor, NotMapped]
-        public List<NoteRow> NotesList
+        public List<NotesRow> NotesList
         {
             get => Fields.NotesList[this]; 
             set =>Fields.NotesList[this] = value; 
@@ -195,7 +195,7 @@ namespace Store.Store.Entities
             public Int16Field IsActive;
             public Int32Field TenantId;
 
-            public RowListField<NoteRow> NotesList;
+            public RowListField<NotesRow> NotesList;
             public ListField<Int32> Representatives;
             public DateTimeField LastContactDate;
             public Int32Field LastContactedBy;

@@ -1,0 +1,142 @@
+{
+  "RootNamespace": "Store",
+  "ServerTypings": {
+    "LocalTexts": true
+  },
+  "EndOfLine": "LF",
+  "Restore": {
+    "Exclude": [
+      "/**/*"
+    ]
+  },
+  "Connections": [
+    {
+      "Key": "Store",
+      "Tables": [
+        {
+          "Tablename": "dbo.Categories",
+          "Identifier": "Categories",
+          "Module": "Store",
+          "PermissionKey": "Store.Categories"
+        },
+        {
+          "Tablename": "dbo.CategoriesLang",
+          "Identifier": "CategoriesLang",
+          "Module": "Store",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.Counterparties",
+          "Identifier": "Counterparties",
+          "Module": "Store",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.CounterpartyDetails",
+          "Identifier": "CounterpartyDetails",
+          "Module": "Store",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.CounterpartyRepresentatives",
+          "Identifier": "CounterpartyRepresentatives",
+          "Module": "Store",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.DocumentType",
+          "Identifier": "DocumentType",
+          "Module": "Store",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.Employees",
+          "Identifier": "Employees",
+          "Module": "Store",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.Measures",
+          "Identifier": "Measures",
+          "Module": "Store",
+          "PermissionKey": "Store:Measures"
+        },
+        {
+          "Tablename": "dbo.Notes",
+          "Identifier": "Notes",
+          "Module": "Store",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.OperationType",
+          "Identifier": "OperationType",
+          "Module": "Store",
+          "PermissionKey": "Store:OperationType"
+        },
+        {
+          "Tablename": "dbo.Product Details",
+          "Identifier": "ProductDetails",
+          "Module": "Store",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.ProductLang",
+          "Identifier": "ProductLang",
+          "Module": "Store",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.Products",
+          "Identifier": "Products",
+          "Module": "Store",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.Shippers",
+          "Identifier": "Shippers",
+          "Module": "Store",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.Shops",
+          "Identifier": "Shops",
+          "Module": "Store",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.Wares",
+          "Identifier": "Wares",
+          "Module": "Store",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.WaresLang",
+          "Identifier": "WaresLang",
+          "Module": "Store",
+          "PermissionKey": "Administration:General"
+        }
+      ]
+    }
+  ],
+  "BaseRowClasses": [
+    {
+      "ClassName": "Serene.Administration.LoggingRow",
+      "Fields": [
+        "InsertUserId",
+        "UpdateUserId",
+        "InsertDate",
+        "UpdateDate"
+      ]
+    }
+  ],
+  "RemoveForeignFields": [
+    "InsertUserId",
+    "UpdateUserId",
+    "InsertDate",
+    "UpdateDate"
+  ],
+  "UpgradeInfo": {
+    "InitialType": "Community",
+    "InitialVersion": "6.5.1.0"
+  }
+}

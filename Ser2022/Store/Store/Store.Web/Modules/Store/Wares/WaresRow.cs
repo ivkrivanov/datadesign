@@ -1,14 +1,13 @@
 ﻿
 namespace Store.Store.Entities
 {
-    using Store.Scripts;
     using Serenity.ComponentModel;
     using Serenity.Data;
     using Serenity.Data.Mapping;
     using System;
     using System.ComponentModel;
     using System.IO;
-    using Administration.Entities;
+    using global::Store.Administration.Entities;
 
     [ConnectionKey("Store"), Module("Store"), TableName("[dbo].[Wares]")]
     [DisplayName("Wares"), InstanceName("Wares")]

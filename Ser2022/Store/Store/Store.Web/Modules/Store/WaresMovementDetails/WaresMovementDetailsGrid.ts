@@ -23,9 +23,11 @@ namespace Store.Store {
 
             this.view.setSummaryOptions({
                 aggregators:
-                    [new Slick.Aggregators.Sum(fld.LineValue)]
-                    [new Slick.Aggregators.Sum(fld.LineVAT)]
-                    [new Slick.Aggregators.Sum(fld.LineTotal)]
+                    [
+                        new Slick.Aggregators.Sum(fld.LineValue),
+                        new Slick.Aggregators.Sum(fld.LineVAT),
+                        new Slick.Aggregators.Sum(fld.LineTotal)
+                    ]
             });
 
             return grid;
@@ -36,7 +38,13 @@ namespace Store.Store {
 
             Q.first(columns, x => x.field === fld.LineValue)
                 .groupTotalsFormatter = (totals, col) =>
-                    (totals.sum ? ('sum: ' + Q.coalesce(totals.sum[col.field], '')) : '');
+                    (totals.sum ? ('value: ' + Q.coalesce(totals.sum[col.field], '')) : '');
+            Q.first(columns, x => x.field === fld.LineVAT)
+                .groupTotalsFormatter = (totals, col) =>
+                    (totals.sum ? ('VAT: ' + Q.coalesce(totals.sum[col.field], '')) : '');
+            Q.first(columns, x => x.field === fld.LineTotal)
+                .groupTotalsFormatter = (totals, col) =>
+                    (totals.sum ? ('Total: ' + Q.coalesce(totals.sum[col.field], '')) : '');
 
             return columns;
         }

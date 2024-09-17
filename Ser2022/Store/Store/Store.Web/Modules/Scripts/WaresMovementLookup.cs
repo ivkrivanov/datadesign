@@ -10,7 +10,8 @@ namespace Store.Store.Scripts
     [LookupScript("Store.WaresMovement")]
     public class WaresMovementLookup : MultiTenantRowLookupScript<WaresMovementRow>
     {
-        public WaresMovementLookup(ISqlConnections sqlConnections, ITwoLevelCache twoLevelCache, IUserAccessor userAccessor) : base(sqlConnections, twoLevelCache, userAccessor)
+        public WaresMovementLookup(ISqlConnections sqlConnections, ITwoLevelCache twoLevelCache, IUserAccessor userAccessor) 
+            : base(sqlConnections, twoLevelCache, userAccessor)
         {
             IdField = WaresMovementRow.Fields.WaresMoveId.PropertyName;
             TextField = WaresMovementRow.Fields.CounterpartyCompanyName.PropertyName;

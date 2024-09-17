@@ -29,7 +29,7 @@
                         //    return;
                         //}
 
-                        StoreService.Warehouse({
+                        WarehouseService.Warehouse({
                             //FileName: this.form.FileName.value.Filename
                         }, response => {
                             Q.notifyInfo(
