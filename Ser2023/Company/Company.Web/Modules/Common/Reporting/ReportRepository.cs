@@ -1,5 +1,5 @@
-﻿
-namespace Store
+
+namespace Company
 {
     using Microsoft.Extensions.DependencyInjection;
     using Serenity;

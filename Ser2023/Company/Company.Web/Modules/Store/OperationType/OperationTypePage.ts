@@ -1,4 +1,4 @@
-﻿import { initFullHeightGridPage } from '@serenity-is/corelib/q';
+import { initFullHeightGridPage } from '@serenity-is/corelib/q';
 import { OperationTypeGrid } from './OperationTypeGrid';
 
 $(function() {

@@ -9,7 +9,8 @@ namespace Company.Store;
 
 public interface IProductsListHandler : IListHandler<MyRow, MyRequest, MyResponse> {}
 
-public class ProductsListHandler : ListRequestHandler<MyRow, MyRequest, MyResponse>, IProductsListHandler
+public class ProductsListHandler :
+    ListRequestHandler<MyRow, MyRequest, MyResponse>, IProductsListHandler
 {
     public ProductsListHandler(IRequestContext context)
          : base(context)

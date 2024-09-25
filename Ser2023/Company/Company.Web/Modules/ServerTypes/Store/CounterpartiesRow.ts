@@ -30,7 +30,7 @@ export interface CounterpartiesRow {
 export abstract class CounterpartiesRow {
     static readonly idProperty = 'Id';
     static readonly isActiveProperty = 'IsActive';
-    static readonly nameProperty = 'CounterpartyId';
+    static readonly nameProperty = 'CompanyName';
     static readonly localTextPrefix = 'Store.Counterparties';
     static readonly lookupKey = 'Store.Counterparties';
 

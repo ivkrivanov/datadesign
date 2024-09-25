@@ -15,8 +15,13 @@ public class BusinessEntityForm
     public string MiddleName { get; set; }
     public string LastName { get; set; }
     public string Suffix { get; set; }
-    public string Name { get; set; }
+    //public string AddressTypeName { get; set; }
 
-    [Category("Addresses")]
-    public List<BusinessEntityAddressRow> BusinessEntityAddresses { get; set; }
+    [Category("Address Type")]
+    //[AddressTypeEditor]
+    public List<AddressRow> AddressType { get; set; }  
+
+    //[Category("Addresses")]
+    //[BusinessEntityAddressEditor]
+    //public List<BusinessEntityAddressRow> BusinessEntityAddresses { get; set; }
 }

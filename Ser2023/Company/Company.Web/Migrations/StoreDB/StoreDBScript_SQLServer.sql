@@ -375,12 +375,12 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE TABLE [dbo].[ProductMovement Details] (
+CREATE TABLE [dbo].[OrderDetail] (
     [ProductMoveID] INT             NOT NULL,
     [ProductID]     INT             NOT NULL,
-    [Quantity]      REAL            CONSTRAINT [DF_ProductMovement Detail_Quantity] DEFAULT ((1)) NOT NULL,
-    [SinglePrice]   DECIMAL (15, 4) CONSTRAINT [DF_ProductMovement Detail_SinglePrice] DEFAULT ((0)) NOT NULL,
-    [Discount]      DECIMAL (15, 4) CONSTRAINT [DF_ProductMovement Detail_Discount] DEFAULT ((0)) NOT NULL,
+    [Quantity]      REAL            CONSTRAINT [DF_OrderDetail_Quantity] DEFAULT ((1)) NOT NULL,
+    [SinglePrice]   DECIMAL (15, 4) CONSTRAINT [DF_OrderDetail_SinglePrice] DEFAULT ((0)) NOT NULL,
+    [Discount]      DECIMAL (15, 4) CONSTRAINT [DF_OrderDetail_Discount] DEFAULT ((0)) NOT NULL,
     [DetailID]      INT             IDENTITY (1, 1) NOT NULL,
     [InsertDate]    DATETIME        DEFAULT (getdate()) NOT NULL,
     [InsertUserId]  INT             DEFAULT ((1)) NOT NULL,
@@ -388,10 +388,10 @@ CREATE TABLE [dbo].[ProductMovement Details] (
     [UpdateUserId]  INT             NULL,
     [IsActive]      INT             DEFAULT ((1)) NOT NULL,
     [TenantId]      INT             DEFAULT ((1)) NOT NULL,
-    CONSTRAINT [PK_ProductMovement Detail] PRIMARY KEY CLUSTERED ([ProductMoveID] ASC, [ProductID] ASC),
+    CONSTRAINT [PK_OrderDetail] PRIMARY KEY CLUSTERED ([OrderDetailID] ASC, [ProductID] ASC),
     CONSTRAINT [CK_SinglePrice] CHECK ([SinglePrice]>=(0)),
-    CONSTRAINT [FK_ProductMovement_Details_Product] FOREIGN KEY ([ProductID]) REFERENCES [dbo].[Products] ([ProductID]),
-    CONSTRAINT [FK_ProductMovement_Details_ProductMovement] FOREIGN KEY ([ProductMoveID]) REFERENCES [dbo].[ProductMovement] ([ProductMoveID])
+    CONSTRAINT [FK_OrderDetail_Product] FOREIGN KEY ([ProductID]) REFERENCES [dbo].[Products] ([ProductID]),
+    CONSTRAINT [FK_OrderDetail_ProductMovement] FOREIGN KEY ([OrderDetailID]) REFERENCES [dbo].OrderDetail ([OrderDetailID])
 );
 
 /****** Object: [ProductMovement Doc] ******/
@@ -401,7 +401,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE TABLE [dbo].[ProductMovement Doc] (
+CREATE TABLE [dbo].[OrderDetail Doc] (
     [ProductMoveID]  INT           NOT NULL,
     [DocumentTypeID] INT           NULL,
     [DocumentNumber] NVARCHAR (10) NULL,
@@ -417,8 +417,8 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE TABLE [dbo].[ProductMovement] (
-    [ProductMoveID]   INT           IDENTITY (1, 1) NOT NULL,
+CREATE TABLE [dbo].[Order] (
+    [OrderID]   INT           IDENTITY (1, 1) NOT NULL,
     [ShopID]          NVARCHAR (14) NOT NULL,
     [CounterpartyID]  NVARCHAR (14) NOT NULL,
     [EmployeeID]      INT           NULL,
@@ -433,12 +433,12 @@ CREATE TABLE [dbo].[ProductMovement] (
     [UpdateUserId]    INT           NULL,
     [IsActive]        INT           DEFAULT ((1)) NOT NULL,
     [TenantId]        INT           DEFAULT ((1)) NOT NULL,
-    CONSTRAINT [PK_ProductMovement] PRIMARY KEY CLUSTERED ([ProductMoveID] ASC),
-    CONSTRAINT [FK_ProductMovement_Counterparties] FOREIGN KEY ([CounterpartyID]) REFERENCES [dbo].[Counterparties] ([CounterpartyID]),
-    CONSTRAINT [FK_ProductMovement_Employees] FOREIGN KEY ([EmployeeID]) REFERENCES [dbo].[Employees] ([EmployeeID]),
-    CONSTRAINT [FK_ProductMovement_OperationTypes] FOREIGN KEY ([OperationTypeID]) REFERENCES [dbo].[OperationType] ([OperationTypeID]),
-    CONSTRAINT [FK_ProductMovement_Shippers] FOREIGN KEY ([ShipperID]) REFERENCES [dbo].[Shippers] ([ShipperID]),
-    CONSTRAINT [FK_ProductMovement_Shops] FOREIGN KEY ([ShopID]) REFERENCES [dbo].[Shops] ([ShopID])
+    CONSTRAINT [PK_Order] PRIMARY KEY CLUSTERED ([OrderID] ASC),
+    CONSTRAINT [FK_Order_Counterparties] FOREIGN KEY ([CounterpartyID]) REFERENCES [dbo].[Counterparties] ([CounterpartyID]),
+    CONSTRAINT [FK_Order_Employees] FOREIGN KEY ([EmployeeID]) REFERENCES [dbo].[Employees] ([EmployeeID]),
+    CONSTRAINT [FK_Order_OperationTypes] FOREIGN KEY ([OperationTypeID]) REFERENCES [dbo].[OperationType] ([OperationTypeID]),
+    CONSTRAINT [FK_Order_Shippers] FOREIGN KEY ([ShipperID]) REFERENCES [dbo].[Shippers] ([ShipperID]),
+    CONSTRAINT [FK_Order_Shops] FOREIGN KEY ([ShopID]) REFERENCES [dbo].[Shops] ([ShopID])
 );
 
 /****** Object: [Products] ******/
@@ -683,29 +683,29 @@ CREATE TABLE [dbo].[WaresLang] (
 
 GO
 
-/****** Object: [WaresMovement Details] ******/
+/****** Object: [WaresOrderDetails] ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE TABLE [dbo].[WaresMovement Details] (
+CREATE TABLE [dbo].[WaresOrderDetails] (
     [DetailID]     INT             IDENTITY (1, 1) NOT NULL,
-    [WaresMoveID]  INT             NOT NULL,
+    [WaresOrderID]  INT             NOT NULL,
     [WaresID]      INT             NOT NULL,
-    [Quantity]     DECIMAL (15, 4) CONSTRAINT [DF_WaresMovement Detail_Quantity] DEFAULT ((1)) NOT NULL,
-    [SinglePrice]  DECIMAL (15, 4) CONSTRAINT [DF_WaresMovement Detail_SinglePrice] DEFAULT ((0)) NOT NULL,
-    [Discount]     DECIMAL (15, 4) CONSTRAINT [DF_WaresMovement Detail_Discount] DEFAULT ((0)) NOT NULL,
+    [Quantity]     DECIMAL (15, 4) CONSTRAINT [DF_WaresOrderDetails_Quantity] DEFAULT ((1)) NOT NULL,
+    [SinglePrice]  DECIMAL (15, 4) CONSTRAINT [DF_WaresOrderDetails_SinglePrice] DEFAULT ((0)) NOT NULL,
+    [Discount]     DECIMAL (15, 4) CONSTRAINT [DF_WaresOrderDetails_Discount] DEFAULT ((0)) NOT NULL,
     [InsertDate]   DATETIME        DEFAULT (getdate()) NOT NULL,
     [InsertUserId] INT             DEFAULT ((1)) NOT NULL,
     [UpdateDate]   DATETIME        NULL,
     [UpdateUserId] INT             NULL,
     [IsActive]     INT             DEFAULT ((1)) NOT NULL,
     [TenantId]     INT             DEFAULT ((1)) NOT NULL,
-    CONSTRAINT [PK_WaresMovement Detail] PRIMARY KEY CLUSTERED ([WaresMoveID] ASC, [WaresID] ASC),
-    CONSTRAINT [FK_WaresMovement_Details_Wares] FOREIGN KEY ([WaresID]) REFERENCES [dbo].[Wares] ([WaresID]),
-    CONSTRAINT [FK_WaresMovement_Details_WaresMovement] FOREIGN KEY ([WaresMoveID]) REFERENCES [dbo].[WaresMovement] ([WaresMoveID])
+    CONSTRAINT [PK_WaresOrderDetails] PRIMARY KEY CLUSTERED ([WaresOrderID] ASC, [WaresID] ASC),
+    CONSTRAINT [FK_WaresOrderDetails_Wares] FOREIGN KEY ([WaresID]) REFERENCES [dbo].[Wares] ([WaresID]),
+    CONSTRAINT [FK_WaresOrderDetails_WaresOrder] FOREIGN KEY ([WaresOrderID]) REFERENCES [dbo].[WaresOrder] ([WaresOrderID])
 );
 
 GO
@@ -717,13 +717,13 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE TABLE [dbo].[WaresMovement Doc] (
-    [WaresMoveID]    INT           NOT NULL,
+CREATE TABLE [dbo].[WaresOrderDoc] (
+    [WaresOrderID]    INT           NOT NULL,
     [DocumentTypeID] INT           NULL,
     [DocumentNumber] NVARCHAR (10) NULL,
     [DocumentDate]   DATE          NULL,
-    CONSTRAINT [PK_WaresMovement Doc] PRIMARY KEY CLUSTERED ([WaresMoveID] ASC),
-    CONSTRAINT [FK_WaresMovement Doc_DocumentType] FOREIGN KEY ([DocumentTypeID]) REFERENCES [dbo].[DocumentType] ([DocumentTypeID])
+    CONSTRAINT [PK_WaresOrderDoc] PRIMARY KEY CLUSTERED ([WaresOrderID] ASC),
+    CONSTRAINT [FK_WaresOrderDoc_DocumentType] FOREIGN KEY ([DocumentTypeID]) REFERENCES [dbo].[DocumentType] ([DocumentTypeID])
 );
 
 GO
@@ -735,8 +735,8 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE TABLE [dbo].[WaresMovement] (
-    [WaresMoveID]     INT           IDENTITY (1, 1) NOT NULL,
+CREATE TABLE [dbo].[WaresOrder] (
+    [WaresOrderID]     INT           IDENTITY (1, 1) NOT NULL,
     [ShopID]          NVARCHAR (14) NOT NULL,
     [CounterpartyID]  NVARCHAR (14) NOT NULL,
     [EmployeeID]      INT           NULL,
@@ -752,13 +752,27 @@ CREATE TABLE [dbo].[WaresMovement] (
     [IsActive]        INT           DEFAULT ((1)) NOT NULL,
     [TenantId]        INT           DEFAULT ((1)) NOT NULL,
     CONSTRAINT [PK_OrderStock] PRIMARY KEY CLUSTERED ([WaresMoveID] ASC),
-    CONSTRAINT [FK_WaresMovement_Counterparties] FOREIGN KEY ([CounterpartyID]) REFERENCES [dbo].[Counterparties] ([CounterpartyID]),
-    CONSTRAINT [FK_WaresMovement_Employees] FOREIGN KEY ([EmployeeID]) REFERENCES [dbo].[Employees] ([EmployeeID]),
-    CONSTRAINT [FK_WaresMovement_OperationTypes] FOREIGN KEY ([OperationTypeID]) REFERENCES [dbo].[OperationType] ([OperationTypeID]),
-    CONSTRAINT [FK_WaresMovement_Shippers] FOREIGN KEY ([ShipperID]) REFERENCES [dbo].[Shippers] ([ShipperID]),
-    CONSTRAINT [FK_WaresMovement_Shops] FOREIGN KEY ([ShopID]) REFERENCES [dbo].[Shops] ([ShopID])
+    CONSTRAINT [FK_WaresOrder_Counterparties] FOREIGN KEY ([CounterpartyID]) REFERENCES [dbo].[Counterparties] ([CounterpartyID]),
+    CONSTRAINT [FK_WaresOrder_Employees] FOREIGN KEY ([EmployeeID]) REFERENCES [dbo].[Employees] ([EmployeeID]),
+    CONSTRAINT [FK_WaresOrder_OperationTypes] FOREIGN KEY ([OperationTypeID]) REFERENCES [dbo].[OperationType] ([OperationTypeID]),
+    CONSTRAINT [FK_WaresOrder_Shippers] FOREIGN KEY ([ShipperID]) REFERENCES [dbo].[Shippers] ([ShipperID]),
+    CONSTRAINT [FK_WaresOrder_Shops] FOREIGN KEY ([ShopID]) REFERENCES [dbo].[Shops] ([ShopID])
 );
 
+GO
+
+CREATE VIEW dbo.WaresOrderTotal
+AS
+SELECT        WaresOrderID, SUM(SinglePrice * Quantity - Discount) AS Total
+FROM            dbo.[WaresOrderDetails]
+GROUP BY WaresOrderID
+GO
+
+CREATE VIEW dbo.OrderTotal
+AS
+SELECT OrderID, SUM(SinglePrice * Quantity - Discount) AS Total
+FROM   dbo.OrderDetail
+GROUP BY OrderID
 GO
 
 /****** Object:  ******/

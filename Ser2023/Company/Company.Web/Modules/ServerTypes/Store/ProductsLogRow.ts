@@ -14,6 +14,7 @@ export interface ProductsLogRow {
     CategoryId?: number;
     QuantityPerUnit?: string;
     UnitPrice?: number;
+    SalePrice?: number;
     UnitsInStock?: number;
     UnitsOnOrder?: number;
     ReorderLevel?: number;

@@ -3,7 +3,6 @@ using Serenity.ComponentModel;
 using Serenity.Data;
 using Serenity.Data.Mapping;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace Company.Company;
@@ -17,9 +16,14 @@ namespace Company.Company;
 public sealed class PersonRow : LoggingRow<PersonRow.RowFields>, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
 {
     const string jBusinessEntity = nameof(jBusinessEntity);
+    const string JBusinessEntityAddress = nameof(JBusinessEntityAddress);
+    const string JAddressType = nameof(JAddressType);
+    const string JAddress = nameof(JAddress);
 
-    [DisplayName("Business Entity"), Column("BusinessEntityId"), PrimaryKey] //, NotNull, ForeignKey("[person].[BusinessEntity]", "BusinessEntityId"), LeftJoin(jBusinessEntity), IdProperty]
+    [DisplayName("BusinessEntity"), PrimaryKey, IdProperty]
     public int? BusinessEntityId { get => fields.BusinessEntityId[this]; set => fields.BusinessEntityId[this] = value; }
+
+    #region Person
 
     [DisplayName("Person Type"), Size(2), NotNull, QuickSearch]
     public string PersonType { get => fields.PersonType[this]; set => fields.PersonType[this] = value; }
@@ -36,12 +40,33 @@ public sealed class PersonRow : LoggingRow<PersonRow.RowFields>, IIdRow, INameRo
     [DisplayName("Last Name"), Size(50), NotNull] //, NameProperty]
     public string LastName { get => fields.LastName[this]; set => fields.LastName[this] = value; }
 
-    [DisplayName("Suffix"), Size(10)]
-    public string Suffix { get => fields.Suffix[this]; set => fields.Suffix[this] = value; }
-
     [DisplayName("FullName"), Size(100), QuickSearch, NameProperty]
     [Concat($"T0.[{nameof(Title)}]", "' '", $"T0.[{nameof(FirstName)}]", "' '", $"T0.[{nameof(MiddleName)}]", "' '", $"T0.[{nameof(LastName)}]", "' '", $"T0.[{nameof(Suffix)}]")]
     public string FullName { get => Fields.FullName[this]; set => Fields.FullName[this] = value; }
+
+    [DisplayName("Suffix"), Size(10)]
+    public string Suffix { get => fields.Suffix[this]; set => fields.Suffix[this] = value; }
+
+    #endregion Person
+
+    //#region BE
+
+    ////[DisplayName("Business Entity Id"), PrimaryKey, ForeignKey(typeof(PersonRow)), LeftJoin(jPerson), Updatable]
+    ////[ForeignKey(typeof(AddressTypeRow)), LeftJoin(JAddressType), Updatable]
+    //[DisplayName("BEId")] //, Column("BEId")]
+    //[ForeignKey(typeof(BusinessEntityRow), nameof(BusinessEntityRow.BusinessEntityId)), LeftJoin(jBusinessEntity), Identity, Updatable]
+    //public int? BEId { get => fields.BEId[this]; set => fields.BEId[this] = value; }
+
+    //#endregion BE
+
+    //#region EntityAddressType
+
+    //[DisplayName("AddressType"), LookupEditor(typeof(AddressTypeRow), Multiple = true), NotMapped]
+    //public string AddressTypeName { get => fields.AddressTypeName[this]; set => fields.AddressTypeName[this] = value; }
+
+    //#endregion EntityAddressType
+
+
 
     //[DisplayName("Addresses"), MasterDetailRelation(foreignKey:nameof(AddressRow))]
     //public List<AddressRow> Addresses { get => fields.Addresses[this]; set => fields.Addresses[this] = value; }
@@ -68,8 +93,11 @@ public sealed class PersonRow : LoggingRow<PersonRow.RowFields>, IIdRow, INameRo
         public StringField FirstName;
         public StringField MiddleName;
         public StringField LastName;
-        public StringField Suffix;
         public StringField FullName;
+        public StringField Suffix;
+
+        //public Int32Field BEId;
+
 
         //public ListField<AddressRow> Addresses;
 

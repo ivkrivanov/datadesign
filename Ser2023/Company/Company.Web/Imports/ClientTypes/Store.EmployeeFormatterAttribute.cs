@@ -5,20 +5,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 
-namespace Store;
+namespace Company.Store;
 
 public partial class EmployeeFormatterAttribute : CustomFormatterAttribute
 {
-    public const string Key = "Store.EmployeeFormatter";
+    public const string Key = "Company.Store.EmployeeFormatter";
 
     public EmployeeFormatterAttribute()
         : base(Key)
     {
-    }
-
-    public string GenderProperty
-    {
-        get { return GetOption<string>("genderProperty"); }
-        set { SetOption("genderProperty", value); }
     }
 }

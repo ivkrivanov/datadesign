@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Serenity.Web;
 
 namespace Company.Store.Pages;
+
 [PageAuthorize(typeof(WaresRow))]
 public class WaresController : Controller
 {

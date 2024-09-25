@@ -21,10 +21,10 @@ public sealed class CounterpartiesRow : LoggingRow<CounterpartiesRow.RowFields>,
     [DisplayName("Id"), Column("ID"), Identity, IdProperty]
     public int? Id { get => fields.Id[this]; set => fields.Id[this] = value; }
 
-    [DisplayName("Counterparty Id"), Column("CounterpartyID"), Size(14), PrimaryKey, NotNull, QuickSearch, NameProperty]
+    [DisplayName("Counterparty Id"), Column("CounterpartyID"), Size(14), PrimaryKey, NotNull, QuickSearch]
     public string CounterpartyId { get => fields.CounterpartyId[this]; set => fields.CounterpartyId[this] = value; }
 
-    [DisplayName("Company Name"), Size(40), NotNull]
+    [DisplayName("Company Name"), Size(40), NotNull, NameProperty]
     public string CompanyName { get => fields.CompanyName[this]; set => fields.CompanyName[this] = value; }
 
     [DisplayName("Contact Name"), Size(40)]

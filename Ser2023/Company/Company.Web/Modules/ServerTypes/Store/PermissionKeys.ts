@@ -54,4 +54,16 @@
         export const Modify = "Store:Product:Modify";
         export const View = "Store:Product:View";
     }
+
+    export namespace Order {
+        export const Delete = "Store:Order:Delete";
+        export const Modify = "Store:Order:Modify";
+        export const View = "Store:Order:View";
+    }
+
+    export namespace WaresOrder {
+        export const Delete = "Store:WaresOrder:Delete";
+        export const Modify = "Store:WaresOrder:Modify";
+        export const View = "Store:WaresOrder:View";
+    }
 }

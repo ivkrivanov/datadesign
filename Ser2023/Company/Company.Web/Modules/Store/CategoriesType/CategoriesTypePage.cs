@@ -9,7 +9,6 @@ public class CategoriesTypeController : Controller
     [Route("Store/CategoriesType")]
     public ActionResult Index()
     {
-        //return View("~/Areas/Store/CategoriesType/CategoriesTypeIndex.cshtml");
         return this.GridPage("@/Store/CategoriesType/CategoriesTypePage",
                 CategoriesTypeRow.Fields.PageTitle());
     }

@@ -84,6 +84,11 @@ public sealed class ProductsLogRow : Row<ProductsLogRow.RowFields>, ICaptureLogR
         get => Fields.UnitPrice[this]; 
         set => Fields.UnitPrice[this] = value;
     }
+    public Decimal? SalePrice
+    {
+        get => Fields.SalePrice[this];
+        set => Fields.SalePrice[this] = value;
+    }
 
     public Int16? UnitsInStock
     {
@@ -147,6 +152,7 @@ public sealed class ProductsLogRow : Row<ProductsLogRow.RowFields>, ICaptureLogR
         public Int32Field CategoryId;
         public StringField QuantityPerUnit;
         public DecimalField UnitPrice;
+        public DecimalField SalePrice;
         public Int16Field UnitsInStock;
         public Int16Field UnitsOnOrder;
         public Int16Field ReorderLevel;

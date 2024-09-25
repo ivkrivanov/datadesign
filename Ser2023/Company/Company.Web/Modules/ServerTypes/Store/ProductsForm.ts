@@ -6,13 +6,14 @@ import { initFormType } from "@serenity-is/corelib/q";
 export interface ProductsForm {
     CategoryId: LookupEditor;
     ProductName: StringEditor;
+    ProductLabel: StringEditor;
     ProductCode: StringEditor;
     ProductBarcode: StringEditor;
-    ProductLabel: StringEditor;
     MeasureId: LookupEditor;
     ProductImage: ImageUploadEditor;
     Discontinued: BooleanEditor;
     UnitPrice: DecimalEditor;
+    SalePrice: DecimalEditor;
     QuantityPerUnit: StringEditor;
     DetailList: ProductDetailsEditor;
     UnitsInStock: IntegerEditor;
@@ -41,13 +42,14 @@ export class ProductsForm extends PrefixedContext {
             initFormType(ProductsForm, [
                 'CategoryId', w0,
                 'ProductName', w1,
+                'ProductLabel', w1,
                 'ProductCode', w1,
                 'ProductBarcode', w1,
-                'ProductLabel', w1,
                 'MeasureId', w0,
                 'ProductImage', w2,
                 'Discontinued', w3,
                 'UnitPrice', w4,
+                'SalePrice', w4,
                 'QuantityPerUnit', w1,
                 'DetailList', w5,
                 'UnitsInStock', w6,

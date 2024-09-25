@@ -7,8 +7,8 @@ export interface PersonRow {
     FirstName?: string;
     MiddleName?: string;
     LastName?: string;
-    Suffix?: string;
     FullName?: string;
+    Suffix?: string;
     IsActive?: number;
     TenantId?: number;
     InsertUserId?: number;

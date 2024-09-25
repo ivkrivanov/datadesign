@@ -9,7 +9,7 @@ namespace Company;
 
 public partial class EmployeeFormatterAttribute : CustomFormatterAttribute
 {
-    public const string Key = "Company.EmployeeFormatter";
+    public const string Key = "Company.Store.EmployeeFormatter";
 
     public EmployeeFormatterAttribute()
         : base(Key)

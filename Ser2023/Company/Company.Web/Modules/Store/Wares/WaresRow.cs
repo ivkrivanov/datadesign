@@ -148,16 +148,6 @@ public sealed class WaresRow : LoggingRow<WaresRow.RowFields>, IIdRow, INameRow,
 
     #endregion Tenant & Activ
 
-    //public WaresRow()
-    //    : base()
-    //{
-    //}
-
-    //public WaresRow(RowFields fields)
-    //    : base(fields)
-    //{
-    //}
-
     public class RowFields : LoggingRowFields
     {
         public Int32Field WaresId;

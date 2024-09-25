@@ -1,0 +1,2 @@
+import{X as i}from"./chunk-NQNNAIF5.js";import{a as o,c as s,d as r,g as n}from"./chunk-FEDAVPE7.js";var e=s(n(),1);var t=class extends e.PropertyDialog{constructor(){super(...arguments);this.fofm=new i(this.idPrefix)}getDialogTitle(){return"Warehouse"}getDialogButtons(){return[{text:"Import",click:()=>{this.validateBeforeSave()}},{text:"Cancel",click:()=>this.dialogClose()}]}};o(t,"StoreAverageDialog"),t=r([e.Decorators.registerClass("Company.Store.StoreAverageDialog")],t);export{t as a};
+//# sourceMappingURL=chunk-IUICKFWK.js.map

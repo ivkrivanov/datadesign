@@ -1,5 +1,5 @@
-﻿
-namespace Store.Reporting
+
+namespace Company.Reporting
 {
     using Microsoft.Extensions.DependencyInjection;
     using Serenity;

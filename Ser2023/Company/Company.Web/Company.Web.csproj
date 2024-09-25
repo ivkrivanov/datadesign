@@ -33,20 +33,24 @@
     <Compile Remove="Migrations\CompanyDB\CompanyDB_20230407_100010_GUID_Patchy.cs" />
     <Compile Remove="Migrations\CompanyDB\CompanyDB_20231124_163000_PersonPhone.cs" />
     <Compile Remove="Migrations\CompanyDB\CompanyDB_20231125_153000_EmailAddress.cs" />
+    <Compile Remove="Modules\Store\WaresOrderDetail\WaresTransactionDetailPage.cs" />
     <None Remove="Migrations\CompanyDB\CompanyDBScript_SqlServer.sql" />
     <None Remove="migrations\storedb\StoreDBScript_SQLServer.sql" />
     <TypeScriptCompile Remove="Modules\Store\ProductDetails\ProductDetailsGrid.ts" />
+    <TypeScriptCompile Remove="Modules\Store\WaresOrderDetail\WaresTransactionDetailGrid.ts" />
+    <TypeScriptCompile Remove="Modules\Store\WaresOrder\WaresOrderPage.ts" />
     <None Include="Modules\Administration\Tenant\TenantIndex.cshtml" />
+    <None Include="Modules\Store\WaresOrder\WaresOrderPage.ts" />
     <Content Update=".eslintrc.json;libman.json;package.json;package-lock.json;sergen.json;tsconfig.json;tslint.json;Modules\tsconfig.json" CopyToOutputDirectory="Never" CopyToPublishDirectory="Never" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="EPPlus" Version="6.2.1" />
-    <PackageReference Include="FluentMigrator.Runner" Version="3.3.2" />
+    <PackageReference Include="FluentMigrator.Runner" Version="5.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.2" />
-    <PackageReference Include="Microsoft.Data.Sqlite" Version="7.0.4" />
-    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.1.1" />
-    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="5.0.3" PrivateAssets="all" IncludeAssets="runtime; build; native; contentfiles; analyzers" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="8.0.6" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.1" />
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="5.5.3" PrivateAssets="all" IncludeAssets="runtime; build; native; contentfiles; analyzers" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Serenity.Assets" Version="6.7.1" />

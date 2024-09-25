@@ -1,4 +1,3 @@
-
 using Serenity.ComponentModel;
 using Serenity.Data;
 using Serenity.Data.Mapping;
@@ -24,15 +23,6 @@ public sealed class ProductLangRow : Row<ProductLangRow.RowFields>, IIdRow, INam
     [DisplayName("Product Name"), Size(40), QuickSearch, NameProperty]
     public string ProductName { get => fields.ProductName[this]; set => fields.ProductName[this] = value; }
     public Field CultureIdField { get => Fields.LanguageId; }
-    //public ProductLangRow()
-    //    : base()
-    //{
-    //}
-
-    //public ProductLangRow(RowFields fields)
-    //    : base(fields)
-    //{
-    //}
 
     public class RowFields : RowFieldsBase
     {
