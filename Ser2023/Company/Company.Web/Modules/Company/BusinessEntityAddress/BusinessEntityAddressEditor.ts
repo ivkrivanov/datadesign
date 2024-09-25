@@ -6,7 +6,7 @@ import { BusinessEntityAddressDialog } from "./BusinessEntityAddressDialog";
 
 @Decorators.registerEditor( 'Company.Company.BusinessEntityAddress' )
 export class BusinessEntityAddressEditor<P = {}> extends GridEditorBase<BusinessEntityAddressRow, P> {
-    protected getColumnsKey() { return BudinessEntityAddressColumns.ColumnsKey; }
+    protected getColumnsKey() { return BusinessEntityAddressColumns.columnsKey }
     protected getDialogType() { return BusinessEntityAddressDialog; }
     protected getLocalTextPrefix() { return BusinessEntityAddressRow.localTextPrefix; }
 

@@ -5,7 +5,6 @@ using Serenity.Data.Mapping;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.IO;
 
 namespace Company.Store;
 
@@ -153,6 +152,9 @@ public sealed class ProductsRow : LoggingRow<ProductsRow.RowFields>, IIdRow, INa
     [DisplayName("Unit Price"), Size(19), Scale(4)]
     public decimal? UnitPrice { get => fields.UnitPrice[this]; set => fields.UnitPrice[this] = value; }
 
+    [DisplayName("Sale Price"), Size(19), Scale(4)]
+    public decimal? SalePrice { get => fields.SalePrice[this]; set => fields.SalePrice[this] = value; }
+
     [DisplayName("Units In Stock")]
     public short? UnitsInStock { get => fields.UnitsInStock[this]; set => fields.UnitsInStock[this] = value; }
 
@@ -203,6 +205,7 @@ public sealed class ProductsRow : LoggingRow<ProductsRow.RowFields>, IIdRow, INa
         public StringField MeasureName;
         public StringField QuantityPerUnit;
         public DecimalField UnitPrice;
+        public DecimalField SalePrice;
         public Int16Field UnitsInStock;
         public Int16Field UnitsOnOrder;
         public Int16Field ReorderLevel;

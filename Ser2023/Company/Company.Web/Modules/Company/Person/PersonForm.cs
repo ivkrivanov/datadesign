@@ -8,6 +8,9 @@ namespace Company.Company.Forms;
 [BasedOnRow(typeof(PersonRow), CheckNames = true)]
 public class PersonForm
 {
+    public long BusinessEntityId {  get; set; }
+
+
     [Category("Person")]
     public string PersonType { get; set; }
     public string Title { get; set; }
@@ -16,6 +19,6 @@ public class PersonForm
     public string LastName { get; set; }
     public string Suffix { get; set; }
 
-    [Category("Addresses")]
-    public List<AddressRow> Addresses { get; set; }
+    //[Category("Addresses")]
+    //public List<AddressRow> Addresses { get; set; }
 }

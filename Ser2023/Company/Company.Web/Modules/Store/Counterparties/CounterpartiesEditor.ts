@@ -2,7 +2,7 @@
 import { Decorators, LookupEditorBase, LookupEditorOptions } from "@serenity-is/corelib";
 import { CounterpartiesRow } from "../../ServerTypes/Store";
 
-@Decorators.registerEditor()
+@Decorators.registerEditor('Company.Store.CounterpartyEditor')
 export class CounterpartiesEditor extends LookupEditorBase<LookupEditorOptions, CounterpartiesRow> {
 
     constructor(hidden: JQuery) {

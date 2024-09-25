@@ -3,6 +3,7 @@ using Serenity.ComponentModel;
 using Serenity.Data;
 using Serenity.Data.Mapping;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace Company.Company;
@@ -13,25 +14,28 @@ namespace Company.Company;
 [ModifyPermission(PermissionKeys.BusinessEntityAddress.Modify)]
 [DeletePermission(PermissionKeys.BusinessEntityAddress.Delete)]
 [LookupScript("Company.BusinessEntityAddress", LookupType = typeof(MultiTenantRowLookupScript<>))]
-public sealed class BusinessEntityAddressRow : LoggingRow<BusinessEntityAddressRow.RowFields>, IIdRow, IIsActiveRow, IMultiTenantRow //INameRow,
+public sealed class BusinessEntityAddressRow : LoggingRow<BusinessEntityAddressRow.RowFields>, IIdRow, IIsActiveRow, IMultiTenantRow //, INameRow
 {
     const string jBusinessEntity = nameof(jBusinessEntity);
     const string jAddress = nameof(jAddress);
     const string jAddressType = nameof(jAddressType);
 
-    [DisplayName("Business Entity"), NotNull, ForeignKey(typeof(BusinessEntityRow)), LeftJoin(jBusinessEntity), IdProperty]
+    [DisplayName("Business Entity"), NotNull, IdProperty, Updatable] //ForeignKey(typeof(BusinessEntityRow), nameof(BusinessEntityRow.BusinessEntityId)), LeftJoin(jBusinessEntity), IdProperty, Updatable]
     public long? BusinessEntityId { get => fields.BusinessEntityId[this]; set => fields.BusinessEntityId[this] = value; }
 
-    [DisplayName("Address"), NotNull, ForeignKey(typeof(AddressRow)), LeftJoin(jAddress)] //, TextualField(nameof(AddressLine1))]
+    [DisplayName("Address"), NotNull, ForeignKey(typeof(AddressRow), nameof(AddressRow.AddressId)), LeftJoin(jAddress)] //, TextualField(nameof(AddressLine1))]
     public long? AddressId { get => fields.AddressId[this]; set => fields.AddressId[this] = value; }
 
-    [DisplayName("Address Type"), NotNull, ForeignKey(typeof(AddressTypeRow)), LeftJoin(jAddressType)] //, TextualField(nameof(AddressTypeName)), NameProperty]
+    [DisplayName("Address Type"), NotNull, ForeignKey(typeof(AddressTypeRow), nameof(AddressTypeRow.AddressTypeId)), LeftJoin(jAddressType), NameProperty] //, TextualField(nameof(AddressTypeName))
     [LookupEditor(typeof(AddressTypeRow), InplaceAdd = true)]
     public long? AddressTypeId { get => fields.AddressTypeId[this]; set => fields.AddressTypeId[this] = value; }
 
-    [DisplayName("AddressTypeName"), Origin(jAddressType, nameof(AddressTypeRow.AddressTypeName)), LookupInclude]  // Expression($"{jAddressType}.[Name]"), Column("Name"), LookupInclude]
-    [LookupEditor(typeof(AddressTypeRow), InplaceAdd = true)]
-    public string AddressTypeName { get => fields.AddressTypeName[this]; set => fields.AddressTypeName[this] = value; }
+    //[DisplayName("AddressTypeName"), Origin(jAddressType, nameof(AddressTypeRow.AddressTypeId)), LookupInclude]  // Expression($"{jAddressType}.[Name]"), Column("Name"), LookupInclude]
+    //[LookupEditor(typeof(AddressTypeRow), InplaceAdd = true)]
+    //public string StringField { get => fields.AddressType[this]; set => fields.AddressType[this] = value; }
+
+    //[DisplayName("AddressTypeName"), MasterDetailRelation(foreignKey: nameof(AddressTypeRow.AddressTypeId)), NotMapped]
+    //public List<AddressTypeRow> AddressType { get => fields.AddressType[this]; set => fields.AddressType[this] = value; }
 
 
     //[DisplayName("Addresses"), LookupEditor(typeof(AddressRow), Multiple = true), NotMapped]
@@ -75,14 +79,22 @@ public sealed class BusinessEntityAddressRow : LoggingRow<BusinessEntityAddressR
 
     #endregion Tenant & Activ
 
+
+
+
+
+
+
     public class RowFields : LoggingRowFields
     {
         public Int64Field BusinessEntityId;
         public Int64Field AddressId;
         public Int64Field AddressTypeId;
-        public StringField AddressTypeName;
+        //public StringField AddressType;
+
+        //public StringField AddressTypeName;
         //public GuidField Rowguid;
-        //public ListField<AddressRow> Addresses;
+        //public RowListField<AddressTypeRow> AddressType;
 
         public Int16Field IsActive;
         public Int32Field TenantId;

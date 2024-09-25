@@ -1,5 +1,5 @@
-﻿
-namespace Store
+
+namespace Company
 {
     using Serenity;
     using Serenity.Reporting;

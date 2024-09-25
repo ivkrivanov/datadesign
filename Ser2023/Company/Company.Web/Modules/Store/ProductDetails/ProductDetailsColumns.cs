@@ -9,7 +9,7 @@ public class ProductDetailsColumns
 {
     [EditLink, Width(80)]
     public String WaresCode { get; set; }
-    [EditLink, Width(150), AlignRight]
+    [EditLink, Width(150)]
     public String WaresName { get; set; }
     [Width(80), AlignRight]
     public Decimal PlanPrice { get; set; }

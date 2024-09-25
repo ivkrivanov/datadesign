@@ -10,10 +10,9 @@ public class BusinessEntityAddressColumns
 {
     [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
     public long BusinessEntityId { get; set; }
+    public long AddressId {  get; set; }
     //public string AddressLine1 { get; set; }
-    //public string AddressTypeId { get; set; }
-    public string AddressTypeName {  get; set; }
+    public long AddressTypeId { get; set; }
+    //public string AddressTypeName {  get; set; }
     //public Guid Rowguid { get; set; }
-    //public short IsActive { get; set; }
-    //public int TenantId { get; set; }
 }

@@ -51,7 +51,7 @@ export interface EmployeesRow {
 export abstract class EmployeesRow {
     static readonly idProperty = 'EmployeeId';
     static readonly isActiveProperty = 'IsActive';
-    static readonly nameProperty = 'LastName';
+    static readonly nameProperty = 'FullName';
     static readonly localTextPrefix = 'Store.Employees';
     static readonly lookupKey = 'Store.Employees';
 

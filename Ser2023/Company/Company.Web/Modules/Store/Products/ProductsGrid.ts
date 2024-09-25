@@ -216,6 +216,8 @@ export class ProductsGrid extends EntityGrid<ProductsRow, any> {
 
         first(columns, x => x.field === fld.UnitPrice).format = mon;
         first(columns, x => x.field == fld.UnitPrice).cssClass += " col-unit-price";
+        first(columns, x => x.field === fld.SalePrice).format = mon;
+        first(columns, x => x.field == fld.SalePrice).cssClass += " col-unit-price";
         first(columns, x => x.field === fld.UnitsInStock).format = num;
         first(columns, x => x.field === fld.UnitsOnOrder).format = num;
         first(columns, x => x.field === fld.ReorderLevel).format = num;

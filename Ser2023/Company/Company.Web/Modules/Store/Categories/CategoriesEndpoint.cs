@@ -171,12 +171,4 @@ public class CategoriesController : ServiceEndpoint
 
         return response;
     }
-
-
-
-
-
-
-
-
 }

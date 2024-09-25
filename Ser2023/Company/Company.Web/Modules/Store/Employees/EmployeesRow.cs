@@ -19,15 +19,19 @@ public sealed class EmployeesRow : LoggingRow<EmployeesRow.RowFields>, IIdRow, I
     [DisplayName("Employee Id"), Column("EmployeeID"), Identity, IdProperty]
     public int? EmployeeId { get => fields.EmployeeId[this]; set => fields.EmployeeId[this] = value;}
 
-    [DisplayName("Last Name"), Size(20), NotNull, QuickSearch, NameProperty]
+    [DisplayName("Last Name"), Size(20), NotNull, QuickSearch]
     public string LastName { get => fields.LastName[this]; set => fields.LastName[this] = value; }
 
     [DisplayName("First Name"), Size(10), NotNull]
     public string FirstName { get => fields.FirstName[this]; set => fields.FirstName[this] = value; }
 
-    [DisplayName("FullName"), QuickSearch]
-    [Expression("CONCAT(T0.[FirstName], CONCAT(' ', T0.[LastName]))")]
-    [Expression("(T0.FirstName || ' ' || T0.LastName)", Dialect = "Sqlite")]
+
+    //[Expression("CONCAT(T0.[FirstName], CONCAT(' ', T0.[LastName]))")]
+    //[Expression("(T0.FirstName || ' ' || T0.LastName)", Dialect = "Sqlite")]
+    //[Concat($"T0.[{nameof(Title)}]", "' '", $"T0.[{nameof(FirstName)}]", "' '", $"T0.[{nameof(LastName)}]")]
+
+    [DisplayName("Full Name"), Column("FullName"), QuickSearch, NameProperty]
+    [Concat($"T0.[{nameof(FirstName)}]", "' '", $"T0.[{nameof(LastName)}]")]
     public String FullName { get => Fields.FullName[this]; set => Fields.FullName[this] = value; }
 
     [DisplayName("Gender"), Expression("(CASE WHEN T0.[TitleOfCourtesy] LIKE '%s%' THEN 2 WHEN T0.[TitleOfCourtesy] LIKE '%Mr%' THEN 1 END)")]

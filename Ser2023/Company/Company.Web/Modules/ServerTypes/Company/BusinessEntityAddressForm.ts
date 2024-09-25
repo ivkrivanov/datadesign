@@ -1,10 +1,11 @@
-﻿import { AddressTypeDialog } from "@/Company/AddressType/AddressTypeDialog";
-import { LookupEditor, PrefixedContext } from "@serenity-is/corelib";
+﻿import { StringEditor, LookupEditor, PrefixedContext } from "@serenity-is/corelib";
+import { AddressTypeDialog } from "@/Company/AddressType/AddressTypeDialog";
 import { initFormType } from "@serenity-is/corelib/q";
 
 export interface BusinessEntityAddressForm {
+    BusinessEntityId: StringEditor;
+    AddressId: StringEditor;
     AddressTypeId: LookupEditor;
-    AddressTypeName: LookupEditor;
 }
 
 export class BusinessEntityAddressForm extends PrefixedContext {
@@ -17,11 +18,13 @@ export class BusinessEntityAddressForm extends PrefixedContext {
         if (!BusinessEntityAddressForm.init)  {
             BusinessEntityAddressForm.init = true;
 
-            var w0 = LookupEditor;
+            var w0 = StringEditor;
+            var w1 = LookupEditor;
 
             initFormType(BusinessEntityAddressForm, [
-                'AddressTypeId', w0,
-                'AddressTypeName', w0
+                'BusinessEntityId', w0,
+                'AddressId', w0,
+                'AddressTypeId', w1
             ]);
         }
     }

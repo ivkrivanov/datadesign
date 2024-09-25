@@ -38,15 +38,6 @@ public sealed class CategoriesTypeRow : LoggingRow<CategoriesTypeRow.RowFields>,
 
     #endregion Tenant & Activ
 
-    //public CategoriesTypeRow()
-    //{ 
-    //}
-
-    //public CategoriesTypeRow(RowFields fields)
-    //    : base(fields)
-    //{
-    //}
-
     public class RowFields : LoggingRowFields
     {
         public Int32Field CategoryTypeId;

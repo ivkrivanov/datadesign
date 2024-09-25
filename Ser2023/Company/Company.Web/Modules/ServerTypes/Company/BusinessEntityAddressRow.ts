@@ -4,7 +4,6 @@ export interface BusinessEntityAddressRow {
     BusinessEntityId?: number;
     AddressId?: number;
     AddressTypeId?: number;
-    AddressTypeName?: string;
     IsActive?: number;
     TenantId?: number;
     InsertUserId?: number;
@@ -16,6 +15,7 @@ export interface BusinessEntityAddressRow {
 export abstract class BusinessEntityAddressRow {
     static readonly idProperty = 'BusinessEntityId';
     static readonly isActiveProperty = 'IsActive';
+    static readonly nameProperty = 'AddressTypeId';
     static readonly localTextPrefix = 'Company.BusinessEntityAddress';
     static readonly lookupKey = 'Company.BusinessEntityAddress';
 

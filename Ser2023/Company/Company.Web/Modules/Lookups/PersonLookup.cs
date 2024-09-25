@@ -19,7 +19,7 @@ namespace Company.Company.Lookups
             var fld = PersonRow.Fields;
             query.Distinct(true)
                 .Select(fld.BusinessEntityId)
-                .Select(fld.LastName);
+                .Select(fld.FullName);
 
             AddTenantFilter(query);
         }

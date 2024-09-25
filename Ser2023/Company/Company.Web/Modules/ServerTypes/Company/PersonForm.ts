@@ -2,13 +2,13 @@
 import { initFormType } from "@serenity-is/corelib/q";
 
 export interface PersonForm {
+    BusinessEntityId: StringEditor;
     PersonType: StringEditor;
     Title: StringEditor;
     FirstName: StringEditor;
     MiddleName: StringEditor;
     LastName: StringEditor;
     Suffix: StringEditor;
-    Addresses: StringEditor;
 }
 
 export class PersonForm extends PrefixedContext {
@@ -24,13 +24,13 @@ export class PersonForm extends PrefixedContext {
             var w0 = StringEditor;
 
             initFormType(PersonForm, [
+                'BusinessEntityId', w0,
                 'PersonType', w0,
                 'Title', w0,
                 'FirstName', w0,
                 'MiddleName', w0,
                 'LastName', w0,
-                'Suffix', w0,
-                'Addresses', w0
+                'Suffix', w0
             ]);
         }
     }

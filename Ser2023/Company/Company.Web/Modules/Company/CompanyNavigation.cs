@@ -14,3 +14,5 @@ using MyPages = Company.Company.Pages;
 [assembly: NavigationLink(int.MaxValue, "Company/Phone Number Type", typeof(MyPages.PhoneNumberTypePage), icon: null)]
 //[assembly: NavigationLink(int.MaxValue, "Company/Person View", typeof(MyPages.PersonViewPage), icon: null)]
 [assembly: NavigationLink(int.MaxValue, "Company/Business Entity", typeof(MyPages.BusinessEntityPage), icon: null)]
+[assembly: NavigationLink(int.MaxValue, "Company/Currency", typeof(MyPages.CurrencyPage), icon: null)]
+[assembly: NavigationLink(int.MaxValue, "Company/Currency Rate", typeof(MyPages.CurrencyRatePage), icon: null)]

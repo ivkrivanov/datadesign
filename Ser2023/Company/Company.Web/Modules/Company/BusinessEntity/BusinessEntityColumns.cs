@@ -10,8 +10,8 @@ public class BusinessEntityColumns
     [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
     public int BusinessEntityId { get; set; }
 
-    [EditLink, Width(60)]
-    public string PersonType { get; set; }
+    //[EditLink, Width(60)]
+    //public string PersonType { get; set; }
     //public string Title { get; set; }
     //public string FirstName { get; set; }
     //public string MiddleName { get; set; }

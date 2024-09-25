@@ -11,26 +11,28 @@ namespace Company.Store.Forms;
 public class ProductsForm
 {
     [Category("General")]
-    [HalfWidth]
+    [OneThirdWidth]
     public Int32 CategoryId { get; set; }
-    [HalfWidth]
+    [OneThirdWidth]
     public String ProductName { get; set; }
-    [HalfWidth]
-    public String ProductCode { get; set; }
-    [HalfWidth]
-    public String ProductBarcode { get; set; }
-    [HalfWidth]
+    [OneThirdWidth]
     public String ProductLabel { get; set; }
-    [HalfWidth]
+    [OneThirdWidth]
+    public String ProductCode { get; set; }
+    [OneThirdWidth]
+    public String ProductBarcode { get; set; }
+    [OneThirdWidth]
     public Int32 MeasureId { get; set; }
     public String ProductImage { get; set; }
     public Boolean Discontinued { get; set; }
 
     [Category("Pricing")]
 
-    [HalfWidth]
+    [OneThirdWidth]
     public Decimal UnitPrice { get; set; }
-    [HalfWidth]
+    [OneThirdWidth]
+    public Decimal SalePrice { get; set; }
+    [OneThirdWidth]
     public String QuantityPerUnit { get; set; }
 
 
@@ -39,10 +41,10 @@ public class ProductsForm
     public List<ProductDetailsRow> DetailList { get; set; }
 
     [Category("Status")]
-    [HalfWidth]
+    [OneThirdWidth]
     public Int16 UnitsInStock { get; set; }
-    [HalfWidth]
+    [OneThirdWidth]
     public Int16 UnitsOnOrder { get; set; }
-    [HalfWidth]
+    [OneThirdWidth]
     public Int16 ReorderLevel { get; set; }
 }

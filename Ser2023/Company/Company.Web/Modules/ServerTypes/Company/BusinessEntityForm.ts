@@ -1,4 +1,4 @@
-﻿import { StringEditor, LookupEditor, PrefixedContext } from "@serenity-is/corelib";
+﻿import { StringEditor, PrefixedContext } from "@serenity-is/corelib";
 import { initFormType } from "@serenity-is/corelib/q";
 
 export interface BusinessEntityForm {
@@ -8,8 +8,7 @@ export interface BusinessEntityForm {
     MiddleName: StringEditor;
     LastName: StringEditor;
     Suffix: StringEditor;
-    Name: LookupEditor;
-    BusinessEntityAddresses: StringEditor;
+    AddressType: StringEditor;
 }
 
 export class BusinessEntityForm extends PrefixedContext {
@@ -23,7 +22,6 @@ export class BusinessEntityForm extends PrefixedContext {
             BusinessEntityForm.init = true;
 
             var w0 = StringEditor;
-            var w1 = LookupEditor;
 
             initFormType(BusinessEntityForm, [
                 'PersonType', w0,
@@ -32,8 +30,7 @@ export class BusinessEntityForm extends PrefixedContext {
                 'MiddleName', w0,
                 'LastName', w0,
                 'Suffix', w0,
-                'Name', w1,
-                'BusinessEntityAddresses', w0
+                'AddressType', w0
             ]);
         }
     }

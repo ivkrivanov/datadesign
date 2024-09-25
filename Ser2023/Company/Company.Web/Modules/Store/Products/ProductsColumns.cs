@@ -27,7 +27,9 @@ public class ProductsColumns
     [Width(80), AlignRight]
     public String QuantityPerUnit { get; set; }
     [Width(80), AlignRight]
-    public Decimal UnitPrice { get; set; }
+    public decimal UnitPrice { get; set; }
+    [Width(80), AlignRight]
+    public decimal SalePrice { get; set; }
     [Width(80), AlignRight]
     public Int16 UnitsInStock { get; set; }
     [Width(80), AlignRight]
