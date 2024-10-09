@@ -4,7 +4,6 @@ export interface BusinessEntityContactRow {
     BusinessEntityId?: number;
     PersonId?: number;
     ContactTypeId?: number;
-    Rowguid?: string;
     IsActive?: number;
     TenantId?: number;
     ContactTypeName?: string;

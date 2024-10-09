@@ -1,5 +1,4 @@
 using Serenity.ComponentModel;
-using System;
 using System.ComponentModel;
 
 namespace Company.Company.Columns;
@@ -11,6 +10,6 @@ public class AddressTypeColumns
     [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
     public long AddressTypeId { get; set; }
     [EditLink]
-    public string Name { get; set; }
-    public Guid Rowguid { get; set; }
+    public string AddressTypeName { get; set; }
+    //public Guid Rowguid { get; set; }
 }

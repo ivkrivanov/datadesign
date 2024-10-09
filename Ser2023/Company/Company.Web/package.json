@@ -10,7 +10,7 @@
   },
   "devDependencies": {
     "@serenity-is/tsbuild": "6.6.0",
-    "eslint": "^8.50.0"
+    "eslint": "^8.55.0"
   },
   "scripts": {
     "build": "npm run tsbuild",

@@ -1,4 +1,4 @@
-﻿import { Decorators, EntityGrid } from '@serenity-is/corelib';
+import { Decorators, EntityGrid } from '@serenity-is/corelib';
 import { PersonColumns, PersonRow, PersonService } from '../../ServerTypes/Company';
 import { PersonDialog } from './PersonDialog';
 

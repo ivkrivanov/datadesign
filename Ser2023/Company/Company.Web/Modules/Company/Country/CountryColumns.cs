@@ -7,7 +7,8 @@ namespace Company.Company.Columns;
 [BasedOnRow(typeof(CountryRow), CheckNames = true)]
 public class CountryColumns
 {
-    [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
+    [EditLink, Width(80), DisplayName("Db.Shared.RecordId"), AlignRight]
     public string CountryCode { get; set; }
-    public string Name { get; set; }
+    [Width(200)]
+    public string CountryName { get; set; }
 }

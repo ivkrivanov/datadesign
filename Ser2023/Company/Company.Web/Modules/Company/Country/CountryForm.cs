@@ -6,5 +6,8 @@ namespace Company.Company.Forms;
 [BasedOnRow(typeof(CountryRow), CheckNames = true)]
 public class CountryForm
 {
-    public string Name { get; set; }
+    [OneThirdWidth]
+    public string CountryCode { get; set; }
+    [TwoThirdWidth]
+    public string CountryName { get; set; }
 }

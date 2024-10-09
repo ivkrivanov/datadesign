@@ -1,12 +1,11 @@
-﻿import { StringEditor, LookupEditor, IntegerEditor, PrefixedContext } from "@serenity-is/corelib";
+﻿import { StringEditor, LookupEditor, PrefixedContext } from "@serenity-is/corelib";
 import { CountryDialog } from "@/Company/Country/CountryDialog";
 import { initFormType } from "@serenity-is/corelib/q";
 
 export interface StateProvinceForm {
     StateProvinceCode: StringEditor;
+    StateProvinceName: StringEditor;
     CountryCode: LookupEditor;
-    Name: StringEditor;
-    TerritoryId: IntegerEditor;
 }
 
 export class StateProvinceForm extends PrefixedContext {
@@ -21,13 +20,11 @@ export class StateProvinceForm extends PrefixedContext {
 
             var w0 = StringEditor;
             var w1 = LookupEditor;
-            var w2 = IntegerEditor;
 
             initFormType(StateProvinceForm, [
                 'StateProvinceCode', w0,
-                'CountryCode', w1,
-                'Name', w0,
-                'TerritoryId', w2
+                'StateProvinceName', w0,
+                'CountryCode', w1
             ]);
         }
     }

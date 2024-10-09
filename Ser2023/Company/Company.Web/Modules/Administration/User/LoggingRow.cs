@@ -20,32 +20,16 @@ namespace Company.Administration.Entities
         protected LoggingRow() : base() { }
 
         [NotNull, Insertable(false), Updatable(false)]
-        public Int32? InsertUserId
-        {
-            get => fields.InsertUserId[this];
-            set => fields.InsertUserId[this] = value;
-        }
+        public Int32? InsertUserId { get => fields.InsertUserId[this]; set => fields.InsertUserId[this] = value; }
 
         [NotNull, Insertable(false), Updatable(false)]
-        public DateTime? InsertDate
-        {
-            get => fields.InsertDate[this];
-            set => fields.InsertDate[this] = value;
-        }
+        public DateTime? InsertDate { get => fields.InsertDate[this]; set => fields.InsertDate[this] = value; }
 
         [Insertable(false), Updatable(false)]
-        public Int32? UpdateUserId
-        {
-            get => fields.UpdateUserId[this];
-            set => fields.UpdateUserId[this] = value;
-        }
+        public Int32? UpdateUserId { get => fields.UpdateUserId[this]; set => fields.UpdateUserId[this] = value; }
 
         [Insertable(false), Updatable(false)]
-        public DateTime? UpdateDate
-        {
-            get => fields.UpdateDate[this];
-            set => fields.UpdateDate[this] = value;
-        }
+        public DateTime? UpdateDate { get => fields.UpdateDate[this]; set => fields.UpdateDate[this] = value; }
 
         Field IInsertLogRow.InsertUserIdField => fields.InsertUserId;
         Field IUpdateLogRow.UpdateUserIdField => fields.UpdateUserId;

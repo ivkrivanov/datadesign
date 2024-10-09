@@ -3,7 +3,6 @@
 export interface PhoneNumberTypeRow {
     PhoneNumberTypeId?: number;
     Name?: string;
-    Rowguid?: string;
     IsActive?: number;
     TenantId?: number;
     InsertUserId?: number;

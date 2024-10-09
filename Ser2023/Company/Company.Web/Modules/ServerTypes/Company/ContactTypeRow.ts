@@ -3,7 +3,6 @@
 export interface ContactTypeRow {
     ContactTypeId?: number;
     Name?: string;
-    Rowguid?: string;
     IsActive?: number;
     TenantId?: number;
     InsertUserId?: number;

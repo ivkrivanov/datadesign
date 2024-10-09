@@ -1,4 +1,4 @@
-﻿import { Decorators, EntityDialog } from '@serenity-is/corelib';
+import { Decorators, EntityDialog } from '@serenity-is/corelib';
 import { PersonForm, PersonRow, PersonService } from '../../ServerTypes/Company';
 
 @Decorators.registerClass('Company.Company.PersonDialog')

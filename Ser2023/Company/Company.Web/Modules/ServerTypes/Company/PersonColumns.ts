@@ -1,3 +1,3 @@
 ﻿export class PersonColumns {
-    static columnsKey = 'Company.Person';
+    static columnsKey = 'Person.Person';
 }

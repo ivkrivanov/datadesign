@@ -44,7 +44,7 @@ namespace Company.Membership.Pages
 
         [HttpPost, JsonRequest]
         public Result<ServiceResponse> Login(LoginRequest request,
-            [FromServices] IUserPasswordValidator passwordValidator,
+            [FromServices] Administration.IUserPasswordValidator passwordValidator,
             [FromServices] IUserRetrieveService userRetriever)
         {
             return this.ExecuteMethod(() =>

@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Serenity.Data;
 using Serenity.Reporting;
 using Serenity.Services;
@@ -27,7 +27,7 @@ public class PersonEndpoint : ServiceEndpoint
     {
         return handler.Update(uow, request);
     }
- 
+
     [HttpPost, AuthorizeDelete(typeof(MyRow))]
     public DeleteResponse Delete(IUnitOfWork uow, DeleteRequest request,
         [FromServices] IPersonDeleteHandler handler)
