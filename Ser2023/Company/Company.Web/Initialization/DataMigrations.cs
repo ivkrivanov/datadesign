@@ -20,6 +20,7 @@ namespace Company
         private static readonly string[] databaseKeys = new[] {
             "Default"
             , "Company"
+            , "Store"
         };
 
         public bool SkippedMigrations { get; private set; }

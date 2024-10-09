@@ -2,8 +2,7 @@
 
 export interface AddressTypeRow {
     AddressTypeId?: number;
-    Name?: string;
-    Rowguid?: string;
+    AddressTypeName?: string;
     IsActive?: number;
     TenantId?: number;
     InsertUserId?: number;
@@ -15,7 +14,7 @@ export interface AddressTypeRow {
 export abstract class AddressTypeRow {
     static readonly idProperty = 'AddressTypeId';
     static readonly isActiveProperty = 'IsActive';
-    static readonly nameProperty = 'Name';
+    static readonly nameProperty = 'AddressTypeName';
     static readonly localTextPrefix = 'Company.AddressType';
     static readonly lookupKey = 'Company.AddressType';
 

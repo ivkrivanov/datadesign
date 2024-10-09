@@ -4,11 +4,8 @@ export interface BusinessEntityAddressRow {
     BusinessEntityId?: number;
     AddressId?: number;
     AddressTypeId?: number;
-    Rowguid?: string;
     IsActive?: number;
     TenantId?: number;
-    AddressLine1?: string;
-    AddressTypeName?: string;
     InsertUserId?: number;
     InsertDate?: string;
     UpdateUserId?: number;

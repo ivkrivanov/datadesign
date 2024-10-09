@@ -1,4 +1,5 @@
 {
+  "EndOfLine": "LF",
   "BaseRowClasses": [
     {
       "ClassName": "Company.Administration.LoggingRow",

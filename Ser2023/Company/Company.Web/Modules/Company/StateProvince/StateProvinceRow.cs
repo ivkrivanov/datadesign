@@ -1,5 +1,4 @@
 using Company.Administration.Entities;
-using FluentMigrator;
 using Serenity.ComponentModel;
 using Serenity.Data;
 using Serenity.Data.Mapping;
@@ -19,93 +18,48 @@ public sealed class StateProvinceRow : LoggingRow<StateProvinceRow.RowFields>, I
     const string jCountryCode = nameof(jCountryCode);
 
     [DisplayName("State Province Id"), Identity, IdProperty]
-    public int? StateProvinceId
-    {
-        get => fields.StateProvinceId[this];
-        set => fields.StateProvinceId[this] = value;
-    }
+    public int? StateProvinceId { get => fields.StateProvinceId[this]; set => fields.StateProvinceId[this] = value; }
 
-    [DisplayName("Province"), Size(5), NotNull, QuickSearch, NameProperty]
-    public string StateProvinceCode
-    {
-        get => fields.StateProvinceCode[this];
-        set => fields.StateProvinceCode[this] = value;
-    }
+    [DisplayName("Province Code"), Size(5), NotNull, QuickSearch]
+    public string StateProvinceCode { get => fields.StateProvinceCode[this]; set => fields.StateProvinceCode[this] = value; }
 
-    //[DisplayName("Country"), Size(3), NotNull, ForeignKey("[address].[Country]", "CountryCode"), LeftJoin(jCountryCode), TextualField(nameof(CountryCodeName)), LookupInclude]
-    [DisplayName("CountryCode"), Size(3), NotNull, ForeignKey(typeof(CountryRow)), LeftJoin(jCountryCode), TextualField(nameof(CountryCode)), LookupInclude]
+    [DisplayName("Province Name"), Size(50), NotNull, QuickSearch, NameProperty]
+    public string StateProvinceName { get => fields.StateProvinceName[this]; set => fields.StateProvinceName[this] = value; }
+
+    #region Country
+
+    [DisplayName("Country"), Size(3), NotNull, ForeignKey(typeof(CountryRow)), LeftJoin(jCountryCode), TextualField(nameof(CountryName)), LookupInclude]
     [LookupEditor(typeof(CountryRow), InplaceAdd = true)]
-    public string CountryCode
-    {
-        get => fields.CountryCode[this];
-        set => fields.CountryCode[this] = value;
-    }
+    public string CountryCode { get => fields.CountryCode[this]; set => fields.CountryCode[this] = value; }
 
-    [DisplayName("Country"), Expression($"{jCountryCode}.[CountryName]"), Column("CountryName"), LookupInclude]
-    public string CounrtyName
-    {
-        get => fields.CountryName[this];
-        set => fields.CountryName[this] = value;
-    }
+    [DisplayName("Country"), Origin(jCountryCode, nameof(CountryRow.CountryName)), LookupInclude]  // Expression($"{jCountryCode}.[CountryName]"), Column("CountryName"), LookupInclude]
+    public string CountryName { get => fields.CountryName[this]; set => fields.CountryName[this] = value; }
 
-    [DisplayName("Name"), Size(50), NotNull]
-    public string Name
-    {
-        get => fields.Name[this];
-        set => fields.Name[this] = value;
-    }
+    #endregion Country
 
-    [DisplayName("Territory Id"), NotNull]
-    public int? TerritoryId
-    {
-        get => fields.TerritoryId[this];
-        set => fields.TerritoryId[this] = value;
-    }
 
-    [DisplayName("Rowguid"), Column("rowguid")] //NotNull, DefaultValue(SystemMethods.NewGuid)]
-    public Guid? Rowguid
-    {
-        get => fields.Rowguid[this];
-        set => fields.Rowguid[this] = value;
-    }
+    //[DisplayName("Rowguid"), Column("rowguid")] //NotNull, DefaultValue(SystemMethods.NewGuid)]
+    //public Guid? Rowguid
+    //{
+    //    get => fields.Rowguid[this];
+    //    set => fields.Rowguid[this] = value;
+    //}
 
     #region Tenant & Activ
 
     [Insertable(false), Updatable(false)]
-    public Int32? TenantId
-    {
-        get => fields.TenantId[this];
-        set => fields.TenantId[this] = value;
-    }
+    public Int32? TenantId { get => fields.TenantId[this]; set => fields.TenantId[this] = value; }
 
-    public Int32Field TenantIdField
-    {
-        get => fields.TenantId;
-    }
+    public Int32Field TenantIdField { get => fields.TenantId; }
 
     [NotNull, Insertable(false), Updatable(true)]
-    public Int16? IsActive
-    {
-        get => fields.IsActive[this];
-        set => fields.IsActive[this] = value;
-    }
+    public Int16? IsActive { get => fields.IsActive[this]; set => fields.IsActive[this] = value; }
 
-    Int16Field IIsActiveRow.IsActiveField
-    {
-        get => fields.IsActive;
-    }
-
-    [DisplayName("Country Name"), Expression($"{jCountryCode}.[Name]"), LookupInclude]
-    public string CountryName
-    {
-        get => fields.CountryName[this];
-        set => fields.CountryName[this] = value;
-    }
+    Int16Field IIsActiveRow.IsActiveField { get => fields.IsActive; }
 
     #endregion Tenant & Activ
 
-    public StateProvinceRow() : base() { }
-
+    //public StateProvinceRow() : base() { }
     //public StateProvinceRow(RowFields fields) : base() { }
 
 
@@ -115,10 +69,15 @@ public sealed class StateProvinceRow : LoggingRow<StateProvinceRow.RowFields>, I
         public StringField StateProvinceCode;
         public StringField CountryCode;
         public StringField CountryName;
+<<<<<<< HEAD
         public StringField Name;
         public Int32Field TerritoryId;
         public GuidField Rowguid;
 
+=======
+        public StringField StateProvinceName;
+        //public GuidField Rowguid;
+>>>>>>> revert
         public Int16Field IsActive;
         public Int32Field TenantId;
     }

@@ -1,6 +1,7 @@
 namespace Company.Migrations.CompanyDB
 { 
     using FluentMigrator;
+    using FluentMigrator.SqlServer;
     using Serenity.Extensions;
     using System;
 
@@ -12,7 +13,12 @@ namespace Company.Migrations.CompanyDB
             //this.Create.Schema("person");
 
             Create.Table("BusinessEntity").InSchema("person")
+<<<<<<< HEAD
                 .WithColumn("BusinessEntityId").AsInt64().PrimaryKey().Identity().NotNullable()
+=======
+                .WithColumn("BusinessEntityId").AsInt64().Identity(1,1).NotNullable().PrimaryKey()
+
+>>>>>>> revert
                 .WithColumn("rowguid").AsGuid().Nullable().WithDefaultValue(SystemMethods.NewGuid)
                 .WithColumn("InsertDate").AsDateTime().NotNullable().WithDefaultValue(SystemMethods.CurrentDateTime)
                 .WithColumn("InsertUserId").AsInt32().NotNullable().WithDefaultValue(0)

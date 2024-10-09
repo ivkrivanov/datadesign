@@ -5,18 +5,46 @@
     <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
     <TypeScriptNoEmitOnError>false</TypeScriptNoEmitOnError>
     <DotNetSergen>dotnet sergen</DotNetSergen>
+    <UserSecretsId>85564263-629f-4df4-8145-632530326c67</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
     <TypeScriptCompile Remove="node_modules\**" />
     <EmbeddedResource Include="Migrations\**\*.sql" />
+    <Compile Remove="Imports\ClientTypes\Com.Store.NotesEditorAttribute.cs" />
+    <Compile Remove="Imports\ClientTypes\Store.EmployeeFormatterAttribute.cs" />
+    <Compile Remove="Imports\ClientTypes\Store.EmployeeListFormatterAttribute.cs" />
+    <Compile Remove="Imports\ClientTypes\Store.NotesEditorAttribute.cs" />
+    <Compile Remove="Imports\ClientTypes\Store.Store.EmployeeListFormatterAttribute.cs" />
+    <Compile Remove="Imports\ClientTypes\Store.Store.NotesEditorAttribute.cs" />
+    <Compile Remove="Imports\ClientTypes\Store.Store.PhoneEditorAttribute.cs" />
+    <Compile Remove="Migrations\CompanyDB\CompanyDB_20230322_090000_Country.cs" />
+    <Compile Remove="Migrations\CompanyDB\CompanyDB_20230322_090010_StateProvince.cs" />
+    <Compile Remove="Migrations\CompanyDB\CompanyDB_20230322_090015_AddressType.cs" />
+    <Compile Remove="Migrations\CompanyDB\CompanyDB_20230322_090020_Address.cs" />
+    <Compile Remove="Migrations\CompanyDB\CompanyDB_20230322_090025_BusinessEntity.cs" />
+    <Compile Remove="Migrations\CompanyDB\CompanyDB_20230322_090027_Person.cs" />
+    <Compile Remove="Migrations\CompanyDB\CompanyDB_20230322_090030_BusinessEntityAddress.cs" />
+    <Compile Remove="Migrations\CompanyDB\CompanyDB_20230322_090035_ContactType.cs" />
+    <Compile Remove="Migrations\CompanyDB\CompanyDB_20230322_090040_PhoneNumberType.cs" />
+    <Compile Remove="Migrations\CompanyDB\CompanyDB_20230322_090045_BusinessEntityContact.cs" />
     <Compile Remove="Migrations\CompanyDB\CompanyDB_20230322_150000_Address.cs" />
     <Compile Remove="Migrations\CompanyDB\CompanyDB_20230407_100000_MultiTenantPatch.cs" />
     <Compile Remove="Migrations\CompanyDB\CompanyDB_20230407_100005_GUID_Patchy.cs" />
     <Compile Remove="Migrations\CompanyDB\CompanyDB_20230407_100010_GUID_Patchy.cs" />
+    <Compile Remove="Migrations\CompanyDB\CompanyDB_20231124_163000_PersonPhone.cs" />
+    <Compile Remove="Migrations\CompanyDB\CompanyDB_20231125_153000_EmailAddress.cs" />
+    <Compile Remove="Modules\Store\WaresOrderDetail\WaresTransactionDetailPage.cs" />
+    <None Remove="Migrations\CompanyDB\CompanyDBScript_SqlServer.sql" />
+    <None Remove="migrations\storedb\StoreDBScript_SQLServer.sql" />
+    <TypeScriptCompile Remove="Modules\Store\ProductDetails\ProductDetailsGrid.ts" />
+    <TypeScriptCompile Remove="Modules\Store\WaresOrderDetail\WaresTransactionDetailGrid.ts" />
+    <TypeScriptCompile Remove="Modules\Store\WaresOrder\WaresOrderPage.ts" />
     <None Include="Modules\Administration\Tenant\TenantIndex.cshtml" />
+    <None Include="Modules\Store\WaresOrder\WaresOrderPage.ts" />
     <Content Update=".eslintrc.json;libman.json;package.json;package-lock.json;sergen.json;tsconfig.json;tslint.json;Modules\tsconfig.json" CopyToOutputDirectory="Never" CopyToPublishDirectory="Never" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <PackageReference Include="EPPlus" Version="6.2.10" />
     <PackageReference Include="FluentMigrator.Runner" Version="3.3.2" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.2" />
@@ -24,6 +52,15 @@
     <PackageReference Include="Microsoft.Data.Sqlite" Version="7.0.4" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="5.1.1" />
     <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="5.2.2" PrivateAssets="all" IncludeAssets="runtime; build; native; contentfiles; analyzers" />
+=======
+    <PackageReference Include="EPPlus" Version="6.2.1" />
+    <PackageReference Include="FluentMigrator.Runner" Version="5.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.2" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="8.0.6" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.1" />
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="5.5.3" PrivateAssets="all" IncludeAssets="runtime; build; native; contentfiles; analyzers" />
+>>>>>>> revert
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Serenity.Assets" Version="6.8.1" />

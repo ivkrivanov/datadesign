@@ -5,9 +5,7 @@ export interface StateProvinceRow {
     StateProvinceCode?: string;
     CountryCode?: string;
     CountryName?: string;
-    Name?: string;
-    TerritoryId?: number;
-    Rowguid?: string;
+    StateProvinceName?: string;
     IsActive?: number;
     TenantId?: number;
     InsertUserId?: number;
@@ -19,7 +17,7 @@ export interface StateProvinceRow {
 export abstract class StateProvinceRow {
     static readonly idProperty = 'StateProvinceId';
     static readonly isActiveProperty = 'IsActive';
-    static readonly nameProperty = 'StateProvinceCode';
+    static readonly nameProperty = 'StateProvinceName';
     static readonly localTextPrefix = 'Company.StateProvince';
     static readonly lookupKey = 'Company.StateProvince';
 

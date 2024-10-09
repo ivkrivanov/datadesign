@@ -1,19 +1,28 @@
 using Serenity.ComponentModel;
-using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace Company.Company.Forms;
 
-[FormScript("Company.Person")]
+[FormScript("Person.Person")]
 [BasedOnRow(typeof(PersonRow), CheckNames = true)]
 public class PersonForm
 {
+<<<<<<< HEAD
     //public string PersonType { get; set; }
+=======
+    public long BusinessEntityId {  get; set; }
+
+
+    [Category("Person")]
+    public string PersonType { get; set; }
+>>>>>>> revert
     public string Title { get; set; }
     public string FirstName { get; set; }
     public string MiddleName { get; set; }
     public string LastName { get; set; }
     public string Suffix { get; set; }
-    //public Guid Rowguid { get; set; }
-    //public short IsActive { get; set; }
-    //public int TenantId { get; set; }
+
+    //[Category("Addresses")]
+    //public List<AddressRow> Addresses { get; set; }
 }

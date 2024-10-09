@@ -39,12 +39,12 @@ public sealed class BusinessEntityContactRow : LoggingRow<BusinessEntityContactR
         set => fields.ContactTypeId[this] = value;
     }
 
-    [DisplayName("Rowguid"), Column("rowguid")]
-    public Guid? Rowguid
-    {
-        get => fields.Rowguid[this];
-        set => fields.Rowguid[this] = value;
-    }
+    //[DisplayName("Rowguid"), Column("rowguid")]
+    //public Guid? Rowguid
+    //{
+    //    get => fields.Rowguid[this];
+    //    set => fields.Rowguid[this] = value;
+    //}
 
     #region Tenant & Activ
 
@@ -93,7 +93,7 @@ public sealed class BusinessEntityContactRow : LoggingRow<BusinessEntityContactR
         public Int64Field BusinessEntityId;
         public Int64Field PersonId;
         public Int64Field ContactTypeId;
-        public GuidField Rowguid;
+        //public GuidField Rowguid;
 
         public Int16Field IsActive;
         public Int32Field TenantId;

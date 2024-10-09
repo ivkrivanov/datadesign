@@ -2,6 +2,7 @@
 
 export interface BusinessEntityRow {
     BusinessEntityId?: number;
+<<<<<<< HEAD
     Rowguid?: string;
     Title?: string;
     FirstName?: string;
@@ -9,8 +10,19 @@ export interface BusinessEntityRow {
     LastName?: string;
     FullName?: string;
     Suffix?: string;
+=======
+>>>>>>> revert
     IsActive?: number;
     TenantId?: number;
+    PersonType?: string;
+    Title?: string;
+    FirstName?: string;
+    MiddleName?: string;
+    LastName?: string;
+    FullName?: string;
+    Suffix?: string;
+    AddressId?: number;
+    AddressTypeId?: number;
     InsertUserId?: number;
     InsertDate?: string;
     UpdateUserId?: number;
