@@ -31,9 +31,12 @@
     <Compile Remove="Migrations\CompanyDB\CompanyDB_20230407_100000_MultiTenantPatch.cs" />
     <Compile Remove="Migrations\CompanyDB\CompanyDB_20230407_100005_GUID_Patchy.cs" />
     <Compile Remove="Migrations\CompanyDB\CompanyDB_20230407_100010_GUID_Patchy.cs" />
+    <Compile Remove="Migrations\CompanyDB\CompanyDB_20230503_150000_EmailAddress.cs" />
+    <Compile Remove="Migrations\CompanyDB\CompanyDB_20230503_150010_PersonPhone.cs" />
     <Compile Remove="Migrations\CompanyDB\CompanyDB_20231124_163000_PersonPhone.cs" />
     <Compile Remove="Migrations\CompanyDB\CompanyDB_20231125_153000_EmailAddress.cs" />
     <Compile Remove="Modules\Store\WaresOrderDetail\WaresTransactionDetailPage.cs" />
+    <None Remove="Migrations\CompanyDB\CompanyDBScriptSales_SQLServer.sql" />
     <None Remove="Migrations\CompanyDB\CompanyDBScript_SqlServer.sql" />
     <None Remove="migrations\storedb\StoreDBScript_SQLServer.sql" />
     <TypeScriptCompile Remove="Modules\Store\ProductDetails\ProductDetailsGrid.ts" />
