@@ -1,0 +1,30 @@
+{
+  "Extends": "defaults@6.6.0",
+  "RootNamespace": "Company",
+  "FileScopedNamespaces": true,
+  "ServerTypings": {
+    "LocalTexts": true
+  },
+  "EndOfLine": "LF",
+  "BaseRowClasses": [
+    {
+      "ClassName": "Company.Administration.LoggingRow",
+      "Fields": [
+        "InsertUserId",
+        "UpdateUserId",
+        "InsertDate",
+        "UpdateDate"
+      ]
+    }
+  ],
+  "RemoveForeignFields": [
+    "InsertUserId",
+    "UpdateUserId",
+    "InsertDate",
+    "UpdateDate"
+  ],
+  "UpgradeInfo": {
+    "InitialType": "Community",
+    "InitialVersion": "8.7.2.0"
+  }
+}
