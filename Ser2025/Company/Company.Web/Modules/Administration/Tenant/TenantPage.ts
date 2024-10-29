@@ -1,6 +1,5 @@
-import { initFullHeightGridPage } from "@serenity-is/corelib/q"
+import { gridPageInit, initFullHeightGridPage } from "@serenity-is/corelib"
 import { TenantGrid } from "./TenantGrid";
 
-$(function () {
-    initFullHeightGridPage(new TenantGrid($('#GridDiv')).element);
-});
+export default () => gridPageInit(TenantGrid);
+

@@ -1,4 +1,4 @@
-﻿using Microsoft.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 
 namespace Company;
 public class HumanizeSqlExceptionBehavior : BaseSaveDeleteBehavior, IImplicitBehavior

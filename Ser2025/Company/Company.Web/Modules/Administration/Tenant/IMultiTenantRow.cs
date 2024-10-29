@@ -1,10 +1,9 @@
 
-namespace Company
-{
-    using Serenity.Data;
+namespace Company;
 
-    public interface IMultiTenantRow
-    {
-        Int32Field TenantIdField { get; }
-    }
+using Serenity.Data;
+
+public interface IMultiTenantRow
+{
+    Int32Field TenantIdField { get; }
 }

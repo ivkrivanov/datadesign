@@ -1,4 +1,4 @@
-﻿using Serenity.Navigation;
+using Serenity.Navigation;
 using Administration = Company.Administration.Pages;
 
 [assembly: NavigationMenu(9000, "Administration", icon: "fa-wrench")]
@@ -6,3 +6,4 @@ using Administration = Company.Administration.Pages;
 [assembly: NavigationLink(9200, "Administration/Translations", typeof(Administration.TranslationPage), icon: "fa-comment-o")]
 [assembly: NavigationLink(9300, "Administration/Roles", typeof(Administration.RolePage), icon: "fa-lock")]
 [assembly: NavigationLink(9400, "Administration/User Management", typeof(Administration.UserPage), icon: "fa-users")]
+[assembly: NavigationLink(9400, "Administration/Tenant", typeof(Administration.TenantPage), icon: "fa-users")]
