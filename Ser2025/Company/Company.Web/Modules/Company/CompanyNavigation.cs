@@ -1,0 +1,11 @@
+﻿using Serenity.Navigation;
+using MyPages = Company.Company.Pages;
+
+[assembly: NavigationLink(int.MaxValue, "Company/Address", typeof(MyPages.AddressPage), icon: null)]
+[assembly: NavigationLink(int.MaxValue, "Company/Address Type", typeof(MyPages.AddressTypePage), icon: null)]
+[assembly: NavigationLink(int.MaxValue, "Company/Contact Type", typeof(MyPages.ContactTypePage), icon: null)]
+[assembly: NavigationLink(int.MaxValue, "Company/Country", typeof(MyPages.CountryPage), icon: null)]
+[assembly: NavigationLink(int.MaxValue, "Company/Phone Number Type", typeof(MyPages.PhoneNumberTypePage), icon: null)]
+[assembly: NavigationLink(int.MaxValue, "Company/State Province", typeof(MyPages.StateProvincePage), icon: null)]
+[assembly: NavigationLink(int.MaxValue, "Company/Currency", typeof(MyPages.CurrencyPage), icon: null)]
+[assembly: NavigationLink(int.MaxValue, "Company/Currency Rate", typeof(MyPages.CurrencyRatePage), icon: null)]
