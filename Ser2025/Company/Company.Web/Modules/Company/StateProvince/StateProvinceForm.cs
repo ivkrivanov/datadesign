@@ -7,6 +7,7 @@ namespace Company.Company.Forms;
 public class StateProvinceForm
 {
     public string StateProvinceCode { get; set; }
-    public string CountryCode { get; set; }
     public string StateProvinceName { get; set; }
+    public string CountryCode { get; set; }
+
 }

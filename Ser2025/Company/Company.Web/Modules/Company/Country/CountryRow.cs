@@ -10,10 +10,10 @@ namespace Company.Company;
 [ServiceLookupPermission("Administration:General")]
 public sealed class CountryRow : LoggingRow<CountryRow.RowFields>, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
 {
-    [DisplayName("Country Code"), Size(3), PrimaryKey, NotNull, IdProperty, QuickSearch, NameProperty]
+    [DisplayName("Country Code"), Size(3), PrimaryKey, NotNull, IdProperty]
     public string CountryCode { get => fields.CountryCode[this]; set => fields.CountryCode[this] = value; }
 
-    [DisplayName("Country Name"), Size(50), NotNull]
+    [DisplayName("Country Name"), Size(50), NotNull, QuickSearch, NameProperty]
     public string CountryName { get => fields.CountryName[this]; set => fields.CountryName[this] = value; }
 
     #region Tenant & Activ

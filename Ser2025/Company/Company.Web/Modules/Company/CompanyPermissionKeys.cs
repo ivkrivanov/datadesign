@@ -114,6 +114,17 @@ public class PermissionKeys
         public const string View = "Company:PhoneNumberType:View";
     }
 
+    [DisplayName("PersonPhone")]
+    public class PersonPhone
+    {
+        [Description("Delete"), ImplicitPermission(General), ImplicitPermission(View)]
+        public const string Delete = "Company:PersonPhone:Delete";
+
+        [Description("Create/Update"), ImplicitPermission(General), ImplicitPermission(View)]
+        public const string Modify = "Company:PersonPhone:Modify";
+        public const string View = "Company:PersonPhone:View";
+    }
+
     [DisplayName("Currency")]
     public class Currency
     {

@@ -36,6 +36,7 @@ public sealed class AddressTypeRow : LoggingRow<AddressTypeRow.RowFields>, IIdRo
     {
         public Int32Field AddressTypeId;
         public StringField AddressTypeName;
+
         public Int16Field IsActive;
         public Int32Field TenantId;
 

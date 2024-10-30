@@ -36,10 +36,10 @@ public sealed class AddressRow : LoggingRow<AddressRow.RowFields>, IIdRow, IName
     [DisplayName("Postal Code"), Size(15), NotNull]
     public string PostalCode { get => fields.PostalCode[this]; set => fields.PostalCode[this] = value; }
 
-    [DisplayName("Country Code Country Name"), Expression($"{jCountryCode}.[CountryName]")]
+    [DisplayName("Country Name"), Expression($"{jCountryCode}.[CountryName]")]
     public string CountryCodeCountryName { get => fields.CountryCodeCountryName[this]; set => fields.CountryCodeCountryName[this] = value; }
 
-    [DisplayName("State Province State Province Code"), Expression($"{jStateProvince}.[StateProvinceCode]")]
+    [DisplayName("Province Code"), Expression($"{jStateProvince}.[StateProvinceCode]")]
     public string StateProvinceCode { get => fields.StateProvinceCode[this]; set => fields.StateProvinceCode[this] = value; }
 
     #region Tenant & Activ
