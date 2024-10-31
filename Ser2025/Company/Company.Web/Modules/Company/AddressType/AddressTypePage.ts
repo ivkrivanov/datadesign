@@ -1,6 +1,5 @@
-import { initFullHeightGridPage } from '@serenity-is/corelib';
+import { initFullHeightGridPage, gridPageInit } from '@serenity-is/corelib';
 import { AddressTypeGrid } from './AddressTypeGrid';
-import { gridPageInit } from "@serenity-is/corelib";
 
 export default () => gridPageInit(AddressTypeGrid);
 

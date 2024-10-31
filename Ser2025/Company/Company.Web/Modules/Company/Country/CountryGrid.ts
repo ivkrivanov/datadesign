@@ -1,4 +1,4 @@
-﻿import { CountryColumns, CountryRow, CountryService } from '@/ServerTypes/Company';
+import { CountryColumns, CountryRow, CountryService } from '@/ServerTypes/Company';
 import { Decorators, EntityGrid } from '@serenity-is/corelib';
 import { CountryDialog } from './CountryDialog';
 
@@ -9,7 +9,7 @@ export class CountryGrid extends EntityGrid<CountryRow, any> {
     protected getRowDefinition() { return CountryRow; }
     protected getService() { return CountryService.baseUrl; }
 
-    constructor(container: JQuery) {
-        super(container);
+    constructor(props: any) {
+        super(props);
     }
 }

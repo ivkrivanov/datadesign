@@ -1,4 +1,4 @@
-﻿import { BusinessEntityColumns, BusinessEntityRow, BusinessEntityService } from '@/ServerTypes/Company';
+import { BusinessEntityColumns, BusinessEntityRow, BusinessEntityService } from '@/ServerTypes/Company';
 import { Decorators, EntityGrid } from '@serenity-is/corelib';
 import { BusinessEntityDialog } from './BusinessEntityDialog';
 
@@ -9,7 +9,7 @@ export class BusinessEntityGrid extends EntityGrid<BusinessEntityRow, any> {
     protected getRowDefinition() { return BusinessEntityRow; }
     protected getService() { return BusinessEntityService.baseUrl; }
 
-    constructor(container: JQuery) {
-        super(container);
+    constructor(props: any) {
+        super(props);
     }
 }

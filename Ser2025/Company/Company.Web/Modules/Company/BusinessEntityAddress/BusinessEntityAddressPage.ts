@@ -1,6 +1,9 @@
-﻿import { initFullHeightGridPage } from '@serenity-is/corelib';
+import { initFullHeightGridPage } from '@serenity-is/corelib';
 import { BusinessEntityAddressGrid } from './BusinessEntityAddressGrid';
+import { gridPageInit } from "@serenity-is/corelib";
 
-export default function pageInit() {
-    initFullHeightGridPage(new BusinessEntityAddressGrid($('#GridDiv')).element);
-}
+export default () => gridPageInit(BusinessEntityAddressGrid);
+
+//export default function pageInit() {
+//    initFullHeightGridPage(new BusinessEntityAddressGrid($('#GridDiv')).element);
+//}

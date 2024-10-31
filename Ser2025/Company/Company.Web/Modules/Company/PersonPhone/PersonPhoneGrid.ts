@@ -1,4 +1,4 @@
-﻿import { PersonPhoneColumns, PersonPhoneRow, PersonPhoneService } from '@/ServerTypes/Company';
+import { PersonPhoneColumns, PersonPhoneRow, PersonPhoneService } from '@/ServerTypes/Company';
 import { Decorators, EntityGrid } from '@serenity-is/corelib';
 import { PersonPhoneDialog } from './PersonPhoneDialog';
 
@@ -9,7 +9,7 @@ export class PersonPhoneGrid extends EntityGrid<PersonPhoneRow, any> {
     protected getRowDefinition() { return PersonPhoneRow; }
     protected getService() { return PersonPhoneService.baseUrl; }
 
-    constructor(container: JQuery) {
-        super(container);
+    constructor(props: any) {
+        super(props);
     }
 }

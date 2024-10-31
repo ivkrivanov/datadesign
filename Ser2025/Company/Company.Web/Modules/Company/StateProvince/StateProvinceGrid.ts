@@ -1,4 +1,4 @@
-﻿import { StateProvinceColumns, StateProvinceRow, StateProvinceService } from '@/ServerTypes/Company';
+import { StateProvinceColumns, StateProvinceRow, StateProvinceService } from '@/ServerTypes/Company';
 import { Decorators, EntityGrid } from '@serenity-is/corelib';
 import { StateProvinceDialog } from './StateProvinceDialog';
 
@@ -9,7 +9,7 @@ export class StateProvinceGrid extends EntityGrid<StateProvinceRow, any> {
     protected getRowDefinition() { return StateProvinceRow; }
     protected getService() { return StateProvinceService.baseUrl; }
 
-    constructor(container: JQuery) {
-        super(container);
+    constructor(props: any) {
+        super(props);
     }
 }

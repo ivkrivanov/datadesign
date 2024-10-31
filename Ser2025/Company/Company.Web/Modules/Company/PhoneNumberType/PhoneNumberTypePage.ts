@@ -1,6 +1,8 @@
-﻿import { initFullHeightGridPage } from '@serenity-is/corelib';
+import { initFullHeightGridPage, gridPageInit } from '@serenity-is/corelib';
 import { PhoneNumberTypeGrid } from './PhoneNumberTypeGrid';
 
-export default function pageInit() {
-    initFullHeightGridPage(new PhoneNumberTypeGrid($('#GridDiv')).element);
-}
+export default () => gridPageInit(PhoneNumberTypeGrid);
+
+//export default function pageInit() {
+//    initFullHeightGridPage(new PhoneNumberTypeGrid($('#GridDiv')).element);
+//}

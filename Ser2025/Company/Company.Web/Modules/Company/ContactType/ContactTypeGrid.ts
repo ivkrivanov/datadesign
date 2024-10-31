@@ -1,4 +1,4 @@
-﻿import { ContactTypeColumns, ContactTypeRow, ContactTypeService } from '@/ServerTypes/Company';
+import { ContactTypeColumns, ContactTypeRow, ContactTypeService } from '@/ServerTypes/Company';
 import { Decorators, EntityGrid } from '@serenity-is/corelib';
 import { ContactTypeDialog } from './ContactTypeDialog';
 
@@ -9,7 +9,7 @@ export class ContactTypeGrid extends EntityGrid<ContactTypeRow, any> {
     protected getRowDefinition() { return ContactTypeRow; }
     protected getService() { return ContactTypeService.baseUrl; }
 
-    constructor(container: JQuery) {
-        super(container);
+    constructor(props: any) {
+        super(props);
     }
 }
