@@ -1,4 +1,4 @@
-﻿using Serenity.ComponentModel;
+using Serenity.ComponentModel;
 
 namespace Company.Company.Forms;
 
@@ -12,6 +12,4 @@ public class PersonForm
     public string MiddleName { get; set; }
     public string LastName { get; set; }
     public string Suffix { get; set; }
-    public short IsActive { get; set; }
-    public int TenantId { get; set; }
 }

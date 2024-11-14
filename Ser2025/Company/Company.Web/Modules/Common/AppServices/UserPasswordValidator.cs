@@ -1,4 +1,4 @@
-﻿using Company.Administration;
+using Company.Administration;
 using Microsoft.Extensions.Logging;
 
 namespace Company.AppServices;
@@ -106,6 +106,7 @@ public class UserPasswordValidator(ITwoLevelCache cache, ISqlConnections sqlConn
             var hash = UserHelper.GenerateHash(password, ref salt);
             var displayName = entry.FirstName + " " + entry.LastName;
             var email = entry.Email.TrimToNull() ?? user.Email ?? (username + "@yourdefaultdomain.com");
+            var tenant = user.TenantId.Value;
 
             using var connection = sqlConnections.NewFor<UserRow>();
             using var uow = new UnitOfWork(connection);
@@ -116,6 +117,7 @@ public class UserPasswordValidator(ITwoLevelCache cache, ISqlConnections sqlConn
                 .Set(fld.PasswordSalt, salt)
                 .Set(fld.Email, email)
                 .Set(fld.LastDirectoryUpdate, DateTime.Now)
+                .Set(fld.TenantId, tenant)
                 .WhereEqual(fld.UserId, user.UserId)
                 .Execute(connection, ExpectedRows.One);
 
@@ -177,7 +179,7 @@ public class UserPasswordValidator(ITwoLevelCache cache, ISqlConnections sqlConn
                 IsActive = 1,
                 InsertDate = DateTime.Now,
                 InsertUserId = 1,
-                LastDirectoryUpdate = DateTime.Now
+                LastDirectoryUpdate = DateTime.Now,
             });
 
             uow.Commit();

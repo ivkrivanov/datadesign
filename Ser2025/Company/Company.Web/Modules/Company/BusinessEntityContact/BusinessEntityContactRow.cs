@@ -13,11 +13,11 @@ public sealed class BusinessEntityContactRow : LoggingRow<BusinessEntityContactR
     const string jPerson = nameof(jPerson);
     const string jContactType = nameof(jContactType);
 
-    [DisplayName("Business Entity"), PrimaryKey, NotNull, ForeignKey(typeof(BusinessEntityRow)), LeftJoin(jBusinessEntity), IdProperty]
-    [ServiceLookupEditor(typeof(BusinessEntityRow))]
+    [DisplayName("Business Entity"), Column("BusinessEntityID"), PrimaryKey, NotNull, ForeignKey(typeof(BusinessEntityRow))]
+    [LeftJoin(jBusinessEntity), IdProperty,ServiceLookupEditor(typeof(BusinessEntityRow))]
     public int? BusinessEntityId { get => fields.BusinessEntityId[this]; set => fields.BusinessEntityId[this] = value; }
 
-    [DisplayName("Person"), PrimaryKey, NotNull, ForeignKey(typeof(PersonRow)), LeftJoin(jPerson), TextualField(nameof(PersonType))]
+    [DisplayName("Person"), PrimaryKey, NotNull, ForeignKey(typeof(PersonRow)), LeftJoin(jPerson), TextualField(nameof(PersonFullName))]
     [ServiceLookupEditor(typeof(PersonRow))]
     public int? PersonId { get => fields.PersonId[this]; set => fields.PersonId[this] = value; }
 
@@ -42,6 +42,9 @@ public sealed class BusinessEntityContactRow : LoggingRow<BusinessEntityContactR
     [DisplayName("Person Person Type"), Expression($"{jPerson}.[PersonType]")]
     public string PersonType { get => fields.PersonType[this]; set => fields.PersonType[this] = value; }
 
+    [DisplayName("PersonType Full Name"), Expression($"{jPerson}.[FullName]")]
+    public string PersonFullName { get => fields.PersonFullName[this]; set => fields.PersonFullName[this] = value; }
+
     [DisplayName("Contact Type Name"), Expression($"{jContactType}.[Name]")]
     public string ContactTypeName { get => fields.ContactTypeName[this]; set => fields.ContactTypeName[this] = value; }
 
@@ -50,10 +53,12 @@ public sealed class BusinessEntityContactRow : LoggingRow<BusinessEntityContactR
         public Int32Field BusinessEntityId;
         public Int32Field PersonId;
         public Int32Field ContactTypeId;
+
         public Int16Field IsActive;
         public Int32Field TenantId;
 
         public StringField PersonType;
+        public StringField PersonFullName;
         public StringField ContactTypeName;
     }
 }

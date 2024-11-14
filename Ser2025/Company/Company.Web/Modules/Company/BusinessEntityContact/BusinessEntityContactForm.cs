@@ -1,4 +1,4 @@
-﻿using Serenity.ComponentModel;
+using Serenity.ComponentModel;
 
 namespace Company.Company.Forms;
 
@@ -6,8 +6,7 @@ namespace Company.Company.Forms;
 [BasedOnRow(typeof(BusinessEntityContactRow), CheckNames = true)]
 public class BusinessEntityContactForm
 {
+    public int BusinessEntityId {  get; set; }
     public int PersonId { get; set; }
     public int ContactTypeId { get; set; }
-    public short IsActive { get; set; }
-    public int TenantId { get; set; }
 }

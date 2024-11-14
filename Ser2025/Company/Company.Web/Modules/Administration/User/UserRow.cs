@@ -48,7 +48,6 @@ public sealed class UserRow : Serenity.Extensions.Entities.LoggingRow<UserRow.Ro
     [AsyncLookupEditor(typeof(RoleRow), Multiple = true)]
     public List<int> Roles { get => fields.Roles[this]; set => fields.Roles[this] = value; }
 
-
     [DisplayName("Tenant"), ForeignKey("Tenants", "TenantId"), LeftJoin("tnt")]
     [LookupEditor(typeof(TenantRow))]
     [ReadPermission(PermissionKeys.Tenants)]
@@ -74,6 +73,7 @@ public sealed class UserRow : Serenity.Extensions.Entities.LoggingRow<UserRow.Ro
         public StringField Email;
         public StringField UserImage;
         public DateTimeField LastDirectoryUpdate;
+
         public Int32Field TenantId;
         public StringField TenantName;
         public Int16Field IsActive;

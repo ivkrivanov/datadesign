@@ -16,7 +16,7 @@ public sealed class PersonRow : LoggingRow<PersonRow.RowFields>, IIdRow, INameRo
     [LeftJoin(jBusinessEntity), IdProperty, ServiceLookupEditor(typeof(BusinessEntityRow))]
     public int? BusinessEntityId { get => fields.BusinessEntityId[this]; set => fields.BusinessEntityId[this] = value; }
 
-    [DisplayName("Person Type"), Size(2), NotNull, QuickSearch, NameProperty]
+    [DisplayName("Person Type"), Size(2), NotNull]
     public string PersonType { get => fields.PersonType[this]; set => fields.PersonType[this] = value; }
 
     [DisplayName("Title"), Size(8)]
@@ -30,6 +30,10 @@ public sealed class PersonRow : LoggingRow<PersonRow.RowFields>, IIdRow, INameRo
 
     [DisplayName("Last Name"), Size(50), NotNull]
     public string LastName { get => fields.LastName[this]; set => fields.LastName[this] = value; }
+
+    [DisplayName("FullName"), NameProperty, QuickSearch]
+    [Concat($"T0.[{nameof(FirstName)}]", "' '", $"T0.[{nameof(MiddleName)}]", "' '", $"T0.[{nameof(LastName)}]")]
+    public string FullName { get => fields.FullName[this]; set => fields.FullName[this] = value; }
 
     [DisplayName("Suffix"), Size(10)]
     public string Suffix { get => fields.Suffix[this]; set => fields.Suffix[this] = value; }
@@ -56,7 +60,9 @@ public sealed class PersonRow : LoggingRow<PersonRow.RowFields>, IIdRow, INameRo
         public StringField FirstName;
         public StringField MiddleName;
         public StringField LastName;
+        public StringField FullName;
         public StringField Suffix;
+
         public Int16Field IsActive;
         public Int32Field TenantId;
 

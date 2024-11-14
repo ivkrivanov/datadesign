@@ -19,7 +19,7 @@ public class UserRetrieveService(ITwoLevelCache cache, ISqlConnections sqlConnec
             PasswordSalt = user.PasswordSalt,
             UpdateDate = user.UpdateDate,
             LastDirectoryUpdate = user.LastDirectoryUpdate,
-            TenantId = user.TenantId
+            TenantId = user.TenantId.Value
         };
     }
 }

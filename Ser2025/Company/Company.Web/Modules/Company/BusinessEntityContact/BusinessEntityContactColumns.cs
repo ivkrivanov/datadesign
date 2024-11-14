@@ -1,4 +1,4 @@
-﻿using Serenity.ComponentModel;
+using Serenity.ComponentModel;
 using System.ComponentModel;
 
 namespace Company.Company.Columns;
@@ -11,6 +11,4 @@ public class BusinessEntityContactColumns
     public int BusinessEntityId { get; set; }
     public string PersonType { get; set; }
     public string ContactTypeName { get; set; }
-    public short IsActive { get; set; }
-    public int TenantId { get; set; }
 }
