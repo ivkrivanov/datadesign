@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Serenity;
+using Serenity.ComponentModel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using Serenity;
-using Serenity.ComponentModel;
 
 namespace Company.Administration;
+
 public partial class PermissionCheckEditorAttribute : CustomEditorAttribute
 {
     public const string Key = "Company.Administration.PermissionCheckEditor";

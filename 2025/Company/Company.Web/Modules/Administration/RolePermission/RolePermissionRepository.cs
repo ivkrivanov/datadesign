@@ -2,6 +2,7 @@
 using MyRow = Company.Administration.RolePermissionRow;
 
 namespace Company.Administration.Repositories;
+
 public class RolePermissionRepository : BaseRepository
 {
     public RolePermissionRepository(IRequestContext context)

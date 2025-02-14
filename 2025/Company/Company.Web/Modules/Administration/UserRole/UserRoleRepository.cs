@@ -2,6 +2,7 @@
 using MyRow = Company.Administration.UserRoleRow;
 
 namespace Company.Administration.Repositories;
+
 public class UserRoleRepository : BaseRepository
 {
     public UserRoleRepository(IRequestContext context)

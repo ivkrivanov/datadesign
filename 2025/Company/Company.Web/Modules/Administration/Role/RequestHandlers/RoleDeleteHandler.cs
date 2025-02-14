@@ -1,9 +1,10 @@
-﻿using MyRequest = Serenity.Services.DeleteRequest;
+﻿using MyRow = Company.Administration.RoleRow;
+using MyRequest = Serenity.Services.DeleteRequest;
 using MyResponse = Serenity.Services.DeleteResponse;
-using MyRow = Company.Administration.RoleRow;
 
 
 namespace Company.Administration;
+
 public interface IRoleDeleteHandler : IDeleteHandler<MyRow, MyRequest, MyResponse> { }
 public class RoleDeleteHandler : DeleteRequestHandler<MyRow, MyRequest, MyResponse>, IRoleDeleteHandler
 {

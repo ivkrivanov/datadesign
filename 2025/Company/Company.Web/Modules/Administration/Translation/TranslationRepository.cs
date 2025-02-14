@@ -1,19 +1,20 @@
-﻿using System.IO;
-using System.Reflection;
-using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Linq;
 using Serenity.Localization;
 using Serenity.Navigation;
+using System.IO;
+using System.Reflection;
 
 namespace Company.Administration.Repositories;
+
 public class TranslationRepository : BaseRepository
 {
     protected IWebHostEnvironment HostEnvironment { get; }
     protected ILocalTextRegistry LocalTextRegistry { get; }
     protected ITypeSource TypeSource { get; }
 
-    public TranslationRepository(IRequestContext context, IWebHostEnvironment hostEnvironment,
+    public TranslationRepository(IRequestContext context, IWebHostEnvironment hostEnvironment, 
         ILocalTextRegistry localTextRegistry, ITypeSource typeSource)
          : base(context)
     {
@@ -24,7 +25,7 @@ public class TranslationRepository : BaseRepository
 
     public static string GetUserTextsFilePath(IWebHostEnvironment hostEnvironment, string languageID)
     {
-        return Path.Combine(hostEnvironment.ContentRootPath, "App_Data", "texts",
+        return Path.Combine(hostEnvironment.ContentRootPath, "App_Data", "texts", 
             "user.texts." + (languageID.TrimToNull() ?? "invariant") + ".json");
     }
 
@@ -34,10 +35,10 @@ public class TranslationRepository : BaseRepository
 
         var availableKeys = GetAllAvailableLocalTextKeys();
         var targetLanguageID = request.TargetLanguageID.TrimToNull();
-
+        
         var customTranslations = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
-        var textsFilePath = GetUserTextsFilePath(HostEnvironment, targetLanguageID);
+        var textsFilePath = GetUserTextsFilePath(HostEnvironment, targetLanguageID);           
         if (File.Exists(textsFilePath))
         {
             var json = JSON.Parse<Dictionary<string, JToken>>(File.ReadAllText(textsFilePath));

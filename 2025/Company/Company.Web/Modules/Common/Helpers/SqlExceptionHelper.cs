@@ -1,7 +1,8 @@
-﻿using System.Globalization;
-using Microsoft.Data.SqlClient;
+﻿using Microsoft.Data.SqlClient;
+using System.Globalization;
 
 namespace Company.Common;
+
 public class ForeignKeyExceptionInfo
 {
     public string TableName { get; set; }

@@ -1,9 +1,10 @@
-﻿using Company.Administration;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
 using Serenity.Navigation;
+using Company.Administration;
 
 namespace Company.AppServices;
+
 public class NavigationModelFactory : INavigationModelFactory
 {
     private readonly ITwoLevelCache cache;
@@ -55,7 +56,7 @@ public class NavigationModelFactory : INavigationModelFactory
         var model = new NavigationModel
         {
             Items = cache.GetLocalStoreOnly("LeftNavigationModel:NavigationItems:" +
-                (userAccessor.User?.GetIdentifier() ?? "-1"),
+                (userAccessor.User?.GetIdentifier() ?? "-1"), 
                 TimeSpan.Zero,
                 UserPermissionRow.Fields.GenerationKey,
                 () => NavigationHelper.GetNavigationItems(permissions, typeSource, serviceProvider, ToAbsolute))
@@ -96,12 +97,12 @@ public class NavigationModelFactory : INavigationModelFactory
                 string.Compare(NormalizeUrl(url.Split('?')[0]),
                 NormalizeUrl(currentUrl.Split('?')[0]), StringComparison.OrdinalIgnoreCase) == 0)
             {
-                if (bestMatchLength == 0 || url.Length < bestMatchLength)
-                {
-                    bestMatch = link.FullPath;
-                    bestMatchLength = url.Length;
-                    bestLink = link;
-                }
+                    if (bestMatchLength == 0 || url.Length < bestMatchLength)
+                    {
+                        bestMatch = link.FullPath;
+                        bestMatchLength = url.Length;
+                        bestLink = link;
+                    }
             }
         }
 

@@ -1,9 +1,10 @@
-﻿using System.Globalization;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
+using System.Globalization;
+using System.Threading.Tasks;
 
 namespace Company.AppServices;
+
 public class UserCultureProvider : RequestCultureProvider
 {
     public override Task<ProviderCultureResult> DetermineProviderCultureResult(HttpContext httpContext)

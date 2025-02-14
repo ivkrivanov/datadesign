@@ -1,10 +1,11 @@
-﻿using System.Data;
-using Serenity.Extensions.Entities;
+﻿using Serenity.Extensions.Entities;
+using System.Data;
+using MyRow = Company.Administration.UserRow;
 using MyRequest = Serenity.Services.DeleteRequest;
 using MyResponse = Serenity.Services.DeleteResponse;
-using MyRow = Company.Administration.UserRow;
 
 namespace Company.Administration;
+
 public interface IUserDeleteHandler : IDeleteHandler<MyRow, MyRequest, MyResponse> { }
 public class UserDeleteHandler : DeleteRequestHandler<MyRow, MyRequest, MyResponse>, IUserDeleteHandler
 {
@@ -13,7 +14,7 @@ public class UserDeleteHandler : DeleteRequestHandler<MyRow, MyRequest, MyRespon
     public UserDeleteHandler(IRequestContext context, IOptions<EnvironmentSettings> environmentOptions)
          : base(context)
     {
-        this.environmentOptions = environmentOptions ??
+        this.environmentOptions = environmentOptions ?? 
             throw new System.ArgumentNullException(nameof(environmentOptions));
     }
 

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 
 namespace Company.Common.Pages;
+
 public class FilePage(IUploadStorage uploadStorage, IUploadProcessor uploadProcessor) : Controller
 {
     private readonly IUploadStorage uploadStorage = uploadStorage ?? throw new ArgumentNullException(nameof(uploadStorage));

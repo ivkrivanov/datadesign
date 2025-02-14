@@ -1,8 +1,9 @@
 ﻿using System.Data;
-using Microsoft.Extensions.Caching.Memory;
 using MyRow = Company.Administration.UserPermissionRow;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace Company.Administration.Repositories;
+
 public class UserPermissionRepository : BaseRepository
 {
     public UserPermissionRepository(IRequestContext context)

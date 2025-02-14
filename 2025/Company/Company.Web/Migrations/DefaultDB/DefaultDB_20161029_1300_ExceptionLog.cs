@@ -1,6 +1,7 @@
 ﻿using FluentMigrator;
 
 namespace Company.Migrations.DefaultDB;
+
 [DefaultDB, MigrationKey(20161029_1300)]
 public class DefaultDB_20161029_1300_ExceptionLog : AutoReversingMigration
 {

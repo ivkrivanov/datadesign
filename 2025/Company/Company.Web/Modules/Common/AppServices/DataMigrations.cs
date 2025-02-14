@@ -1,13 +1,14 @@
-﻿using System.Globalization;
-using System.IO;
-using FluentMigrator.Runner;
+﻿using FluentMigrator.Runner;
 using FluentMigrator.Runner.Conventions;
 using FluentMigrator.Runner.Initialization;
 using FluentMigrator.Runner.Processors;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using System.Globalization;
+using System.IO;
 
 namespace Company.AppServices;
+
 public class DataMigrations(ITypeSource typeSource,
     ISqlConnections sqlConnections,
     IWebHostEnvironment hostEnvironment) : IDataMigrations
@@ -35,14 +36,14 @@ public class DataMigrations(ITypeSource typeSource,
     /// </summary>
     private void EnsureDatabase(string databaseKey)
     {
-        MigrationUtils.EnsureDatabase(databaseKey,
+        MigrationUtils.EnsureDatabase(databaseKey, 
             hostEnvironment.ContentRootPath, sqlConnections);
         Microsoft.Data.SqlClient.SqlConnection.ClearAllPools();
     }
 
     private void RunMigrations(string databaseKey)
     {
-        var cs = sqlConnections.TryGetConnectionString(databaseKey) ??
+        var cs = sqlConnections.TryGetConnectionString(databaseKey) ?? 
             throw new ArgumentOutOfRangeException(nameof(databaseKey));
         string serverType = cs.Dialect.ServerType;
         bool isOracle = serverType.StartsWith("Oracle", StringComparison.OrdinalIgnoreCase);

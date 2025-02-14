@@ -1,6 +1,7 @@
 ﻿using MyRow = Company.Administration.UserRow;
 
 namespace Company.AppServices;
+
 public class UserRetrieveService(ITwoLevelCache cache, ISqlConnections sqlConnections)
     : BaseUserRetrieveService<MyRow>(cache, sqlConnections)
 {

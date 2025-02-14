@@ -1,6 +1,7 @@
 ﻿using MyRow = Company.Administration.RoleRow;
 
 namespace Company.Administration;
+
 public static class RoleHelper
 {
     private static MyRow.RowFields Fld { get { return MyRow.Fields; } }

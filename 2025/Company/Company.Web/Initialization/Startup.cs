@@ -1,6 +1,4 @@
-﻿using System.Data.Common;
-using System.IO;
-using Microsoft.AspNetCore.Authentication.Cookies;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Hosting;
@@ -15,8 +13,11 @@ using Microsoft.Extensions.Logging;
 using Serenity.Extensions.DependencyInjection;
 using Serenity.Localization;
 using Serenity.Navigation;
+using System.Data.Common;
+using System.IO;
 
 namespace Company;
+
 public partial class Startup
 {
     public Startup(IConfiguration configuration, IWebHostEnvironment hostEnvironment)
@@ -162,8 +163,7 @@ public partial class Startup
 
         app.UseDynamicScripts();
 
-        app.UseEndpoints(endpoints =>
-        {
+        app.UseEndpoints(endpoints => {
             endpoints.MapControllers();
         });
 

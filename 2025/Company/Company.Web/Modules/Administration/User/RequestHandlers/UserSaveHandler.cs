@@ -1,8 +1,9 @@
-﻿using MyRequest = Serenity.Services.SaveRequest<Company.Administration.UserRow>;
+﻿using MyRow = Company.Administration.UserRow;
+using MyRequest = Serenity.Services.SaveRequest<Company.Administration.UserRow>;
 using MyResponse = Serenity.Services.SaveResponse;
-using MyRow = Company.Administration.UserRow;
 
 namespace Company.Administration;
+
 public interface IUserSaveHandler : ISaveHandler<MyRow, MyRequest, MyResponse> { }
 public class UserSaveHandler : SaveRequestHandler<MyRow, MyRequest, MyResponse>, IUserSaveHandler
 {

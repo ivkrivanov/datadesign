@@ -1,8 +1,9 @@
-﻿using System.IO;
+﻿using Microsoft.AspNetCore.DataProtection;
 using Company.Administration;
-using Microsoft.AspNetCore.DataProtection;
+using System.IO;
 
 namespace Company.Membership.Pages;
+
 public partial class AccountPage : Controller
 {
     [HttpGet]
@@ -12,7 +13,7 @@ public partial class AccountPage : Controller
     }
 
     [HttpPost, JsonRequest]
-    public Result<SignUpResponse> SignUp(SignUpRequest request,
+    public Result<SignUpResponse> SignUp(SignUpRequest request, 
         [FromServices] IEmailSender emailSender,
         [FromServices] IOptions<EnvironmentSettings> environmentOptions,
         [FromServices] IPermissionKeyLister permissionKeyLister,

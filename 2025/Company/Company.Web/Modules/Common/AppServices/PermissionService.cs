@@ -1,7 +1,8 @@
-﻿using System.Security.Claims;
-using Company.Administration;
+﻿using Company.Administration;
+using System.Security.Claims;
 
 namespace Company.AppServices;
+
 public class PermissionService(ITwoLevelCache cache,
     ISqlConnections sqlConnections,
     ITypeSource typeSource,

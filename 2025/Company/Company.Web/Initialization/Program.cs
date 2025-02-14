@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 
 namespace Company;
+
 public class Program
 {
     public static void Main(string[] args)

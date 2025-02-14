@@ -1,6 +1,7 @@
 ﻿using MyRow = Company.Administration.UserRow;
 
 namespace Company.Administration.Endpoints;
+
 [Route("Services/Administration/User/[action]")]
 [ConnectionKey(typeof(MyRow)), ServiceAuthorize(typeof(MyRow))]
 public class UserEndpoint : ServiceEndpoint
@@ -31,5 +32,5 @@ public class UserEndpoint : ServiceEndpoint
     public ListResponse<MyRow> List(IDbConnection connection, UserListRequest request, [FromServices] IUserListHandler handler)
     {
         return handler.List(connection, request);
-    }
+    }       
 }

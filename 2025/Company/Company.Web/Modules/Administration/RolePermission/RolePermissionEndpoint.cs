@@ -2,6 +2,7 @@
 using MyRow = Company.Administration.RolePermissionRow;
 
 namespace Company.Administration.Endpoints;
+
 [Route("Services/Administration/RolePermission/[action]")]
 [ConnectionKey(typeof(MyRow)), ServiceAuthorize(typeof(MyRow))]
 public class RolePermissionEndpoint : ServiceEndpoint

@@ -2,6 +2,7 @@
 using MyRepository = Company.Administration.Repositories.TranslationRepository;
 
 namespace Company.Administration.Endpoints;
+
 [Route("Services/Administration/Translation/[action]")]
 [ServiceAuthorize(PermissionKeys.Translation)]
 public class TranslationEndpoint : ServiceEndpoint

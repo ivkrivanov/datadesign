@@ -1,6 +1,7 @@
 ﻿using MyRow = Company.Administration.LanguageRow;
 
 namespace Company.Administration.Endpoints;
+
 [Route("Services/Administration/Language/[action]")]
 [ConnectionKey(typeof(MyRow)), ServiceAuthorize(typeof(MyRow))]
 public class LanguageEndpoint : ServiceEndpoint

@@ -1,6 +1,7 @@
 ﻿using FluentMigrator;
 
 namespace Company.Migrations.DefaultDB;
+
 [DefaultDB, MigrationKey(20141103_1400)]
 public class DefaultDB_20141103_1400_Initial : AutoReversingMigration
 {
@@ -79,7 +80,7 @@ public class DefaultDB_20141103_1400_Initial : AutoReversingMigration
         Insert.IntoTable("Languages").Row(new
         {
             LanguageId = "it",
-            LanguageName = "Italian"
+        LanguageName = "Italian"
         });
 
         Insert.IntoTable("Languages").Row(new

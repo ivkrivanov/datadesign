@@ -1,6 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;
 
 namespace Company.Common;
+
 public class HumanizeSqlExceptionBehavior : BaseSaveDeleteBehavior, IImplicitBehavior
 {
     public bool ActivateFor(IRow row)
@@ -11,7 +12,7 @@ public class HumanizeSqlExceptionBehavior : BaseSaveDeleteBehavior, IImplicitBeh
     public override void OnException(ISaveRequestHandler handler, Exception exception)
     {
         if (exception is SqlException)
-            SqlExceptionHelper.HandleSavePrimaryKeyException(exception, handler.Context?.Localizer,
+            SqlExceptionHelper.HandleSavePrimaryKeyException(exception, handler.Context?.Localizer, 
                 handler.Row?.IdField?.GetTitle(handler.Context?.Localizer));
     }
 

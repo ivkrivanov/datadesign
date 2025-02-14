@@ -1,9 +1,10 @@
-﻿using System.Data;
+﻿using Serenity.Web.Providers;
+using System.Data;
 using System.Globalization;
-using Serenity.Web.Providers;
 using MyRow = Company.Administration.UserRow;
 
 namespace Company.Administration;
+
 public static class UserHelper
 {
     private static MyRow.RowFields Fld { get { return MyRow.Fields; } }
