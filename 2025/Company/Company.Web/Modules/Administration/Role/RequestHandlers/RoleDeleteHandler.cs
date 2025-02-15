@@ -1,4 +1,4 @@
-﻿using MyRow = Company.Administration.RoleRow;
+using MyRow = Company.Administration.RoleRow;
 using MyRequest = Serenity.Services.DeleteRequest;
 using MyResponse = Serenity.Services.DeleteResponse;
 

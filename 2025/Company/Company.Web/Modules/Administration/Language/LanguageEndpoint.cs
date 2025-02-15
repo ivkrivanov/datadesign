@@ -1,4 +1,4 @@
-﻿using MyRow = Company.Administration.LanguageRow;
+using MyRow = Company.Administration.LanguageRow;
 
 namespace Company.Administration.Endpoints;
 
@@ -7,29 +7,34 @@ namespace Company.Administration.Endpoints;
 public class LanguageEndpoint : ServiceEndpoint
 {
     [HttpPost, AuthorizeCreate(typeof(MyRow))]
-    public SaveResponse Create(IUnitOfWork uow, SaveRequest<MyRow> request, [FromServices] ILanguageSaveHandler handler)
+    public SaveResponse Create(IUnitOfWork uow, SaveRequest<MyRow> request,
+        [FromServices] ILanguageSaveHandler handler)
     {
         return handler.Create(uow, request);
     }
 
     [HttpPost, AuthorizeUpdate(typeof(MyRow))]
-    public SaveResponse Update(IUnitOfWork uow, SaveRequest<MyRow> request, [FromServices] ILanguageSaveHandler handler)
+    public SaveResponse Update(IUnitOfWork uow, SaveRequest<MyRow> request,
+        [FromServices] ILanguageSaveHandler handler)
     {
         return handler.Update(uow, request);
     }
 
     [HttpPost, AuthorizeDelete(typeof(MyRow))]
-    public DeleteResponse Delete(IUnitOfWork uow, DeleteRequest request, [FromServices] ILanguageDeleteHandler handler)
+    public DeleteResponse Delete(IUnitOfWork uow, DeleteRequest request,
+        [FromServices] ILanguageDeleteHandler handler)
     {
         return handler.Delete(uow, request);
     }
 
-    public RetrieveResponse<MyRow> Retrieve(IDbConnection connection, RetrieveRequest request, [FromServices] ILanguageRetrieveHandler handler)
+    public RetrieveResponse<MyRow> Retrieve(IDbConnection connection, RetrieveRequest request,
+        [FromServices] ILanguageRetrieveHandler handler)
     {
         return handler.Retrieve(connection, request);
     }
 
-    public ListResponse<MyRow> List(IDbConnection connection, ListRequest request, [FromServices] ILanguageListHandler handler)
+    public ListResponse<MyRow> List(IDbConnection connection, ListRequest request,
+        [FromServices] ILanguageListHandler handler)
     {
         return handler.List(connection, request);
     }

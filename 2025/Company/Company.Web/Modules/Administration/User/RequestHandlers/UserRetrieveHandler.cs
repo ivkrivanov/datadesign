@@ -1,4 +1,4 @@
-﻿using MyRow = Company.Administration.UserRow;
+using MyRow = Company.Administration.UserRow;
 using MyRequest = Serenity.Services.RetrieveRequest;
 using MyResponse = Serenity.Services.RetrieveResponse<Company.Administration.UserRow>;
 
@@ -11,5 +11,13 @@ public class UserRetrieveHandler : RetrieveRequestHandler<MyRow, MyRequest, MyRe
     public UserRetrieveHandler(IRequestContext context)
          : base(context)
     {
+    }
+
+    protected override void PrepareQuery(SqlQuery query)
+    {
+        base.PrepareQuery(query);
+
+        if (!Permissions.HasPermission(PermissionKeys.Tenants))
+            query.Where(MyRow.Fields.TenantId == (Int32)User.GetTenantId());
     }
 }

@@ -1,4 +1,5 @@
-﻿using MyRepository = Company.Administration.Repositories.RolePermissionRepository;
+using Company.AppServices;
+using MyRepository = Company.Administration.Repositories.RolePermissionRepository;
 using MyRow = Company.Administration.RolePermissionRow;
 
 namespace Company.Administration.Endpoints;
@@ -8,13 +9,15 @@ namespace Company.Administration.Endpoints;
 public class RolePermissionEndpoint : ServiceEndpoint
 {
     [HttpPost, AuthorizeUpdate(typeof(MyRow))]
-    public SaveResponse Update(IUnitOfWork uow, RolePermissionUpdateRequest request)
+    public SaveResponse Update(IUnitOfWork uow, RolePermissionUpdateRequest request,
+        [FromServices] IPermissionKeyLister permissionKeyLister)
     {
-        return new MyRepository(Context).Update(uow, request);
+        return new MyRepository(Context, permissionKeyLister).Update(uow, request);
     }
 
-    public RolePermissionListResponse List(IDbConnection connection, RolePermissionListRequest request)
+    public RolePermissionListResponse List(IDbConnection connection, RolePermissionListRequest request,
+    [FromServices] IPermissionKeyLister permissionKeyLister)
     {
-        return new MyRepository(Context).List(connection, request);
+        return new MyRepository(Context, permissionKeyLister).List(connection, request);
     }
 }

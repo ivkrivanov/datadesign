@@ -1,4 +1,4 @@
-﻿using Serenity.Extensions.Entities;
+using Serenity.Extensions.Entities;
 using System.Data;
 using MyRow = Company.Administration.UserRow;
 using MyRequest = Serenity.Services.DeleteRequest;
@@ -21,6 +21,9 @@ public class UserDeleteHandler : DeleteRequestHandler<MyRow, MyRequest, MyRespon
     protected override void ValidateRequest()
     {
         base.ValidateRequest();
+
+        if (Row.TenantId != User.GetTenantId())
+            Permissions.ValidatePermission(PermissionKeys.Tenants, Context.Localizer);
 
         environmentOptions.CheckPublicDemo(Row.UserId);
     }

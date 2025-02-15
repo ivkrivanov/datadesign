@@ -2,6 +2,7 @@ import { Decorators, EditorUtils, EntityDialog, stringFormat } from "@serenity-i
 import { UserForm, UserRow, UserService } from "../../ServerTypes/Administration";
 import { MembershipValidationTexts, UserDialogTexts } from "../../ServerTypes/Texts";
 import { UserPermissionDialog } from "../UserPermission/UserPermissionDialog";
+import { Authorization } from "@serenity-is/corelib";
 
 @Decorators.registerClass()
 export class UserDialog extends EntityDialog<UserRow, any> {
@@ -30,6 +31,14 @@ export class UserDialog extends EntityDialog<UserRow, any> {
             if (this.form.Password.value != this.form.PasswordConfirm.value)
                 return MembershipValidationTexts.PasswordConfirmMismatch;
         });
+    }
+
+    protected getPropertyItems() {
+        var items = super.getPropertyItems();
+        if (!Authorization.hasPermission("Administration:Tenants"))
+            items = items.filter(x => x.name != UserRow.Fields.TenantId);
+
+        return items;
     }
 
     protected getToolbarButtons()

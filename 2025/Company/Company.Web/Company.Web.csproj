@@ -5,8 +5,22 @@
     <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
     <TypeScriptNoEmitOnError>false</TypeScriptNoEmitOnError>
     <DotNetSergen>dotnet sergen</DotNetSergen>
+    <!--#if (IsNotTemplate)-->
+    <CommonSrc>..\..\..\common-features\src\</CommonSrc>
+    <SerenitySrc>..\..\..\src\</SerenitySrc>
+    <DotNetSergenDir>$(SerenitySrc)Serenity.Net.CodeGenerator\bin\</DotNetSergenDir>
+    <DotNetSergen Condition="Exists('$(DotNetSergenDir)sergen')">$(DotNetSergenDir)sergen</DotNetSergen>
+    <DotNetSergen Condition="Exists('$(DotNetSergenDir)sergen.exe')">$(DotNetSergenDir)sergen.exe</DotNetSergen>
+    <DefineConstants>$(DefineConstants);Northwind;BasicSamples</DefineConstants>
+    <UseProjectRefs Condition="!Exists('$(SerenitySrc)..\Serenity.sln')">false</UseProjectRefs>
+    <!--#endif-->
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Modules\Default\**" />
+    <Content Remove="Modules\Default\**" />
+    <EmbeddedResource Remove="Modules\Default\**" />
+    <None Remove="Modules\Default\**" />
+    <TypeScriptCompile Remove="Modules\Default\**" />
     <TypeScriptCompile Remove="node_modules\**" />
     <EmbeddedResource Include="Migrations\**\*.sql" />
     <Content Update=".eslintrc.json;libman.json;package.json;package-lock.json;sergen.json;tsconfig.json;tslint.json;Modules\tsconfig.json" CopyToOutputDirectory="Never" CopyToPublishDirectory="Never" />
@@ -25,8 +39,13 @@
     <PackageReference Include="Serenity.Corelib" Version="8.8.1" />
     <PackageReference Include="Serenity.Net.Web" Version="8.8.1" />
     <PackageReference Include="Serenity.Extensions" Version="8.8.1" />
+    <!--#if (Northwind)-->
+    <PackageReference Include="Serenity.Demo.Northwind" Version="8.8.1" />
+    <!--#endif-->
+    <!--#if (BasicSamples)-->
+    <PackageReference Include="Serenity.Demo.BasicSamples" Version="8.8.1" />
+    <!--#endif-->
   </ItemGroup>
-  <ItemGroup></ItemGroup>
   <Target Name="NpmInstall" BeforeTargets="BeforeBuild" Condition="!Exists('node_modules\.bin\esbuild')">
     <Message Text="Installing NPM packages..." Importance="high" />
     <Exec Command="npm install" />

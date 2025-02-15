@@ -1,4 +1,4 @@
-﻿using MyRow = Company.Administration.UserRow;
+using MyRow = Company.Administration.UserRow;
 using MyRequest = Serenity.Services.SaveRequest<Company.Administration.UserRow>;
 using MyResponse = Serenity.Services.SaveResponse;
 
@@ -59,6 +59,9 @@ public class UserSaveHandler : SaveRequestHandler<MyRow, MyRequest, MyResponse>,
 
         if (IsUpdate)
         {
+            if (Old.TenantId != User.GetTenantId())
+                Permissions.ValidatePermission(PermissionKeys.Tenants, Context.Localizer);
+
             environmentOptions.CheckPublicDemo(Row.UserId);
 
             if (Row.Username != Old.Username)
@@ -92,6 +95,9 @@ public class UserSaveHandler : SaveRequestHandler<MyRow, MyRequest, MyResponse>,
         {
             Row.Source = "site";
             Row.IsActive = Row.IsActive ?? 1;
+
+            if (!Permissions.HasPermission(PermissionKeys.Tenants) || Row.TenantId == null)
+                Row.TenantId = User.GetTenantId();
         }
 
         if (IsCreate || !Row.Password.IsEmptyOrNull())

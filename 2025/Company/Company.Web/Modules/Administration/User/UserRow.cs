@@ -1,4 +1,4 @@
-﻿namespace Company.Administration;
+namespace Company.Administration;
 
 [ConnectionKey("Default"), Module("Administration"), TableName("Users")]
 [DisplayName("Users"), InstanceName("User")]
@@ -44,6 +44,18 @@ public sealed class UserRow : Serenity.Extensions.Entities.LoggingRow<UserRow.Ro
     [DisplayName("Last Directory Update"), Insertable(false), Updatable(false)]
     public DateTime? LastDirectoryUpdate { get => fields.LastDirectoryUpdate[this]; set => fields.LastDirectoryUpdate[this] = value; }
 
+    /// <summary>
+    /// Tenants
+    /// </summary>
+    [DisplayName("Tenant"), ForeignKey("Tenants", "TenantId"), LeftJoin("tnt")]
+    [LookupEditor(typeof(TenantsRow))]
+    [ReadPermission(PermissionKeys.Tenants)]
+    public int? TenantId { get => Fields.TenantId[this]; set => Fields.TenantId[this] = value; }
+
+    [DisplayName("Tenant"), Expression("tnt.TenantName")]
+    public string TenantName { get => Fields.TenantName[this]; set => Fields.TenantName[this] = value; }
+
+
     [DisplayName("Roles"), LinkingSetRelation(typeof(UserRoleRow), nameof(UserRoleRow.UserId), nameof(UserRoleRow.RoleId))]
     [AsyncLookupEditor(typeof(RoleRow), Multiple = true)]
     public List<int> Roles { get => fields.Roles[this]; set => fields.Roles[this] = value; }
@@ -65,6 +77,8 @@ public sealed class UserRow : Serenity.Extensions.Entities.LoggingRow<UserRow.Ro
         public StringField Email;
         public StringField UserImage;
         public DateTimeField LastDirectoryUpdate;
+        public Int32Field TenantId;
+        public StringField TenantName;
         public Int16Field IsActive;
 
         public StringField Password;

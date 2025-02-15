@@ -1,13 +1,16 @@
-﻿using System.Data;
+using System.Data;
 using MyRow = Company.Administration.RolePermissionRow;
 
 namespace Company.Administration.Repositories;
 
 public class RolePermissionRepository : BaseRepository
 {
-    public RolePermissionRepository(IRequestContext context)
+    private readonly IPermissionKeyLister permissionKeyLister;
+
+    public RolePermissionRepository(IRequestContext context, IPermissionKeyLister permissionKeyLister)
          : base(context)
     {
+        this.permissionKeyLister = permissionKeyLister ?? throw new ArgumentNullException(nameof(permissionKeyLister));
     }
 
     private static MyRow.RowFields Fld { get { return MyRow.Fields; } }
@@ -28,6 +31,10 @@ public class RolePermissionRepository : BaseRepository
 
         var newList = new HashSet<string>(request.Permissions.ToList(),
             StringComparer.OrdinalIgnoreCase);
+
+        var allowedKeys = this.permissionKeyLister.ListPermissionKeys(true);
+        if (newList.Any(x => !allowedKeys.Contains(x)))
+            throw new AccessViolationException();
 
         if (oldList.SetEquals(newList))
             return new SaveResponse();

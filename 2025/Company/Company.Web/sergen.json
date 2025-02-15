@@ -1,5 +1,23 @@
-﻿{
+{
+  "EndOfLine": "LF",
+  "BaseRowClasses": [
+    {
+      "ClassName": "Company.Administration.LoggingRow",
+      "Fields": [
+        "InsertUserId",
+        "UpdateUserId",
+        "InsertDate",
+        "UpdateDate"
+      ]
+    }
+  ],
   "Extends": "defaults@6.6.0",
+  "RemoveForeignFields": [
+    "InsertUserId",
+    "UpdateUserId",
+    "InsertDate",
+    "UpdateDate"
+  ],
   "RootNamespace": "Company",
   "FileScopedNamespaces": true,
   "ServerTypings": {

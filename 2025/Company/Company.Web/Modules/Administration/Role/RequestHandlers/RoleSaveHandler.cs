@@ -1,4 +1,4 @@
-﻿using MyRow = Company.Administration.RoleRow;
+using MyRow = Company.Administration.RoleRow;
 using MyRequest = Serenity.Services.SaveRequest<Company.Administration.RoleRow>;
 using MyResponse = Serenity.Services.SaveResponse;
 
