@@ -1,4 +1,4 @@
-﻿import { TenantsForm, TenantsRow, TenantsService } from '@/ServerTypes/Default';
+import { TenantsForm, TenantsRow, TenantsService } from '../../ServerTypes/Administration';
 import { Decorators, EntityDialog } from '@serenity-is/corelib';
 
 @Decorators.registerClass('Company.Default.TenantsDialog')

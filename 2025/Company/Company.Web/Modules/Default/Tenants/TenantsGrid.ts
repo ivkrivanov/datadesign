@@ -1,4 +1,4 @@
-﻿import { TenantsColumns, TenantsRow, TenantsService } from '@/ServerTypes/Default';
+import { TenantsColumns, TenantsRow, TenantsService } from '../../ServerTypes/Administration';
 import { Decorators, EntityGrid } from '@serenity-is/corelib';
 import { TenantsDialog } from './TenantsDialog';
 
@@ -9,7 +9,7 @@ export class TenantsGrid extends EntityGrid<TenantsRow, any> {
     protected getRowDefinition() { return TenantsRow; }
     protected getService() { return TenantsService.baseUrl; }
 
-    constructor(container: JQuery) {
-        super(container);
+    constructor(props: any) {
+        super(props);
     }
 }
