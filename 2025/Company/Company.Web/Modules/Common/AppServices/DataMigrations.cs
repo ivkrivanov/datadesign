@@ -1,4 +1,4 @@
-﻿using FluentMigrator.Runner;
+using FluentMigrator.Runner;
 using FluentMigrator.Runner.Conventions;
 using FluentMigrator.Runner.Initialization;
 using FluentMigrator.Runner.Processors;
@@ -15,6 +15,7 @@ public class DataMigrations(ITypeSource typeSource,
 {
     private static readonly string[] databaseKeys = [
         "Default"
+        ,"Company"
     ];
 
     private readonly ITypeSource typeSource = typeSource ?? throw new ArgumentNullException(nameof(typeSource));
@@ -26,7 +27,7 @@ public class DataMigrations(ITypeSource typeSource,
         foreach (var databaseKey in databaseKeys)
         {
             EnsureDatabase(databaseKey);
-            RunMigrations(databaseKey);
+            //RunMigrations(databaseKey);
         }
     }
 

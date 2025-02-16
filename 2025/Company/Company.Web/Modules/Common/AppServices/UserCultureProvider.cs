@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
 using System.Globalization;
 using System.Threading.Tasks;
@@ -36,6 +36,7 @@ public class UserCultureProvider : RequestCultureProvider
 
     private static List<CultureInfo> supportedCultures;
     private static readonly string[] supportedCultureIdentifiers = [
+        "bg-BG",
         "de-DE",
         "en-US",
         "en-GB",
