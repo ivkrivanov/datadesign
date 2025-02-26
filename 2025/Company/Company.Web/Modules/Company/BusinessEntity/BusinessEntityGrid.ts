@@ -1,0 +1,15 @@
+import { BusinessEntityColumns, BusinessEntityRow, BusinessEntityService } from '../../ServerTypes/Company';
+import { Decorators, EntityGrid } from '@serenity-is/corelib';
+import { BusinessEntityDialog } from './BusinessEntityDialog';
+
+@Decorators.registerClass('Company.Company.BusinessEntityGrid')
+export class BusinessEntityGrid extends EntityGrid<BusinessEntityRow, any> {
+    protected getColumnsKey() { return BusinessEntityColumns.columnsKey; }
+    protected getDialogType() { return BusinessEntityDialog; }
+    protected getRowDefinition() { return BusinessEntityRow; }
+    protected getService() { return BusinessEntityService.baseUrl; }
+
+    protected afterInit() {
+        super.afterInit();
+    }
+}
