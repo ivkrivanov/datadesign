@@ -4,7 +4,7 @@ namespace Company.Administration;
 [DisplayName("Roles"), InstanceName("Role")]
 [ReadPermission(PermissionKeys.Security)]
 [ModifyPermission(PermissionKeys.Security)]
-[LookupScript]
+[LookupScript("Administration.Role", LookupType = typeof(MultiTenantRowLookupScript<>))]
 public sealed class RoleRow : Row<RoleRow.RowFields>, IIdRow, INameRow, IMultiTenantRow
 {
     [DisplayName("Role Id"), Identity, ForeignKey("Roles", "RoleId"), LeftJoin("jRole"), IdProperty]

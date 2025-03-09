@@ -4,14 +4,19 @@ namespace Company.Company;
 
 [ConnectionKey("Company"), Module("Company"), TableName("[person].[Person]")]
 [DisplayName("Person"), InstanceName("Person")]
-[ReadPermission("Administration:General")]
-[ModifyPermission("Administration:General")]
-[ServiceLookupPermission("Administration:General")]
+[ReadPermission(PermissionKeys.Person.View)]
+[ModifyPermission(PermissionKeys.Person.Modify)]
+[DeletePermission(PermissionKeys.Person.Delete)]
+[ServiceLookupPermission("Company:General")]
+[LeftJoin ("be", "BusinessEntity", "be.[BusinessEntityId] = T0.[BusinessEntity]", RowType = typeof(BusinessEntityRow), TitlePrefix = "")]
+[UpdatableExtension("be", typeof(BusinessEntityRow), CascadeDelete = true)]
+[LookupScript("Company.Person", LookupType = typeof(PersonLookup))]
 public sealed class PersonRow : LoggingRow<PersonRow.RowFields>, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
 {
     const string jBusinessEntity = nameof(jBusinessEntity);
 
-    [DisplayName("Business Entity"), PrimaryKey, NotNull, ForeignKey(typeof(BusinessEntityRow)), LeftJoin(jBusinessEntity), IdProperty]
+    //[DisplayName("Business Entity"), PrimaryKey, NotNull, Updatable, ForeignKey(typeof(BusinessEntityRow)), LeftJoin(jBusinessEntity), IdProperty]
+    [DisplayName("Business Entity"), PrimaryKey, NotNull, Updatable, IdProperty]
     [ServiceLookupEditor(typeof(BusinessEntityRow))]
     public int? BusinessEntityId { get => fields.BusinessEntityId[this]; set => fields.BusinessEntityId[this] = value; }
 

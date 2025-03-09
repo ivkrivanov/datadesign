@@ -1,5 +1,3 @@
-using Company;
-
 namespace Company;
 
 public class MultiTenantRowLookupScript<TRow> : RowLookupScript<TRow>

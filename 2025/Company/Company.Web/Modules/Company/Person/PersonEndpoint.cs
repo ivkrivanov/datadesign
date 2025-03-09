@@ -28,6 +28,12 @@ public class PersonEndpoint : ServiceEndpoint
         return handler.Delete(uow, request);
     }
 
+    public GetNextNumberResponse GetNextNumber(IDbConnection connection, GetNextNumberRequest request,
+        [FromServices] IPersonGetNextNumberHandler handler)
+    {
+        return handler.GetNextNumber(connection, request);
+    }
+
     [HttpPost]
     public RetrieveResponse<MyRow> Retrieve(IDbConnection connection, RetrieveRequest request,
         [FromServices] IPersonRetrieveHandler handler)

@@ -4,12 +4,22 @@ namespace Company.Company;
 
 [ConnectionKey("Company"), Module("Company"), TableName("[person].[BusinessEntity]")]
 [DisplayName("Business Entity"), InstanceName("Business Entity")]
-[ReadPermission("Administration:General")]
-[ModifyPermission("Administration:General")]
-public sealed class BusinessEntityRow : LoggingRow<BusinessEntityRow.RowFields>, IIdRow, IIsActiveRow
+[ReadPermission(PermissionKeys.BusinessEntity.View)]
+[ModifyPermission(PermissionKeys.BusinessEntity.Modify)]
+[DeletePermission(PermissionKeys.BusinessEntity.Delete)]
+[ServiceLookupPermission("Company:General")]
+[LookupScript("Company.BusinessEntity", LookupType = typeof(MultiTenantRowLookupScript<>))]
+public sealed class BusinessEntityRow : LoggingRow<BusinessEntityRow.RowFields>, IIdRow, IIsActiveRow, IMultiTenantRow
 {
     [DisplayName("Business Entity Id"), Identity, IdProperty]
     public int? BusinessEntityId { get => fields.BusinessEntityId[this]; set => fields.BusinessEntityId[this] = value; }
+
+
+
+
+
+
+
 
     #region Tenant & Activ
 
