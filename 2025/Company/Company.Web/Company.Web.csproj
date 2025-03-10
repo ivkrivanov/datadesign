@@ -16,11 +16,11 @@
     <!--#endif-->
   </PropertyGroup>
   <ItemGroup>
-    <Compile Remove="Modules\Default\**" />
+    <!--<Compile Remove="Modules\Default\**" />
     <Content Remove="Modules\Default\**" />
     <EmbeddedResource Remove="Modules\Default\**" />
     <None Remove="Modules\Default\**" />
-    <TypeScriptCompile Remove="Modules\Default\**" />
+    <TypeScriptCompile Remove="Modules\Default\**" />-->
     <TypeScriptCompile Remove="node_modules\**" />
     <EmbeddedResource Include="Migrations\**\*.sql" />
     <Content Update=".eslintrc.json;libman.json;package.json;package-lock.json;sergen.json;tsconfig.json;tslint.json;Modules\tsconfig.json" CopyToOutputDirectory="Never" CopyToPublishDirectory="Never" />
@@ -72,6 +72,10 @@
   <Target Name="TranformRunTSBuild" AfterTargets="AfterBuild" DependsOnTargets="RestoreNodeTypes;NpmInstall;TransformServerTypings" Condition="'$(SkipTSBuild)' != 'true'">
     <Message Text="Executing TypeScript compiler for $(ProjectName)..." Importance="high" />
     <Exec Command="node tsbuild.js" ContinueOnError="true" />
+  </Target>
+  <Target Name="CompileTSC" AfterTargets="AfterBuild" Inputs="@(CompileTSCInputs)" Outputs="wwwroot\esm\**\*.js">
+    <Message Text="Executing TypeScript compiler..." Importance="high" />
+    <Exec Command="node tsbuild" ContinueOnError="true" />
   </Target>
   <ProjectExtensions>
     <VisualStudio>

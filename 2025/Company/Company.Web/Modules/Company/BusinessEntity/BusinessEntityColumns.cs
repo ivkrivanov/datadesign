@@ -6,4 +6,12 @@ public class BusinessEntityColumns
 {
     [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
     public int BusinessEntityId { get; set; }
+
+    //public string Title { get; set; }
+    //public string FirstName { get; set; }
+    //public string MiddleName { get; set; }
+    //public string LastName { get; set; }
+    //public string Suffix { get; set; }
+    [EditLink, Width(250)]
+    public string FullName { get; set; }
 }
