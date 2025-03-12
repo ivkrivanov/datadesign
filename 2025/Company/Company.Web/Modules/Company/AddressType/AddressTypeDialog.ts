@@ -1,4 +1,4 @@
-﻿import { AddressTypeForm, AddressTypeRow, AddressTypeService } from '@/ServerTypes/Company';
+import { AddressTypeForm, AddressTypeRow, AddressTypeService } from '../../ServerTypes/Company';
 import { Decorators, EntityDialog } from '@serenity-is/corelib';
 
 @Decorators.registerClass('Company.Company.AddressTypeDialog')

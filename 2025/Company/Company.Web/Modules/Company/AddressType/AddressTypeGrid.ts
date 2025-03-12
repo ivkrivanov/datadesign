@@ -1,4 +1,4 @@
-﻿import { AddressTypeColumns, AddressTypeRow, AddressTypeService } from '@/ServerTypes/Company';
+import { AddressTypeColumns, AddressTypeRow, AddressTypeService } from '../../ServerTypes/Company';
 import { Decorators, EntityGrid } from '@serenity-is/corelib';
 import { AddressTypeDialog } from './AddressTypeDialog';
 
@@ -9,7 +9,10 @@ export class AddressTypeGrid extends EntityGrid<AddressTypeRow, any> {
     protected getRowDefinition() { return AddressTypeRow; }
     protected getService() { return AddressTypeService.baseUrl; }
 
-    constructor(container: JQuery) {
-        super(container);
+    protected afterInit() {
+        super.afterInit();
     }
+    //constructor(container: JQuery) {
+    //    super(container);
+    //}
 }

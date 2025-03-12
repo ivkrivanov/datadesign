@@ -1,15 +1,14 @@
-﻿using Serenity.ComponentModel;
-using Serenity.Data;
-using Serenity.Data.Mapping;
-using System.ComponentModel;
+using Company.Administration.Entities;
 
 namespace Company.Company;
 
 [ConnectionKey("Company"), Module("Company"), TableName("[person].[PersonPhone]")]
 [DisplayName("Person Phone"), InstanceName("Person Phone")]
-[ReadPermission("PermissionKeys.PersonPhone")]
-[ModifyPermission("PermissionKeys.PersonPhone")]
-public sealed class PersonPhoneRow : Administration.LoggingRow<PersonPhoneRow.RowFields>, IIdRow, INameRow
+[ReadPermission(PermissionKeys.PersonPhone.View)]
+[ModifyPermission(PermissionKeys.PersonPhone.Modify)]
+[ServiceLookupPermission("Company:General")]
+[LookupScript("Company.PersonPhone", LookupType = typeof(MultiTenantRowLookupScript<>))]
+public sealed class PersonPhoneRow : LoggingRow<PersonPhoneRow.RowFields>, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
 {
     const string jBusinessEntity = nameof(jBusinessEntity);
     const string jPhoneNumberType = nameof(jPhoneNumberType);
@@ -25,11 +24,19 @@ public sealed class PersonPhoneRow : Administration.LoggingRow<PersonPhoneRow.Ro
     [TextualField(nameof(PhoneNumberTypeName)), ServiceLookupEditor(typeof(PhoneNumberTypeRow))]
     public int? PhoneNumberTypeId { get => fields.PhoneNumberTypeId[this]; set => fields.PhoneNumberTypeId[this] = value; }
 
-    [DisplayName("Is Active"), NotNull]
-    public short? IsActive { get => fields.IsActive[this]; set => fields.IsActive[this] = value; }
+    #region Tenant & Activ
 
-    [DisplayName("Tenant Id"), NotNull]
-    public int? TenantId { get => fields.TenantId[this]; set => fields.TenantId[this] = value; }
+    [Insertable(false), Updatable(false)]
+    public Int32? TenantId { get => fields.TenantId[this]; set => fields.TenantId[this] = value; }
+
+    public Int32Field TenantIdField { get => fields.TenantId; }
+
+    [NotNull, Insertable(false), Updatable(true)]
+    public Int16? IsActive { get => fields.IsActive[this]; set => fields.IsActive[this] = value; }
+
+    Int16Field IIsActiveRow.IsActiveField { get => fields.IsActive; }
+
+    #endregion Tenant & Activ
 
     [DisplayName("Business Entity Person Type"), Expression($"{jBusinessEntity}.[PersonType]")]
     public string BusinessEntityPersonType { get => fields.BusinessEntityPersonType[this]; set => fields.BusinessEntityPersonType[this] = value; }
@@ -37,7 +44,7 @@ public sealed class PersonPhoneRow : Administration.LoggingRow<PersonPhoneRow.Ro
     [DisplayName("Phone Number Type Name"), Expression($"{jPhoneNumberType}.[Name]")]
     public string PhoneNumberTypeName { get => fields.PhoneNumberTypeName[this]; set => fields.PhoneNumberTypeName[this] = value; }
 
-    public class RowFields : Administration.LoggingRowFields
+    public class RowFields : LoggingRowFields
     {
         public Int32Field BusinessEntityId;
         public StringField PhoneNumber;

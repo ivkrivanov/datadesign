@@ -1,17 +1,15 @@
-﻿using Serenity.ComponentModel;
-using Serenity.Data;
-using Serenity.Data.Mapping;
-using System;
-using System.ComponentModel;
+using Company.Administration.Entities;
 
 namespace Company.Company;
 
 [ConnectionKey("Company"), Module("Company"), TableName("[sales].[CurrencyRate]")]
 [DisplayName("Currency Rate"), InstanceName("Currency Rate")]
-[ReadPermission("PermissionKeys.CurrencyRate")]
-[ModifyPermission("PermissionKeys.CurrencyRate")]
-[ServiceLookupPermission("PermissionKeys.CurrencyRate")]
-public sealed class CurrencyRateRow : Administration.LoggingRow<CurrencyRateRow.RowFields>, IIdRow, INameRow
+[ReadPermission(PermissionKeys.CurrencyRate.View)]
+[ModifyPermission(PermissionKeys.CurrencyRate.Modify)]
+[DeletePermission(PermissionKeys.CurrencyRate.Delete)]
+[ServiceLookupPermission("Company.CurrencyRate")]
+[LookupScript("Company.CurrencyRate", LookupType = typeof(MultiTenantRowLookupScript<>))]
+public sealed class CurrencyRateRow : LoggingRow<CurrencyRateRow.RowFields>, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
 {
     [DisplayName("Currency Rate Id"), Column("CurrencyRateID"), Identity, IdProperty]
     public int? CurrencyRateId { get => fields.CurrencyRateId[this]; set => fields.CurrencyRateId[this] = value; }
@@ -31,13 +29,21 @@ public sealed class CurrencyRateRow : Administration.LoggingRow<CurrencyRateRow.
     [DisplayName("End Of Day Rate"), Size(19), Scale(4), NotNull]
     public decimal? EndOfDayRate { get => fields.EndOfDayRate[this]; set => fields.EndOfDayRate[this] = value; }
 
-    [DisplayName("Is Active"), NotNull]
-    public short? IsActive { get => fields.IsActive[this]; set => fields.IsActive[this] = value; }
+    #region Tenant & Activ
 
-    [DisplayName("Tenant Id"), NotNull]
-    public int? TenantId { get => fields.TenantId[this]; set => fields.TenantId[this] = value; }
+    [Insertable(false), Updatable(false)]
+    public Int32? TenantId { get => fields.TenantId[this]; set => fields.TenantId[this] = value; }
 
-    public class RowFields : Administration.LoggingRowFields
+    public Int32Field TenantIdField { get => fields.TenantId; }
+
+    [NotNull, Insertable(false), Updatable(true)]
+    public Int16? IsActive { get => fields.IsActive[this]; set => fields.IsActive[this] = value; }
+
+    Int16Field IIsActiveRow.IsActiveField { get => fields.IsActive; }
+
+    #endregion Tenant & Activ
+
+    public class RowFields : LoggingRowFields
     {
         public Int32Field CurrencyRateId;
         public DateTimeField CurrencyRateDate;

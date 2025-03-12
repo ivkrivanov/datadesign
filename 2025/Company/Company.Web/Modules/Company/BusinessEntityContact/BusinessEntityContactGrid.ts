@@ -1,4 +1,4 @@
-﻿import { BusinessEntityContactColumns, BusinessEntityContactRow, BusinessEntityContactService } from '@/ServerTypes/Company';
+import { BusinessEntityContactColumns, BusinessEntityContactRow, BusinessEntityContactService } from '../../ServerTypes/Company';
 import { Decorators, EntityGrid } from '@serenity-is/corelib';
 import { BusinessEntityContactDialog } from './BusinessEntityContactDialog';
 
@@ -9,7 +9,10 @@ export class BusinessEntityContactGrid extends EntityGrid<BusinessEntityContactR
     protected getRowDefinition() { return BusinessEntityContactRow; }
     protected getService() { return BusinessEntityContactService.baseUrl; }
 
-    constructor(container: JQuery) {
-        super(container);
+    protected afterInit() {
+        super.afterInit();
     }
+    //constructor(container: JQuery) {
+    //    super(container);
+    //}
 }

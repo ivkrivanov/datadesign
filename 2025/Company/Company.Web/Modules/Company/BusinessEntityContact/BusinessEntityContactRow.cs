@@ -1,15 +1,15 @@
-﻿using Serenity.ComponentModel;
-using Serenity.Data;
-using Serenity.Data.Mapping;
-using System.ComponentModel;
+using Company.Administration.Entities;
 
 namespace Company.Company;
 
 [ConnectionKey("Company"), Module("Company"), TableName("[person].[BusinessEntityContact]")]
 [DisplayName("Business Entity Contact"), InstanceName("Business Entity Contact")]
-[ReadPermission("PermissionKeys.BusinessEntityContact")]
-[ModifyPermission("PermissionKeys.BusinessEntityContact")]
-public sealed class BusinessEntityContactRow : Administration.LoggingRow<BusinessEntityContactRow.RowFields>, IIdRow
+[ReadPermission(PermissionKeys.BusinessEntityContact.View)]
+[ModifyPermission(PermissionKeys.BusinessEntityContact.Modify)]
+[DeletePermission(PermissionKeys.BusinessEntityContact.Delete)]
+[ServiceLookupPermission("Company:General")]
+[LookupScript("Company.BusinessEntityContact", LookupType = typeof(MultiTenantRowLookupScript<>))]
+public sealed class BusinessEntityContactRow : LoggingRow<BusinessEntityContactRow.RowFields>, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
 {
     const string jBusinessEntity = nameof(jBusinessEntity);
     const string jPerson = nameof(jPerson);
@@ -27,19 +27,27 @@ public sealed class BusinessEntityContactRow : Administration.LoggingRow<Busines
     [TextualField(nameof(ContactTypeName)), ServiceLookupEditor(typeof(ContactTypeRow))]
     public int? ContactTypeId { get => fields.ContactTypeId[this]; set => fields.ContactTypeId[this] = value; }
 
-    [DisplayName("Is Active"), NotNull]
-    public short? IsActive { get => fields.IsActive[this]; set => fields.IsActive[this] = value; }
-
-    [DisplayName("Tenant Id"), NotNull]
-    public int? TenantId { get => fields.TenantId[this]; set => fields.TenantId[this] = value; }
-
-    [DisplayName("Person Person Type"), Expression($"{jPerson}.[PersonType]")]
+    [DisplayName("Person Person Type"), Expression($"{jPerson}.[PersonType]"), NameProperty]
     public string PersonType { get => fields.PersonType[this]; set => fields.PersonType[this] = value; }
 
     [DisplayName("Contact Type Name"), Expression($"{jContactType}.[Name]")]
     public string ContactTypeName { get => fields.ContactTypeName[this]; set => fields.ContactTypeName[this] = value; }
 
-    public class RowFields : Administration.LoggingRowFields
+    #region Tenant & Activ
+
+    [Insertable(false), Updatable(false)]
+    public Int32? TenantId { get => fields.TenantId[this]; set => fields.TenantId[this] = value; }
+
+    public Int32Field TenantIdField { get => fields.TenantId; }
+
+    [NotNull, Insertable(false), Updatable(true)]
+    public Int16? IsActive { get => fields.IsActive[this]; set => fields.IsActive[this] = value; }
+
+    Int16Field IIsActiveRow.IsActiveField { get => fields.IsActive; }
+
+    #endregion Tenant & Activ
+
+        public class RowFields : LoggingRowFields
     {
         public Int32Field BusinessEntityId;
         public Int32Field PersonId;

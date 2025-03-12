@@ -1,5 +1,3 @@
-﻿using Serenity.ComponentModel;
-
 namespace Company.Company.Forms;
 
 [FormScript("Company.AddressType")]
@@ -7,6 +5,4 @@ namespace Company.Company.Forms;
 public class AddressTypeForm
 {
     public string AddressTypeName { get; set; }
-    public short IsActive { get; set; }
-    public int TenantId { get; set; }
 }

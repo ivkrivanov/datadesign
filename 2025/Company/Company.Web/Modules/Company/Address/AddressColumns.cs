@@ -1,6 +1,3 @@
-using Serenity.ComponentModel;
-using System.ComponentModel;
-
 namespace Company.Company.Columns;
 
 [ColumnsScript("Company.Address")]

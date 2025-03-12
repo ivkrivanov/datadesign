@@ -1,15 +1,15 @@
-﻿using Serenity.ComponentModel;
-using Serenity.Data;
-using Serenity.Data.Mapping;
-using System.ComponentModel;
+using Company.Administration.Entities;
 
 namespace Company.Company;
 
 [ConnectionKey("Company"), Module("Company"), TableName("[person].[EmailAddress]")]
 [DisplayName("Email Address"), InstanceName("Email Address")]
-[ReadPermission("PermissionKeys.EmailAddress")]
-[ModifyPermission("PermissionKeys.EmailAddress")]
-public sealed class EmailAddressRow : Administration.LoggingRow<EmailAddressRow.RowFields>, IIdRow, INameRow
+[ReadPermission(PermissionKeys.EmailAddress.View)]
+[ModifyPermission(PermissionKeys.EmailAddress.Modify)]
+[DeletePermission(PermissionKeys.EmailAddress.Delete)]
+[ServiceLookupPermission("Company:General")]
+[LookupScript("Company.EmailAddress", LookupType = typeof(MultiTenantRowLookupScript<>))]
+public sealed class EmailAddressRow : LoggingRow<EmailAddressRow.RowFields>, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
 {
     const string jBusinessEntity = nameof(jBusinessEntity);
 
@@ -23,16 +23,25 @@ public sealed class EmailAddressRow : Administration.LoggingRow<EmailAddressRow.
     [DisplayName("Email Address"), Size(50), QuickSearch, NameProperty]
     public string EmailAddress { get => fields.EmailAddress[this]; set => fields.EmailAddress[this] = value; }
 
-    [DisplayName("Is Active"), NotNull]
-    public short? IsActive { get => fields.IsActive[this]; set => fields.IsActive[this] = value; }
+    #region Tenant & Activ
 
-    [DisplayName("Tenant Id"), NotNull]
-    public int? TenantId { get => fields.TenantId[this]; set => fields.TenantId[this] = value; }
+    [Insertable(false), Updatable(false)]
+    public Int32? TenantId { get => fields.TenantId[this]; set => fields.TenantId[this] = value; }
+
+    public Int32Field TenantIdField { get => fields.TenantId; }
+
+    [NotNull, Insertable(false), Updatable(true)]
+    public Int16? IsActive { get => fields.IsActive[this]; set => fields.IsActive[this] = value; }
+
+    Int16Field IIsActiveRow.IsActiveField { get => fields.IsActive; }
+
+    #endregion Tenant & Activ
+
 
     [DisplayName("Business Entity Person Type"), Expression($"{jBusinessEntity}.[PersonType]")]
     public string BusinessEntityPersonType { get => fields.BusinessEntityPersonType[this]; set => fields.BusinessEntityPersonType[this] = value; }
 
-    public class RowFields : Administration.LoggingRowFields
+    public class RowFields : LoggingRowFields
     {
         public Int32Field BusinessEntityId;
         public Int32Field EmailAddressId;

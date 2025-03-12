@@ -92,6 +92,28 @@ public class PermissionKeys
         public const string View = "Company:ContactType:View";
     }
 
+    [DisplayName("EmailAddress")]
+    public class EmailAddress
+    {
+        [Description("Delete"), ImplicitPermission(General), ImplicitPermission(View)]
+        public const string Delete = "Company:EmailAddress:Delete";
+
+        [Description("Create/Update"), ImplicitPermission(General), ImplicitPermission(View)]
+        public const string Modify = "Company:EmailAddress:Modify";
+        public const string View = "Company:EmailAddress:View";
+    }
+
+    [DisplayName("PersonPhone")]
+    public class PersonPhone
+    {
+        [Description("Delete"), ImplicitPermission(General), ImplicitPermission(View)]
+        public const string Delete = "Company:PersonPhone:Delete";
+
+        [Description("Create/Update"), ImplicitPermission(General), ImplicitPermission(View)]
+        public const string Modify = "Company:PersonPhone:Modify";
+        public const string View = "Company:PersonPhone:View";
+    }
+
     [DisplayName("Person")]
     public class Person
     {

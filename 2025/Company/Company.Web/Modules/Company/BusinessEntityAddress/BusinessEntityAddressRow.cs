@@ -1,4 +1,5 @@
-﻿using Serenity.ComponentModel;
+using Company.Administration.Entities;
+using Serenity.ComponentModel;
 using Serenity.Data;
 using Serenity.Data.Mapping;
 using System.ComponentModel;
@@ -7,9 +8,12 @@ namespace Company.Company;
 
 [ConnectionKey("Company"), Module("Company"), TableName("[person].[BusinessEntityAddress]")]
 [DisplayName("Business Entity Address"), InstanceName("Business Entity Address")]
-[ReadPermission("PermissionKeys.BusinessEntityAddress")]
-[ModifyPermission("PermissionKeys.BusinessEntityAddress")]
-public sealed class BusinessEntityAddressRow : Administration.LoggingRow<BusinessEntityAddressRow.RowFields>, IIdRow
+[ReadPermission(PermissionKeys.BusinessEntityAddress.View)]
+[ModifyPermission(PermissionKeys.BusinessEntityAddress.Modify)]
+[DeletePermission(PermissionKeys.BusinessEntityAddress.Delete)]
+[ServiceLookupPermission("Company:General")]
+[LookupScript("Company.BusinessEntity.Address", LookupType = typeof(MultiTenantRowLookupScript<>))]
+public sealed class BusinessEntityAddressRow : LoggingRow<BusinessEntityAddressRow.RowFields>, IIdRow, IIsActiveRow, IMultiTenantRow
 {
     const string jBusinessEntity = nameof(jBusinessEntity);
     const string jAddress = nameof(jAddress);
@@ -27,19 +31,28 @@ public sealed class BusinessEntityAddressRow : Administration.LoggingRow<Busines
     [TextualField(nameof(AddressTypeName)), ServiceLookupEditor(typeof(AddressTypeRow))]
     public int? AddressTypeId { get => fields.AddressTypeId[this]; set => fields.AddressTypeId[this] = value; }
 
-    [DisplayName("Is Active"), NotNull]
-    public short? IsActive { get => fields.IsActive[this]; set => fields.IsActive[this] = value; }
-
-    [DisplayName("Tenant Id"), NotNull]
-    public int? TenantId { get => fields.TenantId[this]; set => fields.TenantId[this] = value; }
-
     [DisplayName("Address Address Line1"), Expression($"{jAddress}.[AddressLine1]")]
     public string AddressLine1 { get => fields.AddressLine1[this]; set => fields.AddressLine1[this] = value; }
 
     [DisplayName("Address Type Address Type Name"), Expression($"{jAddressType}.[AddressTypeName]")]
     public string AddressTypeName { get => fields.AddressTypeName[this]; set => fields.AddressTypeName[this] = value; }
 
-    public class RowFields : Administration.LoggingRowFields
+    #region Tenant & Activ
+
+    [Insertable(false), Updatable(false)]
+    public Int32? TenantId { get => fields.TenantId[this]; set => fields.TenantId[this] = value; }
+
+    public Int32Field TenantIdField { get => fields.TenantId; }
+
+    [NotNull, Insertable(false), Updatable(true)]
+    public Int16? IsActive { get => fields.IsActive[this]; set => fields.IsActive[this] = value; }
+
+    Int16Field IIsActiveRow.IsActiveField { get => fields.IsActive; }
+
+    #endregion Tenant & Activ
+
+
+    public class RowFields : LoggingRowFields
     {
         public Int32Field BusinessEntityId;
         public Int32Field AddressId;

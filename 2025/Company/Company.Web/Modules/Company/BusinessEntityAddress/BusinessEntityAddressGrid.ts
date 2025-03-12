@@ -1,4 +1,4 @@
-﻿import { BusinessEntityAddressColumns, BusinessEntityAddressRow, BusinessEntityAddressService } from '@/ServerTypes/Company';
+import { BusinessEntityAddressColumns, BusinessEntityAddressRow, BusinessEntityAddressService } from '../../ServerTypes/Company';
 import { Decorators, EntityGrid } from '@serenity-is/corelib';
 import { BusinessEntityAddressDialog } from './BusinessEntityAddressDialog';
 
@@ -9,7 +9,11 @@ export class BusinessEntityAddressGrid extends EntityGrid<BusinessEntityAddressR
     protected getRowDefinition() { return BusinessEntityAddressRow; }
     protected getService() { return BusinessEntityAddressService.baseUrl; }
 
-    constructor(container: JQuery) {
-        super(container);
+    protected afterInit() {
+        super.afterInit();
     }
+
+    //constructor(container: JQuery) {
+    //    super(container);
+    //}
 }

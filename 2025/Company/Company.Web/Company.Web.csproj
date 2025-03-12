@@ -23,6 +23,7 @@
     <TypeScriptCompile Remove="Modules\Default\**" />-->
     <TypeScriptCompile Remove="node_modules\**" />
     <EmbeddedResource Include="Migrations\**\*.sql" />
+    <TypeScriptCompile Remove="Modules\ServerTypes\Default.ts" />
     <Content Include="node_modules\.pnpm\%40types+dompurify%403.0.5\node_modules\%40types\dompurify\package.json" />
     <None Include="node_modules\.pnpm\%40types+dompurify%403.0.5\node_modules\%40types\dompurify\LICENSE" />
     <None Include="node_modules\.pnpm\%40types+dompurify%403.0.5\node_modules\%40types\dompurify\README.md" />
@@ -64,8 +65,8 @@
     <Message Text="Executing TypeScript compiler for $(ProjectName)..." Importance="high" />
     <ItemGroup>
       <CleanedEsmFiles Include="wwwroot\esm\**" />
+      <Exec Command="node tsbuild.js" ContinueOnError="true" />      
     </ItemGroup>
-    <Exec Command="node tsbuild.js" ContinueOnError="true" />
     <ItemGroup>
       <CleanedEsmFiles Remove="wwwroot\esm\**" />
       <Content Remove="@(CleanedEsmFiles)" />

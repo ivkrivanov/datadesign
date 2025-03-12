@@ -1,16 +1,15 @@
-﻿using Serenity.ComponentModel;
-using Serenity.Data;
-using Serenity.Data.Mapping;
-using System.ComponentModel;
+using Company.Administration.Entities;
 
 namespace Company.Company;
 
 [ConnectionKey("Company"), Module("Company"), TableName("[sales].[Currency]")]
 [DisplayName("Currency"), InstanceName("Currency")]
-[ReadPermission("PermissionKeys.Currency")]
-[ModifyPermission("PermissionKeys.Currency")]
-[ServiceLookupPermission("PermissionKeys.Currency")]
-public sealed class CurrencyRow : Administration.LoggingRow<CurrencyRow.RowFields>, IIdRow, INameRow
+[ReadPermission(PermissionKeys.Currency.View)]
+[ModifyPermission(PermissionKeys.Currency.Modify)]
+[DeletePermission(PermissionKeys.Currency.Delete)]
+[ServiceLookupPermission("Company.Currency")]
+[LookupScript("Company.Currency", LookupType = typeof(MultiTenantRowLookupScript<>))]
+public sealed class CurrencyRow : LoggingRow<CurrencyRow.RowFields>, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
 {
     [DisplayName("Currency Id"), Identity, IdProperty]
     public int? CurrencyId { get => fields.CurrencyId[this]; set => fields.CurrencyId[this] = value; }
@@ -21,13 +20,21 @@ public sealed class CurrencyRow : Administration.LoggingRow<CurrencyRow.RowField
     [DisplayName("Name"), Size(50), NotNull]
     public string Name { get => fields.Name[this]; set => fields.Name[this] = value; }
 
-    [DisplayName("Is Active"), NotNull]
-    public short? IsActive { get => fields.IsActive[this]; set => fields.IsActive[this] = value; }
+    #region Tenant & Activ
 
-    [DisplayName("Tenant Id"), NotNull]
-    public int? TenantId { get => fields.TenantId[this]; set => fields.TenantId[this] = value; }
+    [Insertable(false), Updatable(false)]
+    public Int32? TenantId { get => fields.TenantId[this]; set => fields.TenantId[this] = value; }
 
-    public class RowFields : Administration.LoggingRowFields
+    public Int32Field TenantIdField { get => fields.TenantId; }
+
+    [NotNull, Insertable(false), Updatable(true)]
+    public Int16? IsActive { get => fields.IsActive[this]; set => fields.IsActive[this] = value; }
+
+    Int16Field IIsActiveRow.IsActiveField { get => fields.IsActive; }
+
+    #endregion Tenant & Activ
+
+    public class RowFields : LoggingRowFields
     {
         public Int32Field CurrencyId;
         public StringField CurrencyCode;

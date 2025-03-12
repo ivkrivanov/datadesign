@@ -1,4 +1,4 @@
-﻿import { BusinessEntityAddressForm, BusinessEntityAddressRow, BusinessEntityAddressService } from '@/ServerTypes/Company';
+import { BusinessEntityAddressForm, BusinessEntityAddressRow, BusinessEntityAddressService } from '../../ServerTypes/Company';
 import { Decorators, EntityDialog } from '@serenity-is/corelib';
 
 @Decorators.registerClass('Company.Company.BusinessEntityAddressDialog')

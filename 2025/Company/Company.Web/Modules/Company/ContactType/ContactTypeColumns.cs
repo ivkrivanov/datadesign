@@ -1,6 +1,3 @@
-﻿using Serenity.ComponentModel;
-using System.ComponentModel;
-
 namespace Company.Company.Columns;
 
 [ColumnsScript("Company.ContactType")]
@@ -11,6 +8,4 @@ public class ContactTypeColumns
     public int ContactTypeId { get; set; }
     [EditLink]
     public string Name { get; set; }
-    public short IsActive { get; set; }
-    public int TenantId { get; set; }
 }

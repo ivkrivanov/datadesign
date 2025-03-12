@@ -1,6 +1,3 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Serenity.Web;
-
 namespace Company.Company.Pages;
 
 [PageAuthorize(typeof(BusinessEntityContactRow))]
