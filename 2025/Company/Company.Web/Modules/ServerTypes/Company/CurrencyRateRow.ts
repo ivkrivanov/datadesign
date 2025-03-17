@@ -1,4 +1,4 @@
-﻿import { fieldsProxy } from '@serenity-is/corelib';
+﻿import { getLookup, getLookupAsync, fieldsProxy } from "@serenity-is/corelib";
 
 export interface CurrencyRateRow {
     CurrencyRateId?: number;
@@ -9,17 +9,29 @@ export interface CurrencyRateRow {
     EndOfDayRate?: number;
     IsActive?: number;
     TenantId?: number;
+    FromCurrencyName?: string;
+    ToCurrencyName?: string;
+    InsertUserId?: number;
+    InsertDate?: string;
+    UpdateUserId?: number;
+    UpdateDate?: string;
 }
 
 export abstract class CurrencyRateRow {
     static readonly idProperty = 'CurrencyRateId';
+    static readonly isActiveProperty = 'IsActive';
     static readonly nameProperty = 'FromCurrencyCode';
     static readonly localTextPrefix = 'Company.CurrencyRate';
+    static readonly lookupKey = 'Company.CurrencyRate';
 
-    static readonly deletePermission = 'PermissionKeys.CurrencyRate';
-    static readonly insertPermission = 'PermissionKeys.CurrencyRate';
-    static readonly readPermission = 'PermissionKeys.CurrencyRate';
-    static readonly updatePermission = 'PermissionKeys.CurrencyRate';
+    /** @deprecated use getLookupAsync instead */
+    static getLookup() { return getLookup<CurrencyRateRow>('Company.CurrencyRate') }
+    static async getLookupAsync() { return getLookupAsync<CurrencyRateRow>('Company.CurrencyRate') }
+
+    static readonly deletePermission = 'Company:CurrencyRate:Delete';
+    static readonly insertPermission = 'Company:CurrencyRate:Modify';
+    static readonly readPermission = 'Company:CurrencyRate:View';
+    static readonly updatePermission = 'Company:CurrencyRate:Modify';
 
     static readonly Fields = fieldsProxy<CurrencyRateRow>();
 }

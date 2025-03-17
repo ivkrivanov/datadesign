@@ -1,4 +1,4 @@
-﻿import { PrefixedContext, IntegerEditor, StringEditor, initFormType } from '@serenity-is/corelib';
+﻿import { StringEditor, PrefixedContext, initFormType } from "@serenity-is/corelib";
 
 export interface TenantsForm {
     TenantName: StringEditor;
@@ -7,17 +7,17 @@ export interface TenantsForm {
 export class TenantsForm extends PrefixedContext {
     static readonly formKey = 'Administration.Tenants';
     private static init: boolean;
-    
+
     constructor(prefix: string) {
         super(prefix);
+
         if (!TenantsForm.init)  {
             TenantsForm.init = true;
-            
-            var w0 = IntegerEditor;
-            var w1 = StringEditor;
+
+            var w0 = StringEditor;
 
             initFormType(TenantsForm, [
-            'TenantName', w1,
+                'TenantName', w0
             ]);
         }
     }

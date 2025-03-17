@@ -14,10 +14,10 @@ public sealed class CurrencyRow : LoggingRow<CurrencyRow.RowFields>, IIdRow, INa
     [DisplayName("Currency Id"), Identity, IdProperty]
     public int? CurrencyId { get => fields.CurrencyId[this]; set => fields.CurrencyId[this] = value; }
 
-    [DisplayName("Currency Code"), Size(3), NotNull, QuickSearch, NameProperty]
+    [DisplayName("Currency Code"), Size(3), NotNull, QuickSearch ]
     public string CurrencyCode { get => fields.CurrencyCode[this]; set => fields.CurrencyCode[this] = value; }
 
-    [DisplayName("Name"), Size(50), NotNull]
+    [DisplayName("Name"), Size(50), NotNull, NameProperty]
     public string Name { get => fields.Name[this]; set => fields.Name[this] = value; }
 
     #region Tenant & Activ
@@ -39,6 +39,7 @@ public sealed class CurrencyRow : LoggingRow<CurrencyRow.RowFields>, IIdRow, INa
         public Int32Field CurrencyId;
         public StringField CurrencyCode;
         public StringField Name;
+
         public Int16Field IsActive;
         public Int32Field TenantId;
 

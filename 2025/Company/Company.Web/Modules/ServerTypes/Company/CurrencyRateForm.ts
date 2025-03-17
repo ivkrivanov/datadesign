@@ -1,37 +1,33 @@
-﻿import { PrefixedContext, IntegerEditor, DateEditor, StringEditor, DecimalEditor, initFormType } from '@serenity-is/corelib';
+﻿import { DateEditor, LookupEditor, DecimalEditor, PrefixedContext, initFormType } from "@serenity-is/corelib";
 
 export interface CurrencyRateForm {
     CurrencyRateDate: DateEditor;
-    FromCurrencyCode: StringEditor;
-    ToCurrencyCode: StringEditor;
+    FromCurrencyCode: LookupEditor;
+    ToCurrencyCode: LookupEditor;
     AverageRate: DecimalEditor;
     EndOfDayRate: DecimalEditor;
-    IsActive: IntegerEditor;
-    TenantId: IntegerEditor;
 }
 
 export class CurrencyRateForm extends PrefixedContext {
     static readonly formKey = 'Company.CurrencyRate';
     private static init: boolean;
-    
+
     constructor(prefix: string) {
         super(prefix);
+
         if (!CurrencyRateForm.init)  {
             CurrencyRateForm.init = true;
-            
-            var w0 = IntegerEditor;
-            var w1 = DateEditor;
-            var w2 = StringEditor;
-            var w3 = DecimalEditor;
+
+            var w0 = DateEditor;
+            var w1 = LookupEditor;
+            var w2 = DecimalEditor;
 
             initFormType(CurrencyRateForm, [
-            'CurrencyRateDate', w1,
-            'FromCurrencyCode', w2,
-            'ToCurrencyCode', w2,
-            'AverageRate', w3,
-            'EndOfDayRate', w3,
-            'IsActive', w0,
-            'TenantId', w0,
+                'CurrencyRateDate', w0,
+                'FromCurrencyCode', w1,
+                'ToCurrencyCode', w1,
+                'AverageRate', w2,
+                'EndOfDayRate', w2
             ]);
         }
     }

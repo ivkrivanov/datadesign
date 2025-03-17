@@ -9,9 +9,6 @@ export class StateProvinceGrid extends EntityGrid<StateProvinceRow, any> {
     protected getRowDefinition() { return StateProvinceRow; }
     protected getService() { return StateProvinceService.baseUrl; }
 
-    protected afterInit() {
-        super.afterInit();
-    }
     //constructor(container: JQuery) {
     //    super(container);
     //}

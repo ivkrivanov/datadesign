@@ -1,5 +1,5 @@
-﻿import { SaveRequest, SaveResponse, ServiceOptions, DeleteRequest, DeleteResponse, RetrieveRequest, RetrieveResponse, ListRequest, ListResponse, serviceRequest } from '@serenity-is/corelib';
-import { PersonPhoneRow } from './PersonPhoneRow';
+﻿import { SaveRequest, SaveResponse, ServiceOptions, DeleteRequest, DeleteResponse, RetrieveRequest, RetrieveResponse, ListRequest, ListResponse, serviceRequest } from "@serenity-is/corelib";
+import { PersonPhoneRow } from "./PersonPhoneRow";
 
 export namespace PersonPhoneService {
     export const baseUrl = 'Company/PersonPhone';
@@ -25,8 +25,8 @@ export namespace PersonPhoneService {
         'Retrieve', 
         'List'
     ].forEach(x => {
-        (<any>PersonPhoneService)[x] = function (r, s, o) { 
-            return serviceRequest(baseUrl + '/' + x, r, s, o); 
+        (<any>PersonPhoneService)[x] = function (r, s, o) {
+            return serviceRequest(baseUrl + '/' + x, r, s, o);
         };
     });
 }

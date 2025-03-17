@@ -1,4 +1,4 @@
-﻿import { CurrencyRateColumns, CurrencyRateRow, CurrencyRateService } from '@/ServerTypes/Company';
+import { CurrencyRateColumns, CurrencyRateRow, CurrencyRateService } from '../../ServerTypes/Company';
 import { Decorators, EntityGrid } from '@serenity-is/corelib';
 import { CurrencyRateDialog } from './CurrencyRateDialog';
 
@@ -9,7 +9,4 @@ export class CurrencyRateGrid extends EntityGrid<CurrencyRateRow, any> {
     protected getRowDefinition() { return CurrencyRateRow; }
     protected getService() { return CurrencyRateService.baseUrl; }
 
-    constructor(container: JQuery) {
-        super(container);
-    }
 }

@@ -1,4 +1,4 @@
-﻿import { EmailAddressForm, EmailAddressRow, EmailAddressService } from '@/ServerTypes/Company';
+import { EmailAddressForm, EmailAddressRow, EmailAddressService } from '../../ServerTypes/Company';
 import { Decorators, EntityDialog } from '@serenity-is/corelib';
 
 @Decorators.registerClass('Company.Company.EmailAddressDialog')

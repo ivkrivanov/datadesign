@@ -1,7 +1,3 @@
-﻿using Serenity.ComponentModel;
-using System;
-using System.ComponentModel;
-
 namespace Company.Company.Columns;
 
 [ColumnsScript("Company.CurrencyRate")]
@@ -11,11 +7,10 @@ public class CurrencyRateColumns
     [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
     public int CurrencyRateId { get; set; }
     public DateTime CurrencyRateDate { get; set; }
-    [EditLink]
+    [EditLink, Width(100), AsyncLookupEditor(typeof(CurrencyLookup)), QuickFilter(CssClass = "hidden-xs")]
     public string FromCurrencyCode { get; set; }
+    [EditLink, Width(100), AsyncLookupEditor(typeof(CurrencyLookup)), QuickFilter(CssClass = "hidden-xs")]
     public string ToCurrencyCode { get; set; }
     public decimal AverageRate { get; set; }
     public decimal EndOfDayRate { get; set; }
-    public short IsActive { get; set; }
-    public int TenantId { get; set; }
 }

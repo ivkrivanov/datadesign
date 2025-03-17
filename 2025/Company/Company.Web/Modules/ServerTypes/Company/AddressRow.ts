@@ -1,4 +1,4 @@
-﻿import { fieldsProxy } from '@serenity-is/corelib';
+﻿import { getLookup, getLookupAsync, fieldsProxy } from "@serenity-is/corelib";
 
 export interface AddressRow {
     AddressId?: number;
@@ -12,17 +12,27 @@ export interface AddressRow {
     TenantId?: number;
     CountryCodeCountryName?: string;
     StateProvinceCode?: string;
+    InsertUserId?: number;
+    InsertDate?: string;
+    UpdateUserId?: number;
+    UpdateDate?: string;
 }
 
 export abstract class AddressRow {
     static readonly idProperty = 'AddressId';
+    static readonly isActiveProperty = 'IsActive';
     static readonly nameProperty = 'AddressLine1';
     static readonly localTextPrefix = 'Company.Address';
+    static readonly lookupKey = 'Company.Address';
 
-    static readonly deletePermission = 'PermissionKeys.Address';
-    static readonly insertPermission = 'PermissionKeys.Address';
-    static readonly readPermission = 'PermissionKeys.Address';
-    static readonly updatePermission = 'PermissionKeys.Address';
+    /** @deprecated use getLookupAsync instead */
+    static getLookup() { return getLookup<AddressRow>('Company.Address') }
+    static async getLookupAsync() { return getLookupAsync<AddressRow>('Company.Address') }
+
+    static readonly deletePermission = 'Company:Address:Delete';
+    static readonly insertPermission = 'Company:Address:Modify';
+    static readonly readPermission = 'Company:Address:View';
+    static readonly updatePermission = 'Company:Address:Modify';
 
     static readonly Fields = fieldsProxy<AddressRow>();
 }

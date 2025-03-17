@@ -1,6 +1,3 @@
-﻿using Serenity.ComponentModel;
-using System.ComponentModel;
-
 namespace Company.Company.Columns;
 
 [ColumnsScript("Company.Currency")]
@@ -12,6 +9,4 @@ public class CurrencyColumns
     [EditLink]
     public string CurrencyCode { get; set; }
     public string Name { get; set; }
-    public short IsActive { get; set; }
-    public int TenantId { get; set; }
 }

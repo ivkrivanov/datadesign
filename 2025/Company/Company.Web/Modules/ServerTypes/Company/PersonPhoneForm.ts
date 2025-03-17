@@ -1,8 +1,8 @@
-﻿import { PrefixedContext, IntegerEditor, StringEditor, initFormType } from '@serenity-is/corelib';
+﻿import { StringEditor, ServiceLookupEditor, IntegerEditor, PrefixedContext, initFormType } from "@serenity-is/corelib";
 
 export interface PersonPhoneForm {
     PhoneNumber: StringEditor;
-    PhoneNumberTypeId: IntegerEditor;
+    PhoneNumberTypeId: ServiceLookupEditor;
     IsActive: IntegerEditor;
     TenantId: IntegerEditor;
 }
@@ -10,20 +10,22 @@ export interface PersonPhoneForm {
 export class PersonPhoneForm extends PrefixedContext {
     static readonly formKey = 'Company.PersonPhone';
     private static init: boolean;
-    
+
     constructor(prefix: string) {
         super(prefix);
+
         if (!PersonPhoneForm.init)  {
             PersonPhoneForm.init = true;
-            
-            var w0 = IntegerEditor;
-            var w1 = StringEditor;
+
+            var w0 = StringEditor;
+            var w1 = ServiceLookupEditor;
+            var w2 = IntegerEditor;
 
             initFormType(PersonPhoneForm, [
-            'PhoneNumber', w1,
-            'PhoneNumberTypeId', w0,
-            'IsActive', w0,
-            'TenantId', w0,
+                'PhoneNumber', w0,
+                'PhoneNumberTypeId', w1,
+                'IsActive', w2,
+                'TenantId', w2
             ]);
         }
     }

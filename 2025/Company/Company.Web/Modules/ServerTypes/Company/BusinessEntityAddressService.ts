@@ -1,5 +1,5 @@
-﻿import { SaveRequest, SaveResponse, ServiceOptions, DeleteRequest, DeleteResponse, RetrieveRequest, RetrieveResponse, ListRequest, ListResponse, serviceRequest } from '@serenity-is/corelib';
-import { BusinessEntityAddressRow } from './BusinessEntityAddressRow';
+﻿import { SaveRequest, SaveResponse, ServiceOptions, DeleteRequest, DeleteResponse, RetrieveRequest, RetrieveResponse, ListRequest, ListResponse, serviceRequest } from "@serenity-is/corelib";
+import { BusinessEntityAddressRow } from "./BusinessEntityAddressRow";
 
 export namespace BusinessEntityAddressService {
     export const baseUrl = 'Company/BusinessEntityAddress';
@@ -25,8 +25,8 @@ export namespace BusinessEntityAddressService {
         'Retrieve', 
         'List'
     ].forEach(x => {
-        (<any>BusinessEntityAddressService)[x] = function (r, s, o) { 
-            return serviceRequest(baseUrl + '/' + x, r, s, o); 
+        (<any>BusinessEntityAddressService)[x] = function (r, s, o) {
+            return serviceRequest(baseUrl + '/' + x, r, s, o);
         };
     });
 }

@@ -1,6 +1,6 @@
-﻿import { ColumnsBase, fieldsProxy } from '@serenity-is/corelib';
-import { Column } from '@serenity-is/sleekgrid';
-import { CurrencyRateRow } from './CurrencyRateRow';
+﻿import { ColumnsBase, fieldsProxy } from "@serenity-is/corelib";
+import { Column } from "@serenity-is/sleekgrid";
+import { CurrencyRateRow } from "./CurrencyRateRow";
 
 export interface CurrencyRateColumns {
     CurrencyRateId: Column<CurrencyRateRow>;
@@ -9,8 +9,6 @@ export interface CurrencyRateColumns {
     ToCurrencyCode: Column<CurrencyRateRow>;
     AverageRate: Column<CurrencyRateRow>;
     EndOfDayRate: Column<CurrencyRateRow>;
-    IsActive: Column<CurrencyRateRow>;
-    TenantId: Column<CurrencyRateRow>;
 }
 
 export class CurrencyRateColumns extends ColumnsBase<CurrencyRateRow> {

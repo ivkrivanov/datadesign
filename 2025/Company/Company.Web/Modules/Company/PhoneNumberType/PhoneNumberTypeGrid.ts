@@ -1,4 +1,4 @@
-﻿import { PhoneNumberTypeColumns, PhoneNumberTypeRow, PhoneNumberTypeService } from '@/ServerTypes/Company';
+import { PhoneNumberTypeColumns, PhoneNumberTypeRow, PhoneNumberTypeService } from '../../ServerTypes/Company';
 import { Decorators, EntityGrid } from '@serenity-is/corelib';
 import { PhoneNumberTypeDialog } from './PhoneNumberTypeDialog';
 
@@ -9,7 +9,4 @@ export class PhoneNumberTypeGrid extends EntityGrid<PhoneNumberTypeRow, any> {
     protected getRowDefinition() { return PhoneNumberTypeRow; }
     protected getService() { return PhoneNumberTypeService.baseUrl; }
 
-    constructor(container: JQuery) {
-        super(container);
-    }
 }

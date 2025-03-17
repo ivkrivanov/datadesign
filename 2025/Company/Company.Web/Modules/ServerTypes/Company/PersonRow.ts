@@ -1,4 +1,4 @@
-﻿import { fieldsProxy } from '@serenity-is/corelib';
+﻿import { getLookup, getLookupAsync, fieldsProxy } from "@serenity-is/corelib";
 
 export interface PersonRow {
     BusinessEntityId?: number;
@@ -7,20 +7,31 @@ export interface PersonRow {
     FirstName?: string;
     MiddleName?: string;
     LastName?: string;
+    FullName?: string;
     Suffix?: string;
     IsActive?: number;
     TenantId?: number;
+    InsertUserId?: number;
+    InsertDate?: string;
+    UpdateUserId?: number;
+    UpdateDate?: string;
 }
 
 export abstract class PersonRow {
     static readonly idProperty = 'BusinessEntityId';
-    static readonly nameProperty = 'PersonType';
+    static readonly isActiveProperty = 'IsActive';
+    static readonly nameProperty = 'FullName';
     static readonly localTextPrefix = 'Company.Person';
+    static readonly lookupKey = 'Company.Person';
 
-    static readonly deletePermission = 'Administration:General';
-    static readonly insertPermission = 'Administration:General';
-    static readonly readPermission = 'Administration:General';
-    static readonly updatePermission = 'Administration:General';
+    /** @deprecated use getLookupAsync instead */
+    static getLookup() { return getLookup<PersonRow>('Company.Person') }
+    static async getLookupAsync() { return getLookupAsync<PersonRow>('Company.Person') }
+
+    static readonly deletePermission = 'Company:Person:Delete';
+    static readonly insertPermission = 'Company:Person:Modify';
+    static readonly readPermission = 'Company:Person:View';
+    static readonly updatePermission = 'Company:Person:Modify';
 
     static readonly Fields = fieldsProxy<PersonRow>();
 }

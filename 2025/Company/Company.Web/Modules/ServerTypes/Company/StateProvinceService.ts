@@ -1,5 +1,5 @@
-﻿import { SaveRequest, SaveResponse, ServiceOptions, DeleteRequest, DeleteResponse, RetrieveRequest, RetrieveResponse, ListRequest, ListResponse, serviceRequest } from '@serenity-is/corelib';
-import { StateProvinceRow } from './StateProvinceRow';
+﻿import { SaveRequest, SaveResponse, ServiceOptions, DeleteRequest, DeleteResponse, RetrieveRequest, RetrieveResponse, ListRequest, ListResponse, serviceRequest } from "@serenity-is/corelib";
+import { StateProvinceRow } from "./StateProvinceRow";
 
 export namespace StateProvinceService {
     export const baseUrl = 'Company/StateProvince';
@@ -25,8 +25,8 @@ export namespace StateProvinceService {
         'Retrieve', 
         'List'
     ].forEach(x => {
-        (<any>StateProvinceService)[x] = function (r, s, o) { 
-            return serviceRequest(baseUrl + '/' + x, r, s, o); 
+        (<any>StateProvinceService)[x] = function (r, s, o) {
+            return serviceRequest(baseUrl + '/' + x, r, s, o);
         };
     });
 }

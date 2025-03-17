@@ -1,6 +1,6 @@
-﻿import { ColumnsBase, fieldsProxy } from '@serenity-is/corelib';
-import { Column } from '@serenity-is/sleekgrid';
-import { TenantsRow } from './TenantsRow';
+﻿import { ColumnsBase, fieldsProxy } from "@serenity-is/corelib";
+import { Column } from "@serenity-is/sleekgrid";
+import { TenantsRow } from "./TenantsRow";
 
 export interface TenantsColumns {
     TenantId: Column<TenantsRow>;

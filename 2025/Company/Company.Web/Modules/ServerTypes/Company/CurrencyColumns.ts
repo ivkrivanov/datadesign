@@ -1,13 +1,11 @@
-﻿import { ColumnsBase, fieldsProxy } from '@serenity-is/corelib';
-import { Column } from '@serenity-is/sleekgrid';
-import { CurrencyRow } from './CurrencyRow';
+﻿import { ColumnsBase, fieldsProxy } from "@serenity-is/corelib";
+import { Column } from "@serenity-is/sleekgrid";
+import { CurrencyRow } from "./CurrencyRow";
 
 export interface CurrencyColumns {
     CurrencyId: Column<CurrencyRow>;
     CurrencyCode: Column<CurrencyRow>;
     Name: Column<CurrencyRow>;
-    IsActive: Column<CurrencyRow>;
-    TenantId: Column<CurrencyRow>;
 }
 
 export class CurrencyColumns extends ColumnsBase<CurrencyRow> {

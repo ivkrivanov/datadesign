@@ -1,5 +1,5 @@
-﻿import { SaveRequest, SaveResponse, ServiceOptions, DeleteRequest, DeleteResponse, RetrieveRequest, RetrieveResponse, ListRequest, ListResponse, serviceRequest } from '@serenity-is/corelib';
-import { CurrencyRateRow } from './CurrencyRateRow';
+﻿import { SaveRequest, SaveResponse, ServiceOptions, DeleteRequest, DeleteResponse, RetrieveRequest, RetrieveResponse, ListRequest, ListResponse, serviceRequest } from "@serenity-is/corelib";
+import { CurrencyRateRow } from "./CurrencyRateRow";
 
 export namespace CurrencyRateService {
     export const baseUrl = 'Company/CurrencyRate';
@@ -25,8 +25,8 @@ export namespace CurrencyRateService {
         'Retrieve', 
         'List'
     ].forEach(x => {
-        (<any>CurrencyRateService)[x] = function (r, s, o) { 
-            return serviceRequest(baseUrl + '/' + x, r, s, o); 
+        (<any>CurrencyRateService)[x] = function (r, s, o) {
+            return serviceRequest(baseUrl + '/' + x, r, s, o);
         };
     });
 }

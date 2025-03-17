@@ -1,12 +1,10 @@
-﻿import { ColumnsBase, fieldsProxy } from '@serenity-is/corelib';
-import { Column } from '@serenity-is/sleekgrid';
-import { CountryRow } from './CountryRow';
+﻿import { ColumnsBase, fieldsProxy } from "@serenity-is/corelib";
+import { Column } from "@serenity-is/sleekgrid";
+import { CountryRow } from "./CountryRow";
 
 export interface CountryColumns {
     CountryCode: Column<CountryRow>;
     CountryName: Column<CountryRow>;
-    IsActive: Column<CountryRow>;
-    TenantId: Column<CountryRow>;
 }
 
 export class CountryColumns extends ColumnsBase<CountryRow> {

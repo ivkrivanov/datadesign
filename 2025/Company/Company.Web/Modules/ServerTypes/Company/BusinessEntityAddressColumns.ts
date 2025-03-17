@@ -1,13 +1,11 @@
-﻿import { ColumnsBase, fieldsProxy } from '@serenity-is/corelib';
-import { Column } from '@serenity-is/sleekgrid';
-import { BusinessEntityAddressRow } from './BusinessEntityAddressRow';
+﻿import { ColumnsBase, fieldsProxy } from "@serenity-is/corelib";
+import { Column } from "@serenity-is/sleekgrid";
+import { BusinessEntityAddressRow } from "./BusinessEntityAddressRow";
 
 export interface BusinessEntityAddressColumns {
     BusinessEntityId: Column<BusinessEntityAddressRow>;
-    AddressId: Column<BusinessEntityAddressRow>;
-    AddressTypeId: Column<BusinessEntityAddressRow>;
-    IsActive: Column<BusinessEntityAddressRow>;
-    TenantId: Column<BusinessEntityAddressRow>;
+    AddressLine1: Column<BusinessEntityAddressRow>;
+    AddressTypeName: Column<BusinessEntityAddressRow>;
 }
 
 export class BusinessEntityAddressColumns extends ColumnsBase<BusinessEntityAddressRow> {

@@ -1,9 +1,9 @@
-﻿import { ColumnsBase, fieldsProxy } from '@serenity-is/corelib';
-import { Column } from '@serenity-is/sleekgrid';
-import { EmailAddressRow } from './EmailAddressRow';
+﻿import { ColumnsBase, fieldsProxy } from "@serenity-is/corelib";
+import { Column } from "@serenity-is/sleekgrid";
+import { EmailAddressRow } from "./EmailAddressRow";
 
 export interface EmailAddressColumns {
-    BusinessEntityId: Column<EmailAddressRow>;
+    BusinessEntityPersonType: Column<EmailAddressRow>;
     EmailAddressId: Column<EmailAddressRow>;
     EmailAddress: Column<EmailAddressRow>;
     IsActive: Column<EmailAddressRow>;

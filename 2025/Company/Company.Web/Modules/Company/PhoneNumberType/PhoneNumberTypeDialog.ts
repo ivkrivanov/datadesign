@@ -1,4 +1,4 @@
-﻿import { PhoneNumberTypeForm, PhoneNumberTypeRow, PhoneNumberTypeService } from '@/ServerTypes/Company';
+import { PhoneNumberTypeForm, PhoneNumberTypeRow, PhoneNumberTypeService } from '../../ServerTypes/Company';
 import { Decorators, EntityDialog } from '@serenity-is/corelib';
 
 @Decorators.registerClass('Company.Company.PhoneNumberTypeDialog')

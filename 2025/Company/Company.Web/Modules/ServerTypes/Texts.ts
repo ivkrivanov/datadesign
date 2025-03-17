@@ -14,6 +14,7 @@ namespace texts {
             namespace Role {
                 export const RoleId: string;
                 export const RoleName: string;
+                export const TenantId: string;
             }
 
             namespace RolePermission {
@@ -21,6 +22,11 @@ namespace texts {
                 export const RoleId: string;
                 export const RoleName: string;
                 export const RolePermissionId: string;
+            }
+
+            namespace Tenants {
+                export const TenantId: string;
+                export const TenantName: string;
             }
 
             namespace User {
@@ -36,6 +42,8 @@ namespace texts {
                 export const PasswordSalt: string;
                 export const Roles: string;
                 export const Source: string;
+                export const TenantId: string;
+                export const TenantName: string;
                 export const UpdateDate: string;
                 export const UpdateUserId: string;
                 export const UserId: string;
@@ -59,6 +67,213 @@ namespace texts {
                 export const UserId: string;
                 export const UserRoleId: string;
                 export const Username: string;
+            }
+        }
+
+        namespace Company {
+
+            namespace Address {
+                export const AddressId: string;
+                export const AddressLine1: string;
+                export const AddressLine2: string;
+                export const City: string;
+                export const CountryCode: string;
+                export const CountryCodeCountryName: string;
+                export const InsertDate: string;
+                export const InsertUserId: string;
+                export const IsActive: string;
+                export const PostalCode: string;
+                export const StateProvinceCode: string;
+                export const StateProvinceId: string;
+                export const TenantId: string;
+                export const UpdateDate: string;
+                export const UpdateUserId: string;
+            }
+
+            namespace AddressType {
+                export const AddressTypeId: string;
+                export const AddressTypeName: string;
+                export const InsertDate: string;
+                export const InsertUserId: string;
+                export const IsActive: string;
+                export const TenantId: string;
+                export const UpdateDate: string;
+                export const UpdateUserId: string;
+            }
+
+            namespace BusinessEntity {
+                export const BusinessEntityId: string;
+                export const FirstName: string;
+                export const FullName: string;
+                export const InsertDate: string;
+                export const InsertUserId: string;
+                export const IsActive: string;
+                export const LastName: string;
+                export const MiddleName: string;
+                export const PersonType: string;
+                export const Suffix: string;
+                export const TenantId: string;
+                export const Title: string;
+                export const UpdateDate: string;
+                export const UpdateUserId: string;
+            }
+
+            namespace BusinessEntityAddress {
+                export const AddressId: string;
+                export const AddressLine1: string;
+                export const AddressTypeId: string;
+                export const AddressTypeName: string;
+                export const BusinessEntityId: string;
+                export const InsertDate: string;
+                export const InsertUserId: string;
+                export const IsActive: string;
+                export const TenantId: string;
+                export const UpdateDate: string;
+                export const UpdateUserId: string;
+            }
+
+            namespace BusinessEntityContact {
+                export const BusinessEntityId: string;
+                export const ContactTypeId: string;
+                export const ContactTypeName: string;
+                export const InsertDate: string;
+                export const InsertUserId: string;
+                export const IsActive: string;
+                export const PersonId: string;
+                export const PersonType: string;
+                export const TenantId: string;
+                export const UpdateDate: string;
+                export const UpdateUserId: string;
+            }
+
+            namespace ContactType {
+                export const ContactTypeId: string;
+                export const InsertDate: string;
+                export const InsertUserId: string;
+                export const IsActive: string;
+                export const Name: string;
+                export const TenantId: string;
+                export const UpdateDate: string;
+                export const UpdateUserId: string;
+            }
+
+            namespace Country {
+                export const CountryCode: string;
+                export const CountryName: string;
+                export const InsertDate: string;
+                export const InsertUserId: string;
+                export const IsActive: string;
+                export const TenantId: string;
+                export const UpdateDate: string;
+                export const UpdateUserId: string;
+            }
+
+            namespace Currency {
+                export const CurrencyCode: string;
+                export const CurrencyId: string;
+                export const InsertDate: string;
+                export const InsertUserId: string;
+                export const IsActive: string;
+                export const Name: string;
+                export const TenantId: string;
+                export const UpdateDate: string;
+                export const UpdateUserId: string;
+            }
+
+            namespace CurrencyRate {
+                export const AverageRate: string;
+                export const CurrencyRateDate: string;
+                export const CurrencyRateId: string;
+                export const EndOfDayRate: string;
+                export const FromCurrencyCode: string;
+                export const FromCurrencyName: string;
+                export const InsertDate: string;
+                export const InsertUserId: string;
+                export const IsActive: string;
+                export const TenantId: string;
+                export const ToCurrencyCode: string;
+                export const ToCurrencyName: string;
+                export const UpdateDate: string;
+                export const UpdateUserId: string;
+            }
+
+            namespace EmailAddress {
+                export const BusinessEntityId: string;
+                export const BusinessEntityPersonType: string;
+                export const EmailAddress: string;
+                export const EmailAddressId: string;
+                export const InsertDate: string;
+                export const InsertUserId: string;
+                export const IsActive: string;
+                export const TenantId: string;
+                export const UpdateDate: string;
+                export const UpdateUserId: string;
+            }
+
+            namespace Note {
+                export const EntityId: string;
+                export const EntityType: string;
+                export const InsertDate: string;
+                export const InsertUserDisplayName: string;
+                export const InsertUserId: string;
+                export const NoteId: string;
+                export const Text: string;
+            }
+
+            namespace Person {
+                export const BusinessEntityId: string;
+                export const FirstName: string;
+                export const FullName: string;
+                export const InsertDate: string;
+                export const InsertUserId: string;
+                export const IsActive: string;
+                export const LastName: string;
+                export const MiddleName: string;
+                export const PersonType: string;
+                export const Suffix: string;
+                export const TenantId: string;
+                export const Title: string;
+                export const UpdateDate: string;
+                export const UpdateUserId: string;
+            }
+
+            namespace PersonPhone {
+                export const BusinessEntityId: string;
+                export const BusinessEntityPersonType: string;
+                export const InsertDate: string;
+                export const InsertUserId: string;
+                export const IsActive: string;
+                export const PhoneNumber: string;
+                export const PhoneNumberTypeId: string;
+                export const PhoneNumberTypeName: string;
+                export const TenantId: string;
+                export const UpdateDate: string;
+                export const UpdateUserId: string;
+            }
+
+            namespace PhoneNumberType {
+                export const InsertDate: string;
+                export const InsertUserId: string;
+                export const IsActive: string;
+                export const Name: string;
+                export const PhoneNumberTypeId: string;
+                export const TenantId: string;
+                export const UpdateDate: string;
+                export const UpdateUserId: string;
+            }
+
+            namespace StateProvince {
+                export const CountryCode: string;
+                export const CountryCodeCountryName: string;
+                export const InsertDate: string;
+                export const InsertUserId: string;
+                export const IsActive: string;
+                export const StateProvinceCode: string;
+                export const StateProvinceId: string;
+                export const StateProvinceName: string;
+                export const TenantId: string;
+                export const UpdateDate: string;
+                export const UpdateUserId: string;
             }
         }
     }
@@ -152,9 +367,27 @@ const Texts: typeof texts = proxyTexts({}, '', {
             Language: {},
             Role: {},
             RolePermission: {},
+            Tenants: {},
             User: {},
             UserPermission: {},
             UserRole: {}
+        },
+        Company: {
+            Address: {},
+            AddressType: {},
+            BusinessEntity: {},
+            BusinessEntityAddress: {},
+            BusinessEntityContact: {},
+            ContactType: {},
+            Country: {},
+            Currency: {},
+            CurrencyRate: {},
+            EmailAddress: {},
+            Note: {},
+            Person: {},
+            PersonPhone: {},
+            PhoneNumberType: {},
+            StateProvince: {}
         }
     },
     Forms: {

@@ -1,4 +1,4 @@
-import { fieldsProxy, getLookup, getLookupAsync } from '@serenity-is/corelib';
+﻿import { getLookup, getLookupAsync, fieldsProxy } from "@serenity-is/corelib";
 
 export interface BusinessEntityRow {
     BusinessEntityId?: number;
@@ -11,11 +11,18 @@ export interface BusinessEntityRow {
     Suffix?: string;
     IsActive?: number;
     TenantId?: number;
+    InsertUserId?: number;
+    InsertDate?: string;
+    UpdateUserId?: number;
+    UpdateDate?: string;
 }
 
 export abstract class BusinessEntityRow {
     static readonly idProperty = 'BusinessEntityId';
+    static readonly isActiveProperty = 'IsActive';
+    static readonly nameProperty = 'FullName';
     static readonly localTextPrefix = 'Company.BusinessEntity';
+    static readonly lookupKey = 'Company.BusinessEntity';
 
     /** @deprecated use getLookupAsync instead */
     static getLookup() { return getLookup<BusinessEntityRow>('Company.BusinessEntity') }

@@ -1,6 +1,6 @@
-import { SaveRequest, SaveResponse, ServiceOptions, DeleteRequest, DeleteResponse, RetrieveRequest, RetrieveResponse, ListRequest, ListResponse, serviceRequest } from '@serenity-is/corelib';
-import { PersonRow } from './PersonRow';
-import { GetNextNumberRequest, GetNextNumberResponse } from '@serenity-is/extensions';
+﻿import { SaveRequest, SaveResponse, ServiceOptions, DeleteRequest, DeleteResponse, RetrieveRequest, RetrieveResponse, ListRequest, ListResponse, serviceRequest } from "@serenity-is/corelib";
+import { GetNextNumberRequest, GetNextNumberResponse } from "@serenity-is/extensions";
+import { PersonRow } from "./PersonRow";
 
 export namespace PersonService {
     export const baseUrl = 'Company/Person';
@@ -24,13 +24,13 @@ export namespace PersonService {
     [
         'Create', 
         'Update', 
-        'Delete',
+        'Delete', 
         'GetNextNumber', 
         'Retrieve', 
         'List'
     ].forEach(x => {
-        (<any>PersonService)[x] = function (r, s, o) { 
-            return serviceRequest(baseUrl + '/' + x, r, s, o); 
+        (<any>PersonService)[x] = function (r, s, o) {
+            return serviceRequest(baseUrl + '/' + x, r, s, o);
         };
     });
 }

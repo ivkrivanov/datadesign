@@ -1,5 +1,5 @@
-﻿import { SaveRequest, SaveResponse, ServiceOptions, DeleteRequest, DeleteResponse, RetrieveRequest, RetrieveResponse, ListRequest, ListResponse, serviceRequest } from '@serenity-is/corelib';
-import { AddressTypeRow } from './AddressTypeRow';
+﻿import { SaveRequest, SaveResponse, ServiceOptions, DeleteRequest, DeleteResponse, RetrieveRequest, RetrieveResponse, ListRequest, ListResponse, serviceRequest } from "@serenity-is/corelib";
+import { AddressTypeRow } from "./AddressTypeRow";
 
 export namespace AddressTypeService {
     export const baseUrl = 'Company/AddressType';
@@ -25,8 +25,8 @@ export namespace AddressTypeService {
         'Retrieve', 
         'List'
     ].forEach(x => {
-        (<any>AddressTypeService)[x] = function (r, s, o) { 
-            return serviceRequest(baseUrl + '/' + x, r, s, o); 
+        (<any>AddressTypeService)[x] = function (r, s, o) {
+            return serviceRequest(baseUrl + '/' + x, r, s, o);
         };
     });
 }

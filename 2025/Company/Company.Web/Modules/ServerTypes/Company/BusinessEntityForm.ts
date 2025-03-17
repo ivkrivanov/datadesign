@@ -1,4 +1,4 @@
-import { PrefixedContext, IntegerEditor, initFormType, StringEditor } from '@serenity-is/corelib';
+﻿import { StringEditor, PrefixedContext, initFormType } from "@serenity-is/corelib";
 
 export interface BusinessEntityForm {
     PersonType: StringEditor;
@@ -7,20 +7,19 @@ export interface BusinessEntityForm {
     MiddleName: StringEditor;
     LastName: StringEditor;
     Suffix: StringEditor;
-    IsActive: IntegerEditor;
-    TenantId: IntegerEditor;
 }
 
 export class BusinessEntityForm extends PrefixedContext {
     static readonly formKey = 'Company.BusinessEntity';
     private static init: boolean;
-    
+
     constructor(prefix: string) {
         super(prefix);
+
         if (!BusinessEntityForm.init)  {
             BusinessEntityForm.init = true;
-            
-            var w0 = IntegerEditor;
+
+            var w0 = StringEditor;
 
             initFormType(BusinessEntityForm, [
                 'PersonType', w0,
@@ -28,9 +27,7 @@ export class BusinessEntityForm extends PrefixedContext {
                 'FirstName', w0,
                 'MiddleName', w0,
                 'LastName', w0,
-                'Suffix', w0,
-                'IsActive', w0,
-                'TenantId', w0,
+                'Suffix', w0
             ]);
         }
     }

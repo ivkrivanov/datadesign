@@ -1,6 +1,6 @@
-﻿import { ColumnsBase, fieldsProxy } from '@serenity-is/corelib';
-import { Column } from '@serenity-is/sleekgrid';
-import { PhoneNumberTypeRow } from './PhoneNumberTypeRow';
+﻿import { ColumnsBase, fieldsProxy } from "@serenity-is/corelib";
+import { Column } from "@serenity-is/sleekgrid";
+import { PhoneNumberTypeRow } from "./PhoneNumberTypeRow";
 
 export interface PhoneNumberTypeColumns {
     PhoneNumberTypeId: Column<PhoneNumberTypeRow>;

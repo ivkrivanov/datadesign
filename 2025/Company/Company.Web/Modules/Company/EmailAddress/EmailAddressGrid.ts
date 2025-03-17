@@ -1,4 +1,4 @@
-﻿import { EmailAddressColumns, EmailAddressRow, EmailAddressService } from '@/ServerTypes/Company';
+import { EmailAddressColumns, EmailAddressRow, EmailAddressService } from '../../ServerTypes/Company';
 import { Decorators, EntityGrid } from '@serenity-is/corelib';
 import { EmailAddressDialog } from './EmailAddressDialog';
 
@@ -9,7 +9,4 @@ export class EmailAddressGrid extends EntityGrid<EmailAddressRow, any> {
     protected getRowDefinition() { return EmailAddressRow; }
     protected getService() { return EmailAddressService.baseUrl; }
 
-    constructor(container: JQuery) {
-        super(container);
-    }
 }
