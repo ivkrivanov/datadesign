@@ -7,6 +7,7 @@ namespace Company.Company;
 [ReadPermission(PermissionKeys.CurrencyRate.View)]
 [ModifyPermission(PermissionKeys.CurrencyRate.Modify)]
 [DeletePermission(PermissionKeys.CurrencyRate.Delete)]
+//[LeftJoin("fromcurrency", "[sales].[Currency]", "[CurrencyCode]", RowType = typeof(CurrencyRow), TitlePrefix = "" )]
 [ServiceLookupPermission("Company.CurrencyRate")]
 [LookupScript("Company.CurrencyRate", LookupType = typeof(MultiTenantRowLookupScript<>))]
 public sealed class CurrencyRateRow : LoggingRow<CurrencyRateRow.RowFields>, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
@@ -20,11 +21,14 @@ public sealed class CurrencyRateRow : LoggingRow<CurrencyRateRow.RowFields>, IId
     [DisplayName("Currency Rate Date"), NotNull]
     public DateTime? CurrencyRateDate { get => fields.CurrencyRateDate[this]; set => fields.CurrencyRateDate[this] = value; }
 
-    //[DisplayName("From Currency Code"), Size(3), NotNull, ForeignKey("[sales].[Currency]", "CurrencyCode"), LeftJoin(jFromCurrencyCode), QuickSearch, NameProperty, TextualField(nameof(FromCurrencyCodeName))]
-    [DisplayName("From Currency Code"), Size(3), NotNull, ForeignKey(typeof(CurrencyRow)), LeftJoin(jFromCurrencyCode), QuickSearch, NameProperty, TextualField(nameof(CurrencyRow.Name))]
+    [DisplayName("From Currency Code"), Size(3), NotNull, ForeignKey("[sales].[Currency]", "CurrencyCode"), LeftJoin(jFromCurrencyCode), QuickSearch, NameProperty] //, TextualField(nameof(FromCurrencyCode))]
+    //[DisplayName("From Currency Code"), Size(3), NotNull, ForeignKey(typeof(CurrencyRow)), LeftJoin(jFromCurrencyCode), QuickSearch, NameProperty, TextualField(nameof(CurrencyRow.CurrencyCode))]
+    //[Origin("fromcurrency")]
+    [AsyncLookupEditor(typeof(CurrencyLookup)), QuickFilter(CssClass = "hidden-xs")]
     public string FromCurrencyCode { get => fields.FromCurrencyCode[this]; set => fields.FromCurrencyCode[this] = value; }
 
-    [DisplayName("To Currency Code"), Size(3), NotNull, ForeignKey("[sales].[Currency]", "CurrencyCode"), LeftJoin(jToCurrencyCode), QuickSearch, TextualField(nameof(ToCurrencyName))]
+    [DisplayName("To Currency Code"), Size(3), NotNull, ForeignKey("[sales].[Currency]", "CurrencyCode"), LeftJoin(jToCurrencyCode), QuickSearch, TextualField(nameof(ToCurrencyCode))]
+    [AsyncLookupEditor(typeof(CurrencyLookup)), QuickFilter(CssClass = "hidden-xs")]
     public string ToCurrencyCode { get => fields.ToCurrencyCode[this]; set => fields.ToCurrencyCode[this] = value; }
 
     [DisplayName("Average Rate"), Size(19), Scale(5), NotNull]
@@ -32,6 +36,12 @@ public sealed class CurrencyRateRow : LoggingRow<CurrencyRateRow.RowFields>, IId
 
     [DisplayName("End Of Day Rate"), Size(19), Scale(5), NotNull]
     public decimal? EndOfDayRate { get => fields.EndOfDayRate[this]; set => fields.EndOfDayRate[this] = value; }
+
+    [DisplayName("From Currency Name"), Expression($"{jFromCurrencyCode}.[Name]")]
+    public string FromCurrencyName { get => fields.FromCurrencyName[this]; set => fields.FromCurrencyName[this] = value; }
+
+    [DisplayName("To Currency Name"), Expression($"{jToCurrencyCode}.[Name]")]
+    public string ToCurrencyName { get => fields.ToCurrencyName[this]; set => fields.ToCurrencyName[this] = value; }
 
     #region Tenant & Activ
 
@@ -46,12 +56,6 @@ public sealed class CurrencyRateRow : LoggingRow<CurrencyRateRow.RowFields>, IId
     Int16Field IIsActiveRow.IsActiveField { get => fields.IsActive; }
 
     #endregion Tenant & Activ
-
-    [DisplayName("From Currency Name"), Expression($"{jFromCurrencyCode}.[Name]")]
-    public string FromCurrencyName { get => fields.FromCurrencyName[this]; set => fields.FromCurrencyName[this] = value; }
-
-    [DisplayName("To Currency Name"), Expression($"{jToCurrencyCode}.[Name]")]
-    public string ToCurrencyName { get => fields.ToCurrencyName[this]; set => fields.ToCurrencyName[this] = value; }
 
     public class RowFields : LoggingRowFields
     {

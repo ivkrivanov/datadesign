@@ -6,8 +6,8 @@ public class PersonLookup:MultiTenantRowLookupScript<PersonRow>
     public PersonLookup(ISqlConnections sqlConnections, ITwoLevelCache twoLevelCache, IUserAccessor userAccessor)
         : base(sqlConnections, twoLevelCache, userAccessor)
     {
-        IdField = PersonRow.Fields.BusinessEntityId.PropertyName;
-        TextField = PersonRow.Fields.LastName.PropertyName;
+        IdField = TextField = PersonRow.Fields.BusinessEntityId.PropertyName;
+        //TextField = PersonRow.Fields.LastName.PropertyName;
     }
 
     protected override void PrepareQuery(SqlQuery query)
@@ -15,7 +15,10 @@ public class PersonLookup:MultiTenantRowLookupScript<PersonRow>
         var fld = PersonRow.Fields;
         query.Distinct(true)
             .Select(fld.BusinessEntityId)
-            .Select(fld.FullName);
+            .Select(fld.FullName)
+            .Where(
+                fld.FullName != "" &
+                fld.FullName.IsNotNull());
 
         AddTenantFilter(query);
     }

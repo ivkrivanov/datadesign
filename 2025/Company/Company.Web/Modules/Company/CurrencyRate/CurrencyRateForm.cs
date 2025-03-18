@@ -8,10 +8,8 @@ public class CurrencyRateForm
     [OneThirdWidth]
     public DateTime CurrencyRateDate { get; set; }
     [OneThirdWidth]
-    [LookupEditor(typeof(CurrencyRow))]
     public string FromCurrencyCode { get; set; }
     [OneThirdWidth]
-    [LookupEditor(typeof(CurrencyRow))]
     public string ToCurrencyCode { get; set; }
     [HalfWidth]
     public decimal AverageRate { get; set; }
