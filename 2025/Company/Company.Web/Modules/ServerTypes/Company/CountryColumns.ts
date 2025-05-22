@@ -3,6 +3,7 @@ import { Column } from "@serenity-is/sleekgrid";
 import { CountryRow } from "./CountryRow";
 
 export interface CountryColumns {
+    CountryId: Column<CountryRow>;
     CountryCode: Column<CountryRow>;
     CountryName: Column<CountryRow>;
 }

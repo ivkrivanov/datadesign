@@ -37,15 +37,15 @@ public class PermissionKeys
         public const string View = "Company:Country:View";
     }
 
-    [DisplayName("StateProvince")]
-    public class StateProvince
+    [DisplayName("Province")]
+    public class Province
     {
         [Description("Delete"), ImplicitPermission(General), ImplicitPermission(View)]
-        public const string Delete = "Company:StateProvince:Delete";
+        public const string Delete = "Company:Province:Delete";
 
         [Description("Create/Update"), ImplicitPermission(General), ImplicitPermission(View)]
-        public const string Modify = "Company:StateProvince:Modify";
-        public const string View = "Company:StateProvince:View";
+        public const string Modify = "Company:Province:Modify";
+        public const string View = "Company:Province:View";
     }
 
     [DisplayName("BusinessEntity")]

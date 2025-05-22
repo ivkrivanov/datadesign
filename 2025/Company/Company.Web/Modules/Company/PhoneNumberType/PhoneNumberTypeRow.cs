@@ -31,11 +31,11 @@ public sealed class PhoneNumberTypeRow : LoggingRow<PhoneNumberTypeRow.RowFields
 
     #endregion Tenant & Activ
 
-
     public class RowFields : LoggingRowFields
     {
         public Int32Field PhoneNumberTypeId;
         public StringField Name;
+
         public Int16Field IsActive;
         public Int32Field TenantId;
 

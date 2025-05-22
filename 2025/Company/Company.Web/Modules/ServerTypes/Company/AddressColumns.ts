@@ -7,8 +7,8 @@ export interface AddressColumns {
     AddressLine1: Column<AddressRow>;
     AddressLine2: Column<AddressRow>;
     City: Column<AddressRow>;
-    CountryCodeCountryName: Column<AddressRow>;
-    StateProvinceCode: Column<AddressRow>;
+    CountryId: Column<AddressRow>;
+    ProvinceId: Column<AddressRow>;
     PostalCode: Column<AddressRow>;
 }
 

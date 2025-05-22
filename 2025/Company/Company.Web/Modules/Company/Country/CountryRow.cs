@@ -11,10 +11,12 @@ namespace Company.Company;
 [LookupScript("Company.Country", LookupType = typeof(MultiTenantRowLookupScript<>))]
 public sealed class CountryRow : LoggingRow<CountryRow.RowFields>, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
 {
-    [DisplayName("Country Code"), Size(3), PrimaryKey, NotNull, IdProperty, QuickSearch]
+    [DisplayName("CountryId"), Column("CountryId"), Identity, PrimaryKey, NotNull, IdProperty, QuickSearch]
+    public int? CountryId { get => fields.CountryId[this]; set => fields.CountryId[this] = value; }
+    [DisplayName("Country Code"), Size(3), NameProperty, QuickSearch]
     public string CountryCode { get => fields.CountryCode[this]; set => fields.CountryCode[this] = value; }
 
-    [DisplayName("Country Name"), Size(50), NotNull, NameProperty]
+    [DisplayName("Country Name"), Size(50), NotNull]
     public string CountryName { get => fields.CountryName[this]; set => fields.CountryName[this] = value; }
 
 
@@ -35,8 +37,10 @@ public sealed class CountryRow : LoggingRow<CountryRow.RowFields>, IIdRow, IName
 
     public class RowFields : LoggingRowFields
     {
+        public Int32Field CountryId;
         public StringField CountryCode;
         public StringField CountryName;
+
         public Int16Field IsActive;
         public Int32Field TenantId;
 

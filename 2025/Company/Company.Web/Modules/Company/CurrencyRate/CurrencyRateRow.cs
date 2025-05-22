@@ -22,8 +22,6 @@ public sealed class CurrencyRateRow : LoggingRow<CurrencyRateRow.RowFields>, IId
     public DateTime? CurrencyRateDate { get => fields.CurrencyRateDate[this]; set => fields.CurrencyRateDate[this] = value; }
 
     [DisplayName("From Currency Code"), Size(3), NotNull, ForeignKey("[sales].[Currency]", "CurrencyCode"), LeftJoin(jFromCurrencyCode), QuickSearch, NameProperty] //, TextualField(nameof(FromCurrencyCode))]
-    //[DisplayName("From Currency Code"), Size(3), NotNull, ForeignKey(typeof(CurrencyRow)), LeftJoin(jFromCurrencyCode), QuickSearch, NameProperty, TextualField(nameof(CurrencyRow.CurrencyCode))]
-    //[Origin("fromcurrency")]
     [AsyncLookupEditor(typeof(CurrencyLookup)), QuickFilter(CssClass = "hidden-xs")]
     public string FromCurrencyCode { get => fields.FromCurrencyCode[this]; set => fields.FromCurrencyCode[this] = value; }
 

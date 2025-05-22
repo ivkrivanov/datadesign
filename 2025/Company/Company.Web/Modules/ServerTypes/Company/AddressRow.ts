@@ -5,13 +5,11 @@ export interface AddressRow {
     AddressLine1?: string;
     AddressLine2?: string;
     City?: string;
-    CountryCode?: string;
-    StateProvinceId?: number;
+    CountryId?: string;
+    ProvinceId?: number;
     PostalCode?: string;
     IsActive?: number;
     TenantId?: number;
-    CountryCodeCountryName?: string;
-    StateProvinceCode?: string;
     InsertUserId?: number;
     InsertDate?: string;
     UpdateUserId?: number;

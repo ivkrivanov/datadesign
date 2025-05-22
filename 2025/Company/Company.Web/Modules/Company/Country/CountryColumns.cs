@@ -5,6 +5,9 @@ namespace Company.Company.Columns;
 public class CountryColumns
 {
     [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
+    public int CountryId { get; set; }
+    [EditLink, HalfWidth]
     public string CountryCode { get; set; }
+    [HalfWidth]  
     public string CountryName { get; set; }
 }

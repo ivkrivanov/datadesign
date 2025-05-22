@@ -19,10 +19,10 @@
         export const View = "Company:Country:View";
     }
 
-    export namespace StateProvince {
-        export const Delete = "Company:StateProvince:Delete";
-        export const Modify = "Company:StateProvince:Modify";
-        export const View = "Company:StateProvince:View";
+    export namespace Province {
+        export const Delete = "Company:Province:Delete";
+        export const Modify = "Company:Province:Modify";
+        export const View = "Company:Province:View";
     }
 
     export namespace BusinessEntity {

@@ -1,6 +1,7 @@
 ﻿import { getLookup, getLookupAsync, fieldsProxy } from "@serenity-is/corelib";
 
 export interface CountryRow {
+    CountryId?: number;
     CountryCode?: string;
     CountryName?: string;
     IsActive?: number;
@@ -12,9 +13,9 @@ export interface CountryRow {
 }
 
 export abstract class CountryRow {
-    static readonly idProperty = 'CountryCode';
+    static readonly idProperty = 'CountryId';
     static readonly isActiveProperty = 'IsActive';
-    static readonly nameProperty = 'CountryName';
+    static readonly nameProperty = 'CountryCode';
     static readonly localTextPrefix = 'Company.Country';
     static readonly lookupKey = 'Company.Country';
 

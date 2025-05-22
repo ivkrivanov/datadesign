@@ -44,10 +44,6 @@ public sealed class BusinessEntityRow : LoggingRow<BusinessEntityRow.RowFields>,
     [DisplayName("Suffix"), Origin(jPerson, nameof(PersonRow.Suffix)), Size(10)]
     public string Suffix { get => fields.Suffix[this]; set => fields.Suffix[this] = value; }
 
-
-
-
-
     #region Tenant & Activ
 
     [Insertable(false), Updatable(false)]

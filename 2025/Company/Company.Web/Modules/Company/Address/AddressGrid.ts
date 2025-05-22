@@ -9,10 +9,4 @@ export class AddressGrid extends EntityGrid<AddressRow, any> {
     protected getRowDefinition() { return AddressRow; }
     protected getService() { return AddressService.baseUrl; }
 
-    protected afterInit() {
-        super.afterInit();
-    }
-    //constructor(container: JQuery) {
-    //    super(container);
-    //}
 }

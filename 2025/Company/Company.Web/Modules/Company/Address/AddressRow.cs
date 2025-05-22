@@ -11,9 +11,6 @@ namespace Company.Company;
 [LookupScript("Company.Address", LookupType = typeof(MultiTenantRowLookupScript<>))]
 public sealed class AddressRow : LoggingRow<AddressRow.RowFields>, IIdRow, INameRow, IIsActiveRow, IMultiTenantRow
 {
-    const string jCountryCode = nameof(jCountryCode);
-    const string jStateProvince = nameof(jStateProvince);
-
     [DisplayName("Address Id"), Identity, IdProperty]
     public int? AddressId { get => fields.AddressId[this]; set => fields.AddressId[this] = value; }
 
@@ -26,22 +23,14 @@ public sealed class AddressRow : LoggingRow<AddressRow.RowFields>, IIdRow, IName
     [DisplayName("City"), Size(30), NotNull]
     public string City { get => fields.City[this]; set => fields.City[this] = value; }
 
-    [DisplayName("Country Code"), Size(3), NotNull, ForeignKey(typeof(CountryRow)), LeftJoin(jCountryCode)]
-    [TextualField(nameof(CountryCodeCountryName)), ServiceLookupEditor(typeof(CountryRow))]
-    public string CountryCode { get => fields.CountryCode[this]; set => fields.CountryCode[this] = value; }
+    [DisplayName("Country Id"), Size(3), NotNull]
+    public string CountryId { get => fields.CountryId[this]; set => fields.CountryId[this] = value; }
 
-    [DisplayName("State Province"), NotNull, ForeignKey(typeof(StateProvinceRow)), LeftJoin(jStateProvince)]
-    [TextualField(nameof(StateProvinceCode)), ServiceLookupEditor(typeof(StateProvinceRow))]
-    public int? StateProvinceId { get => fields.StateProvinceId[this]; set => fields.StateProvinceId[this] = value; }
+    [DisplayName("Province Id"), NotNull]
+    public int? ProvinceId { get => fields.ProvinceId[this]; set => fields.ProvinceId[this] = value; }
 
     [DisplayName("Postal Code"), Size(15), NotNull]
     public string PostalCode { get => fields.PostalCode[this]; set => fields.PostalCode[this] = value; }
-
-    [DisplayName("Country Code Country Name"), Expression($"{jCountryCode}.[CountryName]")]
-    public string CountryCodeCountryName { get => fields.CountryCodeCountryName[this]; set => fields.CountryCodeCountryName[this] = value; }
-
-    [DisplayName("State Province State Province Code"), Expression($"{jStateProvince}.[StateProvinceCode]")]
-    public string StateProvinceCode { get => fields.StateProvinceCode[this]; set => fields.StateProvinceCode[this] = value; }
 
     #region Tenant & Activ
 
@@ -64,13 +53,11 @@ public sealed class AddressRow : LoggingRow<AddressRow.RowFields>, IIdRow, IName
         public StringField AddressLine1;
         public StringField AddressLine2;
         public StringField City;
-        public StringField CountryCode;
-        public Int32Field StateProvinceId;
+        public StringField CountryId;
+        public Int32Field ProvinceId;
         public StringField PostalCode;
         public Int16Field IsActive;
         public Int32Field TenantId;
 
-        public StringField CountryCodeCountryName;
-        public StringField StateProvinceCode;
     }
 }

@@ -1,0 +1,8 @@
+.s-Company-Company-CurrencyRateGrid .slick-cell input[type=text] {
+  text-align: right;
+  width: 100%;
+}
+
+.s-Company-Company-CurrencyRateGrid .slick-cell .dirty{
+    background-color: var(--s-input-dirty-bg, bisque);
+}

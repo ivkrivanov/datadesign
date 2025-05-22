@@ -77,14 +77,12 @@ namespace texts {
                 export const AddressLine1: string;
                 export const AddressLine2: string;
                 export const City: string;
-                export const CountryCode: string;
-                export const CountryCodeCountryName: string;
+                export const CountryId: string;
                 export const InsertDate: string;
                 export const InsertUserId: string;
                 export const IsActive: string;
                 export const PostalCode: string;
-                export const StateProvinceCode: string;
-                export const StateProvinceId: string;
+                export const ProvinceId: string;
                 export const TenantId: string;
                 export const UpdateDate: string;
                 export const UpdateUserId: string;
@@ -159,6 +157,7 @@ namespace texts {
 
             namespace Country {
                 export const CountryCode: string;
+                export const CountryId: string;
                 export const CountryName: string;
                 export const InsertDate: string;
                 export const InsertUserId: string;
@@ -262,15 +261,15 @@ namespace texts {
                 export const UpdateUserId: string;
             }
 
-            namespace StateProvince {
+            namespace Province {
                 export const CountryCode: string;
-                export const CountryCodeCountryName: string;
+                export const CountryId: string;
                 export const InsertDate: string;
                 export const InsertUserId: string;
                 export const IsActive: string;
-                export const StateProvinceCode: string;
-                export const StateProvinceId: string;
-                export const StateProvinceName: string;
+                export const ProvinceCode: string;
+                export const ProvinceId: string;
+                export const ProvinceName: string;
                 export const TenantId: string;
                 export const UpdateDate: string;
                 export const UpdateUserId: string;
@@ -387,7 +386,7 @@ const Texts: typeof texts = proxyTexts({}, '', {
             Person: {},
             PersonPhone: {},
             PhoneNumberType: {},
-            StateProvince: {}
+            Province: {}
         }
     },
     Forms: {
