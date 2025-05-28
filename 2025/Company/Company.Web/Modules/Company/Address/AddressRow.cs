@@ -23,14 +23,21 @@ public sealed class AddressRow : LoggingRow<AddressRow.RowFields>, IIdRow, IName
     [DisplayName("City"), Size(30), NotNull]
     public string City { get => fields.City[this]; set => fields.City[this] = value; }
 
-    [DisplayName("Country Id"), Size(3), NotNull]
+    [DisplayName("Country"), ForeignKey(typeof(CountryRow)), LeftJoin("country"), Size(3), NotNull]
+    [ServiceLookupEditor(typeof(CountryRow), InplaceAdd = true)]
     public string CountryId { get => fields.CountryId[this]; set => fields.CountryId[this] = value; }
 
-    [DisplayName("Province Id"), NotNull]
+    [DisplayName("Province"), ForeignKey(typeof(ProvinceRow)), LeftJoin("province"), NotNull]
+    [ServiceLookupEditor(typeof(ProvinceRow), InplaceAdd = true)]
     public int? ProvinceId { get => fields.ProvinceId[this]; set => fields.ProvinceId[this] = value; }
 
     [DisplayName("Postal Code"), Size(15), NotNull]
     public string PostalCode { get => fields.PostalCode[this]; set => fields.PostalCode[this] = value; }
+    [Origin("country")]
+    public string CountryName { get => fields.CountryName[this]; set => fields.CountryName[this] = value; }
+
+    [Origin("Province")]
+    public string ProvinceName { get => fields.ProvinceName[this]; set => fields.ProvinceName[this] = value; }
 
     #region Tenant & Activ
 
@@ -56,6 +63,10 @@ public sealed class AddressRow : LoggingRow<AddressRow.RowFields>, IIdRow, IName
         public StringField CountryId;
         public Int32Field ProvinceId;
         public StringField PostalCode;
+
+        public StringField CountryName;
+        public StringField ProvinceName;
+
         public Int16Field IsActive;
         public Int32Field TenantId;
 

@@ -78,11 +78,13 @@ namespace texts {
                 export const AddressLine2: string;
                 export const City: string;
                 export const CountryId: string;
+                export const CountryName: string;
                 export const InsertDate: string;
                 export const InsertUserId: string;
                 export const IsActive: string;
                 export const PostalCode: string;
                 export const ProvinceId: string;
+                export const ProvinceName: string;
                 export const TenantId: string;
                 export const UpdateDate: string;
                 export const UpdateUserId: string;

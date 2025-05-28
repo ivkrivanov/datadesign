@@ -8,6 +8,8 @@ export interface AddressRow {
     CountryId?: string;
     ProvinceId?: number;
     PostalCode?: string;
+    CountryName?: string;
+    ProvinceName?: string;
     IsActive?: number;
     TenantId?: number;
     InsertUserId?: number;
