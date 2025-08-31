@@ -19,7 +19,8 @@ public class BusinessEntityForm
     [OneThirdWidth]
     public string LastName { get; set; }
 
-
+    [Category("Addresses")]
+    public List<BusinessEntityRow> AddressList { get; set; }
 
     [HalfWidth]
     public bool IsActive { get; set; }

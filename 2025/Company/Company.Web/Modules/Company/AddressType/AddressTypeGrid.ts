@@ -12,7 +12,4 @@ export class AddressTypeGrid extends EntityGrid<AddressTypeRow, any> {
     protected afterInit() {
         super.afterInit();
     }
-    //constructor(container: JQuery) {
-    //    super(container);
-    //}
 }

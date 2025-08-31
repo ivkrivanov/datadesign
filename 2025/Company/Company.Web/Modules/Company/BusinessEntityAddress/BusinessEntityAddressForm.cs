@@ -4,6 +4,6 @@ namespace Company.Company.Forms;
 [BasedOnRow(typeof(BusinessEntityAddressRow), CheckNames = true)]
 public class BusinessEntityAddressForm
 {
-    public int AddressId { get; set; }
     public int AddressTypeId { get; set; }
+    public int AddressId { get; set; }
 }

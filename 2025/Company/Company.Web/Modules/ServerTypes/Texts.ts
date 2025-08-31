@@ -102,6 +102,7 @@ namespace texts {
             }
 
             namespace BusinessEntity {
+                export const AddressList: string;
                 export const BusinessEntityId: string;
                 export const FirstName: string;
                 export const FullName: string;

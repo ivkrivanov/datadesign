@@ -4,8 +4,8 @@ import { BusinessEntityAddressRow } from "./BusinessEntityAddressRow";
 
 export interface BusinessEntityAddressColumns {
     BusinessEntityId: Column<BusinessEntityAddressRow>;
-    AddressLine1: Column<BusinessEntityAddressRow>;
     AddressTypeName: Column<BusinessEntityAddressRow>;
+    AddressLine1: Column<BusinessEntityAddressRow>;
 }
 
 export class BusinessEntityAddressColumns extends ColumnsBase<BusinessEntityAddressRow> {

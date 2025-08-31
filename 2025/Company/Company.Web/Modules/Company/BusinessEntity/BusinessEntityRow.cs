@@ -44,6 +44,10 @@ public sealed class BusinessEntityRow : LoggingRow<BusinessEntityRow.RowFields>,
     [DisplayName("Suffix"), Origin(jPerson, nameof(PersonRow.Suffix)), Size(10)]
     public string Suffix { get => fields.Suffix[this]; set => fields.Suffix[this] = value; }
 
+    [DisplayName("Addresses"), MasterDetailRelation(foreignKey: nameof(BusinessEntityAddressRow.BusinessEntityId)), NotMapped]
+    [MinSelectLevel(SelectLevel.Explicit)]
+    public List<BusinessEntityAddressRow> AddressList { get => Fields.AddressList[this]; set => Fields.AddressList[this] = value; }
+
     #region Tenant & Activ
 
     [Insertable(false), Updatable(false)]
@@ -58,7 +62,6 @@ public sealed class BusinessEntityRow : LoggingRow<BusinessEntityRow.RowFields>,
 
     #endregion Tenant & Activ
 
-
     public class RowFields : LoggingRowFields
     {
         public Int32Field BusinessEntityId;
@@ -71,6 +74,8 @@ public sealed class BusinessEntityRow : LoggingRow<BusinessEntityRow.RowFields>,
         public StringField LastName;
         public StringField FullName;
         public StringField Suffix;
+
+        public RowListField<BusinessEntityAddressRow> AddressList;
 
         public Int16Field IsActive;
         public Int32Field TenantId;

@@ -1,8 +1,8 @@
 ﻿import { ServiceLookupEditor, PrefixedContext, initFormType } from "@serenity-is/corelib";
 
 export interface BusinessEntityAddressForm {
-    AddressId: ServiceLookupEditor;
     AddressTypeId: ServiceLookupEditor;
+    AddressId: ServiceLookupEditor;
 }
 
 export class BusinessEntityAddressForm extends PrefixedContext {
@@ -18,8 +18,8 @@ export class BusinessEntityAddressForm extends PrefixedContext {
             var w0 = ServiceLookupEditor;
 
             initFormType(BusinessEntityAddressForm, [
-                'AddressId', w0,
-                'AddressTypeId', w0
+                'AddressTypeId', w0,
+                'AddressId', w0
             ]);
         }
     }

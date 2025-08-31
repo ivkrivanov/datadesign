@@ -7,6 +7,7 @@ export interface BusinessEntityForm {
     FirstName: StringEditor;
     MiddleName: StringEditor;
     LastName: StringEditor;
+    AddressList: StringEditor;
     IsActive: BooleanEditor;
 }
 
@@ -30,6 +31,7 @@ export class BusinessEntityForm extends PrefixedContext {
                 'FirstName', w0,
                 'MiddleName', w0,
                 'LastName', w0,
+                'AddressList', w0,
                 'IsActive', w1
             ]);
         }

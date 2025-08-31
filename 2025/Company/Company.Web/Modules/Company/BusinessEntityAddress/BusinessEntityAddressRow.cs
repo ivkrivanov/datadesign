@@ -1,8 +1,4 @@
 using Company.Administration.Entities;
-using Serenity.ComponentModel;
-using Serenity.Data;
-using Serenity.Data.Mapping;
-using System.ComponentModel;
 
 namespace Company.Company;
 
@@ -57,6 +53,7 @@ public sealed class BusinessEntityAddressRow : LoggingRow<BusinessEntityAddressR
         public Int32Field BusinessEntityId;
         public Int32Field AddressId;
         public Int32Field AddressTypeId;
+
         public Int16Field IsActive;
         public Int32Field TenantId;
 
