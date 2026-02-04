@@ -1,4 +1,4 @@
-﻿namespace Company;
+namespace Company;
 
 [Serializable]
 public class UserDefinition : IUserDefinition, IHasPassword
@@ -16,4 +16,5 @@ public class UserDefinition : IUserDefinition, IHasPassword
     public DateTime? UpdateDate { get; set; }
     public DateTime? LastDirectoryUpdate { get; set; }
     public bool HasPassword => PasswordSalt != "unassigned";
+    public int TenantId { get; set; }
 }

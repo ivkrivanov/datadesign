@@ -1,4 +1,4 @@
-﻿using MyRow = Company.Administration.UserRow;
+using MyRow = Company.Administration.UserRow;
 
 namespace Company.Administration;
 public interface IUserSaveHandler : ISaveHandler<MyRow> { }
@@ -86,6 +86,9 @@ public class UserSaveHandler(IRequestContext context, IOptions<EnvironmentSettin
         {
             Row.Source = "site";
             Row.IsActive = Row.IsActive ?? 1;
+
+            if (!Permissions.HasPermission(PermissionKeys.Tenants) || Row.TenantId == null)
+                Row.TenantId = User.GetTenantId();
         }
 
         if (IsCreate || !Row.Password.IsEmptyOrNull())

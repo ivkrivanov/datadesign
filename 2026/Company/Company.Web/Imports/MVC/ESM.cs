@@ -7,6 +7,7 @@ public static partial class ESM
     public const string RolePage = "~/esm/Modules/Administration/Role/RolePage.js";
     public const string ScriptInit = "~/esm/Modules/Common/ScriptInit.js";
     public const string SignUpPage = "~/esm/Modules/Membership/Account/SignUp/SignUpPage.js";
+    public const string TenantsPage = "~/esm/Modules/Administration/Tenants/TenantsPage.js";
     public const string TranslationPage = "~/esm/Modules/Administration/Translation/TranslationPage.js";
     public const string UserPage = "~/esm/Modules/Administration/User/UserPage.js";
 
@@ -22,6 +23,11 @@ public static partial class ESM
             public static partial class Role
             {
                 public const string RolePage = "~/esm/Modules/Administration/Role/RolePage.js";
+            }
+
+            public static partial class Tenants
+            {
+                public const string TenantsPage = "~/esm/Modules/Administration/Tenants/TenantsPage.js";
             }
 
             public static partial class Translation

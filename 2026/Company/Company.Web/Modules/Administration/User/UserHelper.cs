@@ -1,4 +1,4 @@
-﻿using System.Data;
+using System.Data;
 using Serenity.Web.Providers;
 using MyRow = Company.Administration.UserRow;
 
@@ -56,6 +56,7 @@ public static class UserHelper
                 Fld.DisplayName,
                 Fld.PasswordHash,
                 Fld.PasswordSalt,
+                Fld.TenantName,
                 Fld.IsActive)
             .Where(filter));
     }

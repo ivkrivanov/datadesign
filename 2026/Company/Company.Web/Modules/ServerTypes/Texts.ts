@@ -22,6 +22,7 @@ namespace texts {
                 export const EntitySingular: string;
                 export const RoleId: string;
                 export const RoleName: string;
+                export const TenantId: string;
             }
             namespace RolePermission {
                 export function asKey(): typeof RolePermission;
@@ -32,6 +33,14 @@ namespace texts {
                 export const RoleId: string;
                 export const RoleName: string;
                 export const RolePermissionId: string;
+            }
+            namespace Tenants {
+                export function asKey(): typeof Tenants;
+                export function asTry(): typeof Tenants;
+                export const EntityPlural: string;
+                export const EntitySingular: string;
+                export const TenantId: string;
+                export const TenantName: string;
             }
             namespace User {
                 export function asKey(): typeof User;
@@ -50,6 +59,8 @@ namespace texts {
                 export const PasswordSalt: string;
                 export const Roles: string;
                 export const Source: string;
+                export const TenantId: string;
+                export const TenantName: string;
                 export const UpdateDate: string;
                 export const UpdateUserId: string;
                 export const UserId: string;
@@ -184,6 +195,7 @@ const Texts: typeof texts = proxyTexts({}, '', {
             Language: {},
             Role: {},
             RolePermission: {},
+            Tenants: {},
             User: {},
             UserPermission: {},
             UserRole: {}

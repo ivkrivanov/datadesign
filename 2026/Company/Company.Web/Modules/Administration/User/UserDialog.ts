@@ -3,6 +3,7 @@ import { UserForm, UserRow, UserService } from "../../ServerTypes/Administration
 import { nsAdministration } from "../../ServerTypes/Namespaces";
 import { MembershipValidationTexts, UserDialogTexts } from "../../ServerTypes/Texts";
 import { UserPermissionDialog } from "../UserPermission/UserPermissionDialog";
+import { Authorization } from "@serenity-is/corelib";
 
 export class UserDialog extends EntityDialog<UserRow, any> {
     static override[Symbol.typeInfo] = this.registerClass(nsAdministration);
@@ -56,6 +57,13 @@ export class UserDialog extends EntityDialog<UserRow, any> {
         super.updateInterface();
 
         this.toolbar.findButton("edit-permissions-button").toggleClass("disabled", this.isNewOrDeleted());
+    }
+
+    protected override getPropertyItems() {
+        var items = super.getPropertyItems();
+        if (!Authorization.hasPermission("Administration:Tenants"))
+            items = items.filter(x => x.name != UserRow.Fields.TenantId);
+        return items;
     }
 
     protected override afterLoadEntity() {

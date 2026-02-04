@@ -1,4 +1,4 @@
-﻿namespace Company.Administration.Forms;
+namespace Company.Administration.Forms;
 
 [FormScript("Administration.User")]
 [BasedOnRow(typeof(UserRow), CheckNames = true)]
@@ -19,4 +19,5 @@ public class UserForm
     [SkipOnSave]
     public string Source { get; set; }
     public bool IsActive { get; set; }
+    public int? TenantId { get; set; }
 }
