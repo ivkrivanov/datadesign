@@ -1,9 +1,20 @@
-﻿using System.Data;
+using Company.AppServices;
+using DocumentFormat.OpenXml.InkML;
+using Serenity.Abstractions;
+using System.Data;
 using MyRow = Company.Administration.RolePermissionRow;
 
 namespace Company.Administration.Repositories;
-public class RolePermissionRepository(IRequestContext context) : BaseRepository(context)
+public class RolePermissionRepository(IRequestContext context, IPermissionKeyLister permissionKeyLister)
+        : BaseRepository(context)
 {
+    private readonly IPermissionKeyLister permissionKeyLister;
+    //public RolePermissionRepository(IRequestContext context, IPermissionKeyLister permissionKeyLister)
+    //     : BaseRepository(context)
+    //{
+    //    this.permissionKeyLister = permissionKeyLister ?? throw new ArgumentNullException(nameof(permissionKeyLister));
+    //}
+
     private static MyRow.RowFields Fld { get { return MyRow.Fields; } }
 
     public SaveResponse Update(IUnitOfWork uow, RolePermissionUpdateRequest request)
@@ -19,6 +30,10 @@ public class RolePermissionRepository(IRequestContext context) : BaseRepository(
 
         var newList = new HashSet<string>([.. request.Permissions],
             StringComparer.OrdinalIgnoreCase);
+
+        var allowedKeys = this.permissionKeyLister.ListPermissionKeys(true);
+        if (newList.Any(x => !allowedKeys.Contains(x)))
+            throw new AccessViolationException();
 
         if (oldList.SetEquals(newList))
             return new SaveResponse();

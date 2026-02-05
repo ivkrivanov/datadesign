@@ -1,4 +1,4 @@
-﻿using MyRepository = Company.Administration.Repositories.UserPermissionRepository;
+using MyRepository = Company.Administration.Repositories.UserPermissionRepository;
 using MyRow = Company.Administration.UserPermissionRow;
 
 namespace Company.Administration.Endpoints;
@@ -7,19 +7,22 @@ namespace Company.Administration.Endpoints;
 public class UserPermissionEndpoint : ServiceEndpoint
 {
     [HttpPost, AuthorizeUpdate(typeof(MyRow))]
-    public SaveResponse Update(IUnitOfWork uow, UserPermissionUpdateRequest request)
+    public SaveResponse Update(IUnitOfWork uow, UserPermissionUpdateRequest request,
+        [FromServices] IPermissionKeyLister permissionKeyLister)
     {
-        return new MyRepository(Context).Update(uow, request);
+        return new MyRepository(Context, permissionKeyLister).Update(uow, request);
     }
 
-    public ListResponse<MyRow> List(IDbConnection connection, UserPermissionListRequest request)
+    public ListResponse<MyRow> List(IDbConnection connection, UserPermissionListRequest request,
+        [FromServices] IPermissionKeyLister permissionKeyLister)
     {
-        return new MyRepository(Context).List(connection, request);
+        return new MyRepository(Context, permissionKeyLister).List(connection, request);
     }
 
-    public ListResponse<string> ListRolePermissions(IDbConnection connection, UserPermissionListRequest request)
+    public ListResponse<string> ListRolePermissions(IDbConnection connection, UserPermissionListRequest request,
+        [FromServices] IPermissionKeyLister permissionKeyLister)
     {
-        return new MyRepository(Context).ListRolePermissions(connection, request);
+        return new MyRepository(Context, permissionKeyLister).ListRolePermissions(connection, request);
     }
 
     public ListResponse<string> ListPermissionKeys(

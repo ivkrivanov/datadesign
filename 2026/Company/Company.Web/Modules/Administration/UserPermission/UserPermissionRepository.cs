@@ -1,10 +1,17 @@
-﻿using System.Data;
+using System.Data;
 using Microsoft.Extensions.Caching.Memory;
 using MyRow = Company.Administration.UserPermissionRow;
 
 namespace Company.Administration.Repositories;
-public class UserPermissionRepository(IRequestContext context) : BaseRepository(context)
+public class UserPermissionRepository(IRequestContext context, IPermissionKeyLister permissionKeyLister) : BaseRepository(context)
 {
+
+    private readonly IPermissionKeyLister permissionKeyLister = permissionKeyLister;
+    //public UserPermissionRepository(IRequestContext context, IPermissionKeyLister permissionKeyLister)
+    //    : base(context)
+    //{
+    //    this.permissionKeyLister = permissionKeyLister ?? throw new ArgumentNullException(nameof(permissionKeyLister));
+    //}
     private static MyRow.RowFields Fld { get { return MyRow.Fields; } }
 
     public SaveResponse Update(IUnitOfWork uow, UserPermissionUpdateRequest request)
@@ -23,6 +30,10 @@ public class UserPermissionRepository(IRequestContext context) : BaseRepository(
         var newList = new Dictionary<string, bool>(StringComparer.OrdinalIgnoreCase);
         foreach (var p in request.Permissions)
             newList[p.PermissionKey] = p.Granted ?? false;
+
+        var allowedKeys = this.permissionKeyLister.ListPermissionKeys(true);
+        if (newList.Keys.Any(x => !allowedKeys.Contains(x)))
+            throw new AccessViolationException();
 
         if (oldList.Count == newList.Count &&
             oldList.All(x => newList.ContainsKey(x.Key) && newList[x.Key] == x.Value))

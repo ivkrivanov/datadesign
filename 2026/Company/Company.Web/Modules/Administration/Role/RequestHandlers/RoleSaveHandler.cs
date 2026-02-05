@@ -1,4 +1,4 @@
-﻿using MyRow = Company.Administration.RoleRow;
+using MyRow = Company.Administration.RoleRow;
 
 namespace Company.Administration;
 public interface IRoleSaveHandler : ISaveHandler<MyRow> { }
