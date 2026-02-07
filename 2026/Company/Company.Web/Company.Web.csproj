@@ -25,7 +25,6 @@
     <PackageReference Include="Serenity.Net.Web" Version="9.1.1" />
     <PackageReference Include="Serenity.Extensions" Version="9.1.1" />
   </ItemGroup>
-  <ItemGroup></ItemGroup>
   <Target Name="NpmInstall" Condition="!Exists('node_modules\@serenity-is\tsbuild\package.json')">
     <Message Text="Installing NPM packages for $(ProjectName)..." Importance="high" />
     <Exec Command="npm install" Condition="!Exists('..\..\..\pnpm-workspace.yaml')" />

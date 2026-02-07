@@ -1,0 +1,9 @@
+{
+  "Authorization.AccessDenied": "Авторизацията е отказана за тази заявка!",
+  "Authorization.NotLoggedIn": "За тази заявка е необходимо разрешение!",
+  "Controls.CheckTreeEditor.SelectAll": "Избери всички",
+  "Controls.ColumnPickerDialog.HiddenColumns": "Скрити колони",
+  "Controls.ColumnPickerDialog.HideHint": "скрий",
+  "Controls.ColumnPickerDialog.RestoreDefaults": "Възстановяване на настройките по подразбиране",
+  "Controls.ColumnPickerDialog.ShowHint": "показване"
+}

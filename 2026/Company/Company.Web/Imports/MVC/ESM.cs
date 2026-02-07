@@ -2,6 +2,8 @@
 
 public static partial class ESM
 {
+    public const string CurrencyPage = "~/esm/Modules/Sales/Currency/CurrencyPage.js";
+    public const string CurrencyRatePage = "~/esm/Modules/Sales/CurrencyRate/CurrencyRatePage.js";
     public const string LanguagePage = "~/esm/Modules/Administration/Language/LanguagePage.js";
     public const string LoginPage = "~/esm/Modules/Membership/Account/Login/LoginPage.js";
     public const string RolePage = "~/esm/Modules/Administration/Role/RolePage.js";
@@ -59,6 +61,19 @@ public static partial class ESM
                 {
                     public const string SignUpPage = "~/esm/Modules/Membership/Account/SignUp/SignUpPage.js";
                 }
+            }
+        }
+
+        public static partial class Sales
+        {
+            public static partial class Currency
+            {
+                public const string CurrencyPage = "~/esm/Modules/Sales/Currency/CurrencyPage.js";
+            }
+
+            public static partial class CurrencyRate
+            {
+                public const string CurrencyRatePage = "~/esm/Modules/Sales/CurrencyRate/CurrencyRatePage.js";
             }
         }
     }

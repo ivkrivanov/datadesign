@@ -92,6 +92,47 @@ namespace texts {
                 export const Username: string;
             }
         }
+        namespace Company {
+            export function asKey(): typeof Company;
+            export function asTry(): typeof Company;
+            namespace Currency {
+                export function asKey(): typeof Currency;
+                export function asTry(): typeof Currency;
+                export const CurrencyCode: string;
+                export const CurrencyId: string;
+                export const EntityPlural: string;
+                export const EntitySingular: string;
+                export const InsertDate: string;
+                export const InsertUserId: string;
+                export const IsActive: string;
+                export const Name: string;
+                export const TenantId: string;
+                export const UpdateDate: string;
+                export const UpdateUserId: string;
+            }
+        }
+        namespace Sales {
+            export function asKey(): typeof Sales;
+            export function asTry(): typeof Sales;
+            namespace CurrencyRate {
+                export function asKey(): typeof CurrencyRate;
+                export function asTry(): typeof CurrencyRate;
+                export const AverageRate: string;
+                export const CurrencyRateDate: string;
+                export const CurrencyRateId: string;
+                export const EndOfDayRate: string;
+                export const EntityPlural: string;
+                export const EntitySingular: string;
+                export const FromCurrencyCode: string;
+                export const InsertDate: string;
+                export const InsertUserId: string;
+                export const IsActive: string;
+                export const TenantId: string;
+                export const ToCurrencyCode: string;
+                export const UpdateDate: string;
+                export const UpdateUserId: string;
+            }
+        }
     }
     export declare namespace Forms {
         export function asKey(): typeof Forms;
@@ -199,6 +240,12 @@ const Texts: typeof texts = proxyTexts({}, '', {
             User: {},
             UserPermission: {},
             UserRole: {}
+        },
+        Company: {
+            Currency: {}
+        },
+        Sales: {
+            CurrencyRate: {}
         }
     },
     Forms: {

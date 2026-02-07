@@ -1,0 +1,47 @@
+using Company.Administration.Entities;
+namespace Company.Sales;
+
+[ConnectionKey("Company"), Module("Company"), TableName("[sales].[Currency]")]
+[DisplayName("Currency"), InstanceName("Currency")]
+[ReadPermission(SalesPermissionKeys.Currency.View)]
+[ModifyPermission(SalesPermissionKeys.Currency.Modify)]
+[DeletePermission(SalesPermissionKeys.Currency.Delete)]
+[ServiceLookupPermission("Sales.Currency")]
+[LookupScript("Sales.Currency", LookupType = typeof(MultiTenantRowLookupScript<>))]
+
+public sealed class CurrencyRow : LoggingRow<CurrencyRow.RowFields>, IIdRow, INameRow, IIsActiveRow,  IMultiTenantRow
+{
+    [DisplayName("Currency Id"), Identity, IdProperty]
+    public int? CurrencyId { get => fields.CurrencyId[this]; set => fields.CurrencyId[this] = value; }
+
+    [DisplayName("Currency Code"), Size(3), NotNull, QuickSearch, NameProperty]
+    public string CurrencyCode { get => fields.CurrencyCode[this]; set => fields.CurrencyCode[this] = value; }
+
+    [DisplayName("Name"), Size(50), NotNull]
+    public string Name { get => fields.Name[this]; set => fields.Name[this] = value; }
+
+    #region Tenant & Activ
+
+    [Insertable(false), Updatable(false)]
+    public Int32? TenantId { get => fields.TenantId[this]; set => fields.TenantId[this] = value; }
+
+    public Int32Field TenantIdField { get => fields.TenantId; }
+
+    [NotNull, Insertable(false), Updatable(true)]
+    public Int16? IsActive { get => fields.IsActive[this]; set => fields.IsActive[this] = value; }
+
+    Int16Field IIsActiveRow.IsActiveField { get => fields.IsActive; }
+
+    #endregion Tenant & Activ
+
+    public class RowFields : LoggingRowFields
+    {
+        public Int32Field CurrencyId;
+        public StringField CurrencyCode;
+        public StringField Name;
+
+        public Int16Field IsActive;
+        public Int32Field TenantId;
+
+    }
+}
