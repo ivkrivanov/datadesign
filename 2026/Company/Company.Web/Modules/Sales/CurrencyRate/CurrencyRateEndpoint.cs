@@ -1,3 +1,4 @@
+using Company.Sales.Columns;
 using Serenity.Reporting;
 using MyRow = Company.Sales.CurrencyRateRow;
 
@@ -48,7 +49,7 @@ public class CurrencyRateEndpoint : ServiceEndpoint
         [FromServices] IExcelExporter exporter)
     {
         var data = List(connection, request, handler).Entities;
-        var bytes = exporter.Export(data, typeof(Columns.CurrencyRateColumns), request.ExportColumns);
+        var bytes = exporter.Export(data, typeof(CurrencyRateColumns), request.ExportColumns);
         return ExcelContentResult.Create(bytes, "CurrencyRateList_" +
             DateTime.Now.ToString("yyyyMMdd_HHmmss", CultureInfo.InvariantCulture) + ".xlsx");
     }

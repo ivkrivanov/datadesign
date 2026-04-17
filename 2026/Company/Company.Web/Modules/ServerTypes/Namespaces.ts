@@ -4,5 +4,3 @@ export const MembershipNS: "Company.Membership" = "Company.Membership";
 export const nsMembership: "Company.Membership." = "Company.Membership.";
 export const SalesNS: "Company.Sales" = "Company.Sales";
 export const nsSales: "Company.Sales." = "Company.Sales.";
-export const SalesCurrencyNS: "Company.Sales.Currency" = "Company.Sales.Currency";
-export const nsSalesCurrency: "Company.Sales.Currency." = "Company.Sales.Currency.";

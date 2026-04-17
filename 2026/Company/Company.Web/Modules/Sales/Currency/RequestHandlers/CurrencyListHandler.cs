@@ -1,6 +1,6 @@
 using MyRow = Company.Sales.CurrencyRow;
 
-namespace Company.Sales.Currency.RequestHandlers;
+namespace Company.Sales;
 
 public interface ICurrencyListHandler : IListHandler<MyRow, ListRequest, ListResponse<MyRow>> { }
 

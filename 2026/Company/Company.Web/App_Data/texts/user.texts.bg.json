@@ -5,5 +5,10 @@
   "Controls.ColumnPickerDialog.HiddenColumns": "Скрити колони",
   "Controls.ColumnPickerDialog.HideHint": "скрий",
   "Controls.ColumnPickerDialog.RestoreDefaults": "Възстановяване на настройките по подразбиране",
-  "Controls.ColumnPickerDialog.ShowHint": "показване"
+  "Controls.ColumnPickerDialog.ShowHint": "показване",
+  "Controls.ColumnPickerDialog.Title": "Избор на колони",
+  "Controls.ColumnPickerDialog.VisibleColumns": "Видими колони",
+  "Controls.DataGrid.NewButton": "Ново",
+  "Controls.DateTimeEditor.SetToNow": "настроено на сега",
+  "Controls.EntityDialog.ApplyChangesButton": "Прилагане на промените"
 }

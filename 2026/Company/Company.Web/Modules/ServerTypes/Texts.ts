@@ -114,6 +114,66 @@ namespace texts {
         namespace Sales {
             export function asKey(): typeof Sales;
             export function asTry(): typeof Sales;
+            namespace AccountType {
+                export function asKey(): typeof AccountType;
+                export function asTry(): typeof AccountType;
+                export const AccountTypeId: string;
+                export const Description: string;
+                export const EntityPlural: string;
+                export const EntitySingular: string;
+                export const InsertDate: string;
+                export const InsertUserId: string;
+                export const IsActive: string;
+                export const TenantId: string;
+                export const UpdateDate: string;
+                export const UpdateUserId: string;
+            }
+            namespace Accounts {
+                export function asKey(): typeof Accounts;
+                export function asTry(): typeof Accounts;
+                export const Account: string;
+                export const AccountId: string;
+                export const AccountTypeDescription: string;
+                export const AccountTypeId: string;
+                export const Description: string;
+                export const EndDate: string;
+                export const EntityPlural: string;
+                export const EntitySingular: string;
+                export const InsertDate: string;
+                export const InsertUserId: string;
+                export const IsActive: string;
+                export const StartDate: string;
+                export const SubAccount: string;
+                export const TenantId: string;
+                export const UpdateDate: string;
+                export const UpdateUserId: string;
+            }
+            namespace CategoriesType {
+                export function asKey(): typeof CategoriesType;
+                export function asTry(): typeof CategoriesType;
+                export const CategoryType: string;
+                export const CategoryTypeId: string;
+                export const EntityPlural: string;
+                export const EntitySingular: string;
+                export const InsertDate: string;
+                export const InsertUserId: string;
+                export const IsActive: string;
+                export const TenantId: string;
+                export const Type: string;
+                export const UpdateDate: string;
+                export const UpdateUserId: string;
+            }
+            namespace CategoriesTypeLang {
+                export function asKey(): typeof CategoriesTypeLang;
+                export function asTry(): typeof CategoriesTypeLang;
+                export const CategoryTypeId: string;
+                export const CategoryTypeName: string;
+                export const Description: string;
+                export const EntityPlural: string;
+                export const EntitySingular: string;
+                export const Id: string;
+                export const LanguageId: string;
+            }
             namespace CurrencyRate {
                 export function asKey(): typeof CurrencyRate;
                 export function asTry(): typeof CurrencyRate;
@@ -129,6 +189,49 @@ namespace texts {
                 export const IsActive: string;
                 export const TenantId: string;
                 export const ToCurrencyCode: string;
+                export const UpdateDate: string;
+                export const UpdateUserId: string;
+            }
+            namespace DocumentType {
+                export function asKey(): typeof DocumentType;
+                export function asTry(): typeof DocumentType;
+                export const DocumentName: string;
+                export const DocumentTypeId: string;
+                export const EntityPlural: string;
+                export const EntitySingular: string;
+                export const InsertDate: string;
+                export const InsertUserId: string;
+                export const IsActive: string;
+                export const TenantId: string;
+                export const UpdateDate: string;
+                export const UpdateUserId: string;
+            }
+            namespace Measures {
+                export function asKey(): typeof Measures;
+                export function asTry(): typeof Measures;
+                export const EntityPlural: string;
+                export const EntitySingular: string;
+                export const InsertDate: string;
+                export const InsertUserId: string;
+                export const IsActive: string;
+                export const MeasureId: string;
+                export const MeasureName: string;
+                export const TenantId: string;
+                export const UpdateDate: string;
+                export const UpdateUserId: string;
+            }
+            namespace OperationType {
+                export function asKey(): typeof OperationType;
+                export function asTry(): typeof OperationType;
+                export const EntityPlural: string;
+                export const EntitySingular: string;
+                export const InsertDate: string;
+                export const InsertUserId: string;
+                export const IsActive: string;
+                export const OpCode: string;
+                export const Operation: string;
+                export const OperationTypeId: string;
+                export const TenantId: string;
                 export const UpdateDate: string;
                 export const UpdateUserId: string;
             }
@@ -245,7 +348,14 @@ const Texts: typeof texts = proxyTexts({}, '', {
             Currency: {}
         },
         Sales: {
-            CurrencyRate: {}
+            AccountType: {},
+            Accounts: {},
+            CategoriesType: {},
+            CategoriesTypeLang: {},
+            CurrencyRate: {},
+            DocumentType: {},
+            Measures: {},
+            OperationType: {}
         }
     },
     Forms: {

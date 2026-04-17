@@ -26,6 +26,29 @@ public class SalesPermissionKeys
         public const string View = "Company:CurrencyRate:View";
     }
 
+    [DisplayName("Categories")]
+    public class Categories
+    {
+        [Description("Delete"), ImplicitPermission(General), ImplicitPermission(View)]
+        public const string Delete = "Company:Categories:Delete";
+
+        [Description("Create/Update"), ImplicitPermission(General), ImplicitPermission(View)]
+        public const string Modify = "Company:Categories:Modify";
+        public const string View = "Company:Categories:View";
+    }
+
+    [DisplayName("Accounts")]
+    public class Accounts
+    {
+        [Description("Delete"), ImplicitPermission(General), ImplicitPermission(View)]
+        public const string Delete = "Company:Accounts:Delete";
+
+        [Description("Create/Update"), ImplicitPermission(General), ImplicitPermission(View)]
+        public const string Modify = "Company:Accounts:Modify";
+        public const string View = "Company:Accounts:View";
+    }
+
+
     [Description("[General]")]
     public const string General = "Company:General";
 }
