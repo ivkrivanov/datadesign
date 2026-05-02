@@ -10,7 +10,7 @@ namespace Store.Store.Pages
         [Route("Store/Shops")]
         public ActionResult Index()
         {
-            return View("~/Modules/Store/Shops/ShopsIndex.cshtml");
+            return View("~/Areas/Store/Shops/ShopsIndex.cshtml");
         }
     }
 }

@@ -1,0 +1,97 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>Company</RootNamespace>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    <TypeScriptNoEmitOnError>false</TypeScriptNoEmitOnError>
+    <DotNetSergen>dotnet sergen</DotNetSergen>
+    <!--#if (IsNotTemplate)-->
+    <CommonSrc>..\..\..\common-features\src\</CommonSrc>
+    <SerenitySrc>..\..\..\src\</SerenitySrc>
+    <DotNetSergenDir>$(SerenitySrc)Serenity.Net.CodeGenerator\bin\</DotNetSergenDir>
+    <DotNetSergen Condition="Exists('$(DotNetSergenDir)sergen')">$(DotNetSergenDir)sergen</DotNetSergen>
+    <DotNetSergen Condition="Exists('$(DotNetSergenDir)sergen.exe')">$(DotNetSergenDir)sergen.exe</DotNetSergen>
+    <DefineConstants>$(DefineConstants);Northwind;BasicSamples</DefineConstants>
+    <UseProjectRefs Condition="!Exists('$(SerenitySrc)..\Serenity.sln')">false</UseProjectRefs>
+    <!--#endif-->
+  </PropertyGroup>
+  <ItemGroup>
+    <!--<Compile Remove="Modules\Default\**" />
+    <Content Remove="Modules\Default\**" />
+    <EmbeddedResource Remove="Modules\Default\**" />
+    <None Remove="Modules\Default\**" />
+    <TypeScriptCompile Remove="Modules\Default\**" />-->
+    <TypeScriptCompile Remove="node_modules\**" />
+    <EmbeddedResource Include="Migrations\**\*.sql" />
+    <TypeScriptCompile Remove="Modules\ServerTypes\Default.ts" />
+    <Content Include="node_modules\.pnpm\@types+dompurify@3.0.5\node_modules\@types\dompurify\package.json" />
+    <None Include="node_modules\.pnpm\@types+dompurify@3.0.5\node_modules\@types\dompurify\LICENSE" />
+    <None Include="node_modules\.pnpm\@types+dompurify@3.0.5\node_modules\@types\dompurify\README.md" />
+    <Content Update=".eslintrc.json;libman.json;package.json;package-lock.json;sergen.json;tsconfig.json;tslint.json;Modules\tsconfig.json" CopyToOutputDirectory="Never" CopyToPublishDirectory="Never" />
+    <Using Include="Microsoft.AspNetCore.Mvc;Microsoft.Extensions.Options;System;System.Collections.Generic;System.ComponentModel;System.Linq;System.Text;System.Threading" />
+    <Using Include="Serenity;Serenity.Abstractions;Serenity.ComponentModel;Serenity.Data;Serenity.Data.Mapping;Serenity.Extensions;Serenity.Services;Serenity.Web" />
+    <Using Include="System.Data.IDbConnection" Alias="IDbConnection" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="FluentMigrator.Runner" Version="7.1.0" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="9.0.7" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="6.0.2" />
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="5.8.3" PrivateAssets="all" IncludeAssets="runtime; build; native; contentfiles; analyzers" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Serenity.Assets" Version="8.8.6" />
+    <PackageReference Include="Serenity.Corelib" Version="8.8.6" />
+    <PackageReference Include="Serenity.Net.Web" Version="8.8.6" />
+    <PackageReference Include="Serenity.Extensions" Version="8.8.6" />
+    <PackageReference Include="System.Text.RegularExpressions" Version="4.3.1" />
+    <!--#if (Northwind)
+    <PackageReference Include="Serenity.Demo.Northwind" Version="8.8.1" />-->
+    <!--#endif-->
+    <!--#if (BasicSamples)
+    <PackageReference Include="Serenity.Demo.BasicSamples" Version="8.8.1" />-->
+    <!--#endif-->
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="node_modules\.pnpm\@types+dompurify@3.0.5\node_modules\@types\dompurify\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="node_modules\.pnpm\@types+dompurify@3.0.5\node_modules\@types\trusted-types\" />
+  </ItemGroup>
+  <Target Name="NpmInstall" BeforeTargets="BeforeBuild" Condition="Exists('node_modules\.bin\esbuild')">
+    <Message Text="Installing NPM packages..." Importance="high" />
+    <Exec Command="npm install" />
+    <Exec Command="pnpm install" />
+  </Target>
+  <Target Name="RunTSBuild" BeforeTargets="BeforeBuild;GenerateStaticWebAssetsManifest" DependsOnTargets="RestoreNodeTypes;NpmInstall" Condition="'$(SkipTSBuild)' != 'true'">
+    <Message Text="Executing TypeScript compiler for $(ProjectName)..." Importance="high" />
+    <ItemGroup>
+      <CleanedEsmFiles Include="wwwroot\esm\**" />
+      <Exec Command="node tsbuild.js" ContinueOnError="true" />      
+    </ItemGroup>
+    <ItemGroup>
+      <CleanedEsmFiles Remove="wwwroot\esm\**" />
+      <Content Remove="@(CleanedEsmFiles)" />
+      <Content Include="wwwroot\esm\**\*.js;wwwroot\esm\**\*.css;wwwroot\esm\**\*.map" Exclude="@(Content)" CopyToOutputDirectory="Never" CopyToPublishDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
+    </ItemGroup>
+  </Target>
+  <Target Name="TransformMvcClientTypes" BeforeTargets="BeforeBuild" DependsOnTargets="SetSergenTransformArgs">
+    <Exec Command="dotnet tool restore" ContinueOnError="true" />
+    <Exec Command="$(DotNetSergen) mvct $(SergenTransformArgs)" ContinueOnError="true" />
+  </Target>
+  <Target Name="TransformServerTypings" AfterTargets="AfterBuild" DependsOnTargets="SetSergenTransformArgs">
+    <Exec Command="$(DotNetSergen) servertypings $(SergenTransformArgs)" ContinueOnError="true" />
+  </Target>
+  <Target Name="TranformRunTSBuild" AfterTargets="AfterBuild" DependsOnTargets="RestoreNodeTypes;NpmInstall;TransformServerTypings" Condition="'$(SkipTSBuild)' != 'true'">
+    <Message Text="Executing TypeScript compiler for $(ProjectName)..." Importance="high" />
+    <Exec Command="node tsbuild.js" ContinueOnError="true" />
+  </Target>
+  <Target Name="CompileTSC" AfterTargets="AfterBuild" Inputs="@(CompileTSCInputs)" Outputs="wwwroot\esm\**\*.js">
+    <Message Text="Executing TypeScript compiler..." Importance="high" />
+    <Exec Command="node tsbuild" ContinueOnError="true" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties NpmRestoreOnProjectOpen="True" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

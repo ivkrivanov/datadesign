@@ -1,0 +1,64 @@
+{
+  "RootNamespace": "Address",
+  "ServerTypings": {
+    "LocalTexts": true
+  },
+  "EndOfLine": "LF",
+  "Restore": {
+    "Exclude": [
+      "/**/*"
+    ]
+  },
+  "Connections": [
+    {
+      "Key": "Address",
+      "Tables": [
+        {
+          "Tablename": "address.Address",
+          "Identifier": "Address",
+          "Module": "Address",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "address.AddressType",
+          "Identifier": "AddressType",
+          "Module": "Address",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "address.Country",
+          "Identifier": "Country",
+          "Module": "Address",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "address.StateProvince",
+          "Identifier": "StateProvince",
+          "Module": "Address",
+          "PermissionKey": "Administration:General"
+        }
+      ]
+    }
+  ],
+  "BaseRowClasses": [
+    {
+      "ClassName": "Serene.Administration.LoggingRow",
+      "Fields": [
+        "InsertUserId",
+        "UpdateUserId",
+        "InsertDate",
+        "UpdateDate"
+      ]
+    }
+  ],
+  "RemoveForeignFields": [
+    "InsertUserId",
+    "UpdateUserId",
+    "InsertDate",
+    "UpdateDate"
+  ],
+  "UpgradeInfo": {
+    "InitialType": "Community",
+    "InitialVersion": "6.5.1.0"
+  }
+}

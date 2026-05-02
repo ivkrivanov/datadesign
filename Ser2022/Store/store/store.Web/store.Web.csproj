@@ -12,6 +12,8 @@
     <CommonSrc>..\..\common-features\src\</CommonSrc>
     <ProSrc>..\..\pro-features\src\</ProSrc>
     <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+    <UserSecretsId>0f0c94f2-6d5f-4da7-835e-f27d4e5a3a00</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\**\*.sql" Exclude="bin\**;obj\**;**\*.xproj;packages\**;@(EmbeddedResource)" />
@@ -21,8 +23,16 @@
     <None Remove="Modules\Common\UserPreference\**" />
     <TypeScriptCompile Remove="Modules\Common\UserPreference\**" />
     <Compile Remove="Modules\Common\Helpers\PdfExportHelper.cs" />
-    <Content Remove="Areas\Store\_ViewImports - Copy.cshtml" />
+    <Compile Remove="Modules\Store\Notes\NotesRepository.cs" />
+    <Compile Remove="Modules\Store\Notes\_NotesBehavior.cs" />
+    <Content Remove="Areas\Store\Categories\CategoriesIndex.cshtml" />
+    <Content Remove="Areas\Store\Counterparties\CounterpartiesIndex.cshtml" />
+    <Content Remove="Areas\Store\DocumentType\DocumentTypeIndex.cshtml" />
+    <Content Remove="Areas\Store\Products\ProductsIndex.cshtml" />
+    <Content Remove="Areas\Store\Wares\WaresIndex.cshtml" />
+    <Content Remove="Areas\Store\_ViewImports.cshtml" />
     <Content Remove="Areas\Store\_ViewStart.cshtml" />
+    <Content Remove="Modules\Store\Categories\CategoriesIndex.cshtml" />
     <None Remove="App_Data\Reporting\wkhtmltopdf.exe" />
     <None Remove="typings\jspdf\jspdf.d.ts" />
     <TypeScriptCompile Remove="Modules\Common\Helpers\DialogUtils.ts" />
@@ -32,26 +42,70 @@
     <TypeScriptCompile Remove="Modules\Store\Counterparties\CounterpartiesDialog.ts" />
     <TypeScriptCompile Remove="Modules\Store\Counterparties\CounterpartiesEditor.ts" />
     <TypeScriptCompile Remove="Modules\Store\Counterparties\CounterpartiesGrid.ts" />
+    <TypeScriptCompile Remove="Modules\Store\Counterparties\CounterpartiesProductMovementDialog.ts" />
+    <TypeScriptCompile Remove="Modules\Store\Counterparties\CounterpartiesProductMovementGrid.ts" />
+    <TypeScriptCompile Remove="Modules\Store\Counterparties\CounterpartyWaresMovementDialog.ts" />
+    <TypeScriptCompile Remove="Modules\Store\Counterparties\CounterpartyWaresMovementGrid.ts" />
     <TypeScriptCompile Remove="Modules\Store\Employees\EmployeesFormatter.ts" />
     <TypeScriptCompile Remove="Modules\Store\Employees\EmployeesListFormatter.ts" />
+    <TypeScriptCompile Remove="Modules\Store\ProductDetails\ProductDetailsGrid.ts" />
     <TypeScriptCompile Remove="Modules\Store\Wares\WaresDialog.ts" />
     <TypeScriptCompile Remove="Modules\Store\Wares\WaresExcelImportDialog.ts" />
     <TypeScriptCompile Remove="Modules\Store\Wares\WaresGrid.ts" />
     <Content Include="App_Data\Reporting\wkhtmltopdf.exe" />
-    <None Include="Areas\Store\_ViewImports - Copy.cshtml" />
-    <None Include="Areas\Store\_ViewStart.cshtml" />
+    <None Include="Areas\Store\Categories\CategoriesIndex.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Areas\Store\Counterparties\CounterpartiesIndex.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Areas\Store\DocumentType\DocumentTypeIndex.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Areas\Store\Products\ProductsIndex.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Areas\Store\Wares\WaresIndex.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Areas\Store\_ViewImports.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Areas\Store\_ViewStart.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Modules\Common\Reporting\ReportPage.cshtml" />
-    <None Include="Modules\Store\CategoriesType\CategoriesTypeIndex.cshtml" />
-    <None Include="Modules\Store\Categories\CategoriesIndex.cshtml" />
-    <None Include="Modules\Store\DocumentType\DocumentTypeIndex.cshtml" />
-    <None Include="Modules\Store\Measures\MeasuresIndex.cshtml" />
-    <None Include="Modules\Store\OperationType\OperationTypeIndex.cshtml" />
-    <None Include="Modules\Store\ProductDetails\ProductDetailsIndex.cshtml" />
-    <None Include="Modules\Store\Products\ProductsIndex.cshtml" />
-    <None Include="Modules\Store\Shippers\ShippersIndex.cshtml" />
-    <None Include="Modules\Store\Shops\ShopsIndex.cshtml" />
-    <None Include="Modules\Store\WaresMovementDetails\WaresMovementDetailsIndex.cshtml" />
-    <None Include="Modules\Store\WaresMovement\WaresMovementIndex.cshtml" />
+    <None Include="Areas\Store\CategoriesType\CategoriesTypeIndex.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Areas\Store\Measures\MeasuresIndex.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Areas\Store\OperationType\OperationTypeIndex.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Areas\Store\ProductDetails\ProductDetailsIndex.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Areas\Store\Shippers\ShippersIndex.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Areas\Store\Shops\ShopsIndex.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Areas\Store\WaresMovementDetails\WaresMovementDetailsIndex.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Areas\Store\WaresMovement\WaresMovementIndex.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Areas\Store\ProductMovementDetails\ProductMovementDetailsIndex.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Areas\Store\ProductMovement\ProductMovementIndex.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Areas\Store\Warehouse\WarehouseIndex.cshtml" />
     <None Update="wwwroot\**\*">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </None>
@@ -70,6 +124,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.11.1" />
     <PackageReference Include="Serenity.Assets" Version="5.2.2" />
     <PackageReference Include="Serenity.Extensions" Version="5.2.2" />
     <PackageReference Include="Serenity.Scripts" Version="5.2.4" />
@@ -82,10 +137,9 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Serenity.Extensions" Version="5.2.2" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="7.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\Store\CategoriesType\" />
-    <Folder Include="Areas\Store\Categories\" />
     <Folder Include="node_modules\%40types\" />
   </ItemGroup>
   <Import Project="$(SolutionDir)Serenity\build\submodule.targets" Condition="Exists('$(SolutionDir)Serenity\build\submodule.targets')" />

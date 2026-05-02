@@ -178,7 +178,7 @@ namespace Store.Store.Entities
 
         //[DisplayName("Line Value"), Expression("(t0.[SinglePrice] * t0.[Quantity] - t0.[Discount]) + (t0.[SinglePrice] * t0.[Quantity] - t0.[Discount]) * (0.2) / (1 + 0.2)")]
         [DisplayName("Value"), Expression("(t0.[SinglePrice] * t0.[Quantity] - t0.[Discount])")]
-        [AlignRight, DisplayFormat("#,##0.0000"), MinSelectLevel(SelectLevel.List)]
+        [AlignRight, DisplayFormat("#,##0.00"), MinSelectLevel(SelectLevel.List)]
         public Decimal? LineValue
         {
             get => Fields.LineValue[this];
@@ -186,7 +186,7 @@ namespace Store.Store.Entities
         }
 
         [DisplayName("VAT"), Expression("(t0.[SinglePrice] * t0.[Quantity] - t0.[Discount]) * (0.2)")]
-        [AlignRight, DisplayFormat("#,##0.0000"), MinSelectLevel(SelectLevel.List)]
+        [AlignRight, DisplayFormat("#,##0.00"), MinSelectLevel(SelectLevel.List)]
         public Decimal? LineVAT
         {
             get => Fields.LineVAT[this]; 
@@ -195,7 +195,7 @@ namespace Store.Store.Entities
 
         //[DisplayName("Line Total"), Expression("(t0.[SinglePrice] * t0.[Quantity] - t0.[Discount])")]
         [DisplayName("Total"), Expression("(t0.[SinglePrice] * t0.[Quantity] - t0.[Discount]) * (1.2)")]
-        [AlignRight, DisplayFormat("#,##0.0000"), MinSelectLevel(SelectLevel.List)]
+        [AlignRight, DisplayFormat("#,##0.00"), MinSelectLevel(SelectLevel.List)]
         public Decimal? LineTotal
         {
             get => Fields.LineTotal[this]; 

@@ -199,29 +199,29 @@ namespace CoreStore.Store.Entities
             set =>Fields.Discount[this] = value; 
         }
 
-        [DisplayName("Value"), Expression("(t0.[SinglePrice] * t0.[Quantity] - t0.[Discount])")]
+        [DisplayName("Value")] //, Expression("(t0.[SinglePrice] * t0.[Quantity] - t0.[Discount])")]
         [AlignRight, DisplayFormat("#,##0.0000"), MinSelectLevel(SelectLevel.List)]
-        public Decimal? LineValue
+        public Decimal? RetailValue
         {
-            get =>Fields.LineValue[this]; 
-            set =>Fields.LineValue[this] = value; 
+            get =>Fields.RetailValue[this]; 
+            set =>Fields.RetailValue[this] = value; 
         }
 
-        [DisplayName("VAT"), Expression("(t0.[SinglePrice] * t0.[Quantity] - t0.[Discount]) * (0.2)")]
+        [DisplayName("VAT")] //, Expression("(t0.[SinglePrice] * t0.[Quantity] - t0.[Discount]) * (0.2)")]
         [AlignRight, DisplayFormat("#,##0.0000"), MinSelectLevel(SelectLevel.List)]
-        public Decimal? LineVAT
+        public Decimal? VAT
         {
-            get =>Fields.LineVAT[this]; 
-            set =>Fields.LineVAT[this] = value; 
+            get =>Fields.VAT[this]; 
+            set =>Fields.VAT[this] = value; 
         }
 
         //[DisplayName("Line Total"), Expression("(t0.[SinglePrice] * t0.[Quantity] - t0.[Discount])")]
-        [DisplayName("Total"), Expression("(t0.[SinglePrice] * t0.[Quantity] - t0.[Discount]) * (1.2)")]
+        [DisplayName("Total")] //, Expression("(t0.[SinglePrice] * t0.[Quantity] - t0.[Discount]) * (1.2)")]
         [AlignRight, DisplayFormat("#,##0.0000"), MinSelectLevel(SelectLevel.List)]
-        public Decimal? LineTotal
+        public Decimal? TotalValue
         {
-            get =>Fields.LineTotal[this]; 
-            set =>Fields.LineTotal[this] = value; 
+            get =>Fields.TotalValue[this]; 
+            set =>Fields.TotalValue[this] = value; 
         }
 
         #region Tenant & Activ
@@ -296,9 +296,9 @@ namespace CoreStore.Store.Entities
             public Int16Field ProductReorderLevel;
             public BooleanField ProductDiscontinued;
 
-            public DecimalField LineValue;
-            public DecimalField LineVAT;
-            public DecimalField LineTotal;
+            public DecimalField RetailValue;
+            public DecimalField VAT;
+            public DecimalField TotalValue;
         }
     }
 }

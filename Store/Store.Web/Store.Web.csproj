@@ -2077,6 +2077,15 @@
     <Compile Include="Imports\ClientTypes\Store.WaresMovementDetailsEditorAttribute.cs">
       <DependentUpon>ClientTypes.tt</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\DefaultDB\DefaultDB_20141103_140000_Initial.cs" />
+    <Compile Include="Migrations\DefaultDB\DefaultDB_20141111_113000_Permissions.cs" />
+    <Compile Include="Migrations\DefaultDB\DefaultDB_20160515_072600_UserPreferences.cs" />
+    <Compile Include="Migrations\DefaultDB\DefaultDB_20160724_101700_MultiTenant.cs" />
+    <Compile Include="Migrations\DefaultDB\DefaultDB_20161029_130000_ExceptionLog.cs" />
+    <Compile Include="Migrations\StoreDB\StoreDB_20181213_140000_CustomerDetails.cs" />
+    <Compile Include="Migrations\StoreDB\StoreDB_20181213_150000_Notes.cs" />
+    <Compile Include="Migrations\StoreDB\StoreDB_20181213_160000_ProductLog.cs" />
+    <Compile Include="Migrations\StoreDB\StoreDB_20181214_100000_CustomerGrossSales.cs" />
     <Compile Include="Modules\Administration\AdministrationNavigation.cs" />
     <Compile Include="Modules\Administration\Language\LanguageLookup.cs" />
     <Compile Include="Modules\Administration\RolePermission\RolePermissionUpdateRequest.cs" />
@@ -2501,10 +2510,7 @@
     <TypeScriptCompile Include="Modules\Common\Reporting\PdfExportHelper.ts" />
     <TypeScriptCompile Include="Scripts\typings\jspdf\jspdf.autotable.d.ts" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Migrations\DefaultDB\" />
-    <Folder Include="Migrations\StoreDB\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
